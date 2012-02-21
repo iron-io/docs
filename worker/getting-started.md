@@ -1,3 +1,6 @@
+---
+template: default.html
+---
 IronWorker is a product that helps you separate elements of your project into specialised, resilient chunks. Each worker is intended to be a single piece of your project, operating independently from the other workers and your own servers. They leverage cloud computing to do a lot of work very quickly with great uptime. By using workers, you can easily create a resilient, easily-managed project that operates even under worst-case scenarios.
 
 It doesn't take long to get your Python workers running on IronWorker. There is [an official library](https://github.com/iron-io/iron_worker_python) that can make the process a lot easier, too.
@@ -248,4 +251,3 @@ Now that you've got the basics of IronWorker down, you might want to check out s
 * **Setting task progress**: you can set a progress variable on tasks that will show up in their detail view. Wouldn't it be nice to know how many Fibonacci numbers we had gotten through, instead of just "working"?
 * **Managing tasks**: In really big projects, you can have a lot of tasks running at once. The library lets you list, cancel, and delete tasks to help you manage your worker.
 * **Interfacing with IronMQ**: Getting your results as a log is a pain. There has to be a better way. Sure, you could have them emailed, Twittered, or sent as parameters in an HTTP request, but that requires you to run your own systems. IronMQ is a messaging queue built in the cloud, so you don't have to worry about that. Even better, IronWorker and IronMQ can work together.
-
