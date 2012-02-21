@@ -1,0 +1,15 @@
+---
+layout: default
+title: Welcome
+---
+
+# Post Title
+
+this is a paragraph
+
+{% highlight ruby %}
+def foo
+  puts 'foo'
+end
+{% endhighlight %}
+
