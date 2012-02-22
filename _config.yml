@@ -1,3 +1,4 @@
 permalink: /:title
 auto: true
 server: true
+baseurl: /docs
