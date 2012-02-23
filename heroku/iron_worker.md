@@ -1,10 +1,10 @@
-IronWorker is a massively scalable task queue/job queue that makes it easy for you offload front end tasks, run background jobs, and process many tasks at once -- all in the cloud and with no servers to set-up and manage. It can also function as a cron-in-the-cloud service, running tasks on a schedule you define.
+IronWorker is a massively scalable task queue/job queue that makes it easy for you offload front end tasks, run background jobs, and process many tasks at once -- all in the cloud and with no servers to set-up and manage. It can also function as a cron-in-the-cloud service, running tasks on a schedule you define. 
 
 IronWorker has partnered with Heroku to make using both services together even easier.
 
 ## Get Started
 
-It's quick and easy to get IronWorker set up and running on Heroku. Note that IronWorker currently requires **Ruby 1.9 or later**. Please check the [Heroku documentation](http://devcenter.heroku.com/articles/stack) to find out whether your stack is supported and how to select a supported stack.
+It's quick and easy to get IronWorker set up and running on Heroku using your [language of choice](http://docs.iron.io/worker#TOC-Clients). Note that Ruby IronWorker currently requires **Ruby 1.9 or later**. Please check the [Heroku documentation](http://devcenter.heroku.com/articles/stack) to find out whether your stack is supported and how to select a supported stack.
 
 Once you have a stack selected, you need to install the IronWorker add-on for Heroku. You can do this with a quick command:
 
@@ -84,7 +84,7 @@ Here's the worker that calculates the sequence. You can copy and paste and place
 
 This example uses a basic implementation of a Fibonacci calculation up to the max attribute we set, then logs the values.
 
-We require the `iron_worker` gem and sub-class `IronWorker::Base`. Then we set up an attribute accessor to hold the number we want to calculate up to. Finally, we define a run method and place the code to execute in there. This is what will run when tasks are taken off the queue and processed within IronWorker.
+We require the `iron_worker` gem and sub-class `IronWorker::Base`. Then we set up an attribute accessor to hold the number we want to calculate up to. Finally, we define a run method and place the code to execute in there. This is what will run when tasks are taken off the queue and processed within IronWorker. 
 
 ### Testing the Worker
 
@@ -145,7 +145,7 @@ This is just the tip of the iceberg. IronWorker has a robust API that allows for
 
 You can also check out some example workers:
 
-* [TweetWorker](https://github.com/iron-io/heroku_sinatra_example), an app that pulls tweets and displays them. It uses IronWorker, IronMQ, and Sinata, all while being hosted on Heroku.
+* [TweetWorker](https://github.com/iron-io/heroku_sinatra_example), an app that pulls tweets and displays them. It uses IronWorker, IronMQ, and Sinatra, all while being hosted on Heroku.
 * We also have a [full repository](https://github.com/iron-io/iron_worker_examples) of IronWorker examples for Rails on Github.
 
 ### Troubleshooting
