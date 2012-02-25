@@ -4,7 +4,7 @@ title: Using IronWorker with Heroku
 categories:
   - articles
   - worker
-layout: default
+layout: proposed
 ---
 IronWorker is a massively scalable task queue/job queue that makes it easy for you offload front end tasks, run background jobs, and process many tasks at once -- all in the cloud and with no servers to set-up and manage. It can also function as a cron-in-the-cloud service, running tasks on a schedule you define. 
 
