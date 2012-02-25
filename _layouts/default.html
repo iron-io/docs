@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Iron.io | Dev Center</title>
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Iron.io | Dev Center</title>
   <meta name="description" content="" />
 
   <link href="http://www.iron.io/assets/application-3b1bd90e2a6ded693df68799dcd72a01.css" media="screen" rel="stylesheet" type="text/css" />
@@ -59,7 +59,7 @@
             <h1>Dev Center</h1>
 
             <div class="info">
-              <strong>The New Iron Dev Center</strong>
+                    <strong>{% if page.title %}{{ page.title }}{% else %}The New Iron Dev Center{% endif %}</strong>
             </div>
           </div>
 
