@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset='UTF-8' />
+  <title>The page you were looking for doesn't exist (404)</title>
+	<style type="text/css">
+		body { background-color: #e0e0e0; color: #666; font-family: arial, sans-serif; }
+		div.dialog {
+      background: #f2f2f2;
+      background: -moz-linear-gradient(top, #f2f2f2, #FFFFFF);
+      background: -webkit-gradient(linear, left top, left bottom,
+          from(#f2f2f2), to(#FFFFFF));
+      background: -o-linear-gradient(top, #f2f2f2, #FFFFFF);
+      background: linear-gradient(top, #f2f2f2, #FFFFFF);
+
+      border: 1px solid #BBBBBB;
+      border-radius: 10px 10px 10px 10px;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.21);
+      margin: 4em auto 0;
+      padding: 3em 2em 3em 2em;
+      position: relative;
+      width: 700px;
+		}
+		div.dialog:before {
+		  content:"";
+		  display:block; /* reduce the damage in FF3.0 */
+		  position:absolute;
+		  width:38em;
+		  height:1px;
+      border-top: 1px solid white;
+      z-index: 11;
+      margin: 0 0 0 8px;
+
+		  top:0px;
+		  left:0px;
+		}
+		h1 {
+      font-size: 200%;
+      line-height: 1.2em;
+      text-shadow: 0 1px 0 white;
+      margin: 10px 0;
+    }
+		p {
+		  line-height: 1.6em;
+      margin: 0;
+		}
+  	.logo {
+  	  position: absolute;
+  	  right: 20px;
+      top: 20px;
+  	}
+	</style>
+</head>
+
+<body>
+  <!-- This file lives in public/404.html -->
+
+  <div class="dialog">
+    <img src="http://hud.iron.io/images/sad-robot.png" alt="" style="margin-left: 230px;">
+    <div class="right">
+      <h1>The page you were looking for doesn't exist.</h1>
+      <p>You may have mistyped the address or the page may have moved.</p>
+      <p><a href="http://iron.io">http://Iron.io</a></p>
+    </div>
+
+    <a class="logo" href="/"><img src="http://hud.iron.io/images/ironio-logo.png" alt="" /></a>
+  </div>
+</body>
+</html>
