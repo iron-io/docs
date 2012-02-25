@@ -68,9 +68,16 @@
 
         <div class="content-container docs">
 
-          {% include search.html %}
+          <div style="width: 200px; float: left;">
+            Sidebar
+            <form action="/search">
+            <input type="text" name="q" id="q" />
+            </form>
+          </div>
 
-          {{ content }}
+          <div style="float: left; width: 665px">
+            {{ content }}
+          </div>
 
         </div>
       </section>
