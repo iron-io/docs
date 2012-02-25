@@ -9,8 +9,10 @@
 
   <!-- fonts -->
   <link href="http://www.iron.io/assets/fonts/stylesheet.css" media="screen" rel="stylesheet" type="text/css" />
+
   <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/global.css" />
   <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css" />
+
 
 
   <meta content="authenticity_token" name="csrf-param" />
@@ -28,6 +30,12 @@
   <!--[if lt IE 9]>
   <script src="http://www.iron.io/assets/html5shiv-d095c2f2abab5314e1647fd569a21eb4.js" type="text/javascript"></script>
   <![endif]-->
+
+  <script>
+    $(document).ready(function() {
+      $("#accordion").accordion();
+    });
+    </script>
 
 </head>
 <body class="team">
@@ -56,6 +64,12 @@
       <section class="container">
 
         <header>
+          <div style="float: right;">
+            <select name="product">
+              <option value="worker">IronWorker</option>
+              <option value="mq">IronMQ</option>
+            </select>
+          </div>
           <div class="title-box">
             <h1>Dev Center</h1>
 
@@ -68,22 +82,62 @@
 
         <div class="subnavigation team">
           <ul class="menu page-menu">
-            <li class="active"><a href="/">Home</a></li>
-            <li class=""><a href="/mq">IronMQ</a></li>
-            <li class=""><a href="/worker">IronWorker</a></li>
+            <li class="active"><a href="/">Getting Started</a></li>
+            <li class=""><a href="/tutorials">Tutorials</a></li>
+            <li class=""><a href="/articles">Articles</a></li>
+            <li class=""><a href="/code">Code</a></li>
+            <li class=""><a href="/reference">Reference</a></li>
+            <li class=""><a href="/community">Community</a></li>
           </ul>
         </div>
 
 
         <div class="content-container docs">
 
-          <div style="width: 200px; float: left;">
+          <div style="width: 240px; float: left;">
             <form action="/search">
-            <input type="text" name="q" id="q" placeholder="Search Dev Center" size="18" />
+              <input type="text" name="q" id="q" placeholder="Search Dev Center" size="18" />
             </form>
+
+            <br />
+
+            <div id="accordion" style="width: 220px;">
+            	<h3><a href="#">Section 1</a></h3>
+            	<div>
+            		<p>
+            		odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+            		</p>
+            	</div>
+            	<h3><a href="#">Section 2</a></h3>
+            	<div>
+            		<p>
+            		suscipit faucibus urna.
+            		</p>
+            	</div>
+            	<h3><a href="#">Section 3</a></h3>
+            	<div>
+            		<p>
+            		ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+            		lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+            		</p>
+            		<ul>
+            			<li>List item one</li>
+            			<li>List item two</li>
+            			<li>List item three</li>
+            		</ul>
+            	</div>
+            	<h3><a href="#">Section 4</a></h3>
+            	<div>
+            		<p>
+            		Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+            		mauris vel est.
+            		</p>
+            	</div>
+            </div>
+
           </div>
 
-          <div style="float: left; width: 665px">
+          <div style="float: left; width: 605px">
             {{ content }}
           </div>
 
