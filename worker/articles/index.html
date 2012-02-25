@@ -4,13 +4,7 @@ layout: default
 ---
 <ul>
 {% for post in site.categories.articles %}
-        {% assign is_worker_post = false %}
-        {% for category in post.categories %}
-                {% if category == "worker" %}
-                        {% assign is_worker_post = true %}
-                {% endif %}
-        {% endfor %}
-        {% if is_worker_post %}
+        {% if post.categories contains "worker" %}
                 <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
         {% endif %}
 {% endfor %}
