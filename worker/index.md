@@ -1,5 +1,6 @@
 ---
 title: IronWorker
+layout: default
 ---
 
 Welcome to the IronWorker documentation. IronWorker is a massively scalable background processing system. [Read more](http://www.iron.io/products/worker).
