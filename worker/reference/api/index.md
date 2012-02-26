@@ -20,6 +20,10 @@ text-align: left;
 border-bottom: 1px solid #000;
 }
 
+.variable {
+font-style: italic;
+}
+
 .variable.project_id {
 color: red;
 }
@@ -37,6 +41,11 @@ h3 {
 padding: 5px 0px;
 margin: 0px;
 }
+
+li > p {
+margin: 0px;
+}
+
 </style>
 
 IronWorker provides a RESTful HTTP API to allow you to interact programmatically with our service and your workers.
@@ -61,7 +70,7 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
 <tr><th style="width: 55%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 34%;">Purpose</th></tr>
 <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>GET</td><td><a href="#list_tasks" title="List Tasks">List Tasks</a></td></tr>
 <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>POST</td><td><a href="#queue_a_task" title="Queue a Task">Queue a Task</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/webhook</td><td>POST</td><td><a href="#queue_a_task_from_webhook" title="Queue a Task from Webhook">Queue a Task from Webhook</a></td></tr>
+<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/webhook</td><td>POST</td><td><a href="#queue_a_task_from_a_webhook" title="Queue a Task from a Webhook">Queue a Task from a Webhook</a></td></tr>
 <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span></td><td>GET</td><td><a href="#get_info_about_a_task" title="Get Info About a Task">Get Info About a Task</a></td></tr>
 <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/log</td><td>GET</td><td><a href="#get_a_tasks_log" title="Get a Task's Log">Get a Task's Log</a></td></tr>
 <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/cancel</td><td>POST</td><td><a href="#cancel_a_task" title="Cancel a Task">Cancel a Task</a></td></tr>
@@ -198,7 +207,6 @@ The request should be JSON-encoded and contain the following information:
   * ruby
   * python
   * php
-
 
 Your request also needs the following headers, in addition to the headers required by all API calls:
 
@@ -367,5 +375,290 @@ Sample:
             "last_email": 1328732680000000000
         }
     ]
+}
+{% endhighlight %}
+
+## Tasks
+
+Tasks are specific instance of your workers being run. They encompass a single execution of a code package. Tasks consist of the code package to be run and the data to pass to the code package.
+
+### Task Properties
+
+#### Task State
+
+Tasks will be in different states during the course of operation. Here are the states that tasks can be in in the system:
+
+<table class="reference">
+<tr><th>Task State</th><th>Status</th></tr>
+<tr><td>queued</td><td>in the queue, waiting to run</td></tr>
+<tr><td>running</td><td>running</td></tr>
+<tr><td>complete</td><td>finished running</td></tr>
+<tr><td>error</td><td>error during processing</td></tr>
+<tr><td>cancelled</td><td>cancelled by user</td></tr>
+<tr><td>killed</td><td>killed by system</td></tr>
+<tr><td>timeout</td><td>exceeded processing time threshold</td></tr>
+</table>
+
+#### Priority
+
+Task priority determines how much time a task may sit in queue. Higher values means tasks spend less time in the queue once they come off the schedule, but also [cost more](http://www.iron.io/products/worker/pricing) to run. The standard/default priority is 0.
+
+<table class="reference">
+<tr><th>Priority</th><th></th></tr>
+<tr><td>0</td><td>Default</td></tr>
+<tr><td>1</td><td>Medium</td></tr>
+<tr><td>2</td><td>High (less time in queue)</td></tr>
+</table>
+
+#### Timeout
+
+Tasks have timeouts associated with them that specify the amount of time (in seconds) the process may run. The maximum timeout is 3600 seconds (60 minutes). It’s also the default timeout but it can be set on a task-by-task basis to be anytime less than 3600 seconds.
+
+<table class="reference">
+<tr><th>Timeout (in seconds)</th><th></th></tr>
+<tr><td>3600</td><td>Maximum time a task can run (also default)</td></tr>
+</table>
+
+#### Runtime
+
+<table class="reference" style="margin-top: 10px;">
+<tr><th>Languages</th></tr>
+<tr><td>ruby</td></tr>
+<tr><td>python</td></tr>
+<tr><td>php</td></tr>
+</table>
+
+### List Tasks
+
+#### Endpoint
+
+GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project whose tasks you want to get a list of.
+
+#### Optional URL Parameters
+
+* **page**: The page of tasks you want to retrieve, starting from 0. Default is 0, maximum is 100.
+* **per_page**: The number of tasks to return per page. Note this is a maximum value, so there may be less tasks returned if there aren’t enough results. Default is 30, maximum is 100.
+
+#### Response
+
+The response will be a JSON object. The “tasks” property will contain a JSON array of objects, each representing a task.
+
+Sample:  
+{% highlight js %}
+{
+    "tasks": [
+        {
+            id: "4f3595381cf75447be029da5",
+            created_at: 1328911672712000000,
+            updated_at: 1328911915000000000,
+            project_id: "4f32d521519cb67829000390",
+            code_id: "4f32d9c81cf75447be020ea5",
+            status: "complete",
+            msg: "SetProgress output",
+            code_name: "MyWorker",
+            start_time: 1328911674000000000,
+            end_time: 1328911915000000000,
+            duration: 241441,
+            run_times: 1,
+            timeout: 3600,
+            percent: 100
+        }
+    ]
+}
+{% endhighlight %}
+
+### Queue a Task
+
+#### Endpoint
+
+POST /projects/<span class="variable project_id">{Project ID}</span>/tasks
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that you are creating the task in.
+
+#### Request
+
+The request should be JSON-encoded and consist of an object with a single property, “tasks”, which contains an array of objects. Each object in the array should consist of:
+
+* **code_name**: The name of the code package to execute for this task.
+* **payload**: A string of data to be passed to the worker. The payload will be passed to the code package at runtime, and can be used to pass varying information into a worker that will process it using the same code. The payload cannot be larger than 64KB in size.
+
+Optionally, each object in the array can also contain the following:
+
+* **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. 0 is the default. 
+* **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration. 
+* **delay**: The number of seconds to delay before actually queuing the task. Default is 0.
+
+The request also needs to be sent with a “Content-Type: application/json” header, or it will respond with a 406 status code and a “msg” property explaining the missing header.
+
+Sample:  
+{% highlight js %}
+{
+    "tasks": [
+        {
+            "code_name": "MyWorker",
+            "payload": "{\"x\": \"abc\", \"y\": \"def\"}"
+        }
+    ]
+}
+{% endhighlight %}
+
+#### Response
+
+The response will be a JSON object containing a “msg” property that contains a description of the response and a “tasks” property that contains an array of objects, each with an “id” property that contains the created task’s ID.
+
+Sample:  
+{% highlight js %}
+{
+    "msg": "Queued up",
+    "tasks": [
+        {
+            "id": "4eb1b471cddb136065000010"
+        }
+    ]
+}
+{% endhighlight %}
+
+### Queue a Task From a Webhook
+
+#### Endpoint
+
+POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webhook?code_name=<span class="variable">{Code Name}</span>
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that you are uploading the code to.
+* **Code Name**: The name of the code package you want to execute the task.
+
+#### Request
+
+The request body is free-form: anything at all can be sent. Whatever the request body is will be passed along a-s the payload for the task, and therefore needs to be under 64KB in size.
+
+#### Response
+
+The response will be a JSON object containing a “msg” property that contains a description of the response.
+
+Sample:  
+{% highlight js %}
+{
+    "id": "4f3595381cf75447be029da5",
+    "msg":"Queued up."
+}
+{% endhighlight %}
+
+### Get Info About a Task
+
+#### Endpoint
+
+GET /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the task belongs to.
+* **Task ID**: The ID of the task you want details on.
+
+#### Response
+
+The response will be a JSON object containing the details of the task.
+
+Sample:  
+{% highlight js %}
+{
+    "id": "4eb1b471cddb136065000010",
+    "project_id": "4eb1b46fcddb13606500000d",
+    "code_id": "4eb1b46fcddb13606500000e",
+    "code_history_id": "4eb1b46fcddb13606500000f",
+    "status": "complete",
+    "code_name": "MyWorker",
+    "code_rev": "1",
+    "start_time": 1320268924000000000,
+    "end_time": 1320268924000000000,
+    "duration": 43,
+    "timeout": 3600
+}
+{% endhighlight %}
+
+### Get a Task’s Log
+
+#### Endpoint
+
+GET /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/log
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the task belongs to.
+* **Task ID**: The ID of the task whose log you are retrieving.
+
+#### Response
+
+Unlike the other API methods, this method will return a Content-Type of “text/plain”. The response will only include the task’s log.
+
+Sample:  
+Hello World!
+
+### Cancel a Task
+
+#### Endpoint
+
+POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/cancel
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the task belongs to.
+* **Task ID**: The ID of the task you want to cancel.
+
+#### Response
+
+The response will be a JSON object containing a message explaining whether the request was successful or not.
+
+Sample:  
+{% highlight js %}
+{
+    "msg": "Cancelled"
+}
+{% endhighlight %}
+
+### Set a Task’s Progress
+
+#### Endpoint
+
+POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/progress
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that contains the task.
+* **Task ID**: The ID of the task whose progress you are updating.
+
+#### Request
+
+The request should be JSON-encoded and can contain the following information:
+
+* **percent**: An integer, between 0 and 100 inclusive, that describes the completion of the task.
+* **msg**: Any message or data describing the completion of the task. Must be a string value, and the 64KB request limit applies.
+
+
+The request also needs to be sent with a “Content-Type: application/json” header, or it will respond with a 406 status code and a “msg” property explaining the missing header.
+
+Sample:  
+{% highlight js %}
+{
+    "percent": 25,
+    "msg": "Any message goes here."
+}
+{% endhighlight %}
+
+#### Response
+
+The response will be a JSON object containing a message explaining whether the request was successful or not.
+
+Sample:  
+{% highlight js %}
+{
+    "msg": "Progress set"
 }
 {% endhighlight %}
