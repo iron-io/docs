@@ -1,0 +1,16 @@
+---
+permalink: /worker/articles/platforms/appharbor
+title: AppHarbor
+categories:
+ - worker
+ - articles
+ - platforms
+breadcrumbs:
+  - ['Articles', '/articles']
+  - ['Platforms', '/platforms']
+  - ['AppHarbor', '/appharbor']
+layout: default
+section: worker
+---
+
+## Getting started on AppHarbor
