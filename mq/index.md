@@ -22,7 +22,7 @@ IronMQ supports multiple interfaces such as [Beanstalkd](http://kr.github.com/be
 In most cases you'll want to use one of the available client libraries.
 
 * [Clients for our HTTP API](/mq/clients)
-* [All [beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) work too so you can use IronMQ with all popular languages, but be sure to read our [Beanstalkd page](/mq/beanstalkd) for information on how to authenticate.
+* All [beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) work too so you can use IronMQ with all popular languages, but be sure to read our [Beanstalkd page](/mq/beanstalkd) for information on how to authenticate.
 
 ## Support
 
