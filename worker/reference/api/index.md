@@ -122,7 +122,7 @@ The success failure for request is indicated by an HTTP status code. A 200 statu
 ### Errors
 In the event of an error, The appropriate status code will be returned with a body containing more information. An error response is structured as follows:
 
-{% highlight json %}
+{% highlight js %}
 {
     "msg": "reason for error"
 }
@@ -156,7 +156,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 The response will be a JSON object. The “codes” property will contain a JSON array of objects, each representing a code package.
 
 Sample:  
-{% highlight json %}
+{% highlight js %}
 {
     "codes": [
         {
@@ -215,7 +215,7 @@ Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec
 --39f5903459794ad483153244cc6486ec  
 Content-Disposition: form-data; name="data"  
 Content-Type: text/plain; charset=utf-8  
-{% highlight json %}
+{% highlight js %}
 {
     "file_name": "MyWorker.rb",
     "name": "MyWorker",
@@ -234,7 +234,7 @@ Content-Type: application/zip
 The response will be a JSON object containing a “msg” property that contains a description of the response.
 
 Sample:
-{% highlight json %}
+{% highlight js %}
 {
     "msg": "Upload successful."
 }
@@ -256,7 +256,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span 
 The response will be a JSON object containing the details of the code package.
 
 Sample:  
-{% highlight json %}
+{% highlight js %}
 {
     "id": "4eb1b241cddb13606500000b",
     “Timestamper”: {
@@ -289,7 +289,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/codes/<sp
 The response will be a JSON object containing a message property explaining whether the request was successful or not.
 
 Sample:  
-{% highlight json %}
+{% highlight js %}
 {
     "msg":"Deleted"
 }
@@ -335,7 +335,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span 
 The response will be a JSON object with a revisions property, containing a list of JSON objects, each representing a revision to the code package.
 
 Sample:  
-{% highlight json %}
+{% highlight js %}
 {
     "revisions": [
         {
