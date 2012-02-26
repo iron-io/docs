@@ -1,7 +1,10 @@
 {% if page.breadcrumbs.size > 0 %}
 <ul id="breadcrumbs">
+  <li><a href="/" title="Home">Home</a> - </li>{% if page.section %}{% if page.section == "mq" %}
+  <li><a href="/mq" title="IronMQ">IronMQ</a> - </li>{% else %}{% if page.section == "worker" %}
+  <li><a href="/worker" title="IronWorker">IronWorker</a> - </li>{% endif %}{% endif %}{% endif %}
   {% for crumb in page.breadcrumbs %}{% assign max = forloop.index %}{% capture url %}{% for crumb2 in page.breadcrumbs %}{% if forloop.index0 < max %}{{ crumb2 | last }}{% endif %}{% endfor %}{% endcapture %}{% capture title %}{{ crumb | first }}{% endcapture %}
-  <li><a href="{{ url }}" title="{{ title }}">{{ title }}</a> - </li>
+  <li><a href="/{% if page.section %}{{ page.section }}{% endif %}{{ url }}" title="{{ title }}">{{ title }}</a>{% if forloop.last == false %} - {% endif %}</li>
   {% endfor %}
 </ul>
 {% endif %}

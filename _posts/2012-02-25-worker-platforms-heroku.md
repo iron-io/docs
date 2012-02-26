@@ -6,8 +6,6 @@ categories:
  - articles
  - platforms
 breadcrumbs:
-  - ['Home', '/']
-  - ['IronWorker', '/worker']
   - ['Articles', '/articles']
   - ['Platforms', '/platforms']
   - ['Heroku', '/heroku']
