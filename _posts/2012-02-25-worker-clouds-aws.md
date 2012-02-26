@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/clouds/aws
-title: AppHarbor
+title: Running your queues on Amazon AWS
 categories:
  - worker
  - articles
@@ -13,4 +13,4 @@ layout: default
 section: worker
 ---
 
-## Getting started on AWS
+## Running your queues on Amazon AWS

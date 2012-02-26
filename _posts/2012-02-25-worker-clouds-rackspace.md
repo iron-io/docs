@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/clouds/rackspace
-title: Rackspace
+title: Running your queues on Rackspace
 categories:
  - worker
  - articles
@@ -13,4 +13,4 @@ layout: default
 section: worker
 ---
 
-## Getting started on Rackspace
+## Running your queues on Rackspace

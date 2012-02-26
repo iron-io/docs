@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/appharbor
-title: AppHarbor
+title: Getting started on AppHarbor
 categories:
  - worker
  - articles

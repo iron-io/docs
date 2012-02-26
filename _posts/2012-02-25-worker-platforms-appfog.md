@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/appfog
-title: AppFog
+title: Getting started on AppFog
 categories:
  - worker
  - articles
