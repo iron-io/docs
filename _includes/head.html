@@ -3,15 +3,10 @@
 <meta name="description" content="" />
 
 <link href="http://www.iron.io/assets/application-3b1bd90e2a6ded693df68799dcd72a01.css" media="screen" rel="stylesheet" type="text/css" />
-
-<!-- fonts -->
 <link href="http://www.iron.io/assets/fonts/stylesheet.css" media="screen" rel="stylesheet" type="text/css" />
-
 <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/global.css" />
 <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css" />
-
-<meta content="authenticity_token" name="csrf-param" />
-<meta content="M4Lb82DLZG2a4l/WwPI7gLfYBfMj3pE2GgiowAaQvz4=" name="csrf-token" />
+<link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/jquery-ui.css" />
 
 <script src="https://www.google.com/jsapi?key=ABQIAAAAhes0f80sBcwL-h5xCNkkgxTs5Gr0DWOUG974XQ8PuEqOljLYwRTQYGFgQvKvZgAbxrinP5i8V-N8hw" type="text/javascript"></script>
 
@@ -28,6 +23,7 @@
 
 <script>
   $(document).ready(function () {
-    $("#accordion").accordion();
+    $("#accordion").accordion({ autoHeight: false, collapsible: true, active: false  });
+    $("#accordion2").accordion({ autoHeight: false, collapsible: true, active: false  });
   });
 </script>
