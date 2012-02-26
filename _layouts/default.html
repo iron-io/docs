@@ -2,6 +2,14 @@
 <html>
 <head>
   {% include head.html %}
+
+  <script>
+    $(document).ready(function () {
+      $("#accordion1").accordion({ autoHeight:false, collapsible:true, active:false  });
+      $("#accordion2").accordion({ autoHeight:false, collapsible:true, active:false  });
+      $("#accordion3").accordion({ autoHeight:false, collapsible:true, active:false  });
+    });
+  </script>
 </head>
 <body class="team">
 
