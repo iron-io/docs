@@ -116,7 +116,7 @@ Furthermore, all requests are limited to 64KB in size, unless otherwise noted.
 
 ## Responses
 
-All responses are in JSON with a Content-Type of “application/json”. Your requests should all contain an “Accept: application/json” header to accommodate the responses.
+All responses are in JSON with a Content-Type of "application/json". Your requests should all contain an "Accept: application/json" header to accommodate the responses.
 
 ### Status Codes
 
@@ -165,7 +165,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 #### Response
 
-The response will be a JSON object. The “codes” property will contain a JSON array of objects, each representing a code package.
+The response will be a JSON object. The "codes" property will contain a JSON array of objects, each representing a code package.
 
 Sample:  
 {% highlight js %}
@@ -176,10 +176,10 @@ Sample:
             "project_id": "4ea9c05dcddb131f1a000001",
             "name": "MyWorker",
             "runtime": "ruby",
-            “latest_checksum”: "b4781a30fc3bd54e16b55d283588055a",
+            "latest_checksum": "b4781a30fc3bd54e16b55d283588055a",
             "rev": 1,
-            “latest_history_id”: "4f32ecb4f840063758022153",
-            “latest_change”: 1328737460598000000
+            "latest_history_id": "4f32ecb4f840063758022153",
+            "latest_change": 1328737460598000000
         }
     ]
 }
@@ -210,7 +210,7 @@ The request should be JSON-encoded and contain the following information:
 Your request also needs the following headers, in addition to the headers required by all API calls:
 
 * **Content-Length**: The number of bytes in your JSON-encoded request body
-* **Content-Type**: Should be set to “multipart/form-data ; boundary={Insert Value Here}” with boundary set to [an appropriate value](http://en.wikipedia.org/wiki/MIME#Multipart_messages).
+* **Content-Type**: Should be set to "multipart/form-data ; boundary={Insert Value Here}" with boundary set to [an appropriate value](http://en.wikipedia.org/wiki/MIME#Multipart_messages).
 
 **Note**: This request is not limited to 64 KB, unlike other requests.
 
@@ -238,7 +238,7 @@ Content-Type: application/zip
 
 #### Response
 
-The response will be a JSON object containing a “msg” property that contains a description of the response.
+The response will be a JSON object containing a "msg" property that contains a description of the response.
 
 Sample:
 {% highlight js %}
@@ -269,7 +269,7 @@ Sample:
     "project_id": "4eb1b240cddb13606500000a",
     "name": "MyWorker",
     "runtime": "ruby",
-    “latest_checksum”: "a0702e9e9a84b758850d19ddd997cf4a",
+    "latest_checksum": "a0702e9e9a84b758850d19ddd997cf4a",
     "rev": 1,
     "latest_history_id": "4eb1b241cddb13606500000c",
     "latest_change": 1328737460598000000
@@ -315,7 +315,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span 
 
 #### Response
 
-The response will be a zip file containing your code package. The response header will include a Content-Disposition header containing “filename=yourworker_rev.zip”, where yourworker is the code package’s name and rev is the numeric revision. The response’s Content-Type will be “application/zip”.
+The response will be a zip file containing your code package. The response header will include a Content-Disposition header containing "filename=yourworker_rev.zip", where yourworker is the code package’s name and rev is the numeric revision. The response’s Content-Type will be "application/zip".
 
 ### List Code Package Revisions
 
@@ -355,7 +355,7 @@ Sample:
             "code_id": "4f32d9c81cf75447be020ea5",
             "project_id": "4f32d521519cb67829000390",
             "rev": 2,
-            "runtime": "ruby”,
+            "runtime": "ruby",
             "name": "MyWorker",
             "file_name": "worker.rb",
         }
@@ -430,7 +430,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
 
 #### Response
 
-The response will be a JSON object. The “tasks” property will contain a JSON array of objects, each representing a task.
+The response will be a JSON object. The "tasks" property will contain a JSON array of objects, each representing a task.
 
 Sample:  
 {% highlight js %}
@@ -468,7 +468,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/tasks
 
 #### Request
 
-The request should be JSON-encoded and consist of an object with a single property, “tasks”, which contains an array of objects. Each object in the array should consist of:
+The request should be JSON-encoded and consist of an object with a single property, "tasks", which contains an array of objects. Each object in the array should consist of:
 
 * **code_name**: The name of the code package to execute for this task.
 * **payload**: A string of data to be passed to the worker. The payload will be passed to the code package at runtime, and can be used to pass varying information into a worker that will process it using the same code. The payload cannot be larger than 64KB in size.
@@ -479,7 +479,7 @@ Optionally, each object in the array can also contain the following:
 * **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration. 
 * **delay**: The number of seconds to delay before actually queuing the task. Default is 0.
 
-The request also needs to be sent with a “Content-Type: application/json” header, or it will respond with a 406 status code and a “msg” property explaining the missing header.
+The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
 
 Sample:  
 {% highlight js %}
@@ -495,7 +495,7 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing a “msg” property that contains a description of the response and a “tasks” property that contains an array of objects, each with an “id” property that contains the created task’s ID.
+The response will be a JSON object containing a "msg" property that contains a description of the response and a "tasks" property that contains an array of objects, each with an "id" property that contains the created task’s ID.
 
 Sample:  
 {% highlight js %}
@@ -526,7 +526,7 @@ The request body is free-form: anything at all can be sent. Whatever the request
 
 #### Response
 
-The response will be a JSON object containing a “msg” property that contains a description of the response.
+The response will be a JSON object containing a "msg" property that contains a description of the response.
 
 Sample:  
 {% highlight js %}
@@ -581,7 +581,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span 
 
 #### Response
 
-Unlike the other API methods, this method will return a Content-Type of “text/plain”. The response will only include the task’s log.
+Unlike the other API methods, this method will return a Content-Type of "text/plain". The response will only include the task’s log.
 
 Sample:  
 Hello World!
@@ -627,7 +627,7 @@ The request should be JSON-encoded and can contain the following information:
 * **msg**: Any message or data describing the completion of the task. Must be a string value, and the 64KB request limit applies.
 
 
-The request also needs to be sent with a “Content-Type: application/json” header, or it will respond with a 406 status code and a “msg” property explaining the missing header.
+The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
 
 Sample:  
 {% highlight js %}
@@ -669,7 +669,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/schedules
 
 #### Response
 
-The response will be a JSON object. The “schedules” property will contain a JSON array of objects, each representing a schedule.
+The response will be a JSON object. The "schedules" property will contain a JSON array of objects, each representing a schedule.
 
 Sample:
 {% highlight js %}
@@ -677,8 +677,8 @@ Sample:
     "schedules": [
         {
             "id": "4eb1b490cddb136065000011",
-            “created_at”: 1329188801000000000,
-            “updated_at”: 1329188801000000000,
+            "created_at": 1329188801000000000,
+            "updated_at": 1329188801000000000,
             "project_id": "4eb1b46fcddb13606500000d",
             "msg": "Ran max times.",
             "status": "complete",
@@ -706,7 +706,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/schedules
 
 #### Request
 
-The request should be a JSON object with a “schedules” property containing an array of objects with the following properties:
+The request should be a JSON object with a "schedules" property containing an array of objects with the following properties:
 
 * **code_name**: The name of the code package to execute.
 * **payload**: A string of data to pass to the code package on execution.
@@ -720,7 +720,7 @@ Optionally, each object in the array can specify the following properties:
 * **start_at**: The time the scheduled task should first be run.
 * **delay**: The number of seconds to wait before the task is first run.
 
-The request also needs to be sent with a “Content-Type: application/json” header, or it will respond with a 406 status code and a “msg” property explaining the missing header.
+The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
 
 Sample:
 {% highlight js %}
@@ -729,8 +729,8 @@ Sample:
     {
       delay : 60,
       payload : "{\"x\": \"abc\", \"y\": \"def\"}",
-      name: “MyScheduledTask”,
-      code_name: “MyWorker”
+      name: "MyScheduledTask",
+      code_name: "MyWorker"
     }
   ]
 }
@@ -738,7 +738,7 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing a “msg” property that contains a description of the response and a “schedules” property that contains an array of objects, each with an “id” property that contains the scheduled task’s ID.
+The response will be a JSON object containing a "msg" property that contains a description of the response and a "schedules" property that contains an array of objects, each with an "id" property that contains the scheduled task’s ID.
 
 Sample:
 {% highlight js %}
@@ -771,8 +771,8 @@ Sample:
 {% highlight js %}
 {
     "id": "4eb1b490cddb136065000011",
-    “created_at”: 1320268971000000000,
-    “updated_at”: 1320268971000000000,
+    "created_at": 1320268971000000000,
+    "updated_at": 1320268971000000000,
     "project_id": "4eb1b46fcddb13606500000d",
     "msg": "Ran max times.",
     "status": "complete",
