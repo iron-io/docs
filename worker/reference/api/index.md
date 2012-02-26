@@ -662,3 +662,164 @@ Sample:
     "msg": "Progress set"
 }
 {% endhighlight %}
+
+## Scheduled Tasks
+
+Scheduled tasks are just tasks that run on a schedule. While the concept is simple, it enables a powerful class of functionality: tasks can be used as cron workers, running at specific intervals a set (or unlimited) number of times.
+
+### List Scheduled Tasks
+
+#### Endpoint
+
+GET /projects/<span class="variable project_id">{Project ID}</span>/schedules
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project whose scheduled tasks you want to get a list of.
+
+#### Optional URL Parameters
+
+* **page**: The page of scheduled tasks you want to retrieve, starting from 0. Default is 0, maximum is 100.
+* **per_page**: The number of scheduled tasks to return per page. Note this is a maximum value, so there may be less tasks returned if there aren’t enough results. Default is 30, maximum is 100.
+
+#### Response
+
+The response will be a JSON object. The “schedules” property will contain a JSON array of objects, each representing a schedule.
+
+Sample:
+{% highlight js %}
+{
+    "schedules": [
+        {
+            "id": "4eb1b490cddb136065000011",
+            “created_at”: 1329188801000000000,
+            “updated_at”: 1329188801000000000,
+            "project_id": "4eb1b46fcddb13606500000d",
+            "msg": "Ran max times.",
+            "status": "complete",
+            "code_name": "MyWorker",
+            "start_at": "2011-11-02T21:22:34Z",
+            "end_at": "2262-04-11T23:47:16Z",
+            "next_start": "2011-11-02T21:22:34Z",
+            "last_run_time": 1320268971000000000,
+            "run_times": 1,
+            "run_count": 1
+        }
+    ]
+}
+{% endhighlight %}
+
+### Schedule a Task
+
+#### Endpoint
+
+POST /projects/<span class="variable project_id">{Project ID}</span>/schedules
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that you want to schedule the task in.
+
+#### Request
+
+The request should be a JSON object with a “schedules” property containing an array of objects with the following properties:
+
+* **code_name**: The name of the code package to execute.
+* **payload**: A string of data to pass to the code package on execution.
+
+Optionally, each object in the array can specify the following properties:
+
+* **run_every**: The amount of time, in seconds, between runs. By default, the task will only run once.
+* **end_at**: The time tasks will stop being queued. Should be a time or datetime.
+* **run_times**: The number of times a task will run.
+* **priority**: The priority queue to run the job in. Valid values are 0, 1, and 2. The default is 0. Higher values means tasks spend less time in the queue once they come off the schedule.
+* **start_at**: The time the scheduled task should first be run.
+* **delay**: The number of seconds to wait before the task is first run.
+
+The request also needs to be sent with a “Content-Type: application/json” header, or it will respond with a 406 status code and a “msg” property explaining the missing header.
+
+Sample:
+{% highlight js %}
+{
+  schedules: [
+    {
+      delay : 60,
+      payload : "{\"x\": \"abc\", \"y\": \"def\"}",
+      name: “MyScheduledTask”,
+      code_name: “MyWorker”
+    }
+  ]
+}
+{% endhighlight %}
+
+#### Response
+
+The response will be a JSON object containing a “msg” property that contains a description of the response and a “schedules” property that contains an array of objects, each with an “id” property that contains the scheduled task’s ID.
+
+Sample:
+{% highlight js %}
+{
+    "msg": "Scheduled",
+    "schedules": [
+        {
+            "id": "4eb1b490cddb136065000011"
+        }
+    ]
+}
+{% endhighlight %}
+
+### Get Info About a Scheduled Task
+
+#### Endpoint
+
+GET /projects/<span class="variable project_id">{Project ID}</span>/schedules/<span class="variable schedule_id">{Schedule ID}</span>
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the scheduled task belongs to.
+* **Schedule ID**: The ID of the scheduled task you want details on.
+
+#### Response
+
+The response will be a JSON object containing the details of the scheduled task.
+
+Sample:
+{% highlight js %}
+{
+    "id": "4eb1b490cddb136065000011",
+    “created_at”: 1320268971000000000,
+    “updated_at”: 1320268971000000000,
+    "project_id": "4eb1b46fcddb13606500000d",
+    "msg": "Ran max times.",
+    "status": "complete",
+    "code_name": "MyWorker",
+    "delay": 10,
+    "start_at": "2011-11-02T21:22:34Z",
+    "end_at": "2262-04-11T23:47:16Z",
+    "next_start": "2011-11-02T21:22:34Z",
+    "last_run_time": 1320268971000000000,
+    "run_times": 1,
+    "run_count": 1
+}
+{% endhighlight %}
+
+### Cancel a Scheduled Task
+
+#### Endpoint
+
+POST /projects/<span class="variable project_id">{Project ID}</span>/schedules/<span class="variable schedule_id">{Schedule ID}</span>/cancel
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the scheduled task belongs to.
+* **Schedule ID**: The ID of the scheduled task you want to cancel.
+
+#### Response
+
+The response will be a JSON object containing a message explaining whether the request was successful or not.
+
+Sample:
+{% highlight js %}
+{
+    "msg": "Cancelled"
+}
+{% endhighlight %}
