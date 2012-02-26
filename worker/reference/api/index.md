@@ -173,10 +173,6 @@ Sample:
     "codes": [
         {
             "id": "4ea9c05dcddb131f1a000002",
-            “Timestamper” : {
-                “created_at”: 1328732329979000000,
-                “updated_at”: 1328732360000000000
-            },
             "project_id": "4ea9c05dcddb131f1a000001",
             "name": "MyWorker",
             "runtime": "ruby",
@@ -270,10 +266,6 @@ Sample:
 {% highlight js %}
 {
     "id": "4eb1b241cddb13606500000b",
-    “Timestamper”: {
-        “created_at”: 1328732616171000000,
-        “updated_at”: 1328737460598000000,
-    },
     "project_id": "4eb1b240cddb13606500000a",
     "name": "MyWorker",
     "runtime": "ruby",
@@ -351,31 +343,21 @@ Sample:
     "revisions": [
         {
             "id": "4f32d9c81cf75447be020ea6",
-            "Timestamper": {
-                "created_at": 1328732616223000000,
-                "updated_at":1328732621000000000
-            },
             "code_id": "4f32d9c81cf75447be020ea5",
             "project_id": "4f32d521519cb67829000390",
             "rev": 1,
             "runtime": "ruby",
             "name": "MyWorker",
             "file_name": "worker.rb",
-            "last_email": 1328732621000000000
         },
         {
             "id": "4f32da021cf75447be020ea8",
-            "Timestamper": {
-                "created_at": 1328732674478000000,
-                "updated_at": 1328732680000000000
-            },
             "code_id": "4f32d9c81cf75447be020ea5",
             "project_id": "4f32d521519cb67829000390",
             "rev": 2,
             "runtime": "ruby”,
             "name": "MyWorker",
             "file_name": "worker.rb",
-            "last_email": 1328732680000000000
         }
     ]
 }
