@@ -1,6 +1,7 @@
 ---
 title: IronMQ
 layout: default
+section: mq
 ---
 
 Welcome to the IronMQ documentation. IronMQ is a scalable, reliable, high performance message queue in the cloud. [Read more](http://www.iron.io/products/mq).

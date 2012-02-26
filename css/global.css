@@ -5,3 +5,14 @@ input::-webkit-input-placeholder {
 input:-moz-placeholder {
   color : #BBB;
 }
+
+.content-container {
+  min-height: 300px;
+}
+
+.content-container h2 {
+  font-size: 28px;
+  letter-spacing: -1px;
+  margin: 0;
+  padding: 0;
+}

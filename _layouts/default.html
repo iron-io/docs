@@ -2,14 +2,6 @@
 <html>
 <head>
   {% include head.html %}
-
-  <script>
-    $(document).ready(function () {
-      $("#accordion1").accordion({ autoHeight:false, collapsible:true, active:false  });
-      $("#accordion2").accordion({ autoHeight:false, collapsible:true, active:false  });
-      $("#accordion3").accordion({ autoHeight:false, collapsible:true, active:false  });
-    });
-  </script>
 </head>
 <body class="team">
 
@@ -32,7 +24,17 @@
         <div class="content-container docs">
 
           <div style="width: 240px; float: left;">
-            {% include sidemenu_docs.html %}
+            {% if page.section == "overview" %}
+            {% include sidemenu_overview.html %}
+            {% endif %}
+
+            {% if page.section == "mq" %}
+            {% include sidemenu_mq.html %}
+            {% endif %}
+
+            {% if page.section == "worker" %}
+            {% include sidemenu_worker.html %}
+            {% endif %}
           </div>
 
           <div style="float: left; width: 605px">
