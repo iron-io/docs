@@ -5,17 +5,17 @@ section: worker
 ---
 
 <style type="text/css">
-table.reference {
+.content table.reference {
 font-size: small;
 width: 100%;
 }
 
-table.reference td {
+.content table.reference td {
 padding: 2px 7px;
 text-align: left;
 }
 
-table.reference th {
+.content table.reference th {
 text-align: left;
 border-bottom: 1px solid #000;
 }
@@ -32,17 +32,17 @@ color: red;
 color: blue;
 }
 
-h4 {
+.content h4 {
 padding: 5px 0px 0px 0px !important;
 margin-bottom: -10px !important;
 }
 
-h3 {
+.content h3 {
 padding: 5px 0px;
 margin: 0px;
 }
 
-li > p {
+.content li > p {
 margin: 0px;
 }
 
