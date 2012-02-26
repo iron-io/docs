@@ -1,13 +1,13 @@
 ---
-permalink: /worker/articles/services/airbrake
+permalink: /worker/articles/integrations/airbrake
 title: Integrating with Airbrake or Exceptional
 categories:
  - worker
  - articles
- - services
+ - integrations
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Services', '/services']
+  - ['Integrations', '/integrations']
   - ['Airbrake', '/airbrake']
 layout: default
 section: worker
