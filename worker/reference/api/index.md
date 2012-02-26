@@ -2,6 +2,9 @@
 title: IronWorker HTTP API
 layout: default
 section: worker
+breadcrumbs:
+  - ['Reference', '/reference']
+  - ['REST API', '/api']
 ---
 
 <style type="text/css">
