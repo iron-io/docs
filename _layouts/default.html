@@ -24,6 +24,10 @@
         <div class="content-container docs">
 
           <div id="sidemenu">
+            <form action="/search">
+              <input type="text" name="q" id="q" placeholder="Search Dev Center" size="18" />
+            </form>
+
             {% if page.section == "overview" %}
             {% include sidemenu_overview.html %}
             {% endif %}
