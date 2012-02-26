@@ -96,9 +96,9 @@ GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/pr
 
 Requests to the API are simple HTTP requests against the API endpoints.
 
-Unless otherwise noted, all requests should use the following headers (in addition to their authentication):
-- Accept : application/json
-- Accept-Encoding : gzip/deflate
+Unless otherwise noted, all requests should use the following headers (in addition to their authentication):  
+\- Accept : application/json  
+\- Accept-Encoding : gzip/deflate
 
 Furthermore, all requests are limited to 64KB in size, unless otherwise noted.
 
