@@ -1,8 +1,8 @@
 ---
-permalink: /worker/articles/clouds/rackspace
+permalink: /mq/articles/clouds/rackspace
 title: Running your queues on Rackspace
 categories:
- - worker
+ - mq
  - articles
  - clouds
 breadcrumbs:
@@ -10,7 +10,7 @@ breadcrumbs:
   - ['Clouds', '/clouds']
   - ['Rackspace', '/rackspace']
 layout: default
-section: worker
+section: mq
 ---
 
 ## Running your queues on Rackspace
