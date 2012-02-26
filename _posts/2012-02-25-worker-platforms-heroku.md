@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/heroku
-title: Getting started on Heroku
+title: Getting Started on Heroku
 categories:
  - worker
  - articles

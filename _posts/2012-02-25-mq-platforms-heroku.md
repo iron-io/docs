@@ -1,9 +1,14 @@
 ---
-permalink: /mq/articles/heroku
-title: Using IronMQ with Heroku
+permalink: /mq/articles/platforms/heroku
+title: Getting Started on Heroku
 categories:
  - mq
  - articles
+ - platforms
+breadcrumbs:
+ - ['Articles', '/articles']
+ - ['Platforms', '/platforms']
+ - ['Heroku', '/heroku']
 layout: default
 section: mq
 ---
