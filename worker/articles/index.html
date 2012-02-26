@@ -1,11 +1,12 @@
 ---
 title: Articles About IronWorker
-layout: proposed
+layout: default
+section: worker
 ---
 <ul>
-{% for post in site.categories.articles %}
-        {% if post.categories contains "worker" %}
-                <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
-        {% endif %}
-{% endfor %}
+  {% for post in site.categories.articles %}
+  {% if post.categories contains "worker" %}
+  <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
+  {% endif %}
+  {% endfor %}
 </ul>

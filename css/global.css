@@ -1,20 +1,20 @@
 input::-webkit-input-placeholder {
-  color : #BBB;
+  color: #BBB;
 }
 
 input:-moz-placeholder {
-  color : #BBB;
+  color: #BBB;
 }
 
 .content-container {
-  min-height : 500px;
+  min-height: 500px;
 }
 
 .content-container h2 {
-  font-size      : 28px;
-  letter-spacing : -1px;
-  margin         : 0;
-  padding        : 0;
+  font-size: 28px;
+  letter-spacing: -1px;
+  margin: 0;
+  padding: 0;
 }
 
 .content-container h4 {
@@ -23,16 +23,31 @@ input:-moz-placeholder {
 }
 
 #sidemenu {
-  width : 240px;
-  float : left;
+  width: 240px;
+  float: left;
 }
 
 #sidemenu ul {
-  list-style-type : none;
-  padding         : 0 0 0 12px;
+  list-style-type: none;
+  padding: 0 0 0 12px;
   margin: 0;
 }
 
 #sidemenu ul li a {
-  font-size : 14px;
+  font-size: 14px;
+}
+
+ul#breadcrumbs {
+  margin: 0 0 10px 0;
+  padding: 0 0 0 0;
+  border: none;
+}
+
+ul#breadcrumbs li {
+  margin-left: 0;
+  padding-left: 2px;
+  border: none;
+  list-style: none;
+  display: inline;
+  color: #999;
 }

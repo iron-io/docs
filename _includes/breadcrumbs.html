@@ -1,3 +1,7 @@
-<ul>{% for crumb in page.breadcrumbs %}{% assign max = forloop.index %}{% capture url %}{% for crumb2 in page.breadcrumbs %}{% if forloop.index0 < max %}{{ crumb2 | last }}{% endif %}{% endfor %}{% endcapture %}{% capture title %}{{ crumb | first }}{% endcapture %}
-        <li><a href="{{ url }}" title="{{ title }}">{{ title }}</a></li>{% endfor %}
+{% if page.breadcrumbs.size > 0 %}
+<ul id="breadcrumbs">
+  {% for crumb in page.breadcrumbs %}{% assign max = forloop.index %}{% capture url %}{% for crumb2 in page.breadcrumbs %}{% if forloop.index0 < max %}{{ crumb2 | last }}{% endif %}{% endfor %}{% endcapture %}{% capture title %}{{ crumb | first }}{% endcapture %}
+  <li><a href="{{ url }}" title="{{ title }}">{{ title }}</a> - </li>
+  {% endfor %}
 </ul>
+{% endif %}

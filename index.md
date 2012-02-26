@@ -1,6 +1,10 @@
 ---
 layout: default
 section: overview
+breadcrumbs:
+  - ['IronWorker', '/worker']
+  - ['Reference', '/reference']
+  - ['Breadcrumbs Test', '/breadcrumbs.html']
 ---
 
 ## Products
