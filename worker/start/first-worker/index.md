@@ -184,7 +184,7 @@ Now that we've got our code on IronWorker and we've got it running, it would hel
 {% include worker/start/first-worker/php/get-task-details.md %}
 {% include worker/start/first-worker/python/get-task-details.md %}
 
-<span class="fixed-width">worker</span> is, again, just the library configured with a <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span>. <span class="fixed-width">task</span> is just the task information that was returned when we queued the task--it's a <span class="fixed-width">dict</span> of information, the specifics of which you can find [here](/worker/reference/api/#queue_a_task). <span class="fixed-width">status</span> will be a string like "complete", "running", "queued", or "cancelled". <span class="fixed-width">details</span> is an object of all the details about the task from the [API](/worker/reference/api/#get_info_about_a_task).
+Once again, <span class="fixed-width">worker</span> is just the library configured with a <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span>. <span class="fixed-width">task</span> is just the task information that was returned when we queued the task--it's a <span class="fixed-width">dict</span> of information, the specifics of which you can find [here](/worker/reference/api/#queue_a_task). <span class="fixed-width">status</span> will be a string like "complete", "running", "queued", or "cancelled". <span class="fixed-width">details</span> is an object of all the details about the task from the [API](/worker/reference/api/#get_info_about_a_task).
 
 Here's a sample script that draws the task ID out of the --task option:
 
