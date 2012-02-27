@@ -26,7 +26,7 @@ $(function(){
     $(".language.extension").text($(this).attr("data-extension"));
     $(".language.command").text($(this).attr("data-command"));
     for(i in languages) {
-      $("code."+languages[i]).hide();
+      $("code."+languages[i]).parent().parent().hide();
     }
     $("code."+$(this).attr("data-command")).show();
   });
