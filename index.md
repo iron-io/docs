@@ -1,6 +1,7 @@
 ---
 layout: default
 section: overview
+breadcrumbs: hidden
 ---
 
 [![IronMQ](/images/logo_mq.png "IronMq")](/mq)
