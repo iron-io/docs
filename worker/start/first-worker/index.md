@@ -202,7 +202,7 @@ Getting the log is pretty easy:
 {% include worker/start/first-worker/php/get-log.md %}
 {% include worker/start/first-worker/python/get-log.md %}
 
-<span class="fixed-width">worker</span> is just the library, configured with your <span class="fixed-width">token</span> and <span class="fixed-width">project_id</span>. <span class="fixed-width">task_id</span> is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, use parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
+As usual, <span class="fixed-width">worker</span> is just the library, configured with your <span class="fixed-width">token</span> and <span class="fixed-width">project_id</span>. <span class="fixed-width">task_id</span> is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, use parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
 
 {% include worker/start/first-worker/ruby/log-script.md %}
 {% include worker/start/first-worker/php/log-script.md %}
