@@ -11,6 +11,11 @@ languages:
 - ['php', 'php']
 - ['ruby', 'rb']
 ---
+<style type="text/css">
+.container .fixed-width {
+font-family: monospace;
+}
+</style>
 
 IronWorker is a product that helps you separate elements of your project into specialised, resilient chunks. Each worker is intended to be a single piece of your project, operating independently from the other workers and your own servers. They leverage cloud computing to do a lot of work very quickly with great uptime. By using workers, you can easily create a resilient, easily-managed project that operates even under worst-case scenarios.
 
@@ -35,19 +40,19 @@ Here's a pretty basic worker script:
 
 {% include worker/start/first-worker/python/worker-no-payload.md %}
 
-As you can see, that script calculates the Fibonacci sequence up to a maximum number. The worker finishes by outputting a JSON-encoded array of the Fibonacci sequence to STDOUT, surrounded by `MAGICALSTDOUTSEPARATOR`. The reasons for this will be explained at the end.
+As you can see, that script calculates the Fibonacci sequence up to a maximum number. The worker finishes by outputting a JSON-encoded array of the Fibonacci sequence to STDOUT, surrounded by <span class="fixed-width">MAGICALSTDOUTSEPARATOR</span>. The reasons for this will be explained at the end.
 
-You can test that code by putting it in a file ("fibonacci.<span class="language extension">py</span>", for example), and then calling `<span class="language command">python</span> fibonacci.<span class="language extension">py</span>`.
+You can test that code by putting it in a file ("fibonacci.<span class="language extension">py</span>", for example), and then calling <span class="fixed-width"><span class="language command">python</span> fibonacci.<span class="language extension">py</span></span>.
 
 ### Using the Payload
 
-The payload parameter is the best place for specifying arguments for you worker, things that will change between runs. For this worker, that could be the `max` variable we created earlier: what if we want the worker to calculate up to 100 on one run, and up to 100000 on the next? With the payload, we can do that.
+The payload parameter is the best place for specifying arguments for you worker, things that will change between runs. For this worker, that could be the <span class="fixed-width">max</span> variable we created earlier: what if we want the worker to calculate up to 100 on one run, and up to 100000 on the next? With the payload, we can do that.
 
 First, we need to modify our script to take advantage of the payload:
 
 {% include worker/start/first-worker/python/worker.md %}
 
-To test it, create a `payload.json` file in the same directory your worker script resides in. The contents of the file should look like this:
+To test it, create a <span class="fixed-width">payload.json</span> file in the same directory your worker script resides in. The contents of the file should look like this:
 
 {% highlight js %}
 {
@@ -55,7 +60,7 @@ To test it, create a `payload.json` file in the same directory your worker scrip
 }
 {% endhighlight %}
 
-Now call `<span class="language command">python</span> fibonacci.<span class="language extension">py</span> -payload=payload.json`, and your script will read the payload and override its default max value.
+Now call <span class="fixed-width"><span class="language command">python</span> fibonacci.<span class="language extension">py</span> -payload=payload.json</span>, and your script will read the payload and override its default max value.
 
 Now that we have the script written, we need to upload it to IronWorker.
 
@@ -77,7 +82,7 @@ token = INSERT_TOKEN_HERE
 project_id = INSERT_PROJECT_ID_HERE
 {% endhighlight %}
 
-You can find your `project_id` and `token` on [your HUD](https://hud.iron.io). Just log in, and you'll find the `token` under "[API Tokens](https://hud.iron.io/tokens)" on your account page. The `project_id` is found on the Projects page.
+You can find your <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> on [your HUD](https://hud.iron.io). Just log in, and you'll find the <span class="fixed-width">token</span> under "[API Tokens](https://hud.iron.io/tokens)" on your account page. The <span class="fixed-width">project_id</span> is found on the Projects page.
 
 You can also pass your configuration values in through named arguments:
 
@@ -87,19 +92,19 @@ Now that we have the library configured, we need to package our code up to uploa
 
 {% include worker/start/first-worker/python/zip-directory.md %}
 
-That `directory` parameter is just the path to the directory you want to zip. Relative and absolute paths are both okay. The `destination` parameter is the name you want the zip file to use. The `overwrite` parameter is a boolean switch: if true, the packager will overwrite fileNameForZip.zip if it exists. If false and fileNameForZip.zip already exists, the packager will do nothing. The function returns true if the zip was created or false if creation failed.
+That <span class="fixed-width">directory</span> parameter is just the path to the directory you want to zip. Relative and absolute paths are both okay. The <span class="fixed-width">destination</span> parameter is the name you want the zip file to use. The <span class="fixed-width">overwrite</span> parameter is a boolean switch: if true, the packager will overwrite fileNameForZip.zip if it exists. If false and fileNameForZip.zip already exists, the packager will do nothing. The function returns true if the zip was created or false if creation failed.
 
 We don't need to upload a full directory, though--we just want to upload a single file. We still need to package that, but you don't need to separate it into its own directory. Just call this, instead:
 
 {% include worker/start/first-worker/python/zip-files.md %}
 
-The `base_dir` parameter is the base directory for files inside the zip. If you leave it blank, as the example above does, it defaults to the root directory of the zip. The `files` parameter is an array of files to zip. These will all have the base directory prepended to them inside the zip. In our case, that means `"" + "fibonacci.<span class="language extension">py</span>"`, which just yields `"fibonacci.<span class="language extension">py</span>"`. The final two parameters are just the destination for the zip file and the boolean switch to overwrite the zip file if it exists, just like zipDirectory. This, again, returns true if the zip was created or false if creation failed.
+The <span class="fixed-width">base_dir</span> parameter is the base directory for files inside the zip. If you leave it blank, as the example above does, it defaults to the root directory of the zip. The <span class="fixed-width">files</span> parameter is an array of files to zip. These will all have the base directory prepended to them inside the zip. In our case, that means <span class="fixed-width">"" + "fibonacci.<span class="language extension">py</span>"</span>, which just yields <span class="fixed-width">"fibonacci.<span class="language extension">py</span>"</span>. The final two parameters are just the destination for the zip file and the boolean switch to overwrite the zip file if it exists, just like zipDirectory. This, again, returns true if the zip was created or false if creation failed.
 
 Now that we've packaged everything up, it's time to upload it to IronWorker. You can do this in a single library call:
 
 {% include worker/start/first-worker/python/post-code.md %}
 
-The `runFilename` parameter is the filename in the zip you want the worker to execute when it runs. The `zipFilename` parameter is the zip you want to upload. The `name` parameter is a name for the worker that will help you find it on your HUD and will let you run the worker. The function returns a response from the server. If everything goes well, you'll see this:
+The <span class="fixed-width">runFilename</span> parameter is the filename in the zip you want the worker to execute when it runs. The <span class="fixed-width">zipFilename</span> parameter is the zip you want to upload. The <span class="fixed-width">name</span> parameter is a name for the worker that will help you find it on your HUD and will let you run the worker. The function returns a response from the server. If everything goes well, you'll see this:
 
 {% include worker/start/first-worker/python/post-code-response.md %}
 
@@ -107,7 +112,7 @@ To pull it all together, here's the full upload script:
 
 {% include worker/start/first-worker/python/upload-worker.md %}
 
-To run, just save the script as "upload.<span class="language extension">py</span>" in the same directory as fibonacci.<span class="language extension">py</span>, then call `<span class="language command">python</span> upload.<span class="language extension">py</span>`.
+To run, just save the script as "upload.<span class="language extension">py</span>" in the same directory as fibonacci.<span class="language extension">py</span>, then call <span class="fixed-width"><span class="language command">python</span> upload.<span class="language extension">py</span></span>.
 
 ## Queuing a Task
 
@@ -115,15 +120,15 @@ Queuing a task is pretty trivial, once the code is uploaded. It consists of a si
 
 {% include worker/start/first-worker/python/queue-task.md %}
 
-The `name` parameter is just the name of the worker you want to give the task to. The `payload` parameter is just a dict of the payload data you want to pass to the task. Remember payload.json back when we were writing the Fibonacci script? This is where that data comes from. But rather than hand-writing JSON to a file, you just specify a dict and IronWorker takes care of the rest. If your worker doesn't need a payload, you can just pass `None` for payload, or leave it off entirely.
+The <span class="fixed-width">name</span> parameter is just the name of the worker you want to give the task to. The <span class="fixed-width">payload</span> parameter is just a dict of the payload data you want to pass to the task. Remember payload.json back when we were writing the Fibonacci script? This is where that data comes from. But rather than hand-writing JSON to a file, you just specify a dict and IronWorker takes care of the rest. If your worker doesn't need a payload, you can just pass <span class="fixed-width">None</span> for payload, or leave it off entirely.
 
 The return is the response, containing relevant information on the task. You should hang on to that (sessions, cookies, database, memcached... whatever floats your boat for data retention) to check how the task is progressing (which we'll cover in the next part).
 
-Here's an example run script. Just save it as "run.<span class="language extension">py</span>", then execute `<span class="language command">python</span> run.<span class="language extension">py</span>`:
+Here's an example run script. Just save it as "run.<span class="language extension">py</span>", then execute <span class="fixed-width"><span class="language command">python</span> run.<span class="language extension">py</span></span>:
 
 {% include worker/start/first-worker/python/run.md %}
 
-The script will upload a task to your worker, then print out the task information so you can check on it. If you want to change the max variable, you can run it as `<span class="language command">python</span> run.<span class="language extension">py</span> --max=9000` or whatever value you like.
+The script will upload a task to your worker, then print out the task information so you can check on it. If you want to change the max variable, you can run it as <span class="fixed-width"><span class="language command">python</span> run.<span class="language extension">py</span> --max=9000</span> or whatever value you like.
 
 ## Checking the status of the worker
 
@@ -131,25 +136,25 @@ Now that we've got our code on IronWorker and we've got it running, it would hel
 
 {% include worker/start/first-worker/python/get-task-details.md %}
 
-`worker` is, again, just the library configured with a `project_id` and `token`. `task` is just the task information that was returned when we queued the task--it's a `dict` of information, the specifics of which you can find [here](/worker/reference/api/#queue_a_task). `status` will be a string like "complete", "running", "queued", or "cancelled". `details` is an object of all the details about the task from the [API](/worker/reference/api/#get_info_about_a_task).
+<span class="fixed-width">worker</span> is, again, just the library configured with a <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span>. <span class="fixed-width">task</span> is just the task information that was returned when we queued the task--it's a <span class="fixed-width">dict</span> of information, the specifics of which you can find [here](/worker/reference/api/#queue_a_task). <span class="fixed-width">status</span> will be a string like "complete", "running", "queued", or "cancelled". <span class="fixed-width">details</span> is an object of all the details about the task from the [API](/worker/reference/api/#get_info_about_a_task).
 
 Here's a sample script that draws the task ID out of the --task option:
 
 {% include worker/start/first-worker/python/check-task.md %}
 
-Save the script as checkTask.<span class="language extension">py</span>, then run `<span class="language command">python</span> checkTask.<span class="language extension">py</span> --task="INSERT_TASK_ID"`, substituting the task ID that `run.<span class="language extension">py</span>` echoed to STDOUT. It will tell you the status of the task.
+Save the script as checkTask.<span class="language extension">py</span>, then run <span class="fixed-width"><span class="language command">python</span> checkTask.<span class="language extension">py</span> --task="INSERT_TASK_ID"</span>, substituting the task ID that <span class="fixed-width">run.<span class="language extension">py</span></span> echoed to STDOUT. It will tell you the status of the task.
 
-But how do we get the sequence we generated? Well, remember when we printed it surrounded by `MAGICALSTDOUTSEPARATOR`? We're going to fetch the log, find the sequence, and print it. We needed to surround it with a unique string in case something else decided to print to STDOUT, dirtying our logs.
+But how do we get the sequence we generated? Well, remember when we printed it surrounded by <span class="fixed-width">MAGICALSTDOUTSEPARATOR</span>? We're going to fetch the log, find the sequence, and print it. We needed to surround it with a unique string in case something else decided to print to STDOUT, dirtying our logs.
 
 Getting the log is pretty easy:
 
 {% include worker/start/first-worker/python/get-log.md %}
 
-`worker` is just the library, configured with your `token` and `project_id`. `task_id` is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, use parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
+<span class="fixed-width">worker</span> is just the library, configured with your <span class="fixed-width">token</span> and <span class="fixed-width">project_id</span>. <span class="fixed-width">task_id</span> is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, use parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
 
 {% include worker/start/first-worker/python/log-script.md %}
 
-Save the script as "getLog.<span class="language extension">py</span>" and run `<span class="language command">python</span> getLog.<span class="language extension">py</span> --task="INSERT_TASK_ID"`, again inserting a task ID, and you'll see the Fibonacci sequence printed out.
+Save the script as "getLog.<span class="language extension">py</span>" and run <span class="fixed-width"><span class="language command">python</span> getLog.<span class="language extension">py</span> --task="INSERT_TASK_ID"</span>, again inserting a task ID, and you'll see the Fibonacci sequence printed out.
 
 Congratulations, you're now ready to use IronWorker!
 
