@@ -63,7 +63,9 @@ ul#breadcrumbs li {
 }
 
 
-.doc_link {
-  float:right;
-  margin:0 100px 0 0;
+a.next_item {
+  font-size: 18px;
+  font-weight: bold;
+  float: right;
+  margin: 0 60px 0 0;
 }
