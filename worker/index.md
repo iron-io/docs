@@ -20,10 +20,6 @@ Most developers will probably just want to use one of the clients available for 
 ### Clients
 
 * [Ruby](/worker/ruby)
-  * [IronWorker in 5 Minutes](/worker/ruby/getting-started/ironworker-in-5-minutes)
-  * [IronWorker on Rails](/worker/ruby/getting-started/ironworker-on-rails)
-  * [IronWorker on Heroku](/worker/ruby/getting-started/ironworker-on-heroku)
-  * [IronWorker Examples (on Github)](https://github.com/iron-io/iron_worker_examples/tree/master/ruby)
 * [PHP](/worker/php)
 * [Python](/worker/python)
 

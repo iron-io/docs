@@ -61,3 +61,9 @@ ul#breadcrumbs li {
   display: inline;
   color: #999;
 }
+
+
+.doc_link {
+  float:right;
+  margin:0 100px 0 0;
+}
