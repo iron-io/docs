@@ -218,6 +218,6 @@ Now that you've got the basics of IronWorker down, you might want to check out s
 
 * [**Scheduling tasks**](/worker/start/scheduling-tasks): tasks can be scheduled to happen at some point in the future, some amount of time from now, or even repeating over time.
 * [**Setting task progress**](/worker/start/task-progress): you can set a progress variable on tasks that will show up in their detail view. Wouldn't it be nice to know how many Fibonacci numbers we had gotten through, instead of just "working"?
-* [**Managing tasks**](/worker/start/managing-tasks): In really big projects, you can have a lot of tasks running at once. The library lets you list, cancel, and delete tasks to help you manage your worker.
+* [**Managing tasks**](/worker/start/managing-tasks): In really big projects, you can have a lot of tasks running at once. The API lets you list, cancel, and delete tasks to help you manage your worker.
 * [**Interfacing with IronMQ**](/worker/articles/integrations/ironmq): Getting your results as a log is a pain. There has to be a better way. Sure, you could have them emailed, Twittered, or sent as parameters in an HTTP request, but that requires you to run your own systems. IronMQ is a messaging queue built in the cloud, so you don't have to worry about that. Even better, IronWorker and IronMQ can work together.
 
