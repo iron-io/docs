@@ -58,7 +58,7 @@ Worker creation is about as simple as it gets: you just write the script you wan
 
 ### Writing the Script
 
-You should never assume anything is installed in the IronWorker runtime. That means anything your script needs in terms of classes or libraries should be zipped and uploaded with it. It also means only a handful of common Linux executables are available. You can find more about the runtime [here](http://docs.iron.io/worker/system-environment). The best way to make sure your worker will run is to create a directory for it and as you add dependencies, add those files to the directory and import them from that directory.
+You should never assume anything is installed in the IronWorker runtime. That means anything your script needs in terms of classes or libraries should be zipped and uploaded with it. It also means only a handful of common Linux executables are available. You can find more about the runtime [here](/worker/reference/environment). The best way to make sure your worker will run is to create a directory for it and as you add dependencies, add those files to the directory and import them from that directory.
 
 Here's a pretty basic worker script:
 
