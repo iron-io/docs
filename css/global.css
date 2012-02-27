@@ -1,3 +1,13 @@
+.content-container a, .content-container a:hover {
+  text-decoration: underline;
+  color: #035CA6;
+}
+
+
+#sidemenu a, #sidemenu a:hover {
+  text-decoration: none;
+}
+
 input::-webkit-input-placeholder {
   color: #BBB;
 }
