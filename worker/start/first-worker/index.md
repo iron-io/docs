@@ -4,7 +4,7 @@ layout: default
 section: worker
 breadcrumbs:
 - ['Getting Started', '/start']
-- ['Your First Worker', '/first_worker']
+- ['Your First Worker', '/first-worker']
 ---
 
 IronWorker is a product that helps you separate elements of your project into specialised, resilient chunks. Each worker is intended to be a single piece of your project, operating independently from the other workers and your own servers. They leverage cloud computing to do a lot of work very quickly with great uptime. By using workers, you can easily create a resilient, easily-managed project that operates even under worst-case scenarios.
