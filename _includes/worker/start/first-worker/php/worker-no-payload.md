@@ -1,12 +1,6 @@
 {% highlight php %}
 <?php
-$payload = getPayload();
 $max = 100;
-
-if($payload->max != null) {
-    $max = $payload->max;
-}
-
 $values = array();
 $num1 = 0;
 $num2 = 0;
