@@ -3,6 +3,7 @@ title: IronWorker Environment
 layout: default
 section: worker
 breadcrumbs:
+  - ['Reference', '/reference']
   - ['Environment', '/environment']
 ---
 # IronWorker System Environment
@@ -66,5 +67,3 @@ Max Scheduled Tasks
 100
 
 Tip: A bad anti-pattern is to create scheduled jobs on a per user or per item basis. Instead, you want to create scheduled jobs that act as master tasks that orchestrate activities by accessing databases and queuing up other workers. View the pages on Scheduling for more information on best practices.
-
-
