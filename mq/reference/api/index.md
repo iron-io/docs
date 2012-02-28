@@ -51,6 +51,8 @@ margin: 0px;
 
 </style>
 
+<h1>REST/HTTP API</h1>
+
 IronMQ provides a RESTful HTTP API to allow you to interact programmatically with our service and your queues.
 
 ## Endpoints
@@ -67,15 +69,11 @@ IronMQ provides a RESTful HTTP API to allow you to interact programmatically wit
 ## Authentication
 
 All methods require authentication unless specified otherwise.
-
 Authentication is done via an Oauth2 token using Authorization header, eg:
-
 Authorization: OAuth abc4c7c627376858
 
 Note: be sure you have the correct case, it's OAuth, not Oauth. 
-
 or in URL parameters:
-
 ?oauth=abc4c7c627376858
 
 ## Requests
