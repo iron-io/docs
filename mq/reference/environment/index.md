@@ -41,7 +41,8 @@ border-bottom: 1px solid #000;
 
 ## System Environment
 
-### Message Format
+### Message Structure
+
 Messages can be variable in size and can contain almost any text or data format.
 
 <table class="reference">
@@ -52,7 +53,7 @@ Messages can be variable in size and can contain almost any text or data format.
 <tr><td>message body</td><td>ASCII text</td></tr>
 </table>
 
-### Message Vars
+### Message Constraints
 
 <table class="reference">
 <tr><th style="width: 20%;">Message Var</th><th style="width: 15%;">Default</th><th style="width: 15%;">Maximum</th><th style="width: 50%;">Notes</th></tr>
