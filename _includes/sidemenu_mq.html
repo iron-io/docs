@@ -1,3 +1,5 @@
+---
+---
 <h4>1. <a href="/mq/start">Getting Started</a></h4>
 <ul>
   <li>1. <a href="/mq/start/first_queue">Your First Queue</a></li>
@@ -5,7 +7,7 @@
 
 <h4>2. <a href="/mq/reference">Reference</a></h4>
 <ul>
-  <li>1. <a {% if page.url == "/mq/reference/api" %} class="active"{% endif %} href="/mq/reference/api">REST/HTTP API</a></li>
+        <li>1. <a {% if page.url == "/mq/reference/api/index.html" %} class="active"{% else %}{{ page.url }}{% endif %} href="/mq/reference/api">REST/HTTP API</a></li>
   <li>2. <a href="/mq/reference/environment">System Environment</a></li>
 </ul>
 
