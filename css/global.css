@@ -15,6 +15,10 @@ textarea:focus {
   background: rgb(245, 251, 255);
 }
 
+.content-container {
+  font-size: 14px;
+  line-height: 1.6em;
+}
 
 .content-container a, .content-container a:hover {
   text-decoration: underline;
@@ -51,6 +55,13 @@ input:-moz-placeholder {
   font-size: 24px;
   margin: 1.8em 0 0.5em;
   padding: 0;
+  border-bottom: 1px solid #CCC;
+}
+
+.content-container h3 {
+  padding: 0;
+  margin: 20px 0 10px;
+  font-size: 18px;
 }
 
 .content-container h4 {
