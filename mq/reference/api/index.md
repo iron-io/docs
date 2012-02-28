@@ -1,10 +1,10 @@
 ---
-title: IronMQ REST API
+title: IronMQ REST/HTTP API
 layout: default
 section: mq
 breadcrumbs:
   - ['Reference', '/reference']
-  - ['REST API', '/api']
+  - ['REST/HTTP API', '/api']
 ---
 
 <style type="text/css">

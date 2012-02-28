@@ -6,7 +6,7 @@ breadcrumbs: hidden
 
 [![IronMQ](/images/logo_mq.png "IronMq")](/mq)
 
-A fast, reliable message queue with various support for multiple interfaces such [HTTP/REST](/mq/api) and [Beanstalkd](/mq/beanstalkd).
+A fast, reliable message queue with various support for multiple interfaces such [REST/HTTP](/mq/api) and [Beanstalkd](/mq/beanstalkd).
 
 <a href="/mq" class="next_item">View IronMQ Documentation</a>
 <br clear="all" />

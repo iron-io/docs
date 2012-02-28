@@ -39,7 +39,7 @@ You can also get your token and project ID from the Iron.io HUD. To get to the I
 
 ![IronMQ add-on](http://i.imgur.com/RpEzb.png)
 
-IronMQ has clients for [a lot of languages](http://docs.iron.io/mq/clients), and you can always use [the REST API](http://docs.iron.io/mq/api) (or write your own!). This means your existing Heroku stack should work without any changes. The remainder of this article will be using the Ruby library, but all of the libraries have analagous calls (that should be well-documented).
+IronMQ has clients for [a lot of languages](http://docs.iron.io/mq/clients), and you can always use [the REST/HTTP API](http://docs.iron.io/mq/api) (or write your own!). This means your existing Heroku stack should work without any changes. The remainder of this article will be using the Ruby library, but all of the libraries have analagous calls (that should be well-documented).
 
 We're going to need to install the Ruby gem, for development purposes:
 

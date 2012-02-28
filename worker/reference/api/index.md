@@ -1,10 +1,10 @@
 ---
-title: IronWorker REST API
+title: IronWorker REST/HTTP API
 layout: default
 section: worker
 breadcrumbs:
   - ['Reference', '/reference']
-  - ['REST API', '/api']
+  - ['REST/HTTP API', '/api']
 ---
 
 <style type="text/css">
