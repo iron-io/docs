@@ -15,6 +15,9 @@ languages:
 .container .fixed-width {
 font-family: monospace;
 }
+pre {
+overflow: auto;
+}
 </style>
 {% if page.languages %}
 {% include language-switcher-head.html %}
