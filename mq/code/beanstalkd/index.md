@@ -36,7 +36,7 @@ The DRAINING response will be returned if authentication fails or if any other c
 </div>
 
 ### Queues and Tubes
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">beanstalkd `tubes` are synonymous with `queue names` in the <a href="https://sites.google.com/a/iron.io/documentation/mq/api">HTTP API</a>. &nbsp;</div>
+<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">beanstalkd `tubes` are synonymous with `queue names` in the <a href="https://sites.google.com/a/iron.io/documentation/mq/api">REST/HTTP API</a>. &nbsp;</div>
 <div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px"><br>
 </div>
 <div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">A tube named `default` will be used if not specified.</div>
