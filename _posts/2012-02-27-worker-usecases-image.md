@@ -12,8 +12,8 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Common Use Cases', '/usecases']
   - ['Image Processing', '/image_processing']
-layout: default
+layout: post
 section: worker
 ---
 
-## {{ page.title }}
+Test content
