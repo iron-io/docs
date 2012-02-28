@@ -1,27 +1,33 @@
-<h4>1. <a href="/worker/start">Getting Started</a></h4>
+<style type="text/css">
+        #sidemenu a.selected {
+                color: #000000;
+        }
+</style>
+
+<h4>1. <a {% if page.url == "/worker/start/index.html" %}class="selected"{% endif %} href="/worker/start">Getting Started</a></h4>
 <ul>
-  <li>1. <a href="/worker/start/first-worker">Your First Worker</a></li>
+  <li>1. <a {% if page.url == "/worker/start/first-worker/index.html" %}class="selected"{% endif %} href="/worker/start/first-worker">Your First Worker</a></li>
 </ul>
 
-<h4>2. <a href="/worker/reference">Reference</a></h4>
+<h4>2. <a {% if page.url == "/worker/reference/index.html" %}class="selected"{% endif %} href="/worker/reference">Reference</a></h4>
 <ul>
-  <li>1. <a href="/worker/reference/api">REST/HTTP API</a></li>
-  <li>2. <a href="/worker/reference/environment">System Environment</a></li>
+  <li>1. <a {% if page.url == "/worker/reference/api/index.html" %}class="selected"{% endif %} href="/worker/reference/api">REST/HTTP API</a></li>
+  <li>2. <a {% if page.url == "/worker/reference/environment/index.html" %}class="selected"{% endif %} href="/worker/reference/environment">System Environment</a></li>
 </ul>
 
-<h4>3. <a href="/worker/code">Code</a></h4>
+<h4>3. <a {% if page.url == "/worker/code/index.html" %}class="selected"{% endif %} href="/worker/code">Code</a></h4>
 <ul>
-  <li>1. <a href="/worker/code/ruby">Ruby</a></li>
-  <li>2. <a href="/worker/code/php">PHP</a></li>
-  <li>3. <a href="/worker/code/python">Python</a></li>
+  <li>1. <a {% if page.url == "/worker/code/ruby/index.html" %}class="selected"{% endif %} href="/worker/code/ruby">Ruby</a></li>
+  <li>2. <a {% if page.url == "/worker/code/php/index.html" %}class="selected"{% endif %} href="/worker/code/php">PHP</a></li>
+  <li>3. <a {% if page.url == "/worker/code/python/index.html" %}class="selected"{% endif %} href="/worker/code/python">Python</a></li>
 </ul>
 
-<h4>4. <a href="/worker/articles">Articles</a></h4>
+<h4>4. <a {% if page.url == "/worker/articles/index.html" %}class="selected"{% endif %} href="/worker/articles">Articles</a></h4>
 <ul>
-  <li>1. <a href="/worker/articles/usecases">Common Use Cases</a></li>
-  <li>2. <a href="/worker/articles/integrations">Integrations</a></li>
-  <li>3. <a href="/worker/articles/databases">Databases</a></li>
-  <li>4. <a href="/worker/articles/platforms">Platforms</a></li>
-  <li>5. <a href="/worker/articles/clouds">Clouds</a></li>
+  <li>1. <a {% if page.url == "/worker/articles/usecases/index.html" %}class="selected"{% endif %} href="/worker/articles/usecases">Common Use Cases</a></li>
+  <li>2. <a {% if page.url == "/worker/articles/integrations/index.html" %}class="selected"{% endif %} href="/worker/articles/integrations">Integrations</a></li>
+  <li>3. <a {% if page.url == "/worker/articles/databases/index.html" %}class="selected"{% endif %} href="/worker/articles/databases">Databases</a></li>
+  <li>4. <a {% if page.url == "/worker/articles/platforms/index.html" %}class="selected"{% endif %} href="/worker/articles/platforms">Platforms</a></li>
+  <li>5. <a {% if page.url == "/worker/articles/clouds/index.html" %}class="selected"{% endif %} href="/worker/articles/clouds">Clouds</a></li>
 
 </ul>
