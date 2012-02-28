@@ -47,18 +47,18 @@ The DRAINING response will be returned if authentication fails or if any other c
 ### Notes
 
 <div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">
-<ul><li style="list-style-position:outside;list-style-type:square">The ID you receive when using the beanstalkd interface will not be the same as the HTTP interface so you cannot use them interchangeably.&nbsp;<br>
-</li>
-<li style="list-style-position:outside;list-style-type:square">There are some commands that IronMQ does not implement. These include:</li>
-<ul><li style="list-style-position:outside;list-style-type:square">release</li>
-<li style="list-style-position:outside;list-style-type:square">bury</li>
-<li style="list-style-position:outside;list-style-type:square">touch</li>
-<li style="list-style-position:outside;list-style-type:square">peek, peek-ready, peek-delayed, peek-buried<br>
-</li>
-<li style="list-style-position:outside;list-style-type:square">kick</li>
-<li style="list-style-position:outside;list-style-type:square">list-tubes, list-tube-used<br>
-</li>
-<li style="list-style-position:outside;list-style-type:square">stats, stats-job, stats-tube</li>
-<li style="list-style-position:outside;list-style-type:square">pause-tube</li>
-<li style="list-style-position:outside;list-style-type:square">quit<br>
-</li></ul></ul>
+<ul>
+  <li style="list-style-position:outside;list-style-type:square">The ID you receive when using the beanstalkd interface will not be the same as the HTTP interface so you cannot use them interchangeably.</li>
+  <li style="list-style-position:outside;list-style-type:square">There are some commands that IronMQ does not implement. These include:
+  <ul>
+    <li style="list-style-position:outside;list-style-type:square">release</li>
+    <li style="list-style-position:outside;list-style-type:square">bury</li>
+    <li style="list-style-position:outside;list-style-type:square">touch</li>
+    <li style="list-style-position:outside;list-style-type:square">peek, peek-ready, peek-delayed, peek-buried</li>
+    <li style="list-style-position:outside;list-style-type:square">kick</li>
+    <li style="list-style-position:outside;list-style-type:square">list-tubes, list-tube-used</li>
+    <li style="list-style-position:outside;list-style-type:square">stats, stats-job, stats-tube</li>
+    <li style="list-style-position:outside;list-style-type:square">pause-tube</li>
+    <li style="list-style-position:outside;list-style-type:square">quit</li>
+  </ul></li>
+</ul>
