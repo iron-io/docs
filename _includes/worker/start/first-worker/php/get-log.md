@@ -1,4 +1,3 @@
-{% include language-switcher.html %}
 {% highlight php %}
 <?php
 $log = worker->getLog($task['tasks'][0]['id']);

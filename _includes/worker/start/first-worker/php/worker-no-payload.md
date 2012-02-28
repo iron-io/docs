@@ -1,4 +1,3 @@
-{% include language-switcher.html %}
 {% highlight php %}
 <?php
 $max = 100;
