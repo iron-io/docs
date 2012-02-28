@@ -41,7 +41,10 @@ $(function() {
 });
 </script>
 
-Language: {% for language in page.languages %}<a href="#" data-command="{{ language | first }}" data-extension="{{ language | last }}" class="language-switcher">{{ language | first }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
+
+## Creating and Running Your First Worker
+
+**Select Language:** {% for language in page.languages %}<a href="#" data-command="{{ language | first }}" data-extension="{{ language | last }}" class="language-switcher">{{ language | first }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
 
 IronWorker is a product that helps you separate elements of your project into specialised, resilient chunks. Each worker is intended to be a single piece of your project, operating independently from the other workers and your own servers. They leverage cloud computing to do a lot of work very quickly with great uptime. By using workers, you can easily create a resilient, easily-managed project that operates even under worst-case scenarios.
 
