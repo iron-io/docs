@@ -16,13 +16,4 @@ layout: default
 section: worker
 ---
 
-## Image Processing with IronWorker
-
-asd - {{ post.title }}
-
-{{ page.url }}
-
-Tags:
-{% for tag in post.tags %}
-  {{ tag }}
-{% endfor %}
+## {{ page.title }}
