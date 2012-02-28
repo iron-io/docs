@@ -1,3 +1,4 @@
+{% include language-switcher.html %}
 {% highlight php %}
 <?php
 require("IronWorker.class.php");

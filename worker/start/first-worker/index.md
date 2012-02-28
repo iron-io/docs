@@ -16,35 +16,13 @@ languages:
 font-family: monospace;
 }
 </style>
-
-<script type="text/javascript">
-languages = [ {% for language in page.languages %}{"command": "{{ language | first }}", "extension": "{{ language | last }}"}{% unless forloop.last %}, {% endunless %}{% endfor %} ];
-choose = function(extension, command) {
-    $(".language.extension").text(extension);
-    $(".language.command").text(command);
-    for(i in languages) {
-      $("code."+languages[i]["command"]).parent().parent().hide();
-      $("div."+languages[i]["command"]).hide();
-    }
-    $("code."+command).parent().parent().show();
-    $("div."+command).show();
-};
-
-$(function() {
-  choose(languages[0]["extension"], languages[0]["command"]);
-  $(".language-switcher").click(function(e) {
-    e.preventDefault();
-    ext = $(this).attr("data-extension");
-    cmd = $(this).attr("data-command");
-    choose(ext, cmd);
-  });
-});
-</script>
-
+{% if page.languages %}
+{% include language-switcher-head.html %}
+{% endif %}
 
 ## Creating and Running Your First Worker
 
-**Select Language:** {% for language in page.languages %}<a href="#" data-command="{{ language | first }}" data-extension="{{ language | last }}" class="language-switcher">{{ language | first }}</a>{% unless forloop.last %} - {% endunless %}{% endfor %}
+{% include language-switcher.html %}
 
 IronWorker is a product that helps you separate elements of your project into specialised, resilient chunks. Each worker is intended to be a single piece of your project, operating independently from the other workers and your own servers. They leverage cloud computing to do a lot of work very quickly with great uptime. By using workers, you can easily create a resilient, easily-managed project that operates even under worst-case scenarios.
 

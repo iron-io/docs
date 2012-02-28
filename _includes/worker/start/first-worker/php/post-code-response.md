@@ -1,3 +1,4 @@
+{% include language-switcher.html %}
 {% highlight javascript %}
 {
     "msg": "Upload successful.",
