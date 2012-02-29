@@ -34,12 +34,9 @@ $(function() {
   choose(lang["extension"], lang["command"], lang["name"]);
   $(".language-switcher").click(function(e) {
     e.preventDefault();
-    var offset = $(this).offset().top;
     ext = $(this).attr("data-extension");
     cmd = $(this).attr("data-command");
     name = $(this).attr("data-name");
     choose(ext, cmd, name);
-    var offset_diff = $(this).offset().top - offset;
-    $(window).scrollTop($(window).scrollTop() + offset_diff);
   });
 });
