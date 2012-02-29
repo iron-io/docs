@@ -1,24 +1,17 @@
 <div class="python">{% highlight python %}
-import argparse
 import json
-
-parser = argparse.ArgumentParser(
-        description="Calculates the Fibonacci sequence up to a maximum number")
-parser.add_argument("-payload", type=str, required=False,
-        help="The location of a file containing a JSON payload.")
-parser.add_argument("-d", type=str, required=False,
-        help="The directory that the worker is running from.")
-parser.add_argument("-e", type=str, required=False,
-        help="The environment this worker is running under.")
-parser.add_argument("-id", type=str, required=False,
-        help="This worker's unique identifier.")
-
-args = parser.parse_args()
 
 max = 100
 
-if args.payload != None:
-    payload = json.loads(open(args.payload).read())
+payload = None
+
+for i in range(len(sys.argv)):
+    if sys.argv[i] == "-payload" and (i +1) < len(sys.argv):
+        payload = sys.argv[i+1]
+        break
+
+if payload != None:
+    payload = json.loads(open(helper.getArg("payload")).read())
     if 'max' in payload:
         max = payload['max']
 
