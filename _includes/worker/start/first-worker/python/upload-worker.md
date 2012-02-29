@@ -1,4 +1,4 @@
-{% highlight python %}
+<div class="python">{% highlight python %}
 from iron_worker import *
 
 name = "FibWorker"
@@ -14,3 +14,4 @@ res = worker.postCode(runFilename="fibonacci.py", name=name,
 
 print res
 {% endhighlight %}
+</div>
