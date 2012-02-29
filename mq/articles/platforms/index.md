@@ -1,13 +1,13 @@
 ---
-title: Articles | Platforms
+title: Articles | Running on Cloud Platforms
 layout: default
 section: mq
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Clouds', '/platforms']
+  - ['Running on Cloud Platforms', '/platforms']
 ---
 
-<h1>Platforms</h1>
+<h1>Running on Cloud Platforms</h1>
 
 <ul>
   {% for post in site.categories.platforms %}

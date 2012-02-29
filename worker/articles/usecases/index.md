@@ -1,5 +1,5 @@
 ---
-title: Common Use Cases
+title: Articles | Common Use Cases
 layout: default
 section: worker
 breadcrumbs:

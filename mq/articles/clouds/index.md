@@ -1,13 +1,13 @@
 ---
-title: Articles | Clouds
+title: Articles | IronMQ Clouds
 layout: default
 section: mq
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Clouds', '/clouds']
+  - ['IronMQ Clouds', '/clouds']
 ---
 
-<h1>Clouds</h1>
+<h1>IronMQ Clouds</h1>
 
 <ul>
   {% for post in site.categories.clouds %}
