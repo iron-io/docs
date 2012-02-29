@@ -121,6 +121,7 @@ Run the following command:
 
 Rails will generate a bunch of files for you, giving us a skeleton we can work in. Go ahead and open `app/controllers/tweets_controller.rb`. Modify it to look like this:
 
+<div class="grey-box">
     :::ruby
     class TweetsController < ApplicationController
       require 'iron_mq'
@@ -134,6 +135,7 @@ Rails will generate a bunch of files for you, giving us a skeleton we can work i
       def view
       end
     end
+</div>
 
 Easy, right? Load up `your-heroku-app.herokuapp.com/tweets/get`, and you'll see the results of your Twitter search.
 
