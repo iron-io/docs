@@ -1,19 +1,4 @@
-/*-----------------------------------
-  style
------------------------------------*/
-
-
-:active, :focus,
-input:active, input:focus {
-  -moz-outline-style: none !important;
-  outline: none !important;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-  border-color: rgb(51, 163, 242);
-  background: rgb(245, 251, 255);
-}
+/*--------------------------------- CONTAINER OVERRIDES (Global) ------------------------------------*/
 
 .content-container {
   font-size: 14px;
@@ -25,143 +10,32 @@ textarea:focus {
   color: #035CA6;
 }
 
-input::-webkit-input-placeholder {
-  color: #bbb;
-  font-weight: lighter;
-  font-style: italic;
-}
-
-input:-moz-placeholder {
-  color: #bbb;
-}
-
-#sidemenu {
-  width: 210px;
-  float: left;
-  margin-right: 30px;
-}
-
-#sidemenu ul {
-  list-style-type: none;
-  padding: 0 0 0 12px;
-  margin: 0;
-}
-
-#sidemenu ul li a {
-  font-size: 14px;
-}
-
-ul#breadcrumbs {
-  margin: 0 0 30px 0;
-  padding: 0 0 0 0;
-  border: none;
-}
-
-ul#breadcrumbs li {
-  margin-left: 0;
-  padding-left: 2px;
-  border: none;
-  list-style: none;
-  display: inline;
-  color: #999;
-}
-
-a.next_item {
-  font-size: 18px;
-  font-weight: bold;
-  float: right;
-  margin: 0 60px 0 0;
-}
-
-a.tag {
-  background-color: #41B7D8;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 20px 20px 20px 20px;
-  color: #FFF;
-  display: inline-block;
-  margin: 0 2px;
-  padding: 2px 10px 1px 10px;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-#q {
-  border-radius: 20px;
-  border: 1px solid #AAA;
-  padding: 4px 0 3px 10px;
-  font-weight: lighter;
-  width: 180px;
-  position: relative;
-  display: block;
-  overflow: visible;
-  
-  background: -webkit-linear-gradient(#F8F8F8, white 50%);
-  background: -moz-linear-gradient(#F8F8F8, white 50%);
-  background: -ms-linear-gradient(#F8F8F8, white 50%);
-  background: linear-gradient(#F8F8F8, white 50%);
-}
-
-#q:focus {
-  border-color: rgb(51, 163, 242);
-  background: rgb(245, 251, 255);
-}
-
-#sidemenu h4 {
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-}
-
-#sidemenu ul {
-  margin: 0 0 5px 0;
-  padding: 0;
-}
-
-#sidemenu ul li {
-  display: block;
-  font-size: 14px;
-  margin: 0;
-}
-
-#sidemenu ul li a {
-  font-size: 14px;
-  display: block;
-  padding-left: 17px;
-}
-
-
-#sidemenu a, #sidemenu a:hover {
-  padding: 2px 2px 0 5px;
-  text-decoration: none;
-  display: block;
-}
-
-#sidemenu a:hover {
-  background: #EEE;
-}
-
-#sidemenu ul li a:hover {
-  padding-left: 17px;
-}
-
-#sidemenu a.selected {
-  color: #363636;
-  font-weight: bold;
-}
-
-#sidemenu form {
-  margin: 0 0 40px;
-}
-
-#breadcrumbs a {
-  text-decoration: none;
-  color: #444;
-  border-bottom: 1px dotted;
-}
-
-
 .content-container {
   min-height: 500px;
+}
+
+.content-container h1, .content-container h2, .content-container h3 {
+  border-bottom: 1px solid #CCC;
+  padding: 0;
+  letter-spacing: -1px;
+  margin: 1.2em 0 0.6em;
+  float: none;
+  text-shadow: none;
+  line-height: 1.5em;
+}
+
+.content-container h1 {
+  margin: 0.5em 0 0.6em 0;
+  font-size: 28px;
+}
+
+.content-container h2 {
+  font-size: 24px;
+}
+
+.content-container h3 {
+  font-size: 18px;
+  border-bottom: 0;
 }
 
 .content-container h1 {
@@ -276,3 +150,193 @@ a.tag {
   margin: 0px;
 }
 
+/*--------------------------------- FORMS ------------------------------------*/
+
+:active, :focus,
+input:active, input:focus {
+  -moz-outline-style: none !important;
+  outline: none !important;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: rgb(51, 163, 242);
+  background: rgb(245, 251, 255);
+}
+
+input::-webkit-input-placeholder {
+  color: #bbb;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+input:-moz-placeholder {
+  color: #bbb;
+}
+
+/*--------------------------------- SIDE MENU ------------------------------------*/
+
+#sidemenu {
+  width: 240px;
+  float: left;
+}
+
+#sidemenu a, #sidemenu a:hover {
+  text-decoration: none;
+  width: 200px;
+  display: block;
+  font-size: 14px;
+}
+
+#sidemenu a:hover {
+  background-color: #DDD;
+}
+
+#sidemenu ul li {
+  margin: 0;
+}
+
+#sidemenu ul li a {
+  padding: 0 0 0 16px;
+}
+
+#sidemenu a.selected {
+  color: #000000;
+  background-color: #DDD;
+  font-weight: bold;
+}
+
+#sidemenu h4 a, #sidemenu h4 a:hover{
+  font-size: 16px;
+  padding: 0 0 0 5px;
+  margin: 0;
+}
+
+#sidemenu h4 {
+  margin: 10px 0 3px 0;
+  padding: 0;
+}
+
+#sidemenu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sidemenu form {
+  margin: 0 0 30px;
+}
+
+/*--------------------------------- BREAD CRUMB ------------------------------------*/
+
+ul#breadcrumbs {
+  margin: 0 0 20px 0;
+  padding: 0 0 0 0;
+  border: none;
+}
+
+ul#breadcrumbs li {
+  margin-left: 0;
+  padding-left: 2px;
+  border: none;
+  list-style: none;
+  display: inline;
+  color: #999;
+}
+
+#breadcrumbs a {
+  text-decoration: none;
+  color: #444;
+  border-bottom: 1px dotted;
+}
+
+/*--------------------------------- TABLES ------------------------------------*/
+
+.content table.reference {
+  font-size: small;
+  width: 100%;
+}
+
+.content table.reference td {
+  padding: 2px 7px;
+  text-align: left;
+}
+
+.content table.reference th {
+  text-align: left;
+  border-bottom: 1px solid #000;
+}
+
+.content table.reference_list {
+  font-size: small;
+  width: 100%;
+}
+
+.content table.reference_list td {
+  padding: 2px 7px;
+  text-align: center;
+}
+
+.content table.reference_list th {
+  text-align: center;
+  border-bottom: 1px solid #000;
+}
+
+.variable {
+  font-style: italic;
+}
+
+.variable.project_id {
+  color: red;
+}
+
+.variable.code_id, .variable.schedule_id, .variable.task_id {
+  color: blue;
+}
+
+/*--------------------------------- MISC ------------------------------------*/
+
+a.next_item {
+  font-size: 18px;
+  font-weight: bold;
+  float: right;
+  margin: 0 60px 0 0;
+}
+
+a.tag, a.tag:hover {
+  background-color: #41A3D8;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 18px 18px 18px 18px;
+  color: #FFFFFF;
+  font-size: 14px;
+  margin: 0 2px;
+  padding: 4px 10px 2px;
+  text-decoration: none;
+}
+
+
+#q {
+  border-radius: 20px;
+  border: 1px solid #AAA;
+  padding: 4px 0 3px 10px;
+  font-weight: lighter;
+  width: 180px;
+  position: relative;
+  display: block;
+  overflow: visible;
+
+  background: -webkit-linear-gradient(#F8F8F8, white 50%);
+  background: -moz-linear-gradient(#F8F8F8, white 50%);
+  background: -ms-linear-gradient(#F8F8F8, white 50%);
+  background: linear-gradient(#F8F8F8, white 50%);
+}
+
+#q:focus {
+  border-color: rgb(51, 163, 242);
+  background: rgb(245, 251, 255);
+}
+
+a.language-switcher.selected {
+  color: #000000;
+  text-decoration: none;
+}
