@@ -147,15 +147,9 @@ Now that we've packaged everything up, it's time to upload it to IronWorker. You
 The <span class="fixed-width">runFilename</span> parameter is the filename in the zip you want the worker to execute when it runs. The <span class="fixed-width">zipFilename</span> parameter is the zip you want to upload. The <span class="fixed-width">name</span> parameter is a name for the worker that will help you find it on your HUD and will let you run the worker. The function returns a response from the server. If everything goes well, you'll see this:
 
 {% include language-switcher.html %}
-<div class="ruby">
 {% include worker/start/first-worker/ruby-ng/post-code-response.md %}
-</div>
-<div class="php">
 {% include worker/start/first-worker/php/post-code-response.md %}
-</div>
-<div class="python">
 {% include worker/start/first-worker/python/post-code-response.md %}
-</div>
 
 To pull it all together, here's the full upload script:
 
