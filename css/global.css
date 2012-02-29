@@ -25,12 +25,6 @@ textarea:focus {
   color: #035CA6;
 }
 
-#sidemenu a, #sidemenu a:hover {
-  padding: 2px 2px 0 5px;
-  text-decoration: none;
-  display: block;
-}
-
 input::-webkit-input-placeholder {
   color: #bbb;
   font-weight: lighter;
@@ -134,10 +128,20 @@ a.tag {
   display: block;
 }
 
+
+#sidemenu a, #sidemenu a:hover {
+  padding: 2px 2px 0 5px;
+  text-decoration: none;
+  display: block;
+}
+
+#sidemenu a:hover {
+  background: #EEE;
+}
+
 #sidemenu a.selected {
   color: #363636;
   font-weight: bold;
-  background: #EEE;
 }
 
 #sidemenu form {
@@ -217,7 +221,6 @@ a.tag {
 
 .content-container .blue-box {
   margin-bottom: 5px;
-  background: #E5F3FA;
   padding: 5px 10px;
   border-radius: 3px;
 }
