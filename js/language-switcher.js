@@ -1,14 +1,14 @@
-choose = function(extension, command) {
+choose = function(extension, command, name) {
     $(".language.extension").text(extension);
     $(".language.command").text(command);
     for(i in languages) {
-      $("code."+languages[i]["command"]).parent().parent().hide();
-      $("div."+languages[i]["command"]).hide();
-      $("a.language-switcher."+languages[i]["command"]).removeClass("selected");
+      $("code."+languages[i]["name"]).parent().parent().hide();
+      $("div."+languages[i]["name"]).hide();
+      $("a.language-switcher."+languages[i]["name"]).removeClass("selected");
     }
-    $("code."+command).parent().parent().show();
-    $("div."+command).show();
-    $("a.language-switcher."+command).addClass("selected");
+    $("code."+name).parent().parent().show();
+    $("div."+name).show();
+    $("a.language-switcher."+name).addClass("selected");
 };
 
 function getParameterByName(name) {
@@ -24,20 +24,24 @@ function getParameterByName(name) {
 }
 
 $(function() {
-  var lang = {"extension":languages[0]["extension"], "command":languages[0]["command"]};
+  var lang = {"extension":languages[0]["extension"], "command":languages[0]["command"], "name": languages[0]["name"]};
   var param = getParameterByName("lang");
   if(param != "") {
     for(i in languages) {
-      if(languages[i]["extension"] == param) {
+      if(languages[i]["name"] == param) {
         lang = languages[i];
       }
     }
   }
-  choose(lang["extension"], lang["command"]);
+  choose(lang["extension"], lang["command"], lang["name"]);
   $(".language-switcher").click(function(e) {
     e.preventDefault();
+    var offset = $(this).offset().top;
     ext = $(this).attr("data-extension");
     cmd = $(this).attr("data-command");
-    choose(ext, cmd);
+    name = $(this).attr("data-name");
+    choose(ext, cmd, name);
+    var offset_diff = $(this).offset().top - offset;
+    $(window).scrollTop($(window).scrollTop() + offset_diff);
   });
 });
