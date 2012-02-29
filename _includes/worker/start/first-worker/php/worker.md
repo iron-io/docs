@@ -1,4 +1,4 @@
-{% highlight php %}
+<div class="php">{% highlight php %}
 <?php
 $payload = getPayload();
 $max = 100;
@@ -20,3 +20,4 @@ while($num2 <= $max) {
 echo "MAGICALSTDOUTSEPARATOR".json_encode($values)."MAGICALSTDOUTSEPARATOR";
 ?>
 {% endhighlight %}
+</div>

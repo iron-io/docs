@@ -1,4 +1,4 @@
-{% highlight python %}
+<div class="ruby-ng">{% highlight python %}
 import argparse
 import json
 
@@ -34,3 +34,4 @@ while next < max:
 
 print "MAGICALSTDOUTSEPARATOR%sMAGICALSTDOUTSEPARATOR" % json.dumps(values)
 {% endhighlight %}
+</div>

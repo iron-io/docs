@@ -1,4 +1,4 @@
-{% highlight php %}
+<div class="php">{% highlight php %}
 <?php
 require("IronWorker.class.php");
 
@@ -10,3 +10,4 @@ $details = $worker->getTaskDetails($opts["task"]);
 echo "Task is ".$details->status."\n";
 ?>
 {% endhighlight %}
+</div>

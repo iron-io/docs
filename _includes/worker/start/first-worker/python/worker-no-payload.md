@@ -1,4 +1,4 @@
-{% highlight python %}
+<div class="python">{% highlight python %}
 import json
 
 max = 100
@@ -15,3 +15,4 @@ while next < max:
 
 print "MAGICALSTDOUTSEPARATOR%sMAGICALSTDOUTSEPARATOR" % json.dumps(values)
 {% endhighlight %}
+</div>

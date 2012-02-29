@@ -1,4 +1,4 @@
-{% highlight python %}
+<div class="ruby-ng">{% highlight python %}
 from iron_worker import *
 import argparse
 import json
@@ -17,3 +17,4 @@ log = logsplit[1]
 sequence = json.loads(log)
 print sequence
 {% endhighlight %}
+</div>

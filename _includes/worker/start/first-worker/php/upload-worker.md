@@ -1,4 +1,4 @@
-{% highlight php %}
+<div class="php">{% highlight php %}
 <?php
 require("IronWorker.class.php");
 
@@ -12,3 +12,4 @@ $res = $worker->postCode("fibonacci.php", $zipName, $name);
 print_r($res);
 ?>
 {% endhighlight %}
+</div>
