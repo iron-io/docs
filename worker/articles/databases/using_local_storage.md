@@ -8,11 +8,11 @@ breadcrumbs:
 ---
 
 ##Local Temporary Storage
-Workers can make use of up to 10 GB of local dedicated storage. This is temporary storage and only available while the worker is running. You can create directories and perform almost any file operations just as you might in a local environment. 
+Workers can make use of up to 10 GB of local dedicated storage. You can perform most path and file operations just as you might in a local environment. Note that this is temporary storage and only available while the worker is running. (Store any persistent data back in your database or persistent object store.)
 
-You can access this storage by making use of the var `user_dir` in the worker. (This provides the path of the directory your worker has write access to.) 
+You access this storage by making use of the var `user_dir` in the worker. This var provides the path of the directory your worker has write access to.
 
-Here is an example takes a file from the web and saves it in local storage.(The `log` snippet justs logs the contents of `user_dir`.)
+Here's an example takes a file from the web and saves it in local storage.(The `log` snippet justs logs the contents of `user_dir`.)
 
 </pre>
 class S3Worker < IronWorker::Base
@@ -28,7 +28,6 @@ class S3Worker < IronWorker::Base
 
 end
 </pre>
-
 
 ###Location of Uploaded Files and Folders
 The `user_dir` directory also contains any uploaded files that you've included with your code. Note that any folders or nested files will appear at the top level. 
@@ -48,7 +47,7 @@ user_dir/
   ...
 </pre>
 
-To make use of the file (in the case of a code file), you would use a `require_relative` statement with the base path.
+In Ruby, to make use of the file (in the case of a code file), you would use a `require_relative` statement with the base path.
 
 <pre>
  require_relative './client'
@@ -62,7 +61,7 @@ Typical use cases might include:
 * splitting up a large video file or the results of a website crawl in S3 and then creating and queuing multiple workers to process each video or page slice.
 
 ###Best Practices
-We recommend that you not pass in large data objects or data files to workers as params but instead use object storage solutions like AWS S3 or databases. Upload to S3/store in the DB outside of the worker and then pass the identifier of the object to the worker as a parameter. The worker can then access the data from the data store. This is more efficient in terms of worker management and also better for exception handling. 
+We recommend that you not pass in large data objects or data files to workers as params but instead use object storage solutions like AWS S3 or databases. Upload to S3/store in the DB outside of the worker and then pass the identifier of the object to the worker. The worker can then access the data from the data store. This is more efficient in terms of worker management and also better for exception handling. 
 
 ###Examples
 You can find more examples of making use of local temp storage here: 
