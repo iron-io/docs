@@ -113,7 +113,7 @@ a.tag {
 }
 
 #sidemenu ul {
-  margin: 0 0 5px 17px;
+  margin: 0 0 5px 0;
   padding: 0;
 }
 
@@ -126,6 +126,7 @@ a.tag {
 #sidemenu ul li a {
   font-size: 14px;
   display: block;
+  padding-left: 17px;
 }
 
 
@@ -137,6 +138,10 @@ a.tag {
 
 #sidemenu a:hover {
   background: #EEE;
+}
+
+#sidemenu ul li a:hover {
+  padding-left: 17px;
 }
 
 #sidemenu a.selected {
