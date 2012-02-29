@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/integrations/airbrake
-title: Integrating with Airbrake or Exceptional | Iron.io Dev Center
+title: Integrating with Airbrake or Exceptional
 categories:
  - worker
  - articles

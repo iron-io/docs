@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/heroku
-title: Getting Started on Heroku | Iron.io Dev Center
+title: Getting Started on Heroku
 categories:
  - worker
  - articles

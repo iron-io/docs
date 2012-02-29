@@ -1,5 +1,5 @@
 ---
-title: IronWorker Environment | Iron.io Dev center
+title: IronWorker Environment
 layout: default
 section: worker
 breadcrumbs:

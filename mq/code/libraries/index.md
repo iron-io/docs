@@ -1,5 +1,5 @@
 ---
-title: IronMQ Code | Iron.io Dev Center
+title: IronMQ Code
 layout: default
 section: mq
 breadcrumbs:

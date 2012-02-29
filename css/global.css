@@ -186,7 +186,7 @@ a.next_item {
   margin: 0 60px 0 0;
 }
 
-a.tag {
+a.tag, a.tag:hover {
   background-color: #41A3D8;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 18px 18px 18px 18px;
@@ -196,6 +196,7 @@ a.tag {
   padding: 4px 10px 2px;
   text-decoration: none;
 }
+
 
 #q {
   border-radius: 20px;

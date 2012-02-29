@@ -1,5 +1,5 @@
 ---
-title: Python and IronWorker | Iron.io Dev Center
+title: Python and IronWorker
 layout: default
 section: worker
 breadcrumbs:

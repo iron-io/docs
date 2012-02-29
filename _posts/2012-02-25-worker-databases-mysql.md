@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/databases/mysql
-title: Getting started on MySQL | Iron.io Dev Center
+title: Getting started on MySQL
 categories:
  - worker
  - articles

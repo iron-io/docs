@@ -1,5 +1,5 @@
 ---
-title: IronWorker | Iron.io Dev Center
+title: IronWorker
 layout: default
 section: worker
 ---

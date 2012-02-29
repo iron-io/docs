@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/databases/mongodb
-title: Getting started on MongoDB | Iron.io Dev Center
+title: Getting started on MongoDB
 categories:
  - worker
  - articles

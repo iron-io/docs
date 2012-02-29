@@ -1,5 +1,5 @@
 ---
-title: IronMQ | Iron.io Dev Center
+title: IronMQ
 layout: default
 section: mq
 ---

@@ -1,6 +1,6 @@
 ---
 permalink: /mq/articles/clouds/aws
-title: Running your Queues on Amazon AWS | Iron.io Dev Center
+title: Running your Queues on Amazon AWS
 categories:
  - mq
  - articles

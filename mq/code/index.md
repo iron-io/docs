@@ -1,5 +1,5 @@
 ---
-title: Code | Iron.io Dev Center
+title: Code
 layout: default
 section: mq
 breadcrumbs:

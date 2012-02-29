@@ -1,5 +1,5 @@
 ---
-title: IronWorker Reference | Iron.io Dev Center
+title: IronWorker Reference
 layout: default
 section: worker
 breadcrumbs:

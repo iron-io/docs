@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/appfog
-title: Getting started on AppFog | Iron.io Dev Center
+title: Getting started on AppFog
 categories:
  - worker
  - articles
