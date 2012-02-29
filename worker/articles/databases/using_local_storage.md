@@ -12,7 +12,7 @@ Workers can make use of a [large amount](http://docs-beta.iron.io/worker/referen
 
 You access this storage by making use of the var `user_dir` in the worker. This var provides the path of the directory your worker has write access to.
 
-Here's an example takes a file from the web and saves it in local storage.(The log snippet justs logs the contents of `user_dir`.)
+Here's an example takes a file from the web and saves it in local storage.(The log snippet just logs the contents of `user_dir`.)
 
 <pre>
 class S3Worker < IronWorker::Base
