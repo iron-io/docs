@@ -71,29 +71,43 @@ input:-moz-placeholder {
 
 #sidemenu a, #sidemenu a:hover {
   text-decoration: none;
+  width: 200px;
+  display: block;
+  font-size: 14px;
+}
+
+#sidemenu a:hover {
+  background-color: #DDD;
+}
+
+#sidemenu ul li a {
+  padding: 0 0 0 16px;
+}
+
+#sidemenu a.selected {
+  color: #000000;
+  background-color: #DDD;
+  font-weight: bold;
+}
+
+#sidemenu h4 a, #sidemenu h4 a:hover{
+  font-size: 16px;
+  padding: 0 0 0 5px;
+  margin: 0;
+}
+
+#sidemenu h4 {
+  margin: 10px 0 3px 0;
 }
 
 #sidemenu ul {
   list-style-type: none;
-}
-
-#sidemenu ul li {
-  margin: 0 0 0 -16px;
-}
-
-#sidemenu ul li a {
-  padding: 0 0 0 16px; /* small highlighting hack */
-  font-size: 14px;
-}
-
-#sidemenu h4 {
-  padding: 20px 0 5px 0;
+  padding: 0;
   margin: 0;
 }
 
-#sidemenu div.selected, #sidemenu div:hover {
-  background-color: #DDD;
-  width: 225px;
+#sidemenu form {
+  margin: 0 0 30px;
 }
 
 /*--------------------------------- BREAD CRUMB ------------------------------------*/
@@ -117,40 +131,6 @@ ul#breadcrumbs li {
   text-decoration: none;
   color: #444;
   border-bottom: 1px dotted;
-}
-
-/*--------------------------------- SIDE MENU ------------------------------------*/
-
-#sidemenu h4 {
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0 0 5px;
-  font-size: 16px;
-}
-
-#sidemenu ul {
-  margin: 0 0 10px 17px;
-  padding: 0;
-}
-
-#sidemenu ul li {
-  display: block;
-  font-size: 14px;
-}
-
-#sidemenu ul li a {
-  font-size: 14px;
-  display: inline-block;
-}
-
-#sidemenu form {
-  margin: 0 0 40px;
-}
-
-#sidemenu a.selected {
-  color: #000000;
-  background-color: #FCFBC0;
-  font-weight: bold;
 }
 
 /*--------------------------------- TABLES ------------------------------------*/
