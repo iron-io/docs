@@ -26,7 +26,9 @@ textarea:focus {
 }
 
 #sidemenu a, #sidemenu a:hover {
+  padding: 2px 2px 0 5px;
   text-decoration: none;
+  display: block;
 }
 
 input::-webkit-input-placeholder {
@@ -40,8 +42,9 @@ input:-moz-placeholder {
 }
 
 #sidemenu {
-  width: 240px;
+  width: 210px;
   float: left;
+  margin-right: 30px;
 }
 
 #sidemenu ul {
@@ -111,12 +114,12 @@ a.tag {
 
 #sidemenu h4 {
   padding: 0;
-  margin: 0 0 5px;
+  margin: 0;
   font-size: 16px;
 }
 
 #sidemenu ul {
-  margin: 0 0 10px 17px;
+  margin: 0 0 5px 17px;
   padding: 0;
 }
 
@@ -128,12 +131,13 @@ a.tag {
 
 #sidemenu ul li a {
   font-size: 14px;
-  display: inline-block;
+  display: block;
 }
 
 #sidemenu a.selected {
   color: #363636;
   font-weight: bold;
+  background: #EEE;
 }
 
 #sidemenu form {
