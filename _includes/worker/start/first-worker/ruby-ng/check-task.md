@@ -1,4 +1,4 @@
-{% highlight python %}
+<div class="ruby-ng">{% highlight python %}
 from iron_worker import *
 import argparse
 
@@ -13,3 +13,4 @@ details = worker.getTaskDetails(args.task)
 print "Task is %s." % details["status"]
 
 {% endhighlight %}
+</div>
