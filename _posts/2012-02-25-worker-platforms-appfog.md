@@ -9,8 +9,7 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Platforms', '/platforms']
   - ['AppFog', '/appfog']
-layout: default
+layout: post
 section: worker
 ---
 
-## Getting started on AppFog

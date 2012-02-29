@@ -9,9 +9,11 @@ breadcrumbs:
  - ['Articles', '/articles']
  - ['Platforms', '/platforms']
  - ['Heroku', '/heroku']
-layout: default
+layout: post
 section: mq
 ---
+
+
 IronMQ is a massively scalable messaging queue that makes it easy for you to keep a resilient and synchronised message-passing system in the cloud, between any number of clients, without server set-up or maintenance. It makes managing data and event flow within your application simple.
 
 Iron has partnered with Heroku to make using both services together even easier.

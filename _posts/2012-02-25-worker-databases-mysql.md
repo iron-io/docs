@@ -9,8 +9,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Databases', '/databases']
   - ['MySQL', '/mysql']
-layout: default
+layout: post
 section: worker
 ---
-
-## Getting started on MySQL

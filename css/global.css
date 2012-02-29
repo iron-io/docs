@@ -1,4 +1,3 @@
-
 /*--------------------------------- CONTAINER OVERRIDES (Global) ------------------------------------*/
 
 .content-container {
@@ -10,7 +9,6 @@
   text-decoration: underline;
   color: #035CA6;
 }
-
 
 .content-container {
   min-height: 500px;
@@ -42,8 +40,6 @@
   margin: 0;
 }
 
-
-
 /*--------------------------------- FORMS ------------------------------------*/
 
 :active, :focus,
@@ -68,8 +64,6 @@ input:-moz-placeholder {
   color: #bbb;
 }
 
-
-
 /*--------------------------------- SIDE MENU ------------------------------------*/
 
 #sidemenu {
@@ -81,7 +75,6 @@ input:-moz-placeholder {
   text-decoration: none;
 }
 
-
 #sidemenu ul {
   list-style-type: none;
   padding: 0 0 0 12px;
@@ -91,10 +84,6 @@ input:-moz-placeholder {
 #sidemenu ul li a {
   font-size: 14px;
 }
-
-
-
-
 
 /*--------------------------------- BREAD CRUMB ------------------------------------*/
 
@@ -118,9 +107,6 @@ ul#breadcrumbs li {
   color: #444;
   border-bottom: 1px dotted;
 }
-
-
-
 
 /*--------------------------------- SIDE MENU ------------------------------------*/
 
@@ -156,12 +142,7 @@ ul#breadcrumbs li {
   font-weight: bold;
 }
 
-
-
-
-
-
-/*--------------------------------- NOT CATEGORIZED YET ------------------------------------*/
+/*--------------------------------- MISC ------------------------------------*/
 
 a.next_item {
   font-size: 18px;
@@ -171,14 +152,14 @@ a.next_item {
 }
 
 a.tag {
-    background-color: #41A3D8;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 18px 18px 18px 18px;
-    color: #FFFFFF;
-    font-size: 14px;
-    margin: 0 2px;
-    padding: 4px 10px 2px;
-    text-decoration: none;
+  background-color: #41A3D8;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 18px 18px 18px 18px;
+  color: #FFFFFF;
+  font-size: 14px;
+  margin: 0 2px;
+  padding: 4px 10px 2px;
+  text-decoration: none;
 }
 
 #q {
@@ -200,4 +181,9 @@ a.tag {
 #q:focus {
   border-color: rgb(51, 163, 242);
   background: rgb(245, 251, 255);
+}
+
+a.language-switcher.selected {
+  color: #000000;
+  text-decoration: none;
 }

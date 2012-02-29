@@ -13,5 +13,5 @@ The getting started section is a selection of tutorials intended to get you up a
 For more advanced tutorials, visit the [articles](/mq/articles) section of the devcenter.
 
 
-<a href="/mq/start/first_queue" class="next_item">Your first queue --></a><br clear="all" />
+<a href="/mq/start/first-queue" class="next_item">Your first queue --></a><br clear="all" />
 

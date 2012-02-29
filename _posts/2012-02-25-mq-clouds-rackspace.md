@@ -1,6 +1,6 @@
 ---
 permalink: /mq/articles/clouds/rackspace
-title: Running your queues on Rackspace
+title: Running your Queues on Rackspace
 categories:
  - mq
  - articles
@@ -9,11 +9,9 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Clouds', '/clouds']
   - ['Rackspace', '/rackspace']
-layout: default
+layout: post
 section: mq
 ---
-
-## Running your queues on Rackspace
 
 When putting messages into the IronMQ service, by default they will go into our IronMQ service on AWS. You
 can also send messages into our Rackspace environment by changing the host inside your configuration settings.
