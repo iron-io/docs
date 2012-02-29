@@ -1,99 +1,238 @@
 Running a worker involves four major steps:
 
-1. [Creating the Worker](#creating_the_worker)
-3. [Queuing the Worker](#queuing_the_worker)
-4. [Checking the status of the worker](#checking_the_status_of_the_worker)
+1. [Creating Your Worker](#creating_your_worker)
+2. [Queuing Your Worker](#queuing_your_worker)
+3. [Checking the Status of Your Worker](#checking_the_status_of_your_worker)
 
-## Creating the Worker
+## Creating Your Worker
 
-Worker creation is about as simple as it gets: you just write the script you want executed.
+Worker creation is about as simple as it gets: you just write the script you want executed and a runner to execute the script.
 
-### Writing the Script
+### Writing Your Script
 
 You should never assume anything is installed in the IronWorker runtime. That means anything your script needs in terms of classes or libraries should be zipped and uploaded with it. It also means only a handful of common Linux executables are available. You can find more about the runtime [here](/worker/reference/environment). The best way to make sure your worker will run is to create a directory for it and as you add dependencies, add those files to the directory and import them from that directory.
 
 Here's a pretty basic worker script:
 
 {% include language-switcher.html %}
-{% include worker/start/first-worker/php/worker-no-payload.md %}
-{% include worker/start/first-worker/python/worker-no-payload.md %}
+{% highlight ruby %}
+require 'iron_worker'
+require 'json'
+
+class FibonacciWorker < IronWorker::Base
+
+  attr_accessor :max
+
+  def run
+    values = Array.new
+    num1 = 0
+    num2 = 0
+    nextNum = 1
+    while nextNum < max
+      num1 = num2
+      num2 = nextNum
+      nextNum = num1 + num2
+      values << num2
+    end
+    log "MAGICALSTDOUTSEPARATOR#{values.to_json}MAGICALSTDOUTSEPARATOR"
+  end
+end
+{% endhighlight %}
 
 As you can see, that script calculates the Fibonacci sequence up to a maximum number. The worker finishes by outputting a JSON-encoded array of the Fibonacci sequence to STDOUT, surrounded by <span class="fixed-width">MAGICALSTDOUTSEPARATOR</span>. The reasons for this will be explained at the end.
 
-You can test that code by putting it in a file ("fibonacci.<span class="language extension">py</span>", for example), and then calling <span class="fixed-width"><span class="language command">python</span> fibonacci.<span class="language extension">py</span></span>.
+Save that script to a file ("fibonacci.<span class="language extension">rb</span>", for example), and we'll walk through testing your worker.
 
-### Using the Payload
+### Testing Your Worker
 
-The payload parameter is the best place for specifying arguments for you worker, things that will change between runs. For this worker, that could be the <span class="fixed-width">max</span> variable we created earlier: what if we want the worker to calculate up to 100 on one run, and up to 100000 on the next? With the payload, we can do that.
+Testing your workers on your local machine will help you avoid some errors when you upload them to the cloud. To test your worker, you just need to write a script that will execute it.
 
-First, we need to modify our script to take advantage of the payload:
+The first thing we need to do is instantiate the IronWorker library. This is done as follows:
 
 {% include language-switcher.html %}
-{% include worker/start/first-worker/php/worker.md %}
-{% include worker/start/first-worker/python/worker.md %}
+{% highlight ruby %}
+config_data = YAML.load_file('config.yml')
 
-To test it, create a <span class="fixed-width">payload.json</span> file in the same directory your worker script resides in. The contents of the file should look like this:
-
-{% highlight js %}
-{
-  "max": 1000
-}
+IronWorker.configure do |config|
+  config.token = config_data["iron_worker"]["token"]
+  config.project_id = config_data["iron_worker"]["project_id"]
+end
 {% endhighlight %}
 
-Now call <span class="fixed-width"><span class="language command">python</span> fibonacci.<span class="language extension">py</span> -payload=payload.json</span>, and your script will read the payload and override its default max value.
+This just pulls your IronWorker credentials from a YAML configuration file to instantiate the library. The config.yml file looks like this:
 
-Now that we have the script written, we need to upload it to IronWorker.
+{% highlight yaml %}
+iron_worker:
+    token: INSERT TOKEN HERE
+    project_id: INSERT PROJECT_ID HERE
+{% endhighlight %}
 
-## Queuing the Worker
+You can find your <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> on [your HUD](https://hud.iron.io). Just log in, and you'll find the <span class="fixed-width">token</span> under "[API Tokens](https://hud.iron.io/tokens)" on your account page. The <span class="fixed-width">project_id</span> is found on the Projects page.
 
-Queuing a task is pretty trivial, once the code is uploaded. It consists of a single library call:
-
-{% include language-switcher.html %}
-{% include worker/start/first-worker/php/queue-task.md %}
-{% include worker/start/first-worker/python/queue-task.md %}
-
-The <span class="fixed-width">name</span> parameter is just the name of the worker you want to give the task to. The <span class="fixed-width">payload</span> parameter is just a dict of the payload data you want to pass to the task. Remember payload.json back when we were writing the Fibonacci script? This is where that data comes from. But rather than hand-writing JSON to a file, you just specify a dict and IronWorker takes care of the rest. If your worker doesn't need a payload, you can just pass <span class="fixed-width">None</span> for payload, or leave it off entirely.
-
-The return is the response, containing relevant information on the task. You should hang on to that (sessions, cookies, database, memcached... whatever floats your boat for data retention) to check how the task is progressing (which we'll cover in the next part).
-
-Here's an example run script. Just save it as "run.<span class="language extension">py</span>", then execute <span class="fixed-width"><span class="language command">python</span> run.<span class="language extension">py</span></span>:
+You can also simply insert your configuration values, though it's not recommended (nobody likes having their credentials accidentally end up in a repository). Here's how that would look:
 
 {% include language-switcher.html %}
-{% include worker/start/first-worker/php/run.md %}
-{% include worker/start/first-worker/python/run.md %}
+{% highlight ruby %}
+IronWorker.configure do |config|
+  config.token = INSERT TOKEN HERE
+  config.project_id = INSERT PROJECT_ID HERE
+end
+{% endhighlight %}
 
-The script will upload a task to your worker, then print out the task information so you can check on it. If you want to change the max variable, you can run it as <span class="fixed-width"><span class="language command">python</span> run.<span class="language extension">py</span> --max=9000</span> or whatever value you like.
-
-## Checking the status of the worker
-
-Now that we've got our code on IronWorker and we've got it running, it would help to know the status of our worker. Has it finished that job yet? Fortunately, there's a simple way to do this.
-
-{% include language-switcher.html %}
-{% include worker/start/first-worker/php/get-task-details.md %}
-{% include worker/start/first-worker/python/get-task-details.md %}
-
-Once again, <span class="fixed-width">worker</span> is just the library configured with a <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span>. <span class="fixed-width">task</span> is just the task information that was returned when we queued the task--it's a <span class="fixed-width">dict</span> of information, the specifics of which you can find [here](/worker/reference/api/#queue_a_task). <span class="fixed-width">status</span> will be a string like "complete", "running", "queued", or "cancelled". <span class="fixed-width">details</span> is an object of all the details about the task from the [API](/worker/reference/api/#get_info_about_a_task).
-
-Here's a sample script that draws the task ID out of the --task option:
+Now that we have the library configured we can run our code. Here's how:
 
 {% include language-switcher.html %}
-{% include worker/start/first-worker/php/check-task.md %}
-{% include worker/start/first-worker/python/check-task.md %}
+{% highlight ruby %}
+worker = FibonacciWorker.new
+worker.max = 1000
+worker.run_local
+{% endhighlight %}
 
-Save the script as checkTask.<span class="language extension">py</span>, then run <span class="fixed-width"><span class="language command">python</span> checkTask.<span class="language extension">py</span> --task="INSERT_TASK_ID"</span>, substituting the task ID that <span class="fixed-width">run.<span class="language extension">py</span></span> echoed to STDOUT. It will tell you the status of the task.
+We just instantiate a new worker from our script, set its <span class="fixed-width">max</span> value, and call <span class="fixed-width">run_local</span> on it.
+
+Here's the entire script:
+
+{% include language-switcher.html %}
+{% highlight ruby %}
+require 'iron_worker'
+require_relative 'fibonacci.rb'
+
+IronWorker.configure do |config|
+  config.token = 'INSERT TOKEN HERE'
+  config.project_id = 'INSERT PROJECT_ID HERE'
+end
+
+worker = FibonacciWorker.new
+worker.max = 1000
+worker.run_local
+{% endhighlight %}
+
+To run, just save the script as "run.<span class="language extension">rb</span>" in the same directory as fibonacci.<span class="language extension">rb</span>, then call <span class="fixed-width"><span class="language command">ruby</span> run.<span class="language extension">rb</span></span>.
+
+## Queuing Your Worker
+
+Queuing the worker to run on Iron's infrastructure is trivial, once the worker is running on your machine. It consists of changing a single line of our <span class="fixed-width">run.<span class="language extension">rb</span></span> script:
+
+{% include language-switcher.html %}
+{% highlight ruby %}
+require 'iron_worker'
+require_relative 'fibonacci.rb'
+
+IronWorker.configure do |config|
+  config.token = 'INSERT TOKEN HERE'
+  config.project_id = 'INSERT PROJECT_ID HERE'
+end
+
+worker = FibonacciWorker.new
+worker.max = 1000
+#worker.run_local
+puts "#{worker.queue}"
+{% endhighlight %}
+
+The output is the response, containing relevant information on the task. You should hang on to that (sessions, cookies, database, memcached... whatever floats your boat for data retention) to check how the task is progressing (which we'll cover in the next part).
+
+The script will upload your worker (if it has changed) and queue up a task, then print out the task information so you can check on it. 
+
+## Checking the Status of Your Worker
+
+Now that we've got our code on IronWorker and we've got it running, it would help to know the status of our worker. Has it finished that job yet? Fortunately, there are two simple ways to do this.
+
+The first way to check the status of the worker can only be used when you have access to the <span class="fixed-width">worker</span> variable that queued the task. Here's a modification of <span class="fixed-width">run.<span class="language extension">rb</span></span> that prints out the status of the task, instead of the response to the queuing operation:
+
+{% include language-switcher.html %}
+{% highlight ruby %}
+require 'iron_worker'
+require_relative 'fibonacci.rb'
+
+IronWorker.configure do |config|
+  config.token = 'INSERT TOKEN HERE'
+  config.project_id = 'INSERT PROJECT_ID HERE'
+end
+
+worker = FibonacciWorker.new
+worker.max = 1000
+worker.queue
+puts "Worker is #{worker.status['status']}"
+{% endhighlight %}
+
+You can save that script as "inline-status.<span class="language extension">rb</span>" and run it with "<span class="fixed-width"><span class="language command">ruby</span> inline-status.<span class="language extension">rb</span></span>".
+
+Of course, in some situations, you'll have cause to check a task's status entirely independent from queuing it, meaning you won't have access to the variable you used to queue it. In these cases, you can use the task ID to check the status of the task.
+
+You can get the task ID from the output of run.<span class="language extension">rb</span>. To make it easier, we'll modify run.<span class="language extension">rb</span> to return only the task ID:
+
+{% include language-switcher.html %}
+{% highlight ruby %}
+require 'iron_worker'
+require_relative 'fibonacci.rb'
+
+IronWorker.configure do |config|
+  config.token = 'INSERT TOKEN HERE'
+  config.project_id = 'INSERT PROJECT_ID HERE'
+end
+
+worker = FibonacciWorker.new
+worker.max = 1000
+worker.queue
+puts "#{worker.task_id}"
+{% endhighlight %}
+
+Save this modified run.<span class="language extension">rb</span> and run it to get the task ID.
+
+Now that we have the task ID, it's time to get the status of the task. The library provides a handy call for this:
+
+{% include language-switcher.html %}
+{% highlight ruby %}
+task = IronWorker.service.status(TASK_ID)
+{% endhighlight %}
+
+Here's a script that accepts the task ID through a command line argument and outputs its status:
+
+{% include language-switcher.html %}
+{% highlight ruby %}
+require 'iron_worker'
+
+IronWorker.configure do |config|
+  config.token = 'INSERT TOKEN HERE'
+  config.project_id = 'INSERT PROJECT_ID HERE'
+end
+
+puts "Worker is #{IronWorker.service.status(ARGV.first)["status"]}"
+{% endhighlight %}
+
+Again, just insert your auth credentials in the configure block, then call the script with <span class="fixed-width"><span class="language command">ruby</span> run.<span class="language extension">rb</span> TASK_ID</span>", substituting in a task ID for TASK_ID. The output will be a sentence telling you the status of the task.
 
 But how do we get the sequence we generated? Well, remember when we printed it surrounded by <span class="fixed-width">MAGICALSTDOUTSEPARATOR</span>? We're going to fetch the log, find the sequence, and print it. We needed to surround it with a unique string in case something else decided to print to STDOUT, dirtying our logs.
 
-Getting the log is pretty easy:
+### Retrieving Your Logs
+
+Getting the log is pretty easy. If you have access to that original <span class="fixed-width">worker</span> variable, like in inline-status.<span class="language extension">rb</span>, you can just use the following:
 
 {% include language-switcher.html %}
-{% include worker/start/first-worker/php/get-log.md %}
-{% include worker/start/first-worker/python/get-log.md %}
+{% highlight ruby %}
+log = worker.get_log
+{% endhighlight %}
 
-As usual, <span class="fixed-width">worker</span> is just the library, configured with your <span class="fixed-width">token</span> and <span class="fixed-width">project_id</span>. <span class="fixed-width">task_id</span> is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, use parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
+If you need to separate queuing the worker and getting its log, as is often the case, you can get the log through the task ID, just like you did with the worker's status:
 
 {% include language-switcher.html %}
-{% include worker/start/first-worker/php/log-script.md %}
-{% include worker/start/first-worker/python/log-script.md %}
+{% highlight ruby %}
+log = IronWorker.service.log(TASK_ID)
+{% endhighlight %}
 
-Save the script as "getLog.<span class="language extension">py</span>" and run <span class="fixed-width"><span class="language command">python</span> getLog.<span class="language extension">py</span> --task="INSERT_TASK_ID"</span>, again inserting a task ID, and you'll see the Fibonacci sequence printed out.
+Here's a script that accepts the task ID through a command line argument and outputs the Fibonacci sequence the worker came up with. You'll notice we're just splitting out the <span class="fixed-width">MAGICALSTDOUTSEPARATOR</span> strings, so we don't get any actual log information in the middle of our sequence.
+
+{% include language-switcher.html %}
+{% highlight ruby %}
+require 'iron_worker'
+
+IronWorker.configure do |config|
+  config.token = 'INSERT TOKEN HERE'
+  config.project_id = 'INSERT PROJECT_ID HERE'
+end
+
+log = IronWorker.service.log(ARGV.first).split("MAGICALSTDOUTSEPARATOR")
+puts log[1].inspect
+{% endhighlight %}
+
+Save the script as "sequence.<span class="language extension">rb</span>" and run <span class="fixed-width"><span class="language command">ruby</span> sequence.<span class="language extension">rb</span> TASK_ID"</span>, again substituting a task ID, and you'll see the Fibonacci sequence printed out.

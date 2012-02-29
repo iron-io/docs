@@ -3,7 +3,7 @@ Running a worker involves four major steps:
 1. [Creating the Worker](#creating_the_worker)
 2. [Uploading the Worker](#uploading_the_worker)
 3. [Queuing a Task](#queuing_a_task)
-4. [Checking the status of the worker](#checking_the_status_of_the_worker)
+4. [Checking the Status of the Worker](#checking_the_status_of_the_worker)
 
 ## Creating the Worker
 
@@ -129,7 +129,7 @@ Here's an example run script. Just save it as "run.<span class="language extensi
 
 The script will upload a task to your worker, then print out the task information so you can check on it. If you want to change the max variable, you can run it as <span class="fixed-width"><span class="language command">python</span> run.<span class="language extension">py</span> --max=9000</span> or whatever value you like.
 
-## Checking the status of the worker
+## Checking the Status of the Worker
 
 Now that we've got our code on IronWorker and we've got it running, it would help to know the status of our worker. Has it finished that job yet? Fortunately, there's a simple way to do this.
 
