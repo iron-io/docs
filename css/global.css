@@ -124,6 +124,7 @@ a.tag {
 #sidemenu ul li {
   display: block;
   font-size: 14px;
+  margin: 0;
 }
 
 #sidemenu ul li a {
