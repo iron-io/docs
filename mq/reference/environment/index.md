@@ -56,8 +56,6 @@ The message structure is flexible and straight-forward. Messages can be variable
    
 
 ### Message Constraints
-The basic message handling operation is put-get-delete. Messages are put on the queue by senders. The messages can have delays associated with them. If included, the message is not made available on the queue until the delay is up (default is 0 or no delay). Receivers get one or more messages (up to 100). Once the receive is done processing a message, it deletes it. If a message is not deleted prior to the timeout (default 60sec), it is put back on the queue. Messages on the queue will expire after a certain amount of time (default is 7 days).
-
 <table class="reference">
 <tr><th style="width: 16%;">Message Var</th><th style="width: 15%;">Default</th><th style="width: 15%;">Maximum</th><th style="width: 54%;">Notes</th></tr>
 <tr><td>Message Size</td><td>--</td><td>64KB</td><td>Includes header (token, delay, timeout, expiration).</td></tr>
@@ -67,4 +65,5 @@ The basic message handling operation is put-get-delete. Messages are put on the 
 <tr><td>Messages per Get</td><td>1</td><td>100msg</td><td>One or more messages can be handled at a time.</td></tr>
 </table>
 
+The basic message handling operation is put-get-delete. Messages are put on the queue by senders. The messages can have delays associated with them. If included, the message is not made available on the queue until the delay is up (default is 0 or no delay). Receivers get one or more messages (up to 100). Once the receive is done processing a message, it deletes it. If a message is not deleted prior to the timeout (default 60sec), it is put back on the queue. Messages on the queue will expire after a certain amount of time (default is 7 days).
 
