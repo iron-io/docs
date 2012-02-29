@@ -1,19 +1,5 @@
-/*-----------------------------------
-  style
------------------------------------*/
 
-
-:active, :focus,
-input:active, input:focus {
-  -moz-outline-style: none !important;
-  outline: none !important;
-}
-
-input[type="text"]:focus,
-textarea:focus {
-  border-color: rgb(51, 163, 242);
-  background: rgb(245, 251, 255);
-}
+/*--------------------------------- CONTAINER OVERRIDES (Global) ------------------------------------*/
 
 .content-container {
   font-size: 14px;
@@ -25,19 +11,6 @@ textarea:focus {
   color: #035CA6;
 }
 
-#sidemenu a, #sidemenu a:hover {
-  text-decoration: none;
-}
-
-input::-webkit-input-placeholder {
-  color: #bbb;
-  font-weight: lighter;
-  font-style: italic;
-}
-
-input:-moz-placeholder {
-  color: #bbb;
-}
 
 .content-container {
   min-height: 500px;
@@ -69,10 +42,45 @@ input:-moz-placeholder {
   margin: 0;
 }
 
+
+
+/*--------------------------------- FORMS ------------------------------------*/
+
+:active, :focus,
+input:active, input:focus {
+  -moz-outline-style: none !important;
+  outline: none !important;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: rgb(51, 163, 242);
+  background: rgb(245, 251, 255);
+}
+
+input::-webkit-input-placeholder {
+  color: #bbb;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+input:-moz-placeholder {
+  color: #bbb;
+}
+
+
+
+/*--------------------------------- SIDE MENU ------------------------------------*/
+
 #sidemenu {
   width: 240px;
   float: left;
 }
+
+#sidemenu a, #sidemenu a:hover {
+  text-decoration: none;
+}
+
 
 #sidemenu ul {
   list-style-type: none;
@@ -83,6 +91,12 @@ input:-moz-placeholder {
 #sidemenu ul li a {
   font-size: 14px;
 }
+
+
+
+
+
+/*--------------------------------- BREAD CRUMB ------------------------------------*/
 
 ul#breadcrumbs {
   margin: 0 0 30px 0;
@@ -98,6 +112,56 @@ ul#breadcrumbs li {
   display: inline;
   color: #999;
 }
+
+#breadcrumbs a {
+  text-decoration: none;
+  color: #444;
+  border-bottom: 1px dotted;
+}
+
+
+
+
+/*--------------------------------- SIDE MENU ------------------------------------*/
+
+#sidemenu h4 {
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+#sidemenu ul {
+  margin: 0 0 10px 17px;
+  padding: 0;
+}
+
+#sidemenu ul li {
+  display: block;
+  font-size: 14px;
+}
+
+#sidemenu ul li a {
+  font-size: 14px;
+  display: inline-block;
+}
+
+#sidemenu form {
+  margin: 0 0 40px;
+}
+
+#sidemenu a.selected {
+  color: #000000;
+  background-color: #FAF9AF;
+  font-weight: bold;
+}
+
+
+
+
+
+
+/*--------------------------------- NOT CATEGORIZED YET ------------------------------------*/
 
 a.next_item {
   font-size: 18px;
@@ -127,7 +191,7 @@ a.tag {
   position: relative;
   display: block;
   overflow: visible;
-  
+
   background: -webkit-linear-gradient(#F8F8F8, white 50%);
   background: -moz-linear-gradient(#F8F8F8, white 50%);
   background: -ms-linear-gradient(#F8F8F8, white 50%);
@@ -137,36 +201,4 @@ a.tag {
 #q:focus {
   border-color: rgb(51, 163, 242);
   background: rgb(245, 251, 255);
-}
-
-#sidemenu h4 {
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0 0 5px;
-  font-size: 16px;
-}
-
-#sidemenu ul {
-  margin: 0 0 10px 17px;
-  padding: 0;
-}
-
-#sidemenu ul li {
-  display: block;
-  font-size: 14px;
-}
-
-#sidemenu ul li a {
-  font-size: 14px;
-  display: inline-block;
-}
-
-#sidemenu form {
-  margin: 0 0 40px;
-}
-
-#breadcrumbs a {
-  text-decoration: none;
-  color: #444;
-  border-bottom: 1px dotted;
 }
