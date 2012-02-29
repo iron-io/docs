@@ -212,4 +212,10 @@ a.tag {
   border-radius: 3px;
 }
 
+.content-container .language-switcher.selected {
+  font-weight: bold !important;
+  text-decoration: none;
+  color: #363636;
+  cursor: default;
+}
 
