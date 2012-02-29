@@ -2,11 +2,9 @@ choose = function(extension, command, name) {
     $(".language.extension").text(extension);
     $(".language.command").text(command);
     for(i in languages) {
-      $("code."+languages[i]["name"]).parent().parent().hide();
       $("div."+languages[i]["name"]).hide();
       $("a.language-switcher."+languages[i]["name"]).removeClass("selected");
     }
-    $("code."+name).parent().parent().show();
     $("div."+name).show();
     $("a.language-switcher."+name).addClass("selected");
 };
