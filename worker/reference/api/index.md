@@ -283,7 +283,9 @@ Sample:
 
 #### Endpoint
 
-GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>
+</div>
 
 #### URL Parameters
 
@@ -312,7 +314,9 @@ Sample:
 
 #### Endpoint
 
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>
+<div class="grey-box">
+    DELETE /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>
+</div>
 
 #### URL Parameters
 
@@ -334,7 +338,9 @@ Sample:
 
 #### Endpoint
 
-GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>/download
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>/download
+</div>
 
 #### URL Parameters
 
@@ -353,7 +359,9 @@ The response will be a zip file containing your code package. The response heade
 
 #### Endpoint
 
-GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>/revisions
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>/revisions
+</div>
 
 #### URL Parameters
 
@@ -465,7 +473,9 @@ Tasks have timeouts associated with them that specify the amount of time (in sec
 
 #### Endpoint
 
+<div class="grey-box">
 GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
+</div>
 
 #### URL Parameters
 
@@ -508,7 +518,9 @@ Sample:
 
 #### Endpoint
 
-POST /projects/<span class="variable project_id">{Project ID}</span>/tasks
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/tasks
+</div>
 
 #### URL Parameters
 
@@ -588,7 +600,9 @@ Sample:
 
 #### Endpoint
 
-GET /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>
+</div>
 
 #### URL Parameters
 
@@ -620,7 +634,9 @@ Sample:
 
 #### Endpoint
 
-GET /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/log
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/log
+</div>
 
 #### URL Parameters
 
@@ -638,7 +654,9 @@ Hello World!
 
 #### Endpoint
 
-POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/cancel
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/cancel
+</div>
 
 #### URL Parameters
 
@@ -660,7 +678,9 @@ Sample:
 
 #### Endpoint
 
-POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/progress
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/progress
+</div>
 
 #### URL Parameters
 
@@ -704,7 +724,9 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 
 #### Endpoint
 
-GET /projects/<span class="variable project_id">{Project ID}</span>/schedules
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/schedules
+</div>
 
 #### URL Parameters
 
@@ -746,7 +768,9 @@ Sample:
 
 #### Endpoint
 
-POST /projects/<span class="variable project_id">{Project ID}</span>/schedules
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/schedules
+</div>
 
 #### URL Parameters
 
@@ -804,7 +828,9 @@ Sample:
 
 #### Endpoint
 
-GET /projects/<span class="variable project_id">{Project ID}</span>/schedules/<span class="variable schedule_id">{Schedule ID}</span>
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/schedules/<span class="variable schedule_id">{Schedule ID}</span>
+</div>
 
 #### URL Parameters
 
@@ -839,7 +865,9 @@ Sample:
 
 #### Endpoint
 
-POST /projects/<span class="variable project_id">{Project ID}</span>/schedules/<span class="variable schedule_id">{Schedule ID}</span>/cancel
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/schedules/<span class="variable schedule_id">{Schedule ID}</span>/cancel
+</div>
 
 #### URL Parameters
 

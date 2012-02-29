@@ -7,50 +7,6 @@ breadcrumbs:
   - ['REST/HTTP API', '/api']
 ---
 
-<style type="text/css">
-.content table.reference {
-font-size: small;
-width: 100%;
-}
-
-.content table.reference td {
-padding: 2px 7px;
-text-align: left;
-}
-
-.content table.reference th {
-text-align: left;
-border-bottom: 1px solid #000;
-}
-
-.variable {
-font-style: italic;
-}
-
-.variable.project_id {
-color: red;
-}
-
-.variable.queue_name, .variable.message_id {
-color: blue;
-}
-
-.content h4 {
-padding: 5px 0px 0px 0px !important;
-margin-bottom: -10px !important;
-}
-
-.content h3 {
-padding: 5px 0px;
-margin: 0px;
-}
-
-.content li > p {
-margin: 0px;
-}
-
-</style>
-
 <h1>REST/HTTP API</h1>
 
 IronMQ provides a RESTful HTTP API to allow you to interact programmatically with our service and your queues.
@@ -58,12 +14,16 @@ IronMQ provides a RESTful HTTP API to allow you to interact programmatically wit
 ## Endpoints
 
 <table class="reference">
-<tr><th style="width: 57%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td><td>GET</td><td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>GET</td><td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_a_message_to_a_queue" title="Add a Message to a Queue">Add a Message to a Queue</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_a_message_from_a_queue" title="Get a Message from a Queue">Get a Message from a Queue</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
+  <thead>
+    <tr><th style="width: 57%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td><td>GET</td><td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>GET</td><td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_a_message_to_a_queue" title="Add a Message to a Queue">Add a Message to a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_a_message_from_a_queue" title="Get a Message from a Queue">Get a Message from a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
+  </tbody>
 </table>
 
 ## Authentication
@@ -127,7 +87,9 @@ Get a list of all queues in a project. 100 queues are listed at a time. To see m
 
 ### Endpoint
 
+<div class="grey-box">
 GET /projects/<span class="variable project_id">{Project ID}</span>/queues
+</div>
 
 ### Parameters
 
@@ -155,7 +117,9 @@ Get general information about the queue.
 
 ### Endpoint
 
+<div class="grey-box">
 GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>
+</div>
 
 ### Parameters
 
@@ -176,7 +140,9 @@ Push a message onto the queue.
 
 ### Endpoint
 
+<div class="grey-box">
 POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages
+</div>
 
 ### Parameters
 
@@ -231,7 +197,9 @@ Get/reserve a message from the queue. This will not be deleted, but will be rese
 
 ### Endpoint
 
+<div class="grey-box">
 GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages
+</div>
 
 ### Parameters
 
@@ -266,7 +234,9 @@ This will delete the message. Be sure you call this after you're done with a mes
 
 ### Endpoint
 
+<div class="grey-box">
 DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
+</div>
 
 ### Parameters
 

@@ -17,17 +17,20 @@ Learn how to authenticate, connect, and use the library below.</span></font></di
 <br />
 
 ### Connecting
+
+<div class="grey-box">
 <p>Host:<code>&nbsp;mq-aws-us-east-1.iron.io</code> (AWS)&nbsp;OR <code>mq-rackspace-dfw.iron.io</code> (Rackspace)</p>
 <p>Port:<code>&nbsp;11300<br>
 </code></p>
-<div><font size="2"><br>
-</font></div>
+</div>
 
 
 ### Authenticating
 <div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">Because IronMQ requires authentication, the first command you send must put a message with the contents:<br>
 <br>
-<code>oauth MY_TOKEN PROJECT_ID</code><br>
+<div class="grey-box">
+  <code>oauth MY_TOKEN PROJECT_ID</code>
+</div>
 </div>
 <div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px"><br>
 The DRAINING response will be returned if authentication fails or if any other command is sent before authentication.<br>

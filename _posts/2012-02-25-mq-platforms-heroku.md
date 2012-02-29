@@ -25,9 +25,11 @@ Iron has partnered with Heroku to make using both services together even easier.
 
 It's quick and easy to get IronMQ set up and running on Heroku. You just need to install the IronMQ add-on for Heroku. You can do this with the `heroku` command:
 
+<div class="grey-box">
     :::term
     $ heroku addons:add iron_mq:rust
     -----> Adding iron_mq to cold-winter-5462... done, v10 (free)
+</div>
 
 This will add the starter level add-on for IronMQ, which will let you test the add-on and play around a bit. There are [other levels](http://addons.heroku.com/iron_mq) of the add-on, as well.
 
@@ -35,10 +37,12 @@ This will add the starter level add-on for IronMQ, which will let you test the a
 
 Now that you've added the add-on, you need to retrieve your token and project ID. The token functions as a password, so please keep it secure! Each app has a different project ID. You can get the token and project ID by running the following command:
 
+<div class="grey-box">
     :::term
     $ heroku config | grep IRON
     IRON_MQ_PROJECT_ID => 123456789
     IRON_MQ_TOKEN      => aslkdjflaksuilaks
+</div>
 
 You can also get your token and project ID from the Iron.io HUD. To get to the Iron.io HUD, go to your apps panel for Heroku, choose your app, expand the add-ons drop-down, and click on IronMQ. This will bring you to the Iron.io HUD, where you can see your project ID and token listed.
 
@@ -48,26 +52,34 @@ IronMQ has clients for [a lot of languages](http://docs.iron.io/mq/clients), and
 
 We're going to need to install the Ruby gem, for development purposes:
 
+<div class="grey-box">
     :::term
     $ gem install iron_mq
     Fetching: iron_mq-1.4.0.gem (100%)
     Successfully installed iron_mq-1.4.0
+</div>
 
 Heroku automatically adds the token and project ID to your production environment variables. You need to take care of your development environment yourself, however. Simply add the following in `config/environments/development.rb`:
 
+<div class="grey-box">
     :::ruby
     ENV['IRON_MQ_TOKEN'] = 'YOUR TOKEN'
     ENV['IRON_MQ_PROJECT_ID'] = 'YOUR PROJECT ID'
+</div>
 
 If you’re building for Rails 3, add the following to your Gemfile:
 
+<div class="grey-box">
     :::ruby
     gem 'iron_mq'
+</div>
 
 If you’re building on Rails 2, add the following to your environment.rb file:
 
+<div class="grey-box">
     :::ruby
     config.gem 'iron_mq'
+</div>
 
 ## Basic Example
 
@@ -77,27 +89,35 @@ We're ready to start working with our message queue. We're going to build a samp
 
 To make life a little easier on ourselves, let's use the Twitter gem. Install it:
 
+<div class="grey-box">
     :::term
     $ gem install twitter
     Fetching: twitter-2.1.0.gem (100%)
     Successfully installed twitter-2.1.0
+</div>
 
 If you're building for Rails 3, add the following to your Gemfile:
 
+<div class="grey-box">
     :::ruby
     gem 'twitter'
+</div>
 
 If you're building for Rails 2, add the following to your environment.rb file:
 
+<div class="grey-box">
     :::ruby
     gem 'twitter'
+</div>
 
 Now that we have a convenient wrapper for the Twitter API, let's do a search. We're going to search for "IronMQ", but you could search for mentions of your company, your product, or your favourite cat video.
 
 Run the following command:
 
+<div class="grey-box">
     :::term
     $ rails generate controller tweets get view
+</div>
 
 Rails will generate a bunch of files for you, giving us a skeleton we can work in. Go ahead and open `app/controllers/tweets_controller.rb`. Modify it to look like this:
 

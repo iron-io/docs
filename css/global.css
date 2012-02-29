@@ -110,7 +110,6 @@ a.tag {
 }
 
 #sidemenu h4 {
-  text-transform: uppercase;
   padding: 0;
   margin: 0 0 5px;
   font-size: 16px;
@@ -235,5 +234,33 @@ a.tag {
   padding-bottom: 40px;
 }
 
+.content table.reference {
+  font-size: small;
+  width: 100%;
+}
 
+.content table.reference td {
+  padding: 2px 7px;
+  text-align: left;
+}
+
+.content table.reference th {
+  text-align: left;
+}
+
+.variable {
+  font-style: italic;
+}
+
+.variable.project_id {
+  color: red;
+}
+
+.variable.queue_name, .variable.message_id {
+  color: blue;
+}
+
+.content li > p {
+  margin: 0px;
+}
 
