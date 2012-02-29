@@ -35,6 +35,7 @@
 
 .content-container h3 {
   font-size: 18px;
+  border-bottom: 0;
 }
 
 
@@ -144,6 +145,58 @@ ul#breadcrumbs li {
   background-color: #FCFBC0;
   font-weight: bold;
 }
+
+
+
+
+/*--------------------------------- TABLES ------------------------------------*/
+
+.content table.reference {
+font-size: small;
+width: 100%;
+}
+
+.content table.reference td {
+padding: 2px 7px;
+text-align: left;
+}
+
+.content table.reference th {
+text-align: left;
+border-bottom: 1px solid #000;
+}
+
+.content table.reference_list {
+font-size: small;
+width: 100%;
+}
+
+.content table.reference_list td {
+padding: 2px 7px;
+text-align: center;
+}
+
+.content table.reference_list th {
+text-align: center;
+border-bottom: 1px solid #000;
+}
+
+
+.variable {
+font-style: italic;
+}
+
+.variable.project_id {
+color: red;
+}
+
+.variable.code_id, .variable.schedule_id, .variable.task_id {
+color: blue;
+}
+
+
+
+
 
 /*--------------------------------- MISC ------------------------------------*/
 

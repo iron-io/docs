@@ -1,12 +1,12 @@
 ---
-title: Getting Started
+title: Getting Started | Iron.io Dev Center
 layout: default
 section: mq
 breadcrumbs:
 - ['Getting Started', '/start']
 ---
 
-## Getting Started
+# Getting Started
 
 The getting started section is a selection of tutorials intended to get you up and running quickly on the IronMQ platform.
 

@@ -1,5 +1,5 @@
 ---
-title: Platform Basics
+title: Platform Basics | Iron.io Dev Center
 layout: default
 section: overview
 breadcrumbs:
@@ -7,4 +7,4 @@ breadcrumbs:
   - ['Platform', 'platform']
 ---
 
-## Platform Basics
+# Platform Basics

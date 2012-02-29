@@ -1,5 +1,5 @@
 ---
-title: Your First Worker
+title: Creating and Running your First Worker | Iron.io Dev Center
 layout: default
 section: worker
 breadcrumbs:
@@ -19,11 +19,12 @@ pre {
 overflow: auto;
 }
 </style>
+
+# Creating and Running your First Worker
+
 {% if page.languages %}
 {% include language-switcher-head.html %}
 {% endif %}
-
-## Creating and Running Your First Worker
 
 {% include language-switcher.html %}
 

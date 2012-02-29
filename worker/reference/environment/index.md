@@ -1,5 +1,5 @@
 ---
-title: IronWorker Environment
+title: IronWorker Environment | Iron.io Dev center
 layout: default
 section: worker
 breadcrumbs:
@@ -7,39 +7,7 @@ breadcrumbs:
   - ['Environment', '/environment']
 ---
 
-<style type="text/css">
-.content table.reference {
-font-size: small;
-width: 100%;
-}
-
-.content table.reference td {
-padding: 2px 7px;
-text-align: left;
-}
-
-.content table.reference th {
-text-align: left;
-border-bottom: 1px solid #000;
-}
-
-.content table.reference_list {
-font-size: small;
-width: 100%;
-}
-
-.content table.reference_list td {
-padding: 2px 7px;
-text-align: center;
-}
-
-.content table.reference_list th {
-text-align: center;
-border-bottom: 1px solid #000;
-}
-
-</style>
-## System Environment
+# IronWorker Environment
 
 ### Operating System
 

@@ -1,5 +1,5 @@
 ---
-title: Code Python
+title: Python and IronWorker | Iron.io Dev Center
 layout: default
 section: worker
 breadcrumbs:
@@ -7,7 +7,7 @@ breadcrumbs:
 - ['Python', '/python']
 ---
 
-<h2>IronWorker on Python</h2>
+# Python and IronWorker
 
 Our official Python client library: [https://github.com/iron-io/iron_worker_python](https://github.com/iron-io/iron_worker_python)
 

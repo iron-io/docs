@@ -1,12 +1,12 @@
 ---
-title: IronWorker
+title: IronWorker | Iron.io Dev Center
 layout: default
 section: worker
 ---
 
-Welcome to the IronWorker documentation. IronWorker is a massively scalable background processing system. [Read more](http://www.iron.io/products/worker).
+# IronWorker Documentation
 
-## Getting Started
+Welcome to the IronWorker documentation. IronWorker is a massively scalable background processing system. [Read more](http://www.iron.io/products/worker).
 
 To get started using Iron.io services, you need to sign up at Iron.io and get an OAuth2 token:
 

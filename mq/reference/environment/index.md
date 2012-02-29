@@ -1,5 +1,5 @@
 ---
-title: IronMQ Environment
+title: IronMQ Environment | Iron.io Dev Center
 layout: default
 section: mq
 breadcrumbs:
@@ -7,39 +7,7 @@ breadcrumbs:
   - ['System Environment', '/system']
 ---
 
-<style type="text/css">
-.content table.reference {
-font-size: small;
-width: 100%;
-}
-
-.content table.reference td {
-padding: 2px 7px;
-text-align: left;
-}
-
-.content table.reference th {
-text-align: left;
-border-bottom: 1px solid #000;
-}
-
-.content table.reference_list {
-font-size: small;
-width: 100%;
-}
-
-.content table.reference_list td {
-padding: 2px 7px;
-text-align: center;
-}
-
-.content table.reference_list th {
-text-align: center;
-border-bottom: 1px solid #000;
-}
-</style>
-
-## System Environment
+# System Environment
 
 ### Message Structure
 The message structure is flexible and straight-forward. Messages can be variable in size and can contain almost any text or data format.

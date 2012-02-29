@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Ruby and IronWorker | Iron.io Dev Center
 layout: default
 section: worker
 breadcrumbs:
@@ -7,7 +7,7 @@ breadcrumbs:
 - ['Ruby', '/ruby']
 ---
 
-<h2>IronWorker on Ruby</h2>
+# Ruby and IronWorker
 
 Our official Ruby client library: [https://github.com/iron-io/iron_worker_ruby](https://github.com/iron-io/iron_worker_ruby)
 

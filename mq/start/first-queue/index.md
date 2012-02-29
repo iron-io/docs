@@ -1,5 +1,5 @@
 ---
-title: Your first queues
+title: Your first queues | Iron.io Dev Center
 layout: default
 section: mq
 breadcrumbs:
@@ -7,7 +7,7 @@ breadcrumbs:
 - ['Getting Started', '/first_queue']
 ---
 
-## Setting up your first queues
+# Setting up your first queues
 
 ### Coming Soon!
 

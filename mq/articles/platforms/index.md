@@ -1,5 +1,5 @@
 ---
-title: IronMQ | Articles | Platforms
+title: Articles | Platforms | Iron.io Dev Center
 layout: default
 section: mq
 breadcrumbs:
@@ -7,7 +7,7 @@ breadcrumbs:
   - ['Clouds', '/platforms']
 ---
 
-<h2>Platforms</h2>
+<h1>Platforms</h1>
 
 <ul>
   {% for post in site.categories.platforms %}

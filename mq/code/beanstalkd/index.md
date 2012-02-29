@@ -1,5 +1,5 @@
 ---
-title: IronMQ Code
+title: Beanstalkd | Iron.io Dev Center
 layout: default
 section: mq
 breadcrumbs:
@@ -7,7 +7,7 @@ breadcrumbs:
   - ['Beanstalkd', '/beanstalkd']
 ---
 
-## Beanstalkd Support
+# Beanstalkd Support
 
 
 <div><font face="Arial, Verdana, sans-serif"><span style="line-height:21px">You can use any of the <a href="https://github.com/kr/beanstalkd/wiki/client-libraries">Beanstalkd clients</a>

@@ -1,5 +1,5 @@
 ---
-title: IronWorker | Articles | Common Use Cases
+title: Common Use Cases | Iron.io Dev Center
 layout: default
 section: worker
 breadcrumbs:
@@ -7,7 +7,7 @@ breadcrumbs:
   - ['Common Use Cases', '/usecases']
 ---
 
-<h2>Common Use Cases</h2>
+# Common Use Cases
 
 <ul>
   {% for post in site.categories.usecases %}

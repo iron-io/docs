@@ -1,12 +1,12 @@
 ---
-title: IronMQ System Environment
+title: IronMQ Reference | Iron.io Dev Center
 layout: default
 section: mq
 breadcrumbs:
   - ['Reference', '/reference']
 ---
 
-## Reference / REST/HTTP API
+# IronMQ Reference
 
 In this section you'll find our entire IronMQ REST/HTTP API specification as well as information about the system
 environment and contraints.

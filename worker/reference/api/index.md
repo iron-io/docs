@@ -1,5 +1,5 @@
 ---
-title: IronWorker REST/HTTP API
+title: IronWorker REST/HTTP API | Iron.io Dev Center
 layout: default
 section: worker
 breadcrumbs:
@@ -7,49 +7,7 @@ breadcrumbs:
   - ['REST/HTTP API', '/api']
 ---
 
-<style type="text/css">
-.content table.reference {
-font-size: small;
-width: 100%;
-}
-
-.content table.reference td {
-padding: 2px 7px;
-text-align: left;
-}
-
-.content table.reference th {
-text-align: left;
-border-bottom: 1px solid #000;
-}
-
-.variable {
-font-style: italic;
-}
-
-.variable.project_id {
-color: red;
-}
-
-.variable.code_id, .variable.schedule_id, .variable.task_id {
-color: blue;
-}
-
-.content h4 {
-padding: 5px 0px 0px 0px !important;
-margin-bottom: -10px !important;
-}
-
-.content h3 {
-padding: 5px 0px;
-margin: 0px;
-}
-
-.content li > p {
-margin: 0px;
-}
-
-</style>
+# IronWorker REST/HTTP API
 
 IronWorker provides a RESTful HTTP API to allow you to interact programmatically with our service and your workers.
 
