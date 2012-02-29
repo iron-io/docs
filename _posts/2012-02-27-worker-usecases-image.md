@@ -1,9 +1,6 @@
 ---
 permalink: /worker/articles/usecases/image_processing
 title: Image Processing with IronWorker
-tags:
-- blah
-- blah2
 categories:
  - worker
  - articles
