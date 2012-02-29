@@ -1,4 +1,4 @@
-{% highlight php %}
+<div class="php">{% highlight php %}
 <?php
 require("IronWorker.class.php");
 $opts = getopt("", array("max:"));
@@ -13,3 +13,4 @@ $task = $worker->postTask("FibWorker", array("max" => $max));
 echo $task_id."\n";
 ?>
 {% endhighlight %}
+</div>
