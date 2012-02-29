@@ -38,7 +38,6 @@
   border-bottom: 0;
 }
 
-
 /*--------------------------------- FORMS ------------------------------------*/
 
 :active, :focus,
@@ -76,17 +75,25 @@ input:-moz-placeholder {
 
 #sidemenu ul {
   list-style-type: none;
-  padding: 0 0 0 12px;
-  margin: 0;
+}
+
+#sidemenu ul li {
+  margin: 0 0 0 -16px;
 }
 
 #sidemenu ul li a {
+  padding: 0 0 0 16px; /* small highlighting hack */
   font-size: 14px;
 }
 
 #sidemenu h4 {
   padding: 20px 0 5px 0;
   margin: 0;
+}
+
+#sidemenu div.selected, #sidemenu div:hover {
+  background-color: #DDD;
+  width: 225px;
 }
 
 /*--------------------------------- BREAD CRUMB ------------------------------------*/
@@ -146,57 +153,49 @@ ul#breadcrumbs li {
   font-weight: bold;
 }
 
-
-
-
 /*--------------------------------- TABLES ------------------------------------*/
 
 .content table.reference {
-font-size: small;
-width: 100%;
+  font-size: small;
+  width: 100%;
 }
 
 .content table.reference td {
-padding: 2px 7px;
-text-align: left;
+  padding: 2px 7px;
+  text-align: left;
 }
 
 .content table.reference th {
-text-align: left;
-border-bottom: 1px solid #000;
+  text-align: left;
+  border-bottom: 1px solid #000;
 }
 
 .content table.reference_list {
-font-size: small;
-width: 100%;
+  font-size: small;
+  width: 100%;
 }
 
 .content table.reference_list td {
-padding: 2px 7px;
-text-align: center;
+  padding: 2px 7px;
+  text-align: center;
 }
 
 .content table.reference_list th {
-text-align: center;
-border-bottom: 1px solid #000;
+  text-align: center;
+  border-bottom: 1px solid #000;
 }
 
-
 .variable {
-font-style: italic;
+  font-style: italic;
 }
 
 .variable.project_id {
-color: red;
+  color: red;
 }
 
 .variable.code_id, .variable.schedule_id, .variable.task_id {
-color: blue;
+  color: blue;
 }
-
-
-
-
 
 /*--------------------------------- MISC ------------------------------------*/
 
