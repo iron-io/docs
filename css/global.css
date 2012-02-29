@@ -165,6 +165,7 @@ a.tag {
   margin: 1.8em 0 0.5em;
   padding: 0;
   border-bottom: 1px solid #CCC;
+  letter-spacing: 0;
 }
 
 .content-container h3 {
@@ -191,14 +192,20 @@ a.tag {
 
 .content-container table {
   border-collapse: collapse;
+  width: 100%;
+  border-bottom: 1px solid #DDD;
 }
 
 .content-container table thead {
   background: #EEE;
 }
 
-.content-container table tbody tr td {
-  //padding-top: 5px;
+.content-container table tbody tr td:first-child {
+  padding: 0 0 0 5px;
+}
+
+.content-container table tbody tr:nth-child(2n) {
+  background: #f9f9f9;
 }
 
 .content-container ul li {
@@ -212,10 +219,21 @@ a.tag {
   border-radius: 3px;
 }
 
+.content-container .grey-box {
+  background: #EEE;
+  padding: 5px 10px;
+}
+
 .content-container .language-switcher.selected {
   font-weight: bold !important;
   text-decoration: none;
   color: #363636;
   cursor: default;
 }
+
+.content {
+  padding-bottom: 40px;
+}
+
+
 
