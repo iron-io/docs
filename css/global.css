@@ -3,6 +3,7 @@
 .content-container {
   font-size: 14px;
   line-height: 1.6em;
+  min-height: 500px;
 }
 
 .content-container a, .content-container a:hover {
@@ -10,14 +11,10 @@
   color: #035CA6;
 }
 
-.content-container {
-  min-height: 500px;
-}
 
 .content-container h1, .content-container h2, .content-container h3 {
   border-bottom: 1px solid #CCC;
   padding: 0;
-  letter-spacing: -1px;
   margin: 1.2em 0 0.6em;
   float: none;
   text-shadow: none;
@@ -25,25 +22,11 @@
 }
 
 .content-container h1 {
-  margin: 0.5em 0 0.6em 0;
-  font-size: 28px;
-}
-
-.content-container h2 {
-  font-size: 24px;
-}
-
-.content-container h3 {
-  font-size: 18px;
-  border-bottom: 0;
-}
-
-.content-container h1 {
   float: none;
   font-size: 28px;
   text-shadow: none;
   padding: 0;
-  margin: 1em 0 0.5em;
+  margin: .5em 0 0.5em;
 }
 
 .content-container h2 {
