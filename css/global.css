@@ -25,7 +25,7 @@
 }
 
 .content-container h1 {
-  margin: 1em 0 0.6em;
+  margin: 0.5em 0 0.6em 0;
   font-size: 28px;
 }
 
@@ -37,7 +37,6 @@
   font-size: 18px;
   border-bottom: 0;
 }
-
 
 /*--------------------------------- FORMS ------------------------------------*/
 
@@ -72,21 +71,43 @@ input:-moz-placeholder {
 
 #sidemenu a, #sidemenu a:hover {
   text-decoration: none;
+  width: 200px;
+  display: block;
+  font-size: 14px;
+}
+
+#sidemenu a:hover {
+  background-color: #DDD;
+}
+
+#sidemenu ul li a {
+  padding: 0 0 0 16px;
+}
+
+#sidemenu a.selected {
+  color: #000000;
+  background-color: #DDD;
+  font-weight: bold;
+}
+
+#sidemenu h4 a, #sidemenu h4 a:hover{
+  font-size: 16px;
+  padding: 0 0 0 5px;
+  margin: 0;
+}
+
+#sidemenu h4 {
+  margin: 10px 0 3px 0;
 }
 
 #sidemenu ul {
   list-style-type: none;
-  padding: 0 0 0 12px;
+  padding: 0;
   margin: 0;
 }
 
-#sidemenu ul li a {
-  font-size: 14px;
-}
-
-#sidemenu h4 {
-  padding: 20px 0 5px 0;
-  margin: 0;
+#sidemenu form {
+  margin: 0 0 30px;
 }
 
 /*--------------------------------- BREAD CRUMB ------------------------------------*/
@@ -112,91 +133,49 @@ ul#breadcrumbs li {
   border-bottom: 1px dotted;
 }
 
-/*--------------------------------- SIDE MENU ------------------------------------*/
-
-#sidemenu h4 {
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0 0 5px;
-  font-size: 16px;
-}
-
-#sidemenu ul {
-  margin: 0 0 10px 17px;
-  padding: 0;
-}
-
-#sidemenu ul li {
-  display: block;
-  font-size: 14px;
-}
-
-#sidemenu ul li a {
-  font-size: 14px;
-  display: inline-block;
-}
-
-#sidemenu form {
-  margin: 0 0 40px;
-}
-
-#sidemenu a.selected {
-  color: #000000;
-  background-color: #FCFBC0;
-  font-weight: bold;
-}
-
-
-
-
 /*--------------------------------- TABLES ------------------------------------*/
 
 .content table.reference {
-font-size: small;
-width: 100%;
+  font-size: small;
+  width: 100%;
 }
 
 .content table.reference td {
-padding: 2px 7px;
-text-align: left;
+  padding: 2px 7px;
+  text-align: left;
 }
 
 .content table.reference th {
-text-align: left;
-border-bottom: 1px solid #000;
+  text-align: left;
+  border-bottom: 1px solid #000;
 }
 
 .content table.reference_list {
-font-size: small;
-width: 100%;
+  font-size: small;
+  width: 100%;
 }
 
 .content table.reference_list td {
-padding: 2px 7px;
-text-align: center;
+  padding: 2px 7px;
+  text-align: center;
 }
 
 .content table.reference_list th {
-text-align: center;
-border-bottom: 1px solid #000;
+  text-align: center;
+  border-bottom: 1px solid #000;
 }
 
-
 .variable {
-font-style: italic;
+  font-style: italic;
 }
 
 .variable.project_id {
-color: red;
+  color: red;
 }
 
 .variable.code_id, .variable.schedule_id, .variable.task_id {
-color: blue;
+  color: blue;
 }
-
-
-
-
 
 /*--------------------------------- MISC ------------------------------------*/
 

@@ -1,7 +1,8 @@
 Running a worker involves four major steps:
 
 1. [Creating the Worker](#creating_the_worker)
-3. [Queuing the Worker](#queuing_the_worker)
+2. [Uploading the Worker](#uploading_the_worker)
+3. [Queuing a Task](#queuing_a_task)
 4. [Checking the status of the worker](#checking_the_status_of_the_worker)
 
 ## Creating the Worker
@@ -44,7 +45,71 @@ Now call <span class="fixed-width"><span class="language command">python</span> 
 
 Now that we have the script written, we need to upload it to IronWorker.
 
-## Queuing the Worker
+## Uploading the Worker
+
+Uploading our worker to IronWorker will take another script. You can do this by hand using the [API calls](/worker/reference/api#upload_a_code_package), but it's far easier to just use a library, so that's what we're going to do.
+
+Uploading consists of two simple steps: packaging and uploading. Fortunately, the library makes both really simple.
+
+First, we're going to instantiate the library. This is done as follows:
+
+{% include language-switcher.html %}
+{% include worker/start/first-worker/php/instantiate-library.md %}
+{% include worker/start/first-worker/python/instantiate-library.md %}
+
+The config.ini file is a configuration file. It looks like this:
+
+{% highlight ini %}
+[iron_worker]
+token = INSERT_TOKEN_HERE
+project_id = INSERT_PROJECT_ID_HERE
+{% endhighlight %}
+
+You can find your <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> on [your HUD](https://hud.iron.io). Just log in, and you'll find the <span class="fixed-width">token</span> under "[API Tokens](https://hud.iron.io/tokens)" on your account page. The <span class="fixed-width">project_id</span> is found on the Projects page.
+
+You can also pass your configuration values in through named arguments:
+
+{% include language-switcher.html %}
+{% include worker/start/first-worker/php/instantiate-library-with-args.md %}
+{% include worker/start/first-worker/python/instantiate-library-with-args.md %}
+
+Now that we have the library configured, we need to package our code up to upload it. Fortunately, the library has a function that lets us do that:
+
+{% include language-switcher.html %}
+{% include worker/start/first-worker/php/zip-directory.md %}
+{% include worker/start/first-worker/python/zip-directory.md %}
+
+That <span class="fixed-width">directory</span> parameter is just the path to the directory you want to zip. Relative and absolute paths are both okay. The <span class="fixed-width">destination</span> parameter is the name you want the zip file to use. The <span class="fixed-width">overwrite</span> parameter is a boolean switch: if true, the packager will overwrite fileNameForZip.zip if it exists. If false and fileNameForZip.zip already exists, the packager will do nothing. The function returns true if the zip was created or false if creation failed.
+
+We don't need to upload a full directory, though--we just want to upload a single file. We still need to package that, but you don't need to separate it into its own directory. Just call this, instead:
+
+{% include language-switcher.html %}
+{% include worker/start/first-worker/php/zip-files.md %}
+{% include worker/start/first-worker/python/zip-files.md %}
+
+The <span class="fixed-width">base_dir</span> parameter is the base directory for files inside the zip. If you leave it blank, as the example above does, it defaults to the root directory of the zip. The <span class="fixed-width">files</span> parameter is an array of files to zip. These will all have the base directory prepended to them inside the zip. In our case, that means <span class="fixed-width">"" + "fibonacci.<span class="language extension">py</span>"</span>, which just yields <span class="fixed-width">"fibonacci.<span class="language extension">py</span>"</span>. The final two parameters are just the destination for the zip file and the boolean switch to overwrite the zip file if it exists, just like zipDirectory. This, again, returns true if the zip was created or false if creation failed.
+
+Now that we've packaged everything up, it's time to upload it to IronWorker. You can do this in a single library call:
+
+{% include language-switcher.html %}
+{% include worker/start/first-worker/php/post-code.md %}
+{% include worker/start/first-worker/python/post-code.md %}
+
+The <span class="fixed-width">runFilename</span> parameter is the filename in the zip you want the worker to execute when it runs. The <span class="fixed-width">zipFilename</span> parameter is the zip you want to upload. The <span class="fixed-width">name</span> parameter is a name for the worker that will help you find it on your HUD and will let you run the worker. The function returns a response from the server. If everything goes well, you'll see this:
+
+{% include language-switcher.html %}
+{% include worker/start/first-worker/php/post-code-response.md %}
+{% include worker/start/first-worker/python/post-code-response.md %}
+
+To pull it all together, here's the full upload script:
+
+{% include language-switcher.html %}
+{% include worker/start/first-worker/php/upload-worker.md %}
+{% include worker/start/first-worker/python/upload-worker.md %}
+
+To run, just save the script as "upload.<span class="language extension">py</span>" in the same directory as fibonacci.<span class="language extension">py</span>, then call <span class="fixed-width"><span class="language command">python</span> upload.<span class="language extension">py</span></span>.
+
+## Queuing a Task
 
 Queuing a task is pretty trivial, once the code is uploaded. It consists of a single library call:
 

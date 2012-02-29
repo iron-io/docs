@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/usecases/image_processing
-title: Image Processing with IronWorker
+title: Image Processing with IronWorker | Iron.io Dev Center
 tags:
 - blah
 - blah2
@@ -16,4 +16,6 @@ layout: post
 section: worker
 ---
 
-Test content
+# Image Processing with IronWorker
+
+### Coming Soon!

@@ -1,4 +1,4 @@
-{% highlight php %}
+<div class="php">{% highlight php %}
 <?php
 $max = 100;
 $values = array();
@@ -14,3 +14,4 @@ while($num2 <= $max) {
 echo "MAGICALSTDOUTSEPARATOR".json_encode($values)."MAGICALSTDOUTSEPARATOR";
 ?>
 {% endhighlight %}
+</div>

@@ -13,4 +13,4 @@ layout: default
 section: worker
 ---
 
-## Running your queues on Amazon AWS
+# Running your queues on Amazon AWS

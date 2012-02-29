@@ -1,4 +1,4 @@
-{% highlight python %}
+<div class="python">{% highlight python %}
 import argparse
 
 parser = argparse.ArgumentParser(description="Runs a FibWorker task to calculate Fibonacci.")
@@ -15,3 +15,4 @@ worker = IronWorker(token="INSERT TOKEN HERE", project_id="INSERT PROJECT_ID HER
 task = worker.postTask(name="FibWorker", payload={"max": max})
 print task
 {% endhighlight %}
+</div>

@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/appharbor
-title: Getting started on AppHarbor
+title: Getting started on AppHarbor | Iron.io Dev Center
 categories:
  - worker
  - articles
@@ -13,4 +13,6 @@ layout: default
 section: worker
 ---
 
-## Getting started on AppHarbor
+# Getting started on AppHarbor
+
+### Coming soon!

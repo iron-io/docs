@@ -1,4 +1,4 @@
-{% highlight php %}
+<div class="php">{% highlight php %}
 <?php
 require("IronWorker.class.php");
 
@@ -14,3 +14,4 @@ $sequence = json_decode($log);
 print_r($sequence);
 ?>
 {% endhighlight %}
+</div>
