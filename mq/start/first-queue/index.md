@@ -4,7 +4,7 @@ layout: default
 section: mq
 breadcrumbs:
 - ['Getting Started', '/start']
-- ['Getting Started', '/first_queue']
+- ['Your First Queue', '/first_queue']
 ---
 
 # Setting up your first queues

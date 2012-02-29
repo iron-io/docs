@@ -4,12 +4,12 @@
         <li><a href="/" title="Home">Home</a>
         {% if page.section %} » </li>
                 {% if page.section == "mq" %}
-                        <li><a href="/mq" title="IronMQ">IronMQ</a>
+                        <li><a {% if page.url == "/mq/index.html" %}class="selected"{% endif %} href="/mq" title="IronMQ">IronMQ</a>
                         {% unless numcrumbs == "0" %} » {% endunless %}
                         </li>
                 {% else %}
                         {% if page.section == "worker" %}
-                                <li><a href="/worker" title="IronWorker">IronWorker</a>
+                                <li><a {% if page.url == "/worker/index.html" %}class="selected"{% endif %} href="/worker" title="IronWorker">IronWorker</a>
                                 {% unless numcrumbs == "0" %} » {% endunless %}
                                 </li>
                         {% endif %}

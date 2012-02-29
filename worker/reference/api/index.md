@@ -16,36 +16,94 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
 ### Code Packages
 
 <table class="reference">
-<tr><th style="width: 55%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 34%;">Purpose</th></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/codes</td><td>GET</td><td><a href="#list_code_packages" title="List Code Packages">List Code Packages</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/codes</td><td>POST</td><td><a href="#upload_a_code_package" title="Upload a Code Package">Upload a Code Package</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td><td>GET</td><td><a href="#get_info_about_a_code_package" title="Get Info About a Code Package">Get Info About A Code Package</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td><td>DELETE</td><td><a href="#delete_a_code_package" title="Delete a Code Package">Delete a Code Package</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/download</td><td>GET</td><td><a href="#download_a_code_package" title="Download a Code Package">Download a Code Package</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/revisions</td><td>GET</td><td><a href="#list_code_package_revisions" title="List Code Package Revisions">List Code Package Revisions</a></td></tr>
+    <thead>
+        <tr>
+            <th style="width: 55%;">URL</th>
+            <th style="width: 11%;">HTTP Verb</th>
+            <th style="width: 34%;">Purpose</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes</td>
+            <td>GET</td>
+            <td><a href="#list_code_packages" title="List Code Packages">List Code Packages</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes</td>
+            <td>POST</td>
+            <td><a href="#upload_a_code_package" title="Upload a Code Package">Upload a Code Package</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td><td>GET</td><td><a href="#get_info_about_a_code_package" title="Get Info About a Code Package">Get Info About A Code Package</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td><td>DELETE</td><td><a href="#delete_a_code_package" title="Delete a Code Package">Delete a Code Package</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/download</td><td>GET</td><td><a href="#download_a_code_package" title="Download a Code Package">Download a Code Package</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/revisions</td><td>GET</td><td><a href="#list_code_package_revisions" title="List Code Package Revisions">List Code Package Revisions</a></td>
+        </tr>
+    </tbody>
 </table>
 
 ### Tasks
 
 <table class="reference">
-<tr><th style="width: 55%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 34%;">Purpose</th></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>GET</td><td><a href="#list_tasks" title="List Tasks">List Tasks</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>POST</td><td><a href="#queue_a_task" title="Queue a Task">Queue a Task</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/webhook</td><td>POST</td><td><a href="#queue_a_task_from_a_webhook" title="Queue a Task from a Webhook">Queue a Task from a Webhook</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span></td><td>GET</td><td><a href="#get_info_about_a_task" title="Get Info About a Task">Get Info About a Task</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/log</td><td>GET</td><td><a href="#get_a_tasks_log" title="Get a Task's Log">Get a Task's Log</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/cancel</td><td>POST</td><td><a href="#cancel_a_task" title="Cancel a Task">Cancel a Task</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/progress</td><td>POST</td><td><a href="#set_a_tasks_progress" title="Set a Task's Progress">Set a Task's Progress</a></td></tr>
+    <thead>
+        <tr>
+            <th style="width: 55%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 34%;">Purpose</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>GET</td><td><a href="#list_tasks" title="List Tasks">List Tasks</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>POST</td><td><a href="#queue_a_task" title="Queue a Task">Queue a Task</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/webhook</td><td>POST</td><td><a href="#queue_a_task_from_a_webhook" title="Queue a Task from a Webhook">Queue a Task from a Webhook</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span></td><td>GET</td><td><a href="#get_info_about_a_task" title="Get Info About a Task">Get Info About a Task</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/log</td><td>GET</td><td><a href="#get_a_tasks_log" title="Get a Task's Log">Get a Task's Log</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/cancel</td><td>POST</td><td><a href="#cancel_a_task" title="Cancel a Task">Cancel a Task</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/progress</td><td>POST</td><td><a href="#set_a_tasks_progress" title="Set a Task's Progress">Set a Task's Progress</a></td>
+        </tr>
+    </tbody>
 </table>
 
 ### Scheduled Tasks
 
 <table class="reference" style="padding-bottom: 20px;">
-<tr><th style="width: 55%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 34%;">Purpose</th></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td><td>GET</td><td><a href="#list_scheduled_tasks" title="List Scheduled Tasks">List Scheduled Tasks</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td><td>POST</td><td><a href="#schedule_a_task" title="Schedule a Task">Schedule a Task</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span></td><td>GET</td><td><a href="#get_info_about_a_scheduled_task" title="Get Info About a Scheduled Task">Get Info About a Scheduled Task</a></td></tr>
-<tr><td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span>/cancel</td><td>POST</td><td><a href="#cancel_a_scheduled_task" title="Cancel a Scheduled Task">Cancel a Scheduled Task</a></td></tr>
+    <thead>
+        <tr>
+            <th style="width: 55%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 34%;">Purpose</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td><td>GET</td><td><a href="#list_scheduled_tasks" title="List Scheduled Tasks">List Scheduled Tasks</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td><td>POST</td><td><a href="#schedule_a_task" title="Schedule a Task">Schedule a Task</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span></td><td>GET</td><td><a href="#get_info_about_a_scheduled_task" title="Get Info About a Scheduled Task">Get Info About a Scheduled Task</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span>/cancel</td><td>POST</td><td><a href="#cancel_a_scheduled_task" title="Cancel a Scheduled Task">Cancel a Scheduled Task</a></td>
+        </tr>
+    </tbody>
 </table>
 
 ## Authentication
@@ -81,12 +139,28 @@ All responses are in JSON with a Content-Type of "application/json". Your reques
 The success failure for request is indicated by an HTTP status code. A 200 status code indicates success, whereas a 4xx status code indicates an error.
 
 <table class="reference">
-<tr><th style="width: 10%">Code</th><th style="width: 90%">Status</th></tr>
-<tr><td>200</td><td>Success</td></tr>
-<tr><td>401</td><td>Invalid authentication: The OAuth token is either not provided or invalid.</td></tr>
-<tr><td>404</td><td>Invalid endpoint: The resource, project, or endpoint being requested doesn’t exist.</td></tr>
-<tr><td>405</td><td>Invalid HTTP method: A GET, POST, DELETE, or PUT was sent to an endpoint that doesn’t support that particular verb.</td></tr>
-<tr><td>406</td><td>Invalid request: Required fields are missing.</td></tr>
+    <thead>
+        <tr>
+            <th style="width: 10%">Code</th><th style="width: 90%">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>200</td><td>Success</td>
+        </tr>
+        <tr>
+            <td>401</td><td>Invalid authentication: The OAuth token is either not provided or invalid.</td>
+        </tr>
+        <tr>
+            <td>404</td><td>Invalid endpoint: The resource, project, or endpoint being requested doesn’t exist.</td>
+        </tr>
+        <tr>
+            <td>405</td><td>Invalid HTTP method: A GET, POST, DELETE, or PUT was sent to an endpoint that doesn’t support that particular verb.</td>
+        </tr>
+        <tr>
+            <td>406</td><td>Invalid request: Required fields are missing.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Errors
@@ -191,7 +265,7 @@ Content-Disposition: form-data; name="file"; filename="MyWorker.zip"
 Content-Type: application/zip  
 
 { Form-encoded zip data goes here }
-	
+    
 --39f5903459794ad483153244cc6486ec--
 
 #### Response
@@ -332,14 +406,18 @@ Tasks are specific instance of your workers being run. They encompass a single e
 Tasks will be in different states during the course of operation. Here are the states that tasks can be in in the system:
 
 <table class="reference">
-<tr><th>Task State</th><th>Status</th></tr>
-<tr><td>queued</td><td>in the queue, waiting to run</td></tr>
-<tr><td>running</td><td>running</td></tr>
-<tr><td>complete</td><td>finished running</td></tr>
-<tr><td>error</td><td>error during processing</td></tr>
-<tr><td>cancelled</td><td>cancelled by user</td></tr>
-<tr><td>killed</td><td>killed by system</td></tr>
-<tr><td>timeout</td><td>exceeded processing time threshold</td></tr>
+    <thead>
+        <tr><th>Task State</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>queued</td><td>in the queue, waiting to run</td></tr>
+        <tr><td>running</td><td>running</td></tr>
+        <tr><td>complete</td><td>finished running</td></tr>
+        <tr><td>error</td><td>error during processing</td></tr>
+        <tr><td>cancelled</td><td>cancelled by user</td></tr>
+        <tr><td>killed</td><td>killed by system</td></tr>
+        <tr><td>timeout</td><td>exceeded processing time threshold</td></tr>
+    </tbody>
 </table>
 
 #### Priority
@@ -347,10 +425,14 @@ Tasks will be in different states during the course of operation. Here are the s
 Task priority determines how much time a task may sit in queue. Higher values means tasks spend less time in the queue once they come off the schedule, but also [cost more](http://www.iron.io/products/worker/pricing) to run. The standard/default priority is 0.
 
 <table class="reference">
-<tr><th>Priority</th><th></th></tr>
-<tr><td>0</td><td>Default</td></tr>
-<tr><td>1</td><td>Medium</td></tr>
-<tr><td>2</td><td>High (less time in queue)</td></tr>
+    <thead>
+        <tr><th>Priority</th><th></th></tr>
+    </thead>
+    <tbody>
+        <tr><td>0</td><td>Default</td></tr>
+        <tr><td>1</td><td>Medium</td></tr>
+        <tr><td>2</td><td>High (less time in queue)</td></tr>
+    </tbody>
 </table>
 
 #### Timeout
@@ -358,17 +440,25 @@ Task priority determines how much time a task may sit in queue. Higher values me
 Tasks have timeouts associated with them that specify the amount of time (in seconds) the process may run. The maximum timeout is 3600 seconds (60 minutes). It’s also the default timeout but it can be set on a task-by-task basis to be anytime less than 3600 seconds.
 
 <table class="reference">
-<tr><th>Timeout (in seconds)</th><th></th></tr>
-<tr><td>3600</td><td>Maximum time a task can run (also default)</td></tr>
+    <thead>
+        <tr><th>Timeout (in seconds)</th><th></th></tr>
+    </thead>
+    <tbody>
+        <tr><td>3600</td><td>Maximum time a task can run (also default)</td></tr>
+    </tbody>
 </table>
 
 #### Runtime
 
 <table class="reference" style="margin-top: 10px;">
-<tr><th>Languages</th></tr>
-<tr><td>ruby</td></tr>
-<tr><td>python</td></tr>
-<tr><td>php</td></tr>
+    <thead>
+        <tr><th>Languages</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>ruby</td></tr>
+        <tr><td>python</td></tr>
+        <tr><td>php</td></tr>
+    </tbody>
 </table>
 
 ### List Tasks

@@ -1,0 +1,3 @@
+.content-container a[href^="http"] {
+  display: inline-block;
+}
