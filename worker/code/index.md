@@ -1,12 +1,12 @@
 ---
-title: Code <3 | Iron.io Dev Center
+title: Code | Iron.io Dev Center
 layout: default
 section: worker
 breadcrumbs:
 - ['Code', '/code']
 ---
 
-# Code <3
+# Code
 
 IronWorker currently has runtime support for Ruby, PHP, and Python. Please choose your language to see
 our client library support and related examples.
