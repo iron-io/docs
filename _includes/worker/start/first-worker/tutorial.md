@@ -67,7 +67,7 @@ project_id = INSERT_PROJECT_ID_HERE
 
 You can find your <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> on [your HUD](https://hud.iron.io). Just log in, and you'll find the <span class="fixed-width">token</span> under "[API Tokens](https://hud.iron.io/tokens)" on your account page. The <span class="fixed-width">project_id</span> is found on the Projects page.
 
-You can also pass your configuration values in through named arguments:
+You can also pass your configuration values inline:
 
 {% include language-switcher.html %}
 {% include worker/start/first-worker/php/instantiate-library-with-args.md %}
@@ -79,7 +79,7 @@ Now that we have the library configured, we need to package our code up to uploa
 {% include worker/start/first-worker/php/zip-directory.md %}
 {% include worker/start/first-worker/python/zip-directory.md %}
 
-That <span class="fixed-width">directory</span> parameter is just the path to the directory you want to zip. Relative and absolute paths are both okay. The <span class="fixed-width">destination</span> parameter is the name you want the zip file to use. The <span class="fixed-width">overwrite</span> parameter is a boolean switch: if true, the packager will overwrite fileNameForZip.zip if it exists. If false and fileNameForZip.zip already exists, the packager will do nothing. The function returns true if the zip was created or false if creation failed.
+That <span class="fixed-width">/path/to/directory</span> is just the path to the directory you want to zip. Relative and absolute paths are both okay. The <span class="fixed-width">fileNameForZip.zip</span> is where you want to save the zip file. The <span class="fixed-width">true</span> at the end is a boolean switch: if true, the packager will overwrite fileNameForZip.zip if it exists. If false and fileNameForZip.zip already exists, the packager will do nothing. The function returns true if the zip was created or false if creation failed.
 
 We don't need to upload a full directory, though--we just want to upload a single file. We still need to package that, but you don't need to separate it into its own directory. Just call this, instead:
 
@@ -87,7 +87,7 @@ We don't need to upload a full directory, though--we just want to upload a singl
 {% include worker/start/first-worker/php/zip-files.md %}
 {% include worker/start/first-worker/python/zip-files.md %}
 
-The <span class="fixed-width">base_dir</span> parameter is the base directory for files inside the zip. If you leave it blank, as the example above does, it defaults to the root directory of the zip. The <span class="fixed-width">files</span> parameter is an array of files to zip. These will all have the base directory prepended to them inside the zip. In our case, that means <span class="fixed-width">"" + "fibonacci.<span class="language extension">py</span>"</span>, which just yields <span class="fixed-width">"fibonacci.<span class="language extension">py</span>"</span>. The final two parameters are just the destination for the zip file and the boolean switch to overwrite the zip file if it exists, just like zipDirectory. This, again, returns true if the zip was created or false if creation failed.
+That first empty string argument is the base directory for files inside the zip. If you leave it blank, as the example above does, it defaults to the root directory of the zip. The array parameter is an array of files to zip. These will all have the base directory prepended to them inside the zip. In our case, that means <span class="fixed-width">"" + "fibonacci.<span class="language extension">py</span>"</span>, which just yields <span class="fixed-width">"fibonacci.<span class="language extension">py</span>"</span>. The final two parameters are just the destination for the zip file and the boolean switch to overwrite the zip file if it exists, just like when zipping a directory. This, again, returns true if the zip was created or false if creation failed.
 
 Now that we've packaged everything up, it's time to upload it to IronWorker. You can do this in a single library call:
 
@@ -95,7 +95,7 @@ Now that we've packaged everything up, it's time to upload it to IronWorker. You
 {% include worker/start/first-worker/php/post-code.md %}
 {% include worker/start/first-worker/python/post-code.md %}
 
-The <span class="fixed-width">runFilename</span> parameter is the filename in the zip you want the worker to execute when it runs. The <span class="fixed-width">zipFilename</span> parameter is the zip you want to upload. The <span class="fixed-width">name</span> parameter is a name for the worker that will help you find it on your HUD and will let you run the worker. The function returns a response from the server. If everything goes well, you'll see this:
+The first string parameter is the filename in the zip you want the worker to execute when it runs. The second string parameter is the zip you want to upload. The third string parameter is a name for the worker that will help you find it on your HUD and will let you run the worker. The function returns a response from the server. If everything goes well, you'll see this:
 
 {% include language-switcher.html %}
 {% include worker/start/first-worker/php/post-code-response.md %}
@@ -117,7 +117,7 @@ Queuing a task is pretty trivial, once the code is uploaded. It consists of a si
 {% include worker/start/first-worker/php/queue-task.md %}
 {% include worker/start/first-worker/python/queue-task.md %}
 
-The <span class="fixed-width">name</span> parameter is just the name of the worker you want to give the task to. The <span class="fixed-width">payload</span> parameter is just a dict of the payload data you want to pass to the task. Remember payload.json back when we were writing the Fibonacci script? This is where that data comes from. But rather than hand-writing JSON to a file, you just specify a dict and IronWorker takes care of the rest. If your worker doesn't need a payload, you can just pass <span class="fixed-width">None</span> for payload, or leave it off entirely.
+The first parameter is just the name of the worker you want to give the task to. The second parameter is just a map of keys and values to use as the payload data for the task. Remember payload.json back when we were writing the Fibonacci script? This is where that data comes from. But rather than hand-writing JSON to a file, you just specify a map and IronWorker takes care of the rest. If your worker doesn't need a payload, you can just pass a null value for payload, or leave it off entirely.
 
 The return is the response, containing relevant information on the task. You should hang on to that (sessions, cookies, database, memcached... whatever floats your boat for data retention) to check how the task is progressing (which we'll cover in the next part).
 
@@ -137,7 +137,7 @@ Now that we've got our code on IronWorker and we've got it running, it would hel
 {% include worker/start/first-worker/php/get-task-details.md %}
 {% include worker/start/first-worker/python/get-task-details.md %}
 
-Once again, <span class="fixed-width">worker</span> is just the library configured with a <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span>. <span class="fixed-width">task</span> is just the task information that was returned when we queued the task--it's a <span class="fixed-width">dict</span> of information, the specifics of which you can find [here](/worker/reference/api/#queue_a_task). <span class="fixed-width">status</span> will be a string like "complete", "running", "queued", or "cancelled". <span class="fixed-width">details</span> is an object of all the details about the task from the [API](/worker/reference/api/#get_info_about_a_task).
+Once again, <span class="fixed-width">worker</span> is just the library configured with a <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span>. <span class="fixed-width">task</span> is just the task information that was returned when we queued the task--it's a map of information, the specifics of which you can find [here](/worker/reference/api/#queue_a_task). <span class="fixed-width">status</span> will be a string like "complete", "running", "queued", or "cancelled". <span class="fixed-width">details</span> is a map of all the details about the task from the [API](/worker/reference/api/#get_info_about_a_task).
 
 Here's a sample script that draws the task ID out of the --task option:
 
@@ -155,7 +155,7 @@ Getting the log is pretty easy:
 {% include worker/start/first-worker/php/get-log.md %}
 {% include worker/start/first-worker/python/get-log.md %}
 
-As usual, <span class="fixed-width">worker</span> is just the library, configured with your <span class="fixed-width">token</span> and <span class="fixed-width">project_id</span>. <span class="fixed-width">task_id</span> is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, use parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
+As usual, <span class="fixed-width">worker</span> is just the library, configured with your <span class="fixed-width">token</span> and <span class="fixed-width">project_id</span>. <span class="fixed-width">task_id</span> is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
 
 {% include language-switcher.html %}
 {% include worker/start/first-worker/php/log-script.md %}
