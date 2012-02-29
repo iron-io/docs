@@ -13,4 +13,6 @@ layout: default
 section: worker
 ---
 
-## Integrating with Airbrake or Exceptional
+# Integrating with Airbrake or Exceptional
+
+### Coming soon!

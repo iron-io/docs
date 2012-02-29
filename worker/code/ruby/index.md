@@ -1,5 +1,5 @@
 ---
-title: Ruby and IronWorker | Iron.io Dev Center
+title: Ruby and IronWorker
 layout: default
 section: worker
 breadcrumbs:

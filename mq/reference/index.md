@@ -1,5 +1,5 @@
 ---
-title: IronMQ Reference | Iron.io Dev Center
+title: IronMQ Reference
 layout: default
 section: mq
 breadcrumbs:

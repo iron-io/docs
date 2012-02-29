@@ -13,4 +13,6 @@ layout: default
 section: worker
 ---
 
-## Getting started on AppHarbor
+# Getting started on AppHarbor
+
+### Coming soon!

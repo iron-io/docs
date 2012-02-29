@@ -1,5 +1,5 @@
 ---
-title: Beanstalkd | Iron.io Dev Center
+title: Beanstalkd
 layout: default
 section: mq
 breadcrumbs:

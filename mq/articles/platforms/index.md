@@ -1,5 +1,5 @@
 ---
-title: Articles | Platforms | Iron.io Dev Center
+title: Articles | Platforms
 layout: default
 section: mq
 breadcrumbs:

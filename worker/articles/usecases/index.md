@@ -1,5 +1,5 @@
 ---
-title: Common Use Cases | Iron.io Dev Center
+title: Common Use Cases
 layout: default
 section: worker
 breadcrumbs:

@@ -11,6 +11,7 @@ breadcrumbs:
   - ['AWS', '/aws']
 layout: default
 section: worker
+published: false
 ---
 
-## Running your queues on Amazon AWS
+# Running your queues on Amazon AWS

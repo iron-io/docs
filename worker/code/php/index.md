@@ -1,5 +1,5 @@
 ---
-title: PHP and IronWorker | Iron.io Dev Center
+title: PHP and IronWorker
 layout: default
 section: worker
 breadcrumbs:

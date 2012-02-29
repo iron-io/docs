@@ -1,5 +1,5 @@
 ---
-title: Overview | Iron.io Dev Center
+title: Overview
 layout: default
 section: overview
 ---

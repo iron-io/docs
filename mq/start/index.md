@@ -1,5 +1,5 @@
 ---
-title: Getting Started | Iron.io Dev Center
+title: Getting Started
 layout: default
 section: mq
 breadcrumbs:

@@ -1,5 +1,5 @@
 ---
-title: Creating and Running your First Worker | Iron.io Dev Center
+title: Creating and Running your First Worker
 layout: default
 section: worker
 breadcrumbs:

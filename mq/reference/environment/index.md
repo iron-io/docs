@@ -1,5 +1,5 @@
 ---
-title: IronMQ Environment | Iron.io Dev Center
+title: IronMQ Environment
 layout: default
 section: mq
 breadcrumbs:
