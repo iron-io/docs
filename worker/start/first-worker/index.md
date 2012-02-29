@@ -6,10 +6,18 @@ breadcrumbs:
 - ['Getting Started', '/start']
 - ['Your First Worker', '/first-worker']
 languages:
-# ['command to run scripts', 'file extension']
-- ['python', 'py']
-- ['php', 'php']
-- ['ruby', 'rb']
+- name: 'python'
+  command: 'python'
+  extension: 'py'
+- name: 'php'
+  command: 'php'
+  extension: 'php'
+- name: 'ruby-ng'
+  command: 'ruby'
+  extension: 'rb'
+- name: 'ruby'
+  command: 'ruby'
+  extension: 'rb'
 ---
 <style type="text/css">
 .container .fixed-width {
