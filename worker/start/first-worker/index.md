@@ -1,10 +1,10 @@
 ---
-title: Creating and Running your First Worker
+title: Creating and Running Your First Worker
 layout: default
 section: worker
 breadcrumbs:
 - ['Getting Started', '/start']
-- ['Your First Worker', '/first-worker']
+- ['Creating and Running Your First Worker', '/first-worker']
 languages:
 - name: 'python'
   command: 'python'
