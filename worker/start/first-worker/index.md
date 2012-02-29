@@ -25,7 +25,7 @@ overflow: auto;
 }
 </style>
 
-# Creating and Running your First Worker
+# Creating and Running Your First Worker
 
 {% if page.languages %}
 {% include language-switcher-head.html %}
