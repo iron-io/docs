@@ -10,7 +10,7 @@ breadcrumbs:
 # Common Use Cases
 
 <ul>
-  {% for post in site.categories.usecases %}
+  {% for post in site.categories.usecases %}{% if post.categories contains "worker" %}
   <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
+  {% endif %}{% endfor %}
 </ul>

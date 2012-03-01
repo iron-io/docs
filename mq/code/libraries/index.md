@@ -9,16 +9,20 @@ breadcrumbs:
 
 # Client Libraries
 
-These are our official client libraries that use the IronMQ <a href="https://sites.google.com/a/iron.io/documentation/mq/api">REST/HTTP API</a>.&nbsp;<br>
+These are our official client libraries that use the IronMQ <a href="/mq/reference/api">REST/HTTP API</a>.&nbsp;<br>
 <div>
-<ul style="font-family:Arial,Verdana,sans-serif;line-height:21px"><li style="color:rgb(68,68,68);list-style-position:outside;list-style-type:square"><a href="https://github.com/iron-io/iron_mq_ruby" style="color:rgb(0,51,204);text-decoration:underline">Ruby</a></li>
-<li style="color:rgb(68,68,68);list-style-position:outside;list-style-type:square"><a href="https://github.com/iron-io/iron_mq_go" style="color:rgb(0,51,204);text-decoration:underline">Go</a></li>
-<li style="color:rgb(68,68,68);list-style-position:outside;list-style-type:square"><a href="https://github.com/iron-io/iron_mq_java" style="color:rgb(0,51,204);text-decoration:underline">Java</a></li>
-<li style="color:rgb(68,68,68);list-style-position:outside;list-style-type:square"><u><a href="https://github.com/iron-io/iron_mq_php" target="_blank">PHP</a></u><br>
-</li>
-<li style="list-style-position:outside;list-style-type:square"><a href="https://github.com/iron-io/iron_mq_python">Python</a></li>
-<li style="list-style-position:outside;list-style-type:square"><a href="https://github.com/iron-io/iron_mq_dotnet">.NET</a></li></ul>
+<ul>
+<li><a href="https://github.com/iron-io/iron_mq_ruby">Ruby</a></li>
+<li><a href="https://github.com/iron-io/iron_mq_go">Go</a></li>
+<li><a href="https://github.com/iron-io/iron_mq_java">Java</a></li>
+<li><a href="https://github.com/iron-io/iron_mq_php">PHP</a></li>
+<li><a href="https://github.com/iron-io/iron_mq_python">Python</a></li>
+<li><a href="https://github.com/iron-io/iron_mq_dotnet">.NET</a></li>
+<li><a href="https://github.com/iron-io/iron_mq_clojure">Clojure</a></li>
+</ul>
 </div>
-<div><span style="font-family:Arial,Verdana,sans-serif;line-height:21px">We will continue to add more clients for the REST/HTTP API. If you would like to see one in particular, please let us know.</span></div>
-<div><span style="font-family:Arial,Verdana,sans-serif;line-height:21px"><br>
-</span></div>
+
+
+We will continue to add more clients for the REST/HTTP API. If you would like to see one in particular, please let us know.
+We're also totally supportive if you want to build or modify client libraries yourself. Even feel free to jump into our
+[live chat support](http://www.hipchat.com/gNWgTiqIC) for help. We love community involvement!
