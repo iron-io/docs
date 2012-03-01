@@ -120,9 +120,9 @@ GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/pr
 
 Notes:
 
-* Be sure you have the correct case, it's *OAuth*, not Oauth.
+* Be sure you have the correct case, it's **OAuth**, not Oauth.
 * In URL parameter form, this will be represented as:
-  * `?oauth=abc4c7c627376858`
+    * `?oauth=abc4c7c627376858`
 
 ## Requests
 

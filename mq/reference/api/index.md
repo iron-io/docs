@@ -7,7 +7,7 @@ breadcrumbs:
   - ['REST/HTTP API', '/api']
 ---
 
-#REST/HTTP API
+# IronMQ REST/HTTP API
 
 IronMQ provides a REST/HTTP API to allow you to interact programmatically with your queues on IronMQ.
 
@@ -39,9 +39,9 @@ GET https://<span class="variable host">mq-aws-us-east-1</span>.iron.io/1/projec
 
 Notes:
 
-* Be sure you have the correct case, it's *OAuth*, not Oauth.
+* Be sure you have the correct case, it's **OAuth**, not Oauth.
 * In URL parameter form, this will be represented as:
-  * `?oauth=abc4c7c627376858`
+      * `?oauth=abc4c7c627376858`
 
 ## Requests
 
@@ -53,7 +53,7 @@ All request bodies should be in JSON format, with Content-Type of `application/j
 
 All endpoints should be prefixed with the following:
 
-https://<span class="variable domain">{Domain}</span>.iron.io/1
+    https://<span class="variable domain">{Domain}</span>.iron.io/1
 
 The domains for the clouds IronMQ supports are as follows:
 <table class="reference">
@@ -73,27 +73,16 @@ For endpoints that return lists/arrays of values:
 * page - The page of results to return. Default is 0. Maximum is 100.
 * per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100. 
 
-### Responses
+## Responses
 
-All responses are in JSON, with Content-Type application/json.
+All responses are in JSON, with Content-Type of `application/json`. A response is structured as follows:
 
-Common response:
 {% highlight js %}
 { "msg": "some success or error message" }
 {% endhighlight %}
 
-Status codes:
+### Status Codes
 The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error. 
-
-<!--
-* All successful GET requests return 200 OK
-* All successful POST requests return 201 Created
-* Invalid JSON (can't be parsed or has wrong types) results in 400 Bad Request
-* Failure to authenticate results in 401 Unauthorized
-* Bad project ID/task ID/etc. results in 404 Not Found
-* Bad request methods result in 405 Method Not Allowed.  More specifically, the URL may be ok, but not for the method invoked (e.g. ok for GET, not ok to DELETE)
-* Bad Content-Type in a POST request results in 406 Not Acceptable
--->
 
 <table class="reference">
     <thead>
@@ -144,12 +133,12 @@ Get a list of all queues in a project. 100 queues are listed at a time. To see m
 GET /projects/<span class="variable project_id">{Project ID}</span>/queues
 </div>
 
-### Parameters
+#### URL Parameters
 
-In URL:
 * **Project ID**: Project these queues belong to
 
-Optional:
+#### Optional URL Parameters
+
 * **page**: The 0-based page to view. The default is 0.
 
 ### Response
@@ -174,9 +163,8 @@ This call gets general information about the queue.
 GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>
 </div>
 
-### Parameters
+#### URL Parameters
 
-In URL:
 * **Project ID**: Project the queue belongs to
 * **Queue Name**: Name of the queue. If the queue does not exist, it will be created.
 
@@ -197,25 +185,24 @@ This call adds or pushes a message onto the queue.
 POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages
 </div>
 
-### Parameters
+#### URL Parameters
 
-In URL:
 * **Project ID**: The project these messages belong to.
 * **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
-
-Required:
-
 * **messages** - An array of message objects. Each object contains these keys:
 
-  * **Required**
-    
-    * **body**: The message data
+#### Message Object
+Each message object should contain the following keys:
 
-  * **Optional**
-    
-    * **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds.
-    * **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds.
-    * **expires_in**: How long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
+##### Required
+
+* **body**: The message data
+
+##### Optional
+
+* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds.
+* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds.
+* **expires_in**: How long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
 
 ### Request
 
@@ -246,7 +233,7 @@ Required:
 
 ## Get a Message from a Queue
 
-This call gets/reserves a message from the queue. The message will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the message is deleted, the message will be placed back onto the queue. As a result, be sure to *delete* a message after you're done with it.  
+This call gets/reserves a message from the queue. The message will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the message is deleted, the message will be placed back onto the queue. As a result, be sure to **delete** a message after you're done with it.  
 
 ### Endpoint
 
@@ -254,9 +241,8 @@ This call gets/reserves a message from the queue. The message will not be delete
 GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages
 </div>
 
-### Parameters
+#### URL Parameters
 
-In URL:
 * **Project ID**: The Project these messages belong to.
 * **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
 * **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
@@ -291,9 +277,8 @@ This call will delete the message. Be sure you call this after you're done with 
 DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
 </div>
 
-### Parameters
+#### URL Parameters
 
-In URL:
 * **Project ID**: The project these messages belong to.
 * **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
 * **Message ID**: The id of the message to delete.
