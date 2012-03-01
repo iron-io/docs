@@ -33,7 +33,7 @@ Here's a sample list of languages available (with multiple clients libs to choos
 
 
 ### Host Information
-To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on the cloud you're using). 
+To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on the [cloud you're using](/mq/reference/clouds)). 
 
 <table class="reference">
   <thead>
