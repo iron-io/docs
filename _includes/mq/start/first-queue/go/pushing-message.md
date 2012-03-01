@@ -12,7 +12,7 @@ func main() {
         // The second argument is your OAuth token
         // The third argument is the cloud you want to use.
         //    See http://dev.iron.io/mq/reference/clouds for more info.
-        client := ironmq.NewClient("INSERT PROJECT_ID HERE", "INSERT TOKEN HERE", ironmq.IronAWSUSEAST)
+        client := ironmq.NewClient("INSERT PROJECT_ID HERE", "INSERT TOKEN HERE", ironmq.IronAWSUSEast)
 
         // Select the queue we want to use
         // The argument is your queue's name
@@ -22,6 +22,10 @@ func main() {
         // id will be the message's ID
         // err will return any errors that may arise
         id, err := queue.Push("Hello, world.")
+        if err != nil {
+                panic(err.Error())
+        }
+        print(id)
 }
 {% endhighlight %}
 </div>
