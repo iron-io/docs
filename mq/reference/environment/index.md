@@ -38,8 +38,8 @@ Receivers get one or more messages (up to 100). Once the receive is done process
   </thead>
   <tbody>
     <tr><td>Message Size</td><td>--</td><td>64KB</td><td>Includes header (token, delay, timeout, expiration).</td></tr>
-    <tr><td>Delay</td><td>0</td><td>???</td><td>Msg is made available on queue after the delay expires.</td></tr>
-    <tr><td>Timeout</td><td>60sec</td><td>???</td><td>Msg goes back on queue if not deleted before the timeout.</td></tr>
+    <tr><td>Delay</td><td>0sec</td><td>604,800sec</td><td>Message is made available on queue after the delay expires.</td></tr>
+    <tr><td>Timeout</td><td>60sec</td><td>86,400sec</td><td>Message goes back on queue after timeout unless deleted.</td></tr>
     <tr><td>Expiration</td><td>604,800sec</td><td>2,592,000sec</td><td>Equates to 7 days and 30 days, respectively.</td></tr>
     <tr><td>Messages per Get</td><td>1</td><td>100</td><td>One or more messages can be handled at a time.</td></tr>
   </tbody>
