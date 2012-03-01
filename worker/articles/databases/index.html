@@ -10,7 +10,7 @@ breadcrumbs:
 <h1>Connecting to Databases</h1>
 
 <ul>
-  {% for post in site.categories.databases %}
+  {% for post in site.categories.databases %}{% if post.categories contains "worker" %}
   <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
+  {% endif %}{% endfor %}
 </ul>
