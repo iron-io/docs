@@ -25,15 +25,16 @@ section: search
   google.load('search', '1', {language:'en'});
   google.setOnLoadCallback(function () {
     var customSearchOptions = {};
-    var customSearchControl = new google.search.CustomSearchControl(
+    var csc = new google.search.CustomSearchControl(
             '{{ site.google_cse_id }}', customSearchOptions);
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    csc.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
     var options = new google.search.DrawOptions();
     options.enableSearchResultsOnly();
-    customSearchControl.draw('cse', options);
+    csc.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
+    csc.draw('cse', options);
     var queryFromUrl = parseQueryFromUrl();
     if (queryFromUrl) {
-      customSearchControl.execute(queryFromUrl);
+      csc.execute(queryFromUrl);
     }
   }, true);
 
@@ -89,36 +90,36 @@ section: search
   .gs-webResult.gs-result a.gs-title:link b,
   .gs-imageResult a.gs-title:link,
   .gs-imageResult a.gs-title:link b {
-    color : #003663;
+    color : #035CA6;
   }
 
   .gs-webResult.gs-result a.gs-title:visited,
   .gs-webResult.gs-result a.gs-title:visited b,
   .gs-imageResult a.gs-title:visited,
   .gs-imageResult a.gs-title:visited b {
-    color : #003663;
+    color : #035CA6;
   }
 
   .gs-webResult.gs-result a.gs-title:hover,
   .gs-webResult.gs-result a.gs-title:hover b,
   .gs-imageResult a.gs-title:hover,
   .gs-imageResult a.gs-title:hover b {
-    color : #003663;
+    color : #035CA6;
   }
 
   .gs-webResult.gs-result a.gs-title:active,
   .gs-webResult.gs-result a.gs-title:active b,
   .gs-imageResult a.gs-title:active,
   .gs-imageResult a.gs-title:active b {
-    color : #003663;
+    color : #035CA6;
   }
 
   .gsc-cursor-page {
-    color : #003663;
+    color : #035CA6;
   }
 
   a.gsc-trailing-more-results:link {
-    color : #003663;
+    color : #035CA6;
   }
 
   .gs-webResult .gs-snippet,
@@ -159,13 +160,13 @@ section: search
   .gsc-results .gsc-cursor-box .gsc-cursor-page {
     border-color     : #E9E9E9;
     background-color : #FFFFFF;
-    color            : #003663;
+    color            : #035CA6;
   }
 
   .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
     border-color     : #FF9900;
     background-color : #FFFFFF;
-    color            : #003663;
+    color            : #035CA6;
   }
 
   .gsc-webResult.gsc-result.gsc-promotion {
@@ -174,7 +175,7 @@ section: search
   }
 
   .gsc-completion-title {
-    color : #003663;
+    color : #035CA6;
   }
 
   .gsc-completion-snippet {
@@ -218,6 +219,18 @@ section: search
 
   .gsc-input input.gsc-input {
     background : none repeat scroll 0% 0% white !important;
+  }
+
+  .gsc-result-info {
+    border: 0;
+  }
+
+  .content-container a[href^="http"] {
+    background: none;
+  }
+
+  .content-container table {
+    border-bottom: 0;
   }
 
 </style>
