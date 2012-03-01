@@ -27,8 +27,8 @@ We're organizing: [San Francisco Go Meetup](http://www.meetup.com/golangsf), San
 ## Support
 
 * [Live Chat](http://www.hipchat.com/gNWgTiqIC)
-* [IronMQ Mailing List](http://groups.google.com/group/ironmq)
-* [IronWorker Mailing List](http://groups.google.com/group/ironworker-users)
+* [IronMQ Mailing List](http://groups.google.com/a/iron.io/group/ironmq)
+* [IronWorker Mailing List](http://groups.google.com/a/iron.io/group/ironworker)
 
 ## Stay Informed
 
