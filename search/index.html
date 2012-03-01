@@ -1,6 +1,7 @@
 ---
 title: Search Results
 layout: default
+section: search
 ---
 
 <h1>Search Results</h1>
@@ -25,7 +26,7 @@ layout: default
   google.setOnLoadCallback(function () {
     var customSearchOptions = {};
     var customSearchControl = new google.search.CustomSearchControl(
-      '012672112220120861281:u1mwwky5lri', customSearchOptions);
+            '{{ site.google_cse_id }}', customSearchOptions);
     customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
     var options = new google.search.DrawOptions();
     options.enableSearchResultsOnly();
@@ -35,6 +36,13 @@ layout: default
       customSearchControl.execute(queryFromUrl);
     }
   }, true);
+
+  $('#addSearch').click(function(e) {
+    e.preventDefault();
+    var url = "http://{{ site.domain }}/open-search.xml";
+    window.external.AddSearchProvider(url);
+  });
+
 </script>
 <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
 <style type="text/css">
