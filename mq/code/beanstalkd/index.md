@@ -15,7 +15,7 @@ Here's a sample list of languages available (with multiple clients libs to choos
 
 <table class="reference">
   <thead>
-    <tr><th>Languages</th></tr>
+    <tr><th>Beanstalkd Language Clients</th><th> </th></tr>
   </thead>
   <tbody>
     <tr><td>C</td><td>Node.js</td></tr>
@@ -48,7 +48,7 @@ To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on 
 ### Authentication
 Because IronMQ requires authentication, the first command you send must put a message onto the queue with the contents:
 
-    oauth <span class="variable token">{TOKEN}</span> <span class="variable project_id">{PROJECT_ID}</span>
+oauth <span class="variable token">{TOKEN}</span> <span class="variable project_id">{PROJECT_ID}</span>
 
 The DRAINING response will be returned if authentication fails or if any other command is sent before authentication.
 
