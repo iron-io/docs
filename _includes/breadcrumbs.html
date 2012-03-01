@@ -1,7 +1,7 @@
 {% unless page.breadcrumbs == "hidden" %}
 <ul id="breadcrumbs">
         {% capture numcrumbs %}{{ page.breadcrumbs | size }}{% endcapture %}
-        <li><a href="/" title="Home">Home</a>
+        <li><a href="/" {% unless page.section %}{% unless page.breadcrumbs %}class="selected"{% endunless %}{% endunless %}title="Home">Home</a>
         {% if page.section %} » </li>
                 {% if page.section == "mq" %}
                         <li><a {% if page.url == "/mq/index.html" %}class="selected"{% endif %} href="/mq" title="IronMQ">IronMQ</a>
@@ -17,6 +17,6 @@
         {% else %}</li>
         {% endif %}
   {% for crumb in page.breadcrumbs %}{% assign max = forloop.index %}{% capture url %}{% for crumb2 in page.breadcrumbs %}{% if forloop.index0 < max %}{{ crumb2 | last }}{% endif %}{% endfor %}{% endcapture %}{% capture title %}{{ crumb | first }}{% endcapture %}
-  <li><a href="/{% if page.section %}{{ page.section }}{% endif %}{{ url }}" title="{{ title }}">{{ title }}</a>{% if forloop.last == false %} » {% endif %}</li>
+  <li><a href="/{% if page.section %}{{ page.section }}{% endif %}{{ url }}" {% if forloop.last %}class="selected" {% endif %}title="{{ title }}">{{ title }}</a>{% if forloop.last == false %} » {% endif %}</li>
   {% endfor %}
 </ul>{% endunless %}
