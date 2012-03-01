@@ -53,7 +53,7 @@ All request bodies should be in JSON format, with Content-Type of `application/j
 
 All endpoints should be prefixed with the following:
 
-    https://<span class="variable domain">{Domain}</span>.iron.io/1
+https://<span class="variable domain">{Domain}</span>.iron.io/1
 
 The domains for the clouds IronMQ supports are as follows:
 <table class="reference">

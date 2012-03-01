@@ -17,14 +17,14 @@ To start using Iron.io services, you need to sign up and get an oauth token:
 
 Now you're ready to start using our IronMQ.
 
-IronMQ supports multiple interfaces such as [Beanstalkd](http://kr.github.com/beanstalkd) and our own [HTTP interface](/mq/api).
+IronMQ supports multiple interfaces such as [Beanstalkd](http://kr.github.com/beanstalkd) and our own [HTTP interface](/mq/code/libraries).
 
 ## Client Libraries
 
 In most cases you'll want to use one of the available client libraries.
 
-* [Clients for our REST/HTTP API](/mq/clients)
-* All [beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) work too so you can use IronMQ with all popular languages, but be sure to read our [Beanstalkd page](/mq/beanstalkd) for information on how to authenticate.
+* [Clients for our REST/HTTP API](/mq/code/libraries)
+* All [beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) work too so you can use IronMQ with all popular languages, but be sure to read our [Beanstalkd page](/mq/code/beanstalkd) for information on how to authenticate.
 
 ## Support
 
@@ -34,7 +34,7 @@ In most cases you'll want to use one of the available client libraries.
 * [Live Chat](http://www.hipchat.com/gNWgTiqIC)
 
 
-<a href="/mq/start" class="next_item">Learn how to use IronMQ --></a><br clear="all" />
+<a href="/mq/start/first-queue" class="next_item">Setting Up Your First Queue --></a><br clear="all" />
 
 <br /><br />
 

@@ -41,6 +41,7 @@
   padding: 0;
   margin: 20px 0 10px;
   font-size: 18px;
+  border-bottom: 0;
 }
 
 .content-container h4 {

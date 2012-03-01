@@ -19,11 +19,13 @@ Most developers will probably just want to use one of the clients available for 
 
 ### Clients
 
-* [Ruby](/worker/ruby)
-* [PHP](/worker/php)
-* [Python](/worker/python)
+* [Ruby](/worker/code/ruby)
+* [PHP](/worker/code/php)
+* [Python](/worker/code/python)
 
+<!--
 If you want to write your own IronWorker client or get deeper into the details, here's how to [write code to run on IronWorker](/worker/api/running-code-on-ironworker).
+-->
 
 ## Support
 
