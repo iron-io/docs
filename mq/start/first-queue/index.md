@@ -82,9 +82,9 @@ If the messages get returned to the queue after their <span class="fixed-width">
 You can delete messages at any time, and it's pretty easy to do so:
 
 {% include language-switcher.html %}
-{% include mq/start/first-queue/python/popping-message.md %}
-{% include mq/start/first-queue/php/popping-message.md %}
-{% include mq/start/first-queue/ruby/popping-message.md %}
-{% include mq/start/first-queue/go/popping-message.md %}
+{% include mq/start/first-queue/python/deleting-message.md %}
+{% include mq/start/first-queue/php/deleting-message.md %}
+{% include mq/start/first-queue/ruby/deleting-message.md %}
+{% include mq/start/first-queue/go/deleting-message.md %}
 
 That's everything! You're now ready to work with IronMQ. Check out our [client libraries](/mq/code/libraries) to get a list of libraries you can use to access the API, our [reference](/mq/reference/environment) to get the nitty-gritty information about the service, and check out [our beanstalkd support](/mq/code/beanstalkd) to connect with IronMQ from your favourite beanstalkd client.
