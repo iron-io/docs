@@ -5,7 +5,19 @@ section: worker
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Environment', '/environment']
+languages:
+  - name: php
+    command: php
+    extension: php
+  - name: python
+    command: python
+    extension: py
+  - name: ruby
+    command: ruby
+    extension: rb
 ---
+
+{% include language-switcher-head.html %}
 
 # IronWorker Environment
 
@@ -94,8 +106,11 @@ IronWorker supports a handful of pre-installed code libraries specifically aroun
 
 We recommend, however, that you design your workers to be environment independent. In other words, you recommend that you upload (or merge) all language-specific code libraries (such as Ruby gems or Python packages) that your workers as part of the code package. We don't recommend relying on these language libraries because they may change or new versions may be added creating conflicts with your workers. We provide them as a convenience to help users get started but production workers should strive to isolate their environments as much as possible.
 
-### Ruby Gems Installed
-Here is the list of Ruby gems installed in IronWorker environment. Note that a number are binary gems which is why they are pre-installed. Whenever possible, merge the gems you need as part of the code upload.
+{% include language-switcher.html %}
+<div class="ruby">
+<h3 id="ruby_gems_installed">Ruby Gems Installed</h3>
+
+<p>Here is the list of Ruby gems installed in the IronWorker environment. Note that a number are binary gems, which is why they are pre-installed. Whenever possible, merge the gems you need as part of the code upload.</p>
 
 <table class="reference_list">
   <thead>
@@ -118,7 +133,7 @@ Here is the list of Ruby gems installed in IronWorker environment. Note that a n
   </tbody>
 </table>
 
-To make use of one of the pre-installed gems, use a `require` along with the gem name.
+<p>To make use of one of the pre-installed gems, use a <span class="fixed-width">require</span> along with the gem name.</p>
 
 {% highlight ruby %}
 require 'iron_worker'
@@ -132,14 +147,43 @@ class PageWorker < IronWorker::Base
 end
 {% endhighlight %}
 
-If you need a specific version, we recommend using the `merge_gem` command along with a version parameter.
+<p>If you need a specific version, we recommend using the <span class="fixed-width">merge_gem</span> command along with a version parameter.</p>
 
 {% highlight ruby %}
 merge_gem "some_gem", "1.2.3"
 {% endhighlight %}
 
-Notes: 
+<p>Notes: 
+<ul>
+<li>There are other gems installed in the system but we don't publish the full list because we can't guarantee they will be included. Instead upload the gems your worker needs along with your code.</li>
+<li>The Rails framework is not supported in IronWorker. As per the note above, while there are certain code libraries included in IronWorker, you will want to explicitly include or merge in any specific libraries that you need.</li>
+</ul>
+</p>
+</div>
+<div class="php">
+<h3 id="php_modules_installed">PHP Modules Installed</h3>
 
-* There are other gems installed in the system but we don't publish the full list because we can't guarantee they will be included. Instead upload the gems your worker needs along with your code.
-* The Rails framework is not supported in IronWorker. As per the note above, while there are certain code libraries included in IronWorker, you will want to explicitly include or merge in any specific libraries that you need.
+<p>Here is the list of PHP modules installed in the IronWorker environment. Generally, it's best practice for users to package their dependencies with their workers, but because these modules cannot be installed on a per-user basis, they are included in the environment.</p>
 
+<table class="reference_list">
+  <thead>
+    <tr><th>PHP Modules</th><th>Comments</th></tr>
+  </thead>
+  <tr><td>php5-curl</td><td></td></tr>
+  <tr><td>php5-mysql</td><td></td></tr>
+  <tr><td>php5-gd</td><td></td></tr>
+  <tr><td>mongo</td><td></td></tr>
+</table>
+</div>
+<div class="python">
+<h3 id="python_modules_installed">Python Modules Installed</h3>
+
+<p>Here is the list of Python modules installed in the IronWorker environment. Generally, it's best practice for users to package their dependencies with their workers, but because these modules cannot be installed on a per-user basis, they are included in the environment.</p>
+
+<table class="reference_list">
+  <thead>
+    <tr><th>Python Modules</th><th>Comments</th></tr>
+  </thead>
+  <tr><td>python-lxml</td><td></td></tr>
+</table>
+</div>
