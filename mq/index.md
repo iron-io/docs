@@ -30,7 +30,7 @@ In most cases you'll want to use one of the available client libraries.
 
 * [Notifications and Announcements](https://plus.google.com/107080387635368981384/posts)
 * [Discussion group / mailing list](http://groups.google.com/group/ironmq)
-* [Support Site](http://iron.assistly.com)
+* [Support Site](http://support.iron.io)
 * [Live Chat](http://www.hipchat.com/gNWgTiqIC)
 
 
