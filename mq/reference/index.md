@@ -9,7 +9,7 @@ breadcrumbs:
 # IronMQ Reference
 
 In this section you'll find our entire IronMQ REST/HTTP API specification as well as information about the system
-environment and contraints.
+environment and constraints.
 
 
 <a href="/mq/reference/api" class="next_item">View our REST/HTTP API --></a><br clear="all" />
