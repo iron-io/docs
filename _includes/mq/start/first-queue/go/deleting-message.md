@@ -1,3 +1,5 @@
+<div class="go">
+{% highlight go %}
 package main
 
 import (
@@ -25,4 +27,5 @@ func main() {
         }
         print(msg.Id +": "+msg.Body)
 }
-
+{% endhighlight %}
+</div>
