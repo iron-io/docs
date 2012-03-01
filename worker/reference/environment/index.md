@@ -46,6 +46,15 @@ The following languages are officially supported within IronWorker. We have incl
   </tbody>
 </table>
 
+## Maximum Data Payload
+The following is the maximum data payload that can be passed to IronWorker. A data payload that exceeds this size will generate an error response from the API.
+
+<div class="grey-box">
+<b>Maximum Data Payload:</b>  64KB
+</div>
+
+Tip: We recommend that you avoid sending large payloads with your workers. Instead use a data store to hold the data and then pass an ID or reference to the worker. The worker can grab the data and then do its processing. It's more efficient on the API as well as better in terms of creating atomic/stateless processing. 
+
 ## Memory per Worker
 The standard worker sandbox environment contains a certain amount of accessible memory. This amount should be sufficient for almost all workloads. We are working on a super worker environment that would allow greater memory allocations. Please contact us if you have specific needs here.
 
