@@ -4,10 +4,10 @@ layout: default
 section: mq
 breadcrumbs:
   - ['Reference', '/reference']
-  - ['System Environment', '/system']
+  - ['Environment', '/system']
 ---
 
-# System Environment
+# IronMQ Environment
 
 ### Message Structure
 The message structure is flexible and straight-forward. Messages can be variable in size and can contain almost any text or data format.
