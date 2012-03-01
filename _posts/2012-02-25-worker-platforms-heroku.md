@@ -49,14 +49,14 @@ You can also get your token and project ID from the Iron.io HUD. To get to the I
 
 ![IronWorker add-on](http://i.imgur.com/dFQoH.png)
 
-Heroku automatically adds the token and project ID to your production environment variables. You need to take care of your development environment yourself, however. Simply add the following in<span class="fixed-width">config/environments/development.rb</span>:
+Heroku automatically adds the token and project ID to your production environment variables. You need to take care of your development environment yourself, however. Simply add the following in <span class="fixed-width">config/environments/development.rb</span>:
 
 {% highlight ruby %}
 ENV['IRON_WORKER_TOKEN'] = 'YOUR TOKEN'
 ENV['IRON_WORKER_PROJECT_ID'] = 'YOUR PROJECT ID'
 {% endhighlight %}
 
-Then create a file at<span class="fixed-width">config/initializers/iron_worker.rb</span>and put the following into it:
+Then create a file at <span class="fixed-width">config/initializers/iron_worker.rb</span> and put the following into it:
 
 {% highlight ruby %}
 IronWorker.configure do |config|
@@ -65,13 +65,13 @@ IronWorker.configure do |config|
 end
 {% endhighlight %}
 
-If you're building for Rails 3, add the following to your<span class="fixed-width">Gemfile</span>:
+If you're building for Rails 3, add the following to your <span class="fixed-width">Gemfile</span>:
 
 {% highlight ruby %}
 gem 'iron_worker'
 {% endhighlight %}
 
-If you're building on Rails 2, add the following to your<span class="fixed-width">environment.rb</span>file:
+If you're building on Rails 2, add the following to your <span class="fixed-width">environment.rb</span> file:
 
 {% highlight ruby %}
 config.gem 'iron_worker'
@@ -84,7 +84,7 @@ Now we're ready to create a worker and show how it gets invoked within an applic
 
 ### Writing the Worker
 
-Here's the worker that calculates the sequence. You can copy and paste and place in in a file called<span class="fixed-width">fibonacci_worker.rb</span>.
+Here's the worker that calculates the sequence. You can copy and paste and place in in a file called <span class="fixed-width">fibonacci_worker.rb</span>.
 
 {% highlight ruby %}
 require 'iron_worker'
@@ -135,7 +135,7 @@ We require the <span class="fixed-width">iron_worker</span> gem, use <span class
 
 ### Queuing the Worker
 
-Once the worker is tested to your satisfaction, it's time to offload it to the IronWorker cloud. Edit<span class="fixed-width">run_fibworker.rb</span>and change the last line (<span class="fixed-width">worker.run_local</span>) to<span class="fixed-width">worker.queue</span>. Enter<span class="fixed-width">ruby run_fibworker.rb</span>in your console again, and you'll see the following output:
+Once the worker is tested to your satisfaction, it's time to offload it to the IronWorker cloud. Edit <span class="fixed-width">run_fibworker.rb</span> and change the last line (<span class="fixed-width">worker.run_local</span>) to <span class="fixed-width">worker.queue</span>. Enter <span class="fixed-width">ruby run_fibworker.rb</span> in your console again, and you'll see the following output:
 
 {% highlight bash %}
 IronWorker initialized.
@@ -152,7 +152,7 @@ Your Worker is now running in the cloud.
 
 Now that we know the worker runs and uploads from your machine, we want to run it from within your application within Heroku.
 
-First, you need to get an app running on Heroku. Heroku has some [great documentation](http://devcenter.heroku.com/articles/rails3) on how to do that. Once you get the Heroku app running, integrating it with our Fibonacci Worker is simple. Create an<span class="fixed-width">app/workers</span>directory, and move<span class="fixed-width">fibonacci_worker.rb</span>into it. Then just take our<span class="fixed-width">run_fibworker.rb</span>code, and move it into a Controller. For example,<span class="fixed-width">WorkerController</span>may look like this:
+First, you need to get an app running on Heroku. Heroku has some [great documentation](http://devcenter.heroku.com/articles/rails3) on how to do that. Once you get the Heroku app running, integrating it with our Fibonacci Worker is simple. Create an <span class="fixed-width">app/workers</span> directory, and move <span class="fixed-width">fibonacci_worker.rb</span> into it. Then just take our <span class="fixed-width">run_fibworker.rb</span> code, and move it into a Controller. For example, <span class="fixed-width">WorkerController</span> may look like this:
 
 {% highlight ruby %}
 def run
@@ -163,7 +163,7 @@ def run
 end
 {% endhighlight %}
 
-Deploy the app to Heroku, and load up<span class="fixed-width">your-app.herokuapp.com/worker/run</span>to see the success message.
+Deploy the app to Heroku, and load up <span class="fixed-width">your-app.herokuapp.com/worker/run</span> to see the success message.
 
 ### Next Steps
 
@@ -182,7 +182,7 @@ You can also check out some example workers:
 
 When trying to troubleshoot a Worker, the best first step is to try and run the Worker locally. If the Worker runs locally, it should run on the cloud. You can also access your Worker logs through the Iron.io HUD. These logs will show you any errors thrown or debug messages you log while the worker is running.
 
-The most common source of Worker errors is a mismatch between your local environment and the cloud's environment. Double-check your<span class="fixed-width">Gemfile</span>and your Ruby version -- workers run under Ruby >1.9. Also, make sure your<span class="fixed-width">Gemfile.lock</span>has been updated. Run<span class="fixed-width">bundle install</span>to make sure.
+The most common source of Worker errors is a mismatch between your local environment and the cloud's environment. Double-check your <span class="fixed-width">Gemfile</span> and your Ruby version -- workers run under Ruby >1.9. Also, make sure your <span class="fixed-width">Gemfile.lock</span> has been updated. Run <span class="fixed-width">bundle install</span> to make sure.
 
 Also note that IronWorker is not able to to connect with Heroku's shared databases. At this point, Heroku's shared databases do not allow for direct connections. We are working to remedy this situation. The suggested workaround is to pass the data back through your application, post-processing.
 
