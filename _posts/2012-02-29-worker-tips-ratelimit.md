@@ -14,6 +14,6 @@ tags:
   - tips
 layout: post
 section: worker
-publish: false
+published: false
 ---
 
