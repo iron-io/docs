@@ -24,7 +24,7 @@ IronWorker contains several popular Linux packages as part of the standard worke
     <tr><td><a href="http://www.imagemagick.org/" title="ImageMagick">ImageMagick</a></td><td>ImageMagick Image Processing</td><td>Image processing</td></tr>
     <tr><td><a href="http://freeimage.sourceforge.net//" title="FreeImage">FreeImage</a></td><td>The FreeImage Project</td><td>Image processing</td></tr>
     <tr><td><a href="http://sox.sourceforge.net/" title="SoX">SoX</a></td><td>Sound eXchange Library</td><td>Sound processing</td></tr>
-    <tr><td><a href="http://curl.haxx.se/" title="curl">curl</a></td><td>Client URL Request Library</td><td>URL file processing</td></tr>
+    <tr><td><a href="http://curl.haxx.se/" title="curl">cURL</a></td><td>Client URL Request Library</td><td>URL file processing</td></tr>
   </tbody>
 </table>
 
@@ -33,6 +33,7 @@ These are included for convenience because they are binary packages. (See the ti
 If you don't see what you need here, please [contact us](http://support.iron.io/customer/portal/emails/new) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
 
 ## Language Environments
+The following languages are officially supported within IronWorker. We have included a small set of Ruby gems as part of the IronWorker native environment in addition to the Linux/binary packages above. See the table below for the list of supported Ruby Gems.
 
 <table class="reference">
   <thead>
@@ -40,12 +41,10 @@ If you don't see what you need here, please [contact us](http://support.iron.io/
   </thead>
   <tbody>
     <tr><td>Ruby</td><td><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">Version 1.9.2p280</a></td></tr>
-    <tr><td>Python</td><td><a href="" title="Version ..."></a>Version ...</td></tr>
-    <tr><td>PHP</td><td><a href="" title="Version ..."></a>Version ...</td></tr>
+    <tr><td>Python</td><td><a href="" title="Version ..."></a>Version</td></tr>
+    <tr><td>PHP</td><td><a href="" title="Version ..."></a>Version</td></tr>
   </tbody>
 </table>
-
-We have included a small set of Ruby gems as part of the IronWorker native environment. See the table below for this list.
 
 ## Memory per Worker
 The standard worker sandbox environment contains a certain amount of accessible memory. This amount should be sufficient for almost all workloads. We are working on a super worker environment that would allow greater memory allocations. Please contact us if you have specific needs here.
@@ -130,4 +129,8 @@ If you need a specific version, we recommend using the `merge_gem` command along
 merge_gem "some_gem", "1.2.3"
 {% endhighlight %}
 
-Note: There are other gems installed in the system but we don't publish the full list because we can't guarantee they will be included. Instead upload the gems your worker needs along with your code.
+Notes: 
+
+* There are other gems installed in the system but we don't publish the full list because we can't guarantee they will be included. Instead upload the gems your worker needs along with your code.
+* The Rails framework is not supported in IronWorker. As per the note above, while there are certain code libraries included in IronWorker, you will want to explicitly include or merge in any specific libraries that you need.
+

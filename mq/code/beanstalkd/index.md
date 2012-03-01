@@ -7,57 +7,66 @@ breadcrumbs:
   - ['Beanstalkd', '/beanstalkd']
 ---
 
-# Beanstalkd Support
+## Beanstalkd Support
+
+You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice. 
+
+Here's a sample list of languages available (with multiple clients libs to choose from for many languages):
+
+<table class="reference">
+  <thead>
+    <tr><th>Languages</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>C</td><td>Node.js</td></tr>
+    <tr><td>C++</td><td>OCaml</td></tr>
+    <tr><td>Clojure</td><td>Perl</td></tr>
+    <tr><td>Django</td><td>PHP</td></tr>
+    <tr><td>Common Lisp</td><td>Python</td></tr>
+    <tr><td>Erlang</td><td>Rails</td></tr>
+    <tr><td>Go</td><td>Ruby</td></tr>
+    <tr><td>Haskell</td><td>Scheme (Chicken)</td></tr>
+    <tr><td>Io</td><td>.NET/C#</td></tr>
+    <tr><td>Java</td></tr>
+  </tbody>
+</table>
 
 
-<div><font face="Arial, Verdana, sans-serif"><span style="line-height:21px">You can use any of the <a href="https://github.com/kr/beanstalkd/wiki/client-libraries">Beanstalkd clients</a>
-and there is sure to be one for your language of choice.
-Learn how to authenticate, connect, and use the library below.</span></font></div>
+### Host Information
+To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on the cloud you're using). 
 
-<br />
+<table class="reference">
+  <thead>
+    <tr><th style="width: 30%;">Cloud</th><th style="width: 55%;">Host</th><th style="width: 15%;">Port</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>AWS</td><td>mq-aws-us-east-1.iron.io</td><td>11300</td></tr>
+    <tr><td>Rackspace</td><td>mq-rackspace-dfw.iron.io</td><td>11300</td></tr>
+  </tbody>
+</table>
 
-### Connecting
+### Authentication
+Because IronMQ requires authentication, the first command you send must put a message onto the queue with the contents:
 
-<div class="grey-box">
-<p>Host:<code>&nbsp;mq-aws-us-east-1.iron.io</code> (AWS)&nbsp;OR <code>mq-rackspace-dfw.iron.io</code> (Rackspace)</p>
-<p>Port:<code>&nbsp;11300<br>
-</code></p>
-</div>
+    oauth <span class="variable token">{TOKEN}</span> <span class="variable project_id">{PROJECT_ID}</span>
 
+The DRAINING response will be returned if authentication fails or if any other command is sent before authentication.
 
-### Authenticating
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">Because IronMQ requires authentication, the first command you send must put a message with the contents:<br>
-<br>
-<div class="grey-box">
-  <code>oauth MY_TOKEN PROJECT_ID</code>
-</div>
-</div>
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px"><br>
-The DRAINING response will be returned if authentication fails or if any other command is sent before authentication.<br>
-</div>
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px"><br>
-</div>
+### Tubes vs Queues
+Note that a Beanstalkd _tube_ is synonymous with an IronMQ <span class="queue_name variable">{Queue Name}</span> within the REST/HTTP API.
 
-### Queues and Tubes
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">beanstalkd `tubes` are synonymous with `queue names` in the <a href="https://sites.google.com/a/iron.io/documentation/mq/api">REST/HTTP API</a>. &nbsp;</div>
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px"><br>
-</div>
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px">A tube named `default` will be used if not specified.</div>
-<div style="color:rgb(68,68,68);font-family:Arial,Verdana,sans-serif;line-height:21px"><br>
-</div>
-
+If a tube/queue name is not specified, then the queue name `default` will be used within IronMQ.
 
 ### Notes
+* The ID you receive when using the Beanstalkd interface will *not* be the same as the HTTP interface so you *cannot* use them interchangeably.
 
-The ID you receive when using the beanstalkd interface will not be the same as the HTTP interface so you cannot use them interchangeably.
-
-There are some commands that IronMQ does not implement. These include:
-* release
-* bury
-* touch
-* peek, peek-ready, peek-delayed, peek-buried
-* kick
-* list-tubes, list-tube-used
-* stats, stats-job, stats-tube
-* pause-tube
-* quit
+* At the moment, there are some commands that IronMQ does not implement. These include:
+  * release
+  * bury
+  * touch
+  * peek, peek-ready, peek-delayed, peek-buried
+  * kick
+  * list-tubes, list-tube-used
+  * stats, stats-job, stats-tube
+  * pause-tube
+  * quit

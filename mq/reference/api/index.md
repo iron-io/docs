@@ -7,15 +7,15 @@ breadcrumbs:
   - ['REST/HTTP API', '/api']
 ---
 
-<h1>REST/HTTP API</h1>
+#REST/HTTP API
 
-IronMQ provides a RESTful HTTP API to allow you to interact programmatically with our service and your queues.
+IronMQ provides a REST/HTTP API to allow you to interact programmatically with your queues on IronMQ.
 
 ## Endpoints
 
 <table class="reference">
   <thead>
-    <tr><th style="width: 57%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
+    <tr><th style="width: 58%;">URL</th><th style="width: 10%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
   </thead>
   <tbody>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td><td>GET</td><td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td></tr>
@@ -27,32 +27,51 @@ IronMQ provides a RESTful HTTP API to allow you to interact programmatically wit
 </table>
 
 ## Authentication
+IronMQ uses OAuth2 tokens to authenticate API requests. All methods require authentication unless specified otherwise. You can find and create your API tokens [in the HUD](https://hud.iron.io/tokens). To authenticate your request, you should include a token in the Authorization header for your request or in your query parameters. Tokens are universal, and can be used across services.
 
-All methods require authentication unless specified otherwise.
-Authentication is done via an Oauth2 token using Authorization header, eg:
+Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
+
+**Example Authorization Header**:  
 Authorization: OAuth abc4c7c627376858
 
-Note: be sure you have the correct case, it's OAuth, not Oauth. 
-or in URL parameters:
-?oauth=abc4c7c627376858
+**Example Query with Parameters**:  
+GET https://<span class="variable host">mq-aws-us-east-1</span>.iron.io/1/projects/<span class="variable project_id">{Project ID}</span>/queues?oauth=abc4c7c627376858
+
+Notes:
+
+* Be sure you have the correct case, it's *OAuth*, not Oauth.
+* In URL parameter form, this will be represented as:
+  * `?oauth=abc4c7c627376858`
 
 ## Requests
 
-All request bodies should be in JSON format, with Content-Type application/json.
+Requests to the API are simple HTTP requests against the API endpoints.
+
+All request bodies should be in JSON format, with Content-Type of `application/json`.
 
 ### Base URL
 
-All endpoints are prefixed with this:
+All endpoints should be prefixed with the following:
 
 https://<span class="variable domain">{Domain}</span>.iron.io/1
 
-For Amazon Web Services, <span class="variable domain">{Domain}</span> is mq-aws-us-east-1. For Rackspace, <span class="variable domain">{Domain}</span> is mq-rackspace-dfw.
+The domains for the clouds IronMQ supports are as follows:
+<table class="reference">
+  <thead>
+    <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{Domain}</span></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>AWS</td><td>mq-aws-us-east-1</td></tr>
+    <tr><td>Rackspace</td><td>mq-rackspace-dfw</td></tr>
+  </tbody>
+</table>
 
 ### Pagination
 
 For endpoints that return lists/arrays of values:
-* page - the page of results to return. Default is 0. Maximum is 100.
-* per_page - the number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100. 
+
+* page - The page of results to return. Default is 0. Maximum is 100.
+* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100. 
 
 ### Responses
 
@@ -63,8 +82,10 @@ Common response:
 { "msg": "some success or error message" }
 {% endhighlight %}
 
-Status Codes:
+Status codes:
+The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error. 
 
+<!--
 * All successful GET requests return 200 OK
 * All successful POST requests return 201 Created
 * Invalid JSON (can't be parsed or has wrong types) results in 400 Bad Request
@@ -72,6 +93,38 @@ Status Codes:
 * Bad project ID/task ID/etc. results in 404 Not Found
 * Bad request methods result in 405 Method Not Allowed.  More specifically, the URL may be ok, but not for the method invoked (e.g. ok for GET, not ok to DELETE)
 * Bad Content-Type in a POST request results in 406 Not Acceptable
+-->
+
+<table class="reference">
+    <thead>
+        <tr>
+            <th style="width: 10%">Code</th><th style="width: 90%">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>200</td><td>OK: Successful GET</td>
+        </tr>
+        <tr>
+            <td>201</td><td>Created: Successful POST</td>
+        </tr>
+        <tr>
+            <td>400</td><td>Bad Request: Invalid JSON (can't be parsed or has wrong types).</td>
+        </tr>
+        <tr>
+            <td>401</td><td>Unauthorized: The OAuth token is either not provided or invalid.</td>
+        </tr>
+        <tr>
+            <td>404</td><td>Not Found: The resource, project, or endpoint being requested doesn’t exist.</td>
+        </tr>
+        <tr>
+            <td>405</td><td>Invalid HTTP method: A GET, POST, DELETE, or PUT was sent to an endpoint that doesn’t support that particular verb.</td>
+        </tr>
+        <tr>
+            <td>406</td><td>Not Acceptable: Required fields are missing.</td>
+        </tr>
+    </tbody>
+</table>
 
 Specific endpoints may provide other errors in other situations.
 
@@ -113,7 +166,7 @@ Optional:
 
 ## Get Info About a Message Queue
 
-Get general information about the queue.
+This call gets general information about the queue.
 
 ### Endpoint
 
@@ -136,7 +189,7 @@ In URL:
 
 ## Add a Message to a Queue
 
-Push a message onto the queue.
+This call adds or pushes a message onto the queue.
 
 ### Endpoint
 
@@ -147,22 +200,22 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 ### Parameters
 
 In URL:
-* **Project ID**: project these messages belong to
-* **Queue Name**: name of the queue. If the queue does not exist, it will be created for you.
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
 
 Required:
 
-* **messages** - an array of message objects. Each object contains these keys:
+* **messages** - An array of message objects. Each object contains these keys:
 
   * **Required**
     
-    * **body**: the message data
+    * **body**: The message data
 
   * **Optional**
     
-    * **timeout**: after timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds.
-    * **delay**: the item will not be available on the queue until this many seconds have passed. Default is 0 seconds.
-    * **expires_in**: how long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
+    * **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds.
+    * **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds.
+    * **expires_in**: How long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
 
 ### Request
 
@@ -193,7 +246,7 @@ Required:
 
 ## Get a Message from a Queue
 
-Get/reserve a message from the queue. This will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the message is deleted, the message will be placed back onto the queue, so be sure to delete every message after you're done with it.  
+This call gets/reserves a message from the queue. The message will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the message is deleted, the message will be placed back onto the queue. As a result, be sure to *delete* a message after you're done with it.  
 
 ### Endpoint
 
@@ -204,9 +257,9 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 ### Parameters
 
 In URL:
-* **Project ID**: project these messages belong to
-* **Queue Name**: name of queue. If the queue does not exist, it will be created for you.
-* **n**: maximum number of messages to get. Default is 1. Maximum is 100.
+* **Project ID**: The Project these messages belong to.
+* **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
+* **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
 
 ### Response
 
@@ -230,7 +283,7 @@ In URL:
 
 ## Delete a Message from a Queue
 
-This will delete the message. Be sure you call this after you're done with a message or it will be placed back on the queue.
+This call will delete the message. Be sure you call this after you're done with a message or it will be placed back on the queue.
 
 ### Endpoint
 
@@ -241,9 +294,9 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 ### Parameters
 
 In URL:
-* **Project ID**: project these messages belong to
-* **Queue Name**: name of queue. If the queue does not exist, it will be created for you.
-* **Message ID**: id of the message to delete.
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
+* **Message ID**: The id of the message to delete.
 
 ### Response
 {% highlight js %}

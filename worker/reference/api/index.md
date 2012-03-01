@@ -108,17 +108,21 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
 
 ## Authentication
 
-IronWorker uses OAuth2 tokens to authenticate API requests. You can find (and create) your API tokens [in the HUD](https://hud.iron.io/tokens).
+IronWorker uses OAuth2 tokens to authenticate API requests. You can find and create your API tokens [in the HUD](https://hud.iron.io/tokens). To authenticate your request, you should include a token in the Authorization header for your request or in your query parameters. Tokens are universal, and can be used across services.
 
-To authenticate your request, you should include a token in the Authorization header for your request or in your query parameters. Tokens are universal, and can be used across services.
-
-Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services, as well.
+Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
 
 **Example Authorization Header**:  
-Authorization: OAuth <span class="variable token">{Your Token Here}</span>
+Authorization: OAuth abc4c7c627376858
 
 **Example Query with Parameters**:  
-GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/projects/<span class="variable project_id">{Project ID}</span>/tasks?oauth=<span class="variable token">{Token}</span>
+GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/projects/<span class="variable project_id">{Project ID}</span>/tasks?oauth=abc4c7c627376858
+
+Notes:
+
+* Be sure you have the correct case, it's *OAuth*, not Oauth.
+* In URL parameter form, this will be represented as:
+  * `?oauth=abc4c7c627376858`
 
 ## Requests
 
@@ -132,11 +136,11 @@ Furthermore, all requests are limited to 64KB in size, unless otherwise noted.
 
 ## Responses
 
-All responses are in JSON with a Content-Type of "application/json". Your requests should all contain an "Accept: application/json" header to accommodate the responses.
+All responses are in JSON with a Content-Type of `application/json`. Your requests should all contain an `Accept: application/json` header to accommodate the responses.
 
 ### Status Codes
 
-The success failure for request is indicated by an HTTP status code. A 200 status code indicates success, whereas a 4xx status code indicates an error.
+The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error.
 
 <table class="reference">
     <thead>
