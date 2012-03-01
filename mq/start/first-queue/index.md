@@ -41,7 +41,7 @@ IronMQ is a product that helps you maintain communication between each separate 
 
 It doesn't take long to start passing messages on IronMQ. There are [official libraries](/mq/code/libraries) that can make the process a lot easier, too.
 
-There are three main steps to passing messages with IronMQ&mdash;we call it the "put-get-delete" paradigm:
+There are three main steps to passing messages with IronMQ&mdash;we call it the "push-get-delete" paradigm:
 
 1. [Pushing Messages to the Queue](#pushing_messages_to_the_queue)
 2. [Getting Messages Off the Queue](#get_messages_off_the_queue)
@@ -58,3 +58,9 @@ Passing the information is pretty easy:
 {% include mq/start/first-queue/php/pushing-message.md %}
 {% include mq/start/first-queue/ruby/pushing-message.md %}
 {% include mq/start/first-queue/go/pushing-message.md %}
+
+Just replace <span class="fixed-width variable token">INSERT TOKEN HERE</span> with your OAuth 2 API Token (which you can get from your [API Tokens page](https://hud.iron.io/tokens) in [the HUD](https://hud.iron.io)) and replace <span class="fixed-width variable project_id">INSERT PROJECT_ID HERE</span> with your project ID (again, [available in the HUD](https://hud.iron.io/mq/projects)), and you're ready to run the script. It will create a queue for you called <span class="fixed-width">test_queue</span> and push to it.
+
+To run the script, save it as <span class="fixed-width">push.<span class="language extension">py</span></span> and run <span class="language command">python</span> push.<span class="language extension">py</span></span>.
+
+## Getting Messages Off the Queue
