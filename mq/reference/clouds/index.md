@@ -15,8 +15,8 @@ Each of the official IronMQ [client libraries](/mq/code/libraries) allows you to
 
 <table class="reference">
 <tr><th>Cloud</th><th>Host</th></tr>
-<tr><td>Amazon Web Services</td><td>mq-aws-us-east-1.iron.io</td></tr>
-<tr><td>Rackspace Cloud</td><td>mq-rackspace-dfw.iron.io</td></tr>
+<tr><td>AWS</td><td>mq-aws-us-east-1.iron.io</td></tr>
+<tr><td>Rackspace</td><td>mq-rackspace-dfw.iron.io</td></tr>
 </table>
 
 Check your library's documentation for information on switching the host within the library.
