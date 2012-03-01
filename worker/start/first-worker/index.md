@@ -35,7 +35,7 @@ overflow: auto;
 
 IronWorker is a product that helps you separate elements of your project into specialised, resilient chunks. Each worker is intended to be a single piece of your project, operating independently from the other workers and your own servers. They leverage cloud computing to do a lot of work very quickly with great uptime. By using workers, you can easily create a resilient, easily-managed project that operates even under worst-case scenarios.
 
-It doesn't take long to get your workers running on IronWorker. There are [official libraries](/code/libraries) that can make the process a lot easier, too.
+It doesn't take long to get your workers running on IronWorker. There are [official libraries](/worker/code/libraries) that can make the process a lot easier, too.
 
 <div class="{% for language in page.languages %}{% if language.name != "ruby" %}{{ language.name }}{% unless forloop.last %} {% endunless %}{% endif %}{% endfor %}">
 {% capture tutorial %}{% include worker/start/first-worker/tutorial.md %}{% endcapture %}{{ tutorial | markdownify }}
