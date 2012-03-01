@@ -6,7 +6,7 @@ breadcrumbs: hidden
 
 # Welcome to the New Iron.io Dev Center
 
-You can find a host of resources to help you get started using our services, including API references, tutorials, how-tos, and more! Use the search
+Our dev center is a warehouse of resources to help you get started using our services, including API references, tutorials, how-tos, and more! Use the search
 bar on the left to search or select a service below to get started.<br /><br />
 
 
