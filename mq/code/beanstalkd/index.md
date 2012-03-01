@@ -7,7 +7,7 @@ breadcrumbs:
   - ['Beanstalkd', '/beanstalkd']
 ---
 
-## Beanstalkd Support
+# Beanstalkd Support
 
 You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice. 
 
@@ -32,7 +32,7 @@ Here's a sample list of languages available (with multiple clients libs to choos
 </table>
 
 
-### Host Information
+## Host Information
 To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on the [cloud you're using](/mq/reference/clouds)). 
 
 <table class="reference">
@@ -45,19 +45,19 @@ To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on 
   </tbody>
 </table>
 
-### Authentication
+## Authentication
 Because IronMQ requires authentication, the first command you send must put a message onto the queue with the contents:
 
 oauth <span class="variable token">{TOKEN}</span> <span class="variable project_id">{PROJECT_ID}</span>
 
 The DRAINING response will be returned if authentication fails or if any other command is sent before authentication.
 
-### Tubes vs Queues
+## Tubes vs Queues
 Note that a Beanstalkd _tube_ is synonymous with an IronMQ <span class="queue_name variable">{Queue Name}</span> within the REST/HTTP API.
 
 If a tube/queue name is not specified, then the queue name `default` will be used within IronMQ.
 
-### Notes
+## Notes
 * The ID you receive when using the Beanstalkd interface will *not* be the same as the HTTP interface so you *cannot* use them interchangeably.
 
 * At the moment, there are some commands that IronMQ does not implement. These include:
