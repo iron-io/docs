@@ -34,9 +34,23 @@ $(function() {
   choose(lang["extension"], lang["command"], lang["name"]);
   $(".language-switcher").click(function(e) {
     e.preventDefault();
-    ext = $(this).attr("data-extension");
-    cmd = $(this).attr("data-command");
-    name = $(this).attr("data-name");
+    var ext = $(this).attr("data-extension");
+    var cmd = $(this).attr("data-command");
+    var name = $(this).attr("data-name");
+    var offset_before = $(this).offset().top;
+    var scroll_top = $(window).scrollTop();
     choose(ext, cmd, name);
+    var offset_after = $(this).offset().top;
+    $(window).scrollTop(scroll_top - offset_before + offset_after);
   });
+
+  // Hide all lang links inside hostile blocks
+  var lang_list = $.map(languages, function (e) {return "div."+e.name; }).join(',');
+  $(lang_list).find('a.language-switcher').each(function(index, domEle){
+    var lang = $(domEle).data('name');
+    if ($(domEle).parents('.'+lang).size()== 0){
+      $(domEle).hide();
+    }
+  });
+
 });
