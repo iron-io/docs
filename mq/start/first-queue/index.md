@@ -18,6 +18,9 @@ languages:
 - name: 'go'
   command: 'go run'
   extension: "go"
+- name: 'dotnet'
+  command: 'csc'
+  extension: "cs"
 ---
 
 <style type="text/css">
@@ -58,6 +61,7 @@ Passing the information is pretty easy:
 {% include mq/start/first-queue/php/pushing-message.md %}
 {% include mq/start/first-queue/ruby/pushing-message.md %}
 {% include mq/start/first-queue/go/pushing-message.md %}
+{% include mq/start/first-queue/dotnet/pushing-message.md %}
 
 Just replace <span class="fixed-width variable token">INSERT TOKEN HERE</span> with your OAuth 2 API Token (which you can get from your [API Tokens page](https://hud.iron.io/tokens) in [the HUD](https://hud.iron.io)) and replace <span class="fixed-width variable project_id">INSERT PROJECT_ID HERE</span> with your project ID (again, [available in the HUD](https://hud.iron.io/mq/projects)), and you're ready to run the script. It will create a queue for you called <span class="fixed-width">test_queue</span> and push to it.
 
@@ -74,6 +78,7 @@ Here's how to get messages off the queue:
 {% include mq/start/first-queue/php/popping-message.md %}
 {% include mq/start/first-queue/ruby/popping-message.md %}
 {% include mq/start/first-queue/go/popping-message.md %}
+{% include mq/start/first-queue/dotnet/popping-message.md %}
 
 ## Delete Messages from the Queue
 
@@ -86,5 +91,6 @@ You can delete messages at any time, and it's pretty easy to do so:
 {% include mq/start/first-queue/php/deleting-message.md %}
 {% include mq/start/first-queue/ruby/deleting-message.md %}
 {% include mq/start/first-queue/go/deleting-message.md %}
+{% include mq/start/first-queue/dotnet/deleting-message.md %}
 
 That's everything! You're now ready to work with IronMQ. Check out our [client libraries](/mq/code/libraries) to get a list of libraries you can use to access the API, our [reference](/mq/reference/environment) to get the nitty-gritty information about the service, and check out [our beanstalkd support](/mq/code/beanstalkd) to connect with IronMQ from your favourite beanstalkd client.
