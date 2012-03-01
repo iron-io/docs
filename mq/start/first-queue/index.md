@@ -64,3 +64,27 @@ Just replace <span class="fixed-width variable token">INSERT TOKEN HERE</span> w
 To run the script, save it as <span class="fixed-width">push.<span class="language extension">py</span></span> and run <span class="language command">python</span> push.<span class="language extension">py</span></span>.
 
 ## Getting Messages Off the Queue
+
+Now that the messages are on the queue, we need to get or "*pop*" them off the queue. When you pop a message from the queue, you reserve that message for your client for a set amount of time. By default, you reserve the message for a minute. While the message is reserved, other clients won't be able to see it. After the message's <span class="fixed-width">timeout</span> is up, the message will automatically return to the queue for other clients to access. This prevents messages from getting lost when a client pops a message but runs into an error or fails while processing it.
+
+Here's how to get messages off the queue:
+
+{% include language-switcher.html %}
+{% include mq/start/first-queue/python/popping-message.md %}
+{% include mq/start/first-queue/php/popping-message.md %}
+{% include mq/start/first-queue/ruby/popping-message.md %}
+{% include mq/start/first-queue/go/popping-message.md %}
+
+## Delete Messages from the Queue
+
+If the messages get returned to the queue after their <span class="fixed-width">timeout</span> expires, we need to mark a message as handled and remove it from the queue permanently. We do this by deleting the message off the queue.
+
+You can delete messages at any time, and it's pretty easy to do so:
+
+{% include language-switcher.html %}
+{% include mq/start/first-queue/python/popping-message.md %}
+{% include mq/start/first-queue/php/popping-message.md %}
+{% include mq/start/first-queue/ruby/popping-message.md %}
+{% include mq/start/first-queue/go/popping-message.md %}
+
+That's everything! You're now ready to work with IronMQ. Check out our [client libraries](/mq/code/libraries) to get a list of libraries you can use to access the API, our [reference](/mq/reference/environment) to get the nitty-gritty information about the service, and check out [our beanstalkd support](/mq/code/beanstalkd) to connect with IronMQ from your favourite beanstalkd client.
