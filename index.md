@@ -4,16 +4,16 @@ section: overview
 breadcrumbs: hidden
 ---
 
-# Welcome to the new Iron.io Dev Center
+# Welcome to the New Iron.io Dev Center
 
-You can find a host of resources to help you get started using our services include API docs, tutorials, how-to's, and more! Use the search
-bar on the left to search, or select a service below to get started.<br /><br />
+You can find a host of resources to help you get started using our services, including API references, tutorials, how-tos, and more! Use the search
+bar on the left to search or select a service below to get started.<br /><br />
 
 
 
-[![IronMQ](/images/logo_mq.png "IronMq")](/mq)
+[![IronMQ](/images/logo_mq.png "IronMQ")](/mq)
 
-A fast, reliable message queue with various support for multiple interfaces such [REST/HTTP](/mq/reference/api) and [Beanstalkd](/mq/code/beanstalkd).
+A fast, reliable message queue with support for multiple interfaces like [REST/HTTP](/mq/reference/api) and [Beanstalkd](/mq/code/beanstalkd).
 
 <a href="/mq" class="next_item">View IronMQ Documentation</a>
 <br clear="all" />
