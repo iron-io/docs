@@ -12,7 +12,7 @@ A fast, reliable message queue with various support for multiple interfaces such
 <br clear="all" />
 
 
-[[![IronWorker](/images/logo_worker.png "IronWorker")](/worker)
+[![IronWorker](/images/logo_worker.png "IronWorker")](/worker)
 
 A massively scalable task/background processing queue with scheduling.
 
