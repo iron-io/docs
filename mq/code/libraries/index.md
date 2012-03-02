@@ -22,7 +22,6 @@ These are our official client libraries that use the IronMQ <a href="/mq/referen
 </ul>
 </div>
 
-
 We will continue to add more clients for the REST/HTTP API. If you would like to see one in particular, please let us know.
-We're also totally supportive if you want to build or modify client libraries yourself. Even feel free to jump into our
+We're also totally supportive if you want to build or modify client libraries yourself. Feel free to jump into our
 [live chat support](http://www.hipchat.com/gNWgTiqIC) for help. We love community involvement!
