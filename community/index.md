@@ -32,6 +32,6 @@ We're organizing: [San Francisco Go Meetup](http://www.meetup.com/golangsf), San
 
 ## Stay Informed
 
-* [Google+](https://plus.google.com/107080387635368981384/posts)
+* [Google+](https://plus.google.com/107979826672004784735/posts)
 * [Twitter](http://www.twitter.com/getiron)
 * [Our Blog](http://blog.iron.io)
