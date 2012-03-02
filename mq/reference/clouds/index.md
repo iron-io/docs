@@ -19,6 +19,9 @@ Each of the official IronMQ [client libraries](/mq/code/libraries) allows you to
 <tr><td>Rackspace</td><td>mq-rackspace-dfw.iron.io</td></tr>
 </table>
 
+**NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our 
+[HTTP clients](/mq/code/libraries) if you are on Rackspace. 
+
 Check your library's documentation for information on switching the host within the library.
 
 Do we not support your cloud of choice? [Let us know](http://support.iron.io/customer/portal/emails/new), and we'll try to add support for it.
