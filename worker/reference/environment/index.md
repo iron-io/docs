@@ -22,7 +22,7 @@ languages:
 # IronWorker Environment
 
 ## Operating System
-The operating system and version information is provided for completeness and transparency. We recommend, however, you not bind your workers to specifics of an OS. You should design your workers to be as environment independent as much as possible.  
+The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
 
 <div class="grey-box">
 <b>Operating System:</b> Ubuntu Linux 11.10
