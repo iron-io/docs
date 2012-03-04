@@ -53,8 +53,8 @@ The following languages are officially supported within IronWorker. We have incl
   </thead>
   <tbody>
     <tr><td>Ruby</td><td><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">Version 1.9.2p280</a></td></tr>
-    <tr><td>Python</td><td><a href="http://php.net/downloads.php#v5" title="Version 5.3.6">Version 5.3.6</a></td></tr>
-    <tr><td>PHP</td><td><a href="http://python.org/download/releases/2.7.2/" title="Version 2.7.2">Version 2.7.2</a></td></tr>
+    <tr><td>PHP</td><td><a href="http://php.net/downloads.php#v5" title="Version 5.3.6">Version 5.3.6</a></td></tr>
+    <tr><td>Python</td><td><a href="http://python.org/download/releases/2.7.2/" title="Version 2.7.2">Version 2.7.2</a></td></tr>
   </tbody>
 </table>
 
