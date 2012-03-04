@@ -22,8 +22,11 @@ languages:
 # IronWorker Environment
 
 ## Operating System
+The operating system and version information is provided for completeness and transparency. We recommend, however, you not bind your workers to specifics of an OS. You should design your workers to be as environment independent as much as possible.  
 
-**Operating System:** Ubuntu Linux 11.10
+<div class="grey-box">
+<b>Operating System:</b> Ubuntu Linux 11.10
+</div>
 
 ## Installed Linux Packages
 IronWorker contains several popular Linux packages as part of the standard worker environment.
