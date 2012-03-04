@@ -92,7 +92,7 @@ There is a system-wide limit for the maximum length a task may run. Tasks that e
 
 Tip: You should design your tasks to be moderate in terms of the length of time they take to run. If tasks are small (seconds or milli-seconds) then you want to group them together so as to amortize the worker setup costs. Likewise, if they are long-running tasks, you should break them up into a number of workers. Note that you can chain together workers as well as use scheduled jobs and datastores to orchestrate a complex series or sequence of tasks.
 
-### Max Scheduled Tasks (per Project)
+## Max Scheduled Tasks (per Project)
 The following is the default number of scheduled tasks. It should be sufficient for even the largest projects (see the Tip below). If you would like this number increased, however, please feel free to contact us.
 
 <div class="grey-box">
