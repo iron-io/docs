@@ -43,7 +43,7 @@ IronWorker contains several popular Linux packages as part of the standard worke
   </tbody>
 </table>
 
-These are included for convenience because they are binary packages. (See the tip below regarding environment independence.) 
+These are included because they are binary libraries. Language-specific libraries should be included as part of your worker code package.
 
 If you don't see what you need here, please [contact us](http://support.iron.io/customer/portal/emails/new) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
 
@@ -93,10 +93,10 @@ There is a system-wide limit for the maximum length a task may run. Tasks that e
 <b>Max Worker Run Time:</b> 3600 seconds (60 minutes)
 </div>
 
-Tip: You should design your tasks to be moderate in terms of the length of time they take to run. If tasks are small (seconds or milli-seconds) then you want to group them together so as to amortize the worker setup costs. Likewise, if they are long-running tasks, you should break them up into a number of workers. Note that you can chain together workers as well as use scheduled jobs and datastores to orchestrate a complex series or sequence of tasks.
+Tip: You should design your tasks to be moderate in terms of the length of time they take to run. If operations are small in nature (seconds or milli-seconds) then you'll want to group them together so as to amortize the worker setup costs. Likewise, if they are long-running operations, you should break them up into a number of workers. Note that you can chain together workers as well as use IronMQ, scheduled jobs, and datastores to orchestrate a complex series or sequence of tasks.
 
 ## Max Scheduled Tasks (per Project)
-The following is the default number of scheduled tasks. It should be sufficient for even the largest projects (see the Tip below). If you would like this number increased, however, please feel free to contact us.
+The following is the default number of scheduled tasks. It should be sufficient for even the largest projects. If you would like this number increased, however, please feel free to contact us.
 
 <div class="grey-box">
 <b>Max Scheduled Tasks:</b> 100
@@ -107,7 +107,7 @@ Tip: A common mistake is to create scheduled jobs on a per user or per item basi
 ## Pre-installed Code Libraries (language-specific)
 IronWorker supports a handful of pre-installed code libraries specifically around certain languages. 
 
-We recommend, however, that you design your workers to be environment independent. In other words, you recommend that you upload (or merge) all language-specific code libraries (such as Ruby gems or Python packages) that your workers as part of the code package. We don't recommend relying on these language libraries because they may change or new versions may be added creating conflicts with your workers. We provide them as a convenience to help users get started but production workers should strive to isolate their environments as much as possible.
+Your workers should be designed to be as independent of the environment as possible. In other words, you should look to upload or merge all language-specific libraries -- Ruby gems, Python and PHP modules, etc. -- that your workers need as part of your worker code package. Try to avoid relying on the pre-installed libraries listed below as much as possible because they could change or be updated with new versions, creating a potential source of conflicts. 
 
 {% include language-switcher.html %}
 <div class="ruby">
