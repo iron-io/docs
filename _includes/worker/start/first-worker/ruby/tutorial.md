@@ -14,7 +14,6 @@ You should never assume anything is installed in the IronWorker runtime. That me
 
 Here's a pretty basic worker script:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 require 'iron_worker'
 require 'json'
@@ -49,7 +48,6 @@ Testing your workers on your local machine will help you avoid some errors when 
 
 The first thing we need to do is instantiate the IronWorker library. This is done as follows:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 config_data = YAML.load_file('config.yml')
 
@@ -71,7 +69,6 @@ You can find your <span class="fixed-width">project_id</span> and <span class="f
 
 You can also simply insert your configuration values, though it's not recommended (nobody likes having their credentials accidentally end up in a repository). Here's how that would look:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 IronWorker.configure do |config|
   config.token = INSERT TOKEN HERE
@@ -81,7 +78,6 @@ end
 
 Now that we have the library configured we can run our code. Here's how:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 worker = FibonacciWorker.new
 worker.max = 1000
@@ -92,7 +88,6 @@ We just instantiate a new worker from our script, set its <span class="fixed-wid
 
 Here's the entire script:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 require 'iron_worker'
 require_relative 'fibonacci.rb'
@@ -113,7 +108,6 @@ To run, just save the script as "run.<span class="language extension">rb</span>"
 
 Queuing the worker to run on Iron's infrastructure is trivial, once the worker is running on your machine. It consists of changing a single line of our <span class="fixed-width">run.<span class="language extension">rb</span></span> script:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 require 'iron_worker'
 require_relative 'fibonacci.rb'
@@ -139,7 +133,6 @@ Now that we've got our code on IronWorker and we've got it running, it would hel
 
 The first way to check the status of the worker can only be used when you have access to the <span class="fixed-width">worker</span> variable that queued the task. Here's a modification of <span class="fixed-width">run.<span class="language extension">rb</span></span> that prints out the status of the task, instead of the response to the queuing operation:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 require 'iron_worker'
 require_relative 'fibonacci.rb'
@@ -161,7 +154,6 @@ Of course, in some situations, you'll have cause to check a task's status entire
 
 You can get the task ID from the output of run.<span class="language extension">rb</span>. To make it easier, we'll modify run.<span class="language extension">rb</span> to return only the task ID:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 require 'iron_worker'
 require_relative 'fibonacci.rb'
@@ -181,14 +173,12 @@ Save this modified run.<span class="language extension">rb</span> and run it to 
 
 Now that we have the task ID, it's time to get the status of the task. The library provides a handy call for this:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 task = IronWorker.service.status(TASK_ID)
 {% endhighlight %}
 
 Here's a script that accepts the task ID through a command line argument and outputs its status:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 require 'iron_worker'
 
@@ -208,21 +198,18 @@ But how do we get the sequence we generated? Well, remember when we printed it s
 
 Getting the log is pretty easy. If you have access to that original <span class="fixed-width">worker</span> variable, like in inline-status.<span class="language extension">rb</span>, you can just use the following:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 log = worker.get_log
 {% endhighlight %}
 
 If you need to separate queuing the worker and getting its log, as is often the case, you can get the log through the task ID, just like you did with the worker's status:
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 log = IronWorker.service.log(TASK_ID)
 {% endhighlight %}
 
 Here's a script that accepts the task ID through a command line argument and outputs the Fibonacci sequence the worker came up with. You'll notice we're just splitting out the <span class="fixed-width">MAGICALSTDOUTSEPARATOR</span> strings, so we don't get any actual log information in the middle of our sequence.
 
-{% include language-switcher.html %}
 {% highlight ruby %}
 require 'iron_worker'
 

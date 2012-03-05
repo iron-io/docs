@@ -6,15 +6,15 @@ breadcrumbs:
 - ['Getting Started', '/start']
 - ['Creating and Running Your First Worker', '/first-worker']
 languages:
+- name: 'ruby'
+  command: 'ruby'
+  extension: 'rb'
 - name: 'python'
   command: 'python'
   extension: 'py'
 - name: 'php'
   command: 'php'
   extension: 'php'
-- name: 'ruby'
-  command: 'ruby'
-  extension: 'rb'
 ---
 <style type="text/css">
 .container .fixed-width {

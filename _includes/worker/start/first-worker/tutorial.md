@@ -15,7 +15,6 @@ You should never assume anything is installed in the IronWorker runtime. That me
 
 Here's a pretty basic worker script:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/worker-no-payload.md %}
 {% include worker/start/first-worker/python/worker-no-payload.md %}
 
@@ -29,7 +28,6 @@ The payload parameter is the best place for specifying arguments for you worker,
 
 First, we need to modify our script to take advantage of the payload:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/worker.md %}
 {% include worker/start/first-worker/python/worker.md %}
 
@@ -53,7 +51,6 @@ Uploading consists of two simple steps: packaging and uploading. Fortunately, th
 
 First, we're going to instantiate the library. This is done as follows:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/instantiate-library.md %}
 {% include worker/start/first-worker/python/instantiate-library.md %}
 
@@ -69,13 +66,11 @@ You can find your <span class="fixed-width">project_id</span> and <span class="f
 
 You can also pass your configuration values inline:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/instantiate-library-with-args.md %}
 {% include worker/start/first-worker/python/instantiate-library-with-args.md %}
 
 Now that we have the library configured, we need to package our code up to upload it. Fortunately, the library has a function that lets us do that:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/zip-directory.md %}
 {% include worker/start/first-worker/python/zip-directory.md %}
 
@@ -83,7 +78,6 @@ That <span class="fixed-width">/path/to/directory</span> is just the path to the
 
 We don't need to upload a full directory, though--we just want to upload a single file. We still need to package that, but you don't need to separate it into its own directory. Just call this, instead:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/zip-files.md %}
 {% include worker/start/first-worker/python/zip-files.md %}
 
@@ -91,19 +85,16 @@ That first empty string argument is the base directory for files inside the zip.
 
 Now that we've packaged everything up, it's time to upload it to IronWorker. You can do this in a single library call:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/post-code.md %}
 {% include worker/start/first-worker/python/post-code.md %}
 
 The first string parameter is the filename in the zip you want the worker to execute when it runs. The second string parameter is the zip you want to upload. The third string parameter is a name for the worker that will help you find it on your HUD and will let you run the worker. The function returns a response from the server. If everything goes well, you'll see this:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/post-code-response.md %}
 {% include worker/start/first-worker/python/post-code-response.md %}
 
 To pull it all together, here's the full upload script:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/upload-worker.md %}
 {% include worker/start/first-worker/python/upload-worker.md %}
 
@@ -113,7 +104,6 @@ To run, just save the script as "upload.<span class="language extension">py</spa
 
 Queuing a task is pretty trivial, once the code is uploaded. It consists of a single library call:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/queue-task.md %}
 {% include worker/start/first-worker/python/queue-task.md %}
 
@@ -123,7 +113,6 @@ The return is the response, containing relevant information on the task. You sho
 
 Here's an example run script. Just save it as "run.<span class="language extension">py</span>", then execute <span class="fixed-width"><span class="language command">python</span> run.<span class="language extension">py</span></span>:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/run.md %}
 {% include worker/start/first-worker/python/run.md %}
 
@@ -133,7 +122,6 @@ The script will upload a task to your worker, then print out the task informatio
 
 Now that we've got our code on IronWorker and we've got it running, it would help to know the status of our worker. Has it finished that job yet? Fortunately, there's a simple way to do this.
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/get-task-details.md %}
 {% include worker/start/first-worker/python/get-task-details.md %}
 
@@ -141,7 +129,6 @@ Once again, <span class="fixed-width">worker</span> is just the library configur
 
 Here's a sample script that draws the task ID out of the --task option:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/check-task.md %}
 {% include worker/start/first-worker/python/check-task.md %}
 
@@ -151,13 +138,11 @@ But how do we get the sequence we generated? Well, remember when we printed it s
 
 Getting the log is pretty easy:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/get-log.md %}
 {% include worker/start/first-worker/python/get-log.md %}
 
 As usual, <span class="fixed-width">worker</span> is just the library, configured with your <span class="fixed-width">token</span> and <span class="fixed-width">project_id</span>. <span class="fixed-width">task_id</span> is just the task you want to get the log for. Once you have the log, just split the string to separate the output we want. Finally, parse the string as JSON to turn the JSON array into a native array. Here's a sample script:
 
-{% include language-switcher.html %}
 {% include worker/start/first-worker/php/log-script.md %}
 {% include worker/start/first-worker/python/log-script.md %}
 
