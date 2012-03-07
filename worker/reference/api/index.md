@@ -128,11 +128,35 @@ Notes:
 
 Requests to the API are simple HTTP requests against the API endpoints.
 
+All request bodies should be in JSON format, with Content-Type of `application/json`.
+
 Unless otherwise noted, all requests should use the following headers (in addition to their authentication):  
 \- Accept : application/json  
 \- Accept-Encoding : gzip/deflate
 
-Furthermore, all requests are limited to 64KB in size, unless otherwise noted.
+### Base URL
+
+All endpoints should be prefixed with the following:
+
+https://<span class="variable domain">{Domain}</span>.iron.io/1
+
+The domains for the clouds IronMQ supports are as follows:
+<table class="reference">
+  <thead>
+    <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{Domain}</span></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>AWS</td><td>worker-aws-us-east-1</td></tr>
+  </tbody>
+</table>
+
+
+### Pagination
+
+For endpoints that return lists/arrays of values:
+
+* page - The page of results to return. Default is 0. Maximum is 100.
+* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100. 
 
 ## Responses
 
