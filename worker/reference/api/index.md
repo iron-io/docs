@@ -118,29 +118,26 @@ Authorization: OAuth abc4c7c627376858
 **Example Query with Parameters**:  
 GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/projects/<span class="variable project_id">{Project ID}</span>/tasks?oauth=abc4c7c627376858
 
-Notes:
-
-* Be sure you have the correct case, it's **OAuth**, not Oauth.
-* In URL parameter form, this will be represented as:
-        `?oauth=abc4c7c627376858`
+**Note**: Be sure you have the correct case: it's **OAuth**, not Oauth.
 
 ## Requests
 
 Requests to the API are simple HTTP requests against the API endpoints.
 
-All request bodies should be in JSON format, with Content-Type of `application/json`.
+All request bodies should be in JSON format.
 
 Unless otherwise noted, all requests should use the following headers (in addition to their authentication):  
 \- Accept : application/json  
-\- Accept-Encoding : gzip/deflate
+\- Accept-Encoding : gzip/deflate  
+\- Content-Type : application/json
 
 ### Base URL
 
 All endpoints should be prefixed with the following:
 
-https://<span class="variable domain">{Domain}</span>.iron.io/1
+https://<span class="variable domain">{Domain}</span>.iron.io/<span class="variable version">2</span>
 
-The domains for the clouds IronMQ supports are as follows:
+The domains for the clouds IronWorker supports are as follows:
 <table class="reference">
   <thead>
     <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{Domain}</span></th></tr>
