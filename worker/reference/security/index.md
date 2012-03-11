@@ -9,33 +9,26 @@ breadcrumbs:
 
 # Securing Your Workers
 
-Security has always been an issue when using the power of cloud computing. To have your code running on a system that another company controls is a risk, and boils down to a matter of trust, in most cases.
+Security has always been an issue when using the power of cloud computing. To have your code running on a system that another company controls is a risk, and boils down to a matter of trust, in most cases. At Iron, we work hard to deserve your trust. We've taken measures to ensure the security of your data in our systems, and we work hard to educate customers on how to make the most of that security. Our mission is to take the stress out of building your cloud infrastructure, and that includes stress about security.
 
-At Iron, we work hard to deserve your trust. The code powering your workers and the data you pass to your workers will **only** be accessed by Iron or its team with your *explicit* permission or as required by California state law or United States federal law. Your workers belong to **you**.
+## What We Do
 
-We also take security very seriously. Our system is designed to keep your workers away from other customers and intruders with unauthorised access. It doesn't hurt, however, to take precautions about your data. We've come up with this list of best practices for workers to help keep your data secure in even the worst-case scenarios.
+Iron's [API](/worker/reference/api) is the standard way of interacting with your workers. We have **HTTPS encryption** available for our API, and all our official client libraries use it by default. This renders most common packet-interception attacks useless.
 
-## Always Use HTTPS
+Our system uses **sandboxing** to keep workers separated from each other. This means that only your worker can access the data you're sending to it and the source code you upload.
 
-Our [API](/worker/reference/api) is available over a secure connection. Double-check that the API endpoints you are using are prefixed with "https" and that the port the information is being passed through is set to 443. This renders many common attacks for intercepting data and transmission impossible or impractical.
+Iron's [API](/worker/refrence/api) also uses the industry-standard [OAuth 2](http://www.oauth.net/2/) authentication scheme to securely authenticate your requests while mitigating the damage that lost or compromised access codes can cause.
 
-## Don't Hardcode Sensitive Information
+Finally, Iron has a **strict policy** that requires **explicit customer approval** before accessing any code or payload data uploaded into our system. Your workers are *yours*, and we respect your privacy.
 
-When your worker needs access to sensitive information (whether that be credentials, an OAuth token, or anything else you'd like to keep private), it is always best to pass that information through in task payloads, instead of keeping it "hardcoded" or inserted directly into the code of your worker. There are two reasons for this:
+## What You Can Do
 
-1. The payload data has a much shorter lifespan on our servers than your worker's source code does. This allows us to store the sensitive information for as brief a time as possible, minimizing the risk.
-2. In the event that your sensitive information is compromised and can be changed (for example, changing credentials), you can simply change them in the payloads you're passing and not tell your worker anything about the change. This separation of responsibility is one of the core tenants of IronWorker, allowing for small code chunks that do specific tasks very well.
+Always upload sensitive data **in the payload**, rather than embedding it in your code.
 
-## Encrypt Your Data
+Always use **worker-specific** credentials that only your worker depends on, if possible. Limit these credentials to the *only* the services the worker needs access to, if at all possible. This will make changing or mitigating compromised credentials easier.
 
-For a bit of extra reassurance, you can always encrypt your sensitive data before sending it to IronWorker, then decrypt it in your worker. While this solution isn't bulletproof (if someone gains access to the worker code, they can decrypt the information just as the worker can), it adds another lock to the door. The more barriers to stealing your data you erect, the less likely it is that the data will be taken.
+**Encrypt your sensitive data** before entering it in the payload, then decrypt it in the worker. This requires an attacker to gain access to both the payload *and* the worker's source to comrpomise your data.
 
-## Never Print or Log Sensitive Data
+Never log sensitive data. This includes sending information to STDOUT, as STDOUT is included in IronWorker's logs.
 
-Depending on your language runtime and client library, there are several ways to get your data stored into your worker logs. Any mention of logging should raise a red flag, and anything that gets sent to STDOUT will be saved in our log files, as well. That means print, puts, echo, and the like will all get data stored in your logs.
-
-Your logs have a long life on our servers so that you can [check them at will](/worker/reference/api/#get_a_tasks_log). This means that any information that winds up in a log has a long life ahead of it, so any sensitive information should be kept out of the logs. The goal is to keep the window of opportunity for stealing that information to the lowest possible duration; by storing the information in logs, the window of opportunity is needlessly stretched.
-
-## Talk to Us
-
-Healthy dialogue is always essential to security of a system, especially one that is operated cooperatively, like your workers are. Iron maintains a [public support chat room](http://www.hipchat.com/gNWgTiqIC) that is staffed by our team around the clock. If you have questions or concerns or would just like some reassurance, feel free to stop by and chat with us. Our goal is to take the stress out of building and maintaining cloud systems; that includes stress about security.
+**Keep the dialogue open** with us. Iron staffs a [public support chat room](http://www.hipchat.com/gNWgTiqIC) around the clock, and we're always happy to help you secure your data as best we can.
