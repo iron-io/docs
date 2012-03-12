@@ -24,10 +24,10 @@ Iron's [API](/worker/refrence/api) uses [OAuth 2](http://www.oauth.net/2/), an i
 The IronWorker [API](/worker/reference/api) is the standard method of interacting with workers and projects. **HTTPS encryption** is the default access method for the API and the recommended approach for all access requests. All Iron.io (official) client libraries use HTTPS encryption by default. This renders most common packet-interception attacks useless. 
 
 ### Process Isolation
-IronWorker makes use of OS-level **sandboxing** to keep processes isolated and separate from system influences and other processes in the system. Additionally, a standard set of worker setup and teardown measures make sure each process has a clean environment at process onset and at the end. 
+IronWorker makes use of OS-level **sandboxing** to keep processes isolated and separate from system influences and other processes in the system. Each IronWorker process runs in an isolated virtualized container such that the environment appears to processes as a unique minimal Ubuntu distribution. Runtime limits are placed on the amount of RAM and disk each worker process may consume. (Workers that exceed the RAM limit are terminated terminated immediately by the IronWorker runtime.) CPU allocation is balanced across IronWorker processes, but bursting is allowed. 
 
 ### Resource Management
-IronWorker uses process-level monitoring/management to ensure that workers receive no less than a standard set of worker resources. Workers may utilize more resources depending on system load (which could introduce slight performance variations across workers) but never less than the standard level.
+IronWorker uses process-level runtime monitoring/management to ensure that workers receive a standard set of compute resources. Workers may utilize more resources depending on system load (which could introduce slight performance variations across workers) but never less than the standard level.
 
 ### SMTP and Other Service Restrictions
 IronWorker by design does not provide SMTP host services. Workers must make use third-party services such as gmail, SendGrid, or other service providers. Users must also adhere to Iron.io's Use Policy.
