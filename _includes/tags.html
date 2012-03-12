@@ -1,1 +1,1 @@
-{% for tag in page.tags %}<a href="#" class="tag">{{ tag }}</a>{% endfor %}
+{% for tag in page.tags %}<a href="/tags/#{{ tag | replace:" ","_" }}" class="tag">{{ tag }}</a>{% endfor %}
