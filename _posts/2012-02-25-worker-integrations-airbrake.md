@@ -17,9 +17,6 @@ languages:
 - name: 'ruby'
   command: 'ruby'
   extension: 'rb'
-- name: 'php'
-  command: 'php'
-  extension: 'php'
 
 layout: default
 section: worker
@@ -133,8 +130,24 @@ end
 </div>
 
 
-<div class="php">
-{% highlight php %}
-coming soon
+
+## And a sample runner file you can run to call the worker
+
+<div class="ruby">
+{% highlight ruby %}
+require 'iron_worker'
+require "yaml"
+
+load "worker_with_airbrake.rb"
+
+IronWorker.configure do |config|
+  config.token = TOKEN
+  config.project_id = PROJECT_ID
+end
+
+worker = WorkerWithAirbrake.new
+worker.api_key = AIRBRAKE_API_KEY
+
+worker.queue
 {% endhighlight %}
 </div>
