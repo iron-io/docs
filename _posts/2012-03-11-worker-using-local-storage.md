@@ -2,9 +2,15 @@
 title: Using Local Disk Storage
 layout: default
 section: worker
+permalink: /worker/articles/databases/local-storage
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Databases', '/local_storage']
+  - ['Databases', '/databases']
+  - ['Using Local Disk Storage', '/local-storage']
+categories:
+  - worker
+  - articles
+  - databases
 ---
 
 ##Local Temporary Storage
@@ -14,7 +20,7 @@ You access this storage by making use of the var `user_dir` in the worker. This 
 
 Here's an example takes a file from the web and saves it in local storage.(The log snippet just logs the contents of `user_dir`.)
 
-<pre>
+{% highlight ruby %}
 class S3Worker < IronWorker::Base
 
   filepath = user_dir + "ironman.jpg"
@@ -27,31 +33,31 @@ class S3Worker < IronWorker::Base
   log "#{user_files}"
 
 end
-</pre>
+{% endhighlight ruby %}
 
 ###Location of Uploaded Files and Folders
 The `user_dir` directory also contains any uploaded files that you've included with your code. Note that any folders or nested files will appear at the top level. 
 
 For example, let's say you upload a file with the following structure:
 
-<pre>
+{% highlight ruby %}
 merge "../site_stats/client.rb"
-</pre>
+{% endhighlight ruby %}
 
 This file will be placed in the `user_dir` directory. You can make use of it there, create local/remote path references (using the local/remote query switch in your worker), or replicate the path and move the file there. (We recommend one of the first two options.)
 
-<pre>
+{% highlight ruby %}
 user_dir/
   ...
   client.rb
   ...
-</pre>
+{% endhighlight ruby %}
 
 In Ruby, to make use of the file (in the case of a code file), you would use a `require_relative` statement with the base path.
 
-<pre>
+{% highlight ruby %}
  require_relative './client'
-</pre>
+{% endhighlight ruby %}
 
 ###Use Cases
 Typical use cases might include:
@@ -73,5 +79,3 @@ You can find more examples of making use of local temp storage here:
 * [Image Processing Example w/Carrierwave](https://github.com/iron-io/iron_worker_examples/tree/master/ruby/carrierwave) on Github 
 * [S3 Example](https://github.com/iron-io/iron_worker_examples/blob/master/ruby/s3_tester/s3_worker.rb) on Github
 * [S3 Example2](https://github.com/iron-io/iron_worker_examples/tree/master/ruby/download_to_s3) on Github
-
-
