@@ -6,12 +6,23 @@ section: worker
 
 # IronWorker Documentation
 
-Welcome to the IronWorker documentation. IronWorker is a massively scalable background processing system. [Read more](http://www.iron.io/products/worker).
+IronWorker is a massively scalable background processing and worker system. You simply write a worker in either Ruby, PHP, or Python, and then queue or schedule them
+to run on our platform. The best part is that IronWorker is a **completely hosted** platform which means **zero infrastructure** to deal with. This frees you to focus
+on your worker code and not infrastructure.
 
-To get started using Iron.io services, you need to sign up at Iron.io and get an OAuth2 token:
+Queue your worker up thousands of times and we'll run them as concurrently as possible.
 
-* [Sign Up](http://www.iron.io)
-* [Get an OAuth 2 Token](http://hud.iron.io/tokens)
+
+[Read more](http://www.iron.io/products/worker).
+
+
+## Getting Started
+
+
+
+1. [Sign Up](http://www.iron.io) for a free Iron.io account
+2. [Get an OAuth 2 Token](http://hud.iron.io/tokens)
+3. Read the "[Your first worker](/worker/start/first-worker/)" tutorial
 
 ## Developer Zone
 
