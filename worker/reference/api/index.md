@@ -197,6 +197,10 @@ In the event of an error, the appropriate status code will be returned with a bo
 }
 {% endhighlight %}
 
+#### Exponential Backoff
+
+When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
+
 ### Dates and Times
 
 All dates, times, and timestamps will use the [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) / [RFC 3339](http://www.ietf.org/rfc/rfc3339.txt) format.
