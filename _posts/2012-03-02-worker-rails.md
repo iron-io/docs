@@ -21,45 +21,70 @@ section: worker
 
 # IronWorker and Ruby on Rails
 
+Here's a simple example of how to create and run workers in **Ruby on Rails**.
 
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Here's a simple example of how to create and run workers in&nbsp;<strong style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Ruby on Rails</strong>.</p>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">If you haven't already, please start with our <a href="https://sites.google.com/site/ironiodocs/worker/ruby/getting-started/ironworker-in-5-minutes">IronWorker in 5 minutes</a>&nbsp;article, which uses just the Ruby language.&nbsp;</p>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">This example takes it the next step to use it within a <b>Rails environment</b>.</p>
-<h2 style="line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:2em;margin-right:0px;margin-bottom:10px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;font-size:16px;font-weight:bold;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221,221,221)">Confirm Ruby 1.9 or above.</h2>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">IronWorker uses Ruby 1.9 or above and so if you're still on Ruby 1.8.7, you'll need to upgrade your Ruby version.</p>
-<h2 style="line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:2em;margin-right:0px;margin-bottom:10px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;font-size:16px;font-weight:bold;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221,221,221)">Configure IronWorker Gem</h2>
-<h3 style="line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:0px;margin-right:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;font-size:12px">Rails 3</h3>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">For&nbsp;<strong style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Rails 3.X</strong>, add the following to your Gemfile:</p>
-<pre style="line-height:18px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);font-family:Monaco,Consolas,DejaVu Sans Mono,monospace;border-width:initial;border-color:initial;background-repeat:initial initial">gem 'iron_worker'</code>
-</pre>
-<h3 style="line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:0px;margin-right:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;font-size:12px">Rails 2</h3>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">For&nbsp;<strong style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Rails 2.X</strong>, add the following to your&nbsp;<code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:5px;padding-bottom:0px;padding-left:5px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial">environment.rb</code>&nbsp;file:</p>
-<pre style="line-height:18px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);font-family:Monaco,Consolas,DejaVu Sans Mono,monospace;border-width:initial;border-color:initial;background-repeat:initial initial">config.gem 'iron_worker'</code>
-</pre>
-<h2 style="line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:2em;margin-right:0px;margin-bottom:10px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;font-size:16px;font-weight:bold;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221,221,221)">Configure IronWorker Tokens</h2>
-<p style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;line-height:18px;font-size:12px;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">IronWorker uses OAuth2 for authentication, making use of a token and a project_ID.</p>
-<p style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;line-height:18px;font-size:12px;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Create a file at <code>config/initializers/iron_worker_worker.rb</code> and put the following configuration block into it:</p>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Use this config block for <b>&gt;v2.x</b> of the iron_worker gem</p>
-<pre style="background-color:rgb(241,241,241);margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><code># Use this for iron_worker gem v2.X
+If you haven't already, please start with our [IronWorker in 5 minutes](https://sites.google.com/site/ironiodocs/worker/ruby/getting-started/ironworker-in-5-minutes) article, which uses just the Ruby language. 
+
+This example takes it the next step to use it within a **Rails environment**.
+
+## Confirm Ruby 1.9 or above.
+
+IronWorker uses Ruby 1.9 or above and so if you're still on Ruby 1.8.7, you'll need to upgrade your Ruby version.
+
+## Configure IronWorker Gem
+
+### Rails 3
+
+For **Rails 3.X**, add the following to your Gemfile:
+
+<div class="grey-box fixed-width">
+    gem 'iron_worker'
+</div>
+
+### Rails 2
+
+For **Rails 2.X**, add the following to your <span class="fixed-width">environment.rb</span> file:
+
+<div class="grey-box fixed-width">
+    config.gem 'iron_worker'
+</div>
+
+## Configure IronWorker Tokens
+
+IronWorker uses OAuth2 for authentication, making use of a token and a project_ID.
+
+Create a file at <span class="fixed-width">config/initializers/iron_worker_worker.rb</span> and put the following configuration block into it:
+
+Use this config block for **>v2.x** of the iron_worker gem
+
+{% highlight ruby %}
+# Use this for iron_worker gem v2.X
 IronWorker.configure do |config|
   config.token = 'TOKEN'
   config.project_id = 'PROJECT_ID'
-end</code>
-</pre>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif"><span style="color:rgb(51,51,51);font-family:Verdana,Helvetica,Arial,sans-serif;font-size:16px;font-weight:bold;line-height:normal"><br>
-</span></p>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif"><span style="color:rgb(51,51,51);font-family:Verdana,Helvetica,Arial,sans-serif;font-size:16px;font-weight:bold;line-height:normal">Configure IronWorker Worker Path</span></p>
-<p style="font-size:12px;line-height:18px;color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px"><b>NOTE: This is only required in Rails &lt; 3.&nbsp;</b></p>
-<span style="color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">And finally, add the workers directory to your load paths. In environment. rb:</span><span style="color:rgb(0,0,0);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">
-<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial"><code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);font-family:Monaco,Consolas,DejaVu Sans Mono,monospace;border-width:initial;border-color:initial;background-repeat:initial initial">config.load_paths += %W( #{RAILS_ROOT}/app/workers )</code>
-</pre>
-<h2 style="margin-top:2em;margin-right:0px;margin-bottom:10px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;font-size:16px;font-weight:bold;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221,221,221)">Create a Worker</h2>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Now that things are configured, let's queue up a worker from an action.</p>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">First, create a workers directory at:&nbsp;</p>
-<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial"><code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);font-family:Monaco,Consolas,DejaVu Sans Mono,monospace;border-width:initial;border-color:initial;background-repeat:initial initial">#{Rails.root}/app/workers</code>
-</pre>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Now create a file called&nbsp;<code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:5px;padding-bottom:0px;padding-left:5px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial">my_worker.rb</code>&nbsp;in that directory (<code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:5px;padding-bottom:0px;padding-left:5px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial">/app/workers/my_worker.rb</code>) and put the following code in it:</p>
-<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial"><code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);font-family:Monaco,Consolas,DejaVu Sans Mono,monospace;border-width:initial;border-color:initial;background-repeat:initial initial">class MyWorker &lt; IronWorker::Base
+end
+{% endhighlight %}
+
+## Configure IronWorker Worker Path
+
+**NOTE: This is only required in Rails < 3.**
+
+And finally, add the workers directory to your load paths. In environment. rb:
+
+{% highlight ruby %}
+config.load_paths += %W( #{RAILS_ROOT}/app/workers )
+{% endhighlight %}
+
+## Create a Worker
+
+Now that things are configured, let's queue up a worker from an action.
+
+First, create a workers directory at <span class="fixed-width">#{Rails.root}/app/workers</span>.
+
+Now create a file called <span class="fixed-width">my_worker.rb</span> in that directory (<span class="fixed-width">/app/workers/my_worker.rb</span>) and put the following code in it:
+
+{% highlight ruby %}
+class MyWorker < IronWorker::Base
 
   attr_accessor :x
 
@@ -71,21 +96,31 @@ end</code>
     end
   end
 
-end</code>
-</pre>
-<h2 style="margin-top:2em;margin-right:0px;margin-bottom:10px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;font-size:16px;font-weight:bold;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221,221,221)">Queue up the Worker in the Cloud</h2>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Let's say we have a controller called <code>WelcomeController</code>, now let's just add the following to the&nbsp;<code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:5px;padding-bottom:0px;padding-left:5px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial">index</code>&nbsp;action to keep it simple.</p>
-<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial"><code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);font-family:Monaco,Consolas,DejaVu Sans Mono,monospace;border-width:initial;border-color:initial;background-repeat:initial initial">def index
+end
+{% endhighlight %}
+
+## Queue up the Worker in the Cloud 
+
+Let's say we have a controller called <span class="fixed-width">WelcomeController</span>, now let's just add the following to the <span class="fixed-width">index</span> action to keep it simple.
+
+{% highlight ruby %}
+def index
   worker = MyWorker.new
   worker.x = 5
   worker.queue
-end</code>
-</pre>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Now just visit your welcome controller, eg:&nbsp;<a href="http://localhost:3000/welcome" style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;outline-style:none;outline-width:initial;outline-color:initial;color:rgb(0,111,187)">http://localhost:3000/welcome</a>&nbsp;and this job will be queued up!</p>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">You can visit your IronWorker dashboard at <a href="http://hud.iron.io">hud.iron.io</a> to get the status of the job or make use of the&nbsp;<code style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:5px;padding-bottom:0px;padding-left:5px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial">status</code>&nbsp;method to check in on it via your code.</p>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">To run jobs with a higher priority, just pass in a priority when you queue them.</p>
-<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial"><code>worker.queue(:priority=&gt;1)
-</code></pre>
-<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221);background-repeat:initial initial"><code>worker.queue(:priority=&gt;2)
-</code></pre>
-<p style="margin-top:1em;margin-right:0px;margin-bottom:1em;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">Check out this&nbsp;<a href="https://github.com/iron-io/simple_worker_rails_example" style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;outline-style:none;outline-width:initial;outline-color:initial;color:rgb(0,111,187)">github repository for a full Rails example</a>.</p>
+end
+{% endhighlight %}
+
+Now just visit your welcome controller, eg: http://localhost:3000/welcome and this job will be queued up!
+
+You can visit your IronWorker dashboard at [hud.iron.io](https://hud.iron.io/tq) to get the status of the job or make use of the <span class="fixed-width">status</span> method to check in on it via your code.
+
+To run jobs with a higher priority, just pass in a priority when you queue them.
+
+{% highlight ruby %}
+worker.queue(:priority=>1)
+
+worker.queue(:priority=>2)
+{% endhighlight %}
+
+Check out this [github repository for a full Rails example](https://github.com/iron-io/simple_worker_rails_example).

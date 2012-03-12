@@ -37,8 +37,4 @@ In most cases you'll want to use one of the available client libraries.
 * [Live Chat](http://www.hipchat.com/gNWgTiqIC)
 
 
-<a href="/mq/start/first-queue" class="next_item">Setting Up Your First Queue --></a><br clear="all" />
-
-<br /><br />
-
-
+<p style="width: 100%; text-align: right;"><a href="/mq/start/first-queue" class="next_item">Setting Up Your First Queue --></a></p>
