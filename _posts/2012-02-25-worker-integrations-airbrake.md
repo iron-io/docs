@@ -83,7 +83,7 @@ end
 
 ## Step 4: Send caught errors to Airbrake
 
-After we catch the error, let's send it to Airbrake and re-raise it so the worker fails (otherwise the worker would complete successfully but didn't work as expected).
+After we catch the error, let's send it to Airbrake and re-raise it so the worker fails (otherwise the worker would complete successfully, but wouldn't work as expected).
 
 <div class="ruby">
 {% highlight ruby %}
