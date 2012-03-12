@@ -197,10 +197,6 @@ In the event of an error, the appropriate status code will be returned with a bo
 }
 {% endhighlight %}
 
-#### Exponential Backoff
-
-I
-
 ### Dates and Times
 
 All dates, times, and timestamps will use the [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) / [RFC 3339](http://www.ietf.org/rfc/rfc3339.txt) format.
