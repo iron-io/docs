@@ -1,0 +1,16 @@
+The Iron.io Dev Center was created by the staff and customers of Iron.
+You can become an Iron customer by visiting http://hud.iron.io/users/new
+and by joining our community at http://dev.iron.io/community. You can also
+help us update this Dev Center by visiting the Github repo at
+https://github.com/iron-io/docs and submitting issues where we need to
+add, clarify, or correct documentation. We also accept pull requests!
+We'll be rewarding contributors with swag, service credits, coffee cards,
+and anything else we can think of to thank them.
+
+Iron's team is a growing community of cloud enthusiasts. We're passionate
+about taking the headache out of building your cloud infrastructure, and
+we bring together developers, designers, and creators of every kind from
+various backgrounds in our pursuit of this goal.
+
+If that sounds like fun to you, let us know: http://jobs.iron.io.
+We'd love to add you to the team.
