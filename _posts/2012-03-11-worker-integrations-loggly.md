@@ -98,7 +98,6 @@ end
 <div class="ruby">
 {% highlight ruby %}
 require 'iron_worker'
-require "yaml"
 
 load "loggly_worker.rb"
 

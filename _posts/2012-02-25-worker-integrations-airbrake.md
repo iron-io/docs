@@ -136,7 +136,6 @@ end
 <div class="ruby">
 {% highlight ruby %}
 require 'iron_worker'
-require "yaml"
 
 load "worker_with_airbrake.rb"
 
