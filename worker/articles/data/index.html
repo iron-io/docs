@@ -1,0 +1,16 @@
+---
+title: Working With Data and Databases
+layout: default
+section: worker
+breadcrumbs:
+- ['Articles', '/articles']
+- ['Working With Data and Databases', '/data']
+---
+
+<h1>Working With Data and Databases</h1>
+
+<ul>
+  {% for post in site.categories.data %}{% if post.categories contains "worker" %}
+  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endif %}{% endfor %}
+</ul>

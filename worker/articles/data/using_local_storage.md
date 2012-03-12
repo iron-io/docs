@@ -4,7 +4,7 @@ layout: default
 section: worker
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Databases', '/local_storage']
+  - ['Working With Data and Databases', '/data']
 ---
 
 ##Local Temporary Storage

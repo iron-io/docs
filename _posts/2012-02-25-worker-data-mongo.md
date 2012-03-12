@@ -1,13 +1,13 @@
 ---
-permalink: /worker/articles/databases/mongodb
+permalink: /worker/articles/data/mongodb
 title: Getting started on MongoDB
 categories:
  - worker
  - articles
- - databases
+ - data
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Databases', '/databases']
+  - ['Working With Data and Databases', '/data']
   - ['MongoDB', '/mongodb']
 layout: default
 section: worker

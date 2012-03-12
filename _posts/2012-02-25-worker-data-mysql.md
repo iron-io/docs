@@ -1,13 +1,13 @@
 ---
-permalink: /worker/articles/databases/mysql
+permalink: /worker/articles/data/mysql
 title: Getting started on MySQL
 categories:
  - worker
  - articles
- - databases
+ - data
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Databases', '/databases']
+  - ['Working With Data and Databases', '/data']
   - ['MySQL', '/mysql']
 layout: post
 section: worker
