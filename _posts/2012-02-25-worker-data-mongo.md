@@ -7,7 +7,7 @@ categories:
  - data
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Working With Data and Databases', '/data']
+  - ['Working With Data &amp; Databases', '/data']
   - ['MongoDB', '/mongodb']
 layout: default
 section: worker

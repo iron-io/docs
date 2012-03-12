@@ -7,7 +7,7 @@ categories:
  - data
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Working With Data and Databases', '/data']
+  - ['Working With Data &amp; Databases', '/data']
   - ['MySQL', '/mysql']
 layout: post
 section: worker
