@@ -189,13 +189,17 @@ The success failure for request is indicated by an HTTP status code. A 2xx statu
 </table>
 
 ### Errors
-In the event of an error, The appropriate status code will be returned with a body containing more information. An error response is structured as follows:
+In the event of an error, the appropriate status code will be returned with a body containing more information. An error response is structured as follows:
 
 {% highlight js %}
 {
     "msg": "reason for error"
 }
 {% endhighlight %}
+
+#### Exponential Backoff
+
+I
 
 ### Dates and Times
 
