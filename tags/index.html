@@ -5,9 +5,15 @@ breadcrumbs: hidden
 ---
 <script type="text/javascript">
         $(document).ready(function() {
-                        if(window.location.hash != "" && $("#tag-" + window.location.hash.substr(1)).length > 0) {
+                if(window.location.hash != "" && $("#tag-" + window.location.hash.substr(1)).length > 0) {
                         $(".tag:not(#tag-" + window.location.hash.substr(1) + ")").hide();
+                        $("#show-all-tags").show();
                 }
+                $("#toggle-all-tags").click(function(evt) {
+                        evt.preventDefault();
+                        $(".tag").show();
+                        $("#show-all-tags").hide();
+                });
         });
 </script>
 
@@ -25,3 +31,6 @@ breadcrumbs: hidden
 </div>
 {% endif %}
 {% endfor %}
+<p id="show-all-tags" style="display: none;">
+        <a href="#" id="toggle-all-tags">Show All Tags</a>
+</p>
