@@ -8,7 +8,7 @@ categories:
 breadcrumbs:
   - ['Articles', '/articles']
   - ['Integrations', '/integrations']
-  - ['Airbrake', '/pagerduty']
+  - ['PagerDuty', '/pagerduty']
 tags:
  - integrations
  - error handling
