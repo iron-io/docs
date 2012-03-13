@@ -204,7 +204,8 @@ $iw->debug_enabled = true;
 
 $zipName = "code/$name.zip";
 
-$zipFile = IronWorker::zipDirectory(dirname(__FILE__)."/workers/airbrake", $zipName, true);
+$zipFile =
+    IronWorker::zipDirectory(dirname(__FILE__)."/workers/airbrake", $zipName, true);
 
 $res = $iw->postCode('airbrake.php', $zipName, $name);
 
