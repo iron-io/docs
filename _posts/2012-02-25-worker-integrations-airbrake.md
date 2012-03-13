@@ -115,7 +115,8 @@ raise ex
 </div>
 <div class="php">
 {% highlight php %}
-    $brake->notify(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), "worker");
+    $brake->notify(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(),
+        $e->getTrace(), "worker");
 {% endhighlight %}
 </div>
 
@@ -166,7 +167,8 @@ try {
     //do something
 }
 catch (Exception $e) {
-    $brake->notify(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), "worker");
+    $brake->notify(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(),
+        $e->getTrace(), "worker");
 }
 {% endhighlight %}
 </div>
