@@ -48,6 +48,7 @@ merge_gem 'airbrake'
 </div>
 <div class="php">
 {% highlight php %}
+<?php
 require_once dirname(__FILE__) . '/lib/Airbrake.class.php';
 {% endhighlight %}
 </div>
@@ -66,6 +67,7 @@ end
 </div>
 <div class="php">
 {% highlight php %}
+<?php
 $brake = new Services_Airbrake('API_Key', 'production', 'curl');
 {% endhighlight %}
 </div>
@@ -89,6 +91,7 @@ end
 </div>
 <div class="php">
 {% highlight php %}
+<?php
 try {
     //do something
 }
@@ -115,6 +118,7 @@ raise ex
 </div>
 <div class="php">
 {% highlight php %}
+<?php
     $brake->notify(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(),
         $e->getTrace(), "worker");
 {% endhighlight %}
