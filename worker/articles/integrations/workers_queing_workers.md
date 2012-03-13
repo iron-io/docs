@@ -24,7 +24,7 @@ In your MasterWorker:
 ###Client Libraries
 The explicit method of uploading and then queuing/scheduling a task is recommended but some client libraries have convenience methods that can facilitate the upload and queueing/scheduling of the slave workers.
 
-<pre>
+{% highlight ruby %}
 require 'iron_worker'
 
 class MasterWorker < IronWorker::Base
@@ -37,7 +37,7 @@ class MasterWorker < IronWorker::Base
     slave_worker.queue
   end
 end
-</pre>
+{% endhighlight %}
 
 ##Best Practices
 
