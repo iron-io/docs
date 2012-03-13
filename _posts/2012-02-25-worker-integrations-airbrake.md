@@ -17,6 +17,9 @@ languages:
 - name: 'ruby'
   command: 'ruby'
   extension: 'rb'
+- name: 'php'
+  command: 'php'
+  extension: 'php'
 
 layout: default
 section: worker
@@ -43,6 +46,11 @@ Merge the Airbrake library into your worker.
 merge_gem 'airbrake'
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+require_once dirname(__FILE__) . '/lib/Airbrake.class.php';
+{% endhighlight %}
+</div>
 
 
 ## Step 2: Configure Airbrake
@@ -56,7 +64,11 @@ Airbrake.configure do |config|
 end
 {% endhighlight %}
 </div>
-
+<div class="php">
+{% highlight php %}
+$brake = new Services_Airbrake('API_Key', 'production', 'curl');
+{% endhighlight %}
+</div>
 
 
 ## Step 3: Catch Errors
@@ -75,7 +87,16 @@ def run
 end
 {% endhighlight %}
 </div>
-
+<div class="php">
+{% highlight php %}
+try {
+    //do something
+}
+catch (Exception $e) {
+    //.....
+}
+{% endhighlight %}
+</div>
 
 
 ## Step 4: Send caught errors to Airbrake
@@ -92,7 +113,11 @@ puts "Error sent to Airbrake."
 raise ex
 {% endhighlight %}
 </div>
-
+<div class="php">
+{% highlight php %}
+    $brake->notify(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), "worker");
+{% endhighlight %}
+</div>
 
 
 
@@ -129,7 +154,22 @@ end
 {% endhighlight %}
 </div>
 
+<div class="php">
+{% highlight php %}
+<?php
+require_once dirname(__FILE__) . '/lib/Airbrake.class.php';
+$brake = new Services_Airbrake('API_Key', 'production', 'curl');
 
+// YOUR WORKER CODE HERE
+
+try {
+    //do something
+}
+catch (Exception $e) {
+    $brake->notify(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getTrace(), "worker");
+}
+{% endhighlight %}
+</div>
 
 ## And a sample runner file you can run to call the worker
 
@@ -148,5 +188,26 @@ worker = WorkerWithAirbrake.new
 worker.api_key = AIRBRAKE_API_KEY
 
 worker.queue
+{% endhighlight %}
+</div>
+<div class="php">
+{% highlight php %}
+<?php
+include("../IronWorker.class.php");
+
+$name = "airbrake-php";
+
+$iw = new IronWorker('config.ini');
+$iw->debug_enabled = true;
+
+$zipName = "code/$name.zip";
+
+$zipFile = IronWorker::zipDirectory(dirname(__FILE__)."/workers/airbrake", $zipName, true);
+
+$res = $iw->postCode('airbrake.php', $zipName, $name);
+
+$payload = array('api_key' => AIRBRAKE_API_KEY);
+
+$iw->postTask($name, $payload);
 {% endhighlight %}
 </div>
