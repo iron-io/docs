@@ -16,6 +16,9 @@ languages:
 - name: 'ruby'
   command: 'ruby'
   extension: 'rb'
+- name: 'php'
+  command: 'php'
+  extension: 'php'
 layout: default
 section: worker
 ---
@@ -52,6 +55,16 @@ payload = {
 }.to_json
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+<?php
+  $data = array(
+      'service_key' => $api_key,
+      "event_type" => "trigger",
+      "description" => $e->__toString()
+  );
+{% endhighlight %}
+</div>
 
 
 
@@ -61,6 +74,16 @@ payload = {
 {% highlight ruby %}
 url = 'https://events.pagerduty.com/generic/2010-04-15/create_event.json'
 resp = HTTParty.post(url, {:body => payload})
+{% endhighlight %}
+</div>
+<div class="php">
+{% highlight php %}
+<?php
+  $ctx = stream_context_create(array(
+      'method' => 'POST',
+      'content' => json_encode($data)
+  ));
+  file_get_contents('https://events.pagerduty.com/generic/2010-04-15/create_event.json', null, $ctx);
 {% endhighlight %}
 </div>
 
@@ -81,6 +104,19 @@ def run
     raise ex
   end
 end
+{% endhighlight %}
+</div>
+<div class="php">
+{% highlight php %}
+<?php
+try
+{
+    //your worker code here
+}
+catch (Exception $e)
+{
+    trigger_alert($e, $payload['API_KEY']);
+}
 {% endhighlight %}
 </div>
 
@@ -119,7 +155,34 @@ class PagerdutyWorker < IronWorker::Base
 end
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+<?php
+function trigger_alert(Exception $e, $api_key)
+{
+    $data = array(
+        'service_key' => $api_key,
+        "event_type" => "trigger",
+        "description" => $e->__toString()
+    );
+    $ctx = stream_context_create(array(
+        'method' => 'POST',
+        'content' => json_encode($data)
+    ));
+    file_get_contents('https://events.pagerduty.com/generic/2010-04-15/create_event.json', null, $ctx);
+}
 
+$payload = getPayload();
+try
+{
+    //your worker code here
+}
+catch (Exception $e)
+{
+    trigger_alert($e, $payload['API_KEY']);
+}
+{% endhighlight %}
+</div>
 
 
 ## And a sample runner file you can run to call the worker
@@ -138,5 +201,28 @@ end
 worker = PagerdutyWorker.new
 worker.api_key = YOUR_PAGERDUTY_API_KEY
 worker.queue
+{% endhighlight %}
+</div>
+<div class="php">
+{% highlight php %}
+<?php
+include("../IronWorker.class.php");
+
+$name = "pagerDuty-php";
+
+$iw = new IronWorker('config.ini');
+$iw->debug_enabled = true;
+
+$zipName = "code/$name.zip";
+
+$zipFile = IronWorker::zipDirectory(dirname(__FILE__)."/workers/pager_duty", $zipName, true);
+
+$res = $iw->postCode('pagerDuty.php', $zipName, $name);
+
+$payload = array(
+    'API_KEY' => PAGERDUTY_API_KEY
+);
+
+$iw->postTask($name, $payload);
 {% endhighlight %}
 </div>
