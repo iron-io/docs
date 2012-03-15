@@ -17,6 +17,9 @@ languages:
 - name: 'ruby'
   command: 'ruby'
   extension: 'rb'
+- name: 'php'
+  command: 'php'
+  extension: 'php'
 layout: default
 section: worker
 ---
@@ -49,6 +52,8 @@ Visit [Loggly](http://www.loggly.com) to sign up for a free account.
 merge_gem 'logglier'
 {% endhighlight %}
 </div>
+<div class="php">
+</div>
 
 
 
@@ -59,6 +64,14 @@ merge_gem 'logglier'
 log = Logglier.new("https://logs.loggly.com/inputs/#{loggly_key}")
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+<?php
+$key = $payload['api_key'];
+$i = $payload['i'];
+$url = "http://logs.loggly.com/inputs/$key";
+{% endhighlight %}
+</div>
 
 
 
@@ -67,6 +80,16 @@ log = Logglier.new("https://logs.loggly.com/inputs/#{loggly_key}")
 <div class="ruby">
 {% highlight ruby %}
 log.info("Logging from your worker to Loggly!")
+{% endhighlight %}
+</div>
+<div class="php">
+{% highlight php %}
+<?php
+$ctx = stream_context_create(array(
+    'method' => 'POST',
+    'content' => "I am now logging to Loggly $i times."
+));
+file_get_contents($url, null, $ctx);
 {% endhighlight %}
 </div>
 
@@ -90,6 +113,20 @@ class LogglyWorker < IronWorker::Base
 end
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+<?php
+$payload = getPayload();
+$key = $payload['api_key'];
+$i = $payload['i'];
+$url = "http://logs.loggly.com/inputs/$key";
+$ctx = stream_context_create(array(
+    'method' => 'POST',
+    'content' => "I am now logging to Loggly $i times."
+));
+file_get_contents($url, null, $ctx);
+{% endhighlight %}
+</div>
 
 
 
@@ -109,5 +146,29 @@ end
 worker = LogglyWorker.new
 worker.loggly_key = LOGGLY_KEY
 worker.queue
+{% endhighlight %}
+</div>
+<div class="php">
+{% highlight php %}
+<?php
+include("../IronWorker.class.php");
+
+$name = "loggly-php";
+
+$iw = new IronWorker('config.ini');
+$iw->debug_enabled = true;
+
+$zipName = "code/$name.zip";
+
+$zipFile = IronWorker::zipDirectory(dirname(__FILE__) . "/workers/loggly", $zipName, true);
+
+$res = $iw->postCode('loggly.php', $zipName, $name);
+
+for ($i = 1; $i <= 50; $i++)
+{
+    $payload = array('api_key' => LOGGLY_KEY, 'i' => $i);
+
+    $iw->postTask($name, $payload);
+}
 {% endhighlight %}
 </div>
