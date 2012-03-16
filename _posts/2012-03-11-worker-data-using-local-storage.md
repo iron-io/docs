@@ -5,12 +5,12 @@ section: worker
 permalink: /worker/articles/databases/local-storage
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Databases', '/databases']
+  - ['Working With Data & Databases', '/data']
   - ['Using Local Disk Storage', '/local-storage']
 categories:
   - worker
   - articles
-  - databases
+  - data
 ---
 
 # Using Local Disk Storage
