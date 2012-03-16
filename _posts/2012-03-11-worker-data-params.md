@@ -5,12 +5,12 @@ section: worker
 permalink: /worker/articles/databases/data-params
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Databases', '/databases']
+  - ['Working With Data & Databases', '/data']
   - ['Data Params and Payloads', '/data-params']
 categories:
   - worker
   - articles
-  - databases
+  - data
 ---
 
 # Data Params and Payloads
