@@ -9,6 +9,9 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Platforms', '/platforms']
   - ['Heroku', '/heroku']
+tags:
+  - platforms
+  - heroku
 layout: default
 section: worker
 ---

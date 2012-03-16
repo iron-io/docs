@@ -1,6 +1,5 @@
-
 ---
-permalink: /worker/articles/platforms/heroku
+permalink: /worker/articles/languages/rails
 title: IronWorker and Rails
 categories:
  - worker
