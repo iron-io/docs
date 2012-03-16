@@ -12,4 +12,4 @@ In this section you'll find our entire IronMQ REST/HTTP API specification as wel
 environment and constraints.
 
 
-<a href="/mq/reference/api" class="next_item">View our REST/HTTP API --></a><br clear="all" />
+<p style="width: 100%; text-align: right;"><a href="/mq/reference/api" class="next_item">View our REST/HTTP API --></a></p>
