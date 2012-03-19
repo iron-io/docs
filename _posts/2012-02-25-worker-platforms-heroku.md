@@ -12,6 +12,16 @@ breadcrumbs:
 tags:
   - platforms
   - heroku
+languages:
+- name: 'ruby'
+  command: 'ruby'
+  extension: 'rb'
+- name: 'python'
+  command: 'python'
+  extension: 'py'
+- name: 'php'
+  command: 'php'
+  extension: 'php'
 layout: default
 section: worker
 ---

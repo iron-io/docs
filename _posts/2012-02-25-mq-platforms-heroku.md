@@ -26,7 +26,6 @@ Iron has partnered with Heroku to make using both services together even easier.
 It's quick and easy to get IronMQ set up and running on Heroku. You just need to install the IronMQ add-on for Heroku. You can do this with the `heroku` command:
 
 <div class="grey-box">
-    :::term
     $ heroku addons:add iron_mq:rust
     -----> Adding iron_mq to cold-winter-5462... done, v10 (free)
 </div>
@@ -38,7 +37,6 @@ This will add the starter level add-on for IronMQ, which will let you test the a
 Now that you've added the add-on, you need to retrieve your token and project ID. The token functions as a password, so please keep it secure! Each app has a different project ID. You can get the token and project ID by running the following command:
 
 <div class="grey-box">
-    :::term
     $ heroku config | grep IRON
     IRON_MQ_PROJECT_ID => 123456789
     IRON_MQ_TOKEN      => aslkdjflaksuilaks
@@ -53,7 +51,6 @@ IronMQ has clients for [a lot of languages](http://docs.iron.io/mq/clients), and
 We're going to need to install the Ruby gem, for development purposes:
 
 <div class="grey-box">
-    :::term
     $ gem install iron_mq
     Fetching: iron_mq-1.4.0.gem (100%)
     Successfully installed iron_mq-1.4.0
@@ -61,24 +58,27 @@ We're going to need to install the Ruby gem, for development purposes:
 
 Heroku automatically adds the token and project ID to your production environment variables. You need to take care of your development environment yourself, however. Simply add the following in `config/environments/development.rb`:
 
-<div class="grey-box">
-    :::ruby
-    ENV['IRON_MQ_TOKEN'] = 'YOUR TOKEN'
-    ENV['IRON_MQ_PROJECT_ID'] = 'YOUR PROJECT ID'
+<div class="ruby">
+{% highlight ruby %}
+ENV['IRON_MQ_TOKEN'] = 'YOUR TOKEN'
+ENV['IRON_MQ_PROJECT_ID'] = 'YOUR PROJECT ID'
+{% endhighlight %}
 </div>
 
 If you’re building for Rails 3, add the following to your Gemfile:
 
-<div class="grey-box">
-    :::ruby
-    gem 'iron_mq'
+<div class="ruby">
+{% highlight ruby %}
+gem 'iron_mq'
+{% endhighlight %}
 </div>
 
 If you’re building on Rails 2, add the following to your environment.rb file:
 
-<div class="grey-box">
-    :::ruby
-    config.gem 'iron_mq'
+<div class="ruby">
+{% highlight ruby %}
+config.gem 'iron_mq'
+{% endhighlight %}
 </div>
 
 ## Basic Example
@@ -90,24 +90,17 @@ We're ready to start working with our message queue. We're going to build a samp
 To make life a little easier on ourselves, let's use the Twitter gem. Install it:
 
 <div class="grey-box">
-    :::term
     $ gem install twitter
     Fetching: twitter-2.1.0.gem (100%)
     Successfully installed twitter-2.1.0
 </div>
 
-If you're building for Rails 3, add the following to your Gemfile:
+If you're building for Rails 3, add the following to your Gemfile, if Rails 2, it goes in the environment.rb file:
 
-<div class="grey-box">
-    :::ruby
-    gem 'twitter'
-</div>
-
-If you're building for Rails 2, add the following to your environment.rb file:
-
-<div class="grey-box">
-    :::ruby
-    gem 'twitter'
+<div class="ruby">
+{% highlight ruby %}
+gem 'twitter'
+{% endhighlight %}
 </div>
 
 Now that we have a convenient wrapper for the Twitter API, let's do a search. We're going to search for "IronMQ", but you could search for mentions of your company, your product, or your favourite cat video.
@@ -115,25 +108,27 @@ Now that we have a convenient wrapper for the Twitter API, let's do a search. We
 Run the following command:
 
 <div class="grey-box">
-    :::term
-    $ rails generate controller tweets get view
+$ rails generate controller tweets get view
 </div>
 
 Rails will generate a bunch of files for you, giving us a skeleton we can work in. Go ahead and open `app/controllers/tweets_controller.rb`. Modify it to look like this:
 
-    :::ruby
-    class TweetsController < ApplicationController
-      require 'iron_mq'
-      require 'twitter'
-     
-      def get
-        tweets = Twitter.search("IronMQ")
-        render :json => tweets.inspect
-      end
+<div class="ruby">
+{% highlight ruby %}
+class TweetsController < ApplicationController
+  require 'iron_mq'
+  require 'twitter'
 
-      def view
-      end
-    end
+  def get
+    tweets = Twitter.search("IronMQ")
+    render :json => tweets.inspect
+  end
+
+  def view
+  end
+end
+{% endhighlight %}
+</div>
 
 Easy, right? Load up `your-heroku-app.herokuapp.com/tweets/get`, and you'll see the results of your Twitter search.
 
@@ -141,23 +136,26 @@ Easy, right? Load up `your-heroku-app.herokuapp.com/tweets/get`, and you'll see 
 
 It's time to actually make use of those tweets. We're going to push them to an IronMQ queue, so we can deal with them whenever we feel like it and know we're not missing any of them. Let's modify `app/controllers/tweets_controller.rb` some more:
 
-    :::ruby
-    class TweetsController < ApplicationController
-      require 'iron_mq'
-      require 'twitter'
-     
-      def get
-        tweets = Twitter.search("IronMQ")
-        ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"tweets")
-        tweets.map do |tweet|
-          ironmq.messages.post("#{tweet.id}")
-        end
-        render :json => tweets.inspect
-      end
+<div class="ruby">
+{% highlight ruby %}
+class TweetsController < ApplicationController
+  require 'iron_mq'
+  require 'twitter'
 
-      def view
-      end
+  def get
+    tweets = Twitter.search("IronMQ")
+    ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"tweets")
+    tweets.map do |tweet|
+      ironmq.messages.post("#{tweet.id}")
     end
+    render :json => tweets.inspect
+  end
+
+  def view
+  end
+end
+{% endhighlight %}
+</div>
 
 The IronMQ gem is pretty simple to use. You just instantiate a new client (`IronMQ::Client.new`) and pass it some information. The `token` and `project_id` are the variables we set up earlier, and the `queue_name` is just an identifier for the message queue you want to use. You can have multiple queues per project, and these identifiers help tell them apart. After that, posting a message is as easy as `ironmq.messages.post()`, passing the message we want to post (the ID of the tweet, in this case).
 
@@ -169,32 +167,35 @@ If you load up `your-heroku-app.herokuapp.com/tweets/get`, the tweets you pull f
 
 Putting information into IronMQ is great, but it's a little useless if we can't get it out again. We're going to write a method that pulls a single Tweet from IronMQ and displays it. Let's modify `app/controllers/tweets_controller.rb` again:
 
-    :::ruby
-    class TweetsController < ApplicationController
-      require 'iron_mq'
-      require 'twitter'
-     
-      def get
-        tweets = Twitter.search("IronMQ")
-        ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"tweets")
-        tweets.map do |tweet|
-          ironmq.messages.post("#{tweet.id}")
-        end
-        render :json => tweets.inspect
-      end
+<div class="ruby">
+{% highlight ruby %}
+class TweetsController < ApplicationController
+  require 'iron_mq'
+  require 'twitter'
 
-      def view
-        ironmq = IronMQ::Client.new('token'=>ENV['IRON_MQ_TOKEN'], 'project_id'=>ENV['IRON_MQ_PROJECT_ID'], 'queue_name'=>'tweets')
-        tweet = ironmq.messages.get()
-        Twitter.configure do |config|
-          config.consumer_key = "CONSUMER_KEY"
-          config.consumer_secret = "CONSUMER_SECRET"
-          config.oauth_token = "ACCESS_TOKEN"
-          config.oauth_token_secret = "ACCESS_SECRET"
-        end
-        render :inline => Twitter.oembed(tweet.body.to_i).html
-      end
+  def get
+    tweets = Twitter.search("IronMQ")
+    ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"tweets")
+    tweets.map do |tweet|
+      ironmq.messages.post("#{tweet.id}")
     end
+    render :json => tweets.inspect
+  end
+
+  def view
+    ironmq = IronMQ::Client.new('token'=>ENV['IRON_MQ_TOKEN'], 'project_id'=>ENV['IRON_MQ_PROJECT_ID'], 'queue_name'=>'tweets')
+    tweet = ironmq.messages.get()
+    Twitter.configure do |config|
+      config.consumer_key = "CONSUMER_KEY"
+      config.consumer_secret = "CONSUMER_SECRET"
+      config.oauth_token = "ACCESS_TOKEN"
+      config.oauth_token_secret = "ACCESS_SECRET"
+    end
+    render :inline => Twitter.oembed(tweet.body.to_i).html
+  end
+end
+{% endhighlight %}
+</div>
 
 As you can see, we now have a `view` method defined. This method configures an IronMQ client (just like we did before) and pops a message off the queue. When a message is popped off the queue, it isn't removed from the queue automatically. 60 seconds after a message is popped off the queue, it's returned to the queue if it hasn't been deleted yet. This ensures that messages are only removed when they've been properly handled.
 
@@ -208,37 +209,40 @@ Load up `your-heroku-app.herokuapp.com/tweets/view`, and you'll see the most rec
 
 Once we've dealt with the tweet, we need a way to remove it from the queue. We're going to add a new action to our Rails app to take care of this for us. Edit `app/controllers/tweets_controller.rb` again:
 
-    :::ruby
-    class TweetsController < ApplicationController
-      require 'iron_mq'
-      require 'twitter'
-     
-      def get
-        tweets = Twitter.search("IronMQ")
-        ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"tweets")
-        tweets.map do |tweet|
-          ironmq.messages.post("#{tweet.id}")
-        end
-        render :json => tweets.inspect
-      end
+<div class="ruby">
+{% highlight ruby %}
+class TweetsController < ApplicationController
+  require 'iron_mq'
+  require 'twitter'
 
-      def view
-        ironmq = IronMQ::Client.new('token'=>ENV['IRON_MQ_TOKEN'], 'project_id'=>ENV['IRON_MQ_PROJECT_ID'], 'queue_name'=>'tweets')
-        tweet = ironmq.messages.get()
-        Twitter.configure do |config|
-          config.consumer_key = "CONSUMER_KEY"
-          config.consumer_secret = "CONSUMER_SECRET"
-          config.oauth_token = "ACCESS_TOKEN"
-          config.oauth_token_secret = "ACCESS_SECRET"
-        end
-        render :inline => Twitter.oembed(tweet.body.to_i).html + "<br /><br /><a href=\"/tweets/acknowledge/#{tweet.id}\">Acknowledge</a>"
-      end
-
-      def acknowledge
-        ironmq = IronMQ::Client.new('token'=>ENV['IRON_MQ_TOKEN'], 'project_id'=>ENV['IRON_MQ_PROJECT_ID'], 'queue_name'=>'tweets')
-        render :json => ironmq.messages.delete(params[:id])
-      end
+  def get
+    tweets = Twitter.search("IronMQ")
+    ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"tweets")
+    tweets.map do |tweet|
+      ironmq.messages.post("#{tweet.id}")
     end
+    render :json => tweets.inspect
+  end
+
+  def view
+    ironmq = IronMQ::Client.new('token'=>ENV['IRON_MQ_TOKEN'], 'project_id'=>ENV['IRON_MQ_PROJECT_ID'], 'queue_name'=>'tweets')
+    tweet = ironmq.messages.get()
+    Twitter.configure do |config|
+      config.consumer_key = "CONSUMER_KEY"
+      config.consumer_secret = "CONSUMER_SECRET"
+      config.oauth_token = "ACCESS_TOKEN"
+      config.oauth_token_secret = "ACCESS_SECRET"
+    end
+    render :inline => Twitter.oembed(tweet.body.to_i).html + "<br /><br /><a href=\"/tweets/acknowledge/#{tweet.id}\">Acknowledge</a>"
+  end
+
+  def acknowledge
+    ironmq = IronMQ::Client.new('token'=>ENV['IRON_MQ_TOKEN'], 'project_id'=>ENV['IRON_MQ_PROJECT_ID'], 'queue_name'=>'tweets')
+    render :json => ironmq.messages.delete(params[:id])
+  end
+end
+{% endhighlight %}
+</div>
 
 You'll notice we've added a link to `/tweets/acknowledge/#{tweet.id}` to our `/tweets/view` output. When you get a message off your queue, you get a bunch of useful metadata with it, beyond just the data you passed in. One bit of this metadata is the message ID, which we use to delete the message from the queue.
 
@@ -246,8 +250,11 @@ The `acknowledge` action is simple: we create an `IronMQ::Client` again, using t
 
 That's all it take takes to delete a message. To wire up our new action, edit `config/routes.rb` and add the following line:
 
-    :::ruby
-    match "tweets/acknowledge/:id" => "tweets#acknowledge"
+<div class="ruby">
+{% highlight ruby %}
+match "tweets/acknowledge/:id" => "tweets#acknowledge"
+{% endhighlight %}
+</div>
 
 This tells Rails to match our new action and that we expect an ID parameter.
 
@@ -257,4 +264,4 @@ Congratulations! You've written your first application using IronMQ. To get into
 
 ### Troubleshooting
 
-Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues. You can also find more resources on the Iron.io [support site](http://support.iron.io) and more documentation on the Iron.io [documentation site](http://docs.iron.io).
+Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues.
