@@ -34,7 +34,7 @@ IronWorker has partnered with Heroku to make using both services together even e
 
 ## Get Started
 
-It's quick and easy to get IronWorker set up and running on Heroku using your [language of choice](http://docs.iron.io/worker#TOC-Clients). Note that Ruby IronWorker currently requires **Ruby 1.9 or later**. Please check the [Heroku documentation](http://devcenter.heroku.com/articles/stack) to find out whether your stack is supported and how to select a supported stack.
+It's quick and easy to get IronWorker set up and running on Heroku using your language of choice. Note that Ruby IronWorker currently requires **Ruby 1.9 or later**. Please check the [Heroku documentation](http://devcenter.heroku.com/articles/stack) to find out whether your stack is supported and how to select a supported stack.
 
 Once you have a stack selected, you need to install the IronWorker add-on for Heroku. You can do this with a quick command:
 
@@ -179,11 +179,11 @@ Deploy the app to Heroku, and load up <span class="fixed-width">your-app.herokua
 
 This is just the tip of the iceberg. IronWorker has a robust API that allows for a lot more interaction with your Workers. You may want to try:
 
- * [Checking the status](http://docs.iron.io/worker/ruby/fibonacci-worker#TOC-Checking-the-Status-of-Your-Worker) of your worker.
- * [Getting the logs](http://docs.iron.io/worker/ruby/fibonacc-worker#TOC-Getting-Your-Worker-Logs) from your worker.
- * [Scheduling tasks](http://docs.iron.io/worker/ruby/fibonacci-worker#TOC-Scheduling-Tasks) for your worker that will be run after a delay, repeating, or both.
+ * Checking the status of your worker.
+ * Getting the logs from your worker.
+ * Scheduling tasks for your worker that will be run after a delay, repeating, or both.
 
-You can also check out some example workers:
+Check out some example workers:
 
 * [TweetWorker](https://github.com/iron-io/heroku_sinatra_example), an app that pulls tweets and displays them. It uses IronWorker, IronMQ, and Sinatra, all while being hosted on Heroku.
 * We also have a [full repository](https://github.com/iron-io/iron_worker_examples) of IronWorker examples for Rails on Github.
@@ -196,4 +196,4 @@ The most common source of Worker errors is a mismatch between your local environ
 
 Also note that IronWorker is not able to to connect with Heroku's shared databases. At this point, Heroku's shared databases do not allow for direct connections. We are working to remedy this situation. The suggested workaround is to pass the data back through your application, post-processing.
 
-Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues. You can also find more resources on the Iron.io [support site](http://support.iron.io) and more documentation on the Iron.io [documentation site](http://docs.iron.io).
+Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues.
