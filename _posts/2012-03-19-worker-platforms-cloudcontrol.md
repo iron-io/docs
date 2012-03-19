@@ -7,7 +7,7 @@ categories:
   - platforms
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Platforms', '/platforms']
+  - ['Running on Cloud Platforms', '/platforms']
   - ['CloudControl', '/cloudcontrol']
 layout: post
 section: worker
