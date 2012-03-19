@@ -46,7 +46,7 @@ You can also get your token and project ID from the Iron.io HUD. To get to the I
 
 ![IronMQ add-on](http://i.imgur.com/RpEzb.png)
 
-IronMQ has clients for [a lot of languages](http://docs.iron.io/mq/clients), and you can always use [the REST/HTTP API](http://docs.iron.io/mq/api) (or write your own!). This means your existing Heroku stack should work without any changes. The remainder of this article will be using the Ruby library, but all of the libraries have analagous calls (that should be well-documented).
+IronMQ has clients for [a lot of languages](/mq/code/libraries/), and you can always use [the REST/HTTP API](/mq/reference/api/) (or write your own!). This means your existing Heroku stack should work without any changes. The remainder of this article will be using the Ruby library, but all of the libraries have analagous calls (that should be well-documented).
 
 We're going to need to install the Ruby gem, for development purposes:
 
@@ -260,7 +260,7 @@ This tells Rails to match our new action and that we expect an ID parameter.
 
 ### Next Steps
 
-Congratulations! You've written your first application using IronMQ. To get into more advanced uses of it, you may want to check out the [API docs](http://docs.iron.io/mq/api) or a more advanced implementation that ties in [IronWorker](http://addons.heroku.com/iron_worker), [TweetWorker](https://github.com/iron-io/heroku_sinatra_example). 
+Congratulations! You've written your first application using IronMQ. To get into more advanced uses of it, you may want to check out the [API docs](/mq/reference/api/) or a more advanced implementation that ties in [IronWorker](http://addons.heroku.com/iron_worker), [TweetWorker](https://github.com/iron-io/heroku_sinatra_example).
 
 ### Troubleshooting
 
