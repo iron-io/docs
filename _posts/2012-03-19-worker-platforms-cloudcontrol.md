@@ -2,10 +2,10 @@
 permalink: /worker/articles/platforms/cloudcontrol
 title: Getting Started on CloudControl
 categories:
- - worker
- - mq
- - articles
- - platforms
+  - worker
+  - mq
+  - articles
+  - platforms
 breadcrumbs:
   - ['Articles', '/articles']
   - ['Platforms', '/platforms']
