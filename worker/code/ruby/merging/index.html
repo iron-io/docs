@@ -1,0 +1,183 @@
+---
+title: Ruby and IronWorker | Merging Models, Classes, and other Files
+layout: default
+section: worker
+breadcrumbs:
+- ['Code', '/code']
+- ['Ruby', '/ruby']
+- ['Merging Models, Classes, and other Files', '/merging']
+---
+
+<h1>Merging Models, Classes, and other Files</h1>
+
+<p>If you need to use other Ruby files in your worker, you'll want to bring them into your worker using the <code>merge</code> command. This is useful for models, ruby code files, <code>.erb</code> templates, and other files your worker will need</p>
+
+  
+<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;font-size:12px;background-image:initial;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><font color="#000000"><font face="arial, sans-serif"><span style="line-height:18px"><code>class MyWorker &lt; IronWorker::Base
+
+  merge "../models/user.rb"
+  merge "../models/account.rb"</code>
+</span></font><code>  merge "../../lib/user_setup.rb"</code></font><font color="#000000"><code>
+  merge "../templates/user_mailer/welcome_message.html.erb"</code><font face="arial, sans-serif"><span style="line-height:18px">
+</span></font></font><font color="#000000" face="arial, sans-serif" style="line-height:18px"><code>  merge "../templates/user_mailer/welcome_message.text.erb" </code></font><font color="#000000" face="'Helvetica Neue', Helvetica, Arial, sans-serif" style="line-height:18px;white-space:normal"><code>&nbsp;</code></font><font color="#000000" face="arial, sans-serif" style="line-height:18px">
+<code>  ...</code>
+
+</font></pre>
+<p style="font-family:arial,sans-serif;color:rgb(0,0,0)"><span style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">The models, files or folders will appear at the top level of&nbsp;</span><code style="font-size:12px;line-height:18px;background-color:rgb(241,241,241);margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:5px;padding-bottom:0px;padding-left:5px;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)">user_dir</code><span style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">&nbsp;. &nbsp;</span></p>
+<div>
+<div>
+<div>
+<p style="font-family:arial,sans-serif">Notes:</p>
+<ul style="font-family:arial,sans-serif"><li>The merge command not only brings a .rb file into the bundle to upload to IronWorker, it will also&nbsp;require it before loading the worker.</li>
+<li>Y<span style="font-size:small">ou want to use the&nbsp;</span><code>merge</code><span style="font-size:small">&nbsp;commands here and not&nbsp;</span><code>load</code><span style="font-size:small">&nbsp;commands for files, folders, and workers.&nbsp;<br>
+</span></li>
+<li><span style="font-size:small"><span style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">Nested folder structure &nbsp;are placed at the same top leve within IronWorker. &nbsp;&nbsp;(./site_stats/client.rb =&gt;&nbsp;./client.rb within IronWorker)<br>
+</span></span></li>
+<li><span style="font-size:small"><span style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">Note that you can use the&nbsp;<code>is_local?</code>&nbsp;and&nbsp;<code>is_remote?</code>&nbsp;commands to determine if your worker is running locally or remotely in IronWorker.&nbsp;</span></span></li>
+<li><span style="font-size:small"><span style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">Templates are common to merge but image files and other media files should probably be stored in a datastore like AWS S3 and then retrieved by your worker. (There's an example of this in the <a href="https://github.com/iron-io/iron_worker_examples">IronWorker examples</a> on Github.)<br>
+<br>
+</span></span></li></ul>
+</div>
+
+  <h3>Merge Order and Class Dependencies</h3>
+
+</div>
+</div>
+<p>It's important to merge files in the correct order of merging in order to take into account dependencies and class hierarchy. (For gem dependencies, see the merge_gem page.)</p>
+
+
+<div><span style="font-size:12px;line-height:18px">For example, if you have a module that several classes, one or more of which inherit from one of the classes.</span></div>
+<pre style="font-weight:normal;background-color:rgb(241,241,241);line-height:18px;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;background-image:initial;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><font color="#006000" face="arial, sans-serif" size="2"><code>module ImageProcessors</code>
+<code>  class ImageProcessor</code>
+<code>  class ColorCorrectionProcessor &lt; ImageProcessor</code>
+</font></pre>
+
+<p><font face="arial, sans-serif">Then you will want to merge the files in the order of their&nbsp;hierarchy. Otherwise, you'll receive&nbsp;"uninitialized constant" and other errors when you upload or run the worker.</font></p>
+<pre style="color:rgb(51,51,51);background-color:rgb(241,241,241);line-height:18px;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;font-size:12px;background-image:initial;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><code># It's important to merge in the order of dependency.
+merge 'image_processor.rb'</code>
+<code>merge 'color_correction_processor.rb'
+
+</code></pre>
+<div>
+  <h3>File Access Within IronWorker</h3>
+<font color="#000000"><span style="font-size:12px;font-weight:normal;line-height:18px">The files will be in the <code>user_dir</code> directory that is a part of your process sandbox within IronWorker. &nbsp;For the merge actions above, the <code>user_dir</code> folder would contain the following:</span></font>
+<div><span style="font-size:12px;line-height:18px"><font face="arial, sans-serif">&gt; user_dir (on IronWorker)</font></span></div>
+<div>
+<pre style="font-family:arial,sans-serif;color:rgb(0,0,0);background-color:rgb(241,241,241);line-height:18px;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;font-size:12px;background-image:initial;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><code>user_dir/
+  ...
+  account.rb
+  ...
+  user.rb
+</code><code>  welcome_message.html.erb </code>
+<span style="color:rgb(0,0,0);font-family:arial,sans-serif"><code>  welcome_message.text.erb</code></span>
+<br></pre>
+<p style="color:rgb(0,0,0);font-family:Verdana,Helvetica,Arial,sans-serif"><span style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px">Note that you can create directories and perform file operations as you would in your app environment.&nbsp;</span></p>
+<div>
+<div>
+<div style="font-family:Verdana,Helvetica,Arial,sans-serif">
+<pre style="color:rgb(0,0,0);background-color:rgb(241,241,241);margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;background-image:initial;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><code><font color="#006000"><font size="2"><span style="line-height:18px">Dir.pwd
+
+FileUtils.mkpath "templates/user_mailing"
+FileUtils.mkdir_p "templates/user_mailing"
+
+FileUtils.mv "welcome_message.html.erb", new_dir_full
+
+...</span></font></font></code></pre>
+</div>
+</div>
+</div>
+<p><font face="arial, sans-serif">Tip: You can list the files using the following code within a worker.</font></p>
+<pre style="background-color:rgb(241,241,241);line-height:18px;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;background-image:initial;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><font face="arial, sans-serif" size="2"><font color="#006000"><code>user_files = </code></font><span style="line-height:16px;white-space:normal;background-color:rgb(238,238,238)"><code>%x[ls #{user_dir.inspect}]</code><br><code>log&nbsp;</code></span><code>"#{user_files}"
+
+</code></font></pre>
+<h3>Unmerging Code</h3>
+
+</div>
+<p>And just as you can merge, you can also unmerge. Unmerge is generally useful in Rails since it merges some things automatically, but you may not want them:</p>
+
+<pre style="font-family:arial,sans-serif;line-height:18px;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;color:rgb(0,0,0);font-size:12px;background-image:initial;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><code>class MyWorker &lt; IronWorker::Base
+
+  unmerge "../models/user"
+
+</code></pre>
+
+<h3>Merging Other Files</h3>
+<span style="font-size:12px;line-height:18px;font-weight:normal"><font color="#000000" face="arial, sans-serif">You can also merge non-Ruby files with the same <code>merge</code> command.</font></span>
+
+  <div>
+<pre style="line-height:18px;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;font-size:12px;background-image:initial;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><font face="arial, sans-serif"><code>merge 'config.yml'</code></font></pre>
+</div>
+<div><font face="arial, sans-serif"><br>
+</font></div>
+<div><font face="arial, sans-serif">Then you could load this config in your worker by using:&nbsp;</font></div>
+<div>
+<pre style="line-height:18px;margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;font-size:12px;background-image:initial;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><font color="#006000" face="arial, sans-serif"><code>@config = YAML.load_file('config.yml')</code></font></pre>
+</div>
+<div><span style="border-collapse:separate;font-family:Lucida Grande,arial,sans-serif;font-size:12px;line-height:20px">
+<p style="margin-top:5px;margin-right:10px;margin-bottom:0px;margin-left:10px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;clear:left">merge - will add file to bundle and require it before loading worker</p>
+<p style="margin-top:5px;margin-right:10px;margin-bottom:0px;margin-left:10px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;clear:left">merge_folder will just add whole folder to bundle and will not require anything</p>
+</span></div>
+<div>
+<h2 style="color:rgb(0,0,0);margin-top:2em;margin-bottom:10px;line-height:18px;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;font-size:16px;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221,221,221)"><font face="arial, sans-serif">Merging Folders</font></h2>
+<font face="arial, sans-serif"><br>
+To merge folders, you can use the <code>merge_folder</code>&nbsp;command to bring in sets of <code>.rb</code> files that might be used by your workers. For example, to merge your models outside of Rails, you can do the following:<br>
+</font>
+<div>
+<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;background-image:initial;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><font color="#006000" face="arial, sans-serif"><span style="font-size:12px;line-height:18px"><code>merge_folder '../models/'</code>
+</span></font></pre>
+</div>
+<div><font color="#006000" face="arial, sans-serif"><br>
+</font></div>
+<font face="arial, sans-serif">
+<div><font face="arial, sans-serif">T</font>his will pick up all the<code> .rb</code> files in the top level of that folder. (The <code>merge</code> command will not only add an <code>.rb</code> file to the bundle, it will also require it before loading the worker. The <code>merge_folder</code> command will just add a folder of <code>.rb</code> files to the bundle but will not performa a require them.) The files will appear at the top level of<span style="font-size:12px;line-height:18px">&nbsp;</span><span style="font-size:12px;line-height:18px">the</span><span style="font-size:12px;line-height:18px">&nbsp;</span><code style="font-size:12px;line-height:18px">user_dir</code><span style="font-size:12px;line-height:18px">&nbsp;</span><span style="font-size:12px;line-height:18px">directory (in other words, the directory structure is not preserved).</span></div>
+</font></div>
+<div><span style="font-family:arial,sans-serif"><br>
+</span></div>
+<div><span style="font-family:arial,sans-serif">For nested folders, merge them in individually using </span><code>merge_folder</code><span style="font-family:arial,sans-serif">. For non </span><code>.rb </code><span style="font-family:arial,sans-serif">files, use the </span><code>merge</code><span style="font-family:arial,sans-serif"> command with the file extension.&nbsp;</span></div>
+<div><span style="font-family:arial,sans-serif"><br>
+</span></div>
+<div>
+<div>
+<pre style="margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;background-image:initial;background-color:rgb(241,241,241);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><font face="arial, sans-serif"><font color="#006000" size="2"><span style="line-height:18px"><code># Merge sub_folders individually.</code>
+<code>merge_folder '../models/models_sub_dir/</code>
+
+<code># </code></span></font></font><span style="line-height:18px;color:rgb(0,96,0);font-size:small;font-family:arial,sans-serif"><code>And non .rb files as well.</code></span><font face="arial, sans-serif"><font color="#006000" size="2"><span style="line-height:18px">
+<code>merge '../templates/user_mailer/welcome_message.html.erb' </code>
+</span></font><span style="line-height:18px"><code><font size="2">merge '../templates/user_mailer/welcome_message.text.erb'</font></code></span></font></pre>
+<p><span style="font-family:arial,sans-serif;font-size:16px"><br>
+</span></p>
+<h3><span style="font-family:arial,sans-serif;font-size:16px">Troubleshooting</span></h3>
+<ul><li><font face="arial, sans-serif">You can use the Code tab to take a look at what gets included in your worker. By&nbsp;downloading the files that have been uploaded and inspecting them you can determine what might be missing. (You can also look</font><span style="font-family:arial,sans-serif">&nbsp;in user_dir on IronWorker but that entails running the worker and logging the contents.)</span></li>
+<li><font face="arial, sans-serif">If you change a model or other merged file, then you may need to modify your worker to make sure the package is reuploaded. (Workers and code libraries are cached within IronWorker. They are automatically re-uploaded when the worker changes but changes in merged files may not automatically trigger the upload.)</font></li>
+<li><font face="arial, sans-serif">If you're using ActiveRecord then you'll want to merge the gem in prior to merging in your models.</font></li></ul>
+</div>
+</div>
+<div>
+<pre style="background-color:rgb(241,241,241);margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;background-image:initial;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)"><span style="border-collapse:separate;font-family:Lucida Grande,arial,sans-serif;font-size:12px;line-height:20px;white-space:normal"><code># Merge the activerecord gem in prior to the models</code><br><code>merge_gem 'activerecord',</code><code>&nbsp;:require =&gt; 'active_record'</code><br><span style="border-collapse:separate"><code>merge_folder "../models/"</code><br></span></span></pre>
+<p><font face="arial, sans-serif"><span style="line-height:18px"><code><font size="2"><br>
+</font></code></span></font></p>
+</div>
+<div><span style="font-size:12px;line-height:18px"><br>
+</span></div>
+<div>
+<h2 style="color:rgb(0,0,0);margin-top:2em;margin-bottom:10px;line-height:18px;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;font-size:16px;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:rgb(221,221,221)"><font face="arial, sans-serif">More Information on Merging Gems, Files, Folders, Mailers, and Workers</font></h2>
+</div>
+<div>
+<div><font face="arial, sans-serif">If you have any questions on how merging works, you can inspect the <a href="https://github.com/iron-io/iron_worker_ruby">IronWorker gem</a> directly.</font></div>
+<div><font face="arial, sans-serif"><br>
+</font></div>
+<div><font face="arial, sans-serif">You can also connect with us at <a href="http://support.iron.io/">Iron.io Support</a>.</font></div>
+<div><font face="arial, sans-serif"><br>
+</font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+</div>

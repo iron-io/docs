@@ -1,0 +1,202 @@
+---
+title: Ruby and IronWorker | Merging Gems
+layout: default
+section: worker
+breadcrumbs:
+- ['Code', '/code']
+- ['Ruby', '/ruby']
+- ['Merging Gems', '/merge_gem']
+---
+
+<h1>Merging Gems</h1>
+
+<div>Workers run in a Ruby environment in the cloud. A limited number of gems are included as part of the native environment. See Supported Gems for the list.</div>
+<div><br>
+</div>
+<div>You can merge gems (and specific gem versions) with your worker by using the merge_gem command.</div>
+<div><br>
+</div>
+<div>Here's how:</div>
+<div><br>
+</div>
+<div>
+<ol><li>Make sure you're using the most recent simple_worker gem.</li>
+<li>Add <code>merge_gem "&lt;gem name&gt;"</code> in your worker class (inside the class but outside the run method).</li>
+</ol>
+</div>
+<div><br>
+</div>
+<div>For example, to use the dropbox gem, simply add:</div>
+<div><br>
+</div>
+<div></div>
+{% highlight ruby %}
+class DropBoxGem < IronWorker::Base
+  merge_gem "dropbox"
+  merge_gem "some_other_gem"
+
+  def run
+    # your worker code
+  end
+end
+{% endhighlight %}
+
+<div><br></div>
+<div>
+<div>For some gems, a require might be needed:</div>
+  <div><br>
+  </div>
+
+{% highlight ruby %}
+  merge_gem 'actionpack', :require => 'action_pack'
+{% endhighlight %}
+</div>
+
+<div><br></div><div><br></div>
+<div>For including a specific version of a gem, just include the version number after the gem.</div>
+
+{% highlight ruby %}
+merge_gem "some_other_gem_with_version", "1.2.3"
+{% endhighlight %}
+
+<div><br></div><div><br></div>
+<div>For gems with different sub-directory names, include a require with the path.</div>
+
+{% highlight ruby %}
+merge_gem 'mongoid_i18n', :require => 'mongoid/i18n'
+{% endhighlight %}
+
+<div><br></div><div><br></div>
+<div>You can use an array of files to require on with merge_gem too:</div>
+
+{% highlight ruby %}
+merge_gem 'devise', :require => ['devise', 'devise/active_record/orm']
+
+merge_gem 'action_controller', :require => 'action_controller/railtie'
+{% endhighlight %}
+
+
+
+
+
+<h2>Merging Gems with Data Files</h2>
+
+<div>For including non .rb files with the gem, you can include the directory after the gem</div>
+<div><br>
+</div>
+
+{% highlight ruby %}
+merge_gem 'prawn', :include_dirs => ['data']
+{% endhighlight %}
+
+<h2>Best Practices</h2>
+We recommend that you merge in the language libraries you need and not rely on the libraries or gems within IronWorker (except in the case of binary gems). These libraries may change or be different versions than you need and so it's best to isolate your dependencies as much as possible.
+
+<div>
+<h2><font color="#000000" face="verdana, sans-serif">Unmerging Gems</font></h2>
+<p style="line-height:18px"><font face="verdana, sans-serif">In some situations you may receive errors with respect to system gems. In these cases, you made need to unmerge it. One reason for this is because it could be a binary gem and with the auto-merging of dependencies, binary gems might be loaded but not able to execute within IronWorker. (Many binary gems are included in the IronWorker system for just this reason.)</font></p>
+</div>
+<div>
+<pre style="color:rgb(0,96,0);line-height:18px;background-color:rgb(241,241,241);margin-top:10px;margin-right:2%;margin-bottom:10px;margin-left:2%;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;width:598px;font-size:12px;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(221,221,221);border-right-color:rgb(221,221,221);border-bottom-color:rgb(221,221,221);border-left-color:rgb(221,221,221)">unmerge_gem 'nokogiri'</pre>
+<p><br>
+</p>
+</div>
+<h2>Global merge_gem</h2>
+<div><br>
+</div>
+<div>You can also specify gems that you would like to use globally. In your configuration block you can use:</div>
+<div><br>
+</div>
+
+{% highlight ruby %}
+config.merge_gem 'mini_fb'
+{% endhighlight %}
+
+<div><br>
+</div>
+<div>This will then be used in all of your workers.</div>
+<div><br>
+</div>
+<h2>Gems with Dependencies</h2>
+<div><br>
+</div>
+<div>Gems with other gem dependencies will <b>not</b> automatically be merged. You may have to merge in the dependent gems in these situations. Use the <code>gem dependency 'gem_name'</code> command to find additional gems you may need to merge.</div>
+<div><br>
+</div>
+<div>Also, if one gem depends on another at require/load time, then they will need to appear in the correct order. One way to think of merge_gem is as if it were just a require.</div>
+<div><br>
+</div>
+<div>For example, if you're using the gdocs4ruby gem, running <code>gem dependency gdocs4ruby</code> shows that it depends <code>ongdata4ruby</code>.</div>
+<div><br>
+</div>
+
+{% highlight bash %}
+$ gem dependency gdocs4ruby
+Gem gdocs4ruby-0.1.2
+gdata4ruby (>= 0.1.1, runtime)
+{% endhighlight %}
+
+<div><br>
+</div>
+<div>Given this dependency, you'll want to merge them both into your worker -- in the order of dependency.</div>
+<div><br>
+</div>
+<div></div>
+
+{% highlight ruby %}
+merge_gem "gdata4ruby"
+merge_gem "gdocs4ruby"
+{% endhighlight %}
+
+
+<div><br>
+</div>
+<div>You can do multiple requires on with merge_gem.&nbsp;</div>
+<div><br>
+</div>
+
+{% highlight ruby %}
+merge_gem 'em-synchrony', :require => ['em-synchrony', 'em-synchrony/em-http', ...]
+{% endhighlight %}
+
+
+
+<div>The above (with the full set of files below) would be equivalent to doing individual requires:</div>
+<div><br>
+</div>
+
+{% highlight ruby %}
+require "em-synchrony"
+require "em-synchrony/em-http"
+require "em-synchrony/fiber_iterator"
+require "em-synchrony/mysql2"
+require "em-synchrony/activerecord"
+{% endhighlight %}
+
+<h2>System Gems/Gems with Binary Encodings</h2>
+<div><br>
+</div>
+<div>Gems that make use of binary encodings may have issues running within IronWorker. We've included a number of binary gems within the system environment. Check the Systems Gem page for the full list.&nbsp;Contact us if you are are making heavy use of a binary gem and would like us to include it.</div>
+<div><br>
+</div>
+<div>To make use of a system gem,&nbsp;you would just need to require it.&nbsp;</div>
+<div><br>
+</div>
+
+{% highlight ruby %}
+require 'nokogiri'
+{% endhighlight %}
+
+
+  <br style="background-color:rgb(239,239,239)">
+<div><br>
+</div>
+<div><br>
+</div>
+<h2>Other Notes</h2>
+<div>
+<ul><li>We recommend you&nbsp;<code>merge</code>&nbsp;the gems you need and not do a&nbsp;<code>require</code>&nbsp;of them, if at all possible.&nbsp;</li>
+<li>Our initial policy was to support a host of popular gems but we found it wasn't the right approach. We have since moved to maintaining a more streamlined native IronWorker environment. (We were introducing some unintended conflicts and versioning issues and realized it was better to keep things simple and let users have more control.)</li>
+<li>Gems are uploaded the first time a worker runs (and if the worker changes) but are stored in the cache for subsequent runs. If you change a gem or a merged file, make sure you modify the worker so as to force an reupload of the merged file.</li>
+<li>The Code tab in your Dashboard will provide you with a view of the code, models, and gems that have been uploaded to&nbsp;IronWorker. Use this if you have questions about what gems are being merged in.</li></ul>
+</div>

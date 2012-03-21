@@ -12,3 +12,7 @@ breadcrumbs:
 Our official Ruby client library: [https://github.com/iron-io/iron_worker_ruby](https://github.com/iron-io/iron_worker_ruby)
 
 Sample code: [Examples Repo](https://github.com/iron-io/iron_worker_examples)
+
+[Merging Gems](merge_gem)
+
+[Merging Models, Classes, and other Files](merging)
