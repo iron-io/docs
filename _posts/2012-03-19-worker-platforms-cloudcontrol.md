@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/cloudcontrol
-title: Getting Started on CloudControl
+title: Getting Started on cloudControl
 categories:
   - worker
   - articles
@@ -8,31 +8,31 @@ categories:
 breadcrumbs:
   - ['Articles', '/articles']
   - ['Running on Cloud Platforms', '/platforms']
-  - ['CloudControl', '/cloudcontrol']
+  - ['cloudControl', '/cloudcontrol']
 layout: post
 section: worker
 ---
 
-# Getting Started on CloudControl
+# Getting Started on cloudControl
 
-[CloudControl](http://www.cloudcontrol.com) is a scalable host for your application. 
+[cloudControl](http://www.cloudcontrol.com) is a scalable host for your application. 
 They offer hassle-free agile deployment, which makes them a perfect match for Iron.io 
-products. CloudControl and Iron.io have teamed up to create a close integration for 
-CloudControl apps and IronWorker, to let developers get the most out of 
+products. cloudControl and Iron.io have teamed up to create a close integration for 
+cloudControl apps and IronWorker, to let developers get the most out of 
 our respective products with minimal work.
 
-## Working With CloudControl
+## Working With cloudControl
 
 ### Deploying Your First App
 
-CloudControl has [an excellent walkthrough](https://www.cloudcontrol.com/documentation/getting-started/tutorial-deploy-an-app) 
+cloudControl has [an excellent walkthrough](https://www.cloudcontrol.com/documentation/getting-started/tutorial-deploy-an-app) 
 that will lead you through deploying your first app with their command line client. 
 We're going to interface with IronWorker using the command line client, so go ahead and 
 get it set up.
 
 ### Adding IronWorker
 
-You can add IronWorker right from the CloudControl command line client. Just run the 
+You can add IronWorker right from the cloudControl command line client. Just run the 
 following command, replacing <span class="fixed-width">APP_NAME</span> and <span 
 class="fixed-width">DEP_NAME</span> with your app ID and your deployment ID, 
 respectively.
@@ -49,8 +49,8 @@ You can find the limitations and levels [here](https://www.cloudcontrol.com/add-
 
 ### Getting Your Credentials
 
-CloudControl stores your IronWorker credentials in a file on their system, for ease 
-of integration. If you'd like to access your workers outside of CloudControl, however, 
+cloudControl stores your IronWorker credentials in a file on their system, for ease 
+of integration. If you'd like to access your workers outside of cloudControl, however, 
 you'll need the credentials.
 
 To retrieve your credentials, just replace <span class="fixed-width">APP_NAME</span>, 
