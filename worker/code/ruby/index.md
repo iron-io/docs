@@ -15,4 +15,6 @@ Sample code: [Examples Repo](https://github.com/iron-io/iron_worker_examples)
 
 [Merging Gems](merge_gem)
 
+[Merging Workers](merge_worker)
+
 [Merging Models, Classes, and other Files](merging)
