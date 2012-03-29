@@ -20,6 +20,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
   <tbody>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td><td>GET</td><td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>GET</td><td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/clear</td><td>POST</td><td><a href="#clear_all_messages_from_a_queue" title="Clear All Messages from a Queue">Clear All Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_a_message_to_a_queue" title="Add a Message to a Queue">Add a Message to a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_a_message_from_a_queue" title="Get a Message from a Queue">Get a Message from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
@@ -179,9 +180,31 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 {% endhighlight %}
 
+## Clear All Messages from a Queue
+
+This call deletes all messages on a queue, whether they are reserved or not.
+
+### Endpoint
+
 ## Add a Message to a Queue
+<div class="grey-box">
+POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/clear
+</div>
 
 This call adds or pushes a message onto the queue.
+
+### URL Parameters
+
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of the queue.
+
+### Response
+
+{% highlight js %}
+{
+  "msg": "Cleared"
+}
+{% endhighlight %}
 
 ### Endpoint
 
