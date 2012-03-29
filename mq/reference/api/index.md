@@ -186,7 +186,6 @@ This call deletes all messages on a queue, whether they are reserved or not.
 
 ### Endpoint
 
-## Add a Message to a Queue
 <div class="grey-box">
 POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/clear
 </div>
@@ -206,6 +205,8 @@ This call adds or pushes a message onto the queue.
 }
 {% endhighlight %}
 
+## Add a Message to a Queue
+
 ### Endpoint
 
 <div class="grey-box">
@@ -216,9 +217,9 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 * **Project ID**: The project these messages belong to.
 * **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
-* **messages** - An array of message objects. Each object contains these keys:
 
 #### Message Object
+
 Each message object should contain the following keys:
 
 ##### Required
