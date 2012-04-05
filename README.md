@@ -1,7 +1,7 @@
 # Installation
 
 1. Install jekyll gem: `sudo gem install jekyll`
-2. Install Pygments: `sudo easy_install Pygments`
+2. Install Pygments: `sudo easy_install pygments`
 2. clone this repo.
 
 Detailed instruction for different environments: https://github.com/mojombo/jekyll/wiki/install

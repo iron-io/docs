@@ -248,6 +248,9 @@ Sample:
 
 ### Upload a Code Package
 
+You will almost always want to use one of our [client libraries](/worker/code) in the language of your choice to make
+this easier. And if you want to make your own client, please read [Packaging Code for IronWorker](/worker/code/packaging).
+
 #### Endpoint
 
 POST /projects/<span class="variable project_id">{Project ID}</span>/codes
