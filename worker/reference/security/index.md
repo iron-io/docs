@@ -25,7 +25,10 @@ The IronWorker [API](/worker/reference/api) is the standard method of interactin
 
 ### Process Isolation
 
-IronWorker makes use of OS-level **sandboxing** to keep processes isolated from system influences and other processes in the system. Each IronWorker process runs in a virtualized container that appears to processes as a unique, minimal Ubuntu installation. Runtime limits are placed on the amount of RAM and disk each worker process may consume. Workers that exceed the RAM limit are terminated immediately by the IronWorker runtime. CPU allocation is balanced across IronWorker processes, but bursting is allowed. 
+IronWorker makes use of OS-level **sandboxing** to keep processes isolated from system influences and other processes in the system. Each IronWorker process runs in a virtualized container that appears to processes as a unique, minimal Ubuntu installation.
+Runtime limits are placed on the amount of RAM and disk each worker process may consume. Workers that exceed the
+memory limit will error out and exit. CPU allocation is balanced across IronWorker processes, but may burst to higher CPU
+allocation depending IronWorker system load.
 
 ### Resource Management
 
@@ -56,7 +59,7 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 
 ### Environment Variables/Code Separation
 
-Avoid including any sensitive data or credentials within your code. Instead, include include them as part of **the data payload**. This is in keeping with the 12-Factor app tenet regarding [Config](http://www.12factor.net/config) and its guidance on *strict separation of config from code*.
+Avoid including any sensitive data or credentials within your code. Instead, include them as part of **the data payload**. This is in keeping with the 12-Factor app tenet regarding [Config](http://www.12factor.net/config) and its guidance on *strict separation of config from code*.
 
 ### Create Worker-Specific Credentials
 
