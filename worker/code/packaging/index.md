@@ -55,8 +55,6 @@ payload = JSON.load(File.open(payload_file))
 
 ## Packaging Code
 
-test
-
 Code must be submitted as a zip file containing all of the necessary files to execute.
 
 {% highlight ruby %}
