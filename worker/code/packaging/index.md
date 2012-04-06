@@ -26,9 +26,9 @@ When your code is executed on IronWorker, it will be given six program arguments
 
 ### Program Arguments
 
--id: The task id.
--payload: the filename containing the data payload for this particular task.
--d: the user writable directory that can be used while running your job.
+* -id: The task id.
+* -payload: the filename containing the data payload for this particular task.
+* -d: the user writable directory that can be used while running your job.
 
 Here is a ruby example of obtaining this information (this is from the simple_worker ruby gem):
 
@@ -36,13 +36,13 @@ Here is a ruby example of obtaining this information (this is from the simple_wo
 payload_file = nil
 task_id = nil
 ARGV.each do |arg|
-  if arg == \"-d\"
+  if arg == "-d"
     dirname = ARGV[i+1]
   end
-  if arg == \"-id\"
+  if arg == "-id"
     task_id = ARGV[i+1]
   end
-  if arg == \"-payload\"
+  if arg == "-payload"
     payload_file = ARGV[i+1]
   end
   i+=1
@@ -69,7 +69,7 @@ def package_code(files)
   fname
 end
 
-zip_filename = package_code(\['hello.rb'\])
+zip_filename = package_code(['hello.rb'])
 {% endhighlight %}
 
 So now we have a zip file containing the code we want to execute on IronWorker.

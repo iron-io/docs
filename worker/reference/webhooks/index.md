@@ -25,11 +25,11 @@ is queued up.
 
 First let's create the worker:
 
-<script src="https://gist.github.com/2308369.js?file=github_to_hipchat_webhook_worker.rb"></script>
+<script src="https://gist.github.com/2308369.js?file=github_to_hipchat_webhook_worker.rb">---</script>
 
 Now let's upload it:
 
-<script src="https://gist.github.com/2308369.js?file=upload.rb"></script>
+<script src="https://gist.github.com/2308369.js?file=upload.rb">---</script>
 
 ### Step 2: Add your workers webhook URL to Github service hooks
 
@@ -43,9 +43,7 @@ your Github project, click Admin, Service Hooks, then Post-Receive URLs.
 In the text field, add the webhook url for
 your worker, it should look something like this:
 
-{% highlight %}
-https://worker-aws-us-east-1/projects/{Project ID}/tasks/webhook?code_name={Code Name}
-{% endhighlight %}
+    https://worker-aws-us-east-1/projects/{Project ID}/tasks/webhook?code_name={Code Name}
 
 The upload script above will print the exact URL to your console so you can just copy and paste it.
 
