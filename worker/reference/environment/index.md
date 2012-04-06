@@ -105,6 +105,7 @@ The following is the default number of scheduled tasks. It should be sufficient 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When schedule tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the pages on Scheduling for more information on scheduling patterns and best practices.
 
 ## Pre-installed Code Libraries (language-specific)
+
 IronWorker supports a handful of pre-installed code libraries specifically around certain languages. 
 
 Your workers should be designed to be as independent of the environment as possible. In other words, you should look to upload or merge all language-specific libraries -- Ruby gems, Python and PHP modules, etc. -- that your workers need as part of your worker code package. Try to avoid relying on the pre-installed libraries listed below as much as possible because they could change or be updated with new versions, creating a potential source of conflicts. 
