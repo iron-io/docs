@@ -27,3 +27,5 @@
   <li><a {% if page.url == "/worker/articles/data/index.html" %}class="selected"{% else %}{% if page.categories contains "data" %}class="selected"{% endif %}{% endif %} href="/worker/articles/data">Data &amp; Databases</a></li>
   <li><a {% if page.url == "/worker/articles/platforms/index.html" %}class="selected"{% else %}{% if page.categories contains "platforms" %}class="selected"{% endif %}{% endif %} href="/worker/articles/platforms">Platforms</a></li>
 </ul>
+
+{% include sidemenu_all.html %}
