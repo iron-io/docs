@@ -1,13 +1,7 @@
 <div class="php">{% highlight php %}
 <?php
-$payload = null;
-global $argv;
-foreach($argv as $k => $v) {
-    if (empty($argv[$k+1])) continue;
-    if ($v == "-payload" && file_exists($argv[$k+1])) {
-        $payload = json_decode(file_get_contents($argv[$k+1]));
-    }
-}
+
+$payload = getPayload();
 
 $max = 100;
 
