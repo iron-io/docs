@@ -264,4 +264,4 @@ Congratulations! You've written your first application using IronMQ. To get into
 
 ### Troubleshooting
 
-Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues.
+Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://get.iron.io/chat) and chat with Iron's staff about issues.

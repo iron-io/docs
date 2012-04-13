@@ -34,7 +34,7 @@ In most cases you'll want to use one of the available client libraries.
 * [Notifications and Announcements](https://plus.google.com/107080387635368981384/posts)
 * [Discussion group / mailing list](http://groups.google.com/group/ironmq)
 * [Support Site](http://support.iron.io)
-* [Live Chat](http://www.hipchat.com/gNWgTiqIC)
+* [Live Chat](http://get.iron.io/chat)
 
 
 <p style="width: 100%; text-align: right;"><a href="/mq/start/first-queue" class="next_item">Setting Up Your First Queue --></a></p>
