@@ -189,5 +189,9 @@ merge_gem "some_gem", "1.2.3"
     <tr><th>Python Modules</th><th>Comments</th></tr>
   </thead>
   <tr><td>python-lxml</td><td></td></tr>
+  <tr><td>numpy</td><td></td></tr>
+  <tr><td>scipy</td><td></td></tr>
+  <tr><td>pymongo</td><td></td></tr>
+  <tr><td>gevent</td><td></td></tr>
 </table>
 </div>

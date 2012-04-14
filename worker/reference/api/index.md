@@ -527,20 +527,20 @@ Sample:
 {
     "tasks": [
         {
-            id: "4f3595381cf75447be029da5",
-            created_at: 1328911672712000000,
-            updated_at: 1328911915000000000,
-            project_id: "4f32d521519cb67829000390",
-            code_id: "4f32d9c81cf75447be020ea5",
-            status: "complete",
-            msg: "SetProgress output",
-            code_name: "MyWorker",
-            start_time: 1328911674000000000,
-            end_time: 1328911915000000000,
-            duration: 241441,
-            run_times: 1,
-            timeout: 3600,
-            percent: 100
+            "id": "4f3595381cf75447be029da5",
+            "created_at": "2012-02-10T22:07:52.712Z",
+            "updated_at": "2012-02-10T22:11:55Z",
+            "project_id": "4f32d521519cb67829000390",
+            "code_id": "4f32d9c81cf75447be020ea5",
+            "status": "complete",
+            "msg": "SetProgress output",
+            "code_name": "MyWorker",
+            "start_time": "2012-02-10T22:07:54Z",
+            "end_time": "2012-02-10T22:11:55Z",
+            "duration": 241441,
+            "run_times": 1,
+            "timeout": 3600,
+            "percent": 100
         }
     ]
 }
@@ -779,8 +779,8 @@ Sample:
     "schedules": [
         {
             "id": "4eb1b490cddb136065000011",
-            "created_at": 1329188801000000000,
-            "updated_at": 1329188801000000000,
+            "created_at": "2012-02-14T03:06:41Z",
+            "updated_at": "2012-02-14T03:06:41Z",
             "project_id": "4eb1b46fcddb13606500000d",
             "msg": "Ran max times.",
             "status": "complete",
@@ -788,7 +788,7 @@ Sample:
             "start_at": "2011-11-02T21:22:34Z",
             "end_at": "2262-04-11T23:47:16Z",
             "next_start": "2011-11-02T21:22:34Z",
-            "last_run_time": 1320268971000000000,
+            "last_run_time": "2011-11-02T21:22:51Z",
             "run_times": 1,
             "run_count": 1
         }
@@ -877,8 +877,8 @@ Sample:
 {% highlight js %}
 {
     "id": "4eb1b490cddb136065000011",
-    "created_at": 1320268971000000000,
-    "updated_at": 1320268971000000000,
+    "created_at": "2011-11-02T21:22:51Z",
+    "updated_at": "2011-11-02T21:22:51Z",
     "project_id": "4eb1b46fcddb13606500000d",
     "msg": "Ran max times.",
     "status": "complete",
@@ -887,7 +887,7 @@ Sample:
     "start_at": "2011-11-02T21:22:34Z",
     "end_at": "2262-04-11T23:47:16Z",
     "next_start": "2011-11-02T21:22:34Z",
-    "last_run_time": 1320268971000000000,
+    "last_run_time": "2011-11-02T21:22:51Z",
     "run_times": 1,
     "run_count": 1
 }
