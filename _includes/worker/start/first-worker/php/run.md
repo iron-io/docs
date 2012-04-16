@@ -2,7 +2,7 @@
 <?php
 require("IronWorker.class.php");
 $opts = getopt("", array("max:"));
-if($opts['max'] != null) {
+if($opts['max'] == null) {
     $max = 100000;
 } else {
     $max = $opts['max'];
