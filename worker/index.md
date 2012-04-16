@@ -43,4 +43,4 @@ If you want to write your own IronWorker client or get deeper into the details, 
 * [Notifications and Announcements](https://plus.google.com/113102494747591798552/posts)
 * [Discussion group / mailing list](http://groups.google.com/group/ironworker-users)
 * [Support Site](http://support.iron.io)
-* [Live Chat](http://www.hipchat.com/gNWgTiqIC)
+* [Live Chat](http://get.iron.io/chat)

@@ -1,9 +1,55 @@
-@import url(http://www.iron.io/jquery-ui-1.8.10.css);
-@import url(http://www.iron.io/nivo-slider.css);
+/*@import url(http://www.iron.io/stylesheets/jquery-ui-1.8.10.css);*/
+/*@import url(http://www.iron.io/nivo-slider.css);*/
+
+
+html {
+    height: 100%;
+    margin: 0
+}
+
+body {
+    margin: 0;
+    color: #363636;
+    font: 11px Helvetica, Arial, sans-serif;
+    background: #fff url(http://www.iron.io/assets/bg-body.png) repeat-x;
+    height: 100%;
+    min-width: 990px
+}
+
+img {
+    border-style: none
+}
+
+a {
+    text-decoration: none;
+    color: #003663
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+input, textarea, select {
+    font: 100% arial, sans-serif;
+    vertical-align: middle;
+    color: #000
+}
+
+form, fieldset {
+    margin: 0;
+    padding: 0;
+    border-style: none
+}
+
 
 div.span-1, div.span-2, div.span-3, div.span-4, div.span-5, div.span-6, div.span-7, div.span-8, div.span-9, div.span-10, div.span-11, div.span-12, div.span-13, div.span-14, div.span-15, div.span-16, div.span-17, div.span-18, div.span-19, div.span-20, div.span-21, div.span-22, div.span-23, div.span-24 {
   float: left;
   margin-right: 10px
+}
+
+code {
+    font-family: courier;
+    color: green;
 }
 
 .span-1 {
@@ -635,20 +681,6 @@ hr.space {
   clear: both
 }
 
-html {
-  height: 100%;
-  margin: 0
-}
-
-body {
-  margin: 0;
-  color: #363636;
-  font: 11px Helvetica, Arial, sans-serif;
-  background: #fff url(http://www.iron.io/assets/bg-body.png) repeat-x;
-  height: 100%;
-  min-width: 990px
-}
-
 ::selection {
   background: #BF0000;
   color: white
@@ -657,31 +689,6 @@ body {
 ::-moz-selection {
   background: #BF0000;
   color: white
-}
-
-img {
-  border-style: none
-}
-
-a {
-  text-decoration: none;
-  color: #003663
-}
-
-a:hover {
-  text-decoration: underline
-}
-
-input, textarea, select {
-  font: 100% arial, sans-serif;
-  vertical-align: middle;
-  color: #000
-}
-
-form, fieldset {
-  margin: 0;
-  padding: 0;
-  border-style: none
 }
 
 q {
@@ -1080,7 +1087,6 @@ small {
 .container header .title-box {
   float: left
 }
-
 .container h1 {
   margin: 0;
   font-size: 50px;
@@ -1089,6 +1095,14 @@ small {
   float: left;
   padding: 3px 0 0;
   letter-spacing: -1px
+}
+a.title {
+    text-decoration: none;
+    color: white;
+}
+a.title:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .container header .title-box .info {

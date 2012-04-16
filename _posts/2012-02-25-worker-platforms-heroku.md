@@ -196,4 +196,4 @@ The most common source of Worker errors is a mismatch between your local environ
 
 Also note that IronWorker is not able to to connect with Heroku's shared databases. At this point, Heroku's shared databases do not allow for direct connections. We are working to remedy this situation. The suggested workaround is to pass the data back through your application, post-processing.
 
-Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues.
+Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://get.iron.io/chat) and chat with Iron's staff about issues.

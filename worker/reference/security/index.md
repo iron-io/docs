@@ -25,7 +25,10 @@ The IronWorker [API](/worker/reference/api) is the standard method of interactin
 
 ### Process Isolation
 
-IronWorker makes use of OS-level **sandboxing** to keep processes isolated from system influences and other processes in the system. Each IronWorker process runs in a virtualized container that appears to processes as a unique, minimal Ubuntu installation. Runtime limits are placed on the amount of RAM and disk each worker process may consume. Workers that exceed the RAM limit are terminated immediately by the IronWorker runtime. CPU allocation is balanced across IronWorker processes, but bursting is allowed. 
+IronWorker makes use of OS-level **sandboxing** to keep processes isolated from system influences and other processes in the system. Each IronWorker process runs in a virtualized container that appears to processes as a unique, minimal Ubuntu installation.
+Runtime limits are placed on the amount of RAM and disk each worker process may consume. Workers that exceed the
+memory limit will error out and exit. CPU allocation is balanced across IronWorker processes, but may burst to higher CPU
+allocation depending IronWorker system load.
 
 ### Resource Management
 
@@ -56,7 +59,7 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 
 ### Environment Variables/Code Separation
 
-Avoid including any sensitive data or credentials within your code. Instead, include include them as part of **the data payload**. This is in keeping with the 12-Factor app tenet regarding [Config](http://www.12factor.net/config) and its guidance on *strict separation of config from code*.
+Avoid including any sensitive data or credentials within your code. Instead, include them as part of **the data payload**. This is in keeping with the 12-Factor app tenet regarding [Config](http://www.12factor.net/config) and its guidance on *strict separation of config from code*.
 
 ### Create Worker-Specific Credentials
 
@@ -74,4 +77,4 @@ Do not log sensitive data. This includes sending information to STDOUT, as STDOU
 
 We've taken measures to ensure the security of your data in our systems, and we're working hard to educate customers on how to make the most of that security. Our mission is to take the stress out of managing cloud infrastructure, and that includes concerns about security and compromised data.
 
-If you have any questions, please do not hesitate to get in touch with us. We **encourage the dialogue** and want to do everything we can to ensure the safety of your data. Enter a [support ticket](http://support.iron.io/customer/portal/emails/new) or join the [public support chat room](http://www.hipchat.com/gNWgTiqIC). It's staffed almost constantly, around the clock, and we'd be happy to answer questions or provide advice on a case-by-case basis.
+If you have any questions, please do not hesitate to get in touch with us. We **encourage the dialogue** and want to do everything we can to ensure the safety of your data. Enter a [support ticket](http://support.iron.io/customer/portal/emails/new) or join the [public support chat room](http://get.iron.io/chat). It's staffed almost constantly, around the clock, and we'd be happy to answer questions or provide advice on a case-by-case basis.

@@ -210,6 +210,21 @@ input:-moz-placeholder {
 #sidemenu form {
   margin: 0 0 30px;
 }
+.sidemenu-box {
+    margin: 10px 0 10px 0;
+    /*border: 2px outset silver;*/
+    /*width: 75%;*/
+    font-size: 80%;
+}
+.sidemenu-box a {
+    background: none;
+    font-size: 80%;
+}
+.sidemenu-box a:hover {
+    font-size: 80%;
+    background: none;
+}
+
 
 /*--------------------------------- BREAD CRUMB ------------------------------------*/
 
