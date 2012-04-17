@@ -56,7 +56,7 @@ IronWorker for.
 You're all set! Just [update your code](/worker/start/first-worker) to use 
 IronWorker, and you're good to go.
 
-*BONUS*: If you use the `ey_config` gem, you can use
+**BONUS**: If you use the `ey_config` gem, you can use
 
 <div class="ruby">
 {% highlight ruby %}
