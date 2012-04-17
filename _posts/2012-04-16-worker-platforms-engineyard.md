@@ -80,6 +80,10 @@ the Iron.io HUD and automatically log you in. Your project ID will be listed
 on the first page you see. Your tokens can be accessed by clicking "My Account" 
 in the top right and clicking "API Tokens".
 
+Alternatively, if you click on any of your app environments, you'll see 
+IronWorker listed in the Add-ons box. Click "Show Vars" under IronWorker 
+to show the project ID and token.
+
 ### Removing IronWorker
 
 You can remove IronWorker from your Engine Yard control panel. We're sad to 
