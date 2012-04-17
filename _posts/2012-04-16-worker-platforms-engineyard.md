@@ -59,10 +59,10 @@ IronWorker, and you're good to go.
 *BONUS*: If you use the `ey_config` gem, you can use
 
 <div class="ruby">
-```ruby
+{% highlight ruby %}
 config.token = EY::Config.get(:ironworker, 'IRON_WORKER_TOKEN')
 config.project_id = EY::Config.get(:ironworker, 'IRON_WORKER_PROJECT_ID')
-```
+{% endhighlight %}
 </div>
 
 to configure your worker, instead of hardcoding the token and project ID in 
