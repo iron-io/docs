@@ -17,6 +17,7 @@ breadcrumbs:
 package main
 
 import "fmt"
+
 func main() {
         fmt.Println("Hello, playground")
 }
@@ -36,8 +37,7 @@ GOOS=linux GOARCH=amd64 go build
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Binary.new('NAME OF EXECUTABLE')
-code.name = "GoWorker"
+code = IronWorkerNG::Code::Binary.new(:name => "GoWorker", :worker => 'PATH TO EXECUTABLE')
 client.codes.create(code)
 {% endhighlight %}
 
