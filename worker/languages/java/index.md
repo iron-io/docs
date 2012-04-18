@@ -113,7 +113,8 @@ public class HelloWorld {
         FileInputStream stream = new FileInputStream(new File(path));
         try {
                 FileChannel chan = stream.getChannel();
-                MappedByteBuffer buf = chan.map(FileChannel.MapMode.READ_ONLY, 0, chan.size());
+                MappedByteBuffer buf = chan.map(FileChannel.MapMode.READ_ONLY, 0,
+                        chan.size());
                 return Charset.defaultCharset().decode(buf).toString();
         }
         finally {
