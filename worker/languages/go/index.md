@@ -7,9 +7,11 @@ breadcrumbs:
   - ['Go', '/go']
 ---
 
-# Quick Start
+# Writing Workers in Go
 
-## Write your [Go](http://www.golang.org) worker.
+## Quick Start
+
+### Write your Go worker.
 
 {% highlight go %}
 package main
@@ -20,7 +22,7 @@ func main() {
 }
 {% endhighlight %}
 
-## Compile your Go worker to a binary file.
+### Compile your Go worker to a binary file.
 
 You may need to recompile Go with `GOOS=linux`, `GOARCH=amd64`, and 
 `CGO_ENABLED=0` before you can cross compile from Windows, Mac, or a 32 bit 
@@ -29,7 +31,7 @@ machine.
 GOOS=linux GOARCH=amd64 go build
 {% endhighlight %}
 
-## Create a script to upload the worker.
+### Create a script to upload the worker.
 {% highlight ruby %}
 require 'iron_worker_ng'
 
@@ -39,7 +41,7 @@ code.name = "GoWorker"
 client.codes.create(code)
 {% endhighlight %}
 
-## Queue a task to the new worker.
+### Queue a task to the new worker.
 {% highlight ruby %}
 require 'iron_worker_ng'
 
