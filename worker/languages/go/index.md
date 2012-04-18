@@ -103,5 +103,4 @@ set to `amd64`.
 
 Note that you must disable cgo to cross compile Go. This means that certain 
 packages ([net](http://www.golang.org/pkg/net) being the most notable) will 
-take a performance hit. To avoid this, you can build your worker *on* the 
-IronWorker platform by [using a shell worker](/worker/languages/go/build-on-ironworker).
+take a performance hit.
