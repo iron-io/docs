@@ -33,9 +33,9 @@ you can generate them from the command line.
 First, create a `manifest.txt` file in the same directory as your Worker. 
 Put the following in it:
 
-{% highlight manifest %}
+<div class="grey-box">
 Main-Class: HelloWorld
-{% endhighlight %}
+</div>
 
 Then run the following commands:
 
