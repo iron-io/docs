@@ -338,3 +338,7 @@ a.language-switcher.selected {
   color: #000000;
   text-decoration: none;
 }
+
+.highlight {
+  overflow-x: auto;
+}
