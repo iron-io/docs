@@ -22,7 +22,7 @@ console.log("Hello from Node.js");
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Node.new(:name => "NodeWorker", :worker => 'worker.js')
+code = IronWorkerNG::Code::Node.new(:name => "NodeWorker", :exec => 'worker.js')
 client.codes.create(code)
 {% endhighlight %}
 

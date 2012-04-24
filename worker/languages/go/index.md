@@ -37,8 +37,7 @@ GOOS=linux GOARCH=amd64 go build
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Binary.new(:name => "GoWorker",
-        :worker => 'PATH TO EXECUTABLE')
+code = IronWorkerNG::Code::Binary.new(:name => "GoWorker", :exec => 'PATH TO EXECUTABLE')
 client.codes.create(code)
 {% endhighlight %}
 
