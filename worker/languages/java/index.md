@@ -34,7 +34,9 @@ First, create a `manifest.txt` file in the same directory as your Worker.
 Put the following in it:
 
 <div class="grey-box">
+<pre>
 Main-Class: HelloWorld
+</pre>
 </div>
 
 Then run the following commands:
