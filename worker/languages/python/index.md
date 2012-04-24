@@ -18,7 +18,7 @@ You can download the Python client library, `iron_worker_python`, from [Github](
 ### Write your Python worker.
 
 {% highlight python %}
-print "Hello from Python";
+print "Hello from Python"
 {% endhighlight %}
 
 ### Create a script to upload the worker.
