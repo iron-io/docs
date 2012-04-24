@@ -5,11 +5,11 @@ section: worker
 breadcrumbs:
   - ['Languages', '/languages']
   - ['Ruby', '/ruby']
-languages:
-  - name: 'iron_worker'
-    command: 'ruby'
-    extension: 'rb'
+languages
   - name: 'iron_worker_ng'
+    command: 'ruby'
+    extension: 'rb':
+  - name: 'iron_worker'
     command: 'ruby'
     extension: 'rb'
 ---
