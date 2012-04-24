@@ -22,10 +22,21 @@ languages:
 
 ## Quick Start
 
+### Get the gem.
+
+We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
+gem for Ruby workers. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
+gem. We recommend switching off that at your earliest convenience.
+
+You can install the `iron_worker_ng` gem from the command line:
+{% highlight bash %}
+gem install iron_worker_ng
+{% endhighlight %}
+
 ### Write your Ruby worker.
 
 {% highlight ruby %}
-p "Hello from Ruby"
+puts "Hello from Ruby"
 {% endhighlight %}
 
 ### Create a script to upload the worker.
@@ -33,7 +44,7 @@ p "Hello from Ruby"
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Ruby.new(:name => "RubyWorker", :worker => 'PATH TO WORKER SCRIPT')
+code = IronWorkerNG::Code::Ruby.new(:name => "RubyWorker", :exec => 'PATH TO WORKER SCRIPT')
 client.codes.create(code)
 {% endhighlight %}
 
@@ -95,8 +106,8 @@ class ExampleWorker < IronWorker::Base
   attr_accessor :another_arg
 
   def run
-    p arg1
-    p another_arg.inspect
+    puts arg1
+    puts another_arg.inspect
   end
 end
 {% endhighlight %}
@@ -112,8 +123,8 @@ task_id = client.tasks.create('Worker Name Here', { :arg1 => "Test", :another_ar
 
 In the worker:
 {% highlight ruby %}
-p params['arg1']
-p params['another_arg'].inspect
+puts params['arg1']
+puts params['another_arg'].inspect
 {% endhighlight %}
 </div>
 
