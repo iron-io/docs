@@ -53,8 +53,7 @@ A hello.jar file will now be in the same directory as your worker.
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Java.new(:name => "JavaWorker",
-        :worker => 'path/to/hello.jar')
+code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :exec => 'path/to/hello.jar')
 client.codes.create(code)
 {% endhighlight %}
 
@@ -198,7 +197,7 @@ in the code package it uploads. The new script is below:
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :worker => 'path/to/hello.jar')
+code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :exec => 'path/to/hello.jar')
 code.merge_file("path/to/gson.jar")
 
 client.codes.create(code)
