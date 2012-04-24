@@ -12,7 +12,7 @@ IronWorker aims to be a language-agnostic platform that lets developers use the
 language they are most comfortable with. Unfortunately, our resources are 
 limited. We've decided that providing a great experience with a limited, but 
 growing, number of languages is more important than supporting every possible 
-language, sort of.
+language.
 
 ## Levels of Support
 
