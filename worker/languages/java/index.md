@@ -162,8 +162,10 @@ We're going to have to modify that `manifest.txt` file before we can use the
 GSON jar, though, so replace `manifest.txt` with the following:
 
 <div class="grey-box">
+<pre>
 Main-Class: HelloWorld
 Class-Path: gson.jar
+</pre>
 </div>
 
 Next we need to compile the Java file, but we need to insert the `gson.jar` 
