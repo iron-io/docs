@@ -33,8 +33,7 @@ p "Hello from Ruby"
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Binary.new(:name => "RubyWorker",
-        :worker => 'PATH TO WORKER SCRIPT')
+code = IronWorkerNG::Code::Ruby.new(:name => "RubyWorker", :worker => 'PATH TO WORKER SCRIPT')
 client.codes.create(code)
 {% endhighlight %}
 
@@ -71,13 +70,50 @@ the payload as a variable at runtime. Here's an example:
 
 {% include language-switcher.html %}
 <div class="iron_worker">
+In the upload script:
 {% highlight ruby %}
-// TODO: Ruby example
+require 'iron_worker'
+require_relative 'example_worker.rb'
+
+IronWorker.configure do |config|
+  config.token = "INSERT TOKEN HERE"
+  config.project_id = "INSERT PROJECT_ID HERE"
+end
+
+worker = ExampleWorker.new
+worker.arg1 = "test"
+worker.another_arg = ["apples", "oranges"]
+worker.queue
+{% endhighlight %}
+
+In the worker:
+{% highlight ruby %}
+require 'iron_worker'
+
+class ExampleWorker < IronWorker::Base
+  attr_accessor :arg1
+  attr_accessor :another_arg
+
+  def run
+    p arg1
+    p another_arg.inspect
+  end
+end
 {% endhighlight %}
 </div>
 <div class="iron_worker_ng">
+In the upload script:
 {% highlight ruby %}
-// TODO: Ruby example
+require 'iron_worker_ng'
+
+client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
+task_id = client.tasks.create('Worker Name Here', { :arg1 => "Test", :another_arg => ["apples", "oranges"]})
+{% endhighlight %}
+
+In the worker:
+{% highlight ruby %}
+p params['arg1']
+p params['another_arg'].inspect
 {% endhighlight %}
 </div>
 
