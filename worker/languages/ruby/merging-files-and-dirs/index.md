@@ -48,7 +48,7 @@ To upload a resource file through `iron_worker`, just the `merge` method:
 
 {% highlight ruby %}
 merge 'config.yml'
-{% highlight %}
+{% endhighlight %}
 
 The file will be made available in the same directory your worker runs from.
 
