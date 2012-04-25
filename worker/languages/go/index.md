@@ -9,7 +9,25 @@ breadcrumbs:
 
 # Writing Workers in Go
 
+The [Go](http://www.golang.org) programming language is a fast, statically 
+typed, compiled language with an emphasis on concurrency. It's a great language 
+for cloud systems (we use it here at Iron.io!) and is a natural fit for workers.
+
+Go Workers need to be compiled, then uploaded. Once they're uploaded to the 
+IronWorker cloud, they can be invoked via a simple API to be put on the 
+processing queues immediately or scheduled to run at a later time.
+
 ## Quick Start
+
+### Get the `iron_worker_ng` gem.
+
+There isn't a library for interacting with the IronWorker API written in Go 
+yet, so while running workers written in Go is supported, you have to upload 
+them and queue tasks to them using another language's library. We're using the 
+`iron_worker_ng` Ruby library in these examples. You can download it off 
+[Github](https://github.com/iron-io/iron_worker_ruby_ng) or install it using 
+`gem install iron_worker_ng`. **Note:** You'll need to have Ruby installed to 
+use the gem.
 
 ### Write your Go worker.
 
@@ -26,7 +44,7 @@ func main() {
 ### Compile your Go worker to a binary file.
 
 You may need to recompile Go with `GOOS=linux`, `GOARCH=amd64`, and 
-`CGO_ENABLED=0` before you can cross compile from Windows, Mac, or a 32 bit 
+`CGO_ENABLED=0` before you can [cross compile](#cross-compiling) from Windows, Mac, or a 32 bit 
 machine.
 {% highlight bash %}
 GOOS=linux GOARCH=amd64 go build
@@ -46,16 +64,16 @@ client.codes.create(code)
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-task_id = client.tasks.create('GoWorker')
+task_id = client.tasks.create('GoWorker', {:some_arg => "This is an a payload arg", :other_arg => ["apples", "oranges]})
 {% endhighlight %}
 
 ## Deep Dive
 
 ### Payload Example
 
-Retrieving the payload on Go is the same as it is on any other language. 
-Retrieve the `-payload` argument passed to the script, load that file, and 
-parse it as JSON.
+Retrieving the payload from within the worker on Go is the same as it is on any 
+other language. Retrieve the `-payload` argument passed to the script, load that 
+file, and parse it as JSON.
 
 {% highlight go %}
 package main
