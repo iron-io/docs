@@ -22,8 +22,9 @@ processing queues immediately or scheduled to run at a later time.
 ### Get the `iron_worker_ng` gem.
 
 There isn't a library for interacting with the IronWorker API written in Go 
-yet, so while running workers written in Go is supported, you have to upload 
-them and queue tasks to them using another language's library. We're using the 
+yet. While running workers written in Go is supported, you have to upload 
+them using another language's library and queue tasks using our simple HTTP 
+[API](/worker/reference/api) or another language's library. We're using the 
 `iron_worker_ng` Ruby library in these examples. You can download it off 
 [Github](https://github.com/iron-io/iron_worker_ruby_ng) or install it using 
 `gem install iron_worker_ng`. **Note:** You'll need to have Ruby installed to 
