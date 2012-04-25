@@ -342,3 +342,8 @@ a.language-switcher.selected {
 .highlight {
   overflow-x: auto;
 }
+
+span.fixed-width {
+  font-family: courier;
+  color: green;
+}
