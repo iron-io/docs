@@ -167,3 +167,89 @@ support for this operation via a `merge_worker` method.
 the `iron_worker_ng` gem's `merge_exec` method. The `merge_exec` method will 
 **not** queue up another task. For more information on the `merge_worker` method, 
 see the `iron_worker` gem's [wiki page on merge_worker](https://github.com/iron-io/iron_worker_ruby/wiki/merge_worker).
+
+### Environment
+
+The Ruby environment that the workers run in on IronWorker is as follows:
+
+<table class="reference">
+  <tbody>
+    <tr>
+      <td style="width: 50%;">Ruby Version</td>
+      <td style="width: 50%;"><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">1.9.2p280</a></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Gems</strong></td>
+    </tr>
+    <tr>
+      <td>bson_ext</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>curb</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>em-http-request</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>eventmachine</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>mysql2</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>net-scp</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>net-sftp</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>net-ssh</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>nokogiri</td>
+      <td><strong>Note:</strong> You may need to merge nokogiri using <span class="fixed-width">merg_gem</span> and then unmerge it using <span class="fixed_width">unmerge_gem</span></td>
+    </tr>
+    <tr>
+      <td>rmagick</td>
+      <td><strong>Note:</strong> Import this as follows: <span class="fixed-width">require 'RMagick'</span></td>
+    </tr>
+    <tr>
+      <td>sqlite3</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>typhoeus</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>yajl-ruby</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+You can just use `require '{GEM_NAME}'` to use these gems in your workers. 
+**Note:** While it is possible to use these gems without bundling them, we 
+*highly recommend* that you merge gems your code is reliant upon whenever 
+possible. Most of these gems are included in the environment because they are 
+binary gems, making it impossible to merge them. The ones that are not binary 
+gems are some of the more popular gems, which we include to allow users to try 
+things out and test things with minimal setup and pain. We cannot guarantee 
+which version of the gem will be used, and we may update them without warning. 
+Reliance on these gems may cause some unexpected conflicts in your code.
+
+### Ruby on Rails
+
+While it is possible (and easy!) to upload, queue, and manage your workers from 
+within a Ruby application, IronWorker **does not currently support** running 
+workers built to use the Rails framework. Your workers should be independent, 
+discreet parts of an application, a mini-application in themselves, so 
+framework usage in workers, in general, is frowned upon.
