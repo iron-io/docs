@@ -179,7 +179,7 @@ The Ruby environment that the workers run in on IronWorker is as follows:
       <td style="width: 75%;"><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">1.9.2p280</a></td>
     </tr>
     <tr>
-      <td colspan="2" style="text-align: center; width: 100%;"><h4>Gems</h4></td>
+      <td colspan="2" style="text-align: center; width: 100%;"><h4 style="padding: 0px;">Installed Gems</h4></td>
     </tr>
     <tr>
       <td>bson_ext</td>
