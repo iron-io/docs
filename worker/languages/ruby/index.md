@@ -136,12 +136,11 @@ official client libraries both have built-in solutions for this, called "merging
 
 #### Gems
 
-A [limited number of gems](/worker/reference/environment?lang=ruby#ruby_gems_installed) 
-are included in the cloud environment, but we highly recommend that you don't 
-rely on those&mdash;we can't guarantee they will always match the version you 
-require or will continue to exist on our system. They are largely there to make 
-quick tests easier. For production workers, we suggest you merge everything, so 
-you can manage your own dependencies.
+A [limited number of gems](#installed_gems) are included in the cloud environment, 
+but we highly recommend that you don't rely on those&mdash;we can't guarantee 
+they will always match the version you require or will continue to exist on our 
+system. They are largely there to make quick tests easier. For production workers, 
+we suggest you merge everything, so you can manage your own dependencies.
 
 You can find out how to merge gems and more about best practices on the 
 [Merging Gems page](/worker/languages/ruby/merging-gems).
@@ -243,8 +242,8 @@ possible. Most of these gems are included in the environment because they are
 binary gems, making it impossible to merge them. The ones that are not binary 
 gems are some of the more popular gems, which we include to allow users to try 
 things out and test things with minimal setup and pain. We cannot guarantee 
-which version of the gem will be used, and we may update them without warning. 
-Reliance on these gems may cause some unexpected conflicts in your code.
+which version of the gem will be available, and we may update them without 
+warning. Reliance on these gems may cause some unexpected conflicts in your code.
 
 ### Ruby on Rails
 

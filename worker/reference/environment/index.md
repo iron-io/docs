@@ -5,19 +5,7 @@ section: worker
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Environment', '/environment']
-languages:
-  - name: php
-    command: php
-    extension: php
-  - name: python
-    command: python
-    extension: py
-  - name: ruby
-    command: ruby
-    extension: rb
 ---
-
-{% include language-switcher-head.html %}
 
 # IronWorker Environment
 
@@ -46,20 +34,6 @@ IronWorker contains several popular Linux packages as part of the standard worke
 These are included because they are binary libraries. Language-specific libraries should be included as part of your worker code package.
 
 If you don't see what you need here, please [contact us](http://support.iron.io/customer/portal/emails/new) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
-
-## Language Environments
-The following languages are officially supported within IronWorker. We have included a small set of Ruby gems as part of the IronWorker native environment in addition to the Linux/binary packages above. See the table below for the list of supported Ruby Gems.
-
-<table class="reference">
-  <thead>
-    <tr><th style="width: 50%;">Language</th><th style="width: 50%;">Version</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Ruby</td><td><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">Version 1.9.2p280</a></td></tr>
-    <tr><td>PHP</td><td><a href="http://php.net/downloads.php#v5" title="Version 5.3.6">Version 5.3.6</a></td></tr>
-    <tr><td>Python</td><td><a href="http://python.org/download/releases/2.7.2/" title="Version 2.7.2">Version 2.7.2</a></td></tr>
-  </tbody>
-</table>
 
 ## Maximum Data Payload
 The following is the maximum data payload that can be passed to IronWorker. A data payload that exceeds this size will generate an error response from the API.
@@ -103,95 +77,3 @@ The following is the default number of scheduled tasks. It should be sufficient 
 </div>
 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When schedule tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the pages on Scheduling for more information on scheduling patterns and best practices.
-
-## Pre-installed Code Libraries (language-specific)
-
-IronWorker supports a handful of pre-installed code libraries specifically around certain languages. 
-
-Your workers should be designed to be as independent of the environment as possible. In other words, you should look to upload or merge all language-specific libraries -- Ruby gems, Python and PHP modules, etc. -- that your workers need as part of your worker code package. Try to avoid relying on the pre-installed libraries listed below as much as possible because they could change or be updated with new versions, creating a potential source of conflicts. 
-
-{% include language-switcher.html %}
-<div class="ruby">
-<h3 id="ruby_gems_installed">Ruby Gems Installed</h3>
-
-<p>Here is the list of Ruby gems installed in the IronWorker environment. Note that a number are binary gems, which is why they are pre-installed. Whenever possible, merge the gems you need as part of the code upload.</p>
-
-<table class="reference_list">
-  <thead>
-    <tr><th>Ruby Gems</th><th>Comments</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>bson_ext</td><td></td></tr>
-    <tr><td>curb</td><td></td></tr>
-    <tr><td>em-http-request</td><td></td></tr>
-    <tr><td>eventmachine</td><td></td></tr>
-    <tr><td>mysql2</td><td></td></tr>
-    <tr><td>net-scp</td><td></td></tr>
-    <tr><td>net-sftp</td><td></td></tr>
-    <tr><td>net-ssh</td><td></td></tr>
-    <tr><td>nokogiri</td><td>May need to merge with `merge_gem` but then unmerge with `unmerge_gem`</td></tr>
-    <tr><td>rmagick</td><td>Use require 'RMagick'</td></tr>
-    <tr><td>sqlite3</td><td></td></tr> 
-    <tr><td>typhoeus</td><td></td></tr>
-    <tr><td>yajl-ruby</td><td></td></tr>
-  </tbody>
-</table>
-
-<p>To make use of one of the pre-installed gems, use a <span class="fixed-width">require</span> along with the gem name.</p>
-
-{% highlight ruby %}
-require 'iron_worker'
-require 'nokogiri'
-
-class PageWorker < IronWorker::Base
-
-  def run
-    ...
-  end
-end
-{% endhighlight %}
-
-<p>If you need a specific version, we recommend using the <span class="fixed-width">merge_gem</span> command along with a version parameter.</p>
-
-{% highlight ruby %}
-merge_gem "some_gem", "1.2.3"
-{% endhighlight %}
-
-<p>Notes: 
-<ul>
-<li>There are other gems installed in the system but we don't publish the full list because we can't guarantee they will be included. Instead upload the gems your worker needs along with your code.</li>
-<li>The Rails framework is not supported in IronWorker. As per the note above, while there are certain code libraries included in IronWorker, you will want to explicitly include or merge in any specific libraries that you need.</li>
-</ul>
-</p>
-</div>
-<div class="php">
-<h3 id="php_modules_installed">PHP Modules Installed</h3>
-
-<p>Here is the list of PHP modules installed in the IronWorker environment. Generally, it's best practice for users to package their dependencies with their workers, but because these modules cannot be installed on a per-user basis, they are included in the environment.</p>
-
-<table class="reference_list">
-  <thead>
-    <tr><th>PHP Modules</th><th>Comments</th></tr>
-  </thead>
-  <tr><td>php5-curl</td><td></td></tr>
-  <tr><td>php5-mysql</td><td></td></tr>
-  <tr><td>php5-gd</td><td></td></tr>
-  <tr><td>mongo</td><td></td></tr>
-</table>
-</div>
-<div class="python">
-<h3 id="python_modules_installed">Python Modules Installed</h3>
-
-<p>Here is the list of Python modules installed in the IronWorker environment. Generally, it's best practice for users to package their dependencies with their workers, but because these modules cannot be installed on a per-user basis, they are included in the environment.</p>
-
-<table class="reference_list">
-  <thead>
-    <tr><th>Python Modules</th><th>Comments</th></tr>
-  </thead>
-  <tr><td>python-lxml</td><td></td></tr>
-  <tr><td>numpy</td><td></td></tr>
-  <tr><td>scipy</td><td></td></tr>
-  <tr><td>pymongo</td><td></td></tr>
-  <tr><td>gevent</td><td></td></tr>
-</table>
-</div>

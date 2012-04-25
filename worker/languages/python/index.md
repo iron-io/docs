@@ -69,3 +69,54 @@ worker = IronWorker(token="INSERT TOKEN HERE", project_id="INSERT PROJECT_ID HER
 IronWorker.createZip(destination="worker.zip", files=["HelloWorld.py", "helper.py"], overwrite=True)
 response = worker.postCode(runFilename="HelloWorld.py", zipFilename="worker.zip", name="HelloWorld")
 {% endhighlight %}
+
+### Environment
+
+The Python environment that the workers run in on IronWorker is as follows:
+
+<table class="reference">
+  <tbody>
+    <tr>
+      <td style="width: 25%;">Python Version</td>
+      <td style="width: 75%;"><a href="http://python.org/download/releases/2.7.2/" title="Version 2.7.2">Version 2.7.2</a></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center; width: 100%;"><h4 style="padding: 0px;">Installed Modules</h4></td>
+    </tr>
+    <tr>
+      <td>python-lxml</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>numpy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>scipy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>pymongo</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>gevent</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>PIL</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+You can just use `import {MODULE_NAME}` to use these modules in your workers. 
+**Note:** While it is possible to use these modules without bundling them, we 
+*highly recommend* that you include modules your code is reliant upon in the 
+code package whenever possible. Most of these modules are included in the 
+environment because they are binary modules, making it impossible to supply them 
+at runtime. The ones that are not binary modules are some of the more popular 
+modules, which we include to allow users to try things out and test things with 
+minimal setup and pain. We cannot guarantee which version of the module will be 
+available, and we may update them without warning. Reliance on these modules may 
+cause some unexpected conflicts in your code.
