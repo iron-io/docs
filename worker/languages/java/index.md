@@ -11,6 +11,18 @@ breadcrumbs:
 
 ## Quick Start
 
+### Get the `iron_worker_ng` gem.
+
+While there is a [native library](https://github.com/iron-io/iron_worker_java) 
+for interacting with the IronWorker API in Java, the library lacks the ability 
+to create zip files at the moment. This means you need another language's 
+library to upload the workers, after which you can interact with them from 
+Java's library. To keep the dependencies of this document low, we're using the 
+`iron_worker_ng` Ruby library for all these examples. You can download it off 
+[Github](https://github.com/iron-io/iron_worker_ruby_ng) or install it using 
+`gem install iron_worker_ng`. **Note:** You'll need to have Ruby installed to 
+use the gem.
+
 ### Write your Java worker.
 
 {% highlight java %}
@@ -57,22 +69,31 @@ code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :exec => 'path/to/hel
 client.codes.create(code)
 {% endhighlight %}
 
-### Queue a task to the new worker.
+### Queue a task to the worker.
+
+You can queue tasks to workers from within the same app that uploaded them or 
+from an entirely different app. It makes no difference to the worker.
+
 {% highlight ruby %}
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-task_id = client.tasks.create('JavaWorker')
+task_id = client.tasks.create('JavaWorker', {:arg1 => "Test", :another_arg => ["apples", "oranges]})
 {% endhighlight %}
+
+`:arg1` and `:another_arg` are called the "payload". They're used for passing 
+parameters into your worker.
 
 ## Deep Dive
 
 ### Payload Example
 
-Retrieving the payload in Java is the same as it is on any other language. 
-Retrieve the `-payload` argument passed to the script, load that file, and 
-parse it as JSON. Java doesn't play nicely with JSON, so this takes a little 
-more work than the other languages, but it shouldn't take too much effort.
+Retrieving the payload in Java is largely the same as it is on any other 
+language. Retrieve the `-payload` argument passed to the script, load that file, 
+and parse it as JSON. Java doesn't play nicely with JSON, however, so this takes 
+a little more work for Java than it does for the other languages.
+
+#### Get GSON
 
 First, you're going to need the [GSON](http://code.google.com/p/google-gson) 
 library&mdash;this is a library that Google released that can take JSON and 
@@ -80,7 +101,9 @@ turn it into Java objects, and vice-versa. Go ahead and download the latest
 release, unzip it, and copy the gson-#.#.jar file to the directory your 
 worker is in. Rename the jar file to gson.jar, to make life easier.
 
-Next, we're going to modify your script to load the file and parse it as JSON:
+#### Modify the worker
+
+Next, we're going to modify your worker to load the file and parse it as JSON:
 
 {% highlight java %}
 import java.io.File;
@@ -159,6 +182,8 @@ public class HelloWorld {
 }
 {% endhighlight %}
 
+#### Recompile the worker
+
 We're going to have to modify that `manifest.txt` file before we can use the 
 GSON jar, though, so replace `manifest.txt` with the following:
 
@@ -190,6 +215,8 @@ Now we need to generate another jar file:
 jar cfm hello.jar manifest.txt HelloWorld.class
 {% endhighlight %}
 
+#### Package the new dependencies
+
 Finally, we need to modify the upload script to include the `gson.jar` file 
 in the code package it uploads. The new script is below:
 
@@ -201,14 +228,4 @@ code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :exec => 'path/to/hel
 code.merge_file("path/to/gson.jar")
 
 client.codes.create(code)
-{% endhighlight %}
-
-To pass arguments, just modify the code you're using to queue tasks to the 
-worker:
-
-{% highlight ruby %}
-require 'iron_worker_ng'
-
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-task_id = client.tasks.create('JavaWorker', {:arg1 => "Test", :another_arg => ["apples", "oranges"]})
 {% endhighlight %}

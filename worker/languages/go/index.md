@@ -45,7 +45,7 @@ func main() {
 ### Compile your Go worker to a binary file.
 
 You may need to recompile Go with `GOOS=linux`, `GOARCH=amd64`, and 
-`CGO_ENABLED=0` before you can [cross compile](#cross-compiling) from Windows, Mac, or a 32 bit 
+`CGO_ENABLED=0` before you can [cross compile](#cross_compiling) from Windows, Mac, or a 32 bit 
 machine.
 {% highlight bash %}
 GOOS=linux GOARCH=amd64 go build
@@ -65,7 +65,7 @@ client.codes.create(code)
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-task_id = client.tasks.create('GoWorker', {:some_arg => "This is an a payload arg", :other_arg => ["apples", "oranges]})
+task_id = client.tasks.create('GoWorker', {:some_arg => "This is a payload arg", :other_arg => ["apples", "oranges]})
 {% endhighlight %}
 
 ## Deep Dive
