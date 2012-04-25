@@ -8,7 +8,7 @@ breadcrumbs:
 languages
   - name: 'iron_worker_ng'
     command: 'ruby'
-    extension: 'rb':
+    extension: 'rb'
   - name: 'iron_worker'
     command: 'ruby'
     extension: 'rb'
