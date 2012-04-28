@@ -248,7 +248,7 @@ warning. Reliance on these gems may cause some unexpected conflicts in your code
 ### Ruby on Rails
 
 While it is possible (and easy!) to upload, queue, and manage your workers from 
-within a Ruby application, IronWorker **does not currently support** running 
+within a Rails application, IronWorker **does not currently support** running 
 workers built to use the Rails framework. Your workers should be independent, 
 discreet parts of an application, a mini-application in themselves, so 
 framework usage in workers, in general, is frowned upon.
