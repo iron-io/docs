@@ -78,8 +78,8 @@ from whatever client you want, including raw API calls (which we'll show below).
 
 Once your code has been uploaded, it's easy to queue a task to it. It's a single, 
 authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON 
-object. Here's a script that queues up a task to your new worker, using the same 
-`config.json` file you created to upload the worker:
+object. The following program will queue up a task to your worker; just insert 
+your token and project ID into the code.
 
 {% highlight go %}
 package main
