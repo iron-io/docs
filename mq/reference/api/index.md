@@ -190,8 +190,6 @@ This call deletes all messages on a queue, whether they are reserved or not.
 POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/clear
 </div>
 
-This call adds or pushes a message onto the queue.
-
 ### URL Parameters
 
 * **Project ID**: The project these messages belong to.
@@ -206,6 +204,8 @@ This call adds or pushes a message onto the queue.
 {% endhighlight %}
 
 ## Add a Message to a Queue
+
+This call adds or pushes a message onto the queue.
 
 ### Endpoint
 
