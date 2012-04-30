@@ -17,11 +17,11 @@ While there is a [native library](https://github.com/iron-io/iron_worker_java)
 for interacting with the IronWorker API in Java, the library lacks the ability 
 to create zip files at the moment. This means you need another language's 
 library to upload the workers, after which you can interact with them from 
-Java's library. To keep the dependencies of this document low, we're using the 
-`iron_worker_ng` Ruby library for all these examples. You can download it off 
-[Github](https://github.com/iron-io/iron_worker_ruby_ng) or install it using 
-`gem install iron_worker_ng`. **Note:** You'll need to have Ruby installed to 
-use the gem.
+Java's library. We're using the `iron_worker_ng` Ruby library to package and 
+upload your workers, and the `iron_worker_java` library to queue tasks. You can 
+download `iron_worker_ng` off [Github](https://github.com/iron-io/iron_worker_ruby_ng) 
+or install it using `gem install iron_worker_ng`. **Note:** You'll need to 
+have Ruby installed to use the gem.
 
 ### Write your Java worker.
 
@@ -29,7 +29,7 @@ use the gem.
 public class HelloWorld {
 
     public static void main(String[] args) {
-        System.out.println("Hello, World");
+        System.out.println("Hello World from Java");
     }
 
 }
@@ -61,6 +61,10 @@ jar cfm hello.jar manifest.txt HelloWorld.class
 A hello.jar file will now be in the same directory as your worker.
 
 ### Create a script to upload the worker.
+
+Insert your token, project ID, and the path to your Go executable into the 
+following script and save it as something like "upload.rb":
+
 {% highlight ruby %}
 require 'iron_worker_ng'
 
@@ -69,20 +73,35 @@ code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :exec => 'path/to/hel
 client.codes.create(code)
 {% endhighlight %}
 
+Run `ruby upload.rb` (or whatever you saved the script as) and it will upload 
+your code to the IronWorker cloud. You can then queue tasks against the code 
+from whatever client you want, including raw API calls.
+
 ### Queue a task to the worker.
 
-You can queue tasks to workers from within the same app that uploaded them or 
-from an entirely different app. It makes no difference to the worker.
+Once your code has been uploaded, it's easy to queue a task to it. The following 
+example will queue up a task using the `iron_worker_java` library. Just insert 
+your token and project ID into the code.
 
-{% highlight ruby %}
-require 'iron_worker_ng'
+{% highlight java %}
+import io.iron.ironworker.client.Client;
+import io.iron.ironworker.client.entities.TaskEntity;
+import io.iron.ironworker.client.builders.Params;
+import io.iron.ironworker.client.builders.TaskOptions;
+import io.iron.ironworker.client.APIException;
 
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-task_id = client.tasks.create('JavaWorker', {:arg1 => "Test", :another_arg => ["apples", "oranges]})
+public class Enqueue {
+        public static void main(String[] args) throws APIException{
+                Client client = new Client("INSERT TOKEN HERE", "INSERT PROJECT ID HRE");
+                TaskEntity t = client.createTask("JavaWorker", Params.add("arg1", "Test").add("another_arg", new String[]{"apples", "oranges"}));
+                System.out.println(t.getId());
+        }
+}
 {% endhighlight %}
 
-`:arg1` and `:another_arg` are called the "payload". They're used for passing 
-parameters into your worker.
+Save that as "Enqueue.java" and compile it. Run the compiled code (usually 
+`java Enqueue`, but your IDE may have an easier way to run your code) and you'll 
+see the queued task's ID printed.
 
 ## Deep Dive
 
@@ -152,11 +171,7 @@ public class HelloWorld {
         //parse the string as JSON
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
-        JsonObject raw_params = parser.parse(payload).getAsJsonObject();
-
-        //the iron_worker_ruby_ng library modifies the payload before sending it
-        //the original payload you specified on upload lives in the "params" property
-        JsonObject passed_args = raw_params.getAsJsonObject("params");
+        JsonObject passed_args = parser.parse(payload).getAsJsonObject();
 
         //print the output of the "arg1" property of the passed JSON object
         System.out.println("arg1 = " + gson.fromJson(passed_args.get("arg1"), String.class));
