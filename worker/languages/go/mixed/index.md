@@ -32,7 +32,7 @@ To get the `iron_worker_ng` gem, make sure you have Ruby installed and run the
 following command:
 
 {% highlight bash %}
-gem install iron_worker_ruby
+gem install iron_worker_ng
 {% endhighlight %}
 
 ### Write your Go worker.
