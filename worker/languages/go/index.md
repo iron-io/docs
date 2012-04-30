@@ -70,7 +70,7 @@ code = IronWorkerNG::Code::Binary.new(:name => "GoWorker", :exec => 'PATH TO EXE
 client.codes.create(code)
 {% endhighlight %}
 
-Run `ruby upload.rb` (or whatever you saved th script as) and it will upload 
+Run `ruby upload.rb` (or whatever you saved the script as) and it will upload 
 your code to the IronWorker cloud. You can then queue tasks against the code 
 from whatever client you want, including raw API calls (which we'll show below).
 
