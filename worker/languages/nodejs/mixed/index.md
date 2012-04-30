@@ -119,7 +119,7 @@ queue_task("INSERT PROJECT ID", "INSERT TOKEN", "NodeWorker");
 {% endhighlight %}
 
 Save this as "enqueue.js" and use `node enqueue.js` to queue up the task to your 
-worker. You should got a response similar to this:
+worker. You should get a response similar to this:
 
 {% highlight js %}
 statusCode:  200
