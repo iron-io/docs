@@ -68,6 +68,7 @@ require("phar://iron_worker.phar");
 
 $worker = new IronWorker(array("token" => "INSERT TOKEN HERE", "project_id" => "INSERT PROJECT_ID HERE"));
 $res = worker->postTask("PHPWorker");
+print_r($res);
 ?>
 {% endhighlight %}
 
