@@ -12,6 +12,11 @@
                                 <li><a {% if page.url == "/worker/index.html" %}class="selected"{% endif %} href="/worker" title="IronWorker">IronWorker</a>
                                 {% unless numcrumbs == "0" %} » {% endunless %}
                                 </li>
+                        {% else %}
+                                {% if page.section == "cache" %}
+                                <li><a {% if page.url == "/cache/index.html" %}class="selected"{% endif %} href="/cache" title="IronCache">IronCache</a>
+                                {% unless numcrumbs == "0" %} » {% endunless %}
+                                </li>
                         {% endif %}
                 {% endif %}
         {% else %}</li>
