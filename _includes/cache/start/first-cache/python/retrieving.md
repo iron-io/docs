@@ -7,7 +7,7 @@ cache = IronCache()
 print cache.get(cache="test_cache", key="number_item")
 
 # Strings get stored as strings
-print cache.set(cache="test_cache", key="string_item")
+print cache.get(cache="test_cache", key="string_item")
 
 # Objects and dicts get JSON-encoded and stored as strings
-print cache.set(cache="test_cache", key="complex_item")
+print cache.get(cache="test_cache", key="complex_item")
