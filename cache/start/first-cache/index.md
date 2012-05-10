@@ -57,6 +57,11 @@ Here's how to store data in a cache:
 {% include cache/start/first-cache/python/storing.md %}
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+{% include cache/start/first-cache/php/storing.md %}
+{% endhighlight %}
+</div>
 
 ### Incrementing
 
@@ -82,6 +87,11 @@ Here's an example of incrementing a value:
 {% include cache/start/first-cache/python/incrementing.md %}
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+{% include cache/start/first-cache/php/incrementing.md %}
+{% endhighlight %}
+</div>
 
 To decrement a value, simply use a negative number:
 
@@ -94,6 +104,11 @@ To decrement a value, simply use a negative number:
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/decrementing.md %}
+{% endhighlight %}
+</div>
+<div class="php">
+{% highlight php %}
+{% include cache/start/first-cache/php/decrementing.md %}
 {% endhighlight %}
 </div>
 
@@ -113,6 +128,11 @@ authenticated request will retrieve the value for you:
 {% include cache/start/first-cache/python/retrieving.md %}
 {% endhighlight %}
 </div>
+<div class="php">
+{% highlight php %}
+{% include cache/start/first-cache/php/retrieving.md %}
+{% endhighlight %}
+</div>
 
 ## Deleting Data
 
@@ -129,6 +149,10 @@ the data:
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/deleting.md %}
+{% endhighlight %}
+<div class="php">
+{% highlight php %}
+{% include cache/start/first-cache/php/deleting.md %}
 {% endhighlight %}
 </div>
 
