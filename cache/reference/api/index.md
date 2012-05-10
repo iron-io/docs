@@ -166,27 +166,6 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches
 ]
 {% endhighlight %}
 
-## Get Info About a Cache
-
-This call gets general information about the cache.
-
-### Endpoint
-
-<div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/caches/<span class="variable cache_name">{Cache Name}</span>
-</div>
-
-#### URL Parameters
-
-* **Project ID**: Project the cache belongs to
-* **Cache Name**: Name of the cache.
-
-### Response
-{% highlight js %}
-{
-}
-{% endhighlight %}
-
 ## Add an Item to a Cache
 
 This call adds or set an item in the cache.
@@ -239,7 +218,7 @@ Each item object should contain the following keys:
 
 ## Increment an Item's value
 
-This call increments the value of an item in the cache. It is only valid for numeric items. Negative amounts may be passed to decrement the value.
+This call increments the value of an item in the cache. It is only valid for numeric amounts, and can only be applied to items with numeric values. Negative amounts may be passed to decrement the value.
 
 ### Endpoint
 
