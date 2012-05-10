@@ -38,7 +38,11 @@ it. The overwriting and creation of items can be configured via the API.
 
 Here's how to store data in a cache:
 
-<!-- INSERT CODE SAMPLE HERE -->
+<div class="python">
+{% highlight python %}
+{% include cache/start/first-cache/python/storing.md %}
+{% endhighlight %}
+</div>
 
 ### Incrementing
 
