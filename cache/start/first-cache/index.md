@@ -57,12 +57,19 @@ value to set.
 
 Here's an example of incrementing a value:
 
-
-<!-- INSERT CODE SAMPLE HERE -->
+<div class="python">
+{% highlight python %}
+{% include cache/start/first-cache/python/incrementing.md %}
+{% endhighlight %}
+</div>
 
 To decrement a value, simply use a negative number:
 
-<!-- INSERT CODE SAMPLE HERE -->
+<div class="python">
+{% highlight python %}
+{% include cache/start/first-cache/python/decrementing.md %}
+{% endhighlight %}
+</div>
 
 ## Retrieving Data
 
