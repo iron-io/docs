@@ -4,11 +4,11 @@ from iron_cache import *
 cache = IronCache()
 
 # Numbers will get stored as numbers
-cache.set(cache="test_cache", key="number_item", value=42)
+cache.put(cache="test_cache", key="number_item", value=42)
 
 # Strings get stored as strings
-cache.set(cache="test_cache", key="string_item", value="Hello, IronCache")
+cache.put(cache="test_cache", key="string_item", value="Hello, IronCache")
 
 # Objects and dicts get JSON-encoded and stored as strings
 complex_item = {"test": "this is a dict", "args": ["apples", "oranges"] }
-cache.set(cache="test_cache", key="complex_item", value=complex_item)
+cache.put(cache="test_cache", key="complex_item", value=complex_item)
