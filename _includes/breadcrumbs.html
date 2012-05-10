@@ -14,9 +14,10 @@
                                 </li>
                         {% else %}
                                 {% if page.section == "cache" %}
-                                <li><a {% if page.url == "/cache/index.html" %}class="selected"{% endif %} href="/cache" title="IronCache">IronCache</a>
-                                {% unless numcrumbs == "0" %} » {% endunless %}
-                                </li>
+                                        <li><a {% if page.url == "/cache/index.html" %}class="selected"{% endif %} href="/cache" title="IronCache">IronCache</a>
+                                        {% unless numcrumbs == "0" %} » {% endunless %}
+                                        </li>
+                                {% endif %}
                         {% endif %}
                 {% endif %}
         {% else %}</li>
