@@ -155,6 +155,14 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches
 
 {% highlight js %}
 [
+  {
+    "project_id": "PROJECT ID",
+    "name": "CACHE NAME"
+  },
+  {
+    "project_id": "PROJECT ID",
+    "name": "CACHE NAME"
+  }
 ]
 {% endhighlight %}
 
