@@ -118,18 +118,6 @@
   text-align: left;
 }
 
-.variable {
-  font-style: italic;
-}
-
-.variable.project_id {
-  color: red;
-}
-
-.variable.queue_name, .variable.message_id {
-  color: blue;
-}
-
 .content li > p {
   margin: 0px;
 }
@@ -289,8 +277,12 @@ ul#breadcrumbs li {
   color: red;
 }
 
-.variable.code_id, .variable.schedule_id, .variable.task_id {
+.variable.code_id, .variable.schedule_id, .variable.task_id, .variable.queue_name, .variable.cache_name {
   color: blue;
+}
+
+.variable.item_key, .variable.message_id {
+  color: green;
 }
 
 /*--------------------------------- MISC ------------------------------------*/
