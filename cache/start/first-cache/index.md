@@ -1,11 +1,19 @@
 ---
 title: Setting Up Your First Cache
-layout: post
+layout: default
 section: cache
 breadcrumbs:
   - ['Getting Started', '/start']
   - ['Your First Cache', '/first-cache']
+languages:
+  - name: 'ruby'
+  - name: 'python'
+  - name: 'php'
 ---
+
+{% if page.languages %}
+{% include language-switcher-head.html %}
+{% endif %}
 
 # Setting Up Your First Cache
 
@@ -38,6 +46,7 @@ it. The overwriting and creation of items can be configured via the API.
 
 Here's how to store data in a cache:
 
+{% include language-switcher.html %}
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/storing.md %}
@@ -57,6 +66,7 @@ value to set.
 
 Here's an example of incrementing a value:
 
+{% include language-switcher.html %}
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/incrementing.md %}
@@ -65,6 +75,7 @@ Here's an example of incrementing a value:
 
 To decrement a value, simply use a negative number:
 
+{% include language-switcher.html %}
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/decrementing.md %}
@@ -76,6 +87,7 @@ To decrement a value, simply use a negative number:
 Once your data is stored, it's easy to get it out of the cache. A single, 
 authenticated request will retrieve the value for you:
 
+{% include language-switcher.html %}
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/retrieving.md %}
@@ -88,6 +100,7 @@ Cache data will expire automatically over time, but it's often desirable
 to delete the data from the cache manually. Doing so is as easy as retrieving 
 the data:
 
+{% include language-switcher.html %}
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/deleting.md %}
