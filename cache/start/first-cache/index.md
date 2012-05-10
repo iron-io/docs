@@ -47,6 +47,11 @@ it. The overwriting and creation of items can be configured via the API.
 Here's how to store data in a cache:
 
 {% include language-switcher.html %}
+<div class="ruby">
+{% highlight ruby %}
+{% include cache/start/first-cache/ruby/storing.md %}
+{% endhighlight %}
+</div>
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/storing.md %}
@@ -67,6 +72,11 @@ value to set.
 Here's an example of incrementing a value:
 
 {% include language-switcher.html %}
+<div class="ruby">
+{% highlight ruby %}
+{% include cache/start/first-cache/ruby/incrementing.md %}
+{% endhighlight %}
+</div>
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/incrementing.md %}
@@ -76,6 +86,11 @@ Here's an example of incrementing a value:
 To decrement a value, simply use a negative number:
 
 {% include language-switcher.html %}
+<div class="ruby">
+{% highlight ruby %}
+{% include cache/start/first-cache/ruby/decrementing.md %}
+{% endhighlight %}
+</div>
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/decrementing.md %}
@@ -88,6 +103,11 @@ Once your data is stored, it's easy to get it out of the cache. A single,
 authenticated request will retrieve the value for you:
 
 {% include language-switcher.html %}
+<div class="ruby">
+{% highlight ruby %}
+{% include cache/start/first-cache/ruby/retrieving.md %}
+{% endhighlight %}
+</div>
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/retrieving.md %}
@@ -101,6 +121,11 @@ to delete the data from the cache manually. Doing so is as easy as retrieving
 the data:
 
 {% include language-switcher.html %}
+<div class="ruby">
+{% highlight ruby %}
+{% include cache/start/first-cache/ruby/deleting.md %}
+{% endhighlight %}
+</div>
 <div class="python">
 {% highlight python %}
 {% include cache/start/first-cache/python/deleting.md %}
