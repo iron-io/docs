@@ -69,7 +69,11 @@ To decrement a value, simply use a negative number:
 Once your data is stored, it's easy to get it out of the cache. A single, 
 authenticated request will retrieve the value for you:
 
-<!-- INSERT CODE SAMPLE HERE -->
+<div class="python">
+{% highlight python %}
+{% include cache/start/first-cache/python/retrieving.md %}
+{% endhighlight %}
+</div>
 
 ## Deleting Data
 
@@ -77,7 +81,11 @@ Cache data will expire automatically over time, but it's often desirable
 to delete the data from the cache manually. Doing so is as easy as retrieving 
 the data:
 
-<!-- INSERT CODE SAMPLE HERE -->
+<div class="python">
+{% highlight python %}
+{% include cache/start/first-cache/python/deleting.md %}
+{% endhighlight %}
+</div>
 
 That's everything you need to know to get started with IronCache. Yes, really. 
 From here, check out our [client libraries](/cache/code/libraries) to get a 
