@@ -209,9 +209,7 @@ Each item object should contain the following keys:
 
 {% highlight js %}
 {
-  "cache": "CACHE NAME",
-  "key": "ITEM KEY",
-  "value": "ITEM VALUE"
+  "msg": "Stored."
 }
 {% endhighlight %}
 
