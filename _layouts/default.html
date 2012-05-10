@@ -40,6 +40,10 @@
               {% include sidemenu_worker.html %}
             {% endif %}
 
+            {% if page.section == "cache" %}
+              {% include sidemenu_cache.html %}
+            {% endif %}
+
             {% if page.section == "support" %}
               {% include sidemenu_support.html %}
             {% endif %}
