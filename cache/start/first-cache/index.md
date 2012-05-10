@@ -21,6 +21,10 @@ Setting up your first cache on IronCache is easy. To make life easier, some
 [official libraries](/cache/code/libraries) have been created to interface with 
 our API natively from within some of the most popular languages.
 
+Caches consist of items, which hold the data of the cache. Items are just a key 
+and a value; the key is a string that identifies the item, the value is the 
+data that item holds.
+
 There are two main operations for caches: [storing](#storing_data) and [retrieving](#retrieving_data) 
 your data. [Deleting](#deleting_data) is also supported, but optional.
 
