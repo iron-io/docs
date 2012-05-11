@@ -56,6 +56,10 @@ choose from for many languages):
   </tbody>
 </table>
 
+### Supported Protocols
+
+It's important to note that *only* the **text protocol** is supported in 
+IronCache. The newer *binary* protocol is **not supported** at this time.
 
 ## Host Information
 To connect to IronCache using Memcached, use the host below:
