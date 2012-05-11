@@ -6,7 +6,7 @@ section: cache
 
 # IronCache Documentation
 
-IronCache is a scalable, reliable, high performance cacge in the cloud. Forget about setting up and scaling complicated infrastructure because
+IronCache is a scalable, reliable, high performance cache in the cloud. Forget about setting up and scaling complicated infrastructure because
 IronCache is a **completely hosted** platform, meaning **zero servers**.
 
 [Read more](http://www.iron.io/products/cache).
