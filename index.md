@@ -21,3 +21,9 @@ A massively scalable task/background processing queue with scheduling.
 A fast, reliable message queue with support for multiple interfaces like [REST/HTTP](/mq/reference/api) and [Beanstalkd](/mq/code/beanstalkd).
 
 <p style="width: 100%; text-align: right;"><a href="/mq" class="next_item">View IronMQ Documentation</a></p>
+
+[![IronCache](/images/logo_cache.png "IronCache")](/cache)
+
+An elastic key/value cache designed to help coordinate asynchronous processes.
+
+<p style="width: 100%; text-align: right;"><a href="/cache" class="next_item">View IronCache Documentation</a></p>
