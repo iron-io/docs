@@ -1,6 +1,6 @@
 _site/
 .idea/
 *.swp
-
+_jekyll_s3.yml
 .DS_Store
 *.sublime*
