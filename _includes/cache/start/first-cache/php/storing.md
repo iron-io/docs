@@ -14,5 +14,5 @@ $cache->put("number_item", 42);
 $cache->put("string_item", "Hello, IronCache");
 
 // Objects and dicts get JSON-encoded and stored as strings
-$complex_item = array"test" => "this is a dict", "args" => array("apples", "oranges"));
-$cache->put("complex_item", complex_item);
+$complex_item = array("test" => "this is a dict", "args" => array("apples", "oranges"));
+$cache->put("complex_item", $complex_item);
