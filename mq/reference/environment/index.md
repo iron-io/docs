@@ -4,7 +4,7 @@ layout: default
 section: mq
 breadcrumbs:
   - ['Reference', '/reference']
-  - ['Environment', '/system']
+  - ['Environment', '/environment']
 ---
 
 # IronMQ Environment
