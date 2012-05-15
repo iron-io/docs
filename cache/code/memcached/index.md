@@ -5,7 +5,13 @@ section: cache
 breadcrumbs:
   - ['Code', '/code']
   - ['Memcached', '/memcached']
+languages:
+  - name: 'ruby'
 ---
+
+{% if page.languages %}
+{% include language-switcher-head.html %}
+{% endif %}
 
 # Memcached Interface
 
@@ -98,3 +104,22 @@ soon as they connect. Set the "oauth" key to the following:
 
 This **will not** be stored in your cache. Subsequent attempts to set the value 
 of the "oauth" key, however, will be stored in the cache.
+
+## Example
+
+The following example should help you get up and running using IronCache 
+with memcached quickly:
+
+### Install the Library
+
+{% include language-switcher.html %}
+<div class="ruby">
+{% include cache/code/memcached/ruby/install.html %}
+</div>
+
+### Run the Example
+
+{% include language-switcher.html %}
+<div class="ruby">
+{% include cache/code/memcached/ruby/code.html %}
+</div>
