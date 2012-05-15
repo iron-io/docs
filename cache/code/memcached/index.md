@@ -16,7 +16,7 @@ language of choice is supported.
 
 <div class="alert alert-danger">
 <p>
-<strong>Warning!</strong> Using the memcached transport <em>does not</em> encrypt 
+<strong>Warning!</strong> Using the memcached interface <em>does not</em> encrypt 
 your credentials during transport. It should be used temporarily or for 
 testing only, as it is less secure than the <a href="/cache/reference/api">REST API</a>.
 </p>
@@ -25,22 +25,44 @@ testing only, as it is less secure than the <a href="/cache/reference/api">REST 
 Here's a sample list of languages available (with multiple clients libs to 
 choose from for many languages):
 
-* C
-* C++
-* Perl
-* OCaml
-* Django
-* PHP
-* Lisp
-* Python
-* Erlang
-* Rails
-* Go
-* Ruby
-* Scheme
-* Java
-* Io
-* .NET/C#
+<table style="border: 0px; width: 100%;">
+<tr>
+<td style="width: 25%;">
+<ul>
+<li>C</li>
+<li>C++</li>
+<li>Perl</li>
+<li>OCaml</li>
+</ul>
+</td>
+
+<td style="width: 25%">
+<ul>
+<li>Django</li>
+<li>PHP</li>
+<li>Lisp</li>
+<li>Python</li>
+</ul>
+</td>
+
+<td style="width: 25%">
+<ul>
+<li>Erlang</li>
+<li>Rails</li>
+<li>Go</li>
+<li>Ruby</li>
+</ul>
+</td>
+
+<td style="width: 25%">
+<ul>
+<li>Scheme</li>
+<li>Java</li>
+<li>Io</li>
+<li>.NET/C#</li>
+</ul>
+</td></tr>
+</table>
 
 <div class="alert">
 <p>
