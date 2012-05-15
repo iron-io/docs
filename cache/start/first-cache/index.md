@@ -17,32 +17,41 @@ languages:
 
 # Setting Up Your First Cache
 
+{% include language-switcher.html %}
+
 IronCache is a product that allows you to store temporary information for a 
 limited amount of time, without having to worry about managing the memory or 
-availability of such a store. It focuses on [a simple API](/cache/reference/api) 
+availability of such a store. It focuses on a [simple API](/cache/reference/api) 
 and interoperability with [industry standards](/cache/code/memcached), making 
-it simple to integrate into your current application. The [atomic operations](#incrementing) 
-offered by IronCache make managing state in concurrent, scalable applications 
-a simple matter.
+it simple to integrate into your cloud application. The [atomic operations](#incrementing) 
+offered by IronCache make managing state across independent, asynchronous 
+processes a simple matter.
 
-Setting up your first cache on IronCache is easy. To make life easier, some 
-[official libraries](/cache/code/libraries) have been created to interface with 
-our API natively from within some of the most popular languages.
+Setting up your first cache on IronCache is easy: just insert an item into 
+the non-existent cache as if it existed. IronCache will automatically create 
+the cache for you.
 
 Caches consist of items, which hold the data of the cache. Items are just a key 
 and a value; the key is a string that identifies the item, the value is the 
 data that item holds.
 
 There are two main operations for caches: [storing](#storing_data) and [retrieving](#retrieving_data) 
-your data. [Deleting](#deleting_data) is also supported, but optional.
+your data. [Deleting](#deleting_data) is also supported, but optional, as items 
+will expire after a [set time](/cache/reference/environment#item_constraints).
+
+To make life easier, we've created [official libraries](/cache/code/libraries) 
+to interface with our API natively from within some of the most popular languages.
 
 ## Storing Data
 
 Every cache begins with a call to store data. When you tell it to store data, 
-IronCache will always behave intelligently. If the cache you want to store data 
-in doesn't exist, IronCache will create it. If the data doesn't exist, IronCache 
-will create the item in the cache; if the item exists, IronCache will overwrite 
-it. The overwriting and creation of items can be configured via the API.
+IronCache will always behave intelligently:
+
+* If the cache you want to store data in doesn't exist, IronCache will create it.
+* If the data doesn't exist, IronCache will create the item in the cache.
+* If the item exists, IronCache will overwrite it.
+
+The overwriting and creation of items can be overriden using [the API](/cache/reference/api).
 
 Here's how to store data in a cache:
 
@@ -67,14 +76,17 @@ Here's how to store data in a cache:
 
 ### Incrementing
 
-Sometimes, though, a more atomic operation is necessary. In situations where 
-many clients may be modifying an item all at the same time, it's necessary to 
-not overwrite a value, but modify it. For example, you may wish to count the 
-number of times a piece of code runs. If two clients attempt to first get the 
-value stored in cache, modify it locally, then write it, they may overwrite 
-each other's modifications. For situations like this, IronCache offers an 
-increment method, which asks for a difference to modify the value by, not a 
-value to set.
+In some use cases, it's possible to have many clients modifying an item 
+at the same time. In these cases, it's necessary to not overwrite a value, 
+but modify it.
+
+For example, you may wish to count the number of times a piece of code runs. 
+If two clients attempt to first get the value stored in a cache, modify it 
+locally, then write it, they may overwrite each other's modifications.
+
+For situations like this, IronCache offers an `increment` method, which asks 
+for a difference to modify the value by, as opposed to a specific value to 
+set.
 
 Here's an example of incrementing a value:
 
@@ -166,6 +178,8 @@ the data:
 {% include cache/start/first-cache/php/deleting.md %}
 {% endhighlight %}
 </div>
+
+## Next Steps
 
 That's everything you need to know to get started with IronCache. Yes, really. 
 From here, check out our [client libraries](/cache/code/libraries) to get a 
