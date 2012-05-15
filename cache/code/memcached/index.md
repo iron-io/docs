@@ -7,7 +7,74 @@ breadcrumbs:
   - ['Memcached', '/memcached']
 ---
 
+<style type="text/css">
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin: 10px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.alert-heading {
+  color: inherit;
+}
+
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 18px;
+}
+
+.alert-success {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-danger,
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.alert-info {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-top: 10px;
+}
+
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+
+.alert-block p + p {
+  margin-top: 5px;
+}
+</style>
+
 # Memcached Support
+
+<div class="alert alert-danger">
+<p>
+<strong>Warning!</strong> Using the Memcached transport <em>does not</em> encrypt 
+your credentials during transport. It should be used temporarily or for 
+testing only, as it is less secure than the <a href="/cache/reference/api">REST API</a>.
+</p>
+</div>
 
 You can use any of the [Memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
 with IronCache. The list of supported languages is extensive, so there is 
@@ -56,10 +123,13 @@ choose from for many languages):
   </tbody>
 </table>
 
-### Supported Protocols
-
-It's important to note that *only* the **text protocol** is supported in 
-IronCache. The newer *binary* protocol is **not supported** at this time.
+<div class="alert">
+<p>
+It's important to note that <em>only</em> the <strong>text protocol</strong> 
+is supported in IronCache. The newer <em>binary</em> protocol is <strong>not 
+supported</strong> at this time.
+</p>
+</div>
 
 ## Host Information
 To connect to IronCache using Memcached, use the host below:

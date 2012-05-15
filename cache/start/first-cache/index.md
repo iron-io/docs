@@ -169,7 +169,7 @@ the data:
 
 That's everything you need to know to get started with IronCache. Yes, really. 
 From here, check out our [client libraries](/cache/code/libraries) to get a 
-list of API wrappers you can use, our [API reference](/cache/reference/API) to 
+list of API wrappers you can use, our [API reference](/cache/reference/api) to 
 get all the details about the API and the cache environment, and look into our 
 [memcached support](/cache/code/memcached) to connect with IronCache from your 
 favourite [memcached](http://memcached.org) client.
