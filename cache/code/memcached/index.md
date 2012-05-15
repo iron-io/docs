@@ -1,5 +1,5 @@
 ---
-title: Memcached Support
+title: Memcached Interface
 layout: default
 section: cache
 breadcrumbs:
@@ -66,19 +66,19 @@ breadcrumbs:
 }
 </style>
 
-# Memcached Support
+# Memcached Interface
+
+You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
+with IronCache. The list of supported languages is extensive, so there is 
+sure to be a library for your language of choice. 
 
 <div class="alert alert-danger">
 <p>
-<strong>Warning!</strong> Using the Memcached transport <em>does not</em> encrypt 
+<strong>Warning!</strong> Using the memcached transport <em>does not</em> encrypt 
 your credentials during transport. It should be used temporarily or for 
 testing only, as it is less secure than the <a href="/cache/reference/api">REST API</a>.
 </p>
 </div>
-
-You can use any of the [Memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
-with IronCache. The list of supported languages is extensive, so there is 
-sure to be a library for your language of choice. 
 
 Here's a sample list of languages available (with multiple clients libs to 
 choose from for many languages):
@@ -125,14 +125,14 @@ choose from for many languages):
 
 <div class="alert">
 <p>
-It's important to note that <em>only</em> the <strong>text protocol</strong> 
-is supported in IronCache. The newer <em>binary</em> protocol is <strong>not 
-supported</strong> at this time.
+It's important to note that only the <strong>text protocol</strong> is 
+supported in IronCache. The <strong>binary</strong> protocol for 
+memcached is <strong>not supported</strong> at this time.
 </p>
 </div>
 
 ## Host Information
-To connect to IronCache using Memcached, use the host below:
+To connect to IronCache using memcached, use the host below:
 
 <table class="reference">
   <thead>

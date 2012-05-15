@@ -20,14 +20,14 @@ To start using Iron.io services, you need to sign up and get an OAuth token:
 
 Now you're ready to start using IronCache.
 
-IronCache supports multiple interfaces such as [Memcached](/cache/code/memcached) or a flexible [HTTP interface](/cache/reference/api).
+IronCache supports multiple interfaces such as [memcached](/cache/code/memcached) or a flexible [HTTP interface](/cache/reference/api).
 
 ## Client Libraries
 
 In most cases you'll want to use one of the available client libraries.
 
 * [Clients for our REST/HTTP API](/cache/code/libraries)
-* All [Memcached clients](http://code.google.com/p/memcached/wiki/Clients) work too, so you can use IronCache with all popular languages, but be sure to read our [Memcached page](/cache/code/memcached) for information on how to authenticate.
+* All [memcached clients](http://code.google.com/p/memcached/wiki/Clients) work too, so you can use IronCache with all popular languages, but be sure to read our [Memcached page](/cache/code/memcached) for information on how to authenticate.
 
 ## Support
 
