@@ -10,8 +10,9 @@ breadcrumbs:
 # Memcached Interface
 
 You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
-with IronCache. The list of supported languages is extensive, so there is 
-sure to be a library for your language of choice. 
+with IronCache. As an industry standard, memcached has accumulated an 
+extensive list of supported languages, so it's extremely likely your 
+language of choice is supported.
 
 <div class="alert alert-danger">
 <p>
@@ -24,45 +25,22 @@ testing only, as it is less secure than the <a href="/cache/reference/api">REST 
 Here's a sample list of languages available (with multiple clients libs to 
 choose from for many languages):
 
-<table class="reference">
-  <thead>
-    <tr><th>Memcached Language Clients</th><th> </th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>C</td>
-      <td>C++</td>
-    </tr>
-    <tr>
-      <td>Perl</td>
-      <td>OCaml</td>
-    </tr>
-    <tr>
-      <td>Django</td>
-      <td>PHP</td>
-    </tr>
-    <tr>
-      <td>Lisp</td>
-      <td>Python</td>
-    </tr>
-    <tr>
-      <td>Erlang</td>
-      <td>Rails</td>
-    </tr>
-    <tr>
-      <td>Go</td>
-      <td>Ruby</td>
-    </tr>
-    <tr>
-      <td>Scheme</td>
-      <td>Java</td>
-    </tr>
-    <tr>
-      <td>Io</td>
-      <td>.NET/C#</td>
-    </tr>
-  </tbody>
-</table>
+* C
+* C++
+* Perl
+* OCaml
+* Django
+* PHP
+* Lisp
+* Python
+* Erlang
+* Rails
+* Go
+* Ruby
+* Scheme
+* Java
+* Io
+* .NET/C#
 
 <div class="alert">
 <p>
