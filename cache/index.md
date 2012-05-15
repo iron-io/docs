@@ -7,7 +7,7 @@ section: cache
 # IronCache Documentation
 
 IronCache is a scalable, reliable, high performance cache in the cloud. Forget about setting up and scaling complicated infrastructure because
-IronCache is a **completely hosted** platform, meaning **zero servers**.
+IronCache is a **completely hosted** platform, meaning zero servers or infrastructure to manage.
 
 [Read more](http://www.iron.io/products/cache).
 
@@ -20,7 +20,7 @@ To start using Iron.io services, you need to sign up and get an OAuth token:
 
 Now you're ready to start using IronCache.
 
-IronCache supports multiple interfaces such as [Memcached](/cache/code/memcached) and our own [HTTP interface](/cache/reference/api).
+IronCache supports multiple interfaces such as [Memcached](/cache/code/memcached) or a flexible [HTTP interface](/cache/reference/api).
 
 ## Client Libraries
 
