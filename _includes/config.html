@@ -1,0 +1,20 @@
+All of the officially supported libraries have adopted a [global 
+configuration scheme](/articles/configuration) to standardise the 
+configuration environment for Iron.io's services. This makes creating 
+you configuration files easy; with any luck, you should only have to do 
+it once.
+
+The easiest way to configure your project is to place a text file named 
+`iron.json` in the same folder as your other scripts. The contents of the 
+file should look like this:
+
+{% highlight js %}
+{
+  "token": "Insert your token here.",
+  "project_id": "Insert your project ID here."
+}
+{% endhighlight %}
+
+The `token` property should be set to one of the [OAuth2 tokens](https://hud.iron.io/tokens) 
+associated with your account. The `project_id` property should be set to 
+one of the project IDs listed in the [HUD](https://hud.iron.io).

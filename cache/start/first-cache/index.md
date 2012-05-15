@@ -42,6 +42,10 @@ will expire after a [set time](/cache/reference/environment#item_constraints).
 To make life easier, we've created [official libraries](/cache/code/libraries) 
 to interface with our API natively from within some of the most popular languages.
 
+## Setting Up Configuration
+
+{% include config.html %}
+
 ## Storing Data
 
 Every cache begins with a call to store data. When you tell it to store data, 
