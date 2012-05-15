@@ -345,12 +345,13 @@ span.fixed-width {
  */
 
 .alert {
-  padding: 4px 35px 4px 14px;
-  margin: 10px;
-  color: #3a87ad;
+  padding: 4px 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #022CB4;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  text-align: centered;
-  border: 2px dashed #3a87ad;
+  text-align: center;
+  border: 2px dashed #022CB4;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -362,15 +363,18 @@ span.fixed-width {
 
 .alert-success {
   color: #468847;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  border-color: #468847;
+}
+
+.alert-subtle {
+  color: black;
+  border-color: black;
 }
 
 .alert-danger,
 .alert-error {
   color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
+  border-color: #b94a48;
 }
 
 .alert-block {
