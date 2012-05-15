@@ -14,16 +14,16 @@ bar on the left to search or select a service below to get started.
 
 A massively scalable task/background processing queue with scheduling.
 
-<p style="width: 100%; text-align: right;"><a href="/worker" class="next_item">View IronWorker Documentation</a></p>
+<a href="/worker" class="next_item">View IronWorker Documentation</a>
 
 [![IronMQ](/images/logo_mq.png "IronMQ")](/mq)
 
 A fast, reliable message queue with support for multiple interfaces like [REST/HTTP](/mq/reference/api) and [Beanstalkd](/mq/code/beanstalkd).
 
-<p style="width: 100%; text-align: right;"><a href="/mq" class="next_item">View IronMQ Documentation</a></p>
+<a href="/mq" class="next_item">View IronMQ Documentation</a>
 
 [![IronCache](/images/logo_cache.png "IronCache")](/cache)
 
 An elastic key/value cache designed to help coordinate asynchronous processes.
 
-<p style="width: 100%; text-align: right;"><a href="/cache" class="next_item">View IronCache Documentation</a></p>
+<a href="/cache" class="next_item">View IronCache Documentation</a>
