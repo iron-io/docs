@@ -7,4 +7,4 @@ cache = IronCache()
 cache.name = "test_cache"
 
 # Immediately delete an item
-cache.delete(item="string_item")
+cache.delete(key="string_item")
