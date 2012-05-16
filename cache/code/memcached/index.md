@@ -7,6 +7,7 @@ breadcrumbs:
   - ['Memcached', '/memcached']
 languages:
   - name: 'ruby'
+  - name: 'python'
 ---
 
 {% if page.languages %}
@@ -116,10 +117,16 @@ with memcached quickly:
 <div class="ruby">
 {% include cache/code/memcached/ruby/install.html %}
 </div>
+<div class="python">
+{% include cache/code/memcached/python/install.html %}
+</div>
 
 ### Run the Example
 
 {% include language-switcher.html %}
 <div class="ruby">
 {% include cache/code/memcached/ruby/code.html %}
+</div>
+<div class="python">
+{% include cache/code/memcached/python/code.html %}
 </div>
