@@ -14,7 +14,9 @@
 
     <div id="main">
       <section class="container">
-
+        {% if page.section == "cache" %}
+        <img src="/images/beta_ribbon.png" style="position:absolute; width:135px; height:78px; z-index:999;right:-2px;top:-2px;" />
+        {% endif %}
         <header>
           {% include content_header.html %}
         </header>
@@ -38,6 +40,10 @@
 
             {% if page.section == "worker" %}
               {% include sidemenu_worker.html %}
+            {% endif %}
+
+            {% if page.section == "cache" %}
+              {% include sidemenu_cache.html %}
             {% endif %}
 
             {% if page.section == "support" %}

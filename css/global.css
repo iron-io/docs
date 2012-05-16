@@ -339,3 +339,55 @@ span.fixed-width {
   font-family: courier;
   color: green;
 }
+
+/*
+ * Modified alert boxes from Bootstrap
+ */
+
+.alert {
+  padding: 4px 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #022CB4;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
+  border: 2px dashed #022CB4;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.alert-heading {
+  color: inherit;
+}
+
+.alert-success {
+  color: #468847;
+  border-color: #468847;
+}
+
+.alert-subtle {
+  color: black;
+  border-color: black;
+}
+
+.alert-danger,
+.alert-error {
+  color: #b94a48;
+  border-color: #b94a48;
+}
+
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-top: 10px;
+}
+
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+
+.alert-block p + p {
+  margin-top: 5px;
+}

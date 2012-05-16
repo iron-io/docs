@@ -1,0 +1,26 @@
+{% highlight ruby %}
+require 'memcache'
+
+# connect
+mc = MemCache.new(['cache-aws-us-east-1.iron.io:11211'])
+
+# Tokens can be retrieved from https://hud.iron.io/tokens
+token = "Insert your token here"
+# Project IDs are listed at https://hud.iron.io
+project_id = 'Insert your project_id here'
+cache_name = 'Give your cache a unique name'
+
+# authenticate, expiration is 0, don't use marshal serialization
+mc.set('oauth', "#{token} #{project_id} #{cache_name}", 0, true)
+
+# store for 5 seconds
+mc.set('abc', 123, 5)
+
+# retrieve
+p mc.get('abc')
+
+sleep 5
+
+# and it's gone
+p mc.get('abc')
+{% endhighlight %}

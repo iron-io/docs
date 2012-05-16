@@ -1,0 +1,26 @@
+{% highlight ruby %}
+import memcache
+import time
+
+mc = memcache.Client(['cache-aws-us-east-1.iron.io:11211'], debug=0)
+
+# Tokens can be retrieved from https://hud.iron.io/tokens
+token = "Insert your token here"
+# Project IDs are listed at https://hud.iron.io
+project_id = 'Insert your project_id here'
+cache_name = 'Give your cache a unique name'
+
+mc.set("oauth", token + " " + project_id + " " + cache_name)
+
+mc.set("abc", "123")
+print(mc.get("abc"))
+
+# increment the value
+mc.incr("abc")
+print(mc.get("abc"))
+
+mc.set("this-value", "disappears after 3 seconds", time=3)
+time.sleep(4)
+
+print(mc.get("this-value"))
+{% endhighlight %}

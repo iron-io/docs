@@ -1,0 +1,18 @@
+<h4>Getting Started</h4>
+<ul>
+  <li><a {% if page.url == "/cache/start/first-cache/index.html" %}class="selected"{% endif %} href="/cache/start/first-cache">Setting Up Your First Cache</a></li>
+</ul>
+
+<h4>Reference</h4>
+<ul>
+  <li><a {% if page.url == "/cache/reference/api/index.html" %}class="selected"{% endif %} href="/cache/reference/api">REST/HTTP API</a></li>
+  <li><a {% if page.url == "/cache/reference/environment/index.html" %}class="selected"{% endif %} href="/cache/reference/environment">System Environment</a></li>
+</ul>
+
+<h4>Code</h4>
+<ul>
+  <li><a {% if page.url == "/cache/code/libraries/index.html" %}class="selected"{% endif %} href="/cache/code/libraries">Client Libraries</a></li>
+  <li><a {% if page.url == "/cache/code/memcached/index.html" %}class="selected"{% endif %} href="/cache/code/memcached">Memcached Interface</a></li>
+</ul>
+
+{% include sidemenu_all.html %}

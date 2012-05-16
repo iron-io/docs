@@ -1,0 +1,17 @@
+---
+title: Articles
+layout: default
+section: cache
+breadcrumbs:
+- ['Articles', '/articles']
+---
+
+<h1>All Articles</h1>
+
+<ul>
+{% for post in site.categories.articles %}
+        {% if post.categories contains "cache" %}
+                <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
+        {% endif %}
+{% endfor %}
+</ul>
