@@ -24,12 +24,6 @@ code lingers in your application, cluttering it, or that you're missing
 code that it will take for your worker to run. Workers can finally be their 
 own self-contained units.
 
-<div class="alert alert-danger">
-<p><strong>Note:</strong> <span class="fixed-width">.worker</span> files 
-are only usable with the <strong>IronWorkerNG</strong> gem. The legacy 
-iron_worker gem does not support them.</p>
-</div>
-
 ## Making a Worker File
 
 Writing a `.worker` file is simple: give it a recognisable name, then append 
