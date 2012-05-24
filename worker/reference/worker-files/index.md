@@ -3,8 +3,7 @@ title: .worker Files
 layout: default
 section: worker
 breadcrumbs:
-  - ['Languages', '/languages']
-  - ['Ruby', '/ruby']
+  - ['Reference', '/reference']
   - ['.worker Files', 'worker-files']
 ---
 
