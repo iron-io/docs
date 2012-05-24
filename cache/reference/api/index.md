@@ -199,7 +199,7 @@ Each item object should contain the following keys:
 
 {% highlight js %}
 {
-  "body": "This is my cache item.",
+  "value": "This is my cache item.",
   "expires_in": 86400,
   "replace": true
 }
