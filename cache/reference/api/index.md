@@ -187,7 +187,7 @@ Each item object should contain the following keys:
 
 ##### Required
 
-* **body**: The item's data
+* **value**: The item's data
 
 ##### Optional
 
