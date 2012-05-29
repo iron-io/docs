@@ -7,7 +7,7 @@ cache = IronCache::Client.new()
 cache.cache_name = "test_cache"
 
 # Numbers can be incremented
-cache.items.increment("number_item", -10)
+cache.items.increment("number_item", 10)
 
 # Everything else throws a 400 error
 cache.items.increment("number_item", "a lot")
