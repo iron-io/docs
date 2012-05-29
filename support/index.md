@@ -15,7 +15,7 @@ Drop into our chat room to get help directly from our engineers: [http://get.iro
 ## 2. Public Forums
 
 We've decided to use [Stack Overflow](http://stackoverflow.com) for users to ask questions and get answers. We'll
-be monitoring the following tags: `ironmq`, `ironworker` or `iron.io` so be sure to tag your questions so we can find
+be monitoring the following tags: `ironworker` , `ironmq`, `ironcache` or `iron.io` so be sure to tag your questions so we can find
 them.
 
 ## 3. Private Questions
@@ -24,6 +24,6 @@ Please feel free to contact us directly by emailing <a href="mailto:support@iron
 
 ## Stay Informed
 
-* [Google+](https://plus.google.com/107979826672004784735/posts)
-* [Twitter](http://www.twitter.com/getiron)
 * [Our Blog](http://blog.iron.io)
+* [Google+](http://get.iron.io/plus)
+* [Twitter](http://www.twitter.com/getiron)
