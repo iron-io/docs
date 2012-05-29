@@ -32,7 +32,9 @@ convert batches of images at a time, it could take hours running on self-managed
 infrastructure. With IronWorker and the ImageMagick code libraries, that effort 
 can be scaled-out on demand, without you having to manage a thing.
 
-<img src="/images/image-processing-steps.png" alt="Image processing diagram" style="margin: 0px auto;" />
+<p style="text-align: center;">
+<img src="/images/image-processing-steps.png" alt="Image processing diagram" />
+</p>
 
 ## Requirements
 
