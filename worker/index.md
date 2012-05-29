@@ -20,22 +20,6 @@ Queue up thousands of tasks for your workers and we'll run them as concurrently 
 2. [Get an OAuth 2 Token](http://hud.iron.io/tokens)
 3. Click the language of your choice on the menu on the left to learn how to write your first worker.
 
-test32
-
-<!--
-## Developer Zone
-
-Most developers will probably just want to use one of the clients available for your language of choice.
-
-### Clients
-
-* [Ruby](/worker/code/ruby)
-* [PHP](/worker/code/php)
-* [Python](/worker/code/python)
-
-If you want to write your own IronWorker client or get deeper into the details, here's how to [write code to run on IronWorker](/worker/api/running-code-on-ironworker).
--->
-
 ## Support
 
 * [Notifications and Announcements](http://get.iron.io/plus)
