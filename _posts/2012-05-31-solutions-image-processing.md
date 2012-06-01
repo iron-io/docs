@@ -1,9 +1,11 @@
 ---
 title: Image Processing
 layout: default
+permalink: /solutions/image-processing
+categories:
+  - solutions
 section: solutions
 breadcrumbs:
-  - ['Solutions', '/solutions']
   - ['Image Processing', '/image-processing']
 ---
 

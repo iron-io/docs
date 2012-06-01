@@ -1,0 +1,13 @@
+---
+title: Solutions
+layout: default
+section: solutions
+---
+
+<h1>Solutions</h1>
+
+<ul>
+  {% for post in site.categories.solutions %}
+  <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>

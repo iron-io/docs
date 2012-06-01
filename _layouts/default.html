@@ -54,6 +54,10 @@
               {% include sidemenu_community.html %}
             {% endif %}
 
+            {% if page.section == "solutions" %}
+               {% include sidemenu_solutions.html %}
+            {% endif %}
+
             {% if page.section == "search" %}
               <p style="width: 100%; text-align: center;">
                 <a href="#" id="addSearch">Search From Your Browser</a>
