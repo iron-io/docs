@@ -21,11 +21,15 @@ with IronCache. As an industry standard, memcached has accumulated an
 extensive list of supported languages, so it's extremely likely your 
 language of choice is supported.
 
-<div class="alert alert-danger">
+<div class="alert">
+<p>
+It's important to note that only the <strong>text protocol</strong> is
+supported in IronCache. The <strong>binary</strong> protocol for
+memcached is <strong>not supported</strong> at this time.
+</p>
 <p>
 <strong>Warning!</strong> Using the memcached interface <em>does not</em> encrypt 
-your credentials during transport. It should be used temporarily or for 
-testing only, as it is less secure than the <a href="/cache/reference/api">REST API</a>.
+your credentials during transport.
 </p>
 </div>
 
@@ -70,14 +74,6 @@ choose from for many languages):
 </ul>
 </td></tr>
 </table>
-
-<div class="alert">
-<p>
-It's important to note that only the <strong>text protocol</strong> is 
-supported in IronCache. The <strong>binary</strong> protocol for 
-memcached is <strong>not supported</strong> at this time.
-</p>
-</div>
 
 ## Host Information
 To connect to IronCache using memcached, use the host below:
