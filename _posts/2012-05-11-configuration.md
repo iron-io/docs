@@ -21,6 +21,34 @@ The authors took care to provide a scheme that would allow users the
 flexibility to set a default, then override it at the service, workspace, 
 or client level.
 
+## Quick Start
+
+If you just want to get started quickly, here's the section for you.
+
+Create a file called `.iron.json` in your home directory (ie: `~/.iron.json`) and enter your Iron.io credentials:
+
+<div >
+{% highlight json %}
+{
+    "token": "MY_TOKEN",
+    "project_id": "MY_PROJECT_ID"
+ }
+{% endhighlight %}
+</div>
+
+The project_id you use will be the default project to use. You can always override this in your code.
+
+Alternatively, you can set the following environment variables:
+
+{% highlight %}
+IRON_TOKEN=MY_TOKEN
+IRON_PROJECT_ID=MY_PROJECT_ID
+{% endhighlight %}
+
+That's it, now you can get started.
+
+Keep reading for full details about configuration.
+
 ## About the Scheme
 
 The configuration scheme consists of three hierarchies: the file hierarchy, 

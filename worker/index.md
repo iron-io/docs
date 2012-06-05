@@ -14,14 +14,4 @@ Queue up thousands of tasks for your workers and we'll run them as concurrently 
 
 [Read more about IronWorker](http://www.iron.io/products/worker).
 
-## Getting Started
-
-1. [Sign Up](http://www.iron.io) for a free Iron.io account
-2. [Get an OAuth 2 Token](http://hud.iron.io/tokens)
-3. Click the language of your choice on the menu on the left to learn how to write your first worker.
-
-## Support
-
-* [Notifications and Announcements](http://get.iron.io/plus)
-* [Stackoverflow](http://www.stackoverflow.com) - we'll respond here as quickly as possible, tag your questions with ironworker, ironmq or ironcache.
-* [Live Chat](http://get.iron.io/chat)
+## [Getting Started](/worker/start)
