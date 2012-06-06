@@ -116,11 +116,12 @@ Deploy the app to Heroku, and load up `http://your-app.herokuapp.com/welcome` to
 
 ### Next Steps
 
-This is just the tip of the iceberg. IronWorker has a robust API that allows for a lot more interaction with your Workers. You may want to try:
+This is just the tip of the iceberg. IronWorker has a robust API that allows for a lot more interaction with your
+Workers. You may want to try:
 
- * [Checking the status](http://docs.iron.io/worker/ruby/fibonacci-worker#TOC-Checking-the-Status-of-Your-Worker) of your worker.
- * [Getting the logs](http://docs.iron.io/worker/ruby/fibonacc-worker#TOC-Getting-Your-Worker-Logs) from your worker.
- * [Scheduling tasks](http://docs.iron.io/worker/ruby/fibonacci-worker#TOC-Scheduling-Tasks) for your worker that will be run after a delay, repeating, or both.
+ * [Checking the status](http://dev.iron.io/worker/reference/api/#get_info_about_a_task) of your worker.
+ * [Getting the logs](http://dev.iron.io/worker/reference/api/#get_a_tasks_log) from your worker.
+ * [Scheduling tasks](http://dev.iron.io/worker/reference/api/#schedule_a_task) for your worker that will be run after a delay, repeating, or both.
 
 You can also check out some example workers:
 
@@ -135,4 +136,7 @@ The most common source of Worker errors is a mismatch between your local environ
 
 Also note that IronWorker is not able to to connect with Heroku's shared databases. At this point, Heroku's shared databases do not allow for direct connections. We are working to remedy this situation. The suggested workaround is to pass the data back through your application, post-processing.
 
-Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues. You can also find more resources on the Iron.io [support site](http://support.iron.io) and more documentation on the Iron.io [documentation site](http://docs.iron.io).
+Issues should get logged with [Heroku Support](https://support.heroku.com).
+You're also welcome to stop by the Iron.io [support chat room](http://get.iron.io/chat) and chat with
+Iron's staff about issues. You can also find more resources and documentation on the
+Iron.io [Dev Center](http://dev.iron.io).

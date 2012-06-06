@@ -220,8 +220,10 @@ This tells Rails to match our new action and that we expect an ID parameter.
 
 ### Next Steps
 
-Congratulations! You've written your first application using IronMQ. To get into more advanced uses of it, you may want to check out the [API docs](http://docs.iron.io/mq/api) or a more advanced implementation that ties in [IronWorker](http://addons.heroku.com/iron_worker), [TweetWorker](https://github.com/iron-io/heroku_sinatra_example).
+Congratulations! You've written your first application using IronMQ. To get into more advanced uses of it, you may want
+to check out the [API docs](http://dev.iron.io/mq/) or a more advanced implementation that ties in
+[IronWorker](http://addons.heroku.com/iron_worker), [TweetWorker](https://github.com/iron-io/heroku_sinatra_example).
 
 ### Troubleshooting
 
-Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues. You can also find more resources on the Iron.io [support site](http://support.iron.io) and more documentation on the Iron.io [documentation site](http://docs.iron.io).
+Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the Iron.io [support chat room](http://www.hipchat.com/gNWgTiqIC) and chat with Iron's staff about issues. You can also find more resources on the Iron.io [support site](http://support.iron.io) and more documentation on the Iron.io [documentation site](http://dev.iron.io).
