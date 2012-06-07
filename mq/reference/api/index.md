@@ -280,8 +280,6 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 * **timeout**: timeout: After timeout (in seconds), item will be placed back onto queue. You must delete the message
 from the queue to ensure it does not go back onto the queue. If not set, value from POST is used.
 
-test
-
 ### Response
 
 {% highlight js %}
