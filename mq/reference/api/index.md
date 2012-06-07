@@ -273,7 +273,14 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 * **Project ID**: The Project these messages belong to.
 * **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
+
+#### Optional Parameters
+
 * **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
+* **timeout**: timeout: After timeout (in seconds), item will be placed back onto queue. You must delete the message
+from the queue to ensure it does not go back onto the queue. If not set, value from POST is used.
+
+test
 
 ### Response
 
