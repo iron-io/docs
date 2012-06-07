@@ -825,7 +825,6 @@ Optionally, each object in the array can specify the following properties:
 * **run_times**: The number of times a task will run.
 * **priority**: The priority queue to run the job in. Valid values are 0, 1, and 2. The default is 0. Higher values means tasks spend less time in the queue once they come off the schedule.
 * **start_at**: The time the scheduled task should first be run.
-* **delay**: The number of seconds to wait before the task is first run.
 
 The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
 
@@ -834,10 +833,10 @@ Sample:
 {
   schedules: [
     {
-      delay : 60,
       payload : "{\"x\": \"abc\", \"y\": \"def\"}",
       name: "MyScheduledTask",
       code_name: "MyWorker"
+      run_every: 3600
     }
   ]
 }

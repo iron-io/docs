@@ -4,3 +4,5 @@ server: true
 domain: "dev.iron.io"
 google_cse_id: 012672112220120861281:u1mwwky5lri
 pygments: true
+
+exclude: ['partner_docs']
