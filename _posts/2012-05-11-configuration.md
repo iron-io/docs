@@ -40,7 +40,7 @@ The project_id you use will be the default project to use. You can always overri
 
 Alternatively, you can set the following environment variables:
 
-{% highlight %}
+{% highlight bash %}
 IRON_TOKEN=MY_TOKEN
 IRON_PROJECT_ID=MY_PROJECT_ID
 {% endhighlight %}

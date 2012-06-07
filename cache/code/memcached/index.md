@@ -28,7 +28,7 @@ supported in IronCache. The <strong>binary</strong> protocol for
 memcached is <strong>not supported</strong> at this time.
 </p>
 <p>
-<strong>Warning!</strong> Using the memcached interface <em>does not</em> encrypt 
+Using the memcached interface <em>does not</em> encrypt
 your credentials during transport.
 </p>
 </div>

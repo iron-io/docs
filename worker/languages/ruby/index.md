@@ -36,25 +36,63 @@ gem install iron_worker_ng
 ### Write your Ruby worker.
 
 {% highlight ruby %}
-puts "Hello from Ruby"
+# Worker code can be anything you want.
+puts "Starting HelloWorker at #{Time.now}"
+puts "Payload: #{params}"
+puts "Simulating hard work for 5 seconds..."
+5.times do |i|
+  puts "Sleep #{i}..."
+  sleep 1
+end
+puts "HelloWorker completed at #{Time.now}"
 {% endhighlight %}
 
-### Create a script to upload the worker.
+### Create a .worker file
+
+Worker files are a simple way to define your worker and its dependencies. Save the
+following in a file called `hello.worker`
+
+{% highlight ruby %}
+# define the runtime language, this can be ruby, java, node, php, go, etc.
+runtime "ruby"
+# exec is the file that will be executed:
+exec "hello_worker.rb"
+{% endhighlight %}
+
+You could include gems and other files in there too. [You can read more about .worker files here](http://dev.iron.io/worker/reference/worker-files/).
+
+### Upload your Worker
+
+{% highlight bash %}
+iron_worker upload hello
+{% endhighlight %}
+
+That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to hud.iron.io, click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
+
+Let’s quickly test it by running:
+
+    iron_worker queue hello
+
+Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
+Now that we know it works, let’s queue up a bunch of tasks from code.
+
+### Queue up Tasks for your Worker
+
+Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue (create a task). The following is an example in ruby, save the following into a file called `queue.rb`:
+
+bump
+
 {% highlight ruby %}
 require 'iron_worker_ng'
-
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Ruby.new(:name => "RubyWorker", :exec => 'PATH TO WORKER SCRIPT')
-client.codes.create(code)
+client = IronWorkerNG::Client.new
+100.times do
+   client.tasks.create("hello", "foo"=>"bar")
+end
 {% endhighlight %}
 
-### Queue a task to the new worker.
-{% highlight ruby %}
-require 'iron_worker_ng'
+You can run that code with:
 
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-task_id = client.tasks.create('RubyWorker')
-{% endhighlight %}
+    ruby queue.rb
 
 ## Deep Dive
 
@@ -62,9 +100,8 @@ task_id = client.tasks.create('RubyWorker')
 
 We currently offer both the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
 and [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) gems as 
-officially supported client libraries. The `iron_worker` gem is considered the 
-stable incumbent; the `iron_worker_ng` gem is considered to be the improved 
-upstart.
+officially supported client libraries. The `iron_worker` gem is deprecated and will no longer be under active
+development; the `iron_worker_ng` gem is actively maintained and is considered to be the gold standard gem.
 
 We suggest that new users use the `iron_worker_ng` gem and that users who are 
 currently using the `iron_worker` gem slowly and carefully transition over when 
