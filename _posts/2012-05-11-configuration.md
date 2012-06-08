@@ -28,7 +28,7 @@ If you just want to get started quickly, here's the section for you.
 Create a file called `.iron.json` in your home directory (ie: `~/.iron.json`) and enter your Iron.io credentials:
 
 <div >
-{% highlight json %}
+{% highlight js %}
 {
     "token": "MY_TOKEN",
     "project_id": "MY_PROJECT_ID"
