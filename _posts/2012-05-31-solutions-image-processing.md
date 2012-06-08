@@ -308,7 +308,7 @@ client.tasks.create(
 
 ## On Github
 
-You can find all the code for this example worker [on Github](https://github.com/iron-io/iron_worker_examples/tree/master/ruby_ng/Image_processing). 
+You can find all the code for this example worker [on Github](https://github.com/iron-io/iron_worker_examples/tree/master/ruby_ng/image_processing).
 Feel free to copy, edit, and run it on IronWorker! :)
 
 ## Next Steps
@@ -317,7 +317,7 @@ Any article on ImageMagick will necessarily omit a lot of the power that
 the library provides&mdash;there are just too many options and commands. If 
 you're interested in doing more with ImageMagick, check out the official 
 documentation on the ImageMagick [website](http://www.imagemagick.org) for a 
-much more in-depth look at the possibilities. For those using ImageMagick 
-from Ruby, we recommend the [MiniMagick gem](https://github.com/probablycorey/mini_magick)
-&mdash;it's a wrapper for the command line utility that uses less memory 
-than the RMagick gem.
+much more in-depth look at the possibilities.
+
+For those using ImageMagick from Ruby, we recommend the [MiniMagick gem](https://github.com/probablycorey/mini_magick)
+&mdash;it's a wrapper for the command line utility that uses less memory than the RMagick gem.
