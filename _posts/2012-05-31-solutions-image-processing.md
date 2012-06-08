@@ -12,7 +12,7 @@ breadcrumbs:
 # Image Processing With Iron.io
 
 <div class="alert">
-<p>Want to get right to the good stuff? <a href="https://github.com/iron-io/iron_worker_examples/tree/master/ruby_ng/Image_processing"
+<p>Want to get right to the good stuff? <a href="https://github.com/iron-io/iron_worker_examples/tree/master/ruby_ng/image_processing"
 title="Image processing example on Github">Download the code from Github</a>.</p>
 </div>
 
