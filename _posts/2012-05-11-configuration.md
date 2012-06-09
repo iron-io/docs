@@ -28,7 +28,7 @@ If you just want to get started quickly, here's the section for you.
 Create a file called `.iron.json` in your home directory (ie: `~/.iron.json`) and enter your Iron.io credentials:
 
 <div >
-{% highlight json %}
+{% highlight js %}
 {
     "token": "MY_TOKEN",
     "project_id": "MY_PROJECT_ID"
@@ -88,9 +88,11 @@ it would be "IRON_WORKER_TOKEN" (for IronWorker).
 
 ### The File Hierarchy
 
-The hierarchy of files is simple enough: if a file named ".iron.json" 
-exists in your home folder, that will provide the defaults. In addition, 
-if an "iron.json" file exists in the same directory as the script being 
+The hierarchy of files is simple enough:
+
+1. if a file named ".iron.json"
+exists in your home folder, that will provide the defaults.
+1. if an "iron.json" file exists in the same directory as the script being
 run, that will be used to *overwrite* the values from the ".iron.json" 
 file in your home folder. Any values in "iron.json" that are not found 
 in ".iron.json" will be added; any values in ".iron.json" that are not 
