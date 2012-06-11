@@ -7,7 +7,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Library Configuration', '/configuration']
 layout: post
-section: overview
 ---
 
 # {{ page.title }}
