@@ -56,9 +56,11 @@
   position:relative;
 }
 
+/*
 .content-container a[href^="http"]:hover {
   background-position: 100% 100%;
 }
+*/
 
 .content-container table {
   border-collapse: collapse;
