@@ -151,13 +151,18 @@ input:-moz-placeholder {
 /*--------------------------------- SIDE MENU ------------------------------------*/
 
 #sidemenu {
-  width: 240px;
+  width: 210px;
   float: left;
+  margin:20px 0px 0 0;
+}
+#sidemenu-links {
+  max-height:400px;
+  min-height:400px;
 }
 
 #sidemenu a, #sidemenu a:hover {
   text-decoration: none;
-  width: 200px;
+  width: 190px;
   display: block;
   font-size: 14px;
 }
@@ -198,7 +203,7 @@ input:-moz-placeholder {
 }
 
 #sidemenu form {
-  margin: 0 0 30px;
+  margin: 0 0 10px;
 }
 .sidemenu-box {
     margin: 10px 0 10px 0;
