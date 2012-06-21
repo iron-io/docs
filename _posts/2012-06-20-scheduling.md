@@ -2,6 +2,9 @@
 layout: posts
 title: Scheduling Tasks
 permalink: /worker/scheduling
+section: worker
+breadcrumbs:
+  - ["Scheduling Tasks", "/scheduling"]
 ---
 
 # {{ page.title }}
