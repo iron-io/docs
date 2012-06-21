@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: post
 title: Scheduling Tasks
 permalink: /worker/scheduling
 section: worker
