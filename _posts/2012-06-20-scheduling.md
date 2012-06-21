@@ -46,6 +46,7 @@ Finally, you can also control how many times a repeating task is run:
 
 <div class="alert">
   <p>There should be a code sample here demonstrating how to schedule a task to be queued every hour, starting at a specific time, running 5 times.</p>
+</div>
 
 <div class="alert">
   <p>There should be a code sample here demontrating how to schedule a task to be queued every hour, starting after a specific delay, running 5 times.</p>
