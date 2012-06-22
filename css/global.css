@@ -45,19 +45,15 @@
 }
 
 .content-container h4 {
-  padding: 20px 0 5px 0;
+  padding: 15px 0 5px 0;
   margin: 0;
 }
 
-.content-container a[href^="http"] {
+.content-container .content a[href^="http"] {
   background: url(/images/external-link.png) no-repeat 100% 3px;
   padding-right: 14px;
   white-space: nowrap;
   position:relative;
-}
-
-.content-container a[href^="http"]:hover {
-  background-position: 100% 100%;
 }
 
 .content-container table {
@@ -149,13 +145,18 @@ input:-moz-placeholder {
 /*--------------------------------- SIDE MENU ------------------------------------*/
 
 #sidemenu {
-  width: 240px;
+  width: 210px;
   float: left;
+  margin:20px 0px 0 0;
+}
+#sidemenu-links {
+  max-height:400px;
+  min-height:400px;
 }
 
 #sidemenu a, #sidemenu a:hover {
   text-decoration: none;
-  width: 200px;
+  width: 190px;
   display: block;
   font-size: 14px;
 }
@@ -196,7 +197,7 @@ input:-moz-placeholder {
 }
 
 #sidemenu form {
-  margin: 0 0 30px;
+  margin: 0 0 10px;
 }
 .sidemenu-box {
     margin: 10px 0 10px 0;
@@ -390,4 +391,115 @@ span.fixed-width {
 
 .alert-block p + p {
   margin-top: 5px;
+}
+
+.product-box {
+  float: left;
+  text-align: left;
+  width: 220px;
+  margin:20px 20px 0 0;
+}
+
+.product-box img {
+	height:30px;
+	display:block;
+	text-align:left;
+}
+
+.product-box.last {
+  margin-right: 0px;
+}
+
+.product-box p {
+  display:block;
+}
+
+.product-box a {
+  text-decoration: none;
+}
+
+.product-box a:hover {
+  text-decoration: none;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+/*
+ * CSS Arrows
+ */
+
+.arrow {
+    position:relative;
+    display:block;
+    height:34px;
+    width:90%;
+    cursor:pointer;
+}
+.arrow p {
+    position:relative;
+    padding:6px 0 0 10px;
+}
+.arrow.red {
+    background:url(/images/btn/red-sprite.png) top repeat-x;
+    color:#ffffff;
+    text-shadow:-1px -1px #6f001d;
+}
+.arrow.red .point {
+    position:absolute;
+    right:0;
+    top:0;
+    z-index:99;
+    background:url(/images/btn/red-sprite.png) bottom right no-repeat;
+    width:19px;
+    height:34px;
+}
+.arrow.gray {
+    background:url(/images/btn/gray-sprite.png) top repeat-x;
+    color:#ffffff;
+    text-shadow:-1px -1px #6f001d;
+}
+.arrow.gray .point {
+    position:absolute;
+    right:0;
+    top:0;
+    z-index:99;
+    background:url(/images/btn/gray-sprite.png) bottom right no-repeat;
+    width:19px;
+    height:34px;
+}
+
+#github-block {
+    display:block;
+    margin:20px 0;
+    width:200px;
+}
+
+#github-block img {
+    display:block;
+    text-align:center;
+    width:50px;
+    margin: 0 auto;
+}
+
+#github-block p {
+    color:#929292;
+    font-style:italic;
+    margin:3px 0 0;
+    padding:0 10px;
+    line-height:14px;
+    font-size:12px;
+    display: block;
+    text-align: center;
+}
+
+#github-block > p > a {
+    display: inline;
+    width: auto;
+    font-size: inherit;
+}
+
+#github-block a:hover {
+    background-color: transparent;
 }
