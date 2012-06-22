@@ -40,7 +40,7 @@ IronWorker, by design, does not provide SMTP host services. Workers must use thi
 
 ### Security Groups and IP Ranges
 
-IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/ann.jspa?annID=1408) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
+IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
 
 <table>
 <thead>
