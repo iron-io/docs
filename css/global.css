@@ -509,3 +509,7 @@ span.fixed-width {
     margin: 0px;
     padding: 0px 20px 0px 40px;
 }
+
+.article-list h3 {
+    font-weight: normal;
+}
