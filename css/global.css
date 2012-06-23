@@ -503,3 +503,9 @@ span.fixed-width {
 #github-block a:hover {
     background-color: transparent;
 }
+
+.article-list p {
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px 20px 0px 40px;
+}
