@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/integrations/airbrake
-title: Integrating with Airbrake
+title: Sending Errors to Airbrake
 categories:
  - worker
  - articles
@@ -24,7 +24,7 @@ layout: default
 section: worker
 ---
 
-# Integrating with Airbrake
+# {{ page.title }}
 
 {% if page.languages %}
 {% include language-switcher-head.html %}

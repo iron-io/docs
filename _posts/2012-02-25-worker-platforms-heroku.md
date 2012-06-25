@@ -21,6 +21,7 @@ languages:
   extension: 'php'
 layout: default
 section: worker
+summary: "Quickly integrate your Heroku application with IronWorker to offload processing from your dynos."
 ---
 
 # Getting started on Heroku

@@ -18,9 +18,10 @@ languages:
   extension: 'php'
 layout: default
 section: worker
+summary: "How to trigger [PagerDuty](http://www.pagerduty.com) alerts from your workers."
 ---
 
-# Integrating with PagerDuty
+# Triggering PagerDuty
 
 {% if page.languages %}
 {% include language-switcher-head.html %}

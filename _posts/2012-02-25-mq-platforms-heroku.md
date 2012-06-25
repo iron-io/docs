@@ -11,6 +11,7 @@ breadcrumbs:
  - ['Heroku', '/heroku']
 layout: post
 section: mq
+summary: "Quickly integrate your Heroku-powered application with IronMQ"
 ---
 
 

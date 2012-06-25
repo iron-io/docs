@@ -11,6 +11,7 @@ breadcrumbs:
   - ['Engine Yard', '/engineyard']
 layout: post
 section: worker
+summary: "Quickly get integrate your Engine Yard application with IronWorker to offload processing to a massively scalable infrastructure."
 ---
 
 # Getting Started on Engine Yard
