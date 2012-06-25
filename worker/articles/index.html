@@ -14,8 +14,8 @@ breadcrumbs:
   {% for post in site.categories.articles %}
     {% if post.categories contains "worker" %}
       {% if post.tags contains "featured" %}
-        <div class="featured-article">
-          <img src="/images/articles/{{ post.image }}" />
+        <div class="article-block featured">
+          <a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}"><img src="/images/articles/{{ post.image }}" /></a>
           <h3><a style="font-size: 16px;" href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></h3>
           {{ post.summary | markdownify }}
         </div>

@@ -505,17 +505,16 @@ span.fixed-width {
 }
 
 .article-list p {
-    font-size: 16px;
     margin: 0px;
-    padding: 0px 20px 0px 40px;
+    padding: 0px 5px 0px 0px;
 }
 
 .article-list h3 {
     font-weight: normal;
 }
 
-.featured-article, .article-block {
-    width: 200px;
+.article-block {
+    width: 225px;
 }
 
 .article-block.left, .article-block.center {
@@ -523,7 +522,7 @@ span.fixed-width {
 }
 
 .article-block.center {
-    margin: 0px 50px;
+    margin: 0px 12.5px;
 }
 
 .article-block.right {
@@ -536,4 +535,9 @@ span.fixed-width {
 
 .article-list br {
     clear: both;
+}
+
+.featured img {
+    margin: 0px auto;
+    display: block;
 }
