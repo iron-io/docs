@@ -9,10 +9,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Integrations', '/integrations']
   - ['Airbrake', '/airbrake']
-tags:
- - airbrake
- - integrations
- - exceptions
 languages:
 - name: 'ruby'
   command: 'ruby'

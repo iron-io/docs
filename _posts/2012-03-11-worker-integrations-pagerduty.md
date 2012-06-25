@@ -9,9 +9,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Integrations', '/integrations']
   - ['PagerDuty', '/pagerduty']
-tags:
- - integrations
- - error handling
 languages:
 - name: 'ruby'
   command: 'ruby'

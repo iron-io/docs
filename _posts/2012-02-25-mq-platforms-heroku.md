@@ -9,9 +9,6 @@ breadcrumbs:
  - ['Articles', '/articles']
  - ['Platforms', '/platforms']
  - ['Heroku', '/heroku']
-tags:
-  - heroku
-  - platform
 layout: post
 section: mq
 ---

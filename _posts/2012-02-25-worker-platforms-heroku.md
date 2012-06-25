@@ -9,9 +9,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Platforms', '/platforms']
   - ['Heroku', '/heroku']
-tags:
-  - platforms
-  - heroku
 languages:
 - name: 'ruby'
   command: 'ruby'

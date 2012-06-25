@@ -9,10 +9,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Integrations', '/integrations']
   - ['Loggly', '/loggly']
-tags:
- - loggly
- - integrations
- - logging
 languages:
 - name: 'ruby'
   command: 'ruby'
