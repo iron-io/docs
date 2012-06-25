@@ -513,3 +513,27 @@ span.fixed-width {
 .article-list h3 {
     font-weight: normal;
 }
+
+.featured-article, .article-block {
+    width: 200px;
+}
+
+.article-block.left, .article-block.center {
+    float: left;
+}
+
+.article-block.center {
+    margin: 0px 50px;
+}
+
+.article-block.right {
+    float: right;
+}
+
+.article-block h3 {
+    font-size: 16px;
+}
+
+.article-list br {
+    clear: both;
+}
