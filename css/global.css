@@ -603,10 +603,10 @@ a.grid-box .img-bg.api-bg {
 a.grid-box .img-bg.environment-bg {
     background:url(/images/worker/reference/api_screenshot.jpg) no-repeat;
 }
-a.grid-box .img-bg.webhooks-bg {
+a.grid-box .img-bg.security-bg {
     background:url(/images/worker/reference/api_screenshot.jpg) no-repeat;
 }
-a.grid-box .img-bg.libraries-bg {
+a.grid-box .img-bg.configuration-bg {
     background:url(/images/worker/reference/libraries_screenshot.jpg) no-repeat;
 }
 a.grid-box span.grid-box-text {
