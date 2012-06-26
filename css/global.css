@@ -30,7 +30,7 @@
 }
 
 .content-container h2 {
-  font-size: 24px;
+  font-size: 20px;
   margin: 1.8em 0 0.5em;
   padding: 0;
   border-bottom: 1px solid #CCC;
@@ -506,16 +506,39 @@ span.fixed-width {
 
 .article-list p {
     margin: 0px;
-    padding: 0px 5px 0px 0px;
+    padding:0 0 0 10px;
 }
-
-.article-list h3 {
-    font-weight: normal;
-}
-
 .article-block {
     width: 225px;
+    display:block;
+    margin:0 0 20px;
 }
+.article-block h3 {
+    font-weight: normal;
+    background:#efefef;
+    padding:0 0 0 10px;
+    margin:0 0 5px;
+    font-size:14px;
+}
+.article-block:hover {
+    cursor:pointer;
+    background:#efefef;
+    color:#363636;
+}
+.article-block a {
+    text-decoration:none;
+    color:#363636;
+}
+.article-block a:hover {
+    text-decoration:none;
+    color:#363636;
+    cursor:pointer;
+}
+.article-block h3 a,
+.article-block h3 a:hover {
+    text-decoration:none;
+}
+
 
 .article-block.left, .article-block.center {
     float: left;
@@ -528,11 +551,6 @@ span.fixed-width {
 .article-block.right {
     float: right;
 }
-
-.article-block h3 {
-    font-size: 16px;
-}
-
 .article-list br {
     clear: both;
 }
