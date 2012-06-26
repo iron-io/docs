@@ -7,33 +7,32 @@ breadcrumbs:
 ---
 
 <h1>{{ page.title }}</h1>
-<p class="subtitle">These articles are quick tutorials and explanations of the various parts of IronMQ. Written by our Developer Experience Team and experts from our community, these articles will help you seamlessly connect your processes with IronMQ.</p>
-
-<div class="featured-articles">
-  <h2>Featured Articles</h2>
-  {% for post in site.categories.articles %}
-    {% if post.categories contains "mq" %}
-      {% if post.tags contains "featured" %}
-        <div class="article-block featured">
-          <a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}"><img src="/images/articles/{{ post.image }}" /></a>
-          <h3><a style="font-size: 16px;" href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></h3>
-          {{ post.summary | markdownify }}
-        </div>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-</div>
+<p class="subtitle">These articles are quick tutorials and explanations of the various ways to utilise IronMQ. Written by our team and experts from our community, these articles will help you create an elegant, elastic system out of your application's processes.</p>
 
 <div class="article-list">
   {% for post in site.categories.articles %}
     {% if post.categories contains "mq" %}
+      {% if post.tags contains "featured" %}
+        <a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">
+        	<div class="article-block {% cycle 'left', 'right' %}">
+        		<div class="featured-ribbon"></div>
+	          <h3>{{ post.title }}</h3>
+	          {{ post.summary | markdownify }}
+        	</div>{% cycle '', '<br />' %}
+        </a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% for post in site.categories.articles %}
+    {% if post.categories contains "mq" %}
       {% unless post.tags contains "featured" %}
-        <div class="article-block {% cycle 'left', 'center', 'right' %}">
-          <h3><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></h3>
-          {% if post.summary %}
-            {{ post.summary | markdownify }}
-          {% endif %}
-        </div>{% cycle '', '', '<br />' %}
+        <a href="{{ site.baseurl }}{{ post.permalink }}"  title="{{ post.title }}">
+        	<div class="article-block {% cycle 'left', 'right' %}">
+		      <h3>{{ post.title }}</h3>
+		      {{ post.summary | markdownify }}
+        	</div>{% cycle '', '<br />' %}
+        </a>
       {% endunless %}
     {% endif %}
   {% endfor %}
