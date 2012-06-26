@@ -15,9 +15,11 @@ breadcrumbs:
     {% if post.categories contains "worker" %}
       {% if post.tags contains "featured" %}
         <div class="article-block featured">
-          <a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}"><img src="/images/articles/{{ post.image }}" /></a>
-          <h3><a style="font-size: 16px;" href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></h3>
+        	<a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">
+          <h3>{{ post.title }}</h3>
+          <img src="/images/articles/{{ post.image }}" />
           {{ post.summary | markdownify }}
+          	</a>
         </div>
       {% endif %}
     {% endif %}
@@ -29,10 +31,12 @@ breadcrumbs:
     {% if post.categories contains "worker" %}
       {% unless post.tags contains "featured" %}
         <div class="article-block {% cycle 'left', 'center', 'right' %}">
-          <h3><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></h3>
-          {% if post.summary %}
-            {{ post.summary | markdownify }}
-          {% endif %}
+          <a href="{{ site.baseurl }}{{ post.permalink }}"  title="{{ post.title }}">
+		      <h3>{{ post.title }}</h3>
+		      {% if post.summary %}
+		        {{ post.summary | markdownify }}
+		      {% endif %}
+          </a>
         </div>{% cycle '', '', '<br />' %}
       {% endunless %}
     {% endif %}
