@@ -430,16 +430,24 @@ span.fixed-width {
  * CSS Arrows
  */
 
-.arrow {
+a span.arrow-link {
     position:relative;
-    display:block;
-    height:34px;
-    width:90%;
-    cursor:pointer;
+    font-size: 16px;
+    display:inline-block;
+    margin:0 6px 0 0;
+    color: #363636;
+    display:inline-block;
 }
-.arrow p {
+a span.arrow-link:hover {
+    color:#000000;
+    margin:0 15px 0 0;
+}
+a span.arrow-link > span.arrow {
     position:relative;
-    padding:6px 0 0 10px;
+    display: inline-block;
+    font-size: 30px;
+    margin: -3px 0 0 0;
+    vertical-align: middle;
 }
 .arrow.red {
     background:url(/images/btn/red-sprite.png) top repeat-x;
