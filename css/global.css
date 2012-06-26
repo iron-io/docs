@@ -541,3 +541,21 @@ span.fixed-width {
     margin: 0px auto;
     display: block;
 }
+
+.grid-box {
+    width: 300px;
+    margin: 0px 25px;
+}
+
+.grid-box.left {
+    float: left;
+}
+
+.grid-box.right {
+    float: right;
+}
+
+.grid-box img {
+    display: block;
+    margin: 0px auto;
+}
