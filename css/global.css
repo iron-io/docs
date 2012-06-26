@@ -543,8 +543,8 @@ span.fixed-width {
 }
 
 .grid-box {
-    width: 300px;
-    margin: 0px 25px;
+    width: 325px;
+    margin: 0px 25px 0px 0px;
 }
 
 .grid-box.left {
