@@ -29,6 +29,8 @@
             <form action="/search">
               <input type="text" name="q" id="q" placeholder="Search Dev Center" size="18" />
             </form>
+            
+            <div id="sidemenu-links">
 
             {% if page.section == "overview" %}
               {% include sidemenu_overview.html %}
@@ -63,9 +65,10 @@
                 <a href="#" id="addSearch">Search From Your Browser</a>
               </p>
             {% endif %}
+            </div>
           </div>
 
-          <div style="float: left; width: 688px" class="content">
+          <div style="float: right; width: 700px" class="content">
             {% include breadcrumbs.html %}
 
             {% include tags.html %}
