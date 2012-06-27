@@ -79,6 +79,9 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
         <tr>
             <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/progress</td><td>POST</td><td><a href="#set_a_tasks_progress" title="Set a Task's Progress">Set a Task's Progress</a></td>
         </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/retry</td><td>POST</td><td><a href="#retry_a_task" title="Retry a Task">Retry a Task</a></td>
+        </tr>
     </tbody>
 </table>
 
@@ -748,6 +751,43 @@ Sample:
 {% highlight js %}
 {
     "msg": "Progress set"
+}
+{% endhighlight %}
+
+### Retry a Task
+
+#### Endpoint
+
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/retry
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the task belongs to.
+* **Task ID**: The ID of the task you want to cancel.
+
+#### Request
+
+The request must be JSON-encoded and can contain the following information:
+
+* **delay**: The number of seconds the task should be delayed before it runs again.
+
+The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+
+#### Response
+
+The response will be a JSON object containing a message explaining whether the request was successful or not.
+
+Sample:  
+{% highlight js %}
+{
+    "msg": "Queued up",
+    "tasks": [
+        {
+            "id": "4eb1b471cddb136065000010"
+        }
+    ]
 }
 {% endhighlight %}
 
