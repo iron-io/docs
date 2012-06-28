@@ -484,11 +484,15 @@ a span.arrow-link > span.arrow {
     width:200px;
 }
 
-#github-block img {
-    display:block;
-    text-align:center;
-    width:50px;
-    margin: 0 auto;
+#github-block img,
+#github-block img:hover {
+    display:block !important;
+    text-align:center !important;
+    width:50px !important;
+    margin: 0 auto !important;
+}
+#github-block a.git:hover {
+    background:transparent;
 }
 
 #github-block p {
@@ -502,15 +506,17 @@ a span.arrow-link > span.arrow {
     text-align: center;
 }
 
-#github-block > p > a {
-    display: inline;
-    width: auto;
-    font-size: inherit;
+#github-block p a {
+    font-size: 12px;
+    display:inline;
 }
 
-#github-block a:hover {
+#github-block p a:hover {
     background-color: transparent;
+    font-size:12px;
+    display:inline;
 }
+
 
 .article-list p {
     margin: 0px;
