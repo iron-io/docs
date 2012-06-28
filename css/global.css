@@ -30,7 +30,7 @@
 }
 
 .content-container h2 {
-  font-size: 24px;
+  font-size: 20px;
   margin: 1.8em 0 0.5em;
   padding: 0;
   border-bottom: 1px solid #CCC;
@@ -45,11 +45,11 @@
 }
 
 .content-container h4 {
-  padding: 20px 0 5px 0;
+  padding: 15px 0 5px 0;
   margin: 0;
 }
 
-.content-container a[href^="http"] {
+.content-container .content a[href^="http"] {
   background: url(/images/external-link.png) no-repeat 100% 3px;
   padding-right: 14px;
   white-space: nowrap;
@@ -151,13 +151,18 @@ input:-moz-placeholder {
 /*--------------------------------- SIDE MENU ------------------------------------*/
 
 #sidemenu {
-  width: 240px;
+  width: 210px;
   float: left;
+  margin:20px 0px 0 0;
+}
+#sidemenu-links {
+  max-height:400px;
+  min-height:400px;
 }
 
 #sidemenu a, #sidemenu a:hover {
   text-decoration: none;
-  width: 200px;
+  width: 190px;
   display: block;
   font-size: 14px;
 }
@@ -198,7 +203,7 @@ input:-moz-placeholder {
 }
 
 #sidemenu form {
-  margin: 0 0 30px;
+  margin: 0 0 10px;
 }
 .sidemenu-box {
     margin: 10px 0 10px 0;
@@ -392,4 +397,258 @@ span.fixed-width {
 
 .alert-block p + p {
   margin-top: 5px;
+}
+
+.product-box {
+  float: left;
+  text-align: left;
+  width: 220px;
+  margin:20px 20px 0 0;
+}
+
+.product-box img {
+	height:30px;
+	display:block;
+	text-align:left;
+}
+
+.product-box.last {
+  margin-right: 0px;
+}
+
+.product-box p {
+  display:block;
+}
+
+.product-box a {
+  text-decoration: none;
+}
+
+.product-box a:hover {
+  text-decoration: none;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+/*
+ * CSS Arrows
+ */
+
+a span.arrow-link {
+    position:relative;
+    font-size: 16px;
+    display:inline-block;
+    margin:0 6px 0 0;
+    color: #363636;
+    display:inline-block;
+}
+a span.arrow-link:hover {
+    color:#000000;
+    margin:0 15px 0 0;
+}
+a span.arrow-link > span.arrow {
+    position:relative;
+    display: inline-block;
+    font-size: 30px;
+    margin: -3px 0 0 0;
+    vertical-align: middle;
+}
+.arrow.red {
+    background:url(/images/btn/red-sprite.png) top repeat-x;
+    color:#ffffff;
+    text-shadow:-1px -1px #6f001d;
+}
+.arrow.red .point {
+    position:absolute;
+    right:0;
+    top:0;
+    z-index:99;
+    background:url(/images/btn/red-sprite.png) bottom right no-repeat;
+    width:19px;
+    height:34px;
+}
+.arrow.gray {
+    background:url(/images/btn/gray-sprite.png) top repeat-x;
+    color:#ffffff;
+    text-shadow:-1px -1px #6f001d;
+}
+.arrow.gray .point {
+    position:absolute;
+    right:0;
+    top:0;
+    z-index:99;
+    background:url(/images/btn/gray-sprite.png) bottom right no-repeat;
+    width:19px;
+    height:34px;
+}
+
+#github-block {
+    display:block;
+    margin:20px 0;
+    width:200px;
+}
+
+#github-block img,
+#github-block img:hover {
+    display:block !important;
+    text-align:center !important;
+    width:50px !important;
+    margin: 0 auto !important;
+}
+#github-block a.git:hover {
+    background:transparent;
+}
+
+#github-block p {
+    color:#929292;
+    font-style:italic;
+    margin:3px 0 0;
+    padding:0 10px;
+    line-height:14px;
+    font-size:12px;
+    display: block;
+    text-align: center;
+}
+
+#github-block p a {
+    font-size: 12px;
+    display:inline;
+}
+
+#github-block p a:hover {
+    background-color: transparent;
+    font-size:12px;
+    display:inline;
+}
+
+
+.article-list p {
+    margin: 0px;
+    padding:10px 10px 0;
+}
+.article-list a,
+.article-list a:hover {
+    color:#363636;
+    text-decoration:none;
+}
+.article-block {
+    width: 340px;
+    margin: 0px 10px 20px 0px;
+    display: inline-block;
+    border: 1px solid #AAAAAA;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    vertical-align: top;
+    height: 150px;
+    position:relative;
+}
+.article-block:hover {
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.3);
+}
+.article-block.right {
+    margin:0 0 20px 0;
+}
+.article-block .featured-ribbon {
+    position:absolute;
+    width:108px;
+    height:63px;
+    top:-2px;
+    right:-2px;
+    background:url(/images/articles/featured-ribbon.png) no-repeat;
+}
+.article-block h3 {
+    font-weight: normal;
+    background:#efefef;
+    padding:10px 0 10px 10px;
+    border-bottom:1px solid #AAAAAA;
+    margin:0 0 5px;
+    font-size:16px;
+    font-weight:bold;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-top-left: 10px;
+    -moz-border-radius-top-right: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.article-block a {
+    text-decoration:none;
+    color:#363636;
+}
+.article-block h3 a,
+.article-block h3 a:hover {
+    text-decoration:none;
+    color:#363636;
+}
+
+
+.article-list br {
+    clear: both;
+}
+
+.featured img {
+    margin: 0px auto;
+    display: block;
+}
+
+a.grid-box {
+    width: 340px;
+    margin: 0px 10px 20px 0px;
+    display:inline-block;
+    border: 1px solid #AAA;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    vertical-align:top;
+    height:150px;
+}
+a.grid-box:hover {
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.3);
+}
+a.grid-box,
+a.grid-box:hover {
+    text-decoration:none;
+    color:#363636;
+}
+a.grid-box.second {
+    margin:0 0 10px;
+}
+a.grid-box .img-bg {
+    display:inline-block;
+    border-right: 1px solid #AAA;
+    background:#000000;
+    padding:0;
+    margin:0;
+    width:80px;
+    height:150px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-top-left: 10px;
+    -moz-border-radius-bottom-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+a.grid-box .img-bg.api-bg {
+    background:url(/images/worker/reference/api_screenshot.jpg) no-repeat;
+}
+a.grid-box .img-bg.environment-bg {
+    background:url(/images/worker/reference/environment_screenshot.jpg) no-repeat;
+}
+a.grid-box .img-bg.security-bg {
+    background:url(/images/worker/reference/api_screenshot.jpg) no-repeat;
+}
+a.grid-box .img-bg.configuration-bg {
+    background:url(/images/worker/reference/configuration_screenshot.jpg) no-repeat;
+}
+a.grid-box span.grid-box-text {
+    display:inline-block;
+    padding: 10px 0 0 20px;
+    width:223px;
+    vertical-align:top;
+}
+a.grid-box span.grid-box-text h3 {
+    margin:0 0 10px;
 }

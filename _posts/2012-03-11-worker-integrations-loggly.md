@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/integrations/loggly
-title: Logging from your workers to Loggly
+title: Logging to Loggly
 categories:
  - worker
  - articles
@@ -9,10 +9,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Integrations', '/integrations']
   - ['Loggly', '/loggly']
-tags:
- - loggly
- - integrations
- - logging
 languages:
 - name: 'ruby'
   command: 'ruby'
@@ -22,6 +18,7 @@ languages:
   extension: 'php'
 layout: default
 section: worker
+summary: "How to send your worker logs to [Loggly](http://www.loggly.com), a service that aggregates and indexes logs."
 ---
 
 {% if page.languages %}

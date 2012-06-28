@@ -30,33 +30,22 @@
               <input type="text" name="q" id="q" placeholder="Search Dev Center" size="18" />
             </form>
 
-            {% if page.section == "overview" %}
-              {% include sidemenu_overview.html %}
-            {% endif %}
-
-            {% if page.section == "mq" %}
+            {% case page.section %}
+            {% when "mq" %}
               {% include sidemenu_mq.html %}
-            {% endif %}
-
-            {% if page.section == "worker" %}
+            {% when "worker" %}
               {% include sidemenu_worker.html %}
-            {% endif %}
-
-            {% if page.section == "cache" %}
+            {% when "cache" %}
               {% include sidemenu_cache.html %}
-            {% endif %}
-
-            {% if page.section == "support" %}
+            {% when "support" %}
               {% include sidemenu_support.html %}
-            {% endif %}
-
-            {% if page.section == "community" %}
+            {% when "community" %}
               {% include sidemenu_community.html %}
-            {% endif %}
-
-            {% if page.section == "solutions" %}
-               {% include sidemenu_solutions.html %}
-            {% endif %}
+            {% when "solutions" %}
+              {% include sidemenu_solutions.html %}
+            {% else %}
+              {% include sidemenu_default.html %}
+            {% endcase %}
 
             {% if page.section == "search" %}
               <p style="width: 100%; text-align: center;">
@@ -65,11 +54,7 @@
             {% endif %}
           </div>
 
-          <div style="float: left; width: 688px" class="content">
-            {% include breadcrumbs.html %}
-
-            {% include tags.html %}
-
+          <div style="float: right; width: 700px" class="content">
             {{ content }}
           </div>
 

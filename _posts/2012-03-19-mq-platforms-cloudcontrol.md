@@ -1,19 +1,20 @@
 ---
 permalink: /mq/articles/platforms/cloudcontrol
-title: Getting Started on CloudControl
+title: Getting Started on cloudControl
 categories:
   - mq
   - articles
   - platforms
 breadcrumbs:
   - ['Articles', '/articles']
-  - ['Running on Cloud Platforms', '/platforms']
-  - ['CloudControl', '/cloudcontrol']
+  - ['Cloud Platforms', '/platforms']
+  - ['cloudControl', '/cloudcontrol']
 layout: post
 section: mq
+summary: "Quickly integrate your cloudControl-powered application with IronMQ."
 ---
 
-# Getting Started on CloudControl
+# Getting Started on cloudControl
 
 [CloudControl](http://www.cloudcontrol.com) is a scalable host for your application. 
 They offer hassle-free agile deployment, which makes them a perfect match for Iron.io 

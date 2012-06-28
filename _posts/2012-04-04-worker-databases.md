@@ -11,6 +11,7 @@ categories:
   - worker
   - articles
   - data
+summary: "A high-level look at how to connect to your database from IronWorker."
 ---
 
 # Connecting to your Database

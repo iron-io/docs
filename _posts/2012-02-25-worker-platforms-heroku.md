@@ -9,9 +9,6 @@ breadcrumbs:
   - ['Articles', '/articles']
   - ['Platforms', '/platforms']
   - ['Heroku', '/heroku']
-tags:
-  - platforms
-  - heroku
 languages:
 - name: 'ruby'
   command: 'ruby'
@@ -24,6 +21,7 @@ languages:
   extension: 'php'
 layout: default
 section: worker
+summary: "Quickly integrate your Heroku application with IronWorker to offload processing from your dynos."
 ---
 
 # Getting started on Heroku

@@ -1,17 +1,39 @@
 ---
-title: Articles
+title: IronCache Articles
 layout: default
 section: cache
 breadcrumbs:
 - ['Articles', '/articles']
 ---
 
-<h1>All Articles</h1>
+<h1>{{ page.title }}</h1>
+<p class="subtitle">These articles are quick tutorials and explanations of the various ways to take advantage of IronCache. Written by our team and experts from our community, these articles will help you make the most of IronCache's key/value store capabilities.</p>
 
-<ul>
-{% for post in site.categories.articles %}
-        {% if post.categories contains "cache" %}
-                <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
-        {% endif %}
-{% endfor %}
-</ul>
+<div class="article-list">
+  {% for post in site.categories.articles %}
+    {% if post.categories contains "cache" %}
+      {% if post.tags contains "featured" %}
+        <a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">
+        	<div class="article-block {% cycle 'left', 'right' %}">
+        		<div class="featured-ribbon"></div>
+	          <h3>{{ post.title }}</h3>
+	          {{ post.summary | markdownify }}
+        	</div>{% cycle '', '<br />' %}
+        </a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% for post in site.categories.articles %}
+    {% if post.categories contains "cache" %}
+      {% unless post.tags contains "featured" %}
+        <a href="{{ site.baseurl }}{{ post.permalink }}"  title="{{ post.title }}">
+        	<div class="article-block {% cycle 'left', 'right' %}">
+		      <h3>{{ post.title }}</h3>
+		      {{ post.summary | markdownify }}
+        	</div>{% cycle '', '<br />' %}
+        </a>
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+</div>

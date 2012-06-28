@@ -1,6 +1,6 @@
 ---
 permalink: /worker/articles/platforms/engineyard
-title: Getting started on Engine Yard
+title: Getting Started on Engine Yard
 categories:
  - worker
  - articles
@@ -11,9 +11,10 @@ breadcrumbs:
   - ['Engine Yard', '/engineyard']
 layout: post
 section: worker
+summary: "Quickly get integrate your Engine Yard application with IronWorker to offload processing to a massively scalable infrastructure."
 ---
 
-# Getting started on Engine Yard
+# Getting Started on Engine Yard
 
 [Engine Yard](http://www.engineyard.com) is a scalable platform for hosting 
 Ruby on Railse and PHP applications. They offer a git-based deployment and 

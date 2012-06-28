@@ -11,6 +11,7 @@ breadcrumbs:
   - ['cloudControl', '/cloudcontrol']
 layout: post
 section: worker
+summary: "Quickly integrate your cloudControl-powered application with IronWorker to offload processing to a massively scalable infrastructure."
 ---
 
 # Getting Started on cloudControl

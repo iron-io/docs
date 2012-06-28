@@ -9,11 +9,9 @@ breadcrumbs:
  - ['Articles', '/articles']
  - ['Platforms', '/platforms']
  - ['Heroku', '/heroku']
-tags:
-  - heroku
-  - platform
 layout: post
 section: mq
+summary: "Quickly integrate your Heroku-powered application with IronMQ"
 ---
 
 

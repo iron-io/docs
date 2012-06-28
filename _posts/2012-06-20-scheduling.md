@@ -17,8 +17,10 @@ IronWorker tasks are flexible; they don't have to be queued immediately. Rather,
 
 Scheduling a task to be queued at a specific time is easy:
 
-<div class="alert">
-<p>There should be a code sample here demonstrating how to schedule a task to be executed once at a specific time.</p>
+<div class="ruby">
+{% highlight ruby %}
+schedule = client.schedules.create('MyWorker', {:client => 'Joe'}, {:start_at => Time.now + 3600})
+{% endhighlight %}
 </div>
 
 You can also schedule a task to be queued after a certain delay:
