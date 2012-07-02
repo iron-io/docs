@@ -163,6 +163,10 @@ nav.sidebar-nav,
     top: 0px;
     padding-top: 0px !important;
 }
+.sidebar-content.stuck {
+    position: absolute;
+    padding-top: 0px !important;
+}
 #sidemenu-links {
   max-height:400px;
   min-height:400px;

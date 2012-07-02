@@ -12,14 +12,29 @@ $(document).ready(function() {
 	    var sidebar_height = $('.sidebar-content').height();
 	    var window_height = $(window).height();
 	    if (window_height - sidebar_height >= 230) {
-	        var offset = $(window).scrollTop();
-	        if (offset > 230) {
-	            $('.sidebar-content').addClass('pinned');
-	        } else {
-	            $('.sidebar-content').removeClass('pinned');
-	        }
+		var offset = $(window).scrollTop();
+	        var bottom_of_sidebar = sidebar_height + offset;
+	        var bottom_of_container = $(".docs").offset().top + $(".docs").height();
+		var sticking_point = bottom_of_container + 20;
+		if(bottom_of_sidebar < sticking_point) {
+		    if (offset > 230) {
+	                $('.sidebar-content').addClass('pinned');
+			$(".sidebar-content").removeClass("stuck");
+			$(".sidebar-content").css("top", '');
+    		    } else {
+		        $('.sidebar-content').removeClass('pinned');
+			$(".sidebar-content").removeClass("stuck");
+			$(".sidebar-content").css("top", '');
+	            }
+		} else {
+		    $(".sidebar-content").removeClass("pinned");
+		    $(".sidebar-content").addClass("stuck");
+		    $(".sidebar-content").css("top", sticking_point - sidebar_height - $(".sidebar-nav").offset().top);
+		}
 	    } else {
 	        $('.sidebar-content').removeClass('pinned');
+		$(".sidebar-content").removeClass("stuck");
+		$(".sidebar-content").css("top", "");
 	    }
 	}
 	
