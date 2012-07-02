@@ -150,59 +150,67 @@ input:-moz-placeholder {
 
 /*--------------------------------- SIDE MENU ------------------------------------*/
 
-#sidemenu {
+nav.sidebar-nav,
+.sidebar-content {
+  position:relative;
   width: 210px;
   float: left;
-  margin:20px 0px 0 0;
+  margin:11px 0 0 0;
+  padding:0 0 30px;
+}
+.sidebar-content.pinned {
+    position: fixed;
+    top: 0px;
+    padding-top: 0px !important;
 }
 #sidemenu-links {
   max-height:400px;
   min-height:400px;
 }
 
-#sidemenu a, #sidemenu a:hover {
+.sidebar-content a, .sidebar-content a:hover {
   text-decoration: none;
   width: 190px;
   display: block;
   font-size: 14px;
 }
 
-#sidemenu a:hover {
+.sidebar-content a:hover {
   background-color: #DDD;
 }
 
-#sidemenu ul li {
+.sidebar-content ul li {
   margin: 0;
 }
 
-#sidemenu ul li a {
+.sidebar-content ul li a {
   padding: 0 0 0 16px;
 }
 
-#sidemenu a.selected {
+.sidebar-content a.selected {
   color: #000000;
   background-color: #DDD;
   font-weight: bold;
 }
 
-#sidemenu h4 a, #sidemenu h4 a:hover{
+.sidebar-content h4 a, .sidebar-content h4 a:hover{
   font-size: 16px;
   padding: 0 0 0 5px;
   margin: 0;
 }
 
-#sidemenu h4 {
+.sidebar-content h4 {
   margin: 10px 0 3px 0;
   padding: 0;
 }
 
-#sidemenu ul {
+.sidebar-content ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-#sidemenu form {
+.sidebar-content form {
   margin: 0 0 10px;
 }
 .sidemenu-box {

@@ -24,8 +24,8 @@
         {% include subnav.html %}
 
         <div class="content-container docs">
-
-          <div id="sidemenu">
+		<nav class="sidebar-nav">
+			<div class="sidebar-content">
             <form action="/search">
               <input type="text" name="q" id="q" placeholder="Search Dev Center" size="18" />
             </form>
@@ -53,6 +53,8 @@
               </p>
             {% endif %}
           </div>
+		</nav>
+          
 
           <div style="float: right; width: 700px" class="content">
             {{ content }}
