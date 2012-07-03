@@ -11,7 +11,7 @@ layout: default
 
 IronMQ is available on multiple cloud hosts, so your queue can run in the same infrastructure your app does. This saves time on latencies and allows you to spread your queues across multiple clouds, if desired, to maximize your queues' availability.
 
-Each of the official IronMQ [client libraries](/mq/code/libraries) allows you to change a configuration setting to set the host the library connects to. Changing your cloud is as simple as selecting the host you want.
+Each of the official IronMQ [client libraries](/mq/libraries) allows you to change a configuration setting to set the host the library connects to. Changing your cloud is as simple as selecting the host you want.
 
 <table class="reference">
 <tr><th>Cloud</th><th>Host</th></tr>
@@ -20,7 +20,7 @@ Each of the official IronMQ [client libraries](/mq/code/libraries) allows you to
 </table>
 
 **NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our 
-[HTTP clients](/mq/code/libraries) if you are on Rackspace. 
+[HTTP clients](/mq/libraries) if you are on Rackspace. 
 
 Check your library's documentation for information on switching the host within the library.
 
