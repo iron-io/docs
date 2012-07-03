@@ -18,7 +18,7 @@ languages:
   extension: 'php'
 layout: default
 section: worker
-summary: "How to trigger [PagerDuty](http://www.pagerduty.com) alerts from your workers."
+summary: "How to trigger PagerDuty alerts from your workers."
 ---
 
 # Triggering PagerDuty

@@ -18,7 +18,7 @@ languages:
   extension: 'php'
 layout: default
 section: worker
-summary: "How to send your worker logs to [Loggly](http://www.loggly.com), a service that aggregates and indexes logs."
+summary: "How to send your worker logs to Loggly, a service that aggregates and indexes logs."
 ---
 
 {% if page.languages %}
