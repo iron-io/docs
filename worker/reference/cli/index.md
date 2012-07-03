@@ -58,7 +58,7 @@ The same applies to the `IRON_TOKEN` environment variable.
 
 ## Creating & Uploading Code Packages
 
-You can use [.worker files](/worker/reference/worker-files) to define workers 
+You can use [.worker files](/worker/reference/dotworker) to define workers 
 that can then be uploaded using the command line tools.
 
 The command to upload a worker is:
