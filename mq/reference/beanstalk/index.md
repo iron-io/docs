@@ -46,7 +46,7 @@ To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on 
 </table>
 
 **NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our 
-[HTTP clients](/mq/code/libraries) if you are on Rackspace. 
+[HTTP clients](/mq/libraries) if you are on Rackspace. 
 
 ## Authentication
 Because IronMQ requires authentication, the first command you send must put a message onto the queue with the contents:
