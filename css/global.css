@@ -453,11 +453,9 @@ a span.arrow-link {
     font-size: 16px;
     display:inline-block;
     margin:0 6px 0 0;
-    color: #363636;
     display:inline-block;
 }
 a span.arrow-link:hover {
-    color:#000000;
     margin:0 15px 0 0;
 }
 a span.arrow-link > span.arrow {
