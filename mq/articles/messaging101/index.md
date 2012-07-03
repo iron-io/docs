@@ -5,6 +5,8 @@ section: mq
 breadcrumbs:
   - ['Articles', '/articles']
   - ['Messaging 101', '/messaging101']
+categories:
+  - articles
 ---
 
 <h1>Messaging 101</h1>
