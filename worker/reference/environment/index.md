@@ -54,7 +54,7 @@ The standard worker sandbox environment contains a certain amount of accessible 
 Tip: We recommend distributing workloads over multiple workers -- not only for better resource management but also to take advantage of massive concurrency enabled by a cloud worker system. 
 
 ## Local Disk Space (per Worker)
-Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files and can perform most ordinary file operations. You access this disk space via the `user_dir` directory.
+Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files and can perform most ordinary file operations. this directory is used as the current directory ("<span class="fixed-width">.</span>") when executing your workers.
 
 <div class="grey-box">
 <b>Local Disk Space:</b> 10GB
