@@ -1,9 +1,8 @@
 ---
-title: IronMQ Code
+title: IronMQ Client Libraries
 layout: default
 section: mq
 breadcrumbs:
-  - ['Code', '/code']
   - ['Client Libraries', '/libraries']
 ---
 
