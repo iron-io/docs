@@ -50,7 +50,7 @@ section: worker
 
 <p>You need to package all your code <span style="text-decoration: underline;">and its dependencies</span> together and upload it to IronWorker before it can be run&mdash;your code is run <em>entirely</em> on IronWorker's servers, so it's important that you package <strong>all</strong> the dependencies of your code with it. There are several parts to this step, but you only need to do this when you want to update your worker's code, so you shouldn't have to do it very often.</p>
 
-<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's exhaustive <a href="/worker/reference/dotfiles">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
+<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's exhaustive <a href="/worker/reference/worker-files">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
 
 {% highlight ruby %}
 runtime "ruby" # The runtime the code should be run under: ruby, python, php, or sh
