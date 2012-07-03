@@ -248,8 +248,7 @@ Sample:
 
 ### Upload a Code Package
 
-You will almost always want to use one of our [client libraries](/worker/code) in the language of your choice to make
-this easier. And if you want to make your own client, please read [Packaging Code for IronWorker](/worker/code/packaging).
+You will almost always want to use one of our [client libraries](/worker/languages) in the language of your choice to make this easier.
 
 #### Endpoint
 
@@ -267,6 +266,7 @@ The request should be JSON-encoded and contain the following information:
 * **file**: A multipart-encoded string containing the zip file you are uploading.
 * **file_name**: The name of the file within the zip that will be executed when a task is run.
 * **runtime**: The language to execute your worker with. The following values are valid:
+  * sh
   * ruby
   * python
   * php
