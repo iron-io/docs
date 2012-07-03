@@ -1,13 +1,13 @@
 ---
-title: Beanstalkd
+title: Beanstalk Interface
 layout: default
 section: mq
 breadcrumbs:
-  - ['Code', '/code']
-  - ['Beanstalkd', '/beanstalkd']
+  - ['Reference', '/reference']
+  - ['Beanstalk Interface', '/beanstalk']
 ---
 
-# Beanstalkd Support
+# {{ page.title }}
 
 You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice. 
 
