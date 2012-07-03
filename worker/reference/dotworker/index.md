@@ -4,7 +4,7 @@ layout: default
 section: worker
 breadcrumbs:
   - ['Reference', '/reference']
-  - ['.worker Files', 'worker-files']
+  - ['.worker Files', 'dotworker']
 ---
 
 # .worker Files
