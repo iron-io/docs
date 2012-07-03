@@ -1,0 +1,118 @@
+---
+title: IronMQ Documentation
+layout: default
+section: mq
+---
+
+<h1>{{ page.title }}</h1>
+<p class="subtitle">Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages.</p>
+
+<a href="#configure">
+  <div class="number-box">
+    <div class="number-circle">1</div>
+    Configure Your Client
+  </div>
+</a>
+
+<a href="#post">
+  <div class="number-box">
+    <div class="number-circle">2</div>
+    Post A Message To The Queue
+  </div>
+</a>
+
+<a href="#get">
+  <div class="number-box">
+    <div class="number-circle">3</div>
+    Get A Message Off The Queue
+  </div>
+</a>
+
+<a href="#delete">
+  <div class="number-box">
+    <div class="number-circle">4</div>
+    Delete A Message From The Queue
+  </div>
+</a>
+
+<h2>The Post/Get/Delete Paradigm</h2>
+
+<p>IronMQ was designed to be fault-tolerant while still maintaining an only-delivered-once promise. It accomplishes this through a special Post/Get/Delete paradigm for messages. Essentially, messages are posted to a queue. Clients then get the messages off the queue; each get "reserves" the message for a configurable amount of time&mdash;<a href="/mq/reference/environment">the default is one minute</a>&mdash;after which the message is returned to the queue. While the client has the message reserved, it should complete its operation, then delete the message from the queue. This paradigm ensures that failures while processing a message simply return the message to the queue to be reprocessed and that only one client will ever be processing a message at any given point. Assuming the client deletes the message (as it should), the message will only ever be processed once.</p>
+
+<h2 id="configure">Configure Your Client</h2>
+
+<p>Before you can interact with IronMQ, you're going to have to configure your <a href="/mq/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/mq/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+<p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
+
+<h2 id="post">Post A Message To The Queue</h2>
+
+<p>You can post messages from any of our <a href="/mq/libraries">client libraries</a>. Here's an example using Ruby.</p>
+
+{% highlight ruby %}
+@ironmq = IronMQ::Client.new()
+@queue = @ironmq.queue("first_queue")
+msg = @queue.post("hello world!")
+{% endhighlight %}
+
+<p>Messages can be more than just strings, though; they can be anything that can be JSON-encoded. The library will automatically encode it for you before sending:</p>
+
+{% highlight ruby %}
+@ironmq = IronMQ::Client.new()
+@queue = @ironmq.queue("first_queue")
+msg = @queue.post({"lang" => "ruby"})
+{% endhighlight %}
+
+<p>You can also specify a <span class="fixed-width">delay</span> and/or a <span class="fixed-width">expires_in</span> option when posting a message. The <span class="fixed-width">delay</span> option determines how long, in seconds, the message will not be available on the queue for:
+
+{% highlight ruby %}
+@ironmq = IronMQ::Client.new()
+@queue = @ironmq.queue("first_queue")
+msg = @queue.post("hello world!", {:delay => 60})
+{% endhighlight %}
+
+<p>The <span class="fixed-width">expires_in</span> option determins how long, in seconds, the message will be available on the queue before it is evicted. The default is 7 days, and it cannot exceed 30 days.</p>
+
+{% highlight ruby %}
+@ironmq = IronMQ::Client.new()
+@queue = @ironmq.queue("first_queue")
+msg = @queue.post("hello world!", {:delay => 60})
+{% endhighlight %}
+
+<h2 id="get">Get A Message Off The Queue</h2>
+
+<p>Getting a message off the queue is simple:</p>
+
+{% highlight ruby %}
+@ironmq = IronMQ::Client.new()
+@queue = @ironmq.queue("first_queue")
+msg = @queue.get()
+p msg
+{% endhighlight %}
+
+<p>You can, of course, use whatever library you like (or <a href="/mq/reference/api">write your own</a>) to do this.</p>
+
+<h2 id="delete">Delete A Message From The Queue</h2>
+
+<p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This ensures that the message is only processed once, but that it will not be lost if the processor fails during processing. Deleting is as simple as posting and getting:</p>
+
+{% highlight ruby %}
+@ironmq = IronMQ::Client.new()
+@queue = @ironmq.queue("first_queue")
+msg = @queue.get()
+
+# You would do some processing here
+# This next line is the deleting part
+msg.delete()
+{% endhighlight %}
+
+<h2>Next Steps</h2>
+
+<p>You should be well-grounded in the post/get/delete paradigm now&mdash;now you need to build something cool! To get up and running quickly, you may want to look into our <a href="/mq/reference/beanstalk">Beanstalk</a> support. Check out our <a href="/mq/reference">reference material</a> to explore the boundaries of IronMQ's system. If you're looking for information on best practices, use cases, or our integrations with the leading cloud platforms, you may want to check out our <a href="/worker/articles">articles</a>.</p>
