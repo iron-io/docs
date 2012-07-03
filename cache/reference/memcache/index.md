@@ -1,10 +1,10 @@
 ---
-title: Memcached Interface
+title: Memcache Interface
 layout: default
 section: cache
 breadcrumbs:
-  - ['Code', '/code']
-  - ['Memcached', '/memcached']
+  - ['Reference', '/reference']
+  - ['Memcache', '/memcache']
 languages:
   - name: 'ruby'
   - name: 'python'
@@ -14,7 +14,7 @@ languages:
 {% include language-switcher-head.html %}
 {% endif %}
 
-# Memcached Interface
+# {{ page.title }}
 
 You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
 with IronCache. As an industry standard, memcached has accumulated an 
@@ -111,18 +111,18 @@ with memcached quickly:
 
 {% include language-switcher.html %}
 <div class="ruby">
-{% include cache/code/memcached/ruby/install.html %}
+{% include cache/reference/memcache/ruby/install.html %}
 </div>
 <div class="python">
-{% include cache/code/memcached/python/install.html %}
+{% include cache/reference/memcache/python/install.html %}
 </div>
 
 ### Run the Example
 
 {% include language-switcher.html %}
 <div class="ruby">
-{% include cache/code/memcached/ruby/code.html %}
+{% include cache/reference/memcache/ruby/code.html %}
 </div>
 <div class="python">
-{% include cache/code/memcached/python/code.html %}
+{% include cache/reference/memcache/python/code.html %}
 </div>
