@@ -59,7 +59,7 @@ runtime "ruby"
 exec "hello_worker.rb"
 {% endhighlight %}
 
-You could include gems and other files in there too. [You can read more about .worker files here](http://dev.iron.io/worker/reference/worker-files/).
+You could include gems and other files in there too. [You can read more about .worker files here](http://dev.iron.io/worker/reference/dotworker/).
 
 ### Upload your Worker
 
@@ -173,7 +173,7 @@ official client libraries both have built-in solutions for this, called "merging
 
 #### Gems
 
-A [limited number of gems](#installed_gems) are included in the cloud environment, 
+A [limited number of gems](#environment) are included in the cloud environment, 
 but we highly recommend that you don't rely on those&mdash;we can't guarantee 
 they will always match the version you require or will continue to exist on our 
 system. They are largely there to make quick tests easier. For production workers, 
