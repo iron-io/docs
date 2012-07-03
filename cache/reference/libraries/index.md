@@ -1,13 +1,13 @@
 ---
-title: IronCache Client Libraries
+title: Client Libraries
 layout: default
 section: cache
 breadcrumbs:
-  - ['Code', '/code']
+  - ['Reference', '/reference']
   - ['Client Libraries', '/libraries']
 ---
 
-# Client Libraries
+# {{ page.title }}
 
 These are our official client libraries that use the IronCache <a href="/cache/reference/api">REST/HTTP API</a>.
 
