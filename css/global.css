@@ -664,3 +664,9 @@ a.grid-box span.grid-box-text {
 a.grid-box span.grid-box-text h3 {
     margin:0 0 10px;
 }
+.content-container .content a.grid-box[href^="http"] {
+  background: none;
+  padding-right: 0px;
+  white-space: normal;
+  position: static;
+}
