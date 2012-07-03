@@ -5,6 +5,8 @@ section: cache
 breadcrumbs:
   - ['Articles', '/articles']
   - ['System Designs', '/design']
+categories:
+  - articles
 ---
 
 # {{ page.title }}
