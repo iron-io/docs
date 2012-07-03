@@ -5,6 +5,8 @@ section: worker
 breadcrumbs:
   - ['Articles', '/articles']
   - ['Common Use Cases', '/usecases']
+categories:
+  - articles
 ---
 
 # Common Use Cases

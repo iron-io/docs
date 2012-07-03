@@ -5,6 +5,8 @@ section: worker
 breadcrumbs:
   - ['Articles', '/articles']
   - ['Specific Language/Framework Support', '/languages']
+categories:
+  - articles
 ---
 
 <h1>Specific Language/Framework Support</h1>

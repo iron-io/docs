@@ -1,18 +1,6 @@
-<h4><a href="/worker/start" style="">Getting Started</a></h4>
-<ul>
-<!--  <li><a {% if page.url == "/worker/start/first-worker/index.html" %}class="selected"{% endif %} href="/worker/start/first-worker">Your First Worker</a></li> -->
-</ul>
+<h4><a {%if page.url == "/worker/index.html" %}class="selected" {% endif %}href="/worker">Overview</a></h4>
 
-<h4>Reference</h4>
-<ul>
-  <li><a {% if page.url == "/worker/reference/api/index.html" %}class="selected"{% endif %} href="/worker/reference/api">REST/HTTP API</a></li>
-  <li><a {% if page.url == "/worker/reference/webhooks/index.html" %}class="selected"{% endif %} href="/worker/reference/webhooks">Webhooks</a></li>
-  <li><a {% if page.url == "/worker/reference/environment/index.html" %}class="selected"{% endif %} href="/worker/reference/environment">System Environment</a></li>
-  <li><a {% if page.url == "/worker/reference/security/index.html" %}class="selected"{% endif %} href="/worker/reference/security">Securing Your Workers</a></li>
-  <li><a {% if page.url == "/worker/reference/disk-storage/index.html" %}class="selected"{% endif %} href="/worker/reference/disk-storage">Disk Storage</a></li>
-</ul>
-
-<h4><a href="/worker/languages">Languages</a></h4>
+<h4>Languages</h4>
 <ul>
   <li><a {% if page.url == "/worker/languages/ruby/index.html" %}class="selected"{% endif %} href="/worker/languages/ruby">Ruby</a></li>
   <li><a {% if page.url == "/worker/languages/php/index.html" %}class="selected"{% endif %} href="/worker/languages/php">PHP</a></li>
@@ -22,11 +10,15 @@
   <li><a {% if page.url == "/worker/languages/go/index.html" %}class="selected"{% endif %} href="/worker/languages/go">Go</a></li>
 </ul>
 
-<h4><a href="/worker/languages">Articles</a></h4>
+<h4>Reference</h4>
 <ul>
-  <li><a {% if page.url == "/worker/articles/integrations/index.html" %}class="selected" {%else %}{% if page.categories contains "integrations" %}class="selected"{% endif %}{% endif %} href="/worker/articles/integrations">Integrations</a></li>
-  <li><a {% if page.url == "/worker/articles/data/index.html" %}class="selected"{% else %}{% if page.categories contains "data" %}class="selected"{% endif %}{% endif %} href="/worker/articles/data">Data &amp; Databases</a></li>
-  <li><a {% if page.url == "/worker/articles/platforms/index.html" %}class="selected"{% else %}{% if page.categories contains "platforms" %}class="selected"{% endif %}{% endif %} href="/worker/articles/platforms">Platforms</a></li>
+  <li><a {% if page.url == "/worker/reference/api/index.html" %}class="selected"{% endif %} href="/worker/reference/api">REST/HTTP API</a></li>
+  <li><a {% if page.url == "/worker/reference/environment/index.html" %}class="selected"{% endif %} href="/worker/reference/environment">System Environment</a></li>
+  <li><a {% if page.url == "/worker/reference/configuration/index.html" %}class="selected"{% endif %} href="/worker/reference/configuration">Configuration</a></li>
+  <li><a {% if page.url == "/worker/reference/dotworker/index.html" %}class="selected"{% endif %} href="/worker/reference/dotworker">.worker Files</a></li>
+  <li><a {% if page.url == "/worker/reference/cli/index.html" %}class="selected" {% endif %} href="/worker/reference/cli" title="Command Line Interface">CLI</a></li>
 </ul>
+
+<h4><a {% if page.categories contains "articles" %}class="selected" {% endif %}href="/worker/articles">Articles</a></h4>
 
 {% include sidemenu_all.html %}
