@@ -58,7 +58,7 @@ where you can see your project ID and token listed.
 
 ![IronMQ add-on](http://i.imgur.com/RpEzb.png)
 
-IronMQ has clients for [a lot of languages](/mq/code/libraries/), and you can 
+IronMQ has clients for [a lot of languages](/mq/libraries/), and you can 
 always use [the REST/HTTP API](/mq/reference/api/) (or write your own!). This 
 means your existing Heroku stack should work without any changes. The 
 remainder of this article will be using the Ruby library, but all of the 
