@@ -284,8 +284,14 @@ warning. Reliance on these gems may cause some unexpected conflicts in your code
 
 ### Ruby on Rails
 
-While it is possible (and easy!) to upload, queue, and manage your workers from 
-within a Rails application, IronWorker **does not currently support** running 
-workers built to use the Rails framework. Your workers should be independent, 
-discreet parts of an application, a mini-application in themselves, so 
+It is possible (and easy!) to upload, queue, and manage your workers from
+within a Rails application, however it's important to note that IronWorker
+**does not auto include** all of your models, libraries, and other Rails stack pieces.
+Your workers should be independent, discreet parts of an application, a mini-application in themselves, so
 framework usage in workers, in general, is frowned upon.
+
+
+Check out [this blog post](http://blog.iron.io/2012/06/powerful-email-infrastructure-with.html) for step by step instructions on including and using
+the Rails stack including some models, ActionMailer's, etc.
+
+

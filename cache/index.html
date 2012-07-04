@@ -1,0 +1,112 @@
+---
+title: IronCache Documentation
+layout: default
+section: cache
+---
+
+<h1>{{ page.title }}</h1>
+<p class="subtitle">Share state between your applications and processes using a key/value store built for the cloud.</p>
+
+<a href="#configure">
+  <div class="number-box">
+    <div class="number-circle">1</div>
+    Configure Your Client
+  </div>
+</a>
+
+<a href="#set">
+  <div class="number-box">
+    <div class="number-circle">2</div>
+    Set The Item In The Cache
+  </div>
+</a>
+
+<a href="#get">
+  <div class="number-box">
+    <div class="number-circle">3</div>
+    Retrieve The Item from The Cache
+  </div>
+</a>
+
+<a href="#delete">
+  <div class="number-box">
+    <div class="number-circle">4</div>
+    Delete The Item From The Cache
+  </div>
+</a>
+
+<h2 id="configure">Configure Your Client</h2>
+
+<p>Before you can interact with IronCache, you're going to have to configure your <a href="/cache/reference/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/cache/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+<p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
+
+<h2 id="set">Set The Item In The Cache</h2>
+
+<p>Addding an item to a cache and updating an item in a cache are the same thing; if the item exists, it will be overwritten. Otherwise, it will be created.</p>
+
+<p>You can set an item using any of the <a href="/cache/reference/libraries">client libraries</a> or even using our <a href="/cache/reference/api">REST/HTTP API</a> directly. We're going to use the Ruby library for these examples.</p>
+
+{% highlight ruby %}
+cache = IronCache::Client.new(:cache_name=>"test_cache")
+cache.items.put("test_item", "Hello, World!")
+{% endhighlight %}
+
+<p>The cache is technically a key/value store that enforces strings as the key and the value. It is common, however, to use JSON to store complex objects in the cache. The client libraries will all transparently translate all non-string values into their JSON equivalent before storing them in the cache.</p>
+
+{% highlight ruby %}
+cache = IronCache::Client.new(:cache_name=>"test_cache")
+cache.items.put("complex_item", {"greeting" => "Hello", "target" => "world"})
+{% endhighlight %}
+
+<p>The server also detects numbers and stores them natively as numbers, which lets you increment and decrement them atomically. This means that if two clients try to increment the item at the same time, they won't overwrite each other; the item will be incremented twice. This is extremely useful when clients are run in a highly parallel environment like IronWorker.</p>
+
+{% highlight ruby %}
+cache = IronCache::Client.new(:cache_name=>"test_cache")
+cache.items.put("number_item", 42) # store a number
+item = cache.items.get("number_item") # retrieve the item
+p item.value # output the value
+cache.items.increment("number_item") # increment the item
+p cache.items.get("number_item").value  # retrieve the item and print its value again
+{% endhighlight %}
+
+<p>Items stored in the cache are meant for short term storage <em>only</em>. There is no option to store an item in the cache permanently. <a href="/cache/reference/environment">By default</a>, items will expire after 7 days. You can configure items to expire after up to 30 days, however. (You can also set them to expire before 7 days, if you're so inclined.)</p>
+
+{% highlight ruby %}
+cache = IronCache::Client.new(:cache_name=>"test_cache")
+cache.items.put("long_lived_item", 42, {:expires_in => 60 * 60 * 24 * 30}) # this item won't expire for a month
+{% endhighlight %}
+
+<p>Your items will never be evicted from the cache before their expiration date, unless you manually delete them.</p>
+
+<h2 id="get">Retrieve The Item From The Cache</h2>
+
+<p>Retrieving an item from the cache is fairly straightforward:</p>
+
+{% highlight ruby %}
+cache = IronCache::Client.new(:cache_name=>"test_cache")
+item = cache.items.get("number_item")
+p item.value
+{% endhighlight %}
+
+<p>Unlike IronMQ, you do not lock an item when you retrieve it from a cache. Two or more clients may retrieve an item at the same time.</p>
+
+<h2 id="delete">Delete The Item From The Cache</h2>
+
+<p>Should you decide you would like to remove an item from a cache before its expiration date, you can do so with a simple API call:</p>
+
+{% highlight ruby %}
+cache = IronCache::Client.new(:cache_name=>"test_cache")
+cache.items.delete("number_item") # remove it
+{% endhighlight %}
+
+<h2>Next Steps</h2>
+
+<p>You should be pretty familiar with IronCache now&mdash;now you need to build something cool! To get up and running quickly, you may want to look into our <a href="/cache/reference/memcache">Memcache</a> support. Check out our <a href="/cache/reference">reference material</a> to explore the boundaries of IronCache's system. If you need suggestions for how to use IronCache, you may want to take a look at our <a href="/solutions">solutions</a> for some inspiration.</p>

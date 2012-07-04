@@ -43,7 +43,7 @@ section: worker
 
 <p>You need to package all your code <span style="text-decoration: underline;">and its dependencies</span> together and upload it to IronWorker before it can be run&mdash;your code is run <em>entirely</em> on IronWorker's servers, so it's important that you package <strong>all</strong> the dependencies of your code with it. There are several parts to this step, but you only need to do this when you want to update your worker's code, so you shouldn't have to do it very often.</p>
 
-<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's exhaustive <a href="/worker/reference/dotfiles">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
+<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's exhaustive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
 
 {% highlight ruby %}
 runtime "ruby" # The runtime the code should be run under: ruby, python, php, or sh
@@ -120,4 +120,4 @@ iron_worker schedule -n MyFirstWorker --run-every 60
 
 <h2>Next Steps</h2>
 
-<p>You should be well-grounded in the IronWorker paradigm now&mdash;now you need to build something cool! Check out our <a href="/worker/languages">language documentation</a> or <a href="/worker/reference">reference material</a> to explore the boundaries of IronWorker's system. If you're looking for ideas on how to integrate with other APIs or how to accomplish specific use cases, you may want to check out our <a href="/worker/articles">articles</a>.</p>
+<p>You should be well-grounded in the IronWorker paradigm now&mdash;now you need to build something cool! Check out our <a href="/worker/languages">language documentation</a> or <a href="/worker/reference">reference material</a> to explore the boundaries of IronWorker's system. If you're looking for ideas about what you can accomplish with IronWorker, you may want to check out our <a href="/solutions">solutions</a>.</p>

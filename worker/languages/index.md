@@ -18,16 +18,17 @@ language.
 
 There are four levels of support languages move through on IronWorker:
 
-* **Working**: The language will run on the IronWorker cloud. There are no 
-tools available for it, no adjustments have been made for it.
-* **Convenient**: The language runs on the IronWorker cloud, and one or more of 
-the existing client libraries has a helper function dedicated to the language.
-* **Native**: The language runs on the IronWorker cloud and has its own client 
-library written in the language itself. The client library has full support for 
-the [API](/worker/reference/api), but has no helper functions or inadequate 
-helper functions for non-API tasks, like packaging code.
-* **Full**: The language runs on the IronWorker cloud and has its own full-featured 
+* **Full**: The language runs on the IronWorker cloud and has its own full-featured
 client library, with full support for the API and a rich set of helper functions.
+* **Native**: The language runs on the IronWorker cloud and has its own client
+library written in the language itself. The client library has full support for
+the [API](/worker/reference/api), but has no helper functions or inadequate
+helper functions for non-API tasks, like packaging code.
+* **Convenient**: The language runs on the IronWorker cloud, and one or more of
+the existing client libraries has a helper function dedicated to the language.
+* **Working**: The language will run on the IronWorker cloud. There are no
+tools available for it, no adjustments have been made for it.
+
 
 ## Current Languages
 
