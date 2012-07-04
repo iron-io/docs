@@ -672,6 +672,7 @@ a.grid-box span.grid-box-text h3 {
 .flow-steps {
     position:relative;
     margin:30px 0 0;
+    text-align:center;
 }
 .flow-steps .step {
     display:inline-block;
