@@ -7,35 +7,29 @@ section: cache
 <h1>{{ page.title }}</h1>
 <p class="subtitle">Share state between your applications and processes using a key/value store built for the cloud.</p>
 
-<a href="#configure">
-  <div class="number-box">
-    <div class="number-circle">1</div>
-    Configure Your Client
-  </div>
-</a>
+<div class="flow-steps">
+	<div class="step">
+		<a class="number" href="#configure">1</a>
+		<a class="title" href="#configure">Configure Your Client</a>
+	</div>
 
-<a href="#set">
-  <div class="number-box">
-    <div class="number-circle">2</div>
-    Set The Item In The Cache
-  </div>
-</a>
+	<div class="step">
+		<a class="number" href="#set">2</a>
+		<a class="title" href="#set">Set The Item In The Cache</a>
+	</div>
 
-<a href="#get">
-  <div class="number-box">
-    <div class="number-circle">3</div>
-    Retrieve The Item from The Cache
-  </div>
-</a>
+	<div class="step">
+		<a class="number" href="#get">3</a>
+		<a class="title" href="#get">Retrieve The Item From The Cache</a>
+	</div>
 
-<a href="#delete">
-  <div class="number-box">
-    <div class="number-circle">4</div>
-    Delete The Item From The Cache
-  </div>
-</a>
+	<div class="step">
+		<a class="number" href="#delete">4</a>
+		<a class="title" href="#delete">Delete The Item From The Cache</a>
+	</div>
+</div>
 
-<h2 id="configure">Configure Your Client</h2>
+<h2 id="configure">1. Configure Your Client</h2>
 
 <p>Before you can interact with IronCache, you're going to have to configure your <a href="/cache/reference/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/cache/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
 
@@ -48,7 +42,7 @@ section: cache
 
 <p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
 
-<h2 id="set">Set The Item In The Cache</h2>
+<h2 id="set">2. Set The Item In The Cache</h2>
 
 <p>Addding an item to a cache and updating an item in a cache are the same thing; if the item exists, it will be overwritten. Otherwise, it will be created.</p>
 
@@ -86,7 +80,7 @@ cache.items.put("long_lived_item", 42, {:expires_in => 60 * 60 * 24 * 30}) # thi
 
 <p>Your items will never be evicted from the cache before their expiration date, unless you manually delete them.</p>
 
-<h2 id="get">Retrieve The Item From The Cache</h2>
+<h2 id="get">3. Retrieve The Item From The Cache</h2>
 
 <p>Retrieving an item from the cache is fairly straightforward:</p>
 
@@ -98,7 +92,7 @@ p item.value
 
 <p>Unlike IronMQ, you do not lock an item when you retrieve it from a cache. Two or more clients may retrieve an item at the same time.</p>
 
-<h2 id="delete">Delete The Item From The Cache</h2>
+<h2 id="delete">4. Delete The Item From The Cache</h2>
 
 <p>Should you decide you would like to remove an item from a cache before its expiration date, you can do so with a simple API call:</p>
 

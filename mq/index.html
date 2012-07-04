@@ -7,39 +7,33 @@ section: mq
 <h1>{{ page.title }}</h1>
 <p class="subtitle">Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages.</p>
 
-<a href="#configure">
-  <div class="number-box">
-    <div class="number-circle">1</div>
-    Configure Your Client
-  </div>
-</a>
+<div class="flow-steps">
+	<div class="step">
+		<a class="number" href="#configure">1</a>
+		<a class="title" href="#configure">Configure Your Client</a>
+	</div>
 
-<a href="#post">
-  <div class="number-box">
-    <div class="number-circle">2</div>
-    Post A Message To The Queue
-  </div>
-</a>
+	<div class="step">
+		<a class="number" href="#post">2</a>
+		<a class="title" href="#post">Post A Message To The Queue</a>
+	</div>
 
-<a href="#get">
-  <div class="number-box">
-    <div class="number-circle">3</div>
-    Get A Message Off The Queue
-  </div>
-</a>
+	<div class="step">
+		<a class="number" href="#get">3</a>
+		<a class="title" href="#get">Get A Message Off The Queue</a>
+	</div>
 
-<a href="#delete">
-  <div class="number-box">
-    <div class="number-circle">4</div>
-    Delete A Message From The Queue
-  </div>
-</a>
+	<div class="step">
+		<a class="number" href="#delete">4</a>
+		<a class="title" href="#delete">Delete A Message From The Queue</a>
+	</div>
+</div>
 
 <h2>The Post/Get/Delete Paradigm</h2>
 
 <p>IronMQ was designed to be fault-tolerant while still maintaining an only-delivered-once promise. It accomplishes this through a special Post/Get/Delete paradigm for messages. Essentially, messages are posted to a queue. Clients then get the messages off the queue; each get "reserves" the message for a configurable amount of time&mdash;<a href="/mq/reference/environment">the default is one minute</a>&mdash;after which the message is returned to the queue. While the client has the message reserved, it should complete its operation, then delete the message from the queue. This paradigm ensures that failures while processing a message simply return the message to the queue to be reprocessed and that only one client will ever be processing a message at any given point. Assuming the client deletes the message (as it should), the message will only ever be processed once.</p>
 
-<h2 id="configure">Configure Your Client</h2>
+<h2 id="configure">1. Configure Your Client</h2>
 
 <p>Before you can interact with IronMQ, you're going to have to configure your <a href="/mq/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/mq/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
 
@@ -52,7 +46,7 @@ section: mq
 
 <p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
 
-<h2 id="post">Post A Message To The Queue</h2>
+<h2 id="post">2. Post A Message To The Queue</h2>
 
 <p>You can post messages from any of our <a href="/mq/libraries">client libraries</a>. Here's an example using Ruby.</p>
 
@@ -86,7 +80,7 @@ msg = @queue.post("hello world!", {:delay => 60})
 msg = @queue.post("hello world!", {:delay => 60})
 {% endhighlight %}
 
-<h2 id="get">Get A Message Off The Queue</h2>
+<h2 id="get">3. Get A Message Off The Queue</h2>
 
 <p>Getting a message off the queue is simple:</p>
 
@@ -99,7 +93,7 @@ p msg
 
 <p>You can, of course, use whatever library you like (or <a href="/mq/reference/api">write your own</a>) to do this.</p>
 
-<h2 id="delete">Delete A Message From The Queue</h2>
+<h2 id="delete">4. Delete A Message From The Queue</h2>
 
 <p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This ensures that the message is only processed once, but that it will not be lost if the processor fails during processing. Deleting is as simple as posting and getting:</p>
 
