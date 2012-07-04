@@ -668,3 +668,40 @@ a.grid-box span.grid-box-text h3 {
   white-space: normal;
   position: static;
 }
+
+.flow-steps {
+    position:relative;
+    margin:30px 0 0;
+}
+.flow-steps .step {
+    display:inline-block;
+    text-align:center;
+    width:120px;
+    vertical-align:top;
+    margin:0 20px 0 0;
+}
+.flow-steps .step.last {
+    margin:0;
+}
+.flow-steps a.title {
+    font-weight:bold;
+    text-decoration:none;
+    color:#000000;
+    font-size:12px;
+    line-height:14px;
+}
+.flow-steps a.number {
+    display:block;
+    margin:0 auto;
+    position:relative;
+    text-align:center;
+    vertical-align:middle;
+    height:48px;
+    width:58px;
+    background:url(/images/flow-steps-step-bg.png) no-repeat;
+    font-size:30px;
+    color:#ffffff;
+    text-decoration:none;
+    padding:16px 0 0;
+    
+}
