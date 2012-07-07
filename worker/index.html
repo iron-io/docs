@@ -16,34 +16,29 @@ section: worker
 
 	<div class="step">
     	<a class="number" href="#upload">2</a>
-    	<a class="title" href="#upload">Create &amp; Upload A Code Package</a>
+    	<a class="title" href="#upload">Create and Upload Your Code Package</a>
 	</div>
 
 	<div class="step">
-  		<a class="number" href="#queue">3</a>
-    	<a class="title" href="#queue">Queue A Task</a>
-  	</div>
-
-  	<div class="step">
-    	<a class="number" href="#schedule">4</a>
-    	<a class="title" href="#schedule">Schedule A Task</a>
+  		<a class="number" href="#tasks">3</a>
+    	<a class="title" href="#queue">Queue/Schedule Your Task</a>
   	</div>
 
   	<div class="step last">
-  		<a class="number" href="#inspect">5</a>
+  		<a class="number" href="#inspect">4</a>
     	<a class="title" href="#inspect">Inspect Your Worker</a>
   	</div>
 </div>
 
 <h2 id="write">1. Write Your Worker</h2>
 
-<p>IronWorker's <a href="/worker/reference/environment">environment</a> is nothing special&mdash;it's just a Linux sandbox that your task is executed in. Anything you write that runs on your machine, if packaged correctly, should be able to be run in IronWorker. For example workers, check out the <a href="https://github.com/iron-io/iron_worker_examples">examples repository</a> or the page for <a href="/worker/languages">your favorite language</a>.</p>
+<p>IronWorker's <a href="/worker/reference/environment">environment</a> is just a Linux sandbox that your task is executed in. Anything you write that runs on your machine, if packaged correctly, should be able to be run in IronWorker. For example workers, check out the <a href="https://github.com/iron-io/iron_worker_examples">examples repository</a> or the page for <a href="/worker/languages">your favorite language</a>.</p>
 
-<h2 id="upload">2. Create &amp; Upload A Code Package</h2>
+<h2 id="upload">2. Create &amp; Upload Your Code Package</h2>
 
-<p>You need to package all your code <span style="text-decoration: underline;">and its dependencies</span> together and upload it to IronWorker before it can be run&mdash;your code is run <em>entirely</em> on IronWorker's servers, so it's important that you package <strong>all</strong> the dependencies of your code with it. There are several parts to this step, but you only need to do this when you want to update your worker's code, so you shouldn't have to do it very often.</p>
+<p>You need to package all your code <strong>and its dependencies</strong> together and upload it to IronWorker before it can be run&mdash;your code is run <em>entirely</em> on IronWorker's servers, so it's important that you package <strong>all</strong> the dependencies of your code with it. There are several parts to this step, but you only need to do this when you want to update your worker's code, so you shouldn't have to do it very often.</p>
 
-<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's exhaustive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
+<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's extensive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
 
 {% highlight ruby %}
 runtime "ruby" # The runtime the code should be run under: ruby, python, php, or sh
@@ -66,7 +61,7 @@ file "config.json" # The path to a file to upload as a dependency of the worker;
 
 <p>Once that's done, you can just run <span class="fixed-width">iron_worker upload firstworker -n MyFirstWorker</span> to upload the code package to IronWorker and name it "MyFirstWorker"&mdash;you'll use the name to queue tasks to the package. That's it, your code is ready to be run!</p>
 
-<h2 id="queue">3. Queue A Task</h2>
+<h2 id="queue">3. Queue/Schedule Your Task</h2>
 
 <p>Now that you've uploaded your worker, you can just queue tasks against it to run them, in parallel, in the cloud. You can queue a task directly from <a href="/worker/languages">your favorite language</a> or from the command line:</p>
 
@@ -85,8 +80,6 @@ iron_worker queue -n MyFirstWorker -p '{"key1": "val1", "obj1": {"key2": "val2"}
 <div class="alert">
   <p><strong>Protip:</strong> we also offer a <a href="/worker/webhooks">webhook endpoint</a>&mdash;it's great for automating tasks. <a href="http://blog.iron.io/2012/04/one-webhook-to-rule-them-all-one-url.html">Check out our blog post</a> for more information on this.</p>
 </div>
-
-<h2 id="schedule">4. Schedule A Task</h2>
 
 <p>Sometimes you want tasks that repeat periodically, or that will be queued (queued, not executed) at a specific time or even date. IronWorker supports <a href="/worker/scheduling">scheduled tasks</a> for this purpose. They're just like regular tasks (payloads, executed in the cloud, in parallel), but they're queued on your schedule.</p>
 
@@ -110,7 +103,7 @@ iron_worker schedule -n MyFirstWorker --run-every 60
 
 <p>There are a lot of options to configure scheduling tasks; check our <a href="/worker/scheduling">more detailed guide</a> to see more of the options.</p>
 
-<h2 id="inspect">5. Inspect Your Worker</h2>
+<h2 id="inspect">4. Inspect Your Worker</h2>
 
 <p>In a perfect world, your workers would just work. Sometimes though, workers have bugs in them or an API is down or something goes wrong. In these situations, it's helpful to have some debugging tools.</p>
 
