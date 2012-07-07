@@ -22,10 +22,10 @@ languages:
 
 ## Quick Start
 
-### Get the gem.
+### Get the Ruby gem.
 
 We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
-gem for Ruby workers. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
+gem for Ruby workers, which makes packaging code libraries and other dependencies much easier. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
 gem. We recommend switching off that at your earliest convenience.
 
 You can install the `iron_worker_ng` gem from the command line:
