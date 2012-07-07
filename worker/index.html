@@ -34,7 +34,7 @@ section: worker
 
 <p>IronWorker's <a href="/worker/reference/environment">environment</a> is just a Linux sandbox that your task is executed in. Anything you write that runs on your machine, if packaged correctly, should be able to be run in IronWorker. For example workers, check out the <a href="https://github.com/iron-io/iron_worker_examples">examples repository</a> or the page for <a href="/worker/languages">your favorite language</a>.</p>
 
-<h2 id="upload">2. Create &amp; Upload Your Code Package</h2>
+<h2 id="upload">2. Create and Upload Your Code Package</h2>
 
 <p>You need to package all your code <strong>and its dependencies</strong> together and upload it to IronWorker before it can be run&mdash;your code is run <em>entirely</em> on IronWorker's servers, so it's important that you package <strong>all</strong> the dependencies of your code with it. There are several parts to this step, but you only need to do this when you want to update your worker's code, so you shouldn't have to do it very often.</p>
 
@@ -61,7 +61,7 @@ file "config.json" # The path to a file to upload as a dependency of the worker;
 
 <p>Once that's done, you can just run <span class="fixed-width">iron_worker upload firstworker -n MyFirstWorker</span> to upload the code package to IronWorker and name it "MyFirstWorker"&mdash;you'll use the name to queue tasks to the package. That's it, your code is ready to be run!</p>
 
-<h2 id="queue">3. Queue/Schedule Your Task</h2>
+<h2 id="tasks">3. Queue/Schedule Your Task</h2>
 
 <p>Now that you've uploaded your worker, you can just queue tasks against it to run them, in parallel, in the cloud. You can queue a task directly from <a href="/worker/languages">your favorite language</a> or from the command line:</p>
 
