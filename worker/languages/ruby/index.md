@@ -5,20 +5,9 @@ section: worker
 breadcrumbs:
   - ['Languages', '/languages']
   - ['Ruby', '/ruby']
-languages:
-  - name: 'iron_worker_ng'
-    command: 'ruby'
-    extension: 'rb'
-  - name: 'iron_worker'
-    command: 'ruby'
-    extension: 'rb'
 ---
 
 # Writing Workers in Ruby
-
-{% if page.languages %}
-{% include language-switcher-head.html %}
-{% endif %}
 
 ## Quick Start
 
@@ -116,40 +105,6 @@ read the file it specifies, and parse the JSON contained within that file&mdash;
 the official client libraries take care of that for you and let you just access 
 the payload as a variable at runtime. Here's an example:
 
-{% include language-switcher.html %}
-<div class="iron_worker">
-In the upload script:
-{% highlight ruby %}
-require 'iron_worker'
-require_relative 'example_worker.rb'
-
-IronWorker.configure do |config|
-  config.token = "INSERT TOKEN HERE"
-  config.project_id = "INSERT PROJECT_ID HERE"
-end
-
-worker = ExampleWorker.new
-worker.arg1 = "test"
-worker.another_arg = ["apples", "oranges"]
-worker.queue
-{% endhighlight %}
-
-In the worker:
-{% highlight ruby %}
-require 'iron_worker'
-
-class ExampleWorker < IronWorker::Base
-  attr_accessor :arg1
-  attr_accessor :another_arg
-
-  def run
-    puts arg1
-    puts another_arg.inspect
-  end
-end
-{% endhighlight %}
-</div>
-<div class="iron_worker_ng">
 In the upload script:
 {% highlight ruby %}
 require 'iron_worker_ng'
@@ -163,7 +118,6 @@ In the worker:
 puts params['arg1']
 puts params['another_arg'].inspect
 {% endhighlight %}
-</div>
 
 ### Merging
 
@@ -209,67 +163,67 @@ see the `iron_worker` gem's [wiki page on merge_worker](https://github.com/iron-
 The Ruby environment that the workers run in on IronWorker is as follows:
 
 <table class="reference">
-  <tbody>
-    <tr>
-      <td style="width: 25%;">Ruby Version</td>
-      <td style="width: 75%;"><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">1.9.2p280</a></td>
-    </tr>
-    <tr>
-      <td colspan="2" style="text-align: center; width: 100%;"><h4 style="padding: 0px;">Installed Gems</h4></td>
-    </tr>
-    <tr>
-      <td>bson_ext</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>curb</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>em-http-request</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>eventmachine</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>mysql2</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>net-scp</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>net-sftp</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>net-ssh</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>nokogiri</td>
-      <td><strong>Note:</strong> You may need to merge nokogiri using <span class="fixed-width">merge_gem</span> and then unmerge it using <span class="fixed_width">unmerge_gem</span></td>
-    </tr>
-    <tr>
-      <td>rmagick</td>
-      <td><strong>Note:</strong> Import this as follows: <span class="fixed-width">require 'RMagick'</span></td>
-    </tr>
-    <tr>
-      <td>sqlite3</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>typhoeus</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>yajl-ruby</td>
-      <td></td>
-    </tr>
-  </tbody>
+<tbody>
+<tr>
+<td style="width: 25%;">Ruby Version</td>
+<td style="width: 75%;"><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">1.9.2p280</a></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center; width: 100%;"><h4 style="padding: 0px;">Installed Gems</h4></td>
+</tr>
+<tr>
+<td>bson_ext</td>
+<td></td>
+</tr>
+<tr>
+<td>curb</td>
+<td></td>
+</tr>
+<tr>
+<td>em-http-request</td>
+<td></td>
+</tr>
+<tr>
+<td>eventmachine</td>
+<td></td>
+</tr>
+<tr>
+<td>mysql2</td>
+<td></td>
+</tr>
+<tr>
+<td>net-scp</td>
+<td></td>
+</tr>
+<tr>
+<td>net-sftp</td>
+<td></td>
+</tr>
+<tr>
+<td>net-ssh</td>
+<td></td>
+</tr>
+<tr>
+<td>nokogiri</td>
+<td><strong>Note:</strong> You may need to merge nokogiri using <span class="fixed-width">merge_gem</span> and then unmerge it using <span class="fixed_width">unmerge_gem</span></td>
+</tr>
+<tr>
+<td>rmagick</td>
+<td><strong>Note:</strong> Import this as follows: <span class="fixed-width">require 'RMagick'</span></td>
+</tr>
+<tr>
+<td>sqlite3</td>
+<td></td>
+</tr>
+<tr>
+<td>typhoeus</td>
+<td></td>
+</tr>
+<tr>
+<td>yajl-ruby</td>
+<td></td>
+</tr>
+</tbody>
 </table>
 
 You can just use `require '{GEM_NAME}'` to use these gems in your workers. 
@@ -293,5 +247,3 @@ framework usage in workers, in general, is frowned upon.
 
 Check out [this blog post](http://blog.iron.io/2012/06/powerful-email-infrastructure-with.html) for step-by-step instructions on including and using
 the Rails stack including some models, ActionMailers, etc.
-
-
