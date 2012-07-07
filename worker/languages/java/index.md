@@ -62,7 +62,7 @@ A hello.jar file will now be in the same directory as your worker.
 
 ### Create a script to upload the worker.
 
-Insert your token, project ID, and the path to your Go executable into the 
+Insert your token, project ID, and the path to your jar file into the 
 following script and save it as something like "upload.rb":
 
 {% highlight ruby %}
