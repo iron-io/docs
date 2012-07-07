@@ -9,6 +9,8 @@ breadcrumbs:
 
 # Writing Workers in Ruby
 
+Ruby was the first language supported on IronWorker, and a lot of IronWorker's tools are written in Ruby. It is probably the easiest language to get your worker running in, as it is the most-supported language on the platform. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
+
 ## Quick Start
 
 ### Get the Ruby gem.
@@ -16,6 +18,8 @@ breadcrumbs:
 We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
 gem. We recommend switching off that at your earliest convenience.
+
+You're going to need to have Ruby version 1.9 or higher installed to use the `iron_worker_ng` gem.
 
 You can install the `iron_worker_ng` gem from the command line:
 {% highlight bash %}
@@ -48,15 +52,28 @@ runtime "ruby"
 exec "hello_worker.rb"
 {% endhighlight %}
 
-You could include gems and other files in there too. [You can read more about .worker files here](http://dev.iron.io/worker/reference/dotworker/).
+You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
-### Upload your Worker
+### Create Your Configuration File
+
+The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
+
+### Upload Your Worker
 
 {% highlight bash %}
 iron_worker upload hello
 {% endhighlight %}
 
-That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to hud.iron.io, click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
+That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
 
 Let’s quickly test it by running:
 
@@ -67,9 +84,7 @@ Now that we know it works, let’s queue up a bunch of tasks from code.
 
 ### Queue up Tasks for your Worker
 
-Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue (create a task). The following is an example in ruby, save the following into a file called `queue.rb`:
-
-bump
+Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue or create a task. The following is an example in ruby, save the following into a file called `queue.rb`:
 
 {% highlight ruby %}
 require 'iron_worker_ng'
