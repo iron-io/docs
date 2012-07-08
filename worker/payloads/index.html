@@ -1,0 +1,37 @@
+---
+layout: post
+title: Worker Payloads
+section: worker
+breadcrumbs:
+  - ["Worker Payloads", "/payloads"]
+---
+
+<h1>{{ page.title }}</h1>
+
+<p>Workers are just sections of discreet, modular code that you queue tasks against. It's rare, though, that you want to run the same code repeatedly with no changes or variables. To address this, IronWorker has the concept of a "payload". The payload is the same thing, conceptually, as a command line argument or a function argument&mdash;just a piece of information you want to supply at runtime and make available in the worker itself.</p>
+
+<h2>Typical Use</h2>
+
+<p>Payloads are usually passed as a JSON-formatted string containing a JSON object of data you want to pass into your worker. This is so common, a lot of the client libraries (all the official client libraries, except the <a href="/worker/reference/cli">CLI</a>) will automatically convert whatever you pass them into a JSON-encoded string.</p>
+
+<p>Some of the client libraries (<span class="fixed-width">iron_worker_php</span> and <span class="fixed-width">iron_worker_ng</span>, for Ruby workers only) will even parse the string for you inside the worker and make the data available through a function or a variable. In Ruby, you can access the payload through the <span class="fixed-width">params</span> variable in your worker. In PHP, you can access the payload using the following:</p>
+
+{% highlight php %}
+<?php
+$args = getArgs();
+?>
+{% endhighlight %}
+
+<h2>Advanced Use</h2>
+
+<p>Technically, your payload is just a string. You can send whatever you want, formatted however you want, as long as it fits within the <a href="/worker/reference/environment/#maximum_data_payload">request limits</a>.</p>
+
+<p>Retrieving the payload takes a little work, however. The payload is stored in a file in the worker's directory when the worker is queued, and the location of that file is passed to the worker using the <span class="fixed-width">-payload</span> command line flag. To get the contents of your payload, you need to:
+
+<ol>
+  <li>Read the <span class="fixed-width">-payload</span> flag.</li>
+  <li>Open and read the file specified by the <span class="fixed-width">-payload</span> flag.</li>
+  <li>Parse the contents of the file (if encoding was used).</li>
+</ol>
+
+<p>With that additional effort, however, you can use whatever payload formatting you prefer.</p>
