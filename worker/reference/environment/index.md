@@ -13,7 +13,7 @@ breadcrumbs:
 The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
 
 <div class="grey-box">
-<b>Operating System:</b> Ubuntu Linux 11.10
+<b>Operating System:</b> Ubuntu Linux 12.04
 </div>
 
 ## Installed Linux Packages
