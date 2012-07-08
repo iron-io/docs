@@ -17,7 +17,7 @@ processing queues immediately or scheduled to run at a later time. This article 
 
 ## Quick Start
 
-### Get the `iron_worker_ng` gem.
+### Get The `iron_worker_ng` Gem
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
@@ -27,7 +27,7 @@ gem install iron_worker_ng
 
 It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
 
-### Write your Go worker.
+### Write Your Go Worker
 
 {% highlight go %}
 package main
@@ -39,7 +39,7 @@ func main() {
 }
 {% endhighlight %}
 
-### Compile your Go worker to a binary file.
+### Compile Your Go Worker To A Binary File
 
 You may need to recompile Go with `GOOS=linux`, `GOARCH=amd64`, and 
 `CGO_ENABLED=0` before you can [cross compile](#cross_compiling) from Windows, Mac, or a 32 bit 
@@ -49,13 +49,13 @@ machine.
 GOOS=linux GOARCH=amd64 go build
 {% endhighlight %}
 
-### Create a .worker file
+### Create A .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
 {% highlight ruby %}
-# set the runtime language; this should be "sh" for Go workers
-runtime "sh"
+# set the runtime language; this should be "go" for Go workers
+runtime "go"
 # exec is the file that will be executed when you queue a task
 exec "hello_worker" # replace with your Go executable
 {% endhighlight %}
@@ -89,7 +89,7 @@ Now look at the task list in HUD and you should see your task show up and go fro
 
 Now that we know it works, let’s queue up a bunch of tasks from code.
 
-### Queue a task to the new worker.
+### Queue Tasks To The New Worker
 
 Once your code has been uploaded, it's easy to queue a task to it. It's a single, 
 authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON 
