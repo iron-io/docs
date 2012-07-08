@@ -13,7 +13,7 @@ Ruby was the first language supported on IronWorker, and a lot of IronWorker's t
 
 ## Quick Start
 
-### Get the Ruby gem.
+### Get the Ruby Gem.
 
 We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
@@ -26,7 +26,7 @@ You can install the `iron_worker_ng` gem from the command line:
 gem install iron_worker_ng
 {% endhighlight %}
 
-### Write your Ruby worker.
+### Write Your Ruby Worker.
 
 {% highlight ruby %}
 # Worker code can be anything you want.
@@ -40,13 +40,13 @@ end
 puts "HelloWorker completed at #{Time.now}"
 {% endhighlight %}
 
-### Create a .worker file
+### Create a .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the
 following in a file called `hello.worker`
 
 {% highlight ruby %}
-# define the runtime language, this can be ruby, java, node, php, go, etc.
+# set the runtime language. Ruby workers use "ruby"
 runtime "ruby"
 # exec is the file that will be executed:
 exec "hello_worker.rb"
@@ -82,7 +82,7 @@ Let’s quickly test it by running:
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 Now that we know it works, let’s queue up a bunch of tasks from code.
 
-### Queue up Tasks for your Worker
+### Queue Up Tasks For Your Worker
 
 Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue or create a task. The following is an example in ruby, save the following into a file called `queue.rb`:
 
