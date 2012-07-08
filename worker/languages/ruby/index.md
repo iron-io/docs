@@ -256,7 +256,7 @@ warning. Reliance on these gems may cause some unexpected conflicts in your code
 It is possible to upload, queue, and manage your workers from
 within a Rails application, but it's important to note that IronWorker
 **does not auto-include** your models, libraries, and other Rails stack pieces.
-Your workers should be independent, discreet parts of an application, a mini-application in themselves, so
+Your workers should be independent, discrete parts of an application, a mini-application in themselves, so
 framework usage in workers, in general, is frowned upon.
 
 
