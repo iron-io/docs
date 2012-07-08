@@ -1,5 +1,7 @@
 <p>In the interest of letting users stop writing increasingly lengthy configuration files and start writing code, the maintainers of Iron.io's official client libraries have developed a global configuration scheme for all of Iron.io's services. This lets you set your project ID and token once to make them available to across all of Iron.io's services, and even across workspaces. The authors took care to provide a scheme that would allow users the flexibility to set a default, then override it at the service, workspace, or client level.</p>
 
+<p>The two most common variables used in configuration are the <strong>project ID</strong> and the <strong>token</strong>. The <strong>project ID</strong> is a unique identifier for your project and can be found <a href="https://hud.iron.io">in the HUD</a>. The <strong>token</strong> is one of your OAuth2 tokens, which can be found <a href="https://hud.iron.io/tokens">on their own page</a> in the HUD.</p>
+
 <h2>Quick Start</h2>
 
 <p>Create a file called <span class="fixed-width">.iron.json</span> in your home directory (i.e., <span class="fixed-width">~/.iron.json</span>) and enter your Iron.io credentials:</p>
