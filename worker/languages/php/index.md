@@ -9,9 +9,11 @@ breadcrumbs:
 
 # Writing Workers in PHP
 
+PHP has grown to be one of the most popular languages to write web software in. You can add some power to your current PHP application using PHP workers on IronWorker. This article will help you get started with PHP workers, but you should be familiar with the [basics of IronWorker](/worker).
+
 ## Quick Start
 
-### Get the PHP client library
+### Get The PHP Client Library
 
 You can download the PHP client library, `iron_worker_php`, from [Github](https://github.com/iron-io/iron_worker_php). 
 If you're using PHP 5.3 or greater, you can just download the 
@@ -22,7 +24,7 @@ from [here](https://github.com/iron-io/iron_core_php).
 If you aren't sure which version of PHP you're using, you can run `php -v` from 
 your shell to find out.
 
-### Write your PHP worker.
+### Write Your PHP Worker
 
 Save the following as `worker.php`:
 
@@ -32,11 +34,22 @@ echo "Hello from PHP";
 ?>
 {% endhighlight %}
 
-### Create a script to upload the worker.
+### Create Your Configuration File
 
-Insert your token (which you can get from the [HUD](https://hud.iron.io/tokens)) 
-and you project ID (also available in the HUD) into the script below, and save 
-it as `upload.php`:
+The PHP library uses a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
+
+### Create A Script To Upload The Worker.
+
+Save the following as `upload.php`:
 
 {% highlight php %}
 <?php
@@ -46,18 +59,20 @@ require("phar://iron_worker.phar");
 //require("IronCore.class.php");
 
 $name = "PHPWorker";
-$worker = new IronWorker(array("token" => "INSERT TOKEN HERE", "project_id" => "INSERT PROJECT_ID HERE"));
-IronWorker::createZip(dirname(__FILE__), array("worker.php"), $name.".zip", true);
-$res = $worker->postCode("worker.php", $name.".zip", $name);
+$worker = new IronWorker();
+// First param is the folder containing your worker files
+// Second param is the file to be run when tasks are queued
+// Third param is the name of your worker
+$res = $worker->upload(dirname(__FILE__), "worker.php", $name);
 print_r($res);
 ?>
 {% endhighlight %}
 
 You can then upload your worker by running `php upload.php`.
 
-### Queue a task to the new worker.
+### Queue A Task To The New Worker.
 
-Insert your token and project ID into the script below and save it as `enqueue.php`:
+Save the following as `enqueue.php`:
 
 {% highlight php %}
 <?
@@ -66,7 +81,7 @@ require("phar://iron_worker.phar");
 //require("IronWorker.class.php");
 //require("IronCore.class.php");
 
-$worker = new IronWorker(array("token" => "INSERT TOKEN HERE", "project_id" => "INSERT PROJECT_ID HERE"));
+$worker = new IronWorker();
 $res = worker->postTask("PHPWorker");
 print_r($res);
 ?>
