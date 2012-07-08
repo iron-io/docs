@@ -641,17 +641,59 @@ a.grid-box .img-bg {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-a.grid-box .img-bg.api-bg {
-    background:url(/images/worker/reference/api_screenshot.jpg) no-repeat;
+a.grid-box .img-bg.worker.api-bg {
+    background:url(/images/worker/reference/api_screenshot.png) no-repeat;
 }
-a.grid-box .img-bg.environment-bg {
-    background:url(/images/worker/reference/environment_screenshot.jpg) no-repeat;
+a.grid-box .img-bg.worker.environment-bg {
+    background:url(/images/worker/reference/environment_screenshot.png) no-repeat;
 }
-a.grid-box .img-bg.security-bg {
-    background:url(/images/worker/reference/api_screenshot.jpg) no-repeat;
+a.grid-box .img-bg.worker.configuration-bg {
+    background:url(/images/worker/reference/configuration_screenshot.png) no-repeat;
 }
-a.grid-box .img-bg.configuration-bg {
-    background:url(/images/worker/reference/configuration_screenshot.jpg) no-repeat;
+a.grid-box .img-bg.worker.dotworker-bg {
+    background:url(/images/worker/reference/dotworker_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.worker.cli-bg {
+    background:url(/images/worker/reference/cli_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.worker.chat-bg {
+    background:url(/images/worker/reference/chat_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.mq.api-bg {
+    background:url(/images/mq/reference/api_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.mq.environment-bg {
+    background:url(/images/mq/reference/environment_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.mq.configuration-bg {
+    background:url(/images/worker/reference/configuration_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.mq.clouds-bg {
+    background:url(/images/mq/reference/clouds_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.mq.beanstalk-bg {
+    background:url(/images/mq/reference/beanstalk_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.mq.chat-bg {
+    background:url(/images/mq/reference/chat_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.cache.api-bg {
+    background:url(/images/cache/reference/api_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.cache.environment-bg {
+    background:url(/images/cache/reference/environment_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.cache.configuration-bg {
+    background:url(/images/cache/reference/configuration_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.cache.libraries-bg {
+    background:url(/images/cache/reference/libraries_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.cache.memcache-bg {
+    background:url(/images/cache/reference/memcache_screenshot.png) no-repeat;
+}
+a.grid-box .img-bg.cache.chat-bg {
+    background:url(/images/cache/reference/chat_screenshot.png) no-repeat;
 }
 a.grid-box span.grid-box-text {
     display:inline-block;
