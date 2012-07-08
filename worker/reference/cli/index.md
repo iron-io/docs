@@ -78,7 +78,7 @@ Testing workers no longer takes a script that creates a task to test with.
 Instead, you can queue tasks directly from the command line:
 
 {% highlight bash %}
-iron_worker queue [OPTIONS]
+iron_worker queue $WORKER [--priority 0|1|2] [--payload '{"somekey": "some_value", "array": ["item1", "item2"]}']
 {% endhighlight %}
 
 You can find a list of options for the command by running `iron_worker queue --help`.
@@ -91,7 +91,7 @@ or at a later time, just as the gem would allow you to in a script.
 You can schedule a task using the following command:
 
 {% highlight bash %}
-iron_worker schedule [OPTIONS]
+iron_worker schedule [--start-at "2013-01-01T00:00:00-04:00"] [--run-times 4] [--priority 0|1|2] [--payload '{"somekey": "some_value"}']
 {% endhighlight %}
 
 You can find a list of options for the command by running `iron_worker schedule --help`.
