@@ -28,7 +28,7 @@ constraints. See the [iron_worker_ng README](https://github.com/iron-io/iron_wor
 for more information.
 
 **Note:** Gems with binary extensions **will not be merged**, as binary extensions are 
-not supported on IronWorker at this time. We have [a set](/worker/languages/ruby/#installed_gems) 
+not supported on IronWorker at this time. We have [a set](/worker/languages/ruby/#environment) 
 of the most common gems with binary extensions pre-installed in the environment 
 for your use. If you need a gem that is not installed, feel free to [let us know](http://get.iron.io/chat).
 
