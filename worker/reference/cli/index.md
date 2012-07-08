@@ -32,7 +32,7 @@ from [the Ruby website](http://www.ruby-lang.org/en/downloads/).
 Once Ruby is installed, you'll need the IronWorkerNG gem:
 
 {% highlight bash %}
-sudo gem install iron_worker_ng
+gem install iron_worker_ng
 {% endhighlight %}
 
 You should be all set up now. To check your installation, run the following:
