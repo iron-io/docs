@@ -220,7 +220,7 @@ The Ruby environment that the workers run in on IronWorker is as follows:
 </tr>
 <tr>
 <td>nokogiri</td>
-<td><strong>Note:</strong> You may need to merge nokogiri using <span class="fixed-width">merge_gem</span> and then unmerge it using <span class="fixed_width">unmerge_gem</span></td>
+<td></td>
 </tr>
 <tr>
 <td>rmagick</td>
