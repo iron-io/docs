@@ -37,8 +37,8 @@ console.log("Hello World from Node.js.");
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
 {% highlight ruby %}
-# set the runtime language; this should be "nodejs" for Node.js workers
-runtime "nodejs"
+# set the runtime language; this should be "node" for Node.js workers
+runtime "node"
 # exec is the file that will be executed when you queue a task
 exec "hello_worker.js" # replace with your file
 {% endhighlight %}

@@ -54,8 +54,8 @@ GOOS=linux GOARCH=amd64 go build
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
 {% highlight ruby %}
-# set the runtime language; this should be "go" for Go workers
-runtime "go"
+# set the runtime language; this should be "binary" for Go workers
+runtime "binary"
 # exec is the file that will be executed when you queue a task
 exec "hello_worker" # replace with your Go executable
 {% endhighlight %}
