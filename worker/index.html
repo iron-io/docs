@@ -66,13 +66,13 @@ file "config.json" # The path to a file to upload as a dependency of the worker;
 <p>Now that you've uploaded your worker, you can just queue tasks against it to run them, in parallel, in the cloud. You can queue a task directly from <a href="/worker/languages">your favorite language</a> or from the command line:</p>
 
 {% highlight bash %}
-iron_worker queue -n MyFirstWorker
+iron_worker queue -n firstworker # important! This is the name of the file, not the worker
 {% endhighlight %}
 
 <p>You can also specify a payload, which is a string that will be supplied to your worker while it runs the task, letting you pass in information. Almost all payloads are JSON strings:</p>
 
 {% highlight bash %}
-iron_worker queue -n MyFirstWorker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "arr1": ["item1", "item2"]}'
+iron_worker queue -n firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "arr1": ["item1", "item2"]}'
 {% endhighlight %}
 
 <p>Most clients&mdash;including the CLI&mdash;will automatically handle parsing the payload in your worker, so you can just access the variable or function they give you in your worker's code. We have <a href="/worker/payloads">more information</a> on payloads, if you're curious.</p>
@@ -86,19 +86,19 @@ iron_worker queue -n MyFirstWorker -p '{"key1": "val1", "obj1": {"key2": "val2"}
 <p>Again, you can schedule a task from your <a href="/worker/languages">favorite language</a> or from the command line:</p>
 
 {% highlight bash %}
-iron_worker schedule -n MyFirstWorker --start-at "2012-07-19T23:51:00-04:00"
+iron_worker schedule -n firstworker --start-at "2012-07-19T23:51:00-04:00"
 {% endhighlight %}
 
 <p>If you want to just start a task after a short delay, you can do that too. Just specify <span class="fixed-width">--delay</span> followed by the number of seconds the task should be delayed.</p>
 
 {% highlight bash %}
-iron_worker schedule -n MyFirstWorker --delay 120
+iron_worker schedule -n firstworker --delay 120
 {% endhighlight %}
 
 </p>If you want to have a task repeat, you can just specify the <span class="fixed-width">--run-every</span> option, followed by the number of seconds between each run:</p>
 
 {% highlight bash %}
-iron_worker schedule -n MyFirstWorker --run-every 60
+iron_worker schedule -n firstworker --run-every 60
 {% endhighlight %}
 
 <p>There are a lot of options to configure scheduling tasks; check our <a href="/worker/scheduling">more detailed guide</a> to see more of the options.</p>
