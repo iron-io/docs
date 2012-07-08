@@ -13,7 +13,7 @@ Ruby was the first language supported on IronWorker, and a lot of IronWorker's t
 
 ## Quick Start
 
-### Get the Ruby Gem.
+### Get The Ruby Gem
 
 We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
@@ -26,7 +26,7 @@ You can install the `iron_worker_ng` gem from the command line:
 gem install iron_worker_ng
 {% endhighlight %}
 
-### Write Your Ruby Worker.
+### Write Your Ruby Worker
 
 {% highlight ruby %}
 # Worker code can be anything you want.
