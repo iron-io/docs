@@ -8,7 +8,7 @@ breadcrumbs:
 
 <h1>{{ page.title }}</h1>
 
-<p>Workers are just sections of discrete, modular code that you queue tasks against. It's rare, though, that you want to run the same code repeatedly with no changes or variables. To address this, IronWorker has the concept of a "payload". The payload is the same thing, conceptually, as a command line argument or a function argument&mdash;just a piece of information you want to supply at runtime and make available in the worker itself.</p>
+<p>Workers are just sections of discrete, modular code that you queue tasks against. It's rare, though, that you want to run the same code repeatedly with no changes or variables. To address this, IronWorker has the concept of a "payload". The payload is the same thing, conceptually, as an argument or variable that is passed to a function, method, or command&mdash;just a piece of information you want to supply at runtime and make available in the worker itself.</p>
 
 <h2>Typical Use</h2>
 
@@ -26,12 +26,12 @@ $args = getArgs();
 
 <p>Technically, your payload is just a string. You can send whatever you want, formatted however you want, as long as it fits within the <a href="/worker/reference/environment/#maximum_data_payload">request limits</a>.</p>
 
-<p>Retrieving the payload takes a little work, however. The payload is stored in a file in the worker's directory when the worker is queued, and the location of that file is passed to the worker using the <span class="fixed-width">-payload</span> command line flag. To get the contents of your payload, you need to:
+<p>If your client library doesn't automatically load the payload, or if you want to manually parse the payload, retrieving it takes a little more effort. The payload is stored in a file in the worker's directory when the worker is queued, and the location of that file is passed to the worker using the <span class="fixed-width">-payload</span> command line flag. To get the contents of your payload, you need to:
 
 <ol>
-  <li>Read the <span class="fixed-width">-payload</span> flag.</li>
+	<li>Read the <span class="fixed-width">-payload</span> flag using <span class="fixed-width">argv</span> (or whatever your language uses to read command line flags).</li>
   <li>Open and read the file specified by the <span class="fixed-width">-payload</span> flag.</li>
-  <li>Parse the contents of the file (if encoding was used).</li>
+  <li>Parse the contents of the file (if you encoded the payload when queuing the task).</li>
 </ol>
 
 <p>With that additional effort, however, you can use whatever payload formatting you prefer.</p>
