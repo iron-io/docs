@@ -13,7 +13,7 @@ breadcrumbs:
 The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
 
 <div class="grey-box">
-<b>Operating System:</b> Ubuntu Linux 11.10
+<b>Operating System:</b> Ubuntu Linux 12.04 x64
 </div>
 
 ## Installed Linux Packages
@@ -31,7 +31,7 @@ IronWorker contains several popular Linux packages as part of the standard worke
   </tbody>
 </table>
 
-These are included because they are binary libraries. Language-specific libraries should be included as part of your worker code package.
+These are included because they are binary libraries. Language-specific libraries should be included as part of your worker code package, compiled to target Linux x64 architectures.
 
 If you don't see what you need here, please [contact us](http://support.iron.io/customer/portal/emails/new) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
 

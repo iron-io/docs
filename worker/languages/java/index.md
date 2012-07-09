@@ -9,21 +9,23 @@ breadcrumbs:
 
 # Writing Workers in Java
 
+Java has become one of the most popular languages in the enterprise. With Java workers, you can use the same tools your enterprise software uses, but with the power of the cloud behind it.
+
+Java workers need to be compiled into jar files before they're uploaded. Once they're uploaded to the IronWorker cloud, they can be invoked via a simple API call to be put on the processing queues immediately or scheduled to run at a later time. This article will walk you through the specifics of using Java workers, but you should be familiar with the [basics of IronWorker](/worker).
+
 ## Quick Start
 
-### Get the `iron_worker_ng` gem.
+### Get The `iron_worker_ng` Gem
 
-While there is a [native library](https://github.com/iron-io/iron_worker_java) 
-for interacting with the IronWorker API in Java, the library lacks the ability 
-to create zip files at the moment. This means you need another language's 
-library to upload the workers, after which you can interact with them from 
-Java's library. We're using the `iron_worker_ng` Ruby library to package and 
-upload your workers, and the `iron_worker_java` library to queue tasks. You can 
-download `iron_worker_ng` off [Github](https://github.com/iron-io/iron_worker_ruby_ng) 
-or install it using `gem install iron_worker_ng`. **Note:** You'll need to 
-have Ruby installed to use the gem.
+We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
-### Write your Java worker.
+{% highlight bash %}
+gem install iron_worker_ng
+{% endhighlight %}
+
+It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
+
+### Write Your Java Worker
 
 {% highlight java %}
 public class HelloWorld {
@@ -35,10 +37,10 @@ public class HelloWorld {
 }
 {% endhighlight %}
 
-### Compile your Java worker to a JAR file.
+### Compile Your Java Worker To A jar File.
 
-IronWorker runs JAR files that you upload to the cloud. You need to generate 
-these JAR files first, however. It's likely your development environment 
+IronWorker runs jar files that you upload to the cloud. You need to generate 
+these jar files first, however. It's likely your development environment 
 already has a simple method for generating these files, but in case it doesn't, 
 you can generate them from the command line.
 
@@ -60,27 +62,50 @@ jar cfm hello.jar manifest.txt HelloWorld.class
 
 A hello.jar file will now be in the same directory as your worker.
 
-### Create a script to upload the worker.
+### Create A .worker File
 
-Insert your token, project ID, and the path to your jar file into the 
-following script and save it as something like "upload.rb":
+Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
 {% highlight ruby %}
-require 'iron_worker_ng'
-
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :exec => 'path/to/hello.jar')
-client.codes.create(code)
+# set the runtime language; this should be "java" for Java workers
+runtime "java"
+# exec is the file that will be executed when you queue a task
+exec "hello.jar" # replace with your jar file
 {% endhighlight %}
 
-Run `ruby upload.rb` (or whatever you saved the script as) and it will upload 
-your code to the IronWorker cloud. You can then queue tasks against the code 
-from whatever client you want, including raw API calls.
+### Create Your Configuration File
 
-### Queue a task to the worker.
+The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
+
+### Upload Your Worker
+
+{% highlight bash %}
+iron_worker upload hello
+{% endhighlight %}
+
+That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
+
+Let’s quickly test it by running:
+
+    iron_worker queue hello
+
+Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
+
+Now that we know it works, let’s queue up a bunch of tasks from code.
+
+### Queue Tasks To The New Worker
 
 Once your code has been uploaded, it's easy to queue a task to it. The following 
-example will queue up a task using the `iron_worker_java` library. Just insert 
+example will queue up a task using the [`iron_worker_java`](https://github.com/iron-io/iron_worker_java) library. Just insert 
 your token and project ID into the code.
 
 {% highlight java %}
@@ -120,7 +145,7 @@ turn it into Java objects, and vice-versa. Go ahead and download the latest
 release, unzip it, and copy the gson-#.#.jar file to the directory your 
 worker is in. Rename the jar file to gson.jar, to make life easier.
 
-#### Modify the worker
+#### Modify The Worker
 
 Next, we're going to modify your worker to load the file and parse it as JSON:
 
@@ -197,7 +222,7 @@ public class HelloWorld {
 }
 {% endhighlight %}
 
-#### Recompile the worker
+#### Recompile The jar File
 
 We're going to have to modify that `manifest.txt` file before we can use the 
 GSON jar, though, so replace `manifest.txt` with the following:
@@ -230,17 +255,18 @@ Now we need to generate another jar file:
 jar cfm hello.jar manifest.txt HelloWorld.class
 {% endhighlight %}
 
-#### Package the new dependencies
+#### Update the .worker File and Reupload
 
-Finally, we need to modify the upload script to include the `gson.jar` file 
-in the code package it uploads. The new script is below:
+Finally, we need to modify the `.worker` file to include the `gson.jar` file 
+in the code package it uploads. The new file is below:
 
 {% highlight ruby %}
-require 'iron_worker_ng'
-
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Java.new(:name => "JavaWorker", :exec => 'path/to/hello.jar')
-code.merge_file("path/to/gson.jar")
-
-client.codes.create(code)
+# set the runtime language; this should be "java" for Java workers
+runtime "java"
+# exec is the file that will be executed when you queue a task
+exec "hello.jar" # replace with your jar file
+# file includes a file
+file "path/to/gson.jar" # replace with the path to your gson.jar file
 {% endhighlight %}
+
+Upload that again by running `iron_worker upload hello` and your worker will start printing out the contents of the payload.

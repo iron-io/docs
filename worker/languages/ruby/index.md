@@ -13,7 +13,7 @@ Ruby was the first language supported on IronWorker, and a lot of IronWorker's t
 
 ## Quick Start
 
-### Get the Ruby gem.
+### Get The Ruby Gem
 
 We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
@@ -26,7 +26,7 @@ You can install the `iron_worker_ng` gem from the command line:
 gem install iron_worker_ng
 {% endhighlight %}
 
-### Write your Ruby worker.
+### Write Your Ruby Worker
 
 {% highlight ruby %}
 # Worker code can be anything you want.
@@ -40,13 +40,13 @@ end
 puts "HelloWorker completed at #{Time.now}"
 {% endhighlight %}
 
-### Create a .worker file
+### Create a .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the
 following in a file called `hello.worker`
 
 {% highlight ruby %}
-# define the runtime language, this can be ruby, java, node, php, go, etc.
+# set the runtime language. Ruby workers use "ruby"
 runtime "ruby"
 # exec is the file that will be executed:
 exec "hello_worker.rb"
@@ -82,9 +82,9 @@ Let’s quickly test it by running:
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 Now that we know it works, let’s queue up a bunch of tasks from code.
 
-### Queue up Tasks for your Worker
+### Queue Up Tasks For Your Worker
 
-Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue or create a task. The following is an example in ruby, save the following into a file called `queue.rb`:
+Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue or create a task. The following is an example in ruby, save the following into a file called `enqueue.rb`:
 
 {% highlight ruby %}
 require 'iron_worker_ng'
@@ -96,7 +96,7 @@ end
 
 You can run that code with:
 
-    ruby queue.rb
+    ruby enqueue.rb
 
 ## Deep Dive
 
@@ -117,14 +117,14 @@ Retrieving the payload in Ruby workers is a bit different&mdash;some of the
 clients take care of the dirty work for you. So while it's still the same 
 process&mdash;get the `-payload` argument passed to the script at runtime, 
 read the file it specifies, and parse the JSON contained within that file&mdash;
-the official client libraries take care of that for you and let you just access 
+the official client library takes care of that for you and let you just access 
 the payload as a variable at runtime. Here's an example:
 
 In the upload script:
 {% highlight ruby %}
 require 'iron_worker_ng'
 
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
+client = IronWorkerNG::Client.new
 task_id = client.tasks.create('Worker Name Here', { :arg1 => "Test", :another_arg => ["apples", "oranges"]})
 {% endhighlight %}
 
@@ -138,7 +138,7 @@ puts params['another_arg'].inspect
 
 Because your Ruby workers run in a Ruby environment in the cloud, you need to 
 upload all your gems and other dependencies with your workers. Fortunately, the 
-official client libraries both have built-in solutions for this, called "merging".
+official client library has a built-in solution for this, called "merging".
 
 #### Gems
 
@@ -160,18 +160,6 @@ these auxiliary files.
 
 You can find out more about merging files and directories on the 
 [Merging Files & Directories page](/worker/languages/ruby/merging-files-and-dirs).
-
-#### Workers
-
-Sometimes it's desirable to queue up another worker from within a worker. This 
-is often used to create master/slave setups, where one worker is the "supervisor" 
-and manages a group of other workers. The `iron_worker` gem has built-in 
-support for this operation via a `merge_worker` method.
-
-**Note**: the `iron_worker` gem's `merge_worker` method is **not** analogous to 
-the `iron_worker_ng` gem's `merge_exec` method. The `merge_exec` method will 
-**not** queue up another task. For more information on the `merge_worker` method, 
-see the `iron_worker` gem's [wiki page on merge_worker](https://github.com/iron-io/iron_worker_ruby/wiki/merge_worker).
 
 ### Environment
 
@@ -220,7 +208,7 @@ The Ruby environment that the workers run in on IronWorker is as follows:
 </tr>
 <tr>
 <td>nokogiri</td>
-<td><strong>Note:</strong> You may need to merge nokogiri using <span class="fixed-width">merge_gem</span> and then unmerge it using <span class="fixed_width">unmerge_gem</span></td>
+<td></td>
 </tr>
 <tr>
 <td>rmagick</td>
@@ -256,7 +244,7 @@ warning. Reliance on these gems may cause some unexpected conflicts in your code
 It is possible to upload, queue, and manage your workers from
 within a Rails application, but it's important to note that IronWorker
 **does not auto-include** your models, libraries, and other Rails stack pieces.
-Your workers should be independent, discreet parts of an application, a mini-application in themselves, so
+Your workers should be independent, discrete parts of an application, a mini-application in themselves, so
 framework usage in workers, in general, is frowned upon.
 
 

@@ -3,7 +3,6 @@ title: Webhooks
 layout: default
 section: worker
 breadcrumbs:
-  - ['Reference', '/reference']
   - ['Webhooks', '/webhooks']
 ---
 
@@ -43,7 +42,7 @@ your Github project, click Admin, Service Hooks, then Post-Receive URLs.
 In the text field, add the webhook url for
 your worker, it should look something like this:
 
-    https://worker-aws-us-east-1/projects/{Project ID}/tasks/webhook?code_name={Code Name}
+    https://worker-aws-us-east-1/projects/{Project ID}/tasks/webhook?code_name={Code Name}&oauth={Token}
 
 The upload script above will print the exact URL to your console so you can just copy and paste it.
 

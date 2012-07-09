@@ -12,52 +12,67 @@ breadcrumbs:
 [Node.js](http://www.nodejs.org) is an evented language that brings the well-known 
 Javascript language to server-side development, using Google's [V8](http://code.google.com/p/v8/) 
 runtime. The evented model of programming lends itself nicely to the asynchronous 
-nature of workers, making it a natural fit for IronWorker.
+nature of workers, making it a natural fit for IronWorker. This article will walk you through getting your Node.js workers running on IronWorker, but you should still be familiar with the [basics of IronWorker](/worker).
 
 ## Quick Start
 
-### Get the `iron_worker_ng` gem.
+### Get The `iron_worker_ng` Gem
 
-Node.js is only currently supported at the [Convenient](/worker/languages) 
-level; this means that there isn't a native Node.js library written yet, 
-but some of the other libraries have convenience functions specifically built 
-for Node.js workers. We're working on a Node.js library, but in the meantime, 
-you have two options: use another client library or interact with the [API](/worker/reference/api) 
-manually. We're going to show how to to upload your code using the `iron_worker_ng` 
-Ruby gem and how to queue tasks using raw API calls.
-
-To get the `iron_worker_ng` gem, make sure you have Ruby installed and run the 
-following command:
+We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
 {% highlight bash %}
 gem install iron_worker_ng
 {% endhighlight %}
 
-### Write your Node.js worker.
+It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
+
+### Write Your Node.js Worker
 
 {% highlight js %}
 console.log("Hello World from Node.js.");
 {% endhighlight %}
 
-### Create a script to upload the worker.
+### Create A .worker File
 
-Insert your token, project ID, and the path to your Node.js worker into the 
-following script and save it as something like "upload.rb":
+Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
 {% highlight ruby %}
-require 'iron_worker_ng'
-
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
-code = IronWorkerNG::Code::Node.new(:name => "NodeWorker", :exec => 'PATH/TO/WORKER.js')
-client.codes.create(code)
+# set the runtime language; this should be "node" for Node.js workers
+runtime "node"
+# exec is the file that will be executed when you queue a task
+exec "hello_worker.js" # replace with your file
 {% endhighlight %}
 
-Run `ruby upload.rb` (or whatever you saved the script as) and it will upload 
-your code to the IronWorker cloud. You can then queue tasks against the code 
-from whatever client you want, including raw API calls (which we'll show 
-below).
+### Create Your Configuration File
 
-### Queue a task to the new worker.
+The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
+
+### Upload Your Worker
+
+{% highlight bash %}
+iron_worker upload hello
+{% endhighlight %}
+
+That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
+
+Let’s quickly test it by running:
+
+    iron_worker queue hello
+
+Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
+
+Now that we know it works, let’s queue up a bunch of tasks from code.
+
+### Queue Tasks To The New Worker
 
 Once your code has been uploaded, it's easy to queue a task to it. It's a single, 
 authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON 
