@@ -9,33 +9,53 @@ function initCufon(){Cufon.replace(".main-container h2, .content-container h2,.b
 $(document).ready(function() {
 	
 	function pin_sidebar() {
+		
 	    var sidebar_height = $('.sidebar-content').height();
 	    var window_height = $(window).height();
+	    
+	    var whatever_scrollbar = window.innerHeight;
+	    
+
 	    if (window_height - sidebar_height >= 230) {
 		var offset = $(window).scrollTop();
 	        var bottom_of_sidebar = sidebar_height + offset;
 	        var bottom_of_container = $(".docs").offset().top + $(".docs").height();
-		var sticking_point = bottom_of_container + 20;
+		var sticking_point = bottom_of_container + 20;		
+
+		console.log(bottom_of_sidebar, sticking_point, bottom_of_container);
+		
 		if(bottom_of_sidebar < sticking_point) {
+			console.log(bottom_of_sidebar, sticking_point, bottom_of_container);
 		    if (offset > 230) {
-	                $('.sidebar-content').addClass('pinned');
+		    	console.log("1");
+			//$('.sidebar-content').css("max-height", window_height);
+	    	//$('.sidebar-content').css("overflow-y", "scroll");    
+			$('.sidebar-content').addClass('pinned');
 			$(".sidebar-content").removeClass("stuck");
 			$(".sidebar-content").css("top", '');
     		    } else {
+    		    	console.log("2");
 		        $('.sidebar-content').removeClass('pinned');
 			$(".sidebar-content").removeClass("stuck");
 			$(".sidebar-content").css("top", '');
 	            }
 		} else {
+			console.log("3");
 		    $(".sidebar-content").removeClass("pinned");
 		    $(".sidebar-content").addClass("stuck");
 		    $(".sidebar-content").css("top", sticking_point - sidebar_height - $(".sidebar-nav").offset().top);
 		}
-	    } else {
-	        $('.sidebar-content').removeClass('pinned');
-		$(".sidebar-content").removeClass("stuck");
+	    }
+	    //bounce back
+	     else {
+	    	console.log("4", whatever_scrollbar);
+	    	$('.sidebar-content').css("max-height", whatever_scrollbar);
+	    	$('.sidebar-content').css("overflow-y", "scroll");
+	    //    $('.sidebar-content').removeClass('pinned');
+		//	$(".sidebar-content").removeClass("stuck");
 		$(".sidebar-content").css("top", "");
 	    }
+	    
 	}
 	
 	$(function() {
