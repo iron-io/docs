@@ -117,14 +117,14 @@ Retrieving the payload in Ruby workers is a bit different&mdash;some of the
 clients take care of the dirty work for you. So while it's still the same 
 process&mdash;get the `-payload` argument passed to the script at runtime, 
 read the file it specifies, and parse the JSON contained within that file&mdash;
-the official client libraries take care of that for you and let you just access 
+the official client library takes care of that for you and let you just access 
 the payload as a variable at runtime. Here's an example:
 
 In the upload script:
 {% highlight ruby %}
 require 'iron_worker_ng'
 
-client = IronWorkerNG::Client.new(:token => "TOKEN", :project_id => "PROJECT_ID")
+client = IronWorkerNG::Client.new
 task_id = client.tasks.create('Worker Name Here', { :arg1 => "Test", :another_arg => ["apples", "oranges"]})
 {% endhighlight %}
 
@@ -138,7 +138,7 @@ puts params['another_arg'].inspect
 
 Because your Ruby workers run in a Ruby environment in the cloud, you need to 
 upload all your gems and other dependencies with your workers. Fortunately, the 
-official client libraries both have built-in solutions for this, called "merging".
+official client library has a built-in solution for this, called "merging".
 
 #### Gems
 
@@ -160,18 +160,6 @@ these auxiliary files.
 
 You can find out more about merging files and directories on the 
 [Merging Files & Directories page](/worker/languages/ruby/merging-files-and-dirs).
-
-#### Workers
-
-Sometimes it's desirable to queue up another worker from within a worker. This 
-is often used to create master/slave setups, where one worker is the "supervisor" 
-and manages a group of other workers. The `iron_worker` gem has built-in 
-support for this operation via a `merge_worker` method.
-
-**Note**: the `iron_worker` gem's `merge_worker` method is **not** analogous to 
-the `iron_worker_ng` gem's `merge_exec` method. The `merge_exec` method will 
-**not** queue up another task. For more information on the `merge_worker` method, 
-see the `iron_worker` gem's [wiki page on merge_worker](https://github.com/iron-io/iron_worker_ruby/wiki/merge_worker).
 
 ### Environment
 
