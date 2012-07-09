@@ -19,6 +19,7 @@ IronCache provides a REST/HTTP API to allow you to interact programmatically wit
   </thead>
   <tbody>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches</td><td>GET</td><td><a href="#list_caches" title="List Caches">List Caches</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/clear</td><td>POST</td><td><a href="#clear_a_cache" title="Clear a Cache">Clear a Cache</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span></td><td>PUT</td><td><a href="#add_an_item_to_a_cache" title="Add an Item to a Cache">Add an Item to a Cache</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span>/increment</td><td>POST</td><td><a href="#increment_an_items_value" title="Increment an Item's value">Increment an Item's value</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span></td><td>GET</td><td><a href="#get_an_item_from_a_cache" title="Get an Item from a Cache">Get an Item from a Cache</a></td></tr>
@@ -163,6 +164,29 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches
     "name": "CACHE NAME"
   }
 ]
+{% endhighlight %}
+
+## Clear a Cache
+
+Delete all items in a cache. This cannot be undone.
+
+### Endpoint
+
+<div class="grey-box">
+POST /projects/<span class="variable project_id">{Project ID}</span>/caches/<span class="variable cache_name">{Cache Name}</span>/clear
+</div>
+
+#### URL Parameters
+
+* **Project ID**: Project the cache belongs to
+* **Cache Name**: The name of the cache whose items should be cleared.
+
+### Response
+
+{% highlight js %}
+{
+  "msg": "Stored."
+}
 {% endhighlight %}
 
 ## Add an Item to a Cache
