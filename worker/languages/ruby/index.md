@@ -84,7 +84,7 @@ Now that we know it works, let’s queue up a bunch of tasks from code.
 
 ### Queue Up Tasks For Your Worker
 
-Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue or create a task. The following is an example in ruby, save the following into a file called `queue.rb`:
+Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue or create a task. The following is an example in ruby, save the following into a file called `enqueue.rb`:
 
 {% highlight ruby %}
 require 'iron_worker_ng'
@@ -96,7 +96,7 @@ end
 
 You can run that code with:
 
-    ruby queue.rb
+    ruby enqueue.rb
 
 ## Deep Dive
 
