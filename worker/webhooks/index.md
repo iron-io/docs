@@ -3,7 +3,6 @@ title: Webhooks
 layout: default
 section: worker
 breadcrumbs:
-  - ['Reference', '/reference']
   - ['Webhooks', '/webhooks']
 ---
 
