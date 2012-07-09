@@ -185,7 +185,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/caches/<spa
 
 {% highlight js %}
 {
-  "msg": "Stored."
+  "msg": "Cleared."
 }
 {% endhighlight %}
 
