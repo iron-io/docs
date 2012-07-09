@@ -15,17 +15,17 @@ section: cache
 
 	<div class="step">
 		<a class="number" href="#set">2</a>
-		<a class="title" href="#set">Set The Item In The Cache</a>
+		<a class="title" href="#set">Set the Item in the Cache</a>
 	</div>
 
 	<div class="step">
 		<a class="number" href="#get">3</a>
-		<a class="title" href="#get">Retrieve The Item From The Cache</a>
+		<a class="title" href="#get">Retrieve the Item from the Cache</a>
 	</div>
 
 	<div class="step">
 		<a class="number" href="#delete">4</a>
-		<a class="title" href="#delete">Delete The Item From The Cache</a>
+		<a class="title" href="#delete">Delete the Item from the Cache</a>
 	</div>
 </div>
 
@@ -42,7 +42,7 @@ section: cache
 
 <p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
 
-<h2 id="set">2. Set The Item In The Cache</h2>
+<h2 id="set">2. Set the Item in the Cache</h2>
 
 <p>Addding an item to a cache and updating an item in a cache are the same thing; if the item exists, it will be overwritten. Otherwise, it will be created.</p>
 
@@ -84,7 +84,7 @@ p @cache.get("number_item").value  # retrieve the item and print its value again
 
 <p>Your items will never be evicted from the cache before their expiration date, unless you manually delete them.</p>
 
-<h2 id="get">3. Retrieve The Item From The Cache</h2>
+<h2 id="get">3. Retrieve the Item from the Cache</h2>
 
 <p>Retrieving an item from the cache is fairly straightforward:</p>
 
@@ -97,7 +97,7 @@ p item.value
 
 <p>Unlike IronMQ, you do not lock an item when you retrieve it from a cache. Two or more clients may retrieve an item at the same time.</p>
 
-<h2 id="delete">4. Delete The Item From The Cache</h2>
+<h2 id="delete">4. Delete the Item from the Cache</h2>
 
 <p>Should you decide you would like to remove an item from a cache before its expiration date, you can do so with a simple API call:</p>
 

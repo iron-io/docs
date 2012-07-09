@@ -15,17 +15,17 @@ section: mq
 
 	<div class="step">
 		<a class="number" href="#post">2</a>
-		<a class="title" href="#post">Post A Message To The Queue</a>
+		<a class="title" href="#post">Post a Message to the Queue</a>
 	</div>
 
 	<div class="step">
 		<a class="number" href="#get">3</a>
-		<a class="title" href="#get">Get A Message Off The Queue</a>
+		<a class="title" href="#get">Get a Message off the Queue</a>
 	</div>
 
 	<div class="step">
 		<a class="number" href="#delete">4</a>
-		<a class="title" href="#delete">Delete A Message From The Queue</a>
+		<a class="title" href="#delete">Delete a Message from the Queue</a>
 	</div>
 </div>
 
@@ -46,7 +46,7 @@ section: mq
 
 <p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
 
-<h2 id="post">2. Post A Message To The Queue</h2>
+<h2 id="post">2. Post a Message to the Queue</h2>
 
 <p>You can post messages from any of our <a href="/mq/libraries">client libraries</a>. Here's an example using Ruby.</p>
 
@@ -80,7 +80,7 @@ msg = @queue.post("hello world!", {:delay => 60})
 msg = @queue.post("hello world!", {:delay => 60})
 {% endhighlight %}
 
-<h2 id="get">3. Get A Message Off The Queue</h2>
+<h2 id="get">3. Get a Message off the Queue</h2>
 
 <p>Getting a message off the queue is simple:</p>
 
@@ -93,7 +93,7 @@ p msg
 
 <p>You can, of course, use whatever library you like (or <a href="/mq/reference/api">write your own</a>) to do this.</p>
 
-<h2 id="delete">4. Delete A Message From The Queue</h2>
+<h2 id="delete">4. Delete a Message from the Queue</h2>
 
 <p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This ensures that the message is only processed once, but that it will not be lost if the processor fails during processing. Deleting is as simple as posting and getting:</p>
 
