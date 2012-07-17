@@ -1,5 +1,18 @@
 <h4><a {%if page.url == "/worker/index.html" %}class="selected" {% endif %}href="/worker">Overview</a></h4>
 
+<h4>Reference</h4>
+<ul>
+  <li><a {% if page.url == "/worker/reference/api/index.html" %}class="selected"{% endif %} href="/worker/reference/api">REST/HTTP API</a></li>
+  <li><a {% if page.url == "/worker/reference/environment/index.html" %}class="selected"{% endif %} href="/worker/reference/environment">System Environment</a></li>
+  <li><a {% if page.url == "/worker/reference/configuration/index.html" %}class="selected"{% endif %} href="/worker/reference/configuration">Configuration</a></li>
+  <li><a {% if page.url == "/worker/reference/dotworker/index.html" %}class="selected"{% endif %} href="/worker/reference/dotworker">.worker Files</a></li>
+  <li><a {% if page.url == "/worker/reference/cli/index.html" %}class="selected" {% endif %} href="/worker/reference/cli" title="Command Line Interface">CLI</a></li>
+  <li><a {% if page.url == "/worker/scheduling/index.html" %}class="selected" {% endif %}href="/worker/scheduling" title="Scheduling">Scheduling</a></li>
+  <li><a href="/worker/reference/environment#local_disk_space_per_worker" title="Local Disk">Local Disk</a></li>
+  <li><a href="/worker#inspect" title="Logging">Logging</a></li>
+  <li><a {% if page.url == "/worker/webhooks/index.html" %}class="selected" {% endif %}href="/worker/webhooks" title="Webhooks">Webhooks</a></li>
+</ul>
+
 <h4>Languages</h4>
 <ul>
   <li><a {% if page.url == "/worker/languages/ruby/index.html" %}class="selected"{% endif %} href="/worker/languages/ruby">Ruby</a></li>
@@ -8,19 +21,6 @@
   <li><a {% if page.url == "/worker/languages/java/index.html" %}class="selected"{% endif %} href="/worker/languages/java">Java</a></li>
   <li><a {% if page.url == "/worker/languages/nodejs/index.html" %}class="selected"{% endif %} href="/worker/languages/nodejs">NodeJS</a></li>
   <li><a {% if page.url == "/worker/languages/go/index.html" %}class="selected"{% endif %} href="/worker/languages/go">Go</a></li>
-</ul>
-
-<h4>Reference</h4>
-<ul>
-  <li><a {% if page.url == "/worker/reference/api/index.html" %}class="selected"{% endif %} href="/worker/reference/api">REST/HTTP API</a></li>
-  <li><a {% if page.url == "/worker/reference/environment/index.html" %}class="selected"{% endif %} href="/worker/reference/environment">System Environment</a></li>
-  <li><a {% if page.url == "/worker/reference/configuration/index.html" %}class="selected"{% endif %} href="/worker/reference/configuration">Configuration</a></li>
-  <li><a {% if page.url == "/worker/reference/dotworker/index.html" %}class="selected"{% endif %} href="/worker/reference/dotworker">.worker Files</a></li>
-  <li><a {% if page.url == "/worker/reference/cli/index.html" %}class="selected" {% endif %} href="/worker/reference/cli" title="Command Line Interface">CLI</a></li>
-  <li><a href="/worker/reference/environment#local_disk_space_per_worker" title="Local Disk">Local Disk</a></li>
-  <li><a href="/worker#inspect" title="Logging">Logging</a></li>
-  <li><a {% if page.url == "/worker/webhooks/index.html" %}class="selected" {% endif %}href="/worker/webhooks" title="Webhooks">Webhooks</a></li>
-  <li><a {% if page.url == "/worker/scheduling/index.html" %}class="selected" {% endif %}href="/worker/scheduling" title="Scheduling">Scheduling</a></li>
 </ul>
 
 {% include sidemenu_all.html %}
