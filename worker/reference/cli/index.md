@@ -44,7 +44,7 @@ iron_worker -v
 ## Configuration
 
 The command line tool is really just the Ruby gem, so it follows the global 
-[configuration scheme](/articles/configuration) that all official libraries 
+[configuration scheme](/worker/reference/configuration) that all official libraries 
 use. You can configure the tool by creating an `iron.json` file in the 
 directory of the `.worker` file, an `.iron.json` file in your home directory, 
 or the environment variables. For example, to override the project ID for a 
