@@ -363,6 +363,7 @@ span.fixed-width {
  * Modified alert boxes from Bootstrap
  */
 
+/*
 .alert {
   padding: 4px 14px;
   margin-top: 10px;
@@ -375,11 +376,20 @@ span.fixed-width {
      -moz-border-radius: 4px;
           border-radius: 4px;
 }
+*/
 
+
+.alert {
+    vertical-align:center;
+    padding:5px 0 5px 60px;
+    margin:10px 0;
+    color: #022CB4;
+    min-height:53px;
+    background: url(/images/icon-alert.png) left center no-repeat;
+}
 .alert-heading {
   color: inherit;
 }
-
 .alert-success {
   color: #468847;
   border-color: #468847;

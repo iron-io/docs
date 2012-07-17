@@ -3,43 +3,158 @@ function initCufon(){Cufon.replace(".main-container h2, .content-container h2,.b
 ,w:585,k:{T:45,v:8,w:8,y:8,z:8,x:19,"-":-15,"â€“":-15,"â€”":-15,")":6,"]":6,"}":6,'"':16,"'":16,"â€™":29,"â€":29,",":30,".":30,"â€¦":30}},c:{d:"407,-106r17,91v-26,12,-77,26,-138,26v-152,0,-251,-98,-251,-249v0,-146,100,-260,271,-260v45,0,91,10,119,23r-22,92v-20,-9,-49,-19,-93,-19v-94,0,-149,69,-149,158v0,141,137,187,246,138",w:449,k:{T:13,f:-5,c:9,d:9,e:9,o:9,q:9,t:-15,v:-16,w:-16,y:-16,"-":-9,"â€“":-9,"â€”":-9,'"':-4,"'":-4,"â€˜":-25,"â€œ":-25,"â€™":-16,"â€":-16,",":8,".":8,"â€¦":8}},d:{d:"392,-710r123,0r0,573v0,50,2,104,4,137r-110,0v-4,-24,0,-56,-7,-77v-29,54,-88,88,-159,88v-116,0,-208,-99,-208,-249v-1,-163,101,-260,218,-260v69,0,113,31,139,64r0,-276xm282,-88v61,0,111,-49,110,-123r0,-73v0,-71,-43,-119,-109,-119v-79,0,-123,70,-123,161v0,89,44,154,122,154",w:581,k:{"â€™":-5,"â€":-5,",":10,".":10,"â€¦":10}},e:{d:"479,-209r-326,0v-1,141,181,143,285,104r18,85v-42,17,-100,31,-170,31v-158,0,-251,-98,-251,-247v0,-135,82,-262,238,-262v178,0,223,148,206,289xm153,-295r214,0v1,-45,-19,-119,-101,-119v-76,0,-108,69,-113,119",w:516,k:{T:37,v:3,w:3,y:3,x:8,"-":-29,"â€“":-29,"â€”":-29,'"':3,"'":3,"â€™":24,"â€":24,",":14,".":14,"â€¦":14}},f:{d:"203,0r-123,0r0,-395r-66,0r0,-92r66,0v-2,-77,12,-141,59,-187v53,-52,136,-56,206,-35r-9,95v-13,-5,-30,-9,-52,-9v-69,1,-85,63,-82,136r107,0r0,92r-106,0r0,395",w:319,k:{g:10,c:11,d:11,e:11,o:11,q:11,s:8,t:-13,":":-30,";":-30,")":-86,"]":-86,"}":-86,'"':-48,"'":-48,"â€˜":-45,"â€œ":-45,"â€™":-64,"â€":-64,",":36,".":36,"â€¦":36}},g:{d:"511,-487v-7,109,-3,290,-4,416v0,102,-21,176,-72,221v-90,80,-256,73,-358,20r27,-93v31,18,83,37,142,37v94,0,151,-66,140,-189r-2,0v-28,43,-78,72,-142,72v-121,0,-207,-100,-207,-238v0,-160,104,-257,221,-257v76,0,116,39,143,76r5,-65r107,0xm279,-95v59,0,105,-46,105,-118r0,-79v-2,-67,-42,-112,-104,-112v-69,0,-120,60,-120,159v0,83,42,150,119,150",w:573,k:{T:33,f:-3,i:4,m:4,n:4,p:4,r:4,"â€™":21,"â€":21,",":16,".":16,"â€¦":16}},h:{d:"290,-397v-60,0,-100,42,-100,106r0,291r-124,0r0,-710r124,0r0,290r2,0v28,-43,78,-78,145,-78v83,0,170,55,170,211r0,287r-123,0r0,-273v0,-71,-26,-124,-94,-124",w:572,k:{T:54,t:5,v:16,w:16,y:16,'"':11,"'":11,"â€™":29,"â€":29}},i:{d:"190,0r-124,0r0,-487r124,0r0,487xm128,-690v42,0,68,29,69,67v0,37,-27,66,-70,66v-41,0,-68,-29,-68,-66v0,-38,28,-67,69,-67",w:256,k:{"â€™":-6,"â€":-6}},j:{d:"-42,117v111,-19,124,-40,124,-204r0,-400r123,0r0,435v0,101,-18,165,-63,208v-42,41,-111,57,-172,57xm144,-690v42,0,68,29,68,67v0,36,-26,66,-70,66v-41,0,-67,-30,-67,-66v0,-38,27,-67,69,-67",w:270,k:{"â€™":-6,"â€":-6,",":11,".":11,"â€¦":11}},k:{d:"189,-710r0,437r159,-214r148,0r-180,199r206,288r-151,0r-140,-215r-42,49r0,166r-123,0r0,-710r123,0",w:509,k:{T:24,g:7,b:-14,h:-14,k:-14,l:-14,i:-13,m:-13,n:-13,p:-13,r:-13,c:7,d:7,e:7,o:7,q:7,v:-8,w:-8,y:-8,a:-11,":":-6,";":-6,"-":7,"â€“":7,"â€”":7,"â€™":-19,"â€":-19,",":-9,".":-9,"â€¦":-9}},l:{d:"66,0r0,-710r124,0r0,710r-124,0",w:257,k:{"â€™":-5,"â€":-5,",":10,".":10,"â€¦":10}},m:{d:"281,-398v-60,0,-95,50,-95,110r0,288r-120,0r0,-342v0,-56,-1,-103,-4,-145r106,0r5,72r3,0v24,-38,68,-83,150,-83v66,0,112,40,137,90v35,-52,79,-90,158,-90v81,0,163,55,163,211r0,287r-120,0r0,-269v0,-81,-28,-129,-87,-129v-55,0,-91,45,-92,106r0,292r-120,0r0,-282v0,-68,-27,-116,-84,-116",w:848,k:{T:54,t:5,v:16,w:16,y:16,'"':11,"'":11,"â€™":29,"â€":29}},n:{d:"291,-398v-62,0,-101,46,-101,112r0,286r-124,0r0,-342v0,-56,-1,-103,-4,-145r108,0r6,73r3,0v21,-38,74,-84,155,-84v85,0,173,55,173,209r0,289r-123,0r0,-275v0,-70,-26,-123,-93,-123",w:572,k:{T:54,t:5,v:16,w:16,y:16,'"':11,"'":11,"â€™":29,"â€":29}},o:{d:"287,-498v145,0,242,102,242,250v0,179,-126,259,-250,259v-138,0,-244,-95,-244,-251v0,-160,105,-258,252,-258xm284,-408v-87,0,-122,84,-122,165v0,94,46,165,121,165v70,0,119,-69,119,-167v0,-76,-34,-163,-118,-163",w:564,k:{T:45,v:8,w:8,y:8,z:8,x:19,"-":-15,"â€“":-15,"â€”":-15,")":6,"]":6,"}":6,'"':16,"'":16,"â€™":29,"â€":29,",":30,".":30,"â€¦":30}},p:{d:"66,198r0,-523v0,-64,-2,-116,-4,-162r108,0v4,24,0,55,8,75v36,-55,93,-86,167,-86v112,0,205,96,205,248v0,176,-111,261,-222,261v-63,0,-110,-29,-139,-65r0,252r-123,0xm304,-401v-61,0,-115,51,-115,122r0,75v0,72,49,120,112,120v78,0,124,-65,124,-161v0,-86,-42,-156,-121,-156",w:585,k:{T:45,v:8,w:8,y:8,z:8,x:19,"-":-15,"â€“":-15,"â€”":-15,")":6,"]":6,"}":6,'"':16,"'":16,"â€™":29,"â€":29,",":30,".":30,"â€¦":30}},q:{d:"253,-498v70,0,115,32,144,76r3,-65r119,0v-2,44,-4,90,-4,141r0,544r-123,0r0,-265r-2,0v-29,47,-80,78,-151,78v-109,0,-204,-95,-204,-247v0,-178,114,-262,218,-262xm281,-86v62,0,111,-49,111,-119r0,-81v-1,-68,-44,-115,-108,-115v-79,0,-124,67,-124,159v0,89,43,156,121,156",w:581,k:{T:35,"â€™":21,"â€":21,",":7,".":7,"â€¦":7}},r:{d:"339,-379v-89,-19,-150,36,-150,127r0,252r-123,0r0,-330v0,-66,-1,-113,-4,-157r107,0r4,93r4,0v32,-78,87,-114,162,-101r0,116",w:356,k:{T:17,f:-28,g:8,c:9,d:9,e:9,o:9,q:9,t:-23,v:-22,w:-22,y:-22,z:-8,a:9,x:-15,"-":3,"â€“":3,"â€”":3,"â€˜":-15,"â€œ":-15,"â€™":-23,"â€":-23,",":59,".":59,"â€¦":59}},s:{d:"36,-24r24,-89v42,33,204,62,203,-19v0,-33,-20,-50,-80,-71v-95,-33,-134,-85,-134,-142v0,-86,71,-153,184,-153v54,0,101,14,129,29r-24,87v-32,-28,-171,-51,-171,23v0,31,23,46,85,68v88,32,130,77,130,149v0,88,-69,153,-198,153v-59,0,-112,-15,-148,-35",w:417,k:{T:30,"â€™":14,"â€":14,",":11,".":11,"â€¦":11}},t:{d:"231,11v-103,0,-144,-61,-144,-177r0,-229r-70,0r0,-92r70,0r0,-90r120,-35r0,125r117,0r0,92r-117,0r0,215v0,59,16,90,63,90v23,0,34,-2,48,-6r2,94v-18,7,-50,13,-89,13",w:351,k:{g:6,c:6,d:6,e:6,o:6,q:6,v:-7,w:-7,y:-7,"-":3,"â€“":3,"â€”":3,"â€˜":-8,"â€œ":-8,"â€™":-16,"â€":-16,",":6,".":6,"â€¦":6}},u:{d:"278,-89v63,0,101,-44,101,-104r0,-294r123,0r0,341v0,58,2,106,4,146r-108,0v-4,-23,0,-54,-8,-74v-21,35,-69,85,-156,85v-89,0,-170,-53,-170,-212r0,-286r123,0r0,265v0,81,26,133,91,133",w:569,k:{T:35,"â€™":21,"â€":21,",":7,".":7,"â€¦":7}},v:{d:"11,-487r133,0r79,247v14,43,24,82,33,122r3,0v30,-125,74,-248,110,-369r130,0r-186,487r-121,0",w:508,k:{T:34,g:12,c:13,d:13,e:13,o:13,q:13,s:12,v:-16,w:-16,y:-16,a:6,":":-14,";":-14,"-":6,"â€“":6,"â€”":6,"â€˜":-26,"â€œ":-26,"â€™":-25,"â€":-25,",":44,".":44,"â€¦":44}},w:{d:"14,-487r126,0r51,221v11,52,22,105,31,158r2,0v28,-131,69,-253,103,-379r100,0r61,216v15,57,28,110,39,163r2,0v19,-128,56,-257,86,-379r121,0r-153,487r-114,0r-58,-198v-17,-49,-23,-102,-39,-156v-23,135,-64,234,-99,354r-115,0",w:749,k:{T:34,g:12,c:13,d:13,e:13,o:13,q:13,s:12,v:-16,w:-16,y:-16,a:6,":":-14,";":-14,"-":6,"â€“":6,"â€”":6,"â€˜":-26,"â€œ":-26,"â€™":-25,"â€":-25,",":44,".":44,"â€¦":44}},x:{d:"11,-487r137,0r102,167r3,0v14,-27,28,-52,42,-77r54,-90r134,0r-163,234r166,253r-139,0r-60,-97v-18,-25,-28,-56,-46,-79r-100,176r-136,0r169,-248",w:494,k:{T:26,c:19,d:19,e:19,o:19,q:19,s:7,t:-13,v:-17,w:-17,y:-17,"-":5,"â€“":5,"â€”":5,"â€™":-19,"â€":-19}},y:{d:"46,117v62,-17,125,-63,147,-133v0,-5,-2,-12,-7,-24r-178,-447r135,0r88,261v10,30,20,67,27,95r3,0r102,-356r132,0v-75,190,-185,559,-292,645v-50,40,-98,59,-129,63",w:500,k:{T:34,g:12,c:13,d:13,e:13,o:13,q:13,s:12,v:-16,w:-16,y:-16,a:6,":":-14,";":-14,"-":6,"â€“":6,"â€”":6,"â€˜":-26,"â€œ":-26,"â€™":-25,"â€":-25,",":44,".":44,"â€¦":44}},z:{d:"20,0r0,-71r183,-234v24,-31,49,-53,72,-84r-237,0r0,-98r387,0r0,75r-179,229v-23,30,-50,56,-72,85r257,0r0,98r-411,0",w:450,k:{T:25,c:7,d:7,e:7,o:7,q:7,v:-16,w:-16,y:-16,"â€™":-22,"â€":-22}},"{":{d:"94,-25v0,-50,13,-107,13,-159v0,-29,-8,-70,-78,-71r0,-65v70,-1,78,-39,78,-71v0,-52,-13,-110,-13,-162v0,-103,72,-139,178,-133r0,71v-62,-4,-90,23,-88,78v1,44,13,86,13,136v0,73,-33,97,-80,114v51,12,81,43,80,113v-2,92,-53,225,75,215r0,71v-105,5,-177,-25,-178,-137",w:301,k:{T:-34,J:-13,C:18,G:18,O:18,Q:18,V:-37,W:-37,X:-8,Y:-35,A:16,j:-52}},"|":{d:"87,-750r89,0r0,1000r-89,0r0,-1000",w:263},"}":{d:"207,-553v-1,52,-13,110,-14,162v0,32,9,70,78,71r0,65v-69,1,-78,42,-78,71v1,51,14,108,14,159v-1,112,-73,142,-178,137r0,-71v61,4,88,-22,87,-79v-1,-45,-12,-87,-12,-136v0,-73,33,-98,79,-115v-50,-12,-80,-42,-79,-112v1,-91,53,-224,-75,-214r0,-71v106,-6,178,29,178,133",w:301},"~":{d:"426,-194v-67,0,-187,-90,-249,-90v-29,0,-49,21,-52,84r-80,0v-2,-119,55,-171,131,-171v66,0,185,88,249,87v29,0,45,-25,46,-82r80,0v5,128,-55,172,-125,172",w:596},"'":{d:"42,-692r113,0r-20,257r-73,0",w:198,k:{T:-13,J:58,M:3,C:7,G:7,O:7,Q:7,V:-13,W:-13,X:-3,Y:-6,A:53,f:-25,g:15,c:11,d:11,e:11,o:11,q:11,t:-23,v:-13,w:-13,y:-13,",":119,".":119,"â€¦":119}},"â€œ":{d:"148,-439r-118,10v27,-91,70,-194,108,-256r75,-7v-26,73,-52,173,-65,253xm323,-439r-119,10v27,-91,70,-194,108,-256r76,-7v-27,73,-53,173,-65,253",w:409,k:{i:24,T:-28,J:84,M:5,C:29,G:29,O:29,Q:29,V:-19,W:-19,X:-5,Y:-16,A:70,S:4,f:8,g:63,b:-5,h:-5,k:-5,l:-5,m:24,n:24,p:24,r:24,c:65,d:65,e:65,o:65,q:65,s:37,t:-3,u:29,z:7,a:37,x:-3,"â€˜":62,"â€œ":62,",":140,".":140,"â€¦":140}},"â€“":{d:"30,-293r440,0r0,78r-440,0r0,-78",w:500,k:{T:53,J:12,C:-13,G:-13,O:-13,Q:-13,V:19,W:19,X:19,Y:56,A:5,g:-9,c:-17,d:-17,e:-17,o:-17,q:-17,v:3,w:3,y:3}},"â€":{d:"94,-683r119,-9v-28,91,-71,193,-108,255r-76,8v26,-73,52,-173,65,-254xm268,-683r119,-9v-27,91,-71,193,-108,255r-76,8v26,-73,53,-173,65,-254",w:409,k:{i:46,T:-27,J:84,M:10,C:30,G:30,O:30,Q:30,V:-22,W:-22,X:-3,Y:-16,A:88,S:13,g:57,b:4,h:4,k:4,l:4,m:46,n:46,p:46,r:46,c:86,d:86,e:86,o:86,q:86,s:83,t:17,v:14,w:14,y:14,a:27,"â€™":62,"â€":62,",":178,".":178,"â€¦":178," ":76}},"â€¦":{d:"243,-68v0,45,-31,79,-78,79v-43,0,-74,-34,-74,-79v0,-46,31,-79,76,-79v45,0,76,32,76,79xm576,-68v0,45,-30,79,-77,79v-44,0,-75,-34,-75,-79v0,-46,32,-79,76,-79v45,0,76,32,76,79xm910,-68v0,45,-30,79,-77,79v-44,0,-75,-34,-75,-79v0,-46,31,-79,76,-79v45,0,76,32,76,79",w:1e3,k:{'"':113,"'":113,"â€˜":116,"â€œ":116,"â€™":122,"â€":122}},"`":{d:"12,-698r121,0r87,148r-86,0",w:300},"â€”":{d:"30,-293r940,0r0,78r-940,0r0,-78",w:1e3,k:{T:53,J:12,C:-13,G:-13,O:-13,Q:-13,V:19,W:19,X:19,Y:56,A:5,g:-9,c:-17,d:-17,e:-17,o:-17,q:-17,v:3,w:3,y:3}},"â„¢":{d:"28,-674r234,0r0,57r-82,0r0,216r-70,0r0,-216r-82,0r0,-57xm624,-401r-68,0r-8,-138v0,-26,0,-57,-1,-93r-4,0v-7,31,-15,67,-23,95r-38,131r-68,0r-35,-133v-5,-24,-12,-62,-19,-93r-4,0v0,32,-1,64,-2,93r-8,138r-66,0r18,-273r107,0v19,63,36,98,48,176r2,0v12,-68,31,-118,51,-176r101,0",w:636},"Ã—":{d:"40,-470r55,-56r203,207r202,-207r56,56r-202,207r202,207r-56,56r-202,-206r-202,206r-56,-56r202,-207",w:596},"Â ":{w:207,k:{T:40,V:36,W:36,Y:43,"â€˜":79,"â€œ":79}}}}),function(){jQuery(function(){$("#howitworks-tabs .crumbs ul li a").click(function(a){a.preventDefault();if(!$(a.target).hasClass("active"))return $(".crumbs li a").removeClass("active"),$(a.target).addClass("active"),$("#howitworks-panes .text:visible").fadeOut(100,function(b){b=$('#howitworks-panes .text[data-tab="'+$(a.target).data("tab")+'"]'),b.addClass("active").fadeIn(100),$("#howitworks-panes .arrow-nav .button").removeAttr("disabled");if($("#howitworks-panes .text").index(b)===0)return $("#howitworks-panes .arrow-nav .prev").attr("disabled","disabled");if($("#howitworks-panes .text").index(b)+1===$("#howitworks-panes .text").size())return $("#howitworks-panes .arrow-nav .next").attr("disabled","disabled")}),$("#howitworks-panes .illustration img.active").removeClass("active").animate({right:"-700px"},300,function(){var b,c;return c=$('#howitworks-panes .illustration img[data-tab="'+$(a.target).data("tab")+'"]'),c.addClass("active").animate({right:0},300),b=c.height(),c.closest(".illustration").css("min-height",b)})}),$("#howitworks-panes .arrow-nav .button").click(function(a){var b;a.preventDefault();if(!$(a.target).attr("disabled")){if($(a.target).hasClass("next"))return b=$(".crumbs li a").index($(".crumbs li a.active")),console.log($(".crumbs li a").eq([b+1])),$(".crumbs li a").eq([b+1]).click();if($(a.target).hasClass("prev"))return b=$(".crumbs li a").index($(".crumbs li a.active")),$(".crumbs li a").eq([b-1]).click()}}),$("ul#architecture li").hoverIntent({timeout:10,sensitivity:200,interval:20,over:function(){var a;return $(this).addClass("hover").closest("ul").addClass("hover"),a=$(this).attr("id"),$("#diagram a[href=#"+a+"]").addClass("hover"),$("#diagram a[href=#"+a+"]").siblings().addClass("fade"),$("#diagram").addClass("fade"),$("#line").addClass(a)},out:function(){var a;return $(this).removeClass("hover").closest("ul").removeClass("hover"),a=$(this).attr("id"),$("#diagram a[href=#"+a+"]").removeClass("hover"),$("#diagram a[href=#"+a+"]").siblings().removeClass("fade"),$("#diagram").removeClass("fade"),$("#line").removeClass(a)}}),$("#diagram a").hoverIntent({timeout:10,sensitivity:100,interval:20,over:function(){var a;return $(this).addClass("hover"),a=$(this).attr("href").substring(1),$("#"+a).addClass("hover").closest("ul").addClass("hover"),$(this).siblings().addClass("fade"),$("#diagram").addClass("fade"),$("#line").addClass(a)},out:function(){var a;return $(this).removeClass("hover"),a=$(this).attr("href").substring(1),$("#"+a).removeClass("hover").closest("ul").removeClass("hover"),$(this).siblings().removeClass("fade"),$("#diagram").removeClass("fade"),$("#line").removeClass(a)}}),$(".press-title a").click(function(a){a.preventDefault();if(!$(a.target).hasClass("selected"))return $(".press-title a").removeClass("selected"),$(a.target).addClass("selected"),$("article.press").removeClass("selected"),$('article.press[data-title="'+$(a.target).data("title")+'"]').addClass("selected")}),$("#diagram a").click(function(){return!1});if(!document.createElementNS||!document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect)return $("body").addClass("no-svg")})}.call(this),function(a){function e(c){function n(){c?f.removeData(c):k&&delete b[k]}function o(){g.id=setTimeout(function(){g.fn()},l)}var e=this,f,g={},h=c?a.fn:a,i=arguments,j=4,k=i[1],l=i[2],m=i[3];typeof k!="string"&&(j--,k=c=0,l=i[1],m=i[2]),c?(f=e.eq(0),f.data(c,g=f.data(c)||{})):k&&(g=b[k]||(b[k]={})),g.id&&clearTimeout(g.id),delete g.id;if(m)g.fn=function(a){typeof m=="string"&&(m=h[m]),m.apply(e,d.call(i,j))===!0&&!a?o():n()},o();else{if(g.fn)return l===undefined?n():g.fn(l===!1),!0;n()}}var b={},c="doTimeout",d=Array.prototype.slice;a[c]=function(){return e.apply(window,[0].concat(d.call(arguments)))},a.fn[c]=function(){var a=d.call(arguments),b=e.apply(this,[c+a[0]].concat(a));return typeof a[0]=="number"||typeof a[1]=="number"?this:b}}(jQuery),$(function(){initTabs(),initAddIndex()}),ContentTabs={options:{classOnParent:!1,hiddenClass:"tab-hidden",visibleClass:"tab-active",activeClass:"active",tabsets:"ul.tabset",tablinks:"a.tab",event:"click"},init:function(){return this.createStyleSheet(),this.getTabsets(),this},createStyleSheet:function(){this.tabStyleSheet=document.createElement("style"),this.tabStyleSheet.setAttribute("type","text/css"),this.tabStyleRule="."+this.options.hiddenClass,this.tabStyleRule+="{position:absolute !important;left:-9999px !important;top:-9999px !important;display:block !important}",document.getElementsByTagName("head")[0].appendChild(this.tabStyleSheet),this.tabStyleSheet.styleSheet?this.tabStyleSheet.styleSheet.cssText=this.tabStyleRule:this.tabStyleSheet.appendChild(document.createTextNode(this.tabStyleRule))},getTabsets:function(){this.tabsets=this.queryElements(this.options.tabsets);for(var a=0;a<this.tabsets.length;a++)this.initTabset(this.tabsets[a])},initTabset:function(a){var b=this.queryElements(this.options.tablinks,a),c=this;for(var d=0;d<b.length;d++)b[d]["on"+this.options.event]=function(){return c.switchTab(this,b),!1},this.hasClass(this.options.classOnParent?b[d].parentNode:b[d],this.options.activeClass)&&this.switchTab(b[d],b)},switchTab:function(a,b){for(var c=0;c<b.length;c++){var d=b[c],e=document.getElementById(d.href.substr(d.href.indexOf("#")+1));d===a?(this.addClass(this.options.classOnParent?d.parentNode:d,this.options.activeClass),this.addClass(e,this.options.visibleClass),this.removeClass(e,this.options.hiddenClass)):(this.removeClass(this.options.classOnParent?d.parentNode:d,this.options.activeClass),this.removeClass(e,this.options.visibleClass),this.addClass(e,this.options.hiddenClass))}},queryElements:function(a,b){var c=b||document;if(c.querySelectorAll)return c.querySelectorAll(a);var d=[],e=a.split("."),f=e[0],g=c.getElementsByTagName(f);if(e.length>1){for(var h=0;h<g.length;h++)this.hasClass(g[h],e[1])&&d.push(g[h]);return d}return g},hasClass:function(a,b){return a.className?a.className.match(new RegExp("(\\s|^)"+b+"(\\s|$)")):!1},addClass:function(a,b){this.hasClass(a,b)||(a.className+=" "+b)},removeClass:function(a,b){this.hasClass(a,b)&&(a.className=a.className.replace(new RegExp("(\\s|^)"+b+"(\\s|$)")," "))}},function(){}.call(this);
 
 
+/* ============================================================
+ * bootstrap-dropdown.js v2.0.4
+ * http://twitter.github.com/bootstrap/javascript.html#dropdowns
+ * ============================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============================================================ */
 
 
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* DROPDOWN CLASS DEFINITION
+  * ========================= */
+
+  var toggle = '[data-toggle="dropdown"]'
+    , Dropdown = function (element) {
+        var $el = $(element).on('click.dropdown.data-api', this.toggle)
+        $('html').on('click.dropdown.data-api', function () {
+          $el.parent().removeClass('open')
+        })
+      }
+
+  Dropdown.prototype = {
+
+    constructor: Dropdown
+
+  , toggle: function (e) {
+      var $this = $(this)
+        , $parent
+        , selector
+        , isActive
+
+      if ($this.is('.disabled, :disabled')) return
+
+      selector = $this.attr('data-target')
+
+      if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      $parent = $(selector)
+      $parent.length || ($parent = $this.parent())
+
+      isActive = $parent.hasClass('open')
+
+      clearMenus()
+
+      if (!isActive) $parent.toggleClass('open')
+
+      return false
+    }
+
+  }
+
+  function clearMenus() {
+    $(toggle).parent().removeClass('open')
+  }
+
+
+  /* DROPDOWN PLUGIN DEFINITION
+   * ========================== */
+
+  $.fn.dropdown = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('dropdown')
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  /* APPLY TO STANDARD DROPDOWN ELEMENTS
+   * =================================== */
+
+  $(function () {
+    $('html').on('click.dropdown.data-api', clearMenus)
+    $('body')
+      .on('click.dropdown', '.dropdown form', function (e) { e.stopPropagation() })
+      .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+  })
+
+}(window.jQuery);
+
+
+$('.dropdown-toggle').dropdown()
 
 $(document).ready(function() {
 	
+	
+	
 	function pin_sidebar() {
-	    var sidebar_height = $('.sidebar-content').height();
-	    var window_height = $(window).height();
-	    if (window_height - sidebar_height >= 230) {
+		var sidebar_height = $('.sidebar-content').height();
+		var window_height = $(window).height();
+		var whatever_scrollbar = window.innerHeight;
 		var offset = $(window).scrollTop();
-	        var bottom_of_sidebar = sidebar_height + offset;
-	        var bottom_of_container = $(".docs").offset().top + $(".docs").height();
-		var sticking_point = bottom_of_container + 20;
-		if(bottom_of_sidebar < sticking_point) {
-		    if (offset > 230) {
-	                $('.sidebar-content').addClass('pinned');
+		var bottom_of_sidebar = sidebar_height + offset;
+		var bottom_of_container = $(".docs").offset().top + $(".docs").height();
+		var sticking_point = bottom_of_container - 20;		
+		
+		if($(".docs").height() - sidebar_height < 100) {
+			$(".sidebar-content").removeClass("pinned");
 			$(".sidebar-content").removeClass("stuck");
-			$(".sidebar-content").css("top", '');
-    		    } else {
-		        $('.sidebar-content').removeClass('pinned');
-			$(".sidebar-content").removeClass("stuck");
-			$(".sidebar-content").css("top", '');
-	            }
-		} else {
-		    $(".sidebar-content").removeClass("pinned");
-		    $(".sidebar-content").addClass("stuck");
-		    $(".sidebar-content").css("top", sticking_point - sidebar_height - $(".sidebar-nav").offset().top);
+			$(".sidebar-content").css("top", "");
+			return
 		}
-	    } else {
-	        $('.sidebar-content').removeClass('pinned');
-		$(".sidebar-content").removeClass("stuck");
-		$(".sidebar-content").css("top", "");
-	    }
+		
+		if (window_height - sidebar_height < 0) {
+			$('.sidebar-content').css("max-height", whatever_scrollbar);
+			$('.sidebar-content').css("overflow-y", "scroll");
+			$(".sidebar-content").css("top", "");
+		} else {
+			$(".sidebar-content").css("max-height", "");
+			$(".sidebar-content").css("overflow-y", "");
+		}
+
+		if(bottom_of_sidebar < sticking_point) {
+			if (offset > 219) {
+				$('.sidebar-content').addClass('pinned');
+				$(".sidebar-content").removeClass("stuck");
+				$(".sidebar-content").css("top", '');
+			} else {
+				$('.sidebar-content').removeClass('pinned');
+				$(".sidebar-content").removeClass("stuck");
+				$(".sidebar-content").css("top", '');
+			}
+		} else {
+			$(".sidebar-content").removeClass("pinned");
+			$(".sidebar-content").addClass("stuck");
+			$(".sidebar-content").css("top", sticking_point - sidebar_height - $(".sidebar-nav").offset().top);
+		}
 	}
 	
 	$(function() {
-	    $(window).scroll(pin_sidebar);
-	    $(window).resize(pin_sidebar);
+		$(window).scroll(pin_sidebar);
+		$(window).resize(pin_sidebar);
 	});
 });

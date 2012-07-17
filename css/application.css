@@ -2074,12 +2074,14 @@ body.worker .container header .title-box .info {
 
 .menu {
   list-style: none;
-  padding: 9px 0 0;
-  margin: 0;
-  text-align: center;
-  font-size: 15px;
-  line-height: 18px;
-  text-shadow: 0 1px 1px #fff
+    padding: 9px 0 0;
+    margin: 0;
+    font-size: 15px;
+    line-height: 18px;
+    text-shadow: 0 1px 1px white;
+    float: left;
+    position: relative;
+    width: 620px;
 }
 
 .menu li {
@@ -2239,7 +2241,7 @@ body.worker .container header .title-box .info {
 }
 
 .subnavigation li {
-  float: left;
+  display:inline-block;
   margin: 0 5px 0 0
 }
 
