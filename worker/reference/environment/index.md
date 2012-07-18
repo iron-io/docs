@@ -69,6 +69,29 @@ There is a system-wide limit for the maximum length a task may run. Tasks that e
 
 Tip: You should design your tasks to be moderate in terms of the length of time they take to run. If operations are small in nature (seconds or milli-seconds) then you'll want to group them together so as to amortize the worker setup costs. Likewise, if they are long-running operations, you should break them up into a number of workers. Note that you can chain together workers as well as use IronMQ, scheduled jobs, and datastores to orchestrate a complex series or sequence of tasks.
 
+## Priority Queue Management
+
+Each priority (p0, p1, p2) has a targeted maximum time limit for tasks sitting in the queue. Average queue times will typically be less than those listed on the pricing page. High numbers of tasks, however, could raise those average queue times for all users. To keep keep the processing time for high priority jobs down, per user capacities are in place for high priority queues. Limits are on per-queue basis and are reset hourly. High priority tasks that exceed the limit, are queued at the next highest priority. Only under high overall system load should queue times for tasks exceeding the capacity extend beyond the initial targeted time limits. Usage rates will be based on the actual priority tasks run on, not the priority initially queued.
+
+<table style="text-align: center;">
+<thead>
+<tr>
+<th>Priority</th>
+<th>Capacity Per Hour Per User</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p2</td>
+<td>100</td>
+</tr>
+<tr>
+<td>p1</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+
 ## Max Scheduled Tasks (per Project)
 The following is the default number of scheduled tasks. It should be sufficient for even the largest projects. If you would like this number increased, however, please feel free to contact us.
 
