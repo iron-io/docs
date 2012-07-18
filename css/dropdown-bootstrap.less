@@ -14,8 +14,8 @@
 .nav {
     &.pull-right {
         float: right;
-        margin:0;
-        padding: 9px 0 0;
+        margin: 0 53px 0 0;
+        padding: 4px 0 0;
         
         li {
             display:block;
@@ -23,7 +23,6 @@
             a {
             color:#444;
             text-shadow:none;
-            padding:0;
             width: 90%;
             padding:5px 10px;
             
@@ -35,11 +34,9 @@
         }
         .dropdown-menu {
             right:0;
-            left:auto;
             
             &.pull-right {
                 right:0;
-                left:auto;
             }
         }
     }
@@ -81,7 +78,7 @@
 // ----------------------
 .dropdown-menu {
   position: absolute;
-  top: 32px;
+  top: 37px;
   left: 0;
   z-index: @zindexDropdown;
   display: none; // none by default, but block on "open" of the menu
@@ -90,9 +87,12 @@
   padding: 0;
   margin: 1px 0 0; // override default ul
   list-style: none;
-  background-color: @dropdownBackground;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0,0,0,.2);
+  background: #D9D9D9;
+    background: -webkit-linear-gradient(#FAFAFA, #D9D9D9);
+    background: -moz-linear-gradient(#FAFAFA, #D9D9D9);
+    background: -ms-linear-gradient(#FAFAFA, #D9D9D9);
+    background: linear-gradient(#FAFAFA, #D9D9D9);
+  border: 1px solid #B0AAAA;
   *border-right-width: 2px;
   *border-bottom-width: 2px;
   border-top:0px;
@@ -105,7 +105,6 @@
   // Aligns the dropdown menu to right
   &.pull-right {
     right: 0;
-    left: auto;
   }
 
   // Dividers (basically an hr) within the dropdown
@@ -132,7 +131,7 @@
 .dropdown-menu .active > a:hover {
   color: #444;
   text-decoration: none;
-  background-color: #efefef;
+  background-color: #ffffff;
 }
 
 // Open state for the dropdown
