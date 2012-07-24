@@ -291,7 +291,7 @@ necessary parameters (your AWS credentials and the URL for the image).
 Here's an example from the command line:
 
 {% highlight bash %}
-iron_worker queue -n ImageProcessor -p '{"aws_access": "AWS ACCESS KEY", "aws_secret": "AWS SECRET KEY", "aws_s3_bucket_name": "AWS BUCKET NAME", "image_url": "http://dev.iron.io/images/iron_pony.png"}'
+iron_worker queue ImageProcessor -p '{"aws_access": "AWS ACCESS KEY", "aws_secret": "AWS SECRET KEY", "aws_s3_bucket_name": "AWS BUCKET NAME", "image_url": "http://dev.iron.io/images/iron_pony.png"}'
 {% endhighlight %}
 
 You can also queue tasks from within your application:
