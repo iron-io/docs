@@ -14,8 +14,8 @@
 .nav {
     &.pull-right {
         float: right;
-        margin: 0 32px 0 0;
-        padding: 4px 0 0;
+        margin: 0 -10px 0 0;
+        padding: 2px 0 0;
         
         li {
             display:block;
@@ -23,7 +23,7 @@
             a {
             color:#444;
             text-shadow:none;
-            width: 90%;
+            width: 86%;
             padding:8px 10px;
             
                 &:hover {
@@ -33,10 +33,10 @@
             }
         }
         .dropdown-menu {
-            right:0;
+            left:0;
             
             &.pull-right {
-                right:0;
+                left:0;
             }
         }
     }
@@ -78,12 +78,12 @@
 // ----------------------
 .dropdown-menu {
   position: absolute;
-  top: 37px;
+  top: 39px;
   left: 0;
   z-index: @zindexDropdown;
   display: none; // none by default, but block on "open" of the menu
   float: left;
-  min-width: 160px;
+  min-width: 118px;
   padding: 0;
   margin: 1px 0 0; // override default ul
   list-style: none;
