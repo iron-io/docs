@@ -274,6 +274,10 @@ The request should be JSON-encoded and contain the following information:
   * python
   * php
 
+The request also accepts the following optional parameters:
+
+* **max_concurrency**: The maximum number of workers that should be run in parallel. This is useful for keeping your workers from hitting API quotas or overloading databases that are not prepared to handle the highly-concurrent worker environment. If omitted, there will be no limit on the number of concurrent workers.
+
 Your request also needs the following headers, in addition to the headers required by all API calls:
 
 * **Content-Length**: The number of bytes in your JSON-encoded request body
@@ -293,7 +297,8 @@ Content-Type: text/plain; charset=utf-8
 {
     "file_name": "MyWorker.rb",
     "name": "MyWorker",
-    "runtime": "ruby"
+    "runtime": "ruby",
+    "max_concurrency": 12
 }{% endhighlight %}
 --39f5903459794ad483153244cc6486ec  
 Content-Disposition: form-data; name="file"; filename="MyWorker.zip"  
