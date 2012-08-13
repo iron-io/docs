@@ -6,15 +6,15 @@ breadcrumbs:
   - ["Scheduling Tasks", "/scheduling"]
 ---
 
-# {{ page.title }}
+<h1>{{ page.title }}</h1>
 
-IronWorker tasks are flexible; they don't have to be queued immediately. Rather, you can schedule a task to be queued at a specific time or after a set amount of time. This article shows you how to create them using the `iron_worker_ng` Ruby gem, but they can be scheduled from any <a href="/worker/languages">client library</a> or even from <a href="/worker/reference/api">the API</a>.
+<p>IronWorker tasks are flexible; they don't have to be queued immediately. Rather, you can schedule a task to be queued at a specific time or after a set amount of time. This article shows you how to create them using the `iron_worker_ng` Ruby gem, but they can be scheduled from any <a href="/worker/languages">client library</a> or even from <a href="/worker/reference/api">the API</a>.</p>
 
 <div class="alert">
 <p><strong>Note:</strong> Tasks may not be <em>executed</em> at the scheduled time; they will simply be placed on the queue at that time. Depending on the circumstances, a task may be executed a short time after it is scheduled to be. Tasks will never be executed before their schedule, however.</p>
 </div>
 
-Scheduling a task to be queued at a specific time is easy:
+<p>Scheduling a task to be queued at a specific time is easy:</p>
 
 <div class="ruby">
 {% highlight ruby %}
@@ -22,7 +22,7 @@ schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now +
 {% endhighlight %}
 </div>
 
-You can also schedule a task to be queued after a certain delay:
+<p>You can also schedule a task to be queued after a certain delay:</p>
 
 <div class="ruby">
 {% highlight ruby %}
@@ -30,7 +30,7 @@ schedule = client.tasks.create('MyWorker', payload, {:delay => 3600}) # queues t
 {% endhighlight %}
 </div>
 
-Some tasks, like sending out daily notifications or cleaning up old database entries, are more useful when run on a repeating schedule. IronWorker supports creating tasks that will run at set intervals:
+<p>Some tasks, like sending out daily notifications or cleaning up old database entries, are more useful when run on a repeating schedule. IronWorker supports creating tasks that will run at set intervals:</p>
 
 <div class="ruby">
 {% highlight ruby %}
@@ -38,7 +38,7 @@ schedule = client.schedules.create('MyWorker', payload, {:run_every => 3600}) # 
 {% endhighlight %}
 </div>
 
-These repeating tasks can also be set to queued at a specific time:
+<p>These repeating tasks can also be set to queued at a specific time:</p>
 
 <div class="ruby">
 {% highlight ruby %}
@@ -46,7 +46,7 @@ schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now +
 {% endhighlight %}
 </div>
 
-Finally, you can also control how many times a repeating task is run:
+<p>Finally, you can also control how many times a repeating task is run:</p>
 
 <div class="ruby">
 {% highlight ruby %}
