@@ -40,7 +40,7 @@ available before the expiration date.
     <tr><th style="width: 16%;">Item Var</th><th style="width: 15%;">Default</th><th style="width: 15%;">Maximum</th><th style="width: 54%;">Notes</th></tr>
   </thead>
   <tbody>
-    <tr><td>Item Size</td><td>--</td><td>64KB</td><td>Includes header (token, expiration, etc.).</td></tr>
+    <tr><td>Item Size</td><td>--</td><td>1MB</td><td>Includes the entire body of the request (expiration, etc.)</td></tr>
     <tr><td>Key</td><td>--</td><td>--</td><td>Because it is part of the URL in the <a href="/cache/reference/api">API request</a>, the key must be URL encoded.</td></tr>
     <tr><td>Expiration</td><td>604,800sec</td><td>2,592,000sec</td><td>Equates to 7 days and 30 days, respectively.</td></tr>
   </tbody>
