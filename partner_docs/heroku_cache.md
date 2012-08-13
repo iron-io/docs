@@ -15,7 +15,7 @@ There are [other levels](http://addons.heroku.com/iron_cache) of the add-on, as 
 ## Configuration
 
 IronCache has clients for [a lot of languages](http://dev.iron.io/cache/reference/libraries/), and you can always use
-[the REST API](http://dev.iron.io/mq/reference/api/) (or write your own!). This means your existing
+[the REST API](http://dev.iron.io/cache/reference/api/) (or write your own!). This means your existing
 Heroku stack should work without any changes. The remainder of this article will be using the Ruby library,
 but all of the libraries have analagous calls (that should be well-documented).
 
@@ -59,7 +59,7 @@ This is for the Ruby client, but all clients have the same operations. See the d
 
 ### Next Steps
 
-You can find full documentation at the [Iron.io Dev Center](http://dev.iron.io/mq/).
+You can find full documentation at the [Iron.io Dev Center](http://dev.iron.io/cache/).
 
 ### Support
 
