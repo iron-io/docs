@@ -16,10 +16,11 @@ There are [other levels](http://addons.heroku.com/iron_cache) of the add-on, as 
 
 IronCache has clients for [a lot of languages](http://dev.iron.io/cache/reference/libraries/), and you can always use
 [the REST API](http://dev.iron.io/cache/reference/api/) (or write your own!). This means your existing
-Heroku stack should work without any changes. The remainder of this article will be using the Ruby library,
-but all of the libraries have analagous calls (that should be well-documented).
+Heroku stack should work without any changes.
 
-We're going to need to install the Ruby gem, for development purposes:
+## Ruby
+
+First, install the Ruby gem:
 
     :::term
     $ gem install iron_cache
@@ -31,37 +32,107 @@ If you’re building for a Rails application or anything that uses Bundler, add 
     :::ruby
     gem 'iron_cache'
 
-## Usage
+### Ruby Usage
 
 This is for the Ruby client, but all clients have the same operations. See the docs for your particular language.
 
     :::ruby
+    require 'iron_cache'
+
     # Create an IronCache::Client object
     @ironcache = IronCache::Client.new
 
     # Get a cache (if it doesn't exist, it will be created when you first post an item
     @cache = @ironcache.cache("my_cache")
 
-    # Post a message
+    # Put an item
     @cache.put("mykey", "hello world!")
 
-    # Get a message
+    # Get an item
     item = @cache.get("mykey")
     p item.value
 
-    # Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout
+    # Delete an item
     item.delete # or @cache.delete("mykey")
 
     # Increment an item in the cache
     item = @cache.increment("mycounter", 1)
     p item
 
+## Python
 
-### Next Steps
+### Install with pip/easy_install
+
+iron_cache_python is available in the Python Package Index as "iron_cache". This means you can run `pip install iron_cache`
+or `easy_install iron_cache` from your command line to download iron_cache_python and all its dependencies.
+
+### Install From Source
+
+You can also [download the source from Github](https://github.com/iron-io/iron_cache_python). Once you have the source, you can run python setup.py install
+from the directory containing the source code to install iron_cache_python.
+
+Note: You will need the iron_core_python module for iron_cache_python to function.
+
+### Python Usage
+
+    :::python
+    from iron_cache import *
+
+    # Create an client object
+    cache = IronCache()
+
+    # Put an item
+    cache.put(cache="test_cache", key="mykey", value="Hello IronCache!")
+
+    # Get an item
+    item = cache.get(cache="test_cache", key="mykey")
+    print item.value
+
+    # Delete an item
+    cache.delete(cache="test_cache", key="mykey")
+
+    # Increment an item in the cache
+    cache.increment(cache="test_cache", key="mykey", amount=10)
+
+## PHP
+
+### Install
+
+Download iron_cache.phar from from [Github](https://github.com/iron-io/iron_cache_php) and require it in your code:
+
+    :::php
+    <?php
+    require_once "phar://iron_cache.phar";
+
+### PHP Usage
+
+    :::php
+    <?php
+    require_once "phar://iron_cache.phar";
+
+    # Create a client object
+    $cache = new IronCache();
+    $cache->setCacheName('my_cache');
+
+    # Put an item
+    $cache->put("mykey", "hello world!");
+
+    # Get an item
+    $item = $cache->get("mykey");
+    echo $item->value
+
+    # Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout
+    $cache->delete("mykey");
+
+    # Increment an item in the cache
+    $cache->increment("mykey", 1);
+
+
+## Next Steps
 
 You can find full documentation at the [Iron.io Dev Center](http://dev.iron.io/cache/).
 
-### Support
+## Support
 
 Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the
 [Iron.io support chat room](http://get.iron.io/chat) and chat with Iron.io staff about issues. You can also find more
