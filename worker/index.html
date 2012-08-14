@@ -59,7 +59,15 @@ file "config.json" # The path to a file to upload as a dependency of the worker;
 }
 {% endhighlight %}
 
-<p>Once that's done, you can just run <span class="fixed-width">iron_worker upload firstworker</span> to upload the code package to IronWorker and name it "firstworker"&mdash;you'll use the name to queue tasks to the package. That's it, your code is ready to be run!</p>
+<p>Once that's done, you can just run the following command:</p>
+
+<div class="cli">
+{% highlight bash %}
+iron_worker upload firstworker
+{% endhighlight %}
+</div>
+
+<p>That will upload the code package to IronWorker and name it "firstworker"&mdash;you'll use the name to queue tasks to the package. That's it, your code is ready to be run!</p>
 
 <h2 id="tasks">3. Queue/Schedule Your Task</h2>
 

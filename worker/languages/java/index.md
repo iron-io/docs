@@ -269,4 +269,10 @@ exec "hello.jar" # replace with your jar file
 file "path/to/gson.jar" # replace with the path to your gson.jar file
 {% endhighlight %}
 
-Upload that again by running `iron_worker upload hello` and your worker will start printing out the contents of the payload.
+Upload that again by running the following command:
+
+{% highlight bash %}
+iron_worker upload hello
+{% endhighlight %}
+
+Your worker will start printing out the contents of the payload.
