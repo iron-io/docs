@@ -223,7 +223,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 #### Message Object
 
-Each message object should contain the following keys:
+Multiple messages may be added in a single request, provided that the messages should all be added to the same queue. Each message object should contain the following keys:
 
 ##### Required
 
