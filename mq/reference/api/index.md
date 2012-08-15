@@ -113,6 +113,9 @@ The success failure for request is indicated by an HTTP status code. A 2xx statu
         <tr>
             <td>406</td><td>Not Acceptable: Required fields are missing.</td>
         </tr>
+        <tr>
+            <td>503</td><td>Service Unavailable. Clients should implement <a href="#exponential_backoff">exponential backoff</a> to retry the request.</td>
+        </tr>
     </tbody>
 </table>
 
