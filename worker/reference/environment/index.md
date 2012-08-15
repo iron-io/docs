@@ -101,6 +101,10 @@ The following is the default number of scheduled tasks. It should be sufficient 
 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When schedule tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the pages on Scheduling for more information on scheduling patterns and best practices.
 
+## Minimum run_every Time
+
+Tasks can only be scheduled to run **every 60 seconds or more** using the `run_every` parameter.
+
 ## Security Groups and IP Ranges
 
 IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.

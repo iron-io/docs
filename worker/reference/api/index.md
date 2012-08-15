@@ -865,7 +865,7 @@ The request should be a JSON object with a "schedules" property containing an ar
 
 Optionally, each object in the array can specify the following properties:
 
-* **run_every**: The amount of time, in seconds, between runs. By default, the task will only run once.
+* **run_every**: The amount of time, in seconds, between runs. By default, the task will only run once. `run_every` will return a 400 error if it is set to <a href="/worker/reference/environment/#minimum_run_every_time">less than 60</a>.
 * **end_at**: The time tasks will stop being queued. Should be a time or datetime.
 * **run_times**: The number of times a task will run.
 * **priority**: The priority queue to run the job in. Valid values are 0, 1, and 2. The default is 0. Higher values means tasks spend less time in the queue once they come off the schedule.
