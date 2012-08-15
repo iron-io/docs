@@ -16,6 +16,8 @@ These are our official client libraries that use the IronCache <a href="/cache/r
 <li><a href="https://github.com/iron-io/iron_cache_ruby">Ruby</a></li>
 <li><a href="https://github.com/iron-io/iron_cache_php">PHP</a></li>
 <li><a href="https://github.com/iron-io/iron_cache_python">Python</a></li>
+<li><a href="https://github.com/iron-io/iron_cache_dotnet">.NET</a></li>
+<li><a href="https://github.com/iron-io/iron_cache_node">Node.JS</a></li>
 </ul>
 </div>
 
