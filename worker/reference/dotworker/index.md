@@ -74,7 +74,7 @@ it will have access to the `mongoid` gem, as well.
 <div class="alert">
 <p><strong>Note:</strong> Gems merged with the <span class="fixed-width">.worker</span> 
 file will not be automatically required in your worker files, just as they 
-are not when you merge gems in your application's code.</p>
+are not when you merge gems in your application's code. Also, if you merge in a directory tree (e.g., "../app/models"), you will have to include the last directory in the tree in your require statement (e.g., "models/user").</p>
 </div>
 
 ## Syntax Reference
