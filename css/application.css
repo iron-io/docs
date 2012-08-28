@@ -2263,7 +2263,7 @@ body.worker .container header .title-box .info {
   color: #444
 }
 
-.subnavigation .page-menu .active a {
+.subnavigation .page-menu .active a, .subnavigation .page-menu a:hover {
   background: none repeat scroll 0 0 #900;
   border: 1px solid #600;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
