@@ -135,6 +135,12 @@ puts params['arg1']
 puts params['another_arg'].inspect
 {% endhighlight %}
 
+Please note that for non-JSON arguments, you should use the `payload` variable instead of the `params` variable. The `payload` variable is simply the raw contents of the file specified by `-payload`, without any JSON parsing being applied.
+
+{% highlight ruby %}
+puts payload
+{% endhighlight %}
+
 ### Merging
 
 Because your Ruby workers run in a Ruby environment in the cloud, you need to 
