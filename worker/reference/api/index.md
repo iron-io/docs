@@ -251,7 +251,11 @@ Sample:
 
 ### Upload a Code Package
 
-You will almost always want to use one of our [client libraries](/worker/languages) in the language of your choice to make this easier.
+You will almost always want to use our [Command Line Interface](/worker/reference/cli/) to make uploading easier.
+
+If you decide you want to upload without using the CLI, the first thing you'll need to know is 
+[How to Create a Code Package](/worker/code/packaging). Once you've created a code package, you can upload it using 
+this endpoint.
 
 #### Endpoint
 
