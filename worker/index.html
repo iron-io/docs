@@ -38,6 +38,10 @@ section: worker
 
 <p>You need to package all your code <strong>and its dependencies</strong> together and upload it to IronWorker before it can be run&mdash;your code is run <em>entirely</em> on IronWorker's servers, so it's important that you package <strong>all</strong> the dependencies of your code with it. There are several parts to this step, but you only need to do this when you want to update your worker's code, so you shouldn't have to do it very often.</p>
 
+<div class="alert">
+	<p><strong>Note:</strong> You only need to upload your code package <em>when your code changes</em>. Queuing tasks <em>does not</em> require you to upload the code package again.</p>
+</div>
+
 <p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's extensive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
 
 {% highlight ruby %}

@@ -13,7 +13,7 @@ The [Go](http://www.golang.org) programming language is a fast, statically typed
 
 Go Workers need to be compiled, then uploaded. Once they're uploaded to the 
 IronWorker cloud, they can be invoked via a simple API to be put on the 
-processing queues immediately or scheduled to run at a later time. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
+processing queues immediately or scheduled to run at a later time&mdash;you only need to upload the worker again when the code changes. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
 
 **Note**: we don't use it for this walkthrough, but there's a great [unofficial library](https://github.com/manveru/go.iron) for working with the IronWorker API in Go. If working with raw HTTP requests doesn't sound like fun to you, check it out.
 
@@ -89,7 +89,7 @@ Let’s quickly test it by running:
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 
-Now that we know it works, let’s queue up a bunch of tasks from code.
+Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue Tasks To The New Worker
 

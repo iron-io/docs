@@ -33,6 +33,8 @@ IronWorker.createZip(destination="worker.zip", files=["HelloWorld.py"], overwrit
 response = worker.postCode(runFilename="HelloWorld.py", zipFilename="worker.zip", name="HelloWorld")
 {% endhighlight %}
 
+**Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
+
 ### Queue a task to the new worker.
 {% highlight python %}
 from iron_worker import *

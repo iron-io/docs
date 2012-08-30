@@ -11,7 +11,7 @@ breadcrumbs:
 
 Java has become one of the most popular languages in the enterprise. With Java workers, you can use the same tools your enterprise software uses, but with the power of the cloud behind it.
 
-Java workers need to be compiled into jar files before they're uploaded. Once they're uploaded to the IronWorker cloud, they can be invoked via a simple API call to be put on the processing queues immediately or scheduled to run at a later time. This article will walk you through the specifics of using Java workers, but you should be familiar with the [basics of IronWorker](/worker).
+Java workers need to be compiled into jar files before they're uploaded. Once they're uploaded to the IronWorker cloud, they can be invoked via a simple API call to be put on the processing queues immediately or scheduled to run at a later time&mdash;you only need to upload the worker again when the code changes. This article will walk you through the specifics of using Java workers, but you should be familiar with the [basics of IronWorker](/worker).
 
 ## Quick Start
 
@@ -100,7 +100,7 @@ Let’s quickly test it by running:
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 
-Now that we know it works, let’s queue up a bunch of tasks from code.
+Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue Tasks To The New Worker
 

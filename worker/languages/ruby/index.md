@@ -80,7 +80,8 @@ Let’s quickly test it by running:
     iron_worker queue hello
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
-Now that we know it works, let’s queue up a bunch of tasks from code.
+
+Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue Up Tasks For Your Worker
 
