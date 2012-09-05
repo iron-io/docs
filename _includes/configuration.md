@@ -1,4 +1,6 @@
-<p>In the interest of letting users stop writing increasingly lengthy configuration files and start writing code, the maintainers of Iron.io's official client libraries have developed a global configuration scheme for all of Iron.io's services. This lets you set your project ID and token once to make them available across all of Iron.io's services, and even across workspaces. The authors took care to provide a scheme that would allow users the flexibility to set a default, then override it at the service, workspace, or client level.</p>
+<p>Many of the client libraries make use of a global configuration scheme for all of Iron.io services. This approach lets you set and manage your tokens and project IDs in a centralized manner and make them available across all of Iron.io's services, even across workspaces.</p>
+
+<p>This scheme allows you to spend less time on configuration issues and more on writing code. It also supports the <a href="http://www.12factor.net/config" title="The Twelve Factor App" target="_blank">design pattern</a> that calls for strict separation of configuration information from application code.</p>
 
 <p>The two most common variables used in configuration are the <strong>project ID</strong> and the <strong>token</strong>. The <strong>project ID</strong> is a unique identifier for your project and can be found <a href="https://hud.iron.io">in the HUD</a>. The <strong>token</strong> is one of your OAuth2 tokens, which can be found <a href="https://hud.iron.io/tokens">on their own page</a> in the HUD.</p>
 
@@ -13,7 +15,7 @@
  }
 {% endhighlight %}
 
-<p>The project_id you use will be the default project to use. You can always override this in your code.</p>
+<p>The <span class="fixed-width">project_id</span> you use will be the default project to use. You can always override this in your code.</p>
 
 <p>Alternatively, you can set the following environment variables:</p>
 
@@ -52,21 +54,21 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 <p>The hierarchy of files is simple enough:</p>
 
 <ol>
-  <li>if a file named ".iron.json" exists in your home folder, that will provide the defaults.</li>
-  <li>if an "iron.json" file exists in the same directory as the script being run, that will be used to <em>overwrite</em> the values from the ".iron.json" file in your home folder. Any values in "iron.json" that are not found in ".iron.json" will be added; any values in ".iron.json" that are not found in "iron.json" will be left alone; any values in ".iron.json" that are found in "iron.json" will be replaced with the values in "iron.json".</li>
+  <li>if a file named <span class="fixed-width">.iron.json</span> exists in your home folder, that will provide the defaults.</li>
+  <li>if a file named <span class="fixed-width">iron.json</span> exists in the same directory as the script being run, that will be used to <em>overwrite</em> the values from the <span class="fixed-width">.iron.json</span> file in your home folder. Any values in <span class="fixed-width">iron.json</span> that are not found in <span class="fixed-width">.iron.json</span> will be added; any values in <span class="fixed-width">.iron.json</span> that are not found in <span class="fixed-width">iron.json</span> will be left alone; any values in <span class="fixed-width">.iron.json</span> that are found in <span class="fixed-width">iron.json</span> will be replaced with the values in <span class="fixed-width">iron.json</span>.</li>
 </ol>
 
-<p>This allows a lot of flexibility: you can specify a token that will be used globally (in ".iron.json"), then specify the project ID for each project in its own "iron.json" file. You can set a default project ID, but overwrite it for that one project that uses a different project ID.</p>
+<p>This allows a lot of flexibility: you can specify a token that will be used globally (in <span class="fixed-width">.iron.json</span>), then specify the project ID for each project in its own <span class="fixed-width">iron.json</span> file. You can set a default project ID, but overwrite it for that one project that uses a different project ID.</p>
 
 <h3>The JSON Hierarchy</h3>
 
-<p>Each file consists of a single JSON object, potentially with many sub-objects. The JSON hierarchy works in a similar manner to the file hierarchy: the top level provides the defaults. If the top level contains a JSON object whose key is an Iron.io service ("iron_worker", "iron_mq", or "iron_cache"), that will be used to overwrite those defaults when one of their clients loads the config file.</p>
+<p>Each file consists of a single JSON object, potentially with many sub-objects. The JSON hierarchy works in a similar manner to the file hierarchy: the top level provides the defaults. If the top level contains a JSON object whose key is an Iron.io service (<span class="fixed-width">iron_worker</span>, <span class="fixed-width">iron_mq</span>, or <span class="fixed-width">iron_cache</span>), that will be used to overwrite those defaults when one of their clients loads the config file.</p>
 
 <p>This allows you to define a project ID once and have two of the services use it, but have the third use a different project ID.</p>
 
 <h2>Example</h2>
 
-<p>In the event that you wanted to set a token that would be used globally, you would set "~/.iron.json" to look like this:</p>
+<p>In the event that you wanted to set a token that would be used globally, you would set <span class="fixed-width">~/.iron.json</span> to look like this:</p>
 
 {% highlight js %}
 {
@@ -74,7 +76,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 }
 {% endhighlight %}
 
-<p>To follow this up by setting your project ID for each project, you would create an "iron.json" file in each project's directory:</p>
+<p>To follow this up by setting your project ID for each project, you would create an <span class="fixed-width">iron.json</span> file in each project's directory:</p>
 
 {% highlight js %}
 {
@@ -82,7 +84,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 }
 {% endhighlight %}
 
-<p>If, for one project, you want to use a different token, simply include it in that project's "iron.json" file:</p>
+<p>If, for one project, you want to use a different token, simply include it in that project's <span class="fixed-width">iron.json</span> file:</p>
 
 {% highlight js %}
 {
@@ -93,7 +95,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <p>Now for that project <em>and that project only</em>, the new token will be used.</p>
 
-<p>If you want all your IronCache projects to use a different project ID, you can put that in the "~/.iron.json" file:</p>
+<p>If you want all your IronCache projects to use a different project ID, you can put that in the <span class="fixed-width">~/.iron.json</span> file:</p>
 
 {% highlight js %}
 {
@@ -111,10 +113,12 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 <p>The configuration scheme looks for the following values:</p>
 
 <ul>
+  <li><strong>project_id</strong>: The ID of the project to use for requests.</li>
+  <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud.iron.io/tokens">in the HUD</a>.</li>
   <li><strong>host</strong>: The domain name the API can be located at. Defaults to a product-specific value, but always using Amazon's cloud.</li>
   <li><strong>protocol</strong>: The protocol that will be used to communicate with the API. Defaults to "https", which should be sufficient for 99% of users.</li>
   <li><strong>port</strong>: The port to connect to the API through. Defaults to 443, which should be sufficient for 99% of users.</li>
   <li><strong>api_version</strong>: The version of the API to connect through. Defaults to the version supported by the client. End-users should probably never change this.</li>
-  <li><strong>project_id</strong>: The ID of the project to use for requests.</li>
-  <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud.iron.io/tokens">in the HUD</a>.</li>
 </ul>
+
+<p>Note that <strong>only</strong> the <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> values need to be set. They do not need to be set at <strong>every</strong> level of the configuration, but they must be set at least once by the levels that are used in any given configuration. It is recommended that you specify a default <span class="fixed-width">project_id</span> and <span class="fixed-width">token</a> in your <span class="fixed-width">iron.json</span> file.
