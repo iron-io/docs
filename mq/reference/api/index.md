@@ -231,8 +231,8 @@ Multiple messages may be added in a single request, provided that the messages s
 
 ##### Optional
 
-* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds.
-* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds.
+* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds. Maximum is 86,400 seconds (24 hours).
+* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
 * **expires_in**: How long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
 
 ### Request
