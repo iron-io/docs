@@ -27,14 +27,15 @@ $(document).ready(function() {
 		}
 		
 		if (window_height - sidebar_height < 0) {
-			$('.sidebar-content').css("max-height", whatever_scrollbar);
+			//$('.sidebar-content').css("max-height", whatever_scrollbar);
 			$('.sidebar-content').css("overflow-y", "scroll");
 			$(".sidebar-content").css("top", "0px");
 		} else {
-			$(".sidebar-content").css("max-height", "");
+			//$(".sidebar-content").css("max-height", "");
 			$(".sidebar-content").css("overflow-y", "");
 		}
 
+		
 		if(bottom_of_sidebar < sticking_point) {
 			if (offset > 219) {
 				$('.sidebar-content').addClass('pinned');
@@ -50,6 +51,7 @@ $(document).ready(function() {
 			$(".sidebar-content").addClass("stuck");
 			$(".sidebar-content").css("top", sticking_point - sidebar_height - $(".sidebar-nav").offset().top);
 		}
+		
 	}
 	
 	$(function() {

@@ -170,11 +170,12 @@ nav.sidebar-nav {
     position: absolute;
     padding-top: 0px !important;
 }
+/*
 #sidemenu-links {
   max-height:400px;
   min-height:400px;
 }
-
+*/
 .sidebar-content a, .sidebar-content a:hover {
   text-decoration: none;
   width: 190px;
