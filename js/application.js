@@ -17,7 +17,8 @@ $(document).ready(function() {
 		var offset = $(window).scrollTop();
 		var bottom_of_sidebar = sidebar_height + offset;
 		var bottom_of_container = $(".docs").offset().top + $(".docs").height();
-		var sticking_point = bottom_of_container - 20;		
+		var sticking_point = bottom_of_container + 10;		
+		
 		
 		if($(".docs").height() - sidebar_height < 100) {
 			$(".sidebar-content").removeClass("pinned");
@@ -26,15 +27,17 @@ $(document).ready(function() {
 			return
 		}
 		
+		
+		
 		if (window_height - sidebar_height < 0) {
 			//$('.sidebar-content').css("max-height", whatever_scrollbar);
 			$('.sidebar-content').css("overflow-y", "scroll");
-			$(".sidebar-content").css("top", "0px");
+			//$(".sidebar-content").css("top", "0px");
 		} else {
 			//$(".sidebar-content").css("max-height", "");
 			$(".sidebar-content").css("overflow-y", "");
 		}
-
+		
 		
 		if(bottom_of_sidebar < sticking_point) {
 			if (offset > 219) {
