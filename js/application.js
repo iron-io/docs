@@ -7,6 +7,9 @@ function initCufon(){Cufon.replace(".main-container h2, .content-container h2,.b
 
 
 $(document).ready(function() {
+
+	
+	
 	function pin_sidebar() {
 		var sidebar_height = $('.sidebar-content').height();
 		var window_height = $(window).height();
@@ -26,7 +29,7 @@ $(document).ready(function() {
 		if (window_height - sidebar_height < 0) {
 			$('.sidebar-content').css("max-height", whatever_scrollbar);
 			$('.sidebar-content').css("overflow-y", "scroll");
-			$(".sidebar-content").css("top", "");
+			$(".sidebar-content").css("top", "0px");
 		} else {
 			$(".sidebar-content").css("max-height", "");
 			$(".sidebar-content").css("overflow-y", "");
@@ -53,4 +56,5 @@ $(document).ready(function() {
 		$(window).scroll(pin_sidebar);
 		$(window).resize(pin_sidebar);
 	});
+
 });
