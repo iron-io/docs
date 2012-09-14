@@ -281,7 +281,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 * **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
 * **timeout**: timeout: After timeout (in seconds), item will be placed back onto queue. You must delete the message
-from the queue to ensure it does not go back onto the queue. If not set, value from POST is used.
+from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, maximum is 86,400 seconds (24 hours).
 
 ### Sample Request
 
