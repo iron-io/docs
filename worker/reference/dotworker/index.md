@@ -74,7 +74,7 @@ it will have access to the `mongoid` gem, as well.
 <div class="alert">
 <p><strong>Note:</strong> Gems merged with the <span class="fixed-width">.worker</span> 
 file will not be automatically required in your worker files, just as they 
-are not when you merge gems in your application's code. Also, if you merge in a directory tree (e.g., "../app/models"), you will have to include the last directory in the tree in your require statement (e.g., "models/user").</p>
+are not when you merge gems in your application's code.</p>
 </div>
 
 ## Syntax Reference
@@ -152,8 +152,8 @@ The following syntax is valid in `.worker` files:
     <td>
       <ol>
         <li>The path to the Gemfile</li>
-        <li>The groups to include in the merge. Defaults to all the groups. 
-            <strong>(optional)</strong></li>
+        <li>The groups to include in the merge. Defaults to the "default" group&mdash;the top level. 
+            <strong>(optional)</strong>. Example:<br /><span class="fixed-width">gemfile 'Gemfile', 'default', 'othergroup'</span></li>
       </ol>
     </td>
   </tr>
