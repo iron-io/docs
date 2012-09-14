@@ -160,7 +160,7 @@ nav.sidebar-nav {
 }
 .sidebar-content {
     overflow-y:scroll;
-    padding:0 0 100px;
+    padding:0 0 10px;
 }
 .sidebar-content.pinned {
     position: fixed;
