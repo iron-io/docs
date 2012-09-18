@@ -69,8 +69,14 @@ iron_worker upload $WORKER
 
 Where `$WORKER` is replaced by the name of your worker file, minus the .worker.
 
+Sometimes, you want to limit the number of parallel workers for any given task, to prevent external resources like databases or APIs from crashing under the weight of your workers' requests. We have a [max_concurrency](http://blog.iron.io/2012/08/ironworkers-most-requested-feature-is.html) feature that lets you do just this. To use it, simply use the `--max-concurrency` option when uploading a worker:
+
+{% highlight bash %}
+iron_worker upload $WORKER --max-concurrency
+{% endhighlight %}
+
 There are additional options available to the upload command; you can find 
-a list of them by running `iron_worker upload --help`.
+a list of them by running `iron_worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
 ## Queuing Tasks
 
@@ -81,7 +87,29 @@ Instead, you can queue tasks directly from the command line:
 iron_worker queue $WORKER [--priority 0|1|2] [--payload '{"somekey": "some_value", "array": ["item1", "item2"]}']
 {% endhighlight %}
 
-You can find a list of options for the command by running `iron_worker queue --help`.
+Alternatively, you can specifiy a payload file, instead of providing the payload inline:
+
+{% highlight bash %}
+iron_worker queue $WORKER --payload-file /path/to/payload/file.json
+{% endhighlight %}
+
+Sometimes, you want a task to be queued after a delay. You can easily do this with the `--delay` option:
+
+{% highlight bash %}
+iron_worker queue $WORKER --delay 60
+{% endhighlight %}
+
+The task will then be queued after the number of seconds passed to delay (one minute in the above example).
+
+If you want to limit a task to a certain run time below our one hour max, you can do that with the `--timeout` option:
+
+{% highlight bash %}
+iron_worker queue $WORKER --timeout 1800
+{% endhighlight %}
+
+The task will automatically be killed after the number of seconds passed to timeout (half an hour in the above example).
+
+There are a lot of options when you queuing tasks that can be combined to get exactly the execution you need. You can find a list of these options by running `iron_worker queue --help`.
 
 ## Scheduling Tasks
 
