@@ -95,6 +95,18 @@ Sometimes, you want to limit the number of parallel workers for any given task, 
 iron_worker upload $WORKER --max-concurrency
 {% endhighlight %}
 
+If you're worried about errors, your worker is idempotent (meaning that it can be run multiple times without affecting the result), and you'd like to automatically retry your worker if it errors out, you can use the `retries` and `retries-delay` options. `retries` allows you to specify the maximum number of times failed tasks will be re-run:
+
+{% highlight bash %}
+iron_worker upload $WORKER --retries 5
+{% endhighlight %}
+
+You can also optionally specify the delay between retries by using `retries-delay`:
+
+{% highlight bash %}
+iron_worker upload $WORKER --retries 5 --retries-delay 10
+{% endhighlight %}
+
 There are additional options available to the upload command; you can find 
 a list of them by running `iron_worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
