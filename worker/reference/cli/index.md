@@ -56,10 +56,30 @@ IRON_PROJECT_ID=new_project_id_here iron_worker upload myworker
 
 The same applies to the `IRON_TOKEN` environment variable.
 
-## Creating & Uploading Code Packages
-
 You can use [.worker files](/worker/reference/dotworker) to define workers 
-that can then be uploaded using the command line tools.
+that can then be uploaded or run using the command line tools.
+
+## Testing Your Workers Locally
+
+It's a pain to upload every change in code without knowing if it works. To help ease that pain, we've created a command to run workers locally, on your machine. You can use the following command to run a worker:
+
+{% highlight bash %}
+iron_worker run $WORKER
+{% endhighlight %}
+
+Where `$WORKER` is replaced with the name your .worker file. For example, if your file is named `my_worker.worker`, you would use `iron_worker run my_worker`.
+
+If you need to test code that uses a payload, just include the payload or the path to a file containing the payload:
+
+{% highlight bash %}
+# specify the payload inline
+iron_worker run $WORKER --payload '{"this": "is a test", "that": {"test": "object test"}}'
+
+# specify a file containing the payload
+iron_worker run $WORKER --payload-file /path/to/payload.json
+{% endhighlight %}
+
+## Creating & Uploading Code Packages
 
 The command to upload a worker is:
 
