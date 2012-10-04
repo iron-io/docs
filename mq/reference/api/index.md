@@ -133,7 +133,7 @@ When a 503 error code is returned, it signifies that the server is currently una
 
 ## List Message Queues
 
-Get a list of all queues in a project. 100 queues are listed at a time. To see more, use the page parameter.
+Get a list of all queues in a project. By default, 30 queues are listed at a time. To see more, use the `page` parameter or the `per_page` parameter. Up to 100 queues may be listed on a single page.
 
 ### Endpoint
 
@@ -148,6 +148,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues
 #### Optional URL Parameters
 
 * **page**: The 0-based page to view. The default is 0.
+* **per_page**: The number of queues to return per page. The default is 30, the maximum is 100.
 
 ### Response
 
