@@ -14,7 +14,7 @@ $(document).ready(function() {
 		offset = $(window).scrollTop();
 		bottom_of_sidebar = sidebar_height + offset;
 		bottom_of_container = $(".docs").offset().top + $(".docs").height();
-		sticking_point = bottom_of_container - 20;		
+		sticking_point = bottom_of_container;		
 		
 
 		if ($(window).height() < 484)
@@ -78,10 +78,9 @@ $(document).ready(function() {
 				$(".sidebar-content").removeClass("stuck");
 				$(".sidebar-content").css("top", '');
 			}
-		} else {
-			$(".sidebar-content").removeClass("pinned");
-			$(".sidebar-content").addClass("stuck");
-			$(".sidebar-content").css("top", sticking_point - sidebar_height - $(".sidebar-nav").offset().top);
+		} 
+		else {
+				$(".sidebar-content").css("top", -(bottom_of_sidebar-sticking_point));
 		}
 	}
 	
