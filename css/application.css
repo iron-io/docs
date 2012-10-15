@@ -13,7 +13,7 @@ body {
     font: 11px Helvetica, Arial, sans-serif;
     background: #fff url(http://www.iron.io/assets/bg-body.png) repeat-x;
     height: 100%;
-    min-width: 990px
+    min-width: 990px;
 }
 
 img {
