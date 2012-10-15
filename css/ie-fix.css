@@ -1,3 +1,7 @@
 .content-container a[href^="http"] {
   display: inline-block;
 }
+
+.sidebar-nav, .sidebar-content {
+	overflow: hidden !important;
+}
