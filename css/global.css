@@ -457,6 +457,14 @@ span.fixed-width {
   text-decoration: none;
 }
 
+.product-box a.btn {
+  float: left;
+}
+
+.product-box a.btn:hover {
+  color: white;
+}
+
 .subtitle {
   font-size: 18px;
 }
