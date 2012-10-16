@@ -1328,12 +1328,13 @@ body.worker .container header .title-box .info {
 }
 
 .btn, .button {
-  float: right;
-  color: #444;
-  font-size: 18px;
-  line-height: 22px;
+  display: inline-block;
+  *display: inline;
+  color: #333333;
+  font-size: 14px;
+  line-height: 20px;
   border: 1px solid #999;
-  padding: 10px 15px 6px 20px;
+  padding: 4px 14px;
   margin: 0 0;
   cursor: default;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(255, 255, 255, 0.3) inset, 1px 0 0 rgba(255, 255, 255, 0.3) inset, -1px 0 0 rgba(255, 255, 255, 0.3) inset;
