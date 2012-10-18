@@ -82,7 +82,7 @@ require("phar://iron_worker.phar");
 //require("IronCore.class.php");
 
 $worker = new IronWorker();
-$res = worker->postTask("PHPWorker");
+$res = $worker->postTask("PHPWorker");
 print_r($res);
 ?>
 {% endhighlight %}
