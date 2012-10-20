@@ -253,9 +253,11 @@ Sample:
 
 You will almost always want to use our [Command Line Interface](/worker/reference/cli/) to make uploading easier.
 
-If you decide you want to upload without using the CLI, the first thing you'll need to know is 
-[How to Create a Code Package](/worker/code/packaging). Once you've created a code package, you can upload it using 
-this endpoint.
+#### Building a Code Package
+
+If your client doesn't support uploading code packages and you don't want to use the [CLI](/worker/reference/cli), you're going to need to build the code package yourself before uploading it.
+
+Code should be submitted as a zip file containing all of the files your project needs. That includes dependencies, libraries, data files... everything.
 
 #### Endpoint
 
