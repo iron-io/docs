@@ -138,6 +138,8 @@ Save this as "enqueue.cs", compile it, and run it to queue up the task to your w
 {"msg":"Queued up","tasks":[{"id":"506e1a8e29a33a57650db95d"}]}
 {% endhighlight %}
 
+For most people, calling the API by hand is overkill. We don't have an official IronWorker library for .NET yet, but our community has built a great project for interacting with our APIs. If you're using Iron.io from .NET, you may wish to check out [IronTools](https://github.com/odeits/IronTools).
+
 **Note:** One of our customers, [Oscar Deits](https://github.com/odeits) lent us his considerable expertise with .NET as we came up with this sample code. Thanks Oscar!
 
 ## Deep Dive
@@ -146,7 +148,7 @@ Save this as "enqueue.cs", compile it, and run it to queue up the task to your w
 
 Retrieving the payload in .NET is the same as it is on any other language. 
 Retrieve the `-payload` argument passed to the script, load that file, and 
-parse it as JSON.
+parse it as JSON. **Note**: This script only parses payloads that consist of strings in a key/value pair. Implementing more advanced parsing is an exercise left to the reader.
 
 {% highlight c# %}
 using System;
@@ -162,7 +164,9 @@ public class HelloWorld
         int ind = Array.IndexOf(args, "-payload");
         if( ind >= 0 && (ind+1) < args.Length ){
             string path = args[ind+1];
-            IDictionary<string,string> json = new JavaScriptSerializer().Deserialize <Dictionary<string, string>>(File.ReadAllText(path));
+            string payload = File.ReadAllText(path);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            IDictionary<string,string> json = serializer.Deserialize <Dictionary<string, string>>(payload);
             foreach (string key in json.Keys)
             {
                 Console.WriteLine( key + " = " + json[key] );
