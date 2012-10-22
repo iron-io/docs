@@ -51,3 +51,4 @@ The following languages are currently supported on IronWorker:
 ### Working Support
 
 * [Go](/worker/languages/go)
+* [.NET](/worker/languages/dotnet)
