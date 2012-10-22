@@ -8,6 +8,7 @@ function initCufon(){Cufon.replace(".main-container h2, .content-container h2,.b
 
 $(document).ready(function() {
 	function pin_sidebar() {
+
 		sidebar_height = $('.sidebar-content').height();
 		window_height = $(window).height();
 		whatever_scrollbar = window.innerHeight;
@@ -33,18 +34,18 @@ $(document).ready(function() {
 		        $('.sidebar-content').attr('style','');
 		        $('.sidebar-content').css('top', bottom_of_container - 700); 
 		        $(".sidebar-content").removeClass("pinned");
-                	$(".sidebar-content").addClass("stuck");
-                	$('.sidebar-content').removeClass('scrolly');
-        	        return;
+                $(".sidebar-content").addClass("stuck");
+                $('.sidebar-content').removeClass('scrolly');
+        	    return;
 		    }
 		    else if (!scrolly)
 		    {
 		        $('.sidebar-content').attr('style','');
-                	$('.sidebar-content').css('max-height', $(window).height());
+                $('.sidebar-content').css('max-height', $(window).height());
 		        $('.sidebar-content').css('overflow-y', "scroll");
 		        $(".sidebar-content").removeClass("stuck");
-                	$(".sidebar-content").addClass("pinned");
-                	$('.sidebar-content').addClass('scrolly');
+                $(".sidebar-content").addClass("pinned");
+                $('.sidebar-content').addClass('scrolly');
                 return;
 		    } else if (scrolly){
 		        return;
@@ -59,17 +60,17 @@ $(document).ready(function() {
 		}
 		
 		
-		if (window_height - sidebar_height < 0) {
-			$('.sidebar-content').css("max-height", whatever_scrollbar);
-			$('.sidebar-content').css("overflow-y", "scroll");
-			$(".sidebar-content").css("top", "");
-		} else {
-			$(".sidebar-content").css("max-height", "");
-			$(".sidebar-content").css("overflow-y", "");
-		}
+		// if (window_height - sidebar_height < 0) {
+		// 	$('.sidebar-content').css("max-height", whatever_scrollbar);
+		// 	$('.sidebar-content').css("overflow-y", "scroll");
+		// 	$(".sidebar-content").css("top", "");
+		// } else {
+		// 	$(".sidebar-content").css("max-height", "");
+		// 	$(".sidebar-content").css("overflow-y", "");
+		// }
 
 		if(bottom_of_sidebar < sticking_point) {
-			if (offset > 219) {
+			if (offset > 219 && document.width / window.innerWidth == 1) {
 				$('.sidebar-content').addClass('pinned');
 				$(".sidebar-content").removeClass("stuck");
 				$(".sidebar-content").css("top", '');
@@ -78,8 +79,7 @@ $(document).ready(function() {
 				$(".sidebar-content").removeClass("stuck");
 				$(".sidebar-content").css("top", '');
 			}
-		} 
-		else {
+		} else {
 				$(".sidebar-content").css("top", -(bottom_of_sidebar-sticking_point));
 		}
 	}
