@@ -57,7 +57,7 @@ This is for the Ruby client, but all clients have the same operations. See the d
 To get into more advanced uses of it, you may want to check out the
 [API docs](http://dev.iron.io/mq/reference/api/) or check out an example Sinatra application
 that ties in [IronWorker](http://addons.heroku.com/iron_worker)
-at [](https://github.com/iron-io/heroku_sinatra_example).
+at [https://github.com/iron-io/heroku_sinatra_example](https://github.com/iron-io/heroku_sinatra_example).
 
 ### Support
 
