@@ -782,3 +782,14 @@ a.grid-box span.grid-box-text h3 {
     background: radial-gradient(ellipse at center, #6D0019 0%,#8F0222 56%,#A90329 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d0019', endColorstr='#a90329',GradientType=1 );
 }
+
+figcaption {
+  text-align: center;
+  background: #ededed;
+  border-bottom: 1px solid white;
+  padding: 5px;
+}
+
+figcaption a {
+  float: right;
+}
