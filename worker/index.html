@@ -42,7 +42,7 @@ section: worker
 	<p><strong>Note:</strong> You only need to upload your code package <em>when your code changes</em>. Queuing tasks <em>does not</em> require you to upload the code package again.</p>
 </div>
 
-<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's extensive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
+<p>The suggested way to do this is through a <span class="fixed-width">.worker</span> (pronounced "dotworker") file. There's extensive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
 
 {% highlight ruby %}
 runtime "ruby" # The runtime the code should be run under: ruby, python, php, or sh
@@ -51,6 +51,10 @@ exec "path/to/file.rb" # The file to execute when a task is queued. Your worker'
 
 file "config.json" # The path to a file to upload as a dependency of the worker; just leave this out if you don't have any dependencies.
 {% endhighlight %}
+
+<div class="alert">
+	<p><strong>Note:</strong> You should never have a file named <em>just</em> ".worker". Always use a unique, recognisable name&mdash;it's what your code package will be named. "helloworld.worker" will create a code package named "helloworld", "turnintoaunicorn.worker" will create a code package named "turnintoaunicorn", etc.</p>
+</div>
 
 <p>Once you've defined your worker and its dependencies with a <span class="fixed-width">.worker</span> file, you can upload it using the <a href="/worker/reference/cli">command line tool</a> for IronWorker. <strong>Note:</strong> You'll need to have Ruby 1.9+ installed to use the IronWorker CLI. After that, just run "<span class="fixed-width">gem install iron_worker_ng</span>" to get the tool.</p>
 
