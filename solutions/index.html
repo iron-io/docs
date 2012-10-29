@@ -6,23 +6,14 @@ section: solutions
 
 <h1>Solutions</h1>
 
-<ul>
-  {% for post in site.categories.solutions %}
-  <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
-
-<section class="information-area" style="padding-top:35px;">
+<section class="information-area">
       <ul class="solutions-list">
-        <li>
-          <h3>Image Processing</h3>
-          <p>Processing images is a common need in social apps. Whether it’s generating thumbnails, resizing photos, or adding effects, Iron.io can help you offload and scale out the effort.</p>
-          <a href="/solutions/image-processing.html" class="btn orange">Learn More<span class="arrow">➟</span></a><br>
-        </li>
-        <li>
-          <h3>Emails and Notifications</h3>
-          <p>Sending notifications is key to delivering great service. A growing user base means distributing the effort and shrinking the time it takes to get emails and messages to your users.</p>
-          <a href="/solutions/notifications.html" class="btn orange">Learn More<span class="arrow">➟</span></a><br>
-        </li>
+		{% for post in site.categories.solutions %}
+			<li>
+				<h3>{{ post.title }}</h3>
+				<p>{{ post.summary }}</p>
+				<a href="{{ site.baseurl }}{{ post.permalink }}" class="btn orange" title="{{ post.title }}">Learn More <span class="arrow">➟</span></a><br>
+			</li>
+		{% endfor %}
       </ul>
     </section>

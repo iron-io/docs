@@ -1220,11 +1220,6 @@ body.worker .container header .title-box .info {
 }
 
 .information-area {
-  margin: 0 -20px;
-  border: 1px solid #b2b2b2;
-  border-width: 1px 0;
-  background: #f8f8f8;
-  padding: 46px 26px 27px;
   font-size: 15px;
   line-height: 19px;
   overflow: hidden

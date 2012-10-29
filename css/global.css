@@ -792,16 +792,35 @@ a.grid-box span.grid-box-text h3 {
 .information-area .solutions-list li {
   float: left;
   width: 292px;
-  margin: 0 20px 20px 0;
+  margin: 0 31px 20px 0;
   border-radius: 10px;
-  box-shadow: 0 1px 0px hsla(0, 0%, 0%, 0.3);
   padding: 20px;
   height: 200px;
-  background: white;
-  border: 1px solid hsl(0, 0%, 67%);
+  background: #F8F8F8;
+  border: 1px solid hsl(0, 0%, 50%);
 }
 
 .information-area .solutions-list li img {
   float: left;
   margin: 30px 30px 40px 0;
+}
+
+.information-area a, .information-area a:hover {
+  text-decoration: none;
+}
+
+.information-area a.btn:hover {
+  color: white;
+}
+
+.information-area h3 {
+  margin-top: 10px;
+}
+
+.information-area p {
+  margin-bottom: 10px;
+}
+
+.information-area a {
+  margin-top: 15px !important;
 }
