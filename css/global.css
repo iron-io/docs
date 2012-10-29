@@ -49,7 +49,7 @@
   margin: 0;
 }
 
-.content-container .content a[href^="http"] {
+.content-container .content a[target="_blank"] {
   background: url(/images/external-link.png) no-repeat 100% 3px;
   padding-right: 14px;
   white-space: nowrap;
