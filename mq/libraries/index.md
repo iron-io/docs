@@ -13,6 +13,7 @@ These are our official client libraries that use the IronMQ <a href="/mq/referen
 <ul>
 <li><a href="https://github.com/iron-io/iron_mq_ruby">Ruby</a></li>
 <li><a href="https://github.com/iron-io/iron_mq_go">Go</a></li>
+<li><a href="https://github.com/iron-io/iron_go">Go</a></li>
 <li><a href="https://github.com/iron-io/iron_mq_java">Java</a></li>
 <li><a href="https://github.com/iron-io/iron_mq_php">PHP</a></li>
 <li><a href="https://github.com/iron-io/iron_mq_python">Python</a></li>
