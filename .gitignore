@@ -4,3 +4,5 @@ _site/
 _jekyll_s3.yml
 .DS_Store
 *.sublime*
+_cache/
+_plugins/

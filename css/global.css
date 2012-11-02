@@ -782,3 +782,45 @@ a.grid-box span.grid-box-text h3 {
     background: radial-gradient(ellipse at center, #6D0019 0%,#8F0222 56%,#A90329 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d0019', endColorstr='#a90329',GradientType=1 );
 }
+
+.information-area .solutions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 -55px 0 0;
+}
+
+.information-area .solutions-list li {
+  float: left;
+  width: 292px;
+  margin: 0 31px 20px 0;
+  border-radius: 10px;
+  padding: 20px;
+  height: 200px;
+  background: #F8F8F8;
+  border: 1px solid hsl(0, 0%, 50%);
+}
+
+.information-area .solutions-list li img {
+  float: left;
+  margin: 30px 30px 40px 0;
+}
+
+.information-area a, .information-area a:hover {
+  text-decoration: none;
+}
+
+.information-area a.btn:hover {
+  color: white;
+}
+
+.information-area h3 {
+  margin-top: 10px;
+}
+
+.information-area p {
+  margin-bottom: 10px;
+}
+
+.information-area a {
+  margin-top: 15px !important;
+}
