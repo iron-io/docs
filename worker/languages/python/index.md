@@ -15,7 +15,20 @@ Python has become one of the most popular languages for web software and scienti
 
 ### Get the Python client library
 
-You can download the Python client library, `iron_worker_python`, from [Github](https://github.com/iron-io/iron_worker_python).
+You can download the Python client library, `iron_worker_python`, from [Github](https://github.com/iron-io/iron_worker_python)&mdash;note that you'll need the [iron_core_python](https://github.com/iron-io/iron_core_python) library installed, too. Users of pip or easy_install can simply use `pip install iron_worker` and `easy_install iron_worker`.
+
+### Create Your Configuration File
+
+The Python library uses a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the root of your project:
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the library will pick up your credentials and use them automatically.
 
 ### Write your Python worker.
 
@@ -27,10 +40,8 @@ print "Hello from Python"
 {% highlight python %}
 from iron_worker import *
 
-worker = IronWorker(token="INSERT TOKEN HERE", project_id="INSERT PROJECT_ID HERE")
-
-IronWorker.createZip(destination="worker.zip", files=["HelloWorld.py"], overwrite=True)
-response = worker.postCode(runFilename="HelloWorld.py", zipFilename="worker.zip", name="HelloWorld")
+worker = IronWorker()
+response = worker.upload("HelloWorld.py")
 {% endhighlight %}
 
 **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
@@ -39,8 +50,8 @@ response = worker.postCode(runFilename="HelloWorld.py", zipFilename="worker.zip"
 {% highlight python %}
 from iron_worker import *
 
-worker = IronWorker(token="INSERT TOKEN HERE", project_id="INSERT PROJECT_ID HERE")
-response = worker.postTask(name="HelloWorld")
+worker = IronWorker()
+response = worker.queue(code_name="HelloWorld")
 {% endhighlight %}
 
 ## Deep Dive
@@ -51,27 +62,20 @@ Retrieving the payload in Python is the same as it is on any other language.
 Retrieve the `-payload` argument passed to the script, load that file, and 
 parse it as JSON.
 
-The `iron_worker_python` library has a [helper.py file](https://github.com/iron-io/iron_worker_python/blob/master/helper.py) 
-that you can include to make this easier.
-
 In your worker:
 {% highlight python %}
-import helper
+payload = None
+payload_file = None
+for i in range(len(sys.argv)):
+    if sys.argv[i] == "-payload" and (i + 1) < len(sys.argv):
+        payload_file = sys.argv[i]
+        break
 
-payload = getArg("payload")
-print payload
-{% endhighlight %}
+f = open(payload_file, "r")
+contents = f.read()
+f.close()
 
-In your upload code, you need to add the helper file. Copy it to the same 
-directory your worker resides in, and modify your upload script as follows:
-
-{% highlight python %}
-from iron_worker import *
-
-worker = IronWorker(token="INSERT TOKEN HERE", project_id="INSERT PROJECT_ID HERE")
-
-IronWorker.createZip(destination="worker.zip", files=["HelloWorld.py", "helper.py"], overwrite=True)
-response = worker.postCode(runFilename="HelloWorld.py", zipFilename="worker.zip", name="HelloWorld")
+payload = json.loads(contents)
 {% endhighlight %}
 
 ### Environment
