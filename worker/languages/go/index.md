@@ -15,7 +15,7 @@ Go Workers need to be compiled, then uploaded. Once they're uploaded to the
 IronWorker cloud, they can be invoked via a simple API to be put on the 
 processing queues immediately or scheduled to run at a later time&mdash;you only need to upload the worker again when the code changes. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
 
-**Note**: we don't use it for this walkthrough, but there's a great [unofficial library](https://github.com/manveru/go.iron) for working with the IronWorker API in Go. If working with raw HTTP requests doesn't sound like fun to you, check it out.
+**Note**: we don't use it for this walkthrough, but there's a great [library](https://github.com/iron-io/iron_go) for working with the IronWorker API in Go. If working with raw HTTP requests doesn't sound like fun to you, check it out.
 
 ## Quick Start
 
