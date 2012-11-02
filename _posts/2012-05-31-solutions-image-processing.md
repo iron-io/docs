@@ -5,6 +5,7 @@ permalink: /solutions/image-processing
 categories:
   - solutions
 section: solutions
+summary: Processing images is a common need in social apps. Whether it’s generating thumbnails, resizing photos, or adding effects, Iron.io can help you offload and scale out the effort.
 breadcrumbs:
   - ['Image Processing', '/image-processing']
 ---

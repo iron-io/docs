@@ -5,6 +5,7 @@ permalink: /solutions/notifications
 categories:
   - solutions
 section: solutions
+summary: Sending notifications is key to delivering great service. A growing user base means distributing the effort and shrinking the time it takes to get emails and messages to your users.
 breadcrumbs:
   - ['Email & Notifications', '/notifications']
 ---
