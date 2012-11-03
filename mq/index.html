@@ -37,6 +37,7 @@ section: mq
 
 <p>Before you can interact with IronMQ, you're going to have to configure your <a href="/mq/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/mq/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
@@ -50,6 +51,7 @@ section: mq
 
 <p>You can post messages from any of our <a href="/mq/libraries">client libraries</a>. Here's an example using Ruby.</p>
 
+<figcaption><span>ironmq_example.rb </span></figcaption>
 {% highlight ruby %}
 @ironmq = IronMQ::Client.new()
 @queue = @ironmq.queue("first_queue")
@@ -58,6 +60,7 @@ msg = @queue.post("hello world!")
 
 <p>Messages can be more than just strings, though; they can be anything that can be JSON-encoded. The library will automatically encode it for you before sending:</p>
 
+<figcaption><span>ironmq_example.rb </span></figcaption>
 {% highlight ruby %}
 @ironmq = IronMQ::Client.new()
 @queue = @ironmq.queue("first_queue")
@@ -66,6 +69,7 @@ msg = @queue.post({"lang" => "ruby"})
 
 <p>You can also specify a <span class="fixed-width">delay</span> and/or a <span class="fixed-width">expires_in</span> option when posting a message. The <span class="fixed-width">delay</span> option determines how long, in seconds, the message will not be available on the queue for:
 
+<figcaption><span>ironmq_example.rb </span></figcaption>
 {% highlight ruby %}
 @ironmq = IronMQ::Client.new()
 @queue = @ironmq.queue("first_queue")
@@ -74,6 +78,7 @@ msg = @queue.post("hello world!", {:delay => 60})
 
 <p>The <span class="fixed-width">expires_in</span> option determins how long, in seconds, the message will be available on the queue before it is evicted. The default is 7 days, and it cannot exceed 30 days.</p>
 
+<figcaption><span>ironmq_example.rb </span></figcaption>
 {% highlight ruby %}
 @ironmq = IronMQ::Client.new()
 @queue = @ironmq.queue("first_queue")
@@ -84,6 +89,7 @@ msg = @queue.post("hello world!", {:delay => 60})
 
 <p>Getting a message off the queue is simple:</p>
 
+<figcaption><span>ironmq_example.rb </span></figcaption>
 {% highlight ruby %}
 @ironmq = IronMQ::Client.new()
 @queue = @ironmq.queue("first_queue")
@@ -97,6 +103,7 @@ p msg
 
 <p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This ensures that the message is only processed once, but that it will not be lost if the processor fails during processing. Deleting is as simple as posting and getting:</p>
 
+<figcaption><span>ironmq_example.rb </span></figcaption>
 {% highlight ruby %}
 @ironmq = IronMQ::Client.new()
 @queue = @ironmq.queue("first_queue")

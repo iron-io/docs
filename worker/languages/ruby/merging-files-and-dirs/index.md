@@ -16,6 +16,7 @@ simple to upload them with the official client libraries.
 
 To upload a resource file through `iron_worker_ng`, just use the `file` command in your `.worker` file:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 file '../config/database.yml' # will be in the same directory as the worker
 file 'clients.csv', 'information/clients' # will be in the information/clients subdirectory
@@ -29,6 +30,7 @@ stored as a file in the subdirectory specified by `destination`.
 If you want to merge many files, however, there's also the option to use the 
 built-in `dir` command in your `.worker` file:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 dir '../config' # will be in the same directory as the worker
 dir 'lib', 'utils' # will be in the utils subdirectory, accessible as utils/lib

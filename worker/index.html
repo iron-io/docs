@@ -44,7 +44,7 @@ section: worker
 
 <p>The suggested way to do this is through a <span class="fixed-width">.worker</span> file. There's extensive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
 
-<figcaption><span>firstworker.worker </span><a href="http://j.mp/pPUUmW">Download </a></figcaption>
+<figcaption><span>firstworker.worker </span></figcaption>
 {% highlight ruby %}
 runtime "ruby" # The runtime the code should be run under: ruby, python, php, or sh
 
@@ -70,7 +70,7 @@ file "config.json" # The path to a file to upload as a dependency of the worker;
 <figcaption><span>Command Line </span></figcaption>
 <div class="cli">
 {% highlight bash %}
-iron_worker upload firstworker
+$ iron_worker upload firstworker
 {% endhighlight %}
 </div>
 
@@ -82,14 +82,14 @@ iron_worker upload firstworker
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker queue firstworker
+$ iron_worker queue firstworker
 {% endhighlight %}
 
 <p>You can also specify a payload, which is a string that will be supplied to your worker while it runs the task, letting you pass in information. Almost all payloads are JSON strings:</p>
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker queue firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "arr1": ["item1", "item2"]}'
+$ iron_worker queue firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "arr1": ["item1", "item2"]}'
 {% endhighlight %}
 
 <p>Most clients&mdash;including the CLI&mdash;will automatically handle parsing the payload in your worker, so you can just access the variable or function they give you in your worker's code. We have <a href="/worker/payloads">more information</a> on payloads, if you're curious.</p>
@@ -104,21 +104,21 @@ iron_worker queue firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "ar
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker schedule firstworker --start-at "2012-07-19T23:51:00-04:00"
+$ iron_worker schedule firstworker --start-at "2012-07-19T23:51:00-04:00"
 {% endhighlight %}
 
 <p>If you want to just start a task after a short delay, you can do that too. Just specify <span class="fixed-width">--delay</span> followed by the number of seconds the task should be delayed.</p>
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker schedule firstworker --delay 120
+$ iron_worker schedule firstworker --delay 120
 {% endhighlight %}
 
 </p>If you want to have a task repeat, you can just specify the <span class="fixed-width">--run-every</span> option, followed by the number of seconds between each run:</p>
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker schedule firstworker --run-every 60
+$ iron_worker schedule firstworker --run-every 60
 {% endhighlight %}
 
 <p>There are a lot of options to configure scheduling tasks; check our <a href="/worker/scheduling">more detailed guide</a> to see more of the options.</p>
