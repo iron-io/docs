@@ -186,7 +186,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches/<span
 
 {% highlight js %}
 {
-  "size": "queue size"
+  "size": "cache size"
 }
 {% endhighlight %}
 
