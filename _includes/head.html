@@ -1,6 +1,11 @@
 <meta charset="utf-8">
 <title>{% if page.title %}{{ page.title }} | {% endif %}Iron.io Dev Center</title>
-<meta name="description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://{{ site.domain }}{{ site.baseurl }}{{ page.url }}" />
+<meta property="og:image" content="{{ site.baseurl }}/images/ogimage.png" />
+<meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}Iron.io Dev Center" />
+<meta property="og:description" content="{% if page.summary %}{{ page.summary }}{% endif %}" />
+<meta name="description" content="{% if page.summary %}{{ page.summary }}{% endif %}" />
 
 <meta name="google-site-verification" content="_p0K1FT08lpHP3jvMJON4-koeaHVqMPwCB8GOEMqucQ" />
 <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/application.css" />
