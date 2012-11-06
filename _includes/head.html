@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <title>{% if page.title %}{{ page.title }} | {% endif %}Iron.io Dev Center</title>
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://{{ site.domain }}{{ site.baseurl }}{{ page.url }}" />
+<meta property="og:url" content="http://{{ site.domain }}{{ site.baseurl }}{{ page.url }}{% unless page.url contains '.html' %}/{% endunless %}" />
 <meta property="og:image" content="http://{{ site.domain }}{{ site.baseurl }}/images/ogimage.png" />
 <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}Iron.io Dev Center" />
 <meta property="og:description" content="{% if page.summary %}{{ page.summary }}{% endif %}" />
