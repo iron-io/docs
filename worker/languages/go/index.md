@@ -23,14 +23,16 @@ processing queues immediately or scheduled to run at a later time&mdash;you only
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-gem install iron_worker_ng
+$ gem install iron_worker_ng
 {% endhighlight %}
 
 It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
 
 ### Write Your Go Worker
 
+<figcaption><span>hello_worker.go </span></figcaption>
 {% highlight go %}
 package main
 
@@ -55,6 +57,7 @@ GOOS=linux GOARCH=amd64 go build
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
+<figcaption><span>hello.worker </span></figcaption>
 {% highlight ruby %}
 # set the runtime language; this should be "binary" for Go workers
 runtime "binary"
@@ -66,6 +69,7 @@ exec "hello_worker" # replace with your Go executable
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
@@ -77,8 +81,9 @@ You should insert your [project ID](https://hud.iron.io) and [token](https://hud
 
 ### Upload Your Worker
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker upload hello
+$ iron_worker upload hello
 {% endhighlight %}
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
@@ -98,6 +103,7 @@ authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
 object. The following program will queue up a task to your worker; just insert 
 your token and project ID into the code.
 
+<figcaption><span>enqueue.go </span></figcaption>
 {% highlight go %}
 package main
 
@@ -192,6 +198,7 @@ Retrieving the payload from within the worker on Go is the same as it is on any
 other language. Retrieve the `-payload` argument passed to the script, load that 
 file, and parse it as JSON.
 
+<figcaption><span>payload.go </span></figcaption>
 {% highlight go %}
 package main
 

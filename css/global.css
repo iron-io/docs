@@ -824,3 +824,21 @@ a.grid-box span.grid-box-text h3 {
 .information-area a {
   margin-top: 15px !important;
 }
+
+figcaption {
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #CCC;
+  background: #F8F8F8;
+  background: -moz-linear-gradient(#F8F8F8, #E1E1E1);
+  background: -webkit-linear-gradient(#F8F8F8, #E1E1E1);
+  background: linear-gradient(#F8F8F8, #E1E1E1);
+  font-size: 12px;
+  padding: 5px;
+}
+
+figcaption a {
+  display: inline-block;
+  position: absolute !important;
+  right: 2em;
+}

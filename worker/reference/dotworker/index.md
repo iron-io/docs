@@ -36,6 +36,7 @@ Writing a `.worker` file is simple: give it a recognisable name, then append
 The `.worker` file mirrors the code you would use to construct a package 
 in your application. Here's a simple example:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 runtime "ruby"
 exec "hello_worker.rb"
@@ -47,6 +48,7 @@ is run.
 
 You can also add the files your worker is dependent upon:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 runtime "ruby"
 exec "hello_worker.rb"
@@ -61,6 +63,7 @@ after it's uploaded.
 Everything you can do in your application to construct a code package, you 
 can do in a `.worker` file. Here's an example that includes a gem:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 runtime "ruby"
 exec "hello_worker.rb"

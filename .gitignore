@@ -1,4 +1,6 @@
 _site/
+_plugins/
+_cache/
 .idea/
 *.swp
 _jekyll_s3.yml

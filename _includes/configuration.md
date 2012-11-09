@@ -8,6 +8,7 @@
 
 <p>Create a file called <span class="fixed-width">.iron.json</span> in your home directory (i.e., <span class="fixed-width">~/.iron.json</span>) and enter your Iron.io credentials:</p>
 
+<figcaption><span>.iron.json </span></figcaption>
 {% highlight js %}
 {
     "token": "MY_TOKEN",
@@ -70,6 +71,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <p>In the event that you wanted to set a token that would be used globally, you would set <span class="fixed-width">~/.iron.json</span> to look like this:</p>
 
+<figcaption><span>.iron.json </span></figcaption>
 {% highlight js %}
 {
   "token": "YOUR TOKEN HERE"
@@ -78,6 +80,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <p>To follow this up by setting your project ID for each project, you would create an <span class="fixed-width">iron.json</span> file in each project's directory:</p>
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "PROJECT ID HERE"
@@ -86,6 +89,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <p>If, for one project, you want to use a different token, simply include it in that project's <span class="fixed-width">iron.json</span> file:</p>
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "PROJECT ID HERE",
@@ -97,6 +101,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <p>If you want all your IronCache projects to use a different project ID, you can put that in the <span class="fixed-width">~/.iron.json</span> file:</p>
 
+<figcaption><span>.iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "GLOBAL PROJECT ID",

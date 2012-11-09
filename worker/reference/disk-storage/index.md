@@ -17,6 +17,7 @@ You access this storage by making use of the variable `user_dir` in the worker. 
 
 Here's an example that downloads a file from the web and saves it in local storage. The log snippet just logs the contents of `user_dir`.
 
+<figcaption><span>local_file.rb </span></figcaption>
 {% highlight ruby %}
 class S3Worker < IronWorker::Base
 
