@@ -677,7 +677,10 @@ Sample:
     "start_time": 1320268924000000000,
     "end_time": 1320268924000000000,
     "duration": 43,
-    "timeout": 3600
+    "timeout": 3600,
+    "payload": "{\"foo\":\"bar\"}", 
+    "updated_at": "2012-11-10T18:31:08.064Z", 
+    "created_at": "2012-11-10T18:30:43.089Z"
 }
 {% endhighlight %}
 
