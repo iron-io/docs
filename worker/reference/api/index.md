@@ -633,7 +633,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webho
 
 #### Request
 
-The request body is free-form: anything at all can be sent. Whatever the request body is will be passed along a-s the payload for the task, and therefore needs to be under 64KB in size.
+The request body is free-form: anything at all can be sent. Whatever the request body is will be passed along as the payload for the task, and therefore needs to be under 64KB in size.
 
 #### Response
 
