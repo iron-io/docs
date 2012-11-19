@@ -1,0 +1,9 @@
+<ul class="nav pull-right">
+	  <li id="fat-menu" class="dropdown">
+	    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
+			<ul class="dropdown-menu">{% for lang in page.languages %}
+				<li><a href="?lang={{ lang.slug }}">{{ lang.name }}</a></li>{% endfor %}
+	    </ul>
+	  </li>
+	</ul>
+	<div class="clear"></div>
