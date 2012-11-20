@@ -3,11 +3,12 @@ title: IronWorker Documentation
 layout: default
 section: worker
 languages:
-- name: Go
-  slug: go
+- {name: Go, slug: go}
+- {name: Ruby, slug: ruby}
+- {name: PHP, slug: php}
+- {name: .NET, slug: net}
 ---
 
-<h1>{{ page.title }}</h1>
 <p class="subtitle">Offload your tasks to the parallel-processing power of the elastic cloud. Write your code, then queue tasks against it&mdash;no servers to manage, no scaling to worry about.</p>
 
 <div class="flow-steps">
@@ -15,7 +16,7 @@ languages:
 		<a class="number" href="#write">1</a>
 		<a class="title" href="#write">Write Your Worker</a>
 	</div>
-    
+
 
 	<div class="step">
     	<a class="number" href="#upload">2</a>
