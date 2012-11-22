@@ -54,9 +54,10 @@
             {% endif %}
           </div>
 		</nav>
-          
+
 
           <div style="float: right; width: 700px" class="content">
+            <h1>{{ page.title }} {% if page.languages %}{% include language-dropdown.html %}{% endif %}</h1>
             {{ content }}
           </div>
 
