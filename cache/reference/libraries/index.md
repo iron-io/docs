@@ -13,11 +13,6 @@ These are our official client libraries that use the IronCache <a href="/cache/r
 
 <div>
 <ul>
-<li><a href="https://github.com/iron-io/iron_cache_ruby">Ruby</a></li>
-<li><a href="https://github.com/iron-io/iron_cache_php">PHP</a></li>
-<li><a href="https://github.com/iron-io/iron_cache_python">Python</a></li>
-<li><a href="https://github.com/iron-io/iron_cache_dotnet">.NET</a></li>
-<li><a href="https://github.com/iron-io/iron_go">Go</a></li>
 <li><a href="https://github.com/iron-io/iron_cache_ruby" target="_blank">Ruby</a></li>
 <li><a href="https://github.com/iron-io/iron_cache_php" target="_blank">PHP</a></li>
 <li><a href="https://github.com/iron-io/iron_cache_python" target="_blank">Python</a></li>
