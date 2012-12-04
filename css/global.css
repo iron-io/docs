@@ -1063,6 +1063,7 @@ figcaption a {
 
 .dropdown a {
   text-decoration: none;
+  vertical-align: text-bottom
 }
 
 .dropdown a:hover {
