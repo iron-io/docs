@@ -1,0 +1,8 @@
+<p>Because you changed your source files, you'll need to recompile your worker. Run the following from the root of your project (<span class="fixed-width">~/iron/myworker</span> in our example):
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+GOOS=linux GOARCH=amd64 go build
+{% endhighlight %}
+
+<p>This will compile your worker to a file named <span class="fixed-width">hello</span> in the root of your project.</p>

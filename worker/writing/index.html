@@ -1,0 +1,328 @@
+---
+title: Creating Your Worker
+layout: default
+section: worker
+languages:
+- name: Ruby
+  slug: ruby
+  extension: rb
+  command: ruby
+- name: PHP
+  slug: php
+  extension: php
+  command: php
+- name: Python
+  slug: python
+  extension: py
+  command: python
+- name: Java
+  slug: java
+  extension: java
+  command: java
+- name: NodeJS
+  slug: nodejs
+  extension: js
+  command: node
+- name: Go
+  slug: go
+  extension: go
+  command: "go run"
+- name: .NET
+  slug: dotnet
+  extension: cs
+  command: gmcs
+summary: "A guide to creating your first worker to run on IronWorker's parallel, distributed system."
+---
+
+<p>Because workers are so free-form, they vary in complexity. Some simple workers consist of a single file, some workers consist of a bunch of binary executables, dependencies, and several files and folders full of code. We’re going to start with a simple worker that’s just a single file, but we’ll walk through how to add complexity to that.</p>
+
+<h2 id="simple">A Simple Worker</h2>
+
+<p>Creating a simple worker is just a matter of writing the code that you want run, then telling your worker manifest about it. For example, save the following script as <span class="fixed-width">{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %}</span>:</p>
+
+<figcaption><span>~/iron/myworker/{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %} </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/simple/ruby.html %}{% endhighlight %}</div>
+<div class="language php">{% highlight php %}{% include worker/writing/simple/php.html %}{% endhighlight %}</div>
+<div class="language python">{% highlight python %}{% include worker/writing/simple/python.html %}{% endhighlight %}</div>
+<div class="language java">{% highlight java %}{% include worker/writing/simple/java.html %}{% endhighlight %}</div>
+<div class="language nodejs">{% highlight js %}{% include worker/writing/simple/nodejs.html %}{% endhighlight %}</div>
+<div class="language go">{% highlight go %}{% include worker/writing/simple/go.html %}{% endhighlight %}</div>
+<div class="language dotnet">{% highlight c# %}{% include worker/writing/simple/dotnet.html %}{% endhighlight %}</div>
+
+<p>Put that file in the root of your project workspace (e.g., <span class="fixed-width">~/iron/myworker/{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %}</span>), so it’s sitting next to <span class="fixed-width">FirstWorker.worker</span> and <span class="fixed-width">iron.json</span>.</p>
+
+<div class="language java">{% include worker/writing/compiling/java.html %}</div>
+<div class="language go">{% include worker/writing/compiling/go.html %}</div>
+<div class="language dotnet">{% include worker/writing/compiling/dotnet.html %}</div>
+
+<p>Next, we’re going to need to add some information to that <span class="fixed-width">FirstWorker.worker</span> file. Go ahead and edit it to match the following:</p>
+
+<figcaption><span>~/iron/myworker/FirstWorker.worker </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/simple.worker/ruby.html %}{% endhighlight %}</div>
+<div class="language php">{% highlight ruby %}{% include worker/writing/simple.worker/php.html %}{% endhighlight %}</div>
+<div class="language python">{% highlight ruby %}{% include worker/writing/simple.worker/python.html %}{% endhighlight %}</div>
+<div class="language java">{% highlight ruby %}{% include worker/writing/simple.worker/java.html %}{% endhighlight %}</div>
+<div class="language nodejs">{% highlight ruby %}{% include worker/writing/simple.worker/nodejs.html %}{% endhighlight %}</div>
+<div class="language go">{% highlight ruby %}{% include worker/writing/simple.worker/go.html %}{% endhighlight %}</div>
+<div class="language dotnet">{% highlight ruby %}{% include worker/writing/simple.worker/dotnet.html %}{% endhighlight %}</div>
+
+<p>That’s it, you’ve written your first worker!</p>
+
+<h2 id="testing">Testing Your Worker</h2>
+
+<p>Before we upload your worker to the cloud, let’s test it to make sure it works as you expect. Because your worker consists of a single file, testing it is easy: just run your code.</p>
+
+<figcaption><span>Command Line </span></figcaption>
+<div class="language ruby php python nodejs">
+{% for language in page.languages %}
+<div class="language {{ language.slug }}">
+{% highlight bash %}
+$ {{ language.command }} hello.{{ language.extension }}
+{% endhighlight %}</div>
+{% endfor %}
+</div>
+
+<div class="language java">
+{% highlight bash %}
+$ java -jar hello.jar
+{% endhighlight %}
+</div>
+
+<div class="language go">
+{% highlight bash %}
+$ ./hello
+{% endhighlight %}
+
+<div class="language dotnet">
+{% highlight bash %}
+$ mono hello.exe
+{% endhighlight %}
+</div>
+
+<p>For our example code above, you should see the following output:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+<div class="grey-box">
+<div class="language ruby">{% include worker/writing/simple/ruby-output.html %}</div>
+<div class="language php">{% include worker/writing/simple/php-output.html %}</div>
+<div class="language python">{% include worker/writing/simple/python-output.html %}</div>
+<div class="language java">{% include worker/writing/simple/java-output.html %}</div>
+<div class="language nodejs">{% include worker/writing/simple/nodejs-output.html %}</div>
+<div class="language go">{% include worker/writing/simple/go-output.html %}</div>
+<div class="language dotnet">{% include worker/writing/simple/dotnet-output.html %}</div>
+</div>
+
+<p>For more complex workers, testing is a little more difficult, but the CLI has a tool to help manage that. We’ll cover that later.</p>
+
+<h2 id="including-files">Including Files & Directories</h2>
+
+<p>As workers become more complex, it becomes untenable to have the worker be limited to a single file of code with no supplemental fires. Most workers need helper files, configuration files, or data files, as well.</p>
+
+<p>For example, let’s modify our FirstWorker worker to need multiple files. Create a directory in the root of your project workspace named <span class="fixed-width">data</span> (in our example, this would be <span class="fixed-width">~/iron/myworker/data/</span>). Inside that directory, save the following as <span class="fixed-width">people.txt</span>:</p>
+
+<figcaption><span>~/iron/myworker/data/people.txt </span></figcaption>
+{% highlight js %}
+["Alice", "Bob", "Christine", "David", "Emily", "Frank"]
+{% endhighlight %}
+
+<p>In the same directory (<span class="fixed-width">~/iron/myworker/data/</span> in our example), save the following as <span class="fixed-width">colours.txt</span>:</p>
+
+<figcaption><span>~/iron/myworker/data/colours.txt </span></figcaption>
+{% highlight js %}
+["red", "orange", "yellow", "green", "blue", "purple"]
+{% endhighlight %}
+
+<p>Finally, in the root of your project workspace (<span class="fixed-width">~/iron/myworker</span> in our example), save the following as <span class="fixed-width">loaddata.{% for language in page.languages %}<span class="language {{ language.slug }}">{{ language.extension }}</span>{% endfor %}</span>:</p>
+
+<figcaption><span>~/iron/myworker/loaddata.{% for language in page.languages %}<span class="language {{ language.slug }}">{{ language.extension }}</span>{% endfor %} </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/loaddata/ruby.html %}{% endhighlight %}</div>
+<div class="language php">{% highlight php %}{% include worker/writing/loaddata/php.html %}{% endhighlight %}</div>
+<div class="language python">{% highlight python %}{% include worker/writing/loaddata/python.html %}{% endhighlight %}</div>
+<div class="language java">{% highlight java %}{% include worker/writing/loaddata/java.html %}{% endhighlight %}</div>
+<div class="language nodejs">{% highlight js %}{% include worker/writing/loaddata/nodejs.html %}{% endhighlight %}</div>
+<div class="language go">{% highlight go %}{% include worker/writing/loaddata/go.html %}{% endhighlight %}</div>
+<div class="language dotnet">{% highlight c# %}{% include worker/writing/loaddata/dotnet.html %}{% endhighlight %}</div>
+
+<p>Edit <span class="fixed-width">{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %}</span> to look like this:</p>
+
+<figcaption><span>~/iron/myworker/{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %} </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/multiple/ruby.html %}{% endhighlight %}</div>
+<div class="language php">{% highlight php %}{% include worker/writing/multiple/php.html %}{% endhighlight %}</div>
+<div class="language python">{% highlight python %}{% include worker/writing/multiple/python.html %}{% endhighlight %}</div>
+<div class="language java">{% highlight java %}{% include worker/writing/multiple/java.html %}{% endhighlight %}</div>
+<div class="language nodejs">{% highlight js %}{% include worker/writing/multiple/nodejs.html %}{% endhighlight %}</div>
+<div class="language go">{% highlight go %}{% include worker/writing/multiple/go.html %}{% endhighlight %}</div>
+<div class="language dotnet">{% highlight c# %}{% include worker/writing/multiple/dotnet.html %}{% endhighlight %}</div>
+
+<div class="language java">{% include worker/writing/compiling-multiple/java.html %}</div>
+<div class="language go">{% include worker/writing/compiling-multiple/go.html %}</div>
+<div class="language dotnet">{% include worker/writing/compiling-multiple/dotnet.html %}</div>
+
+<p>We’re going to need to tell the CLI to include these files in the worker. To do that, we edit the worker manifest. Here’s what the <span class="fixed-width">FirstWorker.worker</span> file looks like when these extra files are included in the worker:</p>
+
+<figcaption><span>~/iron/myworker/FirstWorker.worker </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/multiple.worker/ruby.html %}{% endhighlight %}</div>
+<div class="language php">{% highlight ruby %}{% include worker/writing/multiple.worker/php.html %}{% endhighlight %}</div>
+<div class="language python">{% highlight ruby %}{% include worker/writing/multiple.worker/python.html %}{% endhighlight %}</div>
+<div class="language java">{% highlight ruby %}{% include worker/writing/multiple.worker/java.html %}{% endhighlight %}</div>
+<div class="language nodejs">{% highlight ruby %}{% include worker/writing/multiple.worker/nodejs.html %}{% endhighlight %}</div>
+<div class="language go">{% highlight ruby %}{% include worker/writing/multiple.worker/go.html %}{% endhighlight %}</div>
+<div class="language dotnet">{% highlight ruby %}{% include worker/writing/multiple.worker/dotnet.html %}{% endhighlight %}</div>
+
+<p>Now these files will be included in the worker when you upload it.</p>
+
+<h2 id="dependencies">Adding Dependencies</h2>
+
+<div class="language ruby php python java nodejs dotnet">
+	<p>Adding dependencies to your worker is as simple as making sure they’re included in the upload. This is usually a simple matter of including the <span class="language ruby php python nodejs dotnet">directory that the dependency lives in on your system</span><span class="language java">JAR file of the dependency</span>. Modify your worker manifest (<span class="fixed-width">~/iron/myworker/FirstWorker.worker</span> in our example) to look like this:</p>
+
+	<figcaption><span>~/iron/myworker/FirstWorker.worker </span></figcaption>
+	<div class="language ruby">{% highlight ruby %}{% include worker/writing/dependency-folder.worker/ruby.html %}{% endhighlight %}</div>
+	<div class="language php">{% highlight ruby %}{% include worker/writing/dependency-folder.worker/php.html %}{% endhighlight %}</div>
+	<div class="language python">{% highlight ruby %}{% include worker/writing/dependency-folder.worker/python.html %}{% endhighlight %}</div>
+	<div class="language java">{% highlight ruby %}{% include worker/writing/dependency-folder.worker/java.html %}{% endhighlight %}</div>
+	<div class="language nodejs">{% highlight ruby %}{% include worker/writing/dependency-folder.worker/nodejs.html %}{% endhighlight %}</div>
+	<div class="language dotnet">{% highlight ruby %}{% include worker/writing/dependency-folder.worker/dotnet.html %}{% endhighlight %}</div>
+
+	<div class="language ruby python nodejs">
+		<p>To find the location of a dependency in {% for language in page.languages %}<span class="language {{ language.slug }}">{{ language.name }}</span>{% endfor %}, save the following file anywhere on your hard drive:
+
+		<figcaption><span>DependencyLocater.{% for language in page.languages %}<span class="language {{ language.slug }}">{{ language.extension }}</span>{% endfor %} </span></figcaption>
+		<div class="language ruby">{% highlight ruby %}{% include worker/writing/dependencylocater/ruby.html %}{% endhighlight %}</div>
+		<div class="language python">{% highlight python %}{% include worker/writing/dependencylocater/python.html %}{% endhighlight %}</div>
+		<div class="language nodejs">{% highlight nodejs %}{% include worker/writing/dependencylocater/nodejs.html %}{% endhighlight %}</div>
+
+		<p>Then run the file from the command line:</p>
+
+		<figcaption><span>Command Line </span></figcaption>
+		{% for language in page.languages %}
+		<div class="language {{ language.slug }}">{% highlight bash %}$ {{ language.command }} DependencyLocater.{{ language.extension }}{% endhighlight %}</div>{% endfor %}
+		
+		<p>The text it outputs is the location of the dependency on your system.</p>
+	</div>
+</div>
+
+<div class="language go">
+	<p>Because Go produces a single, compiled executable file, you don't need to worry about packaging your dependencies when you upload. Simply upload the compiled executable as you would deploy it to any other system.</p>
+</div>
+
+<div class="language ruby">
+<p>Specifying files, folders, and executables throughout your system is a bit of a pain, so we created a built-in helper to manage these for you. Change your worker manifest (<span class="fixed-width">~/iron/myworker/FirstWorker.worker in our example</span>) to look like this:</p>
+
+<figcaption><span>~iron/myworker/FirstWorker.worker </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/dependency-builtin.worker/ruby.html %}{% endhighlight %}</div>
+
+<p>This will automatically find those dependencies, package them up, and upload them with your worker when you run the command to upload the worker.</p>
+</div>
+
+<h2 id="testing-cli">Testing With the CLI</h2>
+
+<p>Now that we have multiple files, it becomes harder to test the worker. Sometimes, your files aren’t all in the same directory. Sometimes they aren’t automatically referenced when you run the worker executable. Sometimes you just want to make sure your worker manifest includes every file you need and you didn’t forget anything. In those instances, you can run the following command from the same directory as your project manifest:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker run FirstWorker
+{% endhighlight %}
+
+<p>Note that FirstWorker is the name of your worker manifest, without the <span class="fixed-width">.worker</span> extension. If your worker manifest were named <span class="fixed-width">EmailSender.worker</span>, you’d use:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker run EmailSender
+{% endhighlight %}
+
+<h2 id="payload">Working With the Payload</h2>
+
+<p>For all but the most basic workers, you’re going to want to pass data in with every task to change how a worker runs. For example, you may pass in the email address an email gets sent to or the URL of an image to download and process. To accommodate these use cases, each task has a “payload”. The payload is just a string that is provided to your worker at runtime. Our official client libraries all automatically encode any of the language’s types to JSON for you, so you’ll generally want to read in the payload and parse it as JSON input.</p>
+
+<p>The payload is provided to you as a file in your worker’s file system. Every task has command line arguments passed in with it; one of these is the <span class="fixed-width">-payload</span> argument. This argument specifies the location of the file containing your payload. To read the payload, you need to parse that command line argument, read the file’s contents, and (usually) parse the contents as JSON. For example, modify your <span class="fixed-width">{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %}</span> file to look like this:</p>
+
+<figcaption><span>~/iron/myworker/{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}{{ language.extension }}</span>{% endfor %} </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/payload/ruby.html %}{% endhighlight %}</div>
+<div class="language php">{% highlight php %}{% include worker/writing/payload/php.html %}{% endhighlight %}</div>
+<div class="language python">{% highlight python %}{% include worker/writing/payload/python.html %}{% endhighlight %}</div>
+<div class="language java">{% highlight java %}{% include worker/writing/payload/java.html %}{% endhighlight %}</div>
+<div class="language nodejs">{% highlight js %}{% include worker/writing/payload/nodejs.html %}{% endhighlight %}</div>
+<div class="language go">{% highlight go %}{% include worker/writing/payload/go.html %}{% endhighlight %}</div>
+<div class="language dotnet">{% highlight c# %}{% include worker/writing/payload/dotnet.html %}{% endhighlight %}</div>
+
+<div class="language java">
+<p>Because Java isn't great at dealing with JSON, you're going to need the <a href="http://code.google.com/p/google-gson" target="_blank">GSON</a> library to parse the payload into Java objects. Go ahead and download the latest release, unzip it, and copy the gson-#.#.jar file to the root of your project (<span class="fixed-width">~/iron/myworker</span> in our example). Rename the jar file to <span class="fixed-width">gson.jar</span>, to make life easier.</p>
+
+<p>Next you'll need to update your <span class="fixed-width">manifest.txt</span> file to reference the GSON library:</p>
+
+<figcaption><span>~/iron/myworker/manifest.txt </span></figcaption>
+<div class="grey-box">
+Main-Class: Hello
+Class-Path: gson.jar
+</div>
+
+<p>Now we need to recompile our executable to take advantage of these changes.</p>
+
+<div class="os linux osx">
+<p>If you're on OS X/Linux, run the following command:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ javac -cp ".:gson.jar" Hello.java
+{% endhighlight %}
+</div>
+
+<div class="os windows">
+<p>If you're on Windows, run the following command:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ javac -cp ".;gson.jar" Hello.java
+{% endhighlight %}
+</div>
+
+<p>Once we have the executable, we need to recompile it into the JAR file:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ jar cfm hello.jar manifest.txt Hello.class
+{% endhighlight %}
+
+<p>Finally, we just need to include the GSON library in the worker manifest:</p>
+
+<figcaption><span>~iron/myworker/FirstWorker.worker </span></figcaption>
+{% highlight ruby %}{% include owrker/writing/payload.worker/java.html %}{% endhighlight %}
+</div>
+
+<p>Now when you run tasks against this worker, it will log the payload as a string:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+<div class="grey-box">
+<div class="language ruby">{% include worker/writing/payload/ruby-output.html %}</div>
+<div class="language php">{% include worker/writing/payload/php-output.html %}</div>
+<div class="language python">{% include worker/writing/payload/python-output.html %}</div>
+<div class="language java">{% include worker/writing/payload/java-output.html %}</div>
+<div class="language nodejs">{% include worker/writing/payload/nodejs-output.html %}</div>
+<div class="language go">{% include worker/writing/payload/go-output.html %}</div>
+<div class="language dotnet">{% include worker/writing/payload/dotnet-output.html %}</div>
+</div>
+
+<div class="language ruby php">
+	<p>Our official libraries do their best to make this easier for you. If you upload the worker using our official client library or the CLI, the worker will automatically have this helper function embedded. Here’s a simplified version of <span class="fixed-width">{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %}</span> that uses the helper function:</p>
+
+	<figcaption><span>~/iron/myworker/{% for language in page.languages %}<span class="language {{ language.slug }}">{% if language.slug == "java" %}Hello{% else %}hello{% endif %}.{{ language.extension }}</span>{% endfor %} </span></figcaption>
+<div class="language ruby">{% highlight ruby %}{% include worker/writing/payload-builtin/ruby.html %}{% endhighlight %}</div>
+<div class="language php">{% highlight php %}{% include worker/writing/payload-builtin/php.html %}{% endhighlight %}</div>
+</div>
+
+<h2 id="upload">Uploading Your Worker</h2>
+
+<p>Our CLI is the official, suggested method for uploading your workers to the IronWorker cloud. Doing so is simple: just run the following from the root of your project workspace (<span class="fixed-width">~/iron/myworker</span> in our example):</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker upload FirstWorker
+{% endhighlight %}
+
+<p>Note that FirstWorker is the name of your worker manifest, without the <span class="fixed-width">.worker</span> extension. So if your worker manifest was <span class="fixed-width">EmailWorker.worker</span>, you’d run:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker upload EmailWorker
+{% endhighlight %}

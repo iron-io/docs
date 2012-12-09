@@ -1,0 +1,16 @@
+<p>To make a binary distribution that runs on the IronWorker cloud, it’s often necessary to compile your Go executable for a system different from your native system&mdash;unless you’re running 64 bit Linux, the binaries you generate won’t be executable on IronWorker’s cloud.</p>
+
+<p>The solution to this is “cross compile” your Go Workers. By recompiling Go with specific flags set, you can compile binaries that will work on IronWorker. You can find more information on that in the <a href="https://groups.google.com/d/topic/golang-nuts/dQxQ9O7u11g/discussion" target="_blank">Go mailing list</a>.</p>
+
+<p>The <span class="fixed-width">GOOS</span> value should be set to <span class="fixed-width">linux</span> and the <span class="fixed-width">GOARCH</span> value should be set to <span class="fixed-width">amd64</span>.</p>
+
+<p>Note that you must disable cgo to cross compile Go. This means that certain packages (<a href="http://www.golang.org/pkg/net" target="_blank">net</a> being the most notable) will take a performance hit.</p>
+
+<p>To cross-compile your worker, run the following command from the root of your project (<span class="fixed-width">~/iron/myworker</span> in our example):</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+GOOS=linux GOARCH=amd64 go build
+{% endhighlight %}
+
+<p>This will compile your worker to a file named <span class="fixed-width">hello</span> in the root of your project.</p>

@@ -1,0 +1,18 @@
+<p>IronWorker runs your Java programs from JAR files, so you're going to need to compile that <span class="fixed-width">Hello.java</span> file and create a JAR out of it.</p>
+
+<p>First, you'll need to create a <span class="fixed-width">manifest.txt</span> file in the root of your project (<span class="fixed-width">~/iron/myworker</span> in our example). It should look like this:
+
+<figcaption><span>~/iron/myworker/manifest.txt </span></figcaption>
+<div class="grey-box">
+Main-Class: Hello
+</div>
+
+<p>Next, you'll need to run the following commands from the root of your project (<span class="fixed-width">~/iron/myworker</span> in our example):</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ javac Hello.java
+$ jar cfm hello.jar manifest.txt
+{% endhighlight %}
+
+<p>This will create <span class="fixed-width">hello.jar</span> file in the root of your project.</p>

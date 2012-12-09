@@ -1,0 +1,52 @@
+---
+title: Set Up The IronWorker Environment
+layout: default
+section: worker
+summary: "Get your environment set up to work with IronWorker efficiently."
+---
+<p>IronWorker's environment is just a Linux sandbox that your task is executed in. Anything you write that runs on your machine, if packaged correctly, should be able to be run in IronWorker. We recommend setting up a development environment, however, to make life easier for yourself as you write, test, and manage your workers. There are four parts to this environment: the configuration, the worker manifest, the command line utility, and the worker executable.</p>
+
+<h2 id="config">The Configuration</h2>
+
+<p>Configuring your environment is, in almost every case, simply a matter of specifying your credentials. All of our official clients use the same convention to do this. There are some advanced options available if you want to specially tailor your environment, but we’ll cover the most common case.</p>
+
+<p>Go to <a href="https://hud.iron.io/" target="_blank">the HUD</a>, and download the iron.json file provided there. This is a simple text file of JSON-encoded data. It contains your project ID and an auth token, which will let you interact with our API. The file looks something like this:</p>
+
+<figcaption><span>~/iron/myworker/iron.json </span></figcaption>
+{% highlight js %}
+{
+  "project_id": "INSERT PROJECT ID",
+  "token": "INSERT TOKEN"
+}
+{% endhighlight %}
+
+<p>Save that iron.json file to the root of your project workspace. For example, if you’re building your worker in <span class="fixed-width">~/iron/myworker/</span>, you’d save it as <span class="fixed-width">~/iron/myworker/iron.json</span>.</p>
+
+<h2 id="dotworker">The Worker Manifest</h2>
+
+<p>The worker manifest (which we lovingly refer to as “.worker files”) is a single file that defines your worker. It helps our command line tool to package your worker up and upload it to our cloud; all you need to do is tell it a bit about what you want uploaded.</p>
+
+<p>A common misconception is that .worker files are named .worker (e.g., <span class="fixed-width">~/iron/myworker/.worker</span>). This isn’t the case. Instead, the files are given unique names that will identify your worker in our system. So, for example, <span class="fixed-width">EmailSender.worker</span> will create a worker named <span class="fixed-width">EmailSender</span>. For our purposes, create an empty file called <span class="fixed-width">FirstWorker.worker</span> and save it in the root of your project workspace, next to iron.json. We’ll be filling that in later.</p>
+
+<h2 id="cli">The Command Line Utility</h2>
+
+<p>IronWorker has <a href="/worker/reference/api">a RESTful API</a> that gives you full control over your workers and your tasks, but we’ve created a command line tool that automates a lot of these tasks for you.</p>
+
+<p>Our command line utility is written in Ruby, so you’re going to need Ruby installed to use it. Due to some of its dependencies, you’re going to need at least Ruby version 1.9.3. If you’re not sure which version of Ruby you have, run <span class="fixed-width">ruby -v</span> from your command line.</p>
+
+<p class="os osx">If you need to upgrade Ruby on Mac, we highly recommend using <a href="http://rvm.io" target="_blank">RVM</a>. The default version of Ruby that ships with OS X isn’t a high enough version, and upgrading it directly breaks your system.</p>
+
+<p class="os linux">If you need to install or upgrade Ruby on Linux, we recommend using <a href="http://rvm.io" target="_blank">RVM</a>.</p>
+
+<p class="os windows">If you need to install or upgrade Ruby on Windows, we recommend using RubyInstaller.</p>
+
+<p>Once you have a version of Ruby that is sufficient, you can install our CLI tool. This is a simple matter of running the following command:</p>
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+gem install iron_worker
+{% endhighlight %}
+
+<h2 id="executable">Worker Executables</h2>
+
+<p>The final piece of your environment is the worker executable. This is what our system is going to run, the code that accomplishes whatever it is you’re trying to do. We’re going to cover writing code to run on IronWorker in the next section, but it’s important to note here that anything that can run on a 64 bit Linux system can be run on IronWorker. If you want to write workers in shell scripts, go for it. If you want to upload executable binaries, go for it. Write in whatever language makes you happy and productive, and we’ll run it. For more details, you can check our <a href="/worker/reference/environment">system environment page</a>.</p>
