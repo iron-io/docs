@@ -1090,3 +1090,8 @@ div .dropdown {
 .dropdown ul li {
   margin: 0;
 }
+
+.second-level {
+  padding-left: 15px;
+  font-style: italic;
+}

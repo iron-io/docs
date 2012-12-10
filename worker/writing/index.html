@@ -2,6 +2,7 @@
 title: Creating Your Worker
 layout: default
 section: worker
+subsection: writing
 languages:
 - name: Ruby
   slug: ruby
@@ -197,7 +198,7 @@ $ mono hello.exe
 		<figcaption><span>Command Line </span></figcaption>
 		{% for language in page.languages %}
 		<div class="language {{ language.slug }}">{% highlight bash %}$ {{ language.command }} DependencyLocater.{{ language.extension }}{% endhighlight %}</div>{% endfor %}
-		
+
 		<p>The text it outputs is the location of the dependency on your system.</p>
 	</div>
 </div>
