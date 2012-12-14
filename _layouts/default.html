@@ -82,7 +82,6 @@
 <script>
 $(document).ready(function() {
   setLanguage('Ruby');
-  console.log("Whoa there cowboy.");
   if (Cookies.get('desired_language')!=null || localStorage.getItem("desired_language")!=null) {
     if (Cookies.get('desired_language')!=null) {
       switchLanguage(Cookies.get('desired_language'));
