@@ -72,6 +72,26 @@
 <footer id="footer">
   {% include footer.html %}
 </footer>
-
+{% if page.languages %}
+<script src="{{ site.baseurl }}/js/bootstrap-dropdown.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/js/language_switcher.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/js/cookies.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var languages = [{% for lang in page.languages %}'{{ lang.name }}',{% endfor %}];
+</script>
+<script>
+$(document).ready(function() {
+  setLanguage('Ruby');
+  console.log("Whoa there cowboy.");
+  if (Cookies.get('desired_language')!=null || localStorage.getItem("desired_language")!=null) {
+    if (Cookies.get('desired_language')!=null) {
+      switchLanguage(Cookies.get('desired_language'));
+    } else {
+      switchLanguage(localStorage.getItem("desired_language"));
+    }
+  }
+});
+</script>
+{% endif %}
 </body>
 </html>

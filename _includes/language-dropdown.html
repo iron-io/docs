@@ -14,7 +14,8 @@
     <a class="btn orange dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Languages <b class="caret"></b></a>
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
             {% for lang in page.languages %}
-						<li id="dropdown-{{ lang.slug }}"><a tabindex="-1" href="?lang={{ lang.slug }}">{{ lang.name }}</a></li>
+						<!-- <li id="dropdown-{{ lang.slug }}"><a tabindex="-1" href="?lang={{ lang.slug }}">{{ lang.name }}</a></li>-->
+                        <li id="dropdown-{{ lang.slug }}"><a tabindex="-1" onClick="switchLanguage('{{ lang.name }}');">{{ lang.name }}</a></li>
             {% endfor %}
         </ul>
 </div>
