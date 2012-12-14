@@ -77,19 +77,25 @@
 <script src="{{ site.baseurl }}/js/language_switcher.js" type="text/javascript"></script>
 <script src="{{ site.baseurl }}/js/cookies.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-  var languages = [{% for lang in page.languages %}'{{ lang.name }}',{% endfor %}];
+	var languages = { {% for lang in page.languages %}
+		'{{ lang.slug }}': '{{ lang.name }}'{% unless forloop.last %},{% endunless %}{% endfor %}
+	};
 </script>
 <script>
 $(document).ready(function() {
-  setLanguage('Ruby');
-  console.log("Whoa there cowboy.");
+	desiredLanguage = "ruby";
   if (Cookies.get('desired_language')!=null || localStorage.getItem("desired_language")!=null) {
-    if (Cookies.get('desired_language')!=null) {
-      switchLanguage(Cookies.get('desired_language'));
+		if (Cookies.get('desired_language')!=null) {
+			desiredLanguage = Cookies.get('desired_language');
     } else {
-      switchLanguage(localStorage.getItem("desired_language"));
+		  desiredLanguage = localStorage.getItem('desired_language');
     }
-  }
+	}
+	if(!validLanguage(desiredLanguage)) {
+		switchLanguage("ruby", false);
+	} else {
+	  switchLanguage(desiredLanguage);
+	}
 });
 </script>
 {% endif %}

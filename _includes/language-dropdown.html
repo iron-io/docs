@@ -15,7 +15,7 @@
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
             {% for lang in page.languages %}
 						<!-- <li id="dropdown-{{ lang.slug }}"><a tabindex="-1" href="?lang={{ lang.slug }}">{{ lang.name }}</a></li>-->
-                        <li id="dropdown-{{ lang.slug }}"><a tabindex="-1" onClick="switchLanguage('{{ lang.name }}');">{{ lang.name }}</a></li>
+                        <li id="dropdown-{{ lang.slug }}"><a tabindex="-1" onClick="switchLanguage('{{ lang.slug }}');">{{ lang.name }}</a></li>
             {% endfor %}
         </ul>
 </div>
