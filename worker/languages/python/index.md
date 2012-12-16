@@ -64,18 +64,18 @@ parse it as JSON.
 
 In your worker:
 {% highlight python %}
-payload = None
+import sys, json
+
 payload_file = None
+payload = None
+
 for i in range(len(sys.argv)):
     if sys.argv[i] == "-payload" and (i + 1) < len(sys.argv):
-        payload_file = sys.argv[i]
+        payload_file = sys.argv[i + 1]
+        with open(payload_file,'r') as f:
+            payload = json.loads(f.read())
         break
 
-f = open(payload_file, "r")
-contents = f.read()
-f.close()
-
-payload = json.loads(contents)
 {% endhighlight %}
 
 ### Environment
