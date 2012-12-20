@@ -20,14 +20,16 @@ nature of workers, making it a natural fit for IronWorker. This article will wal
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-gem install iron_worker_ng
+$ gem install iron_worker_ng
 {% endhighlight %}
 
 It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
 
 ### Write Your Node.js Worker
 
+<figcaption><span>HelloWorld.js </span></figcaption>
 {% highlight js %}
 console.log("Hello World from Node.js.");
 {% endhighlight %}
@@ -36,6 +38,7 @@ console.log("Hello World from Node.js.");
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
+<figcaption><span>hello.worker </span></figcaption>
 {% highlight ruby %}
 # set the runtime language; this should be "node" for Node.js workers
 runtime "node"
@@ -47,6 +50,7 @@ exec "hello_worker.js" # replace with your file
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
@@ -58,8 +62,9 @@ You should insert your [project ID](https://hud.iron.io) and [token](https://hud
 
 ### Upload Your Worker
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker upload hello
+$ iron_worker upload hello
 {% endhighlight %}
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
@@ -70,7 +75,7 @@ Let’s quickly test it by running:
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 
-Now that we know it works, let’s queue up a bunch of tasks from code.
+Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue Tasks To The New Worker
 
@@ -79,6 +84,7 @@ authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
 object. The example below queues up a task for your NodeWorker. Just insert your 
 project ID and token at the bottom (that third argument is the name of your worker).
 
+<figcaption><span>enqueue.js </span></figcaption>
 {% highlight js %}
 var https = require("https");
 
@@ -149,6 +155,7 @@ Retrieving the payload in Node.js is the same as it is on any other language.
 Retrieve the `-payload` argument passed to the script, load that file, and 
 parse it as JSON.
 
+<figcaption><span>payload.js </span></figcaption>
 {% highlight js %}
 var fs = require('fs');
 var payloadIndex = -1;
@@ -176,4 +183,18 @@ fs.readFile(process.argv[payloadIndex], 'ascii', function(err, data) {
         }
         console.log(JSON.parse(data));
 });
+{% endhighlight %}
+
+### Packaging Dependencies
+
+If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add a `dir "node_modules"` line and a `file "package.json"` line to your .worker file:
+
+<figcaption><span>hello.worker </span></figcaption>
+{% highlight ruby %}
+# set the runtime language; this should be "node" for Node.js workers
+runtime "node"
+# exec is the file that will be executed when you queue a task
+exec "hello_worker.js" # replace with your file
+dir "node_modules" # include dependency files when uploading
+file "package.json" # include dependency manifest when uploading
 {% endhighlight %}

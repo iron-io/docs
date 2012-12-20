@@ -11,8 +11,7 @@ breadcrumbs:
 
 We like to encourage our users to think of workers as independent chunks 
 of functionality, reusable building blocks that they can then build an 
-application out of. `.worker` files serve to reinforce this idea, by 
-allowing users to define their workers outside of their application code.
+application out of. `.worker` (pronounced dotworker) files serve to reinforce this idea, by allowing users to define their workers outside of their application code.
 
 `.worker` files are pretty easy to understand: their purpose is to construct 
 the code packages that are uploaded to the IronWorker cloud. This is done 
@@ -26,13 +25,18 @@ own self-contained units.
 ## Making a Worker File
 
 Writing a `.worker` file is simple: give it a recognisable name, then append 
-".worker" to the end.
+".worker" to the end. For example: `hello.worker` will create a code package named "hello".
+
+<div class="alert">
+<p><strong>Note:</strong> You should never have a file named ".worker". They should always be given a unique, recognisable name: "helloworld.worker", "sendmail.worker", "dosomethingawesome.worker", etc.</p>
+</div>
 
 ### Structure
 
 The `.worker` file mirrors the code you would use to construct a package 
 in your application. Here's a simple example:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 runtime "ruby"
 exec "hello_worker.rb"
@@ -44,6 +48,7 @@ is run.
 
 You can also add the files your worker is dependent upon:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 runtime "ruby"
 exec "hello_worker.rb"
@@ -58,6 +63,7 @@ after it's uploaded.
 Everything you can do in your application to construct a code package, you 
 can do in a `.worker` file. Here's an example that includes a gem:
 
+<figcaption><span>.worker </span></figcaption>
 {% highlight ruby %}
 runtime "ruby"
 exec "hello_worker.rb"
@@ -152,8 +158,8 @@ The following syntax is valid in `.worker` files:
     <td>
       <ol>
         <li>The path to the Gemfile</li>
-        <li>The groups to include in the merge. Defaults to all the groups. 
-            <strong>(optional)</strong></li>
+        <li>The groups to include in the merge. Defaults to the "default" group&mdash;the top level. 
+            <strong>(optional)</strong>. Example:<br /><span class="fixed-width">gemfile 'Gemfile', 'default', 'othergroup'</span></li>
       </ol>
     </td>
   </tr>

@@ -1,8 +1,0 @@
-{% if page.languages %}
-  <p class="blue-box" style="text-align:right;">
-    <span>Select Language:</span> 
-    {% for language in page.languages %}
-      <a href="?lang={{ language.name }}" data-command="{{ language.command }}" data-extension="{{ language.extension }}" data-name="{{ language.name }}" class="language-switcher {{ language.name }}">{{ language.name }}</a>
-    {% unless forloop.last %} | {% endunless %}{% endfor %}
-  </p>
-{% endif %}

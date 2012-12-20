@@ -68,7 +68,7 @@ print_r($res);
 ?>
 {% endhighlight %}
 
-You can then upload your worker by running `php upload.php`.
+You can then upload your worker by running `php upload.php`. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue A Task To The New Worker.
 
@@ -82,7 +82,7 @@ require("phar://iron_worker.phar");
 //require("IronCore.class.php");
 
 $worker = new IronWorker();
-$res = worker->postTask("PHPWorker");
+$res = $worker->postTask("PHPWorker");
 print_r($res);
 ?>
 {% endhighlight %}

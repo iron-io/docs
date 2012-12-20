@@ -1,6 +1,11 @@
 <meta charset="utf-8">
 <title>{% if page.title %}{{ page.title }} | {% endif %}Iron.io Dev Center</title>
-<meta name="description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://{{ site.domain }}{{ site.baseurl }}{{ page.url }}{% unless page.url contains '.html' %}/{% endunless %}" />
+<meta property="og:image" content="http://{{ site.domain }}{{ site.baseurl }}/images/ogimage.png" />
+<meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}Iron.io Dev Center" />
+<meta property="og:description" content="{% if page.summary %}{{ page.summary }}{% endif %}" />
+<meta name="description" content="{% if page.summary %}{{ page.summary }}{% endif %}" />
 
 <meta name="google-site-verification" content="_p0K1FT08lpHP3jvMJON4-koeaHVqMPwCB8GOEMqucQ" />
 <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/application.css" />
@@ -18,7 +23,7 @@
 </script>
 
 <script src="{{ site.baseurl }}/js/application.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
+<!--[if IE]>
   <script src="http://www.iron.io/assets/html5shiv-d095c2f2abab5314e1647fd569a21eb4.js" type="text/javascript"></script>
   <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/ie-fix.css" />
 <![endif]-->

@@ -13,7 +13,9 @@ The [Go](http://www.golang.org) programming language is a fast, statically typed
 
 Go Workers need to be compiled, then uploaded. Once they're uploaded to the 
 IronWorker cloud, they can be invoked via a simple API to be put on the 
-processing queues immediately or scheduled to run at a later time. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
+processing queues immediately or scheduled to run at a later time&mdash;you only need to upload the worker again when the code changes. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
+
+**Note**: we don't use it for this walkthrough, but there's a great [library](https://github.com/iron-io/iron_go) for working with the IronWorker API in Go. If working with raw HTTP requests doesn't sound like fun to you, check it out.
 
 ## Quick Start
 
@@ -21,14 +23,16 @@ processing queues immediately or scheduled to run at a later time. This article 
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-gem install iron_worker_ng
+$ gem install iron_worker_ng
 {% endhighlight %}
 
 It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
 
 ### Write Your Go Worker
 
+<figcaption><span>hello_worker.go </span></figcaption>
 {% highlight go %}
 package main
 
@@ -53,6 +57,7 @@ GOOS=linux GOARCH=amd64 go build
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
+<figcaption><span>hello.worker </span></figcaption>
 {% highlight ruby %}
 # set the runtime language; this should be "binary" for Go workers
 runtime "binary"
@@ -64,6 +69,7 @@ exec "hello_worker" # replace with your Go executable
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
@@ -75,8 +81,9 @@ You should insert your [project ID](https://hud.iron.io) and [token](https://hud
 
 ### Upload Your Worker
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker upload hello
+$ iron_worker upload hello
 {% endhighlight %}
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
@@ -87,7 +94,7 @@ Let’s quickly test it by running:
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 
-Now that we know it works, let’s queue up a bunch of tasks from code.
+Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue Tasks To The New Worker
 
@@ -96,6 +103,7 @@ authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
 object. The following program will queue up a task to your worker; just insert 
 your token and project ID into the code.
 
+<figcaption><span>enqueue.go </span></figcaption>
 {% highlight go %}
 package main
 
@@ -190,6 +198,7 @@ Retrieving the payload from within the worker on Go is the same as it is on any
 other language. Retrieve the `-payload` argument passed to the script, load that 
 file, and parse it as JSON.
 
+<figcaption><span>payload.go </span></figcaption>
 {% highlight go %}
 package main
 

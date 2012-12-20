@@ -33,6 +33,7 @@ section: cache
 
 <p>Before you can interact with IronCache, you're going to have to configure your <a href="/cache/reference/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/cache/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
@@ -48,6 +49,7 @@ section: cache
 
 <p>You can set an item using any of the <a href="/cache/reference/libraries">client libraries</a> or even using our <a href="/cache/reference/api">REST/HTTP API</a> directly. We're going to use the Ruby library for these examples.</p>
 
+<figcaption><span>iron_cache.rb </span></figcaption>
 {% highlight ruby %}
 @client = IronCache::Client.new
 @cache = @client.cache("test_cache")
@@ -56,6 +58,7 @@ section: cache
 
 <p>The cache is technically a key/value store that enforces strings as the key and the value. It is common, however, to use JSON to store complex objects in the cache. The client libraries will all transparently translate all non-string values into their JSON equivalent before storing them in the cache.</p>
 
+<figcaption><span>iron_cache.rb </span></figcaption>
 {% highlight ruby %}
 @client = IronCache::Client.new
 @cache = @client.cache("test_cache")
@@ -64,6 +67,7 @@ section: cache
 
 <p>The server also detects numbers and stores them natively as numbers, which lets you increment and decrement them atomically. This means that if two clients try to increment the item at the same time, they won't overwrite each other; the item will be incremented twice. This is extremely useful when clients are run in a highly parallel environment like IronWorker.</p>
 
+<figcaption><span>iron_cache.rb </span></figcaption>
 {% highlight ruby %}
 @client = IronCache::Client.new
 @cache = @client.cache("test_cache")
@@ -74,20 +78,20 @@ p item.value # output the value
 p @cache.get("number_item").value  # retrieve the item and print its value again
 {% endhighlight %}
 
-<p>Items stored in the cache are meant for short term storage <em>only</em>. There is no option to store an item in the cache permanently. <a href="/cache/reference/environment">By default</a>, items will expire after 7 days. You can configure items to expire after up to 30 days, however. (You can also set them to expire before 7 days, if you're so inclined.)</p>
+<p>Although IronCache was originally designed for short-term storage, it has since evolved into a permanent data storage solution. By default, your cache items will not be deleted until you <a href="#delete">manually delete</a> them. Sometimes, however, it's still helpful to set an expiration date on data you want to be short-lived. To do this, just use the <span class="fixed-width">expires_in</span> parameter to set the number of seconds the data should be available for.</p>
 
+<figcaption><span>iron_cache.rb </span></figcaption>
 {% highlight ruby %}
 @client = IronCache::Client.new
 @cache = @client.cache("test_cache")
 @cache.put("long_lived_item", 42, {:expires_in => 60 * 60 * 24 * 30}) # this item won't expire for a month
 {% endhighlight %}
 
-<p>Your items will never be evicted from the cache before their expiration date, unless you manually delete them.</p>
-
 <h2 id="get">3. Retrieve the Item from the Cache</h2>
 
 <p>Retrieving an item from the cache is fairly straightforward:</p>
 
+<figcaption><span>iron_cache.rb </span></figcaption>
 {% highlight ruby %}
 @client = IronCache::Client.new
 @cache = @client.cache("test_cache")
@@ -99,8 +103,9 @@ p item.value
 
 <h2 id="delete">4. Delete the Item from the Cache</h2>
 
-<p>Should you decide you would like to remove an item from a cache before its expiration date, you can do so with a simple API call:</p>
+<p>Should you decide you would like to remove an item from a cache before its expiration date (or to remove items with no expiration date), you can do so with a simple API call:</p>
 
+<figcaption><span>iron_cache.rb </span></figcaption>
 {% highlight ruby %}
 @client = IronCache::Client.new
 @cache = @client.cache("test_cache")

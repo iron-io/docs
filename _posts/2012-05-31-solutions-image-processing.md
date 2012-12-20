@@ -5,6 +5,7 @@ permalink: /solutions/image-processing
 categories:
   - solutions
 section: solutions
+summary: Processing images is a common need in social apps. Whether it’s generating thumbnails, resizing photos, or adding effects, Iron.io can help you offload and scale out the effort.
 breadcrumbs:
   - ['Image Processing', '/image-processing']
 ---
@@ -79,6 +80,7 @@ information about the amount of memory and storage available to each worker.
 
 Retrieving the image is a simple matter of downloading it over HTTP:
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 def download_image
   filename = 'ironman.jpg'
@@ -101,6 +103,7 @@ this example, we're going to upload them to [Amazon S3](http://aws.amazon.com/s3
 using the `aws` gem. Note that `@aws_access`, `@aws_secret`, and `@aws_s3_bucket` 
 will all need to be included in the task's payload.
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 def upload_file(filename)
   filepath = filename
@@ -153,6 +156,7 @@ We'll use the following variables in these sample functions:
 
 #### Resizing Images
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 def resize_image(filename, width=nil, height=nil, format='jpg')
   image = MiniMagick::Image.open(filename)
@@ -169,6 +173,7 @@ end
 
 #### Generating a Thumbnail
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 def generate_thumb(filename, width=nil, height=nil, format='jpg')
   output_filename = "#{filename}_thumbnail_#{width}_#{height}.#{format}"
@@ -187,6 +192,7 @@ end
 
 #### Making a Sketch of an Image
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 def sketch_image(filename, format='jpg')
   output_filename = "#{filename}_sketch.#{format}"
@@ -206,6 +212,7 @@ end
 
 #### Normalizing Image Colors
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 def normalize_image(filename, format='jpg')
   output_filename = "#{filename}_normalized.#{format}"
@@ -221,6 +228,7 @@ end
 
 We've built all the tools, let's tie them together in a single worker now.
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 puts "Downloading image"
 
@@ -269,6 +277,7 @@ Uploading the worker is pretty simple. We're going to use the IronWorker
 
 Save the following as `image_processor.worker`:
 
+<figcaption><span>image_processor.worker </span></figcaption>
 {% highlight ruby %}
 gem 'aws'
 gem 'subexec'
@@ -279,8 +288,9 @@ exec 'image_processor.rb' # Whatever you named the worker script
 Now to upload the worker, just navigate to the directory with the `.worker` 
 file and the worker script, and run:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker upload image_processor
+$ iron_worker upload image_processor
 {% endhighlight %}
 
 ## Processing Images With the Worker
@@ -290,12 +300,14 @@ necessary parameters (your AWS credentials and the URL for the image).
 
 Here's an example from the command line:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker queue ImageProcessor -p '{"aws_access": "AWS ACCESS KEY", "aws_secret": "AWS SECRET KEY", "aws_s3_bucket_name": "AWS BUCKET NAME", "image_url": "http://dev.iron.io/images/iron_pony.png"}'
+$ iron_worker queue ImageProcessor -p '{"aws_access": "AWS ACCESS KEY", "aws_secret": "AWS SECRET KEY", "aws_s3_bucket_name": "AWS BUCKET NAME", "image_url": "http://dev.iron.io/images/iron_pony.png"}'
 {% endhighlight %}
 
 You can also queue tasks from within your application:
 
+<figcaption><span>image_processor.rb </span></figcaption>
 {% highlight ruby %}
 client.tasks.create(
 'ImageProcessor', 

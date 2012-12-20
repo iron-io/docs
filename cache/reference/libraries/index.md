@@ -7,15 +7,27 @@ breadcrumbs:
   - ['Client Libraries', '/libraries']
 ---
 
-# {{ page.title }}
+# Official Client Libraries
 
 These are our official client libraries that use the IronCache <a href="/cache/reference/api">REST/HTTP API</a>.
 
 <div>
 <ul>
-<li><a href="https://github.com/iron-io/iron_cache_ruby">Ruby</a></li>
-<li><a href="https://github.com/iron-io/iron_cache_php">PHP</a></li>
-<li><a href="https://github.com/iron-io/iron_cache_python">Python</a></li>
+<li><a href="https://github.com/iron-io/iron_cache_ruby" target="_blank">Ruby</a></li>
+<li><a href="https://github.com/iron-io/iron_cache_php" target="_blank">PHP</a></li>
+<li><a href="https://github.com/iron-io/iron_cache_python" target="_blank">Python</a></li>
+<li><a href="https://github.com/iron-io/iron_cache_dotnet" target="_blank">.NET</a></li>
+<li><a href="https://github.com/iron-io/iron_go" target="_blank">Go</a></li>
+</ul>
+</div>
+
+# Unofficial Client Libraries
+
+These are some unofficial client libraries that use the IronCache <a href="/cache/reference/api">REST/HTTP API</a>.&nbsp;<br>
+<div>
+<ul>
+<li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> (Thanks to <a href="https://github.com/odeits" target="_blank">Oscar Deits</a>)</li>
+<li><a href="https://github.com/mrcritical/ironcache" target="_blank">Java - IronCache</a> (Thanks to <a href="https://github.com/mrcritical" target="_blank">Philip/mrcritical</a>)</li>
 </ul>
 </div>
 

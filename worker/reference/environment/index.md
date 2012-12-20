@@ -31,7 +31,7 @@ IronWorker contains several popular Linux packages as part of the standard worke
   </tbody>
 </table>
 
-These are included because they are binary libraries. Language-specific libraries should be included as part of your worker code package, compiled to target Linux x64 architectures.
+These are included because they are common binary libraries. Other binary libraries and files can be included as part of your worker code package, though you'll first need to compile them to target Linux x64 architectures.
 
 If you don't see what you need here, please [contact us](http://support.iron.io/customer/portal/emails/new) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
 
@@ -51,10 +51,10 @@ The standard worker sandbox environment contains a certain amount of accessible 
 <b>Memory per Worker:</b>  ~ 320MB
 </div>
 
-Tip: We recommend distributing workloads over multiple workers -- not only for better resource management but also to take advantage of massive concurrency enabled by a cloud worker system. 
+Tip: We recommend distributing workloads over multiple workers&mdash;not only for better resource management, but also to take advantage of the massive concurrency enabled by a cloud worker system. 
 
 ## Local Disk Space (per Worker)
-Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files and can perform most ordinary file operations. this directory is used as the current directory ("<span class="fixed-width">.</span>") when executing your workers.
+Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files inside this space, and can perform most ordinary file operations. This directory is used as the current working directory ("<span class="fixed-width">.</span>") when executing your workers.
 
 <div class="grey-box">
 <b>Local Disk Space:</b> 10GB
@@ -99,7 +99,11 @@ The following is the default number of scheduled tasks. It should be sufficient 
 <b>Max Scheduled Tasks:</b> 100
 </div>
 
-Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When schedule tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the pages on Scheduling for more information on scheduling patterns and best practices.
+Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When schedule tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the [page on scheduling](/worker/scheduling) for more information on scheduling patterns and best practices.
+
+## Minimum run_every Time
+
+Tasks can only be scheduled to run **every 60 seconds or more** using the `run_every` parameter.
 
 ## Security Groups and IP Ranges
 

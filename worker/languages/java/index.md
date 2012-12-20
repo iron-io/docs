@@ -11,7 +11,7 @@ breadcrumbs:
 
 Java has become one of the most popular languages in the enterprise. With Java workers, you can use the same tools your enterprise software uses, but with the power of the cloud behind it.
 
-Java workers need to be compiled into jar files before they're uploaded. Once they're uploaded to the IronWorker cloud, they can be invoked via a simple API call to be put on the processing queues immediately or scheduled to run at a later time. This article will walk you through the specifics of using Java workers, but you should be familiar with the [basics of IronWorker](/worker).
+Java workers need to be compiled into jar files before they're uploaded. Once they're uploaded to the IronWorker cloud, they can be invoked via a simple API call to be put on the processing queues immediately or scheduled to run at a later time&mdash;you only need to upload the worker again when the code changes. This article will walk you through the specifics of using Java workers, but you should be familiar with the [basics of IronWorker](/worker).
 
 ## Quick Start
 
@@ -19,14 +19,16 @@ Java workers need to be compiled into jar files before they're uploaded. Once th
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-gem install iron_worker_ng
+$ gem install iron_worker_ng
 {% endhighlight %}
 
 It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
 
 ### Write Your Java Worker
 
+<figcaption><span>HelloWorld.java </span></figcaption>
 {% highlight java %}
 public class HelloWorld {
 
@@ -55,9 +57,10 @@ Main-Class: HelloWorld
 
 Then run the following commands:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-javac HelloWorld.java
-jar cfm hello.jar manifest.txt HelloWorld.class
+$ javac HelloWorld.java
+$ jar cfm hello.jar manifest.txt HelloWorld.class
 {% endhighlight %}
 
 A hello.jar file will now be in the same directory as your worker.
@@ -66,6 +69,7 @@ A hello.jar file will now be in the same directory as your worker.
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
+<figcaption><span>hello.worker </span></figcaption>
 {% highlight ruby %}
 # set the runtime language; this should be "java" for Java workers
 runtime "java"
@@ -77,6 +81,7 @@ exec "hello.jar" # replace with your jar file
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
+<figcaption><span>iron.json </span></figcaption>
 {% highlight js %}
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
@@ -88,8 +93,9 @@ You should insert your [project ID](https://hud.iron.io) and [token](https://hud
 
 ### Upload Your Worker
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker upload hello
+$ iron_worker upload hello
 {% endhighlight %}
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
@@ -100,7 +106,7 @@ Let’s quickly test it by running:
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 
-Now that we know it works, let’s queue up a bunch of tasks from code.
+Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue Tasks To The New Worker
 
@@ -108,6 +114,7 @@ Once your code has been uploaded, it's easy to queue a task to it. The following
 example will queue up a task using the [`iron_worker_java`](https://github.com/iron-io/iron_worker_java) library. Just insert 
 your token and project ID into the code.
 
+<figcaption><span>Enqueue.java </span></figcaption>
 {% highlight java %}
 import io.iron.ironworker.client.Client;
 import io.iron.ironworker.client.entities.TaskEntity;
@@ -149,6 +156,7 @@ worker is in. Rename the jar file to gson.jar, to make life easier.
 
 Next, we're going to modify your worker to load the file and parse it as JSON:
 
+<figcaption><span>Enqueue.java </span></figcaption>
 {% highlight java %}
 import java.io.File;
 import java.io.IOException;
@@ -238,21 +246,24 @@ Next we need to compile the Java file, but we need to insert the `gson.jar`
 file into the classpath on compile, so the compiler can find it. Use this new 
 command:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-javac -cp ".:gson.jar" HelloWorld.java
+$ javac -cp ".:gson.jar" HelloWorld.java
 {% endhighlight %}
 
 If you're on Windows, that command looks a little different (Windows uses a 
 different character to separate classpaths):
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-javac -cp ".;gson.jar" HelloWorld.java
+$ javac -cp ".;gson.jar" HelloWorld.java
 {% endhighlight %}
 
 Now we need to generate another jar file:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-jar cfm hello.jar manifest.txt HelloWorld.class
+$ jar cfm hello.jar manifest.txt HelloWorld.class
 {% endhighlight %}
 
 #### Update the .worker File and Reupload
@@ -260,6 +271,7 @@ jar cfm hello.jar manifest.txt HelloWorld.class
 Finally, we need to modify the `.worker` file to include the `gson.jar` file 
 in the code package it uploads. The new file is below:
 
+<figcaption><span>HelloWorld.worker </span></figcaption>
 {% highlight ruby %}
 # set the runtime language; this should be "java" for Java workers
 runtime "java"
@@ -271,8 +283,9 @@ file "path/to/gson.jar" # replace with the path to your gson.jar file
 
 Upload that again by running the following command:
 
+<figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-iron_worker upload hello
+$ iron_worker upload hello
 {% endhighlight %}
 
 Your worker will start printing out the contents of the payload.

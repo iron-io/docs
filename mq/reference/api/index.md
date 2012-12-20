@@ -20,9 +20,10 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
   <tbody>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td><td>GET</td><td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>GET</td><td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>DELETE</td><td><a href="#delete_a_message_queue" title="Delete a Message Queue">Delete a Message Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/clear</td><td>POST</td><td><a href="#clear_all_messages_from_a_queue" title="Clear All Messages from a Queue">Clear All Messages from a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_a_message_to_a_queue" title="Add a Message to a Queue">Add a Message to a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_a_message_from_a_queue" title="Get a Message from a Queue">Get a Message from a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_messages_to_a_queue" title="Add Messages to a Queue">Add Messages to a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
   </tbody>
 </table>
@@ -113,6 +114,9 @@ The success failure for request is indicated by an HTTP status code. A 2xx statu
         <tr>
             <td>406</td><td>Not Acceptable: Required fields are missing.</td>
         </tr>
+        <tr>
+            <td>503</td><td>Service Unavailable. Clients should implement <a href="#exponential_backoff">exponential backoff</a> to retry the request.</td>
+        </tr>
     </tbody>
 </table>
 
@@ -130,7 +134,7 @@ When a 503 error code is returned, it signifies that the server is currently una
 
 ## List Message Queues
 
-Get a list of all queues in a project. 100 queues are listed at a time. To see more, use the page parameter.
+Get a list of all queues in a project. By default, 30 queues are listed at a time. To see more, use the `page` parameter or the `per_page` parameter. Up to 100 queues may be listed on a single page.
 
 ### Endpoint
 
@@ -145,6 +149,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues
 #### Optional URL Parameters
 
 * **page**: The 0-based page to view. The default is 0.
+* **per_page**: The number of queues to return per page. The default is 30, the maximum is 100.
 
 ### Response
 
@@ -171,7 +176,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 #### URL Parameters
 
 * **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue. If the queue does not exist, it will be created.
+* **Queue Name**: Name of the queue
 
 ### Response
 {% highlight js %}
@@ -179,6 +184,29 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
   "size": "queue size"
 }
 {% endhighlight %}
+
+## Delete a Message Queue
+
+This call deletes a message queue and all its messages.
+
+### Endpoint
+
+<div class="grey-box">
+DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>
+</div>
+
+#### URL Parameters
+
+* **Project ID**: Project the queue belongs to
+* **Queue Name**: Name of the queue
+
+### Response
+{% highlight js %}
+{
+  "msg": "Deleted."
+}
+{% endhighlight %}
+
 
 ## Clear All Messages from a Queue
 
@@ -203,9 +231,9 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 }
 {% endhighlight %}
 
-## Add a Message to a Queue
+## Add Messages to a Queue
 
-This call adds or pushes a message onto the queue.
+This call adds or pushes messages onto the queue.
 
 ### Endpoint
 
@@ -220,7 +248,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 #### Message Object
 
-Each message object should contain the following keys:
+Multiple messages may be added in a single request, provided that the messages should all be added to the same queue. Each message object should contain the following keys:
 
 ##### Required
 
@@ -228,8 +256,8 @@ Each message object should contain the following keys:
 
 ##### Optional
 
-* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds.
-* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds.
+* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds. Maximum is 86,400 seconds (24 hours).
+* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
 * **expires_in**: How long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
 
 ### Request
@@ -259,9 +287,9 @@ Each message object should contain the following keys:
 }
 {% endhighlight %}
 
-## Get a Message from a Queue
+## Get Messages from a Queue
 
-This call gets/reserves a message from the queue. The message will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the message is deleted, the message will be placed back onto the queue. As a result, be sure to **delete** a message after you're done with it.  
+This call gets/reserves messages from the queue. The messages will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the messages are deleted, the messages will be placed back onto the queue. As a result, be sure to **delete** the messages after you're done with them.  
 
 ### Endpoint
 
@@ -278,7 +306,13 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 * **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
 * **timeout**: timeout: After timeout (in seconds), item will be placed back onto queue. You must delete the message
-from the queue to ensure it does not go back onto the queue. If not set, value from POST is used.
+from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, maximum is 86,400 seconds (24 hours).
+
+### Sample Request
+
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages?<strong>n=10</strong>&amp;<strong>timeout=120</strong>
+</div>
 
 ### Response
 

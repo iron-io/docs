@@ -251,7 +251,13 @@ Sample:
 
 ### Upload a Code Package
 
-You will almost always want to use one of our [client libraries](/worker/languages) in the language of your choice to make this easier.
+You will almost always want to use our [Command Line Interface](/worker/reference/cli/) to make uploading easier.
+
+#### Building a Code Package
+
+If your client doesn't support uploading code packages and you don't want to use the [CLI](/worker/reference/cli), you're going to need to build the code package yourself before uploading it.
+
+Code should be submitted as a zip file containing all of the files your project needs. That includes dependencies, libraries, data files... everything.
 
 #### Endpoint
 
@@ -277,6 +283,8 @@ The request should be JSON-encoded and contain the following information:
 The request also accepts the following optional parameters:
 
 * **max_concurrency**: The maximum number of workers that should be run in parallel. This is useful for keeping your workers from hitting API quotas or overloading databases that are not prepared to handle the highly-concurrent worker environment. If omitted, there will be no limit on the number of concurrent workers.
+* **retries**: The maximum number of times failed tasks should be retried, in the event that there's an error while running them. If omitted, tasks will not be retried. Tasks cannot be retried more than ten times.
+* **retries_delay**: The number of seconds to wait before retries. If omitted, tasks will be immediately retried.
 
 Your request also needs the following headers, in addition to the headers required by all API calls:
 
@@ -625,7 +633,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webho
 
 #### Request
 
-The request body is free-form: anything at all can be sent. Whatever the request body is will be passed along a-s the payload for the task, and therefore needs to be under 64KB in size.
+The request body is free-form: anything at all can be sent. Whatever the request body is will be passed along as the payload for the task, and therefore needs to be under 64KB in size.
 
 #### Response
 
@@ -669,7 +677,10 @@ Sample:
     "start_time": 1320268924000000000,
     "end_time": 1320268924000000000,
     "duration": 43,
-    "timeout": 3600
+    "timeout": 3600,
+    "payload": "{\"foo\":\"bar\"}", 
+    "updated_at": "2012-11-10T18:31:08.064Z", 
+    "created_at": "2012-11-10T18:30:43.089Z"
 }
 {% endhighlight %}
 
@@ -865,7 +876,7 @@ The request should be a JSON object with a "schedules" property containing an ar
 
 Optionally, each object in the array can specify the following properties:
 
-* **run_every**: The amount of time, in seconds, between runs. By default, the task will only run once.
+* **run_every**: The amount of time, in seconds, between runs. By default, the task will only run once. `run_every` will return a 400 error if it is set to <a href="/worker/reference/environment/#minimum_run_every_time">less than 60</a>.
 * **end_at**: The time tasks will stop being queued. Should be a time or datetime.
 * **run_times**: The number of times a task will run.
 * **priority**: The priority queue to run the job in. Valid values are 0, 1, and 2. The default is 0. Higher values means tasks spend less time in the queue once they come off the schedule.

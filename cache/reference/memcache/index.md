@@ -5,14 +5,7 @@ section: cache
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Memcache', '/memcache']
-languages:
-  - name: 'ruby'
-  - name: 'python'
 ---
-
-{% if page.languages %}
-{% include language-switcher-head.html %}
-{% endif %}
 
 # {{ page.title }}
 
@@ -109,20 +102,93 @@ with memcached quickly:
 
 ### Install the Library
 
-{% include language-switcher.html %}
-<div class="ruby">
-{% include cache/reference/memcache/ruby/install.html %}
-</div>
-<div class="python">
-{% include cache/reference/memcache/python/install.html %}
-</div>
+The sample uses the memcache-client gem; you'll need to install it 
+before you can use the sample.
+
+**Note:** The popular Dalli client **will not** work, as it requires support for the binary memcached protocol, which IronCache does not support at this time.
+
+To install memcache-client, just run the following from your command line:
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ gem install memcache-client
+{% endhighlight %}
+
+<!-- Python
+
+The sample uses the python-memcached client; you'll need to install it 
+before you can use the sample.
+
+To install python-memcached, just run the following from your command line:
+
+{% highlight bash %}
+pip install python-memcached
+{% endhighlight %}
+
+If you prefer <span class="fixed-width">easy_install</span>, you can run:
+
+{% highlight bash %}
+easy_install python-memcached
+{% endhighlight %}
+
+-->
 
 ### Run the Example
 
-{% include language-switcher.html %}
-<div class="ruby">
-{% include cache/reference/memcache/ruby/code.html %}
-</div>
-<div class="python">
-{% include cache/reference/memcache/python/code.html %}
-</div>
+<figcaption><span>iron_cache_memcache.rb </span></figcaption>
+{% highlight ruby %}
+require 'memcache'
+
+# connect
+mc = MemCache.new(['cache-aws-us-east-1.iron.io:11211'])
+
+# Tokens can be retrieved from https://hud.iron.io/tokens
+token = "Insert your token here"
+# Project IDs are listed at https://hud.iron.io
+project_id = 'Insert your project_id here'
+cache_name = 'Give your cache a unique name'
+
+# authenticate, expiration is 0, don't use marshal serialization
+mc.set('oauth', "#{token} #{project_id} #{cache_name}", 0, true)
+
+# store for 5 seconds
+mc.set('abc', 123, 5)
+
+# retrieve
+p mc.get('abc')
+
+sleep 5
+
+# and it's gone
+p mc.get('abc')
+{% endhighlight %}
+
+<!-- PYTHON
+
+{% highlight ruby %}
+import memcache
+import time
+
+mc = memcache.Client(['cache-aws-us-east-1.iron.io:11211'], debug=0)
+
+# Tokens can be retrieved from https://hud.iron.io/tokens
+token = "Insert your token here"
+# Project IDs are listed at https://hud.iron.io
+project_id = 'Insert your project_id here'
+cache_name = 'Give your cache a unique name'
+
+mc.set("oauth", token + " " + project_id + " " + cache_name)
+
+mc.set("abc", "123")
+print(mc.get("abc"))
+
+# increment the value
+mc.incr("abc")
+print(mc.get("abc"))
+
+mc.set("this-value", "disappears after 3 seconds", time=3)
+time.sleep(4)
+
+print(mc.get("this-value"))
+{% endhighlight %}
+-->

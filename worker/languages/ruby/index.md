@@ -80,7 +80,8 @@ Let’s quickly test it by running:
     iron_worker queue hello
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
-Now that we know it works, let’s queue up a bunch of tasks from code.
+
+Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
 ### Queue Up Tasks For Your Worker
 
@@ -132,6 +133,12 @@ In the worker:
 {% highlight ruby %}
 puts params['arg1']
 puts params['another_arg'].inspect
+{% endhighlight %}
+
+Please note that for non-JSON arguments, you should use the `payload` variable instead of the `params` variable. The `payload` variable is simply the raw contents of the file specified by `-payload`, without any JSON parsing being applied.
+
+{% highlight ruby %}
+puts payload
 {% endhighlight %}
 
 ### Merging

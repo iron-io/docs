@@ -13,7 +13,7 @@ body {
     font: 11px Helvetica, Arial, sans-serif;
     background: #fff url(http://www.iron.io/assets/bg-body.png) repeat-x;
     height: 100%;
-    min-width: 990px
+    min-width: 990px;
 }
 
 img {
@@ -1220,11 +1220,6 @@ body.worker .container header .title-box .info {
 }
 
 .information-area {
-  margin: 0 -20px;
-  border: 1px solid #b2b2b2;
-  border-width: 1px 0;
-  background: #f8f8f8;
-  padding: 46px 26px 27px;
   font-size: 15px;
   line-height: 19px;
   overflow: hidden
@@ -1328,14 +1323,15 @@ body.worker .container header .title-box .info {
 }
 
 .btn, .button {
-  float: right;
-  color: #444;
-  font-size: 18px;
-  line-height: 22px;
+  display: inline-block;
+  *display: inline;
+  color: #333333;
+  font-size: 14px;
+  line-height: 20px;
   border: 1px solid #999;
-  padding: 10px 15px 6px 20px;
+  padding: 4px 14px;
   margin: 0 0;
-  cursor: default;
+  cursor: pointer;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(255, 255, 255, 0.3) inset, 1px 0 0 rgba(255, 255, 255, 0.3) inset, -1px 0 0 rgba(255, 255, 255, 0.3) inset;
   border-radius: 5px;
   font-weight: normal;
@@ -2263,14 +2259,25 @@ body.worker .container header .title-box .info {
   color: #444
 }
 
-.subnavigation .page-menu .active a {
-  background: none repeat scroll 0 0 #900;
-  border: 1px solid #600;
+.subnavigation .page-menu .active a, .subnavigation .page-menu a:hover {
+  background: none repeat scroll 0 0;
+  border: 1px solid;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  color: #FFFFFF;
   margin-top: -8px;
-  padding: 7px 12px 5px;
-  text-shadow: 0 1px 0 black
+  padding: 7px 11px 5px;
+}
+
+.subnavigation .page-menu a:hover {
+  background-color: #D9D9D9;
+  border-color: #B0AAAA;
+  color: #464646;
+}
+
+.subnavigation .page-menu .active a {
+  background-color: #900;
+  border-color: #600;
+  color: #FFFFFF;
+  text-shadow: 0 1px 0 black;
 }
 
 .subnavigation .product-menu .active a, .subnavigation .product-menu a:hover {

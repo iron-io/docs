@@ -63,7 +63,7 @@ First things first, let's create a worker. Save the following code into a file c
     end
     puts "HelloWorker completed at #{Time.now}"
 
-Now create a .worker file that defines your worker's dependencies:
+Now create a file called `hello.worker` that defines your worker's dependencies:
 
     # define the runtime language, this can be ruby, java, node, php, go, etc.
     runtime "ruby"
