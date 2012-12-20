@@ -184,3 +184,17 @@ fs.readFile(process.argv[payloadIndex], 'ascii', function(err, data) {
         console.log(JSON.parse(data));
 });
 {% endhighlight %}
+
+### Packaging Dependencies
+
+If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add a `dir "node_modules"` line and a `file "package.json"` line to your .worker file:
+
+<figcaption><span>hello.worker </span></figcaption>
+{% highlight ruby %}
+# set the runtime language; this should be "node" for Node.js workers
+runtime "node"
+# exec is the file that will be executed when you queue a task
+exec "hello_worker.js" # replace with your file
+dir "node_modules" # include dependency files when uploading
+file "package.json" # include dependency manifest when uploading
+{% endhighlight %}
