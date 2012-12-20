@@ -49,52 +49,59 @@ section: mq
 
 <h2 id="post">2. Post a Message to the Queue</h2>
 
-<p>You can post messages from any of our <a href="/mq/libraries">client libraries</a>. Here's an example using Ruby.</p>
+<p>You can post messages from any of our <a href="/mq/libraries">client libraries</a>. Here's an example using raw HTTP requests.</p>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post("hello world!")
-{% endhighlight %}
+<figcaption><span>HTTP example </span></figcaption>
+{%  highlight js%}
+Request:
+Url:POST https://mq-aws-us-east-1.iron.io:443/1/projects/PROJECT_ID/queues/first_queue/messages
+Headers: "Authorization":"OAuth PROJECT_TOKEN"
+Body: {"messages":[{"queue_name":"first_queue","body":"hello world!"}]}
 
-<p>Messages can be more than just strings, though; they can be anything that can be JSON-encoded. The library will automatically encode it for you before sending:</p>
-
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post({"lang" => "ruby"})
+Response:
+ {"id":"MESSAGE_ID", "msg":"Messages put on queue."}
 {% endhighlight %}
 
 <p>You can also specify a <span class="fixed-width">delay</span> and/or a <span class="fixed-width">expires_in</span> option when posting a message. The <span class="fixed-width">delay</span> option determines how long, in seconds, the message will not be available on the queue for:
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post("hello world!", {:delay => 60})
+<figcaption><span>HTTP example </span></figcaption>
+{% highlight js%}
+Request:
+Url:POST https://mq-aws-us-east-1.iron.io:443/1/projects/PROJECT_ID/queues/first_queue/messages
+Headers: "Authorization":"OAuth PROJECT_TOKEN"
+Body: {"messages":[{"delay":60,"queue_name":"first_queue","body":"hello world!"}]}
+
+Response:
+{"id":"MESSAGE_ID", "msg":"Messages put on queue."}
 {% endhighlight %}
 
 <p>The <span class="fixed-width">expires_in</span> option determins how long, in seconds, the message will be available on the queue before it is evicted. The default is 7 days, and it cannot exceed 30 days.</p>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post("hello world!", {:delay => 60})
+<figcaption><span>HTTP example </span></figcaption>
+{%  highlight js%}
+Request:
+Url:POST https://mq-aws-us-east-1.iron.io:443/1/projects/PROJECT_ID/queues/first_queue/messages
+Headers: "Authorization":"OAuth PROJECT_TOKEN"
+Body: {"messages":[{"expires_in":600,"queue_name":"first_queue","body":"hello world!"}]}
+
+Response:
+{"id":"MESSAGE_ID", "msg":"Messages put on queue."}
 {% endhighlight %}
 
 <h2 id="get">3. Get a Message off the Queue</h2>
 
 <p>Getting a message off the queue is simple:</p>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.get()
-p msg
+<figcaption><span>HTTP example </span></figcaption>
+{%  highlight js%}
+
+Request:
+Url:GET https://mq-aws-us-east-1.iron.io:443/1/projects/PROJECT_ID/queues/first_queue/messages?queue_name=first_queue
+Headers: "Authorization":"OAuth PROJECT_TOKEN"
+
+Response:
+{"messages":[{"id":"MESSAGE_ID","body":"hello world!","timeout":60}]}
+
 {% endhighlight %}
 
 <p>You can, of course, use whatever library you like (or <a href="/mq/reference/api">write your own</a>) to do this.</p>
@@ -103,15 +110,15 @@ p msg
 
 <p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This ensures that the message is only processed once, but that it will not be lost if the processor fails during processing. Deleting is as simple as posting and getting:</p>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.get()
+<figcaption><span>HTTP example </span></figcaption>
+{% highlight js%}
+Request:
+Url:DELETE https://mq-aws-us-east-1.iron.io:443/1/projects/504772740e59fb1b730009b4/queues/first_queue/messages/MESSAGE_ID
+Headers: "Authorization":"OAuth PROJECT_TOKEN"
 
-# You would do some processing here
-# This next line is the deleting part
-msg.delete()
+Response:
+{"msg":"Deleted"}
+
 {% endhighlight %}
 
 <h2>Next Steps</h2>
