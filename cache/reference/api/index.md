@@ -20,6 +20,7 @@ IronCache provides a REST/HTTP API to allow you to interact programmatically wit
   <tbody>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches</td><td>GET</td><td><a href="#list_caches" title="List Caches">List Caches</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span></td><td>GET</td><td><a href="#get_info_about_a_cache" title="Get Info About a Cache">Get Info About a Cache</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span></td><td>DELETE</td><td><a href="#delete_a_cache" title="Delete a Cache">Delete a Cache</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/clear</td><td>POST</td><td><a href="#clear_a_cache" title="Clear a Cache">Clear a Cache</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span></td><td>PUT</td><td><a href="#add_an_item_to_a_cache" title="Add an Item to a Cache">Add an Item to a Cache</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span>/increment</td><td>POST</td><td><a href="#increment_an_items_value" title="Increment an Item's value">Increment an Item's value</a></td></tr>
@@ -187,6 +188,29 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches/<span
 {% highlight js %}
 {
   "size": "cache size"
+}
+{% endhighlight %}
+
+## Delete a Cache
+
+Delete a cache and all items in it.
+
+### Endpoint
+
+<div class="grey-box">
+DELETE /projects/<span class="variable project_id">{Project ID}</span>/caches/<span class="variable cache_name">{Cache Name}</span>
+</div>
+
+#### URL Parameters
+
+* **Project ID**: Project the cache belongs to
+* **Cache Name**: The name of the cache
+
+### Response
+
+{% highlight js %}
+{
+  "msg": "Deleted."
 }
 {% endhighlight %}
 
