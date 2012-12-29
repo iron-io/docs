@@ -41,7 +41,7 @@ print "Hello from Python"
 from iron_worker import *
 
 worker = IronWorker()
-response = worker.upload("HelloWorld.py")
+response = worker.upload(target="HelloWorld.py", name="HelloWorld")
 {% endhighlight %}
 
 **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
