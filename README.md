@@ -11,5 +11,5 @@ Detailed instruction for different environments: https://github.com/mojombo/jeky
 # Launching
 
 1. Go to project directory
-2. Type `jekyll`
+2. Type `jekyll` # do not use --auto!  jekyll breaks
 3. Open browser at `http://localhost:4000/`
