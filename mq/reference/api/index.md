@@ -25,7 +25,10 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_messages_to_a_queue" title="Add Messages to a Queue">Add Messages to a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td><td>POST</td><td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/peek</td><td>GET</td><td><a href="#peek_messages_on_a_queue" title="Peek Messages on a Queue">Peek Messages on a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch</td><td>POST</td><td><a href="#touch_a_message_on_a_queue" title="Touch a Message on a Queue">Touch a Message on a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release</td><td>POST</td><td><a href="#release_a_message_on_a_queue" title="Release a Message on a Queue">Release a Message on a Queue</a></td></tr>
   </tbody>
 </table>
 
@@ -133,6 +136,7 @@ When there's an error, the response body contains a JSON object something like:
 
 When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 
+
 ## List Message Queues
 
 Get a list of all queues in a project. By default, 30 queues are listed at a time. To see more, use the `page` parameter or the `per_page` parameter. Up to 100 queues may be listed on a single page.
@@ -164,6 +168,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues
 ]
 {% endhighlight %}
 
+
 ## Get Info About a Message Queue
 
 This call gets general information about the queue.
@@ -185,6 +190,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
   "size": "queue size"
 }
 {% endhighlight %}
+
 
 ## Delete a Message Queue
 
@@ -231,6 +237,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
   "msg": "Cleared"
 }
 {% endhighlight %}
+
 
 ## Add Messages to a Queue
 
@@ -287,7 +294,6 @@ Multiple messages may be added in a single request, provided that the messages s
   "msg": "Messages put on queue."
 }
 {% endhighlight %}
-
 
 
 ## Add Messages to a Queue via Webhook
@@ -353,6 +359,100 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
   "timeout": 600
 }
 {% endhighlight %}
+
+
+## Peek Messages on a Queue
+
+Peeking at a queue returns the next messages on the queue, but it does not reserve them.
+
+### Endpoint
+
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/peek
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The Project these messages belong to.
+* **Queue Name**: The name of queue.
+
+#### Optional Parameters
+
+* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100.
+
+### Sample Request
+
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/peek?<strong>n=10</strong>
+</div>
+
+### Response
+
+{% highlight js %}
+{
+  "messages": [
+    {
+       "id": 1,
+       "body": "first message body",
+       "timeout": 600
+    },
+    {
+       "id": 2,
+       "body": "second message body",
+       "timeout": 600
+    }
+  ],
+}
+{% endhighlight %}
+
+
+## Release a Message on a Queue
+
+Releasing a reserved message unreserves the message and puts it back on the queue as if the message had timed out.
+
+### Endpoint
+
+<div class="grey-box">
+POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of queue.
+* **Message ID**: The id of the message to release.
+
+### Response
+{% highlight js %}
+{
+  "msg": "Released"
+}
+{% endhighlight %}
+
+
+## Touch a Message on a Queue
+
+Touching a reserved message extends its timeout by the duration specified when the message was created, which is 60 seconds by default.
+
+### Endpoint
+
+<div class="grey-box">
+POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of queue.
+* **Message ID**: The id of the message to touch.
+
+### Response
+{% highlight js %}
+{
+  "msg": "Touched"
+}
+{% endhighlight %}
+
 
 ## Delete a Message from a Queue
 
