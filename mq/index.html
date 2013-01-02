@@ -5,115 +5,158 @@ section: mq
 ---
 
 <h1>{{ page.title }}</h1>
-<p class="subtitle">Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages.</p>
+<p class="subtitle">Connect your applications and processes with an elastic message queue. Decouple your processes and
+    create a highly scalable system by passing messages.</p>
 
 <div class="flow-steps">
-	<div class="step">
-		<a class="number" href="#configure">1</a>
-		<a class="title" href="#configure">Configure Your Client</a>
-	</div>
+    <div class="step">
+        <a class="number" href="#configure">1</a>
+        <a class="title" href="#configure">Configure Your Client</a>
+    </div>
 
-	<div class="step">
-		<a class="number" href="#post">2</a>
-		<a class="title" href="#post">Post a Message to the Queue</a>
-	</div>
+    <div class="step">
+        <a class="number" href="#post">2</a>
+        <a class="title" href="#post">Post a Message to the Queue</a>
+    </div>
 
-	<div class="step">
-		<a class="number" href="#get">3</a>
-		<a class="title" href="#get">Get a Message off the Queue</a>
-	</div>
+    <div class="step">
+        <a class="number" href="#get">3</a>
+        <a class="title" href="#get">Get a Message off the Queue</a>
+    </div>
 
-	<div class="step">
-		<a class="number" href="#delete">4</a>
-		<a class="title" href="#delete">Delete a Message from the Queue</a>
-	</div>
+    <div class="step">
+        <a class="number" href="#delete">4</a>
+        <a class="title" href="#delete">Delete a Message from the Queue</a>
+    </div>
 </div>
 
 <h2>The Post/Get/Delete Paradigm</h2>
 
-<p>IronMQ was designed to be fault-tolerant while still maintaining an only-delivered-once promise. It accomplishes this through a special Post/Get/Delete paradigm for messages. Essentially, messages are posted to a queue. Clients then get the messages off the queue; each get "reserves" the message for a configurable amount of time&mdash;<a href="/mq/reference/environment">the default is one minute</a>&mdash;after which the message is returned to the queue. While the client has the message reserved, it should complete its operation, then delete the message from the queue. This paradigm ensures that failures while processing a message simply return the message to the queue to be reprocessed and that only one client will ever be processing a message at any given point. Assuming the client deletes the message (as it should), the message will only ever be processed once.</p>
+<p>IronMQ was designed to be fault-tolerant while still maintaining an only-delivered-once promise. It accomplishes this
+    through a special Post/Get/Delete paradigm for messages. Essentially, messages are posted to a queue. Clients then
+    get the messages off the queue; each get "reserves" the message for a configurable amount of time&mdash;<a
+            href="/mq/reference/environment">the default is one minute</a>&mdash;after which the message is returned to
+    the queue. While the client has the message reserved, it should complete its operation, then delete the message from
+    the queue. This paradigm ensures that failures while processing a message simply return the message to the queue to
+    be reprocessed and that only one client will ever be processing a message at any given point. Assuming the client
+    deletes the message (as it should), the message will only ever be processed once.</p>
 
-<h2 id="configure">1. Configure Your Client</h2>
+<h2 id="configure">1. Get a project ID and auth token</h2>
 
-<p>Before you can interact with IronMQ, you're going to have to configure your <a href="/mq/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/mq/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
+<p>
+    You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a> by clicking on a project
+    then clicking the little key icon.
+</p>
 
-<figcaption><span>iron.json </span></figcaption>
-{% highlight js %}
-{
-  "project_id": "INSERT YOUR PROJECT ID HERE",
-  "token": "INSERT YOUR TOKEN HERE"
-}
+<h2 id="post">2. Post a Message to a Queue</h2>
+
+<p>
+    All the Iron.io API's are REST based using Oauth2 for authentication with JSON bodies. Here's an example HTTP
+    request for posting to a queue.
+</p>
+
+{% highlight bash %}
+POST https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queue/messages
 {% endhighlight %}
 
-<p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
+<h3>Request</h3>
 
-<h2 id="post">2. Post a Message to the Queue</h2>
+        <h4>Headers</h4>
 
-<p>You can post messages from any of our <a href="/mq/libraries">client libraries</a>. Here's an example using Ruby.</p>
+<ul>
+    <li>Authorization: OAuth {TOKEN}</li>
+    <li>Content-Type: application/json</li>
+</ul>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post("hello world!")
+<h4>Body</h4>
+{%  highlight js%}
+{"messages":[{"body":"hello world!"}]}
 {% endhighlight %}
 
-<p>Messages can be more than just strings, though; they can be anything that can be JSON-encoded. The library will automatically encode it for you before sending:</p>
+<h3>Response</h3>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post({"lang" => "ruby"})
+{%  highlight js%}
+{"ids":["5824513078343549739"],"msg":"Messages put on queue."}
 {% endhighlight %}
 
-<p>You can also specify a <span class="fixed-width">delay</span> and/or a <span class="fixed-width">expires_in</span> option when posting a message. The <span class="fixed-width">delay</span> option determines how long, in seconds, the message will not be available on the queue for:
+<h3>Curl Example</h3>
+Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post("hello world!", {:delay => 60})
-{% endhighlight %}
-
-<p>The <span class="fixed-width">expires_in</span> option determins how long, in seconds, the message will be available on the queue before it is evicted. The default is 7 days, and it cannot exceed 30 days.</p>
-
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.post("hello world!", {:delay => 60})
+{%  highlight bash %}
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" \
+-X POST -d '{"messages":[{"body":"hello world!"}]}' \
+"http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/my_queue/messages"
 {% endhighlight %}
 
 <h2 id="get">3. Get a Message off the Queue</h2>
 
 <p>Getting a message off the queue is simple:</p>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.get()
-p msg
+{% highlight bash %}
+GET https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queue
 {% endhighlight %}
 
-<p>You can, of course, use whatever library you like (or <a href="/mq/reference/api">write your own</a>) to do this.</p>
+<h3>Request</h3>
+
+<h4>Headers</h4>
+
+<ul>
+    <li>Authorization: OAuth {TOKEN}</li>
+    <li>Content-Type: application/json</li>
+</ul>
+
+<h3>Response</h3>
+
+{%  highlight js%}
+{"messages":[{"id":"5824513078343549739","body":"hello","timeout":60}]}
+{% endhighlight %}
+
+<h3>Curl Example</h3>
+Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.
+
+{%  highlight bash %}
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" \
+"http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/my_queue/messages"
+{% endhighlight %}
 
 <h2 id="delete">4. Delete a Message from the Queue</h2>
 
-<p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This ensures that the message is only processed once, but that it will not be lost if the processor fails during processing. Deleting is as simple as posting and getting:</p>
+<p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This
+    ensures that the message is only processed once, but that it will not be lost if the processor fails during
+    processing. Deleting is as simple as posting and getting:</p>
 
-<figcaption><span>ironmq_example.rb </span></figcaption>
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("first_queue")
-msg = @queue.get()
+{% highlight bash %}
+DELETE https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queue/messages/{MESSAGE_ID}
+{% endhighlight %}
 
-# You would do some processing here
-# This next line is the deleting part
-msg.delete()
+<h3>Request</h3>
+
+<h4>Headers</h4>
+
+<ul>
+    <li>Authorization: OAuth {TOKEN}</li>
+    <li>Content-Type: application/json</li>
+</ul>
+
+<h3>Response</h3>
+
+{%  highlight js%}
+{"msg":"Deleted"}
+{% endhighlight %}
+
+<h3>Curl Example</h3>
+Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.
+
+{%  highlight bash %}
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" \
+-X DELETE \
+"http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/my_queue/messages/{MESSAGE_ID}"
 {% endhighlight %}
 
 <h2>Next Steps</h2>
 
-<p>You should be well-grounded in the post/get/delete paradigm now&mdash;now you need to build something cool! To get up and running quickly, you may want to look into our <a href="/mq/reference/beanstalk">Beanstalk</a> support. Check out our <a href="/mq/reference">reference material</a> to explore the boundaries of IronMQ's system. If you need ideas for what you can accomplish with IronMQ, you may want to take a look at our <a href="/solutions">solutions</a>.</p>
+<p>You should be well-grounded in the post/get/delete paradigm now&mdash;now you need to build something cool! To get up
+    and running quickly, you may want to look into our <a href="/mq/reference/beanstalk">Beanstalk</a> support. Check
+    out our <a href="/mq/reference">reference material</a> to explore the boundaries of IronMQ's system. If you need
+    ideas for what you can accomplish with IronMQ, you may want to take a look at our <a href="/solutions">solutions</a>.
+</p>
