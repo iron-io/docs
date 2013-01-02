@@ -23,6 +23,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>DELETE</td><td><a href="#delete_a_message_queue" title="Delete a Message Queue">Delete a Message Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/clear</td><td>POST</td><td><a href="#clear_all_messages_from_a_queue" title="Clear All Messages from a Queue">Clear All Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_messages_to_a_queue" title="Add Messages to a Queue">Add Messages to a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td><td>POST</td><td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
   </tbody>
@@ -287,6 +288,25 @@ Multiple messages may be added in a single request, provided that the messages s
 }
 {% endhighlight %}
 
+
+
+## Add Messages to a Queue via Webhook
+
+By adding the queue URL below to a third party service that supports webhooks, every webhook event that the third party posts
+will be added to your queue. The request body as is will be used as the "body" parameter in normal POST to queue above.
+
+### Endpoint
+
+<div class="grey-box">
+POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/webhook
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
+
+
 ## Get Messages from a Queue
 
 This call gets/reserves messages from the queue. The messages will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the messages are deleted, the messages will be placed back onto the queue. As a result, be sure to **delete** the messages after you're done with them.  
@@ -356,3 +376,6 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
   "msg": "Deleted"
 }
 {% endhighlight %}
+
+
+
