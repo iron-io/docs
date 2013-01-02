@@ -1,4 +1,12 @@
-IronCache is an elastic cache and key/value data store designed for sharing state, passing data, and coordinating activity between concurrent processes.
+IronCache is an elastic, scalable, highly available, persistent and secure cloud based key/value store. IronCache
+grows with you on demand, no eviction (only expiration) and you'll never need to rebuild your cache. Great for
+persistent and reliable incrementors/counters too. Access via a super easy to use REST
+interface or memcached interface.  Can be used for short term persistence and long term persistence without worrying
+about losing data.
+
+You also have full visibility into your caches and usage in the Iron.io user interface:
+
+![Cache List](https://raw.github.com/iron-io/docs/gh-pages/partner_docs/cache_page.png)
 
 ## Getting Started
 
