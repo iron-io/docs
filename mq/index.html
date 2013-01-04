@@ -15,6 +15,10 @@ languages:
     slug: python
   - name: Go
     slug: go
+  - name: Java
+    slug: java
+  - name: Clojure
+    slug: clojure
 ---
 
 <div class="flow-steps">
@@ -123,6 +127,23 @@ queue := client.Queue("test_queue")
 id, err := queue.Push("Hello world!")
 {% endhighlight %}</div>
 
+<div class="language java"><h3>Java Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight java %}
+Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
+Queue queue = client.queue("test_queue");
+queue.Push("Hello world!");
+{% endhighlight %}</div>
+
+<div class="language clojure"><h3>Clojure Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight clojure %}
+(def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
+(mq/post-message client "test_queue" "Hello world!")
+{% endhighlight %}</div>
+
 <h2 id="get">3. Get a Message off the Queue</h2>
 
 <p>Getting a message off the queue is simple:</p>
@@ -191,6 +212,23 @@ msg = queue.get()
 client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
 queue := client.Queue("test_queue")
 msg, err := queue.Get()
+{% endhighlight %}</div>
+
+<div class="language java"><h3>Java Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight java %}
+Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
+Queue queue = client.queue("test_queue");
+Message msg = queue.get();
+{% endhighlight %}</div>
+
+<div class="language clojure"><h3>Clojure Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight clojure %}
+(def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
+(let [msg (mq/get-message client "test_queue")])
 {% endhighlight %}</div>
 
 <h2 id="delete">4. Delete a Message from the Queue</h2>
@@ -267,6 +305,25 @@ client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
 queue := client.Queue("test_queue")
 id, err := queue.Push("Hello world!")
 err := msg.Delete()
+{% endhighlight %}</div>
+
+<div class="language java"><h3>Java Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight java %}
+Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
+Queue queue = client.queue("test_queue");
+Message msg = queue.get();
+queue.deleteMessage(msg);
+{% endhighlight %}</div>
+
+<div class="language clojure"><h3>Clojure Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight clojure %}
+(def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
+(let [msg (mq/get-message client "test_queue")]
+  (mq.delete-message client "test_queue" msg))
 {% endhighlight %}</div>
 
 <h2>Next Steps</h2>
