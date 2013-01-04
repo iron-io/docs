@@ -54,9 +54,11 @@
             {% endif %}
           </div>
 		</nav>
-          
+
 
           <div style="float: right; width: 700px" class="content">
+						<h1>{{ page.title }} {% if page.languages %}{% include language-dropdown.html %}{% endif %}</h1>{% if page.summary %}
+						<p class="subtitle">{{ page.summary }}</p>{% endif %}
             {{ content }}
           </div>
 
@@ -70,6 +72,39 @@
 <footer id="footer">
   {% include footer.html %}
 </footer>
-
+{% if page.languages %}
+<script src="{{ site.baseurl }}/js/bootstrap-dropdown.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/js/language_switcher.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/js/purl.js" type="text/javascript"></script>
+<script src="{{ site.baseurl }}/js/cookies.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	{% assign default_lang = "ruby" %}
+	var languages = { {% for lang in page.languages %}{% if lang.default %}{% assign default_lang = lang.slug %}{% endif %}
+		'{{ lang.slug }}': '{{ lang.name }}'{% unless forloop.last %},{% endunless %}{% endfor %}
+	};
+</script>
+<script>
+$(document).ready(function() {
+  if ($.url().param('lang')!=null) {
+    desiredLanguage = $.url().param('lang');
+  } else {
+    if (Cookies.get('desired_language')!=null || localStorage.getItem("desired_language")!=null) {
+      if (Cookies.get('desired_language')!=null) {
+        desiredLanguage = Cookies.get('desired_language');
+      } else {
+        desiredLanguage = localStorage.getItem('desired_language');
+      }
+    } else {
+  		desiredLanguage = "{{ default_lang }}";
+    }
+  };
+	if(!validLanguage(desiredLanguage)) {
+		switchLanguage("{{ default_lang }}", false);
+	} else {
+	  switchLanguage(desiredLanguage);
+	}
+});
+</script>
+{% endif %}
 </body>
 </html>
