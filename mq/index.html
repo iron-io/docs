@@ -1,5 +1,6 @@
 ---
 title: IronMQ Documentation
+summary: "Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages."
 layout: default
 section: mq
 languages:
@@ -12,9 +13,9 @@ languages:
     slug: php
   - name: Python
     slug: python
+  - name: Go
+    slug: go
 ---
-
-<p class="subtitle">Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages.</p>
 
 <div class="flow-steps">
     <div class="step">
@@ -52,7 +53,7 @@ languages:
 <p>All the Iron.io APIs are REST-based with JSON bodies and use OAuth2 for authentication. Here's an example HTTP request for posting to a queue:</p>
 
 <div class="grey-box">
-POST https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queue/messages
+POST https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_queue/messages
 </div>
 
 <h3>Request</h3>
@@ -80,7 +81,7 @@ POST https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queu
 <p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
 
 {%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X POST -d '{"messages":[{"body":"hello world!"}]}' "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/my_queue/messages"
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X POST -d '{"messages":[{"body":"hello world!"}]}' "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
 {% endhighlight %}</div>
 
 <div class="language ruby"><h3>Ruby Example</h3>
@@ -113,12 +114,21 @@ queue = ironmq.queue("test_queue")
 queue.post("hello world!")
 {% endhighlight %}</div>
 
+<div class="language go"><h3>Go Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight go %}
+client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
+queue := client.Queue("test_queue")
+id, err := queue.Push("Hello world!")
+{% endhighlight %}</div>
+
 <h2 id="get">3. Get a Message off the Queue</h2>
 
 <p>Getting a message off the queue is simple:</p>
 
 {% highlight bash %}
-GET https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queue
+GET https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_queue
 {% endhighlight %}
 
 <h3>Request</h3>
@@ -141,7 +151,7 @@ GET https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queue
 	<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
 
 {%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/my_queue/messages"
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
 {% endhighlight %}</div>
 
 <div class="language ruby"><h3>Ruby Example</h3>
@@ -174,6 +184,15 @@ queue = ironmq.queue("test_queue")
 msg = queue.get()
 {% endhighlight %}</div>
 
+<div class="language go"><h3>Go Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight go %}
+client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
+queue := client.Queue("test_queue")
+msg, err := queue.Get()
+{% endhighlight %}</div>
+
 <h2 id="delete">4. Delete a Message from the Queue</h2>
 
 <p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This
@@ -181,7 +200,7 @@ msg = queue.get()
     processing. Deleting is as simple as posting and getting:</p>
 
 {% highlight bash %}
-DELETE https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_queue/messages/{MESSAGE_ID}
+DELETE https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_queue/messages/{MESSAGE_ID}
 {% endhighlight %}
 
 <h3>Request</h3>
@@ -204,7 +223,7 @@ DELETE https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/my_qu
 <p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
 
 {%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X DELETE "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/my_queue/messages/{MESSAGE_ID}"
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X DELETE "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages/{MESSAGE_ID}"
 {% endhighlight %}</div>
 
 <div class="language ruby"><h3>Ruby Example</h3>
@@ -240,6 +259,15 @@ msg = queue.get()
 queue.delete(msg["ids"][0])
 {% endhighlight %}</div>
 
+<div class="language go"><h3>Go Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight go %}
+client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
+queue := client.Queue("test_queue")
+id, err := queue.Push("Hello world!")
+err := msg.Delete()
+{% endhighlight %}</div>
 
 <h2>Next Steps</h2>
 
