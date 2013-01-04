@@ -1,13 +1,11 @@
 ---
-title: Logging
+title: Logging From Your Workers
 layout: default
 section: worker
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Logging', '/logging']
 ---
-
-# Logging from your Workers
 
 Anything you write to STDOUT or STDERR will be logged and stored so you can view and/or retrieve it later.
 

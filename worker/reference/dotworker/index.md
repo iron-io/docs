@@ -7,8 +7,6 @@ breadcrumbs:
   - ['.worker Files', 'dotworker']
 ---
 
-# .worker Files
-
 We like to encourage our users to think of workers as independent chunks 
 of functionality, reusable building blocks that they can then build an 
 application out of. `.worker` (pronounced dotworker) files serve to reinforce this idea, by allowing users to define their workers outside of their application code.

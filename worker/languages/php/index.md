@@ -7,8 +7,6 @@ breadcrumbs:
   - ['PHP', '/php']
 ---
 
-# Writing Workers in PHP
-
 PHP has grown to be one of the most popular languages to write web software in. You can add some power to your current PHP application using PHP workers on IronWorker. This article will help you get started with PHP workers, but you should be familiar with the [basics of IronWorker](/worker).
 
 ## Quick Start

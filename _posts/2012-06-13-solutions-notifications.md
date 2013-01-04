@@ -1,5 +1,5 @@
 ---
-title: Email & Notifications
+title: Sending Email & Notifications
 layout: default
 permalink: /solutions/notifications
 categories:
@@ -9,8 +9,6 @@ summary: Sending notifications is key to delivering great service. A growing use
 breadcrumbs:
   - ['Email & Notifications', '/notifications']
 ---
-
-# Sending Email & Notifications With Iron.io
 
 Sending notifications is a required part of almost any application or service. 
 Whether it's sending email verification emails, texting users, sending out a 

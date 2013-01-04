@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Command Line', 'cli']
 ---
 
-# The IronWorker Command Line Interface
-
 PaaS providers like [Heroku](http://www.heroku.com), [AppFog](http://www.appfog.com), 
 and [App Engine](http://appengine.google.com) have all standardised around 
 the convention of using a command line interface to interact with your apps. 

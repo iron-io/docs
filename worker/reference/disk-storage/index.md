@@ -1,13 +1,11 @@
 ---
-title: Disk Storage
+title: Local Disk Storage
 layout: default
 section: worker
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Disk Storage', '/disk-storage']
 ---
-
-# Using Local Disk Storage
 
 Workers can make use of a [large amount](/worker/reference/environment/) of local temporary storage space that's dedicated on a per-worker basis. You can perform almost any file operations with it that you could within a local environment.
 

@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Python', '/python']
 ---
 
-# Writing Workers in Python
-
 Python has become one of the most popular languages for web software and scientific or mathematical computing. By offloading tasks to IronWorker, computations and requests can be run in parallel using the power of the cloud. This article will get you started writing Python workers, but you should be familiar with the [basics of IronWorker](/worker).
 
 ## Quick Start

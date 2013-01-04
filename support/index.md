@@ -4,8 +4,6 @@ section: support
 breadcrumbs: hidden
 ---
 
-# Support
-
 Iron.io has three support channels:
 
 ## 1. Real-time Live Chat

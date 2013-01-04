@@ -8,8 +8,6 @@ breadcrumbs:
   - ['Merging Files & Directories', '/merging-files-and-dirs']
 ---
 
-# Merging Files & Directories
-
 Workers sometimes need access to resource files to be able to do their jobs. 
 Whether these files are templates, configuration files, or data dumps, it's 
 simple to upload them with the official client libraries.

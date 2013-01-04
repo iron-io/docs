@@ -7,8 +7,6 @@ breadcrumbs:
   - ['REST/HTTP API', '/api']
 ---
 
-# IronCache REST/HTTP API
-
 IronCache provides a REST/HTTP API to allow you to interact programmatically with your caches on IronCache.
 
 ## Endpoints

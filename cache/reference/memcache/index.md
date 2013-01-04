@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Memcache', '/memcache']
 ---
 
-# {{ page.title }}
-
 You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
 with IronCache. As an industry standard, memcached has accumulated an 
 extensive list of supported languages, so it's extremely likely your 

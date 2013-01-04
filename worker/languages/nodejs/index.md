@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Node.js', '/nodejs']
 ---
 
-# Writing Workers in Node.js
-
 [Node.js](http://www.nodejs.org) is an evented language that brings the well-known 
 Javascript language to server-side development, using Google's [V8](http://code.google.com/p/v8/) 
 runtime. The evented model of programming lends itself nicely to the asynchronous 

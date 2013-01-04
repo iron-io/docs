@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Go', '/go']
 ---
 
-# Writing Workers in Go
-
 The [Go](http://www.golang.org) programming language is a fast, statically typed, compiled language with an emphasis on concurrency. It's a great language for cloud systems (we use it here at Iron.io!) and is a natural fit for workers.
 
 Go Workers need to be compiled, then uploaded. Once they're uploaded to the 

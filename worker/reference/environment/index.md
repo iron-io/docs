@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Environment', '/environment']
 ---
 
-# IronWorker Environment
-
 ## Operating System
 The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
 

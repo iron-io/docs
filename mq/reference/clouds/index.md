@@ -7,8 +7,6 @@ breadcrumbs:
 layout: default
 ---
 
-# Choosing the Cloud Your Queues Run On
-
 IronMQ is available on multiple cloud hosts, so your queue can run in the same infrastructure your app does. This saves time on latencies and allows you to spread your queues across multiple clouds, if desired, to maximize your queues' availability.
 
 Each of the official IronMQ [client libraries](/mq/libraries) allows you to change a configuration setting to set the host the library connects to. Changing your cloud is as simple as selecting the host you want.

@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Environment', '/environment']
 ---
 
-# IronMQ Environment
-
 ### Message Structure
 The message structure is flexible and straight-forward. Messages can be variable in size and can contain almost any text or data format.
 

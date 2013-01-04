@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Environment', '/system']
 ---
 
-# IronCache Environment
-
 ## Item Structure
 Caches are key/value stores comprised of *items*. The Item structure is 
 flexible and straight-forward. Items can be variable in size and can contain almost any text or data format.

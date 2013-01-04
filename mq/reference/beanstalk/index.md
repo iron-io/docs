@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Beanstalk Interface', '/beanstalk']
 ---
 
-# {{ page.title }}
-
 You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice. 
 
 Here's a sample list of languages available (with multiple clients libs to choose from for many languages):

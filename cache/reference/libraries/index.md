@@ -7,7 +7,7 @@ breadcrumbs:
   - ['Client Libraries', '/libraries']
 ---
 
-# Official Client Libraries
+## Official Client Libraries
 
 These are our official client libraries that use the IronCache <a href="/cache/reference/api">REST/HTTP API</a>.
 
@@ -21,7 +21,7 @@ These are our official client libraries that use the IronCache <a href="/cache/r
 </ul>
 </div>
 
-# Unofficial Client Libraries
+## Unofficial Client Libraries
 
 These are some unofficial client libraries that use the IronCache <a href="/cache/reference/api">REST/HTTP API</a>.&nbsp;<br>
 <div>

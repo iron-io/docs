@@ -7,8 +7,6 @@ breadcrumbs:
   - ['REST/HTTP API', '/api']
 ---
 
-# IronMQ REST/HTTP API
-
 IronMQ provides a REST/HTTP API to allow you to interact programmatically with your queues on IronMQ.
 
 ## Endpoints

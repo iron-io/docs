@@ -8,8 +8,6 @@ breadcrumbs:
   - ['Merging Gems', 'merging-gems']
 ---
 
-# Merging Gems
-
 Your workers can take advantage of the wealth of libraries that the Ruby community 
 has produced, but it takes a little bit of setup.
 

@@ -7,8 +7,6 @@ breadcrumbs:
   - ['Securing Your Workers', '/security']
 ---
 
-# Securing Your Workers
-
 Years of work and many layers are involved in ensuring cloud resources are secure. Iron.io inherits these industrial-strength security measures through the infrastructures we operate on. These measures include physical, network, data continuity, service access and service-specific protections, among others. Please refer to the [AWS Security Whitepaper](http://d36cz9buwru1tt.cloudfront.net/pdf/AWS_Security_Whitepaper.pdf) for a detailed description of this extensive list. 
 
 Iron.io takes further measures to isolate and protect **processes** at the IronWorker platform level, just as we isolate and protect **instances** at the infrastructure level. These steps include access restrictions, process isolation, resource monitoring/management, service restrictions, and more.

@@ -7,8 +7,6 @@ breadcrumbs:
   - ['REST/HTTP API', '/api']
 ---
 
-# IronWorker REST/HTTP API
-
 IronWorker provides a RESTful HTTP API to allow you to interact programmatically with our service and your workers.
 
 ## Endpoints
