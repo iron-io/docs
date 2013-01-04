@@ -19,6 +19,8 @@ languages:
     slug: java
   - name: Clojure
     slug: clojure
+  - name: ".NET"
+    slug: dotnet
 ---
 
 <div class="flow-steps">
@@ -144,6 +146,15 @@ queue.Push("Hello world!");
 (mq/post-message client "test_queue" "Hello world!")
 {% endhighlight %}</div>
 
+<div class="language dotnet"><h3>.NET Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight c# %}
+Client client = new Client("{PROJECT_ID}", "{TOKEN}");
+Queue queue = client.queue("test_queue");
+queue.Push("Hello world!");
+{% endhighlight %}</div>
+
 <h2 id="get">3. Get a Message off the Queue</h2>
 
 <p>Getting a message off the queue is simple:</p>
@@ -229,6 +240,15 @@ Message msg = queue.get();
 {% highlight clojure %}
 (def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
 (let [msg (mq/get-message client "test_queue")])
+{% endhighlight %}</div>
+
+<div class="language dotnet"><h3>.NET Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight c# %}
+Client client = new Client("{PROJECT_ID}", "{TOKEN}");
+Queue queue = client.queue("test_queue");
+Message msg = queue.get();
 {% endhighlight %}</div>
 
 <h2 id="delete">4. Delete a Message from the Queue</h2>
@@ -324,6 +344,16 @@ queue.deleteMessage(msg);
 (def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
 (let [msg (mq/get-message client "test_queue")]
   (mq.delete-message client "test_queue" msg))
+{% endhighlight %}</div>
+
+<div class="language dotnet"><h3>.NET Example</h3>
+<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+
+{% highlight c# %}
+Client client = new Client("{PROJECT_ID}", "{TOKEN}");
+Queue queue = client.queue("test_queue");
+Message msg = queue.get();
+queue.deleteMessage(msg);
 {% endhighlight %}</div>
 
 <h2>Next Steps</h2>
