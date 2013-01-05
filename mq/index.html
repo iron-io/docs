@@ -313,8 +313,8 @@ $ironmq->deleteMessage($msg->id);
 {% highlight python %}
 ironmq = IronMQ()
 queue = ironmq.queue("test_queue")
-msg = queue.get()
-queue.delete(msg["ids"][0])
+response = queue.get()
+queue.delete(response["messages"][0]["id"])
 {% endhighlight %}</div>
 
 <div class="language go"><h3>Go Example</h3>
