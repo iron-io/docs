@@ -1,22 +1,20 @@
-IronMQ is a massively scalable messaging queue that makes it easy for you to keep a resilient and synchronised message-passing system in the cloud, between any number of clients, without server set-up or maintenance. It makes managing data and event flow within your application simple.
+IronMQ is a massively scalable, hosted message queue. It makes managing data and event flow within your application simple, with support for multiple clients and a managed environment that frees you from needing to manage servers, allowing you to focus on your application instead.
 
 ## Getting Started
 
-It's quick and easy to get IronMQ set up and running on Heroku. You just need to install the IronMQ add-on for Heroku. You can do this with the `heroku` command:
+It's quick and easy to get IronMQ set up and running on Heroku. You just need to install the IronMQ addon; you can do this with the `heroku` command:
 
     :::term
-    $ heroku addons:add iron_mq:rust
+    $ heroku addons:add iron_mq:developer
     -----> Adding iron_mq to cold-winter-5462... done, v10 (free)
 
-This will add the starter level add-on for IronMQ, which will let you test the add-on and play around a bit.
-There are [other levels](http://addons.heroku.com/iron_mq) of the add-on, as well.
+This will add the developer level addon for IronMQ, which will let you test the addon and play around a bit. There are [other levels](http://addons.heroku.com/iron_mq) of the addon, as well.
 
-## Configuration
+## Language Support
 
-IronMQ has clients for [a lot of languages](http://dev.iron.io/mq/libraries/), and you can always use
-[the REST API](http://dev.iron.io/mq/reference/api/) (or write your own!). This means your existing
-Heroku stack should work without any changes. The remainder of this article will be using the Ruby library,
-but all of the libraries have analagous calls (that should be well-documented).
+IronMQ has clients for [a lot of languages](http://dev.iron.io/mq/libraries/), and you can always use [the REST API](http://dev.iron.io/mq/reference/api/) (or write your own!). This means your existing Heroku stack should work without any changes.
+
+## Ruby
 
 We're going to need to install the Ruby gem, for development purposes:
 
@@ -30,15 +28,13 @@ If you’re building for a Rails application or anything that uses Bundler, add 
     :::ruby
     gem 'iron_mq'
 
-## Usage
-
-This is for the Ruby client, but all clients have the same operations. See the docs for your particular language.
+Now you have a simple helper that allows you to interact with your queues:
 
     :::ruby
     # Create an IronMQ::Client object
     @ironmq = IronMQ::Client.new()
 
-    # Get a queue (if it doesn't exist, it will be created when you first post a message
+    # Get a queue (if it doesn't exist, it will be created when you first post a message)
     @queue = @ironmq.queue("my_queue")
 
     # Post a message
@@ -48,18 +44,96 @@ This is for the Ruby client, but all clients have the same operations. See the d
     msg = @queue.get()
     p msg
 
-    # Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout
+    # Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
     msg.delete # or @queue.delete(msg.id)
 
+## Java
 
-### Next Steps
+We're going to need to install [the jar file](https://github.com/iron-io/iron_mq_java/downloads) for the official IronMQ Java library. If you're using Maven, you can also add the `http://iron-io.github.com/maven/repository` repository as a dependency.
 
-To get into more advanced uses of it, you may want to check out the
-[API docs](http://dev.iron.io/mq/reference/api/) or check out an example Sinatra application
-that ties in [IronWorker](http://addons.heroku.com/iron_worker)
+Once you have the jar file added as a dependency, you have a simple wrapper that allows you to interact with your queues:
+
+    :::java
+    // Get your Iron.io credentials from the environment
+    Map<String, String> env = System.getenv();
+    
+    // Create a Client object
+    Client client = new Client(env.get("IRON_MQ_PROJECT_ID"), env.get("IRON__MQ_TOKEN"), Cloud.IronAWSUSEast);
+    
+    // Get a queue (if it doesn't exist, it will be created when you first post a message)
+    Queue queue = client.queue("my_queue");
+    
+    // Post a message
+    queue.Push("hello world!");
+    
+    // Get a message
+    Message msg = queue.get();
+    System.out.println(msg.getBody());
+    
+    // Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
+    queue.deleteMessage(msg);
+
+## Python
+
+We're going to have to install the [Python client library](https://github.com/iron-io/iron_mq_python) for IronMQ. You can do this using `pip install iron_mq` or `easy_install iron_mq`.
+
+Once the package is installed, you have a simple wrapper that allows you to interact with your queues:
+
+    :::python
+    # Create an IronMQ client object
+    mq = IronMQ()
+
+    # Get a queue (if it doesn't exist, it will be created when you first post a message)
+    queue = mq.queue("my_queue")
+
+    # Post a message
+    queue.post("hello world!")
+
+    # Get a message
+    msg = queue.get()
+    print msg
+
+    # Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
+    queue.delete(msg["messages"][0]["id"])
+    
+
+## Clojure
+
+We're going to need to add the [IronMQ Clojure client](https://github.com/iron-io/iron_mq_clojure) to your project.clj and require it:
+
+    :::clojure
+    [iron_mq_clojure "1.0.3"]
+    (require '[iron-mq-clojure.client :as mq])
+
+You're going to need your Iron.io project ID and OAuth token to configure the client. You can get those using the `heroku` command:
+
+    :::bash
+    $ heroku config | grep IRON
+    IRON_MQ_PROJECT_ID => 123456789
+    IRON_MQ_TOKEN      => aslkdjflaksuilaks
+
+Use these to create a client that allows you to interact with your queues:
+
+    :::clojure
+    (def client (mq/create-client "YOUR_TOKEN" "YOUR_PROJECT_ID"))
+    
+    ; Post a message
+    (mq/post-message client "my_queue" "Hello world!")
+    
+    ; Get a message
+    (let [msg (mq/get-message client "my_queue")]
+      (println (get msg "body"))
+      
+      ; Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
+      (mq/delete-message client "my_queue" msg))
+
+## Next Steps
+
+To get into more advanced uses of IronMQ, you may want to check out the
+[API docs](http://dev.iron.io/mq/reference/api/) or check out an example Sinatra application that ties in [IronWorker](http://addons.heroku.com/iron_worker)
 at [https://github.com/iron-io/heroku_sinatra_example](https://github.com/iron-io/heroku_sinatra_example).
 
-### Support
+## Support
 
 Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the
 [Iron.io support chat room](http://get.iron.io/chat) and chat with Iron.io staff about issues. You can also find more

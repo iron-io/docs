@@ -1,30 +1,24 @@
-IronCache is an elastic, scalable, highly available, persistent and secure cloud based key/value store. IronCache
-grows with you on demand, no eviction (only expiration) and you'll never need to rebuild your cache. Great for
-persistent and reliable incrementors/counters too. Access via a super easy to use REST
-interface or memcached interface.  Can be used for short term persistence and long term persistence without worrying
-about losing data.
+IronCache is an elastic, scalable, highly available, persistent and secure cloud based key/value store. IronCache grows with you on demand, doesn't evict items (they only expire), and ensures you'll never need to rebuild your cache. It's great for persistent and reliable incrementors/counters, and can be accessed through an easy to use REST interface or memcached interface. Used it for short term persistence and long term storage without worrying about losing data.
 
-You also have full visibility into your caches and usage in the Iron.io user interface:
+You also have full visibility into your caches and usage with the Iron.io user interface:
 
 ![Cache List](https://raw.github.com/iron-io/docs/gh-pages/partner_docs/cache_page.png)
 
 ## Getting Started
 
-It's quick and easy to get IronCache set up and running on Heroku. You just need to install the IronCache add-on for Heroku.
-You can do this with the `heroku` command:
+It's quick and easy to get IronCache set up and running on Heroku; you just need to install the IronCache addon. You can do this with the `heroku` command:
 
     :::term
-    $ heroku addons:add iron_cache:rust
+    $ heroku addons:add iron_cache:developer
     -----> Adding iron_cache to cold-winter-5462... done, v10 (free)
 
-This will add the starter level add-on for IronCache, which will let you test the add-on and play around a bit.
-There are [other levels](http://addons.heroku.com/iron_cache) of the add-on, as well.
+This will add the developer level addon for IronCache, which will let you test the add-on and play around a bit.
+
+There are [other levels](http://addons.heroku.com/iron_cache) of the addon, as well. We recommend you upgrade before you use IronCache in production.
 
 ## Configuration
 
-IronCache has clients for [a lot of languages](http://dev.iron.io/cache/reference/libraries/), and you can always use
-[the REST API](http://dev.iron.io/cache/reference/api/) (or write your own!). This means your existing
-Heroku stack should work without any changes.
+IronCache has clients for [a lot of languages](http://dev.iron.io/cache/reference/libraries/), and you can always use [the REST API](http://dev.iron.io/cache/reference/api/) (or write your own!). This means your existing Heroku stack should work without any changes.
 
 ## Ruby
 
@@ -76,7 +70,7 @@ or `easy_install iron_cache` from your command line to download iron_cache_pytho
 
 ### Install From Source
 
-You can also [download the source from Github](https://github.com/iron-io/iron_cache_python). Once you have the source, you can run python setup.py install
+You can also [download the source from Github](https://github.com/iron-io/iron_cache_python). Once you have the source, you can run `python setup.py install`
 from the directory containing the source code to install iron_cache_python.
 
 Note: You will need the iron_core_python module for iron_cache_python to function.
@@ -133,7 +127,7 @@ Download iron_cache.phar from from [Github](https://github.com/iron-io/iron_cach
     $cache->delete("mykey");
 
     # Increment an item in the cache
-    $cache->increment("mykey", 1);
+    $cache->increment("mykey", 1);    
 
 
 ## Next Steps
