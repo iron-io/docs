@@ -58,7 +58,7 @@ Once you have the jar file added as a dependency, you have a simple wrapper that
     Map<String, String> env = System.getenv();
     
     // Create a Client object
-    Client client = new Client(env.get("IRON_MQ_PROJECT_ID"), env.get("IRON__MQ_TOKEN"), Cloud.IronAWSUSEast);
+    Client client = new Client(env.get("IRON_MQ_PROJECT_ID"), env.get("IRON_MQ_TOKEN"), Cloud.IronAWSUSEast);
     
     // Get a queue (if it doesn't exist, it will be created when you first post a message)
     Queue queue = client.queue("my_queue");
@@ -99,23 +99,17 @@ Once the package is installed, you have a simple wrapper that allows you to inte
 
 ## Clojure
 
-We're going to need to add the [IronMQ Clojure client](https://github.com/iron-io/iron_mq_clojure) to your project.clj and require it:
+We're going to need to add the [IronMQ Clojure client](https://github.com/iron-io/iron_mq_clojure) to your project.clj:
 
     :::clojure
     [iron_mq_clojure "1.0.3"]
-    (require '[iron-mq-clojure.client :as mq])
-
-You're going to need your Iron.io project ID and OAuth token to configure the client. You can get those using the `heroku` command:
-
-    :::bash
-    $ heroku config | grep IRON
-    IRON_MQ_PROJECT_ID => 123456789
-    IRON_MQ_TOKEN      => aslkdjflaksuilaks
 
 Use these to create a client that allows you to interact with your queues:
 
     :::clojure
-    (def client (mq/create-client "YOUR_TOKEN" "YOUR_PROJECT_ID"))
+    (require '[iron-mq-clojure.client :as mq])
+    
+    (def client (mq/create-client (System/getenv "IRON_MQ_TOKEN") (System/getenv "IRON_MQ_PROJECT_ID")))
     
     ; Post a message
     (mq/post-message client "my_queue" "Hello world!")
@@ -126,6 +120,36 @@ Use these to create a client that allows you to interact with your queues:
       
       ; Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
       (mq/delete-message client "my_queue" msg))
+
+## Node.js
+
+We're going to need to the [IronMQ Node.js client](https://github.com/iron-io/iron_mq_node) to interact with our queues. You can get it using `npm install iron_mq` or by downloading the source from Github (though you'll need [iron_core_node](https://github.com/iron-io/iron_core_node), too).
+
+Once that's done, you can require it to get a simple wrapper for the API:
+
+	:::javascript
+	var iron_mq = require("iron_mq");
+	
+	var client = new iron_mq.Client({"queue_name": "my_queue"});
+	
+	// Post a message
+	client.post("test message", function(error, body) {
+	  console.log(body);
+	  console.log(error);
+	});
+	
+	// Get a message
+	client.get({}, function(error, body) {
+	  console.log(error);
+	  console.log(body);
+	  if(error == null) {
+	    // Delete a message
+	    client.del(body["id"], function(error, body) {
+	      console.log(error);
+	      console.log(body);
+	    });
+	  }
+	});
 
 ## Next Steps
 
