@@ -18,7 +18,10 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
   <tbody>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td><td>GET</td><td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>GET</td><td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>POST</td><td><a href="#update_a_message_queue" title="Update a Message Queue">Update a Message Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>DELETE</td><td><a href="#delete_a_message_queue" title="Delete a Message Queue">Delete a Message Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>POST</td><td><a href="#add_subscribers_to_a_queue" title="Add Subscribers to a Queue">Add Subscribers to a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>DELETE</td><td><a href="#remove_subscribers_from_a_queue" title="Remove Subscribers from a Queue">Remove Subscribers from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/clear</td><td>POST</td><td><a href="#clear_all_messages_from_a_queue" title="Clear All Messages from a Queue">Clear All Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_messages_to_a_queue" title="Add Messages to a Queue">Add Messages to a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td><td>POST</td><td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td></tr>
@@ -27,6 +30,8 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch</td><td>POST</td><td><a href="#touch_a_message_on_a_queue" title="Touch a Message on a Queue">Touch a Message on a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release</td><td>POST</td><td><a href="#release_a_message_on_a_queue" title="Release a Message on a Queue">Release a Message on a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers</td><td>GET</td><td><a href="#get_push_status_for_a_message" title="Get Push Status for a Message">Get Push Status for a Message</a></td></tr>
+
   </tbody>
 </table>
 
@@ -211,6 +216,174 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
   "msg": "Deleted."
 }
 {% endhighlight %}
+
+
+
+## Update a Message Queue
+
+This allows you to change the properties of a queue.
+
+### Endpoint
+
+<div class="grey-box">
+POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>
+</div>
+
+#### URL Parameters
+
+* **Project ID**: Project the queue belongs to
+* **Queue Name**: Name of the queue
+
+#### Body Parameters
+
+##### Optional
+
+The following parameters are all related to Push Queues.
+
+* **subscribers**: An array of subscriber hashes containing a "url" field. See below for example.
+* **push_type**: Either multicast to push to all subscribers or unicast to push to one and only one subscriber. Default is "multicast".
+* **retries**: How many times to retry on failure. Default is 3.
+* **retries_delay**: Delay between each retry in seconds. Default is 60.
+
+### Request
+
+{% highlight js %}
+{
+  "push_type":"multicast",
+   "subscribers": [
+     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
+     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+   ]
+}
+{% endhighlight %}
+
+
+### Response
+{% highlight js %}
+{
+  "id":"50eb546d3264140e8638a7e5",
+  "name":"pushq-demo-1",
+  "size":7,
+  "total_messages":7,
+  "project_id":"4fd2729368a0197d1102056b",
+  "retries":3,
+  "push_type":"multicast",
+  "retries_delay":60,
+  "subscribers":[
+    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
+    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+  ]
+}
+{% endhighlight %}
+
+
+
+## Add Subscribers to a Queue
+
+Add subscribers (HTTP endpoints) to a queue. This is for Push Queues only.
+
+### Endpoint
+
+<div class="grey-box">
+POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}/subscribers</span>
+</div>
+
+#### URL Parameters
+
+* **Project ID**: Project the queue belongs to
+* **Queue Name**: Name of the queue
+
+#### Body Parameters
+
+##### Optional
+
+The following parameters are all related to Push Queues.
+
+* **subscribers**: An array of subscriber hashes containing a "url" field. See below for example.
+
+### Request
+
+{% highlight js %}
+{
+   "subscribers": [
+     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+   ]
+}
+{% endhighlight %}
+
+
+### Response
+{% highlight js %}
+{
+  "id":"50eb546d3264140e8638a7e5",
+  "name":"pushq-demo-1",
+  "size":7,
+  "total_messages":7,
+  "project_id":"4fd2729368a0197d1102056b",
+  "retries":3,
+  "push_type":"multicast",
+  "retries_delay":60,
+  "subscribers":[
+    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
+    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+  ]
+}
+{% endhighlight %}
+
+
+
+## Remove Subscribers from a Queue
+
+Remove subscriber from a queue. This is for Push Queues only.
+
+### Endpoint
+
+<div class="grey-box">
+DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}/subscribers</span>
+</div>
+
+#### URL Parameters
+
+* **Project ID**: Project the queue belongs to
+* **Queue Name**: Name of the queue
+
+#### Body Parameters
+
+##### Optional
+
+The following parameters are all related to Push Queues.
+
+* **subscribers**: An array of subscriber hashes containing a "url" field. See below for example.
+
+### Request
+
+{% highlight js %}
+{
+   "subscribers": [
+     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+   ]
+}
+{% endhighlight %}
+
+
+### Response
+{% highlight js %}
+{
+  "id":"50eb546d3264140e8638a7e5",
+  "name":"pushq-demo-1",
+  "size":7,
+  "total_messages":7,
+  "project_id":"4fd2729368a0197d1102056b",
+  "retries":3,
+  "push_type":"multicast",
+  "retries_delay":60,
+  "subscribers":[
+    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"}
+  ]
+}
+{% endhighlight %}
+
+
 
 
 ## Clear All Messages from a Queue
@@ -476,4 +649,43 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 {% endhighlight %}
 
 
+
+
+## Get Push Status for a Message
+
+You can retrieve the push status for a particular message which will let you know which subscribers have received the
+message, which have failed, how many times it's tried to be delivered and the status code returned from the endpoint.
+
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
+* **Message ID**: The id of the message to delete.
+
+### Response
+{% highlight js %}
+{
+  "subscribers":[
+    {
+      "retries_delay":60,
+      "retries_remaining":2,
+      "status_code":200,
+      "status":"deleted",
+      "url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+      "id":"5831237764476661217"
+    },{
+      "retries_delay":60,
+      "retries_remaining":2,
+      "status_code":200,
+      "status":"deleted",
+      "url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
+      "id":"5831237764476661218"
+    }
+  ]
+}
+{% endhighlight %}
 
