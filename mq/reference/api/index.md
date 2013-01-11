@@ -677,7 +677,8 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
       "status":"deleted",
       "url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
       "id":"5831237764476661217"
-    },{
+    },
+    {
       "retries_delay":60,
       "retries_remaining":2,
       "status_code":200,
