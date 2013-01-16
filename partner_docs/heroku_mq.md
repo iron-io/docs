@@ -20,8 +20,8 @@ We're going to need to install the Ruby gem, for development purposes:
 
     :::term
     $ gem install iron_mq
-    Fetching: iron_mq-1.4.0.gem (100%)
-    Successfully installed iron_mq-1.4.0
+    Fetching: iron_mq-3.0.2.gem (100%)
+    Successfully installed iron_mq-3.0.2
 
 If you’re building for a Rails application or anything that uses Bundler, add the following to your Gemfile:
 
