@@ -8,8 +8,10 @@ breadcrumbs:
 
 <p>IronWorker tasks are flexible; they don't have to be queued immediately. Rather, you can schedule a task to be queued at a specific time or after a set amount of time. This article shows you how to create them using the <span class="fixed-width">iron_worker_ng</span> Ruby gem, but they can be scheduled from any <a href="/worker/languages">client library</a> or even from <a href="/worker/reference/api">the API</a>.</p>
 
+<p>Scheduled jobs are separate resources than queued tasks. When scheduled tasks run, they queue a task to execute the worker code. The Scheduled Task has a Scheduled ID. The task that executes is separate and has a distinct Task ID. You monitor Scheduled Tasks in the Schedule tab in the HUD. Tasks that subsequently queued can be monitored within the Task tab.</p>
+
 <div class="alert">
-<p><strong>Note:</strong> Tasks may not be <em>executed</em> at the scheduled time; they will simply be placed on the queue at that time. Depending on the circumstances, a task may be executed a short time after it is scheduled to be. Tasks will never be executed before their schedule, however.</p>
+<p><strong>Note:</strong> Scheduled tasks may not be <em>executed</em> at the scheduled time; they will simply be placed on the queue at that time. Depending on the circumstances, a task may be executed a short time after it is scheduled to be. Tasks will never be executed before their schedule, however. (Scheduled tasks can be given a priority; higher priorities can reduce the time in queue.)</p>
 </div>
 
 <p>Scheduling a task to be queued at a specific time is easy:</p>
@@ -17,6 +19,22 @@ breadcrumbs:
 <div class="ruby">
 {% highlight ruby %}
 schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now + 3600})
+{% endhighlight %}
+</div>
+
+<p>To run on a regular schedule, then just include an interval to repeat execution of the scheduled task. (This is useful, for example, for sending out daily notifications or cleaning up old database entries.)</p>
+
+<div class="ruby">
+{% highlight ruby %}
+schedule = client.schedules.create('MyWorker', payload, {:run_every => 3600}) # will be run every hour
+{% endhighlight %}
+</div>
+
+<p>These repeating tasks can also be set to queued at a specific start time:</p>
+
+<div class="ruby">
+{% highlight ruby %}
+schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now + 3600, :run_every => 3600}) # will be run every hour, starting an hour from now
 {% endhighlight %}
 </div>
 
@@ -28,20 +46,8 @@ schedule = client.tasks.create('MyWorker', payload, {:delay => 3600}) # queues t
 {% endhighlight %}
 </div>
 
-<p>Some tasks, like sending out daily notifications or cleaning up old database entries, are more useful when run on a repeating schedule. IronWorker supports creating tasks that will run at set intervals:</p>
-
-<div class="ruby">
-{% highlight ruby %}
-schedule = client.schedules.create('MyWorker', payload, {:run_every => 3600}) # will be run every hour
-{% endhighlight %}
-</div>
-
-<p>These repeating tasks can also be set to queued at a specific time:</p>
-
-<div class="ruby">
-{% highlight ruby %}
-schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now + 3600, :run_every => 3600}) # will be run every hour, starting an hour from now
-{% endhighlight %}
+<div class="alert">
+<p><strong>Note:</strong>You can use a delay for a scheduled job <strong>and</strong> for a <a href="http://dev.iron.io/worker/reference/api/#queue_a_task">queued task</a>. The difference is a delayed scheduled task will kick off a regular task whereas a delayed task executes directly (after the delay). We suggest using a delayed task if the delay time is brief; a scheduled task if it's longer into the future and/or repeats frequently. See the note below, however, on good practices especially for large numbers of individual  tasks to run in the future.</p>
 </div>
 
 <p>Finally, you can also control how many times a repeating task is run:</p>
@@ -51,3 +57,18 @@ schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now +
 schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now + 3600, :run_every => 3600, :run_times => 24 }) # will be run every hour for one day, starting an hour from now
 {% endhighlight %}
 </div>
+
+
+## Best Practices
+
+* Many Tasks To Run in Future - If you have lots of the same individual tasks to run in the future (sending emails to users, for example), we suggest <strong>not</strong> creating individual scheduled tasks (or queuing lots of tasks with delays). It's better to create a scheduled task that repeats on a regular basis. This scheduled task should then query a data base or datastore for the users to email (or actions to take). It can then spin up one or more sub-tasks to execute the work (creating one task per action or better yet, allocating a certain number of data slices to each task to better amortize the setup cost of a task). 
+
+Here are a few posts on the topic:
+
+** <a href="http://blog.iron.io/2011/06/worker-patterns-creating-task-level.html">Pattern: Creating Task-Level Workers at Runtime</a>
+** <a href="http://blog.iron.io/2011/07/anti-pattern-lots-of-scheduled-jobs.html">Anti-Pattern: Lots of Scheduled Jobs</a>
+
+* Finer-Grained Scheduling - There may be the need to run tasks on specific days or dates (end of month or Tuesday and Thursday). We recommend creating a scheduled job that runs frequently and then does a quick check to see if the scheduling condition is met. For example, running daily and checking if it's the last day of the month or a Tuesday or Thursday. If so, then continue with the task; if not, then exit. (We're looking at addressing finer-grain scheduling options but don't accommodate it at present.)
+
+* Specific times are expressed as time objects and so can be in UTC or local time. They'll be recorded in the system as UTC but displayed in the HUD/dashboard in the timezone that you specify for the HUD.
+
