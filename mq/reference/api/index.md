@@ -233,7 +233,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 #### URL Parameters
 
 * **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue
+* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
 
 #### Body Parameters
 
@@ -292,7 +292,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 #### URL Parameters
 
 * **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue
+* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
 
 #### Body Parameters
 
@@ -346,7 +346,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 #### URL Parameters
 
 * **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue
+* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
 
 #### Body Parameters
 
@@ -383,8 +383,6 @@ The following parameters are all related to Push Queues.
   ]
 }
 {% endhighlight %}
-
-
 
 
 ## Clear All Messages from a Queue
@@ -498,7 +496,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 #### URL Parameters
 
 * **Project ID**: The Project these messages belong to.
-* **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
+* **Queue Name**: The name of queue.
 
 #### Optional Parameters
 
@@ -639,7 +637,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 #### URL Parameters
 
 * **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
+* **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to delete.
 
 ### Response
@@ -664,7 +662,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 #### URL Parameters
 
 * **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue. If the queue does not exist, it will be created for you.
+* **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to delete.
 
 ### Response
