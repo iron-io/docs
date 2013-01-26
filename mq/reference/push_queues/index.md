@@ -20,27 +20,37 @@ To turn a queue into a push queue (or create one), POST to your queue endpoint w
 - retries - number of times to retry. Default is 3.
 - retries_delay - time in seconds between retries. Default is 60.
 
-<script src="https://gist.github.com/4479844.js"></script>
+<div>
+<script src="https://gist.github.com/4479844.js"> </script>
+</div>
 
 ## Queueing Messages
 
 This is the same as posting any message to IronMQ. Here is a curl example to post a message to the queue:
 
-<script src="https://gist.github.com/4479849.js"></script>
+<div>
+<script src="https://gist.github.com/4479849.js"> </script>
+</div>
 
 You should get a curl response that looks like this:
 
-<script src="https://gist.github.com/4489435.js"></script>
+<div>
+<script src="https://gist.github.com/4489435.js"> </script>
+</div>
 
 ### Checking Status
 
 If you want the detailed status of the delivery to each of your subscribers, you can check that too. In the curl example below, you'll need to exchange MESSAGE_ID with the id that was returned in the response above when you posted a message.
 
-<script src="https://gist.github.com/4489392.js"></script>
+<div>
+<script src="https://gist.github.com/4489392.js"> </script>
+</div>
 
 This should return a response like this:
 
-<script src="https://gist.github.com/4489402.js"></script>
+<div>
+<script src="https://gist.github.com/4489402.js"> </script>
+</div>
 
 ## How the Endpoint Should Handle Push Messages
 
