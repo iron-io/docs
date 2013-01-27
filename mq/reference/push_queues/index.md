@@ -38,7 +38,7 @@ You should get a curl response that looks like this:
 <script src="https://gist.github.com/4489435.js"> </script>
 </div>
 
-### Checking Status
+## Checking Status
 
 If you want the detailed status of the delivery to each of your subscribers, you can check that too. In the curl example below, you'll need to exchange MESSAGE_ID with the id that was returned in the response above when you posted a message.
 
