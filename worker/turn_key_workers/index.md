@@ -6,7 +6,8 @@ breadcrumbs:
   - ['Webhooks', '/turn_key_workers']
 ---
 
-Turn key workers are pre-made workers you can add to your account and start using immediately. No coding required.
+Turn key workers are pre-made workers you can add to your account and start using immediately. No coding required and you
+can use them from any language.
 
 [See this blog post on shareable workers for more background.](http://blog.iron.io/2012/11/sharable-open-source-workers-for.html)
 
