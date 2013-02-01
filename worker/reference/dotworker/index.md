@@ -88,42 +88,28 @@ The following syntax is valid in `.worker` files:
 <table class="reference">
   <tr>
     <th style="width: 10%;">Keyword</th>
-    <th style="width: 45%;">Purpose</th>
-    <th style="width: 45%;">Arguments</th>
+    <th style="width: 10%;">Runtime</th>
+    <th style="width: 40%;">Purpose</th>
+    <th style="width: 40%;">Arguments</th>
   </tr>
   
   <tr id="syntax-name">
     <td>name</td>
+    <td>all</td>
     <td>Set the worker's name</td>
     <td>The name to give the worker</td>
   </tr>
+
+  <tr id="syntax-frb">
+    <td>full_remote_build</td>
+    <td>all</td>
+    <td>Activates full remote build mode.</td>
+    <td>true or false, defaults to false</td>
+  </tr>
   
-  <tr id="syntax-file">
-    <td>file</td>
-    <td>Merge a file into the code package.</td>
-    <td>
-      <ol>
-        <li>The path to the file</li>
-        <li>The path the file should be stored under in the package. Defaults 
-            to the root directory. <strong>(optional)</strong></li>
-      </ol>
-    </td>
-  </tr>
-
-  <tr id="syntax-dir">
-    <td>dir</td>
-    <td>Merge an entire directory (and all its contents) into the code package.</td>
-    <td>
-      <ol>
-        <li>The path to the directory</li>
-        <li>The path the directory should be stored under in the package. 
-            Defaults to the root directory. <strong>(optional)</strong></li>
-      </ol>
-    </td>
-  </tr>
-
   <tr id="syntax-exec">
     <td>exec</td>
+    <td>all</td>
     <td>Merge a file and designate it as the file to be executed when the 
         worker is run. <strong>You may only have one file designated as the 
         executable per worker.</strong></td>
@@ -136,8 +122,45 @@ The following syntax is valid in `.worker` files:
     </td>
   </tr>
 
+  <tr id="syntax-file">
+    <td>file</td>
+    <td>all</td>
+    <td>Merge a file into the code package.</td>
+    <td>
+      <ol>
+        <li>The path to the file</li>
+        <li>The path the file should be stored under in the package. Defaults 
+            to the root directory. <strong>(optional)</strong></li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr id="syntax-dir">
+    <td>dir</td>
+    <td>all</td>
+    <td>Merge an entire directory (and all its contents) into the code package.</td>
+    <td>
+      <ol>
+        <li>The path to the directory</li>
+        <li>The path the directory should be stored under in the package. 
+            Defaults to the root directory. <strong>(optional)</strong></li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr id="syntax-deb">
+    <td>deb</td>
+    <td>all</td>
+    <td>Merge a x86_64 deb package into the code package. <strong>Note:</strong> dependencies
+        will not be handled.</td>
+    <td>
+        The path to the deb file
+    </td>
+  </tr>
+
   <tr id="syntax-gem">
     <td>gem</td>
+    <td>ruby</td>
     <td>Merge a gem with its dependencies. <strong>Note:</strong> binary 
         extensions will not be merged, as they are not supported.</td>
     <td>
@@ -152,12 +175,35 @@ The following syntax is valid in `.worker` files:
 
   <tr id="syntax-gemfile">
     <td>gemfile</td>
+    <td>ruby</td>
     <td>Merge all the gems from the specified Gemfile.</td>
     <td>
       <ol>
         <li>The path to the Gemfile</li>
         <li>The groups to include in the merge. Defaults to the "default" group&mdash;the top level. 
             <strong>(optional)</strong>. Example:<br /><span class="fixed-width">gemfile 'Gemfile', 'default', 'othergroup'</span></li>
+      </ol>
+    </td>
+  </tr>
+
+  <tr id="syntax-jar">
+    <td>jar</td>
+    <td>java</td>
+    <td>Merge a jar into code package. <strong>Note:</strong> it'll 
+        be available in worker's classpath.</td>
+    <td>
+        The path to jar file
+    </td>
+  </tr>
+
+  <tr id="syntax-pip">
+    <td>pip</td>
+    <td>python</td>
+    <td>Merge a pip package with its dependencies.</td>
+    <td>
+      <ol>
+        <li>The name of the pip package to merge.</li>
+        <li>The version requirement for the gem. Defaults to latest available at pypi.</li>
       </ol>
     </td>
   </tr>
