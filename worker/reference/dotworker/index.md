@@ -203,7 +203,7 @@ The following syntax is valid in `.worker` files:
     <td>
       <ol>
         <li>The name of the pip package to merge.</li>
-        <li>The version requirement for the gem. Defaults to latest available at pypi.</li>
+        <li>The version requirement for the pip package. Defaults to latest available at pypi.</li>
       </ol>
     </td>
   </tr>
