@@ -9,7 +9,12 @@ breadcrumbs:
 Turn key workers are pre-made workers you can add to your account and start using immediately. No coding required and you
 can use them from any language.
 
-[See this blog post on shareable workers for more background.](http://blog.iron.io/2012/11/sharable-open-source-workers-for.html)
+The basic usage for all of these is:
+
+1. iron_worker upload http://github.com/PATH_TO_WORKER_FILE
+2. Queue up tasks for the worker or schedule it.
+
+That's it!  Super easy, super powerful. [See this blog post on shareable workers for more background.](http://blog.iron.io/2012/11/sharable-open-source-workers-for.html)
 
 ## Turn Key Worker List
 
@@ -21,7 +26,6 @@ can use them from any language.
 
 ## Contributing
 
-To add a worker you made to this list, just fork our Dev Center repository at: https://github.com/iron-io/docs,
+To add a worker you made to this list, just fork our [Dev Center repository](https://github.com/iron-io/docs),
 add your worker to this page, then submit a pull request.
-
 
