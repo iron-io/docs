@@ -40,13 +40,14 @@ The following languages are currently supported on IronWorker:
 
 ### Native Support
 
+* [NodeJS](/worker/languages/nodejs) ([iron_worker_node](https://github.com/iron-io/iron_worker_node)) and ([node-ironio](https://github.com/ahallock/node-ironio))
 * [Java](/worker/languages/java) ([iron_worker_java](https://github.com/iron-io/iron_worker_java))
 
 ### Convenient Support
 
-* [NodeJS](/worker/languages/nodejs)
+* [.NET](/worker/languages/dotnet) ([IronTools](https://github.com/odeits/IronTools))
 
 ### Working Support
 
 * [Go](/worker/languages/go)
-* [.NET](/worker/languages/dotnet)
+
