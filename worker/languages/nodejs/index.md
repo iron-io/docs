@@ -145,6 +145,12 @@ statusCode:  200
 {"msg":"Queued up","status_code":200,"tasks":[{"id":"4f9ecdd01bab47589b02a097"}]}
 {% endhighlight %}
 
+
+**Note**: For most people, calling the API by hand is overkill. Please make sure to check out our [node client libraries](/worker/languages/#full_support), including
+a community supported and potentially more active project called [node-ironio](https://github.com/ahallock/node-ironio) by [Andrew Hallock](https://github.com/ahallock/). Thanks Andrew!
+
+
+
 ## Deep Dive
 
 ### Payload Example
