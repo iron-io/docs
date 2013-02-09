@@ -164,7 +164,7 @@ You can schedule a task using the following command:
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-$ iron_worker schedule [--start-at "2013-01-01T00:00:00-04:00"] [--run-times 4] [--priority 0|1|2] [--payload '{"somekey": "some_value"}']
+$ iron_worker schedule [--start-at "2013-01-01T00:00:00-04:00"] [--run-times 4] [--priority 0|1|2] [--payload '{"somekey": "some_value"}'] $WORKER
 {% endhighlight %}
 
 You can find a list of options for the command by running `iron_worker schedule --help`.

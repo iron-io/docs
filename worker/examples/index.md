@@ -9,7 +9,7 @@ breadcrumbs:
 This page lists a bunch of places to find example code that you can copy and modify to suit your needs or just to get
 a feel for how to make workers.
 
-## List of Example repositories
+## List of example repositories
 
 - [Examples Repository](https://github.com/iron-io/iron_worker_examples) - A repository full of example workers in a bunch of different languages.
 - [Newsy](https://github.com/paddyforan/newsy) - An example app that pulls the latest URLs from hacker news, takes a screenshot, and pushes them to a
