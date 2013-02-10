@@ -592,6 +592,19 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 * **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to release.
 
+#### Optional Body Parameters
+A JSON document body is required even if all parameters are omitted.
+
+* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
+
+### Request
+
+{% highlight js %}
+{
+  "delay": 60
+}
+{% endhighlight %}
+
 ### Response
 {% highlight js %}
 {
