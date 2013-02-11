@@ -592,6 +592,15 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 * **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to release.
 
+### Request
+
+Any empty JSON body.
+
+{% highlight js %}
+{}
+{% endhighlight %}
+
+
 ### Response
 {% highlight js %}
 {
@@ -616,7 +625,16 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 * **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to touch.
 
-### Response
+
+#### Request
+
+Any empty JSON body.
+
+{% highlight js %}
+{}
+{% endhighlight %}
+
+#### Response
 {% highlight js %}
 {
   "msg": "Touched"
@@ -640,7 +658,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 * **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to delete.
 
-### Response
+#### Response
 {% highlight js %}
 {
   "msg": "Deleted"
