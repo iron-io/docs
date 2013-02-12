@@ -586,20 +586,29 @@ Releasing a reserved message unreserves the message and puts it back on the queu
 POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release
 </div>
 
-#### URL Parameters
+### URL Parameters
 
 * **Project ID**: The project these messages belong to.
 * **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to release.
 
-### Request
+### Body Parameters
 
-Any empty JSON body.
+* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
+
+### Request Body
+
+{% highlight js %}
+{
+  "delay": 60
+}
+{% endhighlight %}
+
+A JSON document body is required even if all parameters are omitted.
 
 {% highlight js %}
 {}
 {% endhighlight %}
-
 
 ### Response
 {% highlight js %}
@@ -607,7 +616,6 @@ Any empty JSON body.
   "msg": "Released"
 }
 {% endhighlight %}
-
 
 ## Touch a Message on a Queue
 
