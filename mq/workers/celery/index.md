@@ -1,5 +1,5 @@
 ---
-title: Example Workers
+title: Celery on IronMQ
 layout: default
 section: mq
 breadcrumbs:

@@ -1,5 +1,5 @@
 ---
-title: Example Workers
+title: Delayed Job on IronMQ
 layout: default
 section: mq
 breadcrumbs:
