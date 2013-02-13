@@ -16,4 +16,5 @@ It's easy:
 1. add `import iron_celery`
 1. set `BROKER_URL = 'ironmq://project_id:token@'`
 
-That's pretty much it!  More info at: https://github.com/iron-io/iron_celery#readme
+That's pretty much it!  More info at: [https://github.com/iron-io/iron_celery#readme](https://github.com/iron-io/iron_celery#readme)
+
