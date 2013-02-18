@@ -119,7 +119,7 @@ read the file it specifies, and parse the JSON contained within that file&mdash;
 the official client library takes care of that for you and lets you just access
 the payload as a variable at runtime. Here's an example:
 
-In the upload script:
+In the task queuing script:
 {% highlight ruby %}
 require 'iron_worker_ng'
 
