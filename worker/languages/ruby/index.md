@@ -116,7 +116,7 @@ Retrieving the payload in Ruby workers is a bit different&mdash;some of the
 clients take care of the dirty work for you. So while it's still the same 
 process&mdash;get the `-payload` argument passed to the script at runtime, 
 read the file it specifies, and parse the JSON contained within that file&mdash;
-the official client library takes care of that for you and let you just access 
+the official client library takes care of that for you and lets you just access
 the payload as a variable at runtime. Here's an example:
 
 In the upload script:
