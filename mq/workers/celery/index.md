@@ -38,3 +38,5 @@ iron_celery Module: [https://github.com/iron-io/iron_celery](https://github.com/
 Getting Started Blog Post: [http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html](http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html)
 
 Getting Started Video (2 mins): [Iron.io/celery](http://www.iron.io/celery)
+
+Celery on Heroku: [https://github.com/iron-io/heroku-iron-celery-demo](https://github.com/iron-io/heroku-iron-celery-demo)
