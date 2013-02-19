@@ -28,10 +28,12 @@ Celery was designed to easily change your broker which makes changing to IronMQ 
 1. add `import iron_celery`
 1. set `BROKER_URL = 'ironmq://project_id:token@'`
 
+We expand on these steps in the [integration libary docs](https://github.com/iron-io/iron_celery#readme).
+
 
 ## Further Reading
 
-Official Client Docs: [https://github.com/iron-io/iron_celery#readme](https://github.com/iron-io/iron_celery#readme)
+iron_celery Module: [https://github.com/iron-io/iron_celery](https://github.com/iron-io/iron_celery)
 
 Getting Started Blog Post: [http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html](http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html)
 
