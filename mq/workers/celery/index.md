@@ -34,3 +34,5 @@ Celery was designed to easily change your broker which makes changing to IronMQ 
 Official Client Docs: [https://github.com/iron-io/iron_celery#readme](https://github.com/iron-io/iron_celery#readme)
 
 Getting Started Blog Post: [http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html](http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html)
+
+Getting Started Video (2 mins): [Iron.io/celery](http://www.iron.io/celery)
