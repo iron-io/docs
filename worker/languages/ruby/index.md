@@ -174,7 +174,7 @@ The Ruby environment that the workers run in on IronWorker is as follows:
 <tbody>
 <tr>
 <td style="width: 25%;">Ruby Version</td>
-<td style="width: 75%;"><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.2p280">1.9.2p280</a></td>
+<td style="width: 75%;"><a href="http://www.ruby-lang.org/en/downloads/" title="Version 1.9.3p0">1.9.3p0</a></td>
 </tr>
 <tr>
 <td colspan="2" style="text-align: center; width: 100%;"><h4 style="padding: 0px;">Installed Gems</h4></td>
