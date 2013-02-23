@@ -116,10 +116,10 @@ Note that each request also requires a Project ID to specify which project the a
 **Example Authorization Header**:  
 Authorization: OAuth abc4c7c627376858
 
+**Note**: Be sure you have the correct case: it's **OAuth**, not Oauth.
+
 **Example Query with Parameters**:  
 GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/projects/<span class="variable project_id">{Project ID}</span>/tasks?oauth=abc4c7c627376858
-
-**Note**: Be sure you have the correct case: it's **OAuth**, not Oauth.
 
 ## Requests
 
