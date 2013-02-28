@@ -434,7 +434,7 @@ Multiple messages may be added in a single request, provided that the messages s
 
 ##### Optional
 
-* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds. Maximum is 86,400 seconds (24 hours).
+* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds. Minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
 * **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
 * **expires_in**: How long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
 
@@ -501,8 +501,8 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 #### Optional Parameters
 
 * **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
-* **timeout**: timeout: After timeout (in seconds), item will be placed back onto queue. You must delete the message
-from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, maximum is 86,400 seconds (24 hours).
+* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message
+from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
 
 ### Sample Request
 
