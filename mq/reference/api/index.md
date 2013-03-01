@@ -717,9 +717,9 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 
 
-## Delete Push Status for a Message
+## Acknowledge / Delete Push Message for a Subscriber
 
-You can delete push status for a particular message and subscriber.
+This is only for use with long running processes that have previously returned a 202. Read Push Queues page for more information on [Long Running Processes](http://dev.iron.io/mq/reference/push_queues).
 
 <div class="grey-box">
 DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers/<span class="variable subscriber_id">{Subscriber ID}</span>
