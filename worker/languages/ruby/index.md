@@ -17,7 +17,7 @@ We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
 gem. We recommend switching off that at your earliest convenience.
 
-You're going to need to have Ruby version 1.9 or higher installed to use the `iron_worker_ng` gem.
+If you are running Ruby 1.8, you'll need to install `json` gem additionally. Note that we are running Ruby 1.9 on worker servers, so your workers must be compatible.
 
 You can install the `iron_worker_ng` gem from the command line:
 {% highlight bash %}
