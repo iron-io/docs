@@ -147,12 +147,6 @@ official client library has a built-in solution for this, called "merging".
 
 #### Gems
 
-A [limited number of gems](#environment) are included in the cloud environment, 
-but we highly recommend that you don't rely on those&mdash;we can't guarantee 
-they will always match the version you require or will continue to exist on our 
-system. They are largely there to make quick tests easier. For production workers, 
-we suggest you merge everything, so you can manage your own dependencies.
-
 You can find out how to merge gems and more about best practices on the 
 [Merging Gems page](/worker/languages/ruby/merging-gems).
 
