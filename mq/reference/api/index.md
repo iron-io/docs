@@ -689,7 +689,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 * **Project ID**: The project these messages belong to.
 * **Queue Name**: The name of queue.
-* **Message ID**: The id of the message to delete.
+* **Message ID**: The id of the message to retrieve status for.
 
 ### Response
 {% highlight js %}
