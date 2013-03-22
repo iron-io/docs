@@ -76,7 +76,7 @@ If you'd like to take more time to process messages, see 202 section below.
 If you'd like to take some time to process a message, more than the 60 second timeout, you must respond with HTTP status code 202.
 Be sure to set the "timeout" value when [posting your message](/mq/reference/api) to the maximum amount of time you'd like your processing to take.
 If you do not explicitly delete the message before the "timeout" has passed, the message will be retried.
-To delete the message, check the "Iron-Message" header and POST an empty request to that link.
+To delete the message, check the "Iron-Subscriber-Message-Url" header and send a DELETE request to that URL.
 
 ### Push Queue Headers
 
