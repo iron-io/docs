@@ -20,6 +20,12 @@ code lingers in your application, cluttering it, or that you're missing
 code that it will take for your worker to run. Workers can finally be their 
 own self-contained units.
 
+--------
+
+* [Making a Worker File](#making_a_worker_file)
+<ul><li><a href="#structure">Structure</a></li></ul>
+* [Syntax Reference](#syntax_reference)
+
 ## Making a Worker File
 
 Writing a `.worker` file is simple: give it a recognisable name, then append 

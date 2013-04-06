@@ -13,6 +13,16 @@ the convention of using a command line interface to interact with your apps.
 In our effort to provide tools that work with developers' current work flow, 
 IronWorker has created a command line tool to interact with the service.
 
+--------
+
+* [Installing](#installing)
+* [Configuration](#configuration)
+* [Testing Your Workers Locally](#testing_your_workers_locally)
+* [Creating & Uploading Code Packages](#creating__uploading_code_packages)
+* [Queuing Tasks](#queuing_tasks)
+* [Scheduling Tasks](#scheduling_tasks)
+* [Retrieving a Task's Log](#retrieving_a_tasks_log)
+
 ## Installing
 
 The command line interface for IronWorker uses the [IronWorkerNG gem](http://github.com/iron-io/iron_worker_ruby_ng), 

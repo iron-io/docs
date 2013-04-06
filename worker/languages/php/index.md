@@ -9,9 +9,21 @@ breadcrumbs:
 
 PHP has grown to be one of the most popular languages to write web software in. You can add some power to your current PHP application using PHP workers on IronWorker. This article will help you get started with PHP workers, but you should be familiar with the [basics of IronWorker](/worker).
 
+--------
+
+* [Quick Start](#quick_start)
+  * [Get the PHP Client Library](#get_the_php_client_library)
+  * [Create Your Configuration File](#create_your_configuration_file)
+  * [Write Your PHP Worker](#write_your_php_worker)
+  * [Create a Script to Upload the Worker](#create_a_script_to_upload_the_worker)
+  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
+* [Deep Dive](#deep_dive)
+  * [Payload Example](#payload_example)
+  * [Environment](#environment)
+
 ## Quick Start
 
-### Get The PHP Client Library
+### Get the PHP Client Library
 
 You can download the PHP client library, `iron_worker_php`, from [Github](https://github.com/iron-io/iron_worker_php). 
 If you're using PHP 5.3 or greater, you can just download the 
@@ -21,16 +33,6 @@ from [here](https://github.com/iron-io/iron_core_php).
 
 If you aren't sure which version of PHP you're using, you can run `php -v` from 
 your shell to find out.
-
-### Write Your PHP Worker
-
-Save the following as `worker.php`:
-
-{% highlight php %}
-<?php
-echo "Hello from PHP";
-?>
-{% endhighlight %}
 
 ### Create Your Configuration File
 
@@ -45,7 +47,17 @@ The PHP library uses a configuration file or environment variables set that tell
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
-### Create A Script To Upload The Worker.
+### Write Your PHP Worker
+
+Save the following as `worker.php`:
+
+{% highlight php %}
+<?php
+echo "Hello from PHP";
+?>
+{% endhighlight %}
+
+### Create a Script to Upload the Worker
 
 Save the following as `upload.php`:
 
@@ -68,7 +80,7 @@ print_r($res);
 
 You can then upload your worker by running `php upload.php`. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
-### Queue A Task To The New Worker.
+### Queue Up Tasks for Your Worker
 
 Save the following as `enqueue.php`:
 

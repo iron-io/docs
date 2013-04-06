@@ -9,6 +9,13 @@ breadcrumbs:
 Using IronWorker webhooks enables you to run pretty much anything you want whenever an event happens at a third
 party service that supports webhooks.
 
+--------
+
+* [How to Use IronWorker Webhooks](#how_to_use_ironworker_webhooks)
+  * [Step 1](#step_1_create_a_worker_and_upload_it_to_ironworker)
+  * [Step 2](#step_2_add_your_workers_webhook_url_to_github_service_hooks)
+  * [Step 3](#step_3_commit_and_push_some_code_to_your_github_project_and_watch_the_magic_happen)
+
 ## How to Use IronWorker Webhooks
 
 The best way to see how this works is via an example. The rest of this section will use a **Github to Hipchat** webhook
