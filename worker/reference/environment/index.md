@@ -7,6 +7,17 @@ breadcrumbs:
   - ['Environment', '/environment']
 ---
 
+* [Operating System](#operating_system)
+* [Installed Linux Packages](#installed_linux_packages)
+* [Maximum Data Payload](#maximum_data_payload)
+* [Memory per Worker](#memory_per_worker)
+* [Local Disk Space per Worker](#local_disk_space_per_worker)
+* [Maximum Run Time per Worker](#maximum_run_time_per_worker)
+* [Priority Queue Management](#priority_queue_management)
+* [Maximum Scheduled Tasks per Project](#maximum_scheduled_tasks_per_project)
+* [Minimum `run_every` Time](#minimum__time)
+* [Security Groups and IP Ranges](#security_groups_and_ip_ranges)
+
 ## Operating System
 The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
 
@@ -51,14 +62,14 @@ The standard worker sandbox environment contains a certain amount of accessible 
 
 Tip: We recommend distributing workloads over multiple workers&mdash;not only for better resource management, but also to take advantage of the massive concurrency enabled by a cloud worker system. 
 
-## Local Disk Space (per Worker)
+## Local Disk Space per Worker
 Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files inside this space, and can perform most ordinary file operations. This directory is used as the current working directory ("<span class="fixed-width">.</span>") when executing your workers.
 
 <div class="grey-box">
 <b>Local Disk Space:</b> 10GB
 </div>
 
-## Max Run Time (per Worker)
+## Maximum Run Time per Worker
 There is a system-wide limit for the maximum length a task may run. Tasks that exceed this limit will be terminated and will have `timeout` as their status. 
 
 <div class="grey-box">
@@ -90,7 +101,7 @@ Each priority (p0, p1, p2) has a targeted maximum time limit for tasks sitting i
 </tbody>
 </table>
 
-## Max Scheduled Tasks (per Project)
+## Maximum Scheduled Tasks per Project
 The following is the default number of scheduled tasks. It should be sufficient for even the largest projects. If you would like this number increased, however, please feel free to contact us.
 
 <div class="grey-box">
@@ -99,7 +110,7 @@ The following is the default number of scheduled tasks. It should be sufficient 
 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When scheduled tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the [page on scheduling](/worker/scheduling) for more information on scheduling patterns and best practices.
 
-## Minimum run_every Time
+## Minimum `run_every` Time
 
 Tasks can only be scheduled to run **every 60 seconds or more** using the `run_every` parameter.
 

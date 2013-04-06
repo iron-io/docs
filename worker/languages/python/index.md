@@ -9,9 +9,21 @@ breadcrumbs:
 
 Python has become one of the most popular languages for web software and scientific or mathematical computing. By offloading tasks to IronWorker, computations and requests can be run in parallel using the power of the cloud. This article will get you started writing Python workers, but you should be familiar with the [basics of IronWorker](/worker).
 
+--------
+
+* [Quick Start](#quick_start)
+  * [Get the Python Client Library](#get_the_php_client_library)
+  * [Create Your Configuration File](#create_your_configuration_file)
+  * [Write Your PHP Worker](#write_your_php_worker)
+  * [Create a Script to Upload the Worker](#create_a_script_to_upload_the_worker)
+  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
+* [Deep Dive](#deep_dive)
+  * [Payload Example](#payload_example)
+  * [Environment](#environment)
+
 ## Quick Start
 
-### Get the Python client library
+### Get the Python Client Library
 
 You can download the Python client library, `iron_worker_python`, from [Github](https://github.com/iron-io/iron_worker_python)&mdash;note that you'll need the [iron_core_python](https://github.com/iron-io/iron_core_python) library installed, too. Users of pip or easy_install can simply use `pip install iron_worker` and `easy_install iron_worker`.
 
@@ -28,13 +40,13 @@ The Python library uses a configuration file or environment variables set that t
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the library will pick up your credentials and use them automatically.
 
-### Write your Python worker.
+### Write Your Python Worker
 
 {% highlight python %}
 print "Hello from Python"
 {% endhighlight %}
 
-### Create a script to upload the worker.
+### Create a Script to Upload the Worker
 {% highlight python %}
 from iron_worker import *
 
@@ -44,7 +56,7 @@ response = worker.upload(target="HelloWorld.py", name="HelloWorld")
 
 **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
-### Queue a task to the new worker.
+### Queue Up Tasks for Your Worker
 {% highlight python %}
 from iron_worker import *
 

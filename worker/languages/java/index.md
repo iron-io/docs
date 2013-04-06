@@ -11,9 +11,27 @@ Java has become one of the most popular languages in the enterprise. With Java w
 
 Java workers need to be compiled into jar files before they're uploaded. Once they're uploaded to the IronWorker cloud, they can be invoked via a simple API call to be put on the processing queues immediately or scheduled to run at a later time&mdash;you only need to upload the worker again when the code changes. This article will walk you through the specifics of using Java workers, but you should be familiar with the [basics of IronWorker](/worker).
 
+--------
+
+* [Quick Start](#quick_start)
+  * [Get the `iron_worker_ng` Gem](#get_the__gem)
+  * [Create Your Configuration File](#create_your_configuration_file)
+  * [Write Your Java Worker](#write_your_java_worker)
+  * [Compile Your Java Worker to a jar File](#compile_your_java_worker_to_a_jar_file)
+  * [Create a .worker File](#create_a_worker_file)
+  * [Upload Your Worker](#upload_your_worker)
+  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
+* [Deep Dive](#deep_dive)
+  * [Payload Example](#payload_example)
+  * [Get GSON](#get_gson)
+  * [Modify The Worker](#modify_the_worker)
+  * [Recompile the jar File](#recompile_the_jar_file)
+  * [Update the .worker File and Reupload](#update_the_worker_file_and_reupload)
+
+
 ## Quick Start
 
-### Get The `iron_worker_ng` Gem
+### Get the `iron_worker_ng` Gem
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
@@ -23,6 +41,20 @@ $ gem install iron_worker_ng
 {% endhighlight %}
 
 It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
+
+### Create Your Configuration File
+
+The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+
+<figcaption><span>iron.json </span></figcaption>
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 ### Write Your Java Worker
 
@@ -37,7 +69,7 @@ public class HelloWorld {
 }
 {% endhighlight %}
 
-### Compile Your Java Worker To A jar File.
+### Compile Your Java Worker to a jar File.
 
 IronWorker runs jar files that you upload to the cloud. You need to generate 
 these jar files first, however. It's likely your development environment 
@@ -63,7 +95,7 @@ $ jar cfm hello.jar manifest.txt HelloWorld.class
 
 A hello.jar file will now be in the same directory as your worker.
 
-### Create A .worker File
+### Create a .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
@@ -74,20 +106,6 @@ runtime "java"
 # exec is the file that will be executed when you queue a task
 exec "hello.jar" # replace with your jar file
 {% endhighlight %}
-
-### Create Your Configuration File
-
-The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
-
-<figcaption><span>iron.json </span></figcaption>
-{% highlight js %}
-{
-  "project_id": "INSERT YOUR PROJECT ID HERE",
-  "token": "INSERT YOUR TOKEN HERE"
-}
-{% endhighlight %}
-
-You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 ### Upload Your Worker
 
@@ -106,7 +124,7 @@ Now look at the task list in HUD and you should see your task show up and go fro
 
 Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
-### Queue Tasks To The New Worker
+### Queue Up Tasks for Your Worker
 
 Once your code has been uploaded, it's easy to queue a task to it. The following 
 example will queue up a task using the [`iron_worker_java`](https://github.com/iron-io/iron_worker_java) library. Just insert 
@@ -150,7 +168,7 @@ turn it into Java objects, and vice-versa. Go ahead and download the latest
 release, unzip it, and copy the gson-#.#.jar file to the directory your 
 worker is in. Rename the jar file to gson.jar, to make life easier.
 
-#### Modify The Worker
+#### Modify the Worker
 
 Next, we're going to modify your worker to load the file and parse it as JSON:
 
@@ -228,7 +246,7 @@ public class HelloWorld {
 }
 {% endhighlight %}
 
-#### Recompile The jar File
+#### Recompile the jar File
 
 We're going to have to modify that `manifest.txt` file before we can use the 
 GSON jar, though, so replace `manifest.txt` with the following:

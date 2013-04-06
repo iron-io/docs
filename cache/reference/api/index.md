@@ -9,6 +9,17 @@ breadcrumbs:
 
 IronCache provides a REST/HTTP API to allow you to interact programmatically with your caches on IronCache.
 
+--------
+
+* [Endpoints](#endpoints)
+* [Authentication](#authentication)
+* [Requests](#requests)
+  * [Base URL](#base_url)
+  * [Pagination](#pagination)
+* [Responses](#responses)
+  * [Status Codes](#status_codes)
+  * [Exponential Backoff](#exponential_backoff)
+
 ## Endpoints
 
 <table class="reference">
@@ -129,7 +140,7 @@ When there's an error, the response body contains a JSON object similar to the f
 { "msg": "reason for error" }
 {% endhighlight %}
 
-#### Exponential Backoff
+### Exponential Backoff
 
 When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 

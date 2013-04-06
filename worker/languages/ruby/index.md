@@ -9,9 +9,24 @@ breadcrumbs:
 
 Ruby was the first language supported on IronWorker, and a lot of IronWorker's tools are written in Ruby. It is probably the easiest language to get your worker running in, as it is the most-supported language on the platform. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
 
+--------
+
+* [Quick Start](#quick_start)
+  * [Get the Ruby Gem](#get_the_ruby_gem)
+  * [Create Your Configuration File](#create_your_configuration_file)
+  * [Write Your Ruby Worker](#write_your_ruby_worker)
+  * [Create a .worker File](#create_a_worker_file)
+  * [Upload Your Worker](#upload_your_worker)
+  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
+* [Deep Dive](#deep_dive)
+  * [A Note on Libraries](#a_note_on_libraries)
+  * [Payload Example](#payload_example)
+  * [Merging](#merging)
+  * [Ruby on Rails](#ruby_on_rails)
+
 ## Quick Start
 
-### Get The Ruby Gem
+### Get the Ruby Gem
 
 We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier. Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
@@ -23,6 +38,19 @@ You can install the `iron_worker_ng` gem from the command line:
 {% highlight bash %}
 gem install iron_worker_ng
 {% endhighlight %}
+
+### Create Your Configuration File
+
+The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 ### Write Your Ruby Worker
 
@@ -52,19 +80,6 @@ exec "hello_worker.rb"
 
 You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
-### Create Your Configuration File
-
-The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
-
-{% highlight js %}
-{
-  "project_id": "INSERT YOUR PROJECT ID HERE",
-  "token": "INSERT YOUR TOKEN HERE"
-}
-{% endhighlight %}
-
-You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
-
 ### Upload Your Worker
 
 {% highlight bash %}
@@ -81,7 +96,7 @@ Now look at the task list in HUD and you should see your task show up and go fro
 
 Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
-### Queue Up Tasks For Your Worker
+### Queue Up Tasks for Your Worker
 
 Now you can queue up as many tasks as you want, whenever you want, from whatever language you want. You will want to look at the docs for the client library for your language for how to queue or create a task. The following is an example in ruby, save the following into a file called `enqueue.rb`:
 
@@ -99,7 +114,7 @@ You can run that code with:
 
 ## Deep Dive
 
-### A Note On Libraries
+### A Note on Libraries
 
 We currently offer both the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
 and [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) gems as 

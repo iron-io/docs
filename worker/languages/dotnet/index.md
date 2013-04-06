@@ -9,9 +9,22 @@ breadcrumbs:
 
 .NET is a framework from Microsoft that is the de-facto standard for writing software that runs on Windows, Windows Server, and Windows Phone. Now you can integrate your existing .NET codebase with IronWorker, without needing to learn a new language. This article will walk you through getting .NET workers running on IronWorker, but you should still take the time to familiarise yourself with the [basics of IronWorker](/worker).
 
+--------
+
+* [Quick Start](#quick_start)
+  * [Get the `iron_worker_ng` Gem](#get_the__gem)
+  * [Create Your Configuration File](#create_your_configuration_file)
+  * [Write Your .NET Worker](#write_your_net_worker)
+  * [Compile Your .NET Worker](#compile_your_net_worker)
+  * [Create a .worker File](#create_a_worker_file)
+  * [Upload Your Worker](#upload_your_worker)
+  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
+* [Deep Dive](#deep_dive)
+<ul><li><a href="#payload_example">Payload Example</a></li></ul>
+
 ## Quick Start
 
-### Get The `iron_worker_ng` Gem
+### Get the `iron_worker_ng` Gem
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
@@ -20,6 +33,19 @@ gem install iron_worker_ng
 {% endhighlight %}
 
 It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api#upload_a_code_package) to upload a package, but these samples will use the CLI.
+
+### Create Your Configuration File
+
+The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have [documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+
+{% highlight js %}
+{
+  "project_id": "INSERT YOUR PROJECT ID HERE",
+  "token": "INSERT YOUR TOKEN HERE"
+}
+{% endhighlight %}
+
+You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 ### Write Your .NET Worker
 
@@ -42,7 +68,7 @@ For .NET code, IronWorker runs the compiled executables in the cloud, so you're 
 gmcs hello.cs
 {% endhighlight %}
 
-### Create A .worker File
+### Create a .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
@@ -52,19 +78,6 @@ runtime "mono"
 # exec is the file that will be executed when you queue a task
 exec "hello.exe" # replace with your file
 {% endhighlight %}
-
-### Create Your Configuration File
-
-The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have [documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
-
-{% highlight js %}
-{
-  "project_id": "INSERT YOUR PROJECT ID HERE",
-  "token": "INSERT YOUR TOKEN HERE"
-}
-{% endhighlight %}
-
-You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 ### Upload Your Worker
 
@@ -84,7 +97,7 @@ Now look at the task list in [HUD](https://hud.iron.io) and you should see your 
 
 Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
-### Queue Tasks To The New Worker
+### Queue Up Tasks for Your Worker
 
 Once your code has been uploaded, it's easy to queue a task to it. It's a single, 
 authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON 

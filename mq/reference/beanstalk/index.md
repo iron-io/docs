@@ -9,6 +9,16 @@ breadcrumbs:
 
 You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice. 
 
+--------
+
+* [Beanstalk Libraries](#beanstalk_libraries)
+* [Host Information](#host_information)
+* [Authentication](#authentication)
+* [Tubes vs Queues](#tubes_vs_queues)
+* [Notes](#notes)
+
+## Beanstalk Libraries
+
 Here's a sample list of languages available (with multiple clients libs to choose from for many languages):
 
 <table class="reference">
@@ -29,6 +39,7 @@ Here's a sample list of languages available (with multiple clients libs to choos
   </tbody>
 </table>
 
+Check out list of client libraries [on GitHub](https://github.com/kr/beanstalkd/wiki/client-libraries)
 
 ## Host Information
 To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on the [cloud you're using](/mq/reference/clouds)). 
