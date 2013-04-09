@@ -13,6 +13,8 @@ languages:
     slug: php
   - name: Python
     slug: python
+  - name: "Node.js"
+    slug: nodejs
   - name: Go
     slug: go
   - name: Java
@@ -120,6 +122,21 @@ queue = ironmq.queue("test_queue")
 queue.post("hello world!")
 {% endhighlight %}</div>
 
+<div class="language nodejs"><h3>Node.js Example</h3>
+
+	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
+
+{% highlight js %}
+var iron_mq = require('iron_mq');
+var imq = new iron_mq.Client();
+
+var queue = imq.queue("test_queue");
+
+queue.post("Hello, IronMQ!", function(error, body) {
+  console.log(error, body);
+});
+{% endhighlight %}</div>
+
 <div class="language go"><h3>Go Example</h3>
 <p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
@@ -225,6 +242,21 @@ $ironmq->getMessage("test_queue");
 ironmq = IronMQ()
 queue = ironmq.queue("test_queue")
 msg = queue.get()
+{% endhighlight %}</div>
+
+<div class="language nodejs"><h3>Node.js Example</h3>
+
+	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
+
+{% highlight js %}
+var iron_mq = require('iron_mq');
+var imq = new iron_mq.Client();
+
+var queue = imq.queue("test_queue");
+
+queue.get({n: 1}, function(error, body) {
+  console.log(error, body);
+});
 {% endhighlight %}</div>
 
 <div class="language go"><h3>Go Example</h3>
@@ -336,6 +368,33 @@ ironmq = IronMQ()
 queue = ironmq.queue("test_queue")
 response = queue.get()
 queue.delete(response["messages"][0]["id"])
+{% endhighlight %}</div>
+
+<div class="language nodejs"><h3>Node.js Example</h3>
+
+	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
+
+{% highlight js %}
+var iron_mq = require('iron_mq');
+var imq = new iron_mq.Client();
+
+var queue = imq.queue("test_queue");
+
+queue.post("Hello, IronMQ!", function(error, body) {
+  console.log(error, body);
+});
+
+var message_id;
+queue.get({n: 1}, function(error, body) {
+  console.log(error, body);
+  if (error == null) {
+    message_id = body.id;
+  }
+});
+
+queue.del(message_id, function(error, body) {
+  console.log(error, body);
+});
 {% endhighlight %}</div>
 
 <div class="language go"><h3>Go Example</h3>
