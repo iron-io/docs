@@ -93,6 +93,35 @@ $ # specify a file containing the payload
 $ iron_worker run $WORKER --payload-file /path/to/payload.json
 {% endhighlight %}
 
+####Important notes:
+
+First, it is not work under Windows in most cases.
+
+Second, this feature was built for interpreted languages like Ruby or Python.
+
+IronWorker tries to provide the ability to launch workers on your local box.
+This is not trivial feature and does not work ever. On our servers installed Ubuntu Linux, 64 bit.
+If you are running under another operational system the feature might not work.
+Also as under Linux when not all required packages are installed or on non-deb Linux.
+
+Typical use cases (not all!) where local run might not work:
+
+1. You are running on Windows.
+
+2. It is not possible to run `binary` workers on Mac OS X and, sometimes, 32bit Linux.
+
+3. Running on Mac OS X / Non-deb Linux distributive and use `deb` in your `.worker`:
+    <figcaption><span>Ruby Code</span></figcaption>
+    {% highlight ruby %}
+    deb "feature-package.deb"
+    {% endhighlight %}
+    Possible solution: install `dpkg`.
+
+4. Running on Mac OS X / Linux and trying to launch worker with `mono` environment.
+It requires `mono` installed.
+
+If you have any troubles with local run feature try to upload and queue your worker.
+
 ## Creating & Uploading Code Packages
 
 The command to upload a worker is:
