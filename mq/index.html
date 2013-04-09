@@ -121,13 +121,24 @@ queue.post("hello world!")
 {% endhighlight %}</div>
 
 <div class="language go"><h3>Go Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight go %}
-client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
-queue := client.Queue("test_queue")
-id, err := queue.Push("Hello world!")
+package main
+
+import (
+        "fmt"
+        "github.com/iron-io/iron_go/mq"
+)
+
+func main() {
+        queue := mq.New("hello_queue")
+
+        id, err := queue.PushString("Hello, world!")
+        fmt.Println(id, err)
+}
 {% endhighlight %}</div>
+
 
 <div class="language java"><h3>Java Example</h3>
 <p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
@@ -217,12 +228,22 @@ msg = queue.get()
 {% endhighlight %}</div>
 
 <div class="language go"><h3>Go Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight go %}
-client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
-queue := client.Queue("test_queue")
-msg, err := queue.Get()
+package main
+
+import (
+        "fmt"
+        "github.com/iron-io/iron_go/mq"
+)
+
+func main() {
+        queue := mq.New("hello_queue")
+
+        msg, err := queue.Get()
+        fmt.Println(msg, err)
+}
 {% endhighlight %}</div>
 
 <div class="language java"><h3>Java Example</h3>
@@ -318,13 +339,36 @@ queue.delete(response["messages"][0]["id"])
 {% endhighlight %}</div>
 
 <div class="language go"><h3>Go Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight go %}
-client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
-queue := client.Queue("test_queue")
-id, err := queue.Push("Hello world!")
-err := msg.Delete()
+package main
+
+import (
+        "fmt"
+        "github.com/iron-io/iron_go/mq"
+)
+
+func main() {
+        queue := mq.New("hello_queue")
+
+        ids, err := queue.PushStrings("Hello", "world", "!")
+        fmt.Println(ids, err)
+
+        msg, err := queue.Get()
+        fmt.Println(msg, err)
+        if err == nil {
+                m.Delete()
+        }
+
+        msgs, err := queue.Get(2)
+        fmt.Println(msgs, err)
+        if err != nil {
+                for _, m := range append(msgs, msg) {
+                        m.Delete()
+                }
+        }
+}
 {% endhighlight %}</div>
 
 <div class="language java"><h3>Java Example</h3>
