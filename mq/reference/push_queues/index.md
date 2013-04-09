@@ -16,7 +16,7 @@ breadcrumbs:
   * [Timeout](#timeout)
   * [Long Running Processes - aka 202's](#long_running_processes__aka_202s)
   * [Push Queue Headers](#push_queue_headers)
-* [Notes](#notes)
+* [Important Notes](#important_notes)
 
 ## Overview
 
@@ -99,7 +99,10 @@ Each message pushed will have some special headers as part of the HTTP request.
 - Iron-Subscriber-Message-Url - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
 IronMQ that you're done with the message. Send a DELETE http request to this URL to delete it.
 
-## Notes
+## Important Notes
 
 - You should not push and pull from a queue, a push queue's messages will be deleted/acknowledged immediately and not be
 available for pulling.
+- When a Pull Queue contains messages and you turn it to Push Queue you still be able to get messages from the queue.
+Also, contained messages will not be send to your subscribers. New messages will be processed as usual for Push Queue.
+- To revert your Push Queue to regular Pull Queue just update `push_type` to `"pull"`.
