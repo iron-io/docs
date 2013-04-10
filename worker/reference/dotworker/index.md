@@ -101,11 +101,53 @@ The following syntax is valid in `.worker` files:
     <th style="width: 40%;">Purpose</th>
     <th style="width: 40%;">Arguments</th>
   </tr>
-  
+
+  <tr id="syntax-name">
+    <td>runtime</td>
+    <td>all</td>
+    <td>Set worker's runtime</td>
+    <td>
+      <ul>
+        <li>
+          <code>"binary"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/binary.rb">How it runs</a>
+        </li>
+        <li>
+          <code>"go"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/go.rb">How it runs</a>
+        </li>
+        <li>
+          <code>"java"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/java.rb">How it runs</a>
+        </li>
+        <li>
+          <code>"mono"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/mono.rb">How it runs</a>
+        </li>
+        <li>
+          <code>"node"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/node.rb">How it runs</a>
+        </li>
+        <li>
+          <code>"php"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/php.rb">How it runs</a>
+        </li>
+        <li>
+          <code>"python"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/python.rb">How it runs</a>
+        </li>
+        <li>
+          <code>"ruby"</code>
+          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/ruby.rb">How it runs</a>
+        </li>
+      </ul>
+    </td>
+  </tr>
+
   <tr id="syntax-name">
     <td>name</td>
     <td>all</td>
-    <td>Set the worker's name</td>
+    <td>Set worker's name</td>
     <td>The name to give the worker</td>
   </tr>
 
@@ -113,9 +155,9 @@ The following syntax is valid in `.worker` files:
     <td>full_remote_build</td>
     <td>all</td>
     <td>Activates full remote build mode.</td>
-    <td>true or false, defaults to false</td>
+    <td><code>true</code> or <code>false</code>, defaults to <code>false</code></td>
   </tr>
-  
+
   <tr id="syntax-exec">
     <td>exec</td>
     <td>all</td>
