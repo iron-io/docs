@@ -264,6 +264,7 @@ Each item object should contain the following keys:
 * **expires_in**: How long in seconds to keep the item in the cache before it is deleted. By default, items do not expire. Maximum is 2,592,000 seconds (30 days).
 * **replace**: If set to true, only set the item if the item is already in the cache. If the item is not in the cache, do not create it.
 * **add**: If set to true, only set the item if the item is not already in the cache. If the item is in the cache, do not overwrite it.
+* **cas**: If set, the new item will only be placed in the cache if there is an existing item with a matching key and cas value. An item's cas value is automatically generated and is included when the item is <a href="#get_an_item_from_a_cache" title="Get an Item from a Cache">retrieved</a>.
 
 ### Request
 
@@ -346,7 +347,8 @@ GET /projects/<span class="project_id variable">{Project ID}</span>/caches/<span
 {
   "cache": "CACHE NAME",
   "key": "ITEM KEY",
-  "value": "ITEM VALUE"
+  "value": "ITEM VALUE",
+  "cas": "12345"
 }
 {% endhighlight %}
 
