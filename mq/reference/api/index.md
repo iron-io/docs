@@ -643,7 +643,7 @@ A JSON document body is required even if all parameters are omitted.
 
 ## Touch a Message on a Queue
 
-Touching a reserved message extends its timeout by the duration specified when the message was created, which is 60 seconds by default.
+Touching a reserved message extends its timeout to the duration specified when the message was created. Default is 60 seconds.
 
 ### Endpoint
 
