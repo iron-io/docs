@@ -580,15 +580,16 @@ Sample:
 The request should be JSON-encoded and consist of an object with a single property, "tasks", which contains an array of objects. Each object in the array should consist of:
 
 * **code_name**: The name of the code package to execute for this task.
-* **payload**: A string of data to be passed to the worker. The payload will be passed to the code package at runtime, and can be used to pass varying information into a worker that will process it using the same code. The payload cannot be larger than 64KB in size.
+* **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what worker it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. File location will be passed in via the -payload argument. The payload cannot be larger than 64KB in size.
 
 Optionally, each object in the array can also contain the following:
 
 * **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. 0 is the default. 
 * **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration. 
 * **delay**: The number of seconds to delay before actually queuing the task. Default is 0.
+* **config**: An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. File location will be passed in via the -config argument. The config cannot be larger than 64KB in size.
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header. 
 
 Sample:  
 {% highlight js %}
