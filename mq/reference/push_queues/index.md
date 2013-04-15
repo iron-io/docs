@@ -28,8 +28,8 @@ To turn a queue into a push queue (or create one), POST to your queue endpoint w
 
 - subscribers - required - an array of hashes containing subscribers. eg: {"url": "http://myserver.com/endpoint"}
 - push_type - multicast or unicast. Default is multicast.
-- retries - number of times to retry. Default is 3.
-- retries_delay - time in seconds between retries. Default is 60.
+- retries - number of times to retry. Default is 3. Maximum is 100.
+- retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
 
 <div>
 <script src="https://gist.github.com/4479844.js"> </script>
