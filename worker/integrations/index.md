@@ -11,16 +11,17 @@ Including IronMQ, IronCache and 3rdparty services.
 
 ## Iron.io Services
 
-It is very easy to integrate IronMQ or IronCache into your worker. It includes N steps.
+It is very easy to integrate IronMQ or IronCache into your worker. It includes 3 steps.
 
 1. Get the client library for your language:
   * [IronMQ libraries](/mq/libraries).
   * [IronCache libraries](/cache/reference/libraries).
 2. Go to Geting Started page to instructions. It works as any other library for your programming language:
   * [IronMQ Overview](/mq). Use orange button at top right to select the language you prefer.
-  * IronCache Basics are in client libraries documentation. Basics & Ruby gem integration are available [here](/cache).
+  * IronCache documentation is on client libraries' pages. Basics & Ruby gem integration are available [here](/cache).
 3. Create your worker, upload and queue.
-4. Check worker's log in the [HUD](https://hud.iron.io).
+
+Now you can login in the [HUD](https://hud.iron.io) and check worker's log.
 
 
 ## 3rdparty Services
