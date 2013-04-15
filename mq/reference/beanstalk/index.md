@@ -62,12 +62,10 @@ If a tube/queue name is not specified, then the queue name `default` will be use
 * The ID you receive when using the Beanstalkd interface will *not* be the same as the HTTP interface so you *cannot* use them interchangeably.
 
 * At the moment, there are some commands that IronMQ does not implement. These include:
-  * release
   * bury
-  * touch
-  * peek, peek-ready, peek-delayed, peek-buried
+  * peek, peek-delayed, peek-buried
   * kick
-  * list-tubes, list-tube-used
+  * list-tubes
   * stats, stats-job, stats-tube
   * pause-tube
   * quit
