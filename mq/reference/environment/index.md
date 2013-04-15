@@ -76,8 +76,8 @@ The full list of available attributes:
 
   <tbody>
     <tr><td><code>push_type</code></td><td>Push queue type. Either <code>multicast</code> (default) or <code>unicast</code>.</td></tr>
-    <tr><td><code>retries</code></td><td>Number of times messages will be sent to each HTTP endpoint. Messages will not be sent if HTTP 200 received on one of calls. Default is 3.</td></tr>
-    <tr><td><code>retries_delay</code></td><td>Delay between retries in seconds. Default is 60.</td></tr>
+    <tr><td><code>retries</code></td><td>Maximum number of times messages will be sent to each HTTP endpoint. Messages will not be resent if HTTP 200 code is received on one of calls. Default is 3. Maximum is 100.</td></tr>
+    <tr><td><code>retries_delay</code></td><td>Delay between retries in seconds. Default is 60 seconds. Minimum is 3 and maximum is 86400 seconds.</td></tr>
     <tr><td><code>subscribers</code></td><td>List of subscribers, format is <code>[{url: "http://..."}, ...]</code>.</td></tr>
   </tbody>
 </table>
