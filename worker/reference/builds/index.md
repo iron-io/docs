@@ -7,10 +7,13 @@ breadcrumbs:
   - ['Local/Remote Builds', '/builds']
 ---
 
-When you are playing with IronWorkers you could be faced with problem like binary incompatibility.
-It is subject to Ruby, Python and, sometimes, Node.js.
+A lot of users want to use packages, gems,
+and libraries that depend on binary extensions when working with IronWorker.
+These binaries need to be built to target the IronWorker environment,
+which can make the process of deploying a worker more complex.
 
-To cover as many as possible customers' environments with our CLI we provide two types of builds for your workers.
+To make working with binary extensions easier, our CLI provides two different ways to build your workers:
+locally (on your machine) and remotely (in a build worker on Iron.io's servers).
 
 * [Local Build](#local_build)
 * [Remote Build](#remote_build)
@@ -19,33 +22,28 @@ To cover as many as possible customers' environments with our CLI we provide two
 
 ## Local Build
 
-This type of builds is enabled by default.
-If you are not using any binary extensions with interpretad languages this is the best choice.
-All you need CLI does for you. Just type
+By default, workers are built locally.
+If your worker does not need any binary extensions or compiled components, building locally is the best choice.
+Just type
 
 <figcaption><span>Command Line</span></figcaption>
 {% highlight bash %}
 iron_worker upload cool_feature
 {% endhighlight %}
 
-and relax. CLI merges directories, files, extensions which you pointed in your [.worker file](/worker/reference/dotworker).
-Packs all in Zip archive and uploads to IronWorker service thru [the API](/worker/reference/api).
+and relax. The CLI will merge the directories, files, libraries, and modules you listed in your [.worker file](/worker/reference/dotworker) into a zip archive that is then uploaded to IronWorker using [the API](/worker/reference/api).
 
-Now you are able to [queue](/worker/reference/cli/#queuing_tasks) or [schedule](/worker/scheduling) the Worker.
+Now you are able to [queue](/worker/reference/cli/#queuing_tasks) or [schedule](/worker/scheduling) tasks against the worker.
 
 ## Remote Build
 
 ### Resolve the Issue with Native Extensions
 
-Interpreted languages are cool. You can write you application and be sure it will be work accross many platforms.
-But in real sometimes we are forced to use native extensions, compiled binaries, to bind to poprietary library, for speed, etc.
+When you worker requires a native extension or is written in a compiled language that produces a binary, it needs to be compiled against the IronWorker architecture. While you can compile everything manually against 64-bit (x86-64) Linux and write scripts to set up your worker environment, it's a lot easier to just let the worker build everything for you.
 
-For example, you are on Mac OS X with Ruby and use gem with native extension in the Worker.
-In this case during local build binaries will be grabbed from your local machine and load to the IronWorker service.
-Service launchs workers under x86-64 Linux. It means loaded binaries are incompatible and could not be used.
-We clearly understand that cross-compilation especially for IronWorker could be real pain.
+This is what the remote build is for. It automatically creates a worker that will build the worker specified by your .worker file, builds your worker, and uploads it using the API. This allows you to run your build process entirely on IronWorker's infrastructure, so everything is automatically targeting the right environment. The only downside is that this type of build can take a couple of minutes to run, making it slower than a local build.
 
-We developed full remote build for such use cases. To enable it add to `.worker` file:
+To enable remote build, add the following line to your `.worker` file:
 
 <figcaption><span>Ruby Code</span></figcaption>
 {% highlight ruby %}
@@ -71,9 +69,9 @@ iron_worker upload http://my.site/my.worker
 {% endhighlight %}
 
 This could be helpful when you want to load the worker from HTTP endpoint.
-In this case `exec`, `file`, `gemfile` and `deb` directives will be expanded with base URL to dotworker file.
+In this case `exec`, `file`, `gemfile`, and `deb` directives are all prepended with the base URL of the `.worker` file.
 
-For example, this dotworker:
+If the `http://my.site/my.worker` file looks like this:
 
 <figcaption><span>Ruby Code</span></figcaption>
 {% highlight ruby %}
@@ -83,7 +81,7 @@ deb "my.deb"
 gemfile "Gemfile"
 {% endhighlight %}
 
-will be converted to this:
+It will be read by the remote build worker as this:
 
 <figcaption><span>Ruby Code</span></figcaption>
 {% highlight ruby %}

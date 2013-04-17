@@ -49,9 +49,9 @@ Receivers get one or more messages (up to 100). Once the receive is done process
 
 ## Queue Attributes
 
-Queues have their own list of attributes.
-To get all information attributes for the queue make [Info API call](/mq/reference/api/#get_info_about_a_message_queue).
-The full list of available attributes:
+Queues have their own set of attributes.
+To get the information about a queue, use the [Info API call](/mq/reference/api/#get_info_about_a_message_queue).
+ The following is a list of all the queue attributes:
 
 #### Common Attributes
 <table class="reference">
@@ -64,7 +64,7 @@ The full list of available attributes:
     <tr><td><code>id</code></td><td>Unique queue's ID.</td></tr>
     <tr><td><code>size</code></td><td>Current queue size. It's usually 0 for Push Queues.</td></tr>
     <tr><td><code>total_messages</code></td><td>Number of messages which were posted to the queue.</td></tr>
-    <tr><td><code>project_id</code></td><td>Project ID which contains the queue.</td></tr>
+    <tr><td><code>project_id</code></td><td>ID of the project that owns the queue.</td></tr>
   </tbody>
 </table>
 
@@ -76,7 +76,7 @@ The full list of available attributes:
 
   <tbody>
     <tr><td><code>push_type</code></td><td>Push queue type. Either <code>multicast</code> (default) or <code>unicast</code>.</td></tr>
-    <tr><td><code>retries</code></td><td>Maximum number of times messages will be sent to each HTTP endpoint. Messages will not be resent if HTTP 200 code is received on one of calls. Default is 3. Maximum is 100.</td></tr>
+    <tr><td><code>retries</code></td><td>Maximum number of times messages will be sent to each HTTP endpoint. Messages will not be resent after a call receives an HTTP response with a status code of 200. Default is 3 seconds. Maximum is 100 seconds.</td></tr>
     <tr><td><code>retries_delay</code></td><td>Delay between retries in seconds. Default is 60 seconds. Minimum is 3 and maximum is 86400 seconds.</td></tr>
     <tr><td><code>subscribers</code></td><td>List of subscribers, format is <code>[{url: "http://..."}, ...]</code>.</td></tr>
   </tbody>
