@@ -10,7 +10,7 @@ breadcrumbs:
 [Celery](http://celeryproject.org/) is a task queue for Python. Originally developed as part of the [Django](https://www.djangoproject.com/) framework,
 it was split off into its own project and has quickly become the standard for task processing in Python.
 
-Celery supports multiple technologies for it's queue broker including RabbitMQ, Redis and IronMQ. There are many advantages to choosing IronMQ
+Celery supports multiple technologies for its queue broker including RabbitMQ, Redis, and IronMQ. There are many advantages to choosing IronMQ
 over the others. To name a few:
 
 1. Instant high availability

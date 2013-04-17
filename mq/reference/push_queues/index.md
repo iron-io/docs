@@ -103,6 +103,9 @@ IronMQ that you're done with the message. Send a DELETE http request to this URL
 
 - You should not push and pull from a queue, a push queue's messages will be deleted/acknowledged immediately and not be
 available for pulling.
-- When a Pull Queue contains messages and you turn it to Push Queue you still be able to get messages from the queue.
-Also, contained messages will not be send to your subscribers. New messages will be processed as usual for Push Queue.
+
+- When a Pull Queue contains messages and you turn it to Push Queue you are still able to get messages from the queue.
+Also, messages put on the queue before it becomes a Push Queue will not be sent to your subscribers.
+New messages will be processed as usual for Push Queues, and pushed to your subscribers.
+
 - To revert your Push Queue to regular Pull Queue just update `push_type` to `"pull"`.

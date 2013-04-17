@@ -93,34 +93,27 @@ $ # specify a file containing the payload
 $ iron_worker run $WORKER --payload-file /path/to/payload.json
 {% endhighlight %}
 
-####Important notes:
+#### Important notes:
 
-First, it is not work under Windows in most cases.
+The CLI offers the run command to try and help test and debug workers locally.
+Because it is so complicated to manage an environment, this may not function in every environment.
+Here are some scenarios in which you may not be able to use the run command:
 
-Second, this feature was built for interpreted languages like Ruby or Python.
+1. When running under Windows.
 
-IronWorker tries to provide the ability to launch workers on your local box.
-This is not trivial feature and does not work ever. On our servers installed Ubuntu Linux, 64 bit.
-If you are running under another operational system the feature might not work.
-Also as under Linux when not all required packages are installed or on non-deb Linux.
+2. When running compiled binaries or packages on OS X or 32-bit Linux.
 
-Typical use cases (not all!) where local run might not work:
-
-1. You are running on Windows.
-
-2. It is not possible to run `binary` workers on Mac OS X and, sometimes, 32bit Linux.
-
-3. Running on Mac OS X / Non-deb Linux distributive and use `deb` in your `.worker`:
+3. When using the `deb` feature in your `.worker` file under non-Debian systems:
     <figcaption><span>Ruby Code</span></figcaption>
     {% highlight ruby %}
     deb "feature-package.deb"
     {% endhighlight %}
     Possible solution: install `dpkg`.
 
-4. Running on Mac OS X / Linux and trying to launch worker with `mono` environment.
-It requires `mono` installed.
+4. Trying to use a dependency (like "mono") that is present in IronWorker's environment but not your local environment.
 
-If you have any troubles with local run feature try to upload and queue your worker.
+For best results, we recommend using the run command in an environment that matches
+IronWorker's as closely as possible: 64-bit (x86-64) Ubuntu Linux, with the same pre-installed packages installed.
 
 ## Creating & Uploading Code Packages
 
