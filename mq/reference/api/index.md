@@ -715,3 +715,26 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 {% endhighlight %}
 
+
+
+## Acknowledge / Delete Push Message for a Subscriber
+
+This is only for use with long running processes that have previously returned a 202. Read Push Queues page for more information on [Long Running Processes](http://dev.iron.io/mq/reference/push_queues).
+
+<div class="grey-box">
+DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers/<span class="variable subscriber_id">{Subscriber ID}</span>
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of queue.
+* **Message ID**: The id of the message.
+* **Subscriber ID**: The id of the subscriber to delete.
+
+### Response
+{% highlight js %}
+{
+  "msg": "Deleted"
+}
+{% endhighlight %}
