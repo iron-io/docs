@@ -27,7 +27,7 @@ It is possible to use our [other client libraries](/worker/languages/#full_suppo
 
 ### Write Your Node.js Worker
 
-<figcaption><span>HelloWorld.js </span></figcaption>
+<figcaption><span>hello_worker.js </span></figcaption>
 {% highlight js %}
 console.log("Hello World from Node.js.");
 {% endhighlight %}
