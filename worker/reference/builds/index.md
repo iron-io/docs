@@ -15,10 +15,19 @@ which can make the process of deploying a worker more complex.
 To make working with binary extensions easier, our CLI provides two different ways to build your workers:
 locally (on your machine) and remotely (in a build worker on Iron.io's servers).
 
-* [Local Build](#local_build)
-* [Remote Build](#remote_build)
-  * [Resolve the Issue with Native Extensions](#resolve_the_issue_with_native_extensions)
-  * [Remote `.worker` File](#remote__file)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#local_build">Local Build</a></li>
+    <li>
+    	<a href="#remote_build">Remote Build</a>
+    	<ul>
+    		<li><a href="#resolve_the_issue_with_native_extensions">Resolve the Issue with Native Extensions</a></li>
+    		<li><a href="#remote__file">Remote <code>.worker</code> File</a></li>
+    	</ul>
+    </li>
+  </ul>  
+</section>
 
 ## Local Build
 

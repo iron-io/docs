@@ -7,16 +7,21 @@ breadcrumbs:
   - ['Environment', '/environment']
 ---
 
-* [Operating System](#operating_system)
-* [Installed Linux Packages](#installed_linux_packages)
-* [Maximum Data Payload](#maximum_data_payload)
-* [Memory per Worker](#memory_per_worker)
-* [Local Disk Space per Worker](#local_disk_space_per_worker)
-* [Maximum Run Time per Worker](#maximum_run_time_per_worker)
-* [Priority Queue Management](#priority_queue_management)
-* [Maximum Scheduled Tasks per Project](#maximum_scheduled_tasks_per_project)
-* [Minimum `run_every` Time](#minimum__time)
-* [Security Groups and IP Ranges](#security_groups_and_ip_ranges)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#operating_system">Operating System</a></li>
+    <li><a href="#installed_linux_packages">Installed Linux Packages</a></li>
+    <li><a href="#maximum_data_payload">Maximum Data Payload</a></li>
+    <li><a href="#memory_per_worker">Memory per Worker</a></li>
+    <li><a href="#local_disk_space_per_worker">Local Disk Space per Worker</a></li>
+    <li><a href="#maximum_run_time_per_worker">Maximum Run Time per Worker</a></li>
+    <li><a href="#priority_queue_management">Priority Queue Management</a></li>
+    <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
+    <li><a href="#minimum__time">Minimum <code>run_every</code> Time</a></li>
+    <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
+  </ul>  
+</section>
 
 ## Operating System
 The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  

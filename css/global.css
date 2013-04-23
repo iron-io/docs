@@ -72,10 +72,6 @@
   background: #EEE;
 }
 
-.content-container table tbody tr td:first-child {
-  padding: 0 0 0 5px;
-}
-
 .content-container table tbody tr:nth-child(2n) {
   background: #f9f9f9;
 }
@@ -104,20 +100,6 @@
 
 .content {
   padding-bottom: 40px;
-}
-
-.content table.reference {
-  font-size: small;
-  width: 100%;
-}
-
-.content table.reference td {
-  padding: 2px 7px;
-  text-align: left;
-}
-
-.content table.reference th {
-  text-align: left;
 }
 
 .content li > p {
@@ -263,21 +245,82 @@ ul#breadcrumbs li {
   border-bottom: 1px dotted;
 }
 
+/*--------- TOC ------------*/
+.content-container #toc h3 {
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px solid #CCC;
+  padding: 0 0 5px;
+}
+
+.content-container #toc > ul {
+  padding-left: 20px;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 10px;
+}
+
+.content-container #toc ul li {
+  margin: 5px 0;
+  position: relative;
+  list-style: none;
+}
+
+.content-container #toc ul li ul {
+  padding-left: 17px;
+  margin-bottom: 10px;
+}
+
+.content-container #toc ul li:before {
+  content: '▶';
+  position: absolute;
+  top: 1px;
+  left: -17px;
+  font-size: 10px;
+  color: #CCC;
+}
+
 /*--------------------------------- TABLES ------------------------------------*/
 
-.content table.reference {
+.content table.reference,
+.content table {
   font-size: small;
   width: 100%;
 }
 
-.content table.reference td {
-  padding: 2px 7px;
-  text-align: left;
+.content table.reference tbody,
+.content table tbody {
+  border: 1px solid #ccc;
 }
 
-.content table.reference th {
+.content table.reference td,
+.content table td {
+  padding: 5px 0 5px 10px;
   text-align: left;
-  border-bottom: 1px solid #000;
+  border-right: 1px solid #F8F8F8;
+}
+
+.content table.reference td:last-child,
+.content table td:last-child {
+  border-right: none;
+}
+
+.content table.reference thead,
+.content table thead {
+  background: #EEE;
+  border: 1px solid #CCC;
+  color: #888;
+}
+
+.content table.reference th,
+.content table th,
+.content table.reference th,
+.content table th {
+  text-align: left;
+  border-left: 1px solid #CCC;
+  padding: 5px 10px;
+  white-space: nowrap;
+  font-weight: normal;
+  font-size: 12px;
 }
 
 .content table.reference_list {
@@ -286,7 +329,7 @@ ul#breadcrumbs li {
 }
 
 .content table.reference_list td {
-  padding: 2px 7px;
+  padding: 5px 10px;
   text-align: center;
 }
 
@@ -370,30 +413,21 @@ span.fixed-width {
  * Modified alert boxes from Bootstrap
  */
 
-/*
 .alert {
-  padding: 4px 14px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #022CB4;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  text-align: center;
-  border: 2px dashed #022CB4;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  vertical-align: center;
+  padding: 5px 10px 5px 10px;
+  margin: 10px 0 30px;
+  min-height: 53px;
+  background: #F5FBFD;
+  border: 2px solid #A6CDEB;
+  border-radius: 5px;
+  color: #57768D;
 }
-*/
 
-
-.alert {
-    vertical-align:center;
-    padding:5px 0 5px 60px;
-    margin:10px 0;
-    color: #022CB4;
-    min-height:53px;
-    background: url(/images/icon-alert.png) left center no-repeat;
+.alert p {
+  margin: 5px 0;
 }
+
 .alert-heading {
   color: inherit;
 }
@@ -436,9 +470,9 @@ span.fixed-width {
 }
 
 .product-box img {
-	height:30px;
-	display:block;
-	text-align:left;
+  height:30px;
+  display:block;
+  text-align:left;
 }
 
 .product-box.last {

@@ -7,9 +7,14 @@ breadcrumbs:
   - ['Environment', '/environment']
 ---
 
-* [Message Structure](#message_structure)
-* [Message Constraints](#message_constraints)
-* [Queue Attributes](#queue_attributes)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#message_structure">Message Structure</a></li>
+    <li><a href="#message_constraints">Message Constraints</a></li>
+    <li><a href="#queue_attributes">Queue Attributes</a></li>
+  </ul>  
+</section>
 
 ## Message Structure
 The message structure is flexible and straight-forward. Messages can be variable in size and can contain almost any text or data format.

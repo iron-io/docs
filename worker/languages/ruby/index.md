@@ -9,20 +9,32 @@ breadcrumbs:
 
 Ruby was the first language supported on IronWorker, and a lot of IronWorker's tools are written in Ruby. It is probably the easiest language to get your worker running in, as it is the most-supported language on the platform. This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
 
---------
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#quick_start">Quick Start</a>
+      <ul>
+        <li><a href="#get_the_ruby_gem">Get the Ruby Gem</a></li>
+        <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
+        <li><a href="#write_your_ruby_worker">Write Your Ruby Worker</a></li>
+        <li><a href="#create_a_worker_file">Create a .worker File</a></li>
+        <li><a href="#upload_your_worker">Upload Your Worker</a></li>
+        <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#deep_dive">Deep Dive</a>
+      <ul>
+        <li><a href="#a_note_on_libraries">A Note on Libraries</a></li>
+        <li><a href="#payload_example">Payload Example</a></li>
+        <li><a href="#merging">Merging</a></li>
+        <li><a href="#ruby_on_rails">Ruby on Rails</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
-* [Quick Start](#quick_start)
-  * [Get the Ruby Gem](#get_the_ruby_gem)
-  * [Create Your Configuration File](#create_your_configuration_file)
-  * [Write Your Ruby Worker](#write_your_ruby_worker)
-  * [Create a .worker File](#create_a_worker_file)
-  * [Upload Your Worker](#upload_your_worker)
-  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
-* [Deep Dive](#deep_dive)
-  * [A Note on Libraries](#a_note_on_libraries)
-  * [Payload Example](#payload_example)
-  * [Merging](#merging)
-  * [Ruby on Rails](#ruby_on_rails)
 
 ## Quick Start
 

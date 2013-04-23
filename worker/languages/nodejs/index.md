@@ -12,18 +12,29 @@ Javascript language to server-side development, using Google's [V8](http://code.
 runtime. The evented model of programming lends itself nicely to the asynchronous 
 nature of workers, making it a natural fit for IronWorker. This article will walk you through getting your Node.js workers running on IronWorker, but you should still be familiar with the [basics of IronWorker](/worker).
 
---------
-
-* [Quick Start](#quick_start)
-  * [Get the `iron_worker_ng` Gem](#get_the__gem)
-  * [Create Your Configuration File](#create_your_configuration_file)
-  * [Write Your Node.js Worker](#write_your_nodejs_worker)
-  * [Create a .worker File](#create_a_worker_file)
-  * [Upload Your Worker](#upload_your_worker)
-  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
-* [Deep Dive](#deep_dive)
-  * [Payload Example](#payload_example)
-  * [Packaging Dependencies](#packaging_dependencies)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#quick_start">Quick Start</a>
+      <ul>
+        <li><a href="#get_the__gem">Get the <code>iron_worker_ng</code> Gem</a></li>
+        <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
+        <li><a href="#write_your_nodejs_worker">Write Your Node.js Worker</a></li>
+        <li><a href="#create_a_worker_file">Create a .worker File</a></li>
+        <li><a href="#upload_your_worker">Upload Your Worker</a></li>
+        <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#deep_dive">Deep Dive</a>
+      <ul>
+        <li><a href="#payload_example">Payload Example</a></li>
+        <li><a href="#packaging_dependencies">Packaging Dependencies</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
 ## Quick Start
 
