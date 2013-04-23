@@ -11,22 +11,33 @@ Java has become one of the most popular languages in the enterprise. With Java w
 
 Java workers need to be compiled into jar files before they're uploaded. Once they're uploaded to the IronWorker cloud, they can be invoked via a simple API call to be put on the processing queues immediately or scheduled to run at a later time&mdash;you only need to upload the worker again when the code changes. This article will walk you through the specifics of using Java workers, but you should be familiar with the [basics of IronWorker](/worker).
 
---------
-
-* [Quick Start](#quick_start)
-  * [Get the `iron_worker_ng` Gem](#get_the__gem)
-  * [Create Your Configuration File](#create_your_configuration_file)
-  * [Write Your Java Worker](#write_your_java_worker)
-  * [Compile Your Java Worker to a jar File](#compile_your_java_worker_to_a_jar_file)
-  * [Create a .worker File](#create_a_worker_file)
-  * [Upload Your Worker](#upload_your_worker)
-  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
-* [Deep Dive](#deep_dive)
-  * [Payload Example](#payload_example)
-  * [Get GSON](#get_gson)
-  * [Modify The Worker](#modify_the_worker)
-  * [Recompile the jar File](#recompile_the_jar_file)
-  * [Update the .worker File and Reupload](#update_the_worker_file_and_reupload)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#quick_start">Quick Start</a>
+      <ul>
+        <li><a href="#get_the__gem">Get the <code>iron_worker_ng</code> Gem</a></li>
+        <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
+        <li><a href="#write_your_java_worker">Write Your Java Worker</a></li>
+        <li><a href="#compile_your_java_worker_to_a_jar_file">Compile Your Java Worker to a jar File</a></li>
+        <li><a href="#create_a_worker_file">Create a .worker File</a></li>
+        <li><a href="#upload_your_worker">Upload Your Worker</a></li>
+        <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#deep_dive">Deep Dive</a>
+      <ul>
+        <li><a href="#payload_example">Payload Example</a></li>
+        <li><a href="#get_gson">Get GSON</a></li>
+        <li><a href="#modify_the_worker">Modify The Worker</a></li>
+        <li><a href="#recompile_the_jar_file">Recompile the jar File</a></li>
+        <li><a href="#update_the_worker_file_and_reupload">Update the .worker File and Reupload</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
 
 ## Quick Start

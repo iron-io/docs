@@ -9,16 +9,27 @@ breadcrumbs:
 
 IronMQ provides a REST/HTTP API to allow you to interact programmatically with your queues on IronMQ.
 
---------
-
-* [Endpoints](#endpoints)
-* [Authentication](#authentication)
-* [Requests](#requests)
-  * [Base URL](#base_url)
-  * [Pagination](#pagination)
-* [Responses](#responses)
-  * [Status Codes](#status_codes)
-  * [Exponential Backoff](#exponential_backoff)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li>
+      <a href="#requests">Requests</a>
+      <ul>
+        <li><a href="#base_url">Base URL</a></li>
+        <li><a href="#pagination">Pagination</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#responses">Responses</a>
+      <ul>
+        <li><a href="#status_codes">Status Codes</a></li>
+        <li><a href="#exponential_backoff">Exponential Backoff</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
 ## Endpoints
 

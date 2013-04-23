@@ -23,14 +23,21 @@ your credentials during transport.
 </p>
 </div>
 
---------
-
-* [Memcache Libraries](#memcache_libraries)
-* [Host Information](#host_information)
-* [Authentication](#authentication)
-* [Example](#example)
-  * [Install the Library](#install_the_library)
-  * [Run the Example](#run_the_example)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#memcache_libraries">Memcache Libraries</a></li>
+    <li><a href="#host_information">Host Information</a></li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li>
+      <a href="#example">Example</a>
+      <ul>
+        <li><a href="#install_the_library">Install the Library</a></li>
+        <li><a href="#run_the_example">Run the Example</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
 ## Memcache Libraries
 

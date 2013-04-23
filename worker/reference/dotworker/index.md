@@ -21,11 +21,18 @@ code lingers in your application, cluttering it, or that you're missing
 code that it will take for your worker to run. Workers can finally be their 
 own self-contained units.
 
---------
-
-* [Making a Worker File](#making_a_worker_file)
-<ul><li><a href="#structure">Structure</a></li></ul>
-* [Syntax Reference](#syntax_reference)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#making_a_worker_file">Making a Worker File</a>
+      <ul>
+        <li><a href="#structure">Structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#syntax_reference">Syntax Reference</a></li>
+  </ul>  
+</section>
 
 ## Making a Worker File
 
@@ -95,167 +102,171 @@ are not when you merge gems in your application's code.</p>
 The following syntax is valid in `.worker` files:
 
 <table class="reference">
-  <tr>
-    <th style="width: 10%;">Keyword</th>
-    <th style="width: 10%;">Runtime</th>
-    <th style="width: 40%;">Purpose</th>
-    <th style="width: 40%;">Arguments</th>
-  </tr>
+  <thead>
+    <tr>
+      <th style="width: 10%;">Keyword</th>
+      <th style="width: 10%;">Runtime</th>
+      <th style="width: 40%;">Purpose</th>
+      <th style="width: 40%;">Arguments</th>
+    </tr>
+  </thead>
 
-  <tr id="syntax-name">
-    <td>runtime</td>
-    <td>all</td>
-    <td>Set worker's runtime</td>
-    <td>
-      <ul>
-        <li>
-          <code>"binary"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/binary.rb">How it runs</a>
-        </li>
-        <li>
-          <code>"go"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/go.rb">How it runs</a>
-        </li>
-        <li>
-          <code>"java"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/java.rb">How it runs</a>
-        </li>
-        <li>
-          <code>"mono"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/mono.rb">How it runs</a>
-        </li>
-        <li>
-          <code>"node"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/node.rb">How it runs</a>
-        </li>
-        <li>
-          <code>"php"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/php.rb">How it runs</a>
-        </li>
-        <li>
-          <code>"python"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/python.rb">How it runs</a>
-        </li>
-        <li>
-          <code>"ruby"</code>
-          <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/ruby.rb">How it runs</a>
-        </li>
-      </ul>
-    </td>
-  </tr>
+  <tbody>
+    <tr id="syntax-name">
+      <td>runtime</td>
+      <td>all</td>
+      <td>Set worker's runtime</td>
+      <td>
+        <ul>
+          <li>
+            <code>"binary"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/binary.rb">How it runs</a>
+          </li>
+          <li>
+            <code>"go"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/go.rb">How it runs</a>
+          </li>
+          <li>
+            <code>"java"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/java.rb">How it runs</a>
+          </li>
+          <li>
+            <code>"mono"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/mono.rb">How it runs</a>
+          </li>
+          <li>
+            <code>"node"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/node.rb">How it runs</a>
+          </li>
+          <li>
+            <code>"php"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/php.rb">How it runs</a>
+          </li>
+          <li>
+            <code>"python"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/python.rb">How it runs</a>
+          </li>
+          <li>
+            <code>"ruby"</code>
+            <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/ruby.rb">How it runs</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
 
-  <tr id="syntax-name">
-    <td>name</td>
-    <td>all</td>
-    <td>Set worker's name</td>
-    <td>The name to give the worker</td>
-  </tr>
+    <tr id="syntax-name">
+      <td>name</td>
+      <td>all</td>
+      <td>Set worker's name</td>
+      <td>The name to give the worker</td>
+    </tr>
 
-  <tr id="syntax-frb">
-    <td>full_remote_build</td>
-    <td>all</td>
-    <td>Activates full remote build mode.</td>
-    <td><code>true</code> or <code>false</code>, defaults to <code>false</code></td>
-  </tr>
+    <tr id="syntax-frb">
+      <td>full_remote_build</td>
+      <td>all</td>
+      <td>Activates full remote build mode.</td>
+      <td><code>true</code> or <code>false</code>, defaults to <code>false</code></td>
+    </tr>
 
-  <tr id="syntax-exec">
-    <td>exec</td>
-    <td>all</td>
-    <td>Merge a file and designate it as the file to be executed when the 
-        worker is run. <strong>You may only have one file designated as the 
-        executable per worker.</strong></td>
-    <td>
-      <ol>
-        <li>The path to the file</li>
-        <li>The name to give the worker. Defaults to a camel-cased version 
-            of the file name will be used. <strong>(optional)</strong></li>
-      </ol>
-    </td>
-  </tr>
+    <tr id="syntax-exec">
+      <td>exec</td>
+      <td>all</td>
+      <td>Merge a file and designate it as the file to be executed when the 
+          worker is run. <strong>You may only have one file designated as the 
+          executable per worker.</strong></td>
+      <td>
+        <ol>
+          <li>The path to the file</li>
+          <li>The name to give the worker. Defaults to a camel-cased version 
+              of the file name will be used. <strong>(optional)</strong></li>
+        </ol>
+      </td>
+    </tr>
 
-  <tr id="syntax-file">
-    <td>file</td>
-    <td>all</td>
-    <td>Merge a file into the code package.</td>
-    <td>
-      <ol>
-        <li>The path to the file</li>
-        <li>The path the file should be stored under in the package. Defaults 
-            to the root directory. <strong>(optional)</strong></li>
-      </ol>
-    </td>
-  </tr>
+    <tr id="syntax-file">
+      <td>file</td>
+      <td>all</td>
+      <td>Merge a file into the code package.</td>
+      <td>
+        <ol>
+          <li>The path to the file</li>
+          <li>The path the file should be stored under in the package. Defaults 
+              to the root directory. <strong>(optional)</strong></li>
+        </ol>
+      </td>
+    </tr>
 
-  <tr id="syntax-dir">
-    <td>dir</td>
-    <td>all</td>
-    <td>Merge an entire directory (and all its contents) into the code package.</td>
-    <td>
-      <ol>
-        <li>The path to the directory</li>
-        <li>The path the directory should be stored under in the package. 
-            Defaults to the root directory. <strong>(optional)</strong></li>
-      </ol>
-    </td>
-  </tr>
+    <tr id="syntax-dir">
+      <td>dir</td>
+      <td>all</td>
+      <td>Merge an entire directory (and all its contents) into the code package.</td>
+      <td>
+        <ol>
+          <li>The path to the directory</li>
+          <li>The path the directory should be stored under in the package. 
+              Defaults to the root directory. <strong>(optional)</strong></li>
+        </ol>
+      </td>
+    </tr>
 
-  <tr id="syntax-deb">
-    <td>deb</td>
-    <td>all</td>
-    <td>Merge a x86_64 deb package into the code package. <strong>Note:</strong> dependencies
-        will not be handled.</td>
-    <td>
-        The path to the deb file
-    </td>
-  </tr>
+    <tr id="syntax-deb">
+      <td>deb</td>
+      <td>all</td>
+      <td>Merge a x86_64 deb package into the code package. <strong>Note:</strong> dependencies
+          will not be handled.</td>
+      <td>
+          The path to the deb file
+      </td>
+    </tr>
 
-  <tr id="syntax-gem">
-    <td>gem</td>
-    <td>ruby</td>
-    <td>Merge a gem with its dependencies. <strong>Note:</strong> binary 
-        extensions will not be merged, as they are not supported.</td>
-    <td>
-      <ol>
-        <li>The name of the gem to merge, as it appears in a 
-            <span class="fixed-width">require</span> statement</li>
-        <li>The version requirement for the gem. Defaults to ">= 0". 
-            <strong>(optional)</strong></li>
-      </ol>
-    </td>
-  </tr>
+    <tr id="syntax-gem">
+      <td>gem</td>
+      <td>ruby</td>
+      <td>Merge a gem with its dependencies. <strong>Note:</strong> binary 
+          extensions will not be merged, as they are not supported.</td>
+      <td>
+        <ol>
+          <li>The name of the gem to merge, as it appears in a 
+              <span class="fixed-width">require</span> statement</li>
+          <li>The version requirement for the gem. Defaults to ">= 0". 
+              <strong>(optional)</strong></li>
+        </ol>
+      </td>
+    </tr>
 
-  <tr id="syntax-gemfile">
-    <td>gemfile</td>
-    <td>ruby</td>
-    <td>Merge all the gems from the specified Gemfile.</td>
-    <td>
-      <ol>
-        <li>The path to the Gemfile</li>
-        <li>The groups to include in the merge. Defaults to the "default" group&mdash;the top level. 
-            <strong>(optional)</strong>. Example:<br /><span class="fixed-width">gemfile 'Gemfile', 'default', 'othergroup'</span></li>
-      </ol>
-    </td>
-  </tr>
+    <tr id="syntax-gemfile">
+      <td>gemfile</td>
+      <td>ruby</td>
+      <td>Merge all the gems from the specified Gemfile.</td>
+      <td>
+        <ol>
+          <li>The path to the Gemfile</li>
+          <li>The groups to include in the merge. Defaults to the "default" group&mdash;the top level. 
+              <strong>(optional)</strong>. Example:<br /><span class="fixed-width">gemfile 'Gemfile', 'default', 'othergroup'</span></li>
+        </ol>
+      </td>
+    </tr>
 
-  <tr id="syntax-jar">
-    <td>jar</td>
-    <td>java</td>
-    <td>Merge a jar into code package. <strong>Note:</strong> it'll 
-        be available in worker's classpath.</td>
-    <td>
-        The path to jar file
-    </td>
-  </tr>
+    <tr id="syntax-jar">
+      <td>jar</td>
+      <td>java</td>
+      <td>Merge a jar into code package. <strong>Note:</strong> it'll 
+          be available in worker's classpath.</td>
+      <td>
+          The path to jar file
+      </td>
+    </tr>
 
-  <tr id="syntax-pip">
-    <td>pip</td>
-    <td>python</td>
-    <td>Merge a pip package with its dependencies.</td>
-    <td>
-      <ol>
-        <li>The name of the pip package to merge.</li>
-        <li>The version requirement for the pip package. Defaults to latest available at pypi.</li>
-      </ol>
-    </td>
-  </tr>
+    <tr id="syntax-pip">
+      <td>pip</td>
+      <td>python</td>
+      <td>Merge a pip package with its dependencies.</td>
+      <td>
+        <ol>
+          <li>The name of the pip package to merge.</li>
+          <li>The version requirement for the pip package. Defaults to latest available at pypi.</li>
+        </ol>
+      </td>
+    </tr>  
+  </tbody>
 </table>

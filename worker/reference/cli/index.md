@@ -13,15 +13,18 @@ the convention of using a command line interface to interact with your apps.
 In our effort to provide tools that work with developers' current work flow, 
 IronWorker has created a command line tool to interact with the service.
 
---------
-
-* [Installing](#installing)
-* [Configuration](#configuration)
-* [Testing Your Workers Locally](#testing_your_workers_locally)
-* [Creating & Uploading Code Packages](#creating__uploading_code_packages)
-* [Queuing Tasks](#queuing_tasks)
-* [Scheduling Tasks](#scheduling_tasks)
-* [Retrieving a Task's Log](#retrieving_a_tasks_log)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#installing">Installing</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#testing_your_workers_locally">Testing Your Workers Locally</a></li>
+    <li><a href="#creating__uploading_code_packages">Creating &amp; Uploading Code Packages</a></li>
+    <li><a href="#queuing_tasks">Queuing Tasks</a></li>
+    <li><a href="#scheduling_tasks">Scheduling Tasks</a></li>
+    <li><a href="#retrieving_a_tasks_log">Retrieving a Task's Log</a></li>
+  </ul>  
+</section>
 
 ## Installing
 

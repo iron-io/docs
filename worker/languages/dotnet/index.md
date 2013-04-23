@@ -9,18 +9,29 @@ breadcrumbs:
 
 .NET is a framework from Microsoft that is the de-facto standard for writing software that runs on Windows, Windows Server, and Windows Phone. Now you can integrate your existing .NET codebase with IronWorker, without needing to learn a new language. This article will walk you through getting .NET workers running on IronWorker, but you should still take the time to familiarise yourself with the [basics of IronWorker](/worker).
 
---------
-
-* [Quick Start](#quick_start)
-  * [Get the `iron_worker_ng` Gem](#get_the__gem)
-  * [Create Your Configuration File](#create_your_configuration_file)
-  * [Write Your .NET Worker](#write_your_net_worker)
-  * [Compile Your .NET Worker](#compile_your_net_worker)
-  * [Create a .worker File](#create_a_worker_file)
-  * [Upload Your Worker](#upload_your_worker)
-  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
-* [Deep Dive](#deep_dive)
-<ul><li><a href="#payload_example">Payload Example</a></li></ul>
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#quick_start">Quick Start</a>
+      <ul>
+        <li><a href="#get_the__gem">Get the <code>iron_worker_ng</code> Gem</a></li>
+        <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
+        <li><a href="#write_your_net_worker">Write Your .NET Worker</a></li>
+        <li><a href="#compile_your_net_worker">Compile Your .NET Worker</a></li>
+        <li><a href="#create_a_worker_file">Create a .worker File</a></li>
+        <li><a href="#upload_your_worker">Upload Your Worker</a></li>
+        <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#deep_dive">Deep Dive</a>
+      <ul>
+        <li><a href="#payload_example">Payload Example</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
 ## Quick Start
 

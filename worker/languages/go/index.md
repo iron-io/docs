@@ -15,19 +15,30 @@ processing queues immediately or scheduled to run at a later time&mdash;you only
 
 **Note**: we don't use it for this walkthrough, but there's a great [library](https://github.com/iron-io/iron_go) for working with the IronWorker API in Go. If working with raw HTTP requests doesn't sound like fun to you, check it out.
 
---------
-
-* [Quick Start](#quick_start)
-  * [Get the `iron_worker_ng` Gem](#get_the__gem)
-  * [Create Your Configuration File](#create_your_configuration_file)
-  * [Write Your Go Worker](#write_your_go_worker)
-  * [Compile Your Go Worker to a Binary File](#compile_your_go_worker_to_a_binary_file)
-  * [Create a .worker File](#create_a_worker_file)
-  * [Upload Your Worker](#upload_your_worker)
-  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
-* [Deep Dive](#deep_dive)
-  * [Payload Example](#payload_example)
-  * [Cross Compiling](#cross_compiling)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#quick_start">Quick Start</a>
+      <ul>
+        <li><a href="#get_the__gem">Get the <code>iron_worker_ng</code> Gem</a></li>
+        <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
+        <li><a href="#write_your_go_worker">Write Your Go Worker</a></li>
+        <li><a href="#compile_your_go_worker_to_a_binary_file">Compile Your Go Worker to a Binary File</a></li>
+        <li><a href="#create_a_worker_file">Create a .worker File</a></li>
+        <li><a href="#upload_your_worker">Upload Your Worker</a></li>
+        <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#deep_dive">Deep Dive</a>
+      <ul>
+        <li><a href="#payload_example">Payload Example</a></li>
+        <li><a href="#cross_compiling">Cross Compiling</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
 
 ## Quick Start

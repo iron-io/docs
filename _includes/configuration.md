@@ -4,22 +4,25 @@
 
 <p>The two most common variables used in configuration are the <strong>project ID</strong> and the <strong>token</strong>. The <strong>project ID</strong> is a unique identifier for your project and can be found <a href="https://hud.iron.io">in the HUD</a>. The <strong>token</strong> is one of your OAuth2 tokens, which can be found <a href="https://hud.iron.io/tokens">on their own page</a> in the HUD.</p>
 
-<hr />
+<section id="toc">
+  <h3>Table of Contents</h3> 
+  <ul>
+    <li><a href="#quick_start">Quick Start</a></li>
+    <li>
+      <a href="#about_the_scheme">About the Scheme</a>
+      <ul>
+        <li><a href="#the_overall_hierarchy">The Overall Hierarchy</a></li>
+        <li><a href="#the_environment_variables">The Environment Variables</a></li>
+        <li><a href="#the_file_hierarchy">The File Hierarchy</a></li>
+        <li><a href="#the_json_hierarchy">The JSON Hierarchy</a></li>
+      </ul>
+    </li>
+    <li><a href="#example">Example</a></li>
+    <li><a href="#accepted_values">Accepted Values</a></li>
+  </ul>
+</section>
 
-<ul>
-  <li><a href="#quick_start">Quick Start</a></li>
-  <li>
-    <a href="#about_the_scheme">About the Scheme</a>
-    <ul>
-      <li><a href="#the_overall_hierarchy">The Overall Hierarchy</a></li>
-      <li><a href="#the_environment_variables">The Environment Variables</a></li>
-      <li><a href="#the_file_hierarchy">The File Hierarchy</a></li>
-      <li><a href="#the_json_hierarchy">The JSON Hierarchy</a></li>
-    </ul>
-  </li>
-  <li><a href="#example">Example</a></li>
-  <li><a href="#accepted_values">Accepted Values</a></li>
-</ul>
+
 
 <h2 id="quick_start">Quick Start</h2>
 

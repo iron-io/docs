@@ -9,17 +9,29 @@ breadcrumbs:
 
 PHP has grown to be one of the most popular languages to write web software in. You can add some power to your current PHP application using PHP workers on IronWorker. This article will help you get started with PHP workers, but you should be familiar with the [basics of IronWorker](/worker).
 
---------
 
-* [Quick Start](#quick_start)
-  * [Get the PHP Client Library](#get_the_php_client_library)
-  * [Create Your Configuration File](#create_your_configuration_file)
-  * [Write Your PHP Worker](#write_your_php_worker)
-  * [Create a Script to Upload the Worker](#create_a_script_to_upload_the_worker)
-  * [Queue Up Tasks for Your Worker](#queue_up_tasks_for_your_worker)
-* [Deep Dive](#deep_dive)
-  * [Payload Example](#payload_example)
-  * [Environment](#environment)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#quick_start">Quick Start</a>
+      <ul>
+        <li><a href="#get_the_php_client_library">Get the PHP Client Library</a></li>
+        <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
+        <li><a href="#write_your_php_worker">Write Your PHP Worker</a></li>
+        <li><a href="#create_a_script_to_upload_the_worker">Create a Script to Upload the Worker</a></li>
+        <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#deep_dive">Deep Dive</a>
+      <ul>
+        <li><a href="#payload_example">Payload Example</a></li>
+        <li><a href="#environment">Environment</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
 
 ## Quick Start
 

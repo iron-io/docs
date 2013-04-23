@@ -7,16 +7,25 @@ breadcrumbs:
   - ['Push Queues', '/push_queues']
 ---
 
-* [Overview](#overview)
-* [Push Queue Settings](#push_queue_settings)
-* [Queueing Messages](#queueing_messages)
-* [Checking Status](#checking_status)
-* [How the Endpoint Should Handle Push Messages](#how_the_endpoint_should_handle_push_messages)
-  * [Response Codes](#response_codes)
-  * [Timeout](#timeout)
-  * [Long Running Processes - aka 202's](#long_running_processes__aka_202s)
-  * [Push Queue Headers](#push_queue_headers)
-* [Important Notes](#important_notes)
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#push_queue_settings">Push Queue Settings</a></li>
+    <li><a href="#queueing_messages">Queueing Messages</a></li>
+    <li><a href="#checking_status">Checking Status</a></li>
+    <li>
+      <a href="#how_the_endpoint_should_handle_push_messages">How the Endpoint Should Handle Push Messages</a>
+      <ul>
+        <li><a href="#response_codes">Response Codes</a></li>
+        <li><a href="#timeout">Timeout</a></li>
+        <li><a href="#long_running_processes__aka_202s">Long Running Processes - aka 202's</a></li>
+        <li><a href="#push_queue_headers">Push Queue Headers</a></li>
+      </ul>
+    </li>
+    <li><a href="#important_notes">Important Notes</a></li>
+  </ul>  
+</section>
 
 ## Overview
 
