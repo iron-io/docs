@@ -23,6 +23,7 @@ That's it!  Super easy, super powerful. [See this blog post on shareable workers
 - [Twilio Worker](https://github.com/treeder/twilio_worker)
 - [Image Processing Worker](https://github.com/treeder/image_processing_worker)
 - [Hipchat Worker](https://github.com/treeder/hipchat_worker)
+- [FFmpeg video processing Worker](https://github.com/thousandsofthem/workers/tree/master/ffmpeg_turn_key)
 
 ## Contributing
 
