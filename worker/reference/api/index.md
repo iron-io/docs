@@ -30,7 +30,7 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
         <tr>
             <td>/projects/<span class="project_id variable">{Project ID}</span>/codes</td>
             <td>POST</td>
-            <td><a href="#upload_a_code_package" title="Upload a Code Package">Upload a Code Package</a></td>
+            <td><a href="#upload_or_update_a_code_package" title="Upload or Update a Code Package">Upload or Update a Code Package</a></td>
         </tr>
         <tr>
             <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td><td>GET</td><td><a href="#get_info_about_a_code_package" title="Get Info About a Code Package">Get Info About A Code Package</a></td>
@@ -247,7 +247,7 @@ Sample:
 }
 {% endhighlight %}
 
-### Upload a Code Package
+### Upload or Update a Code Package
 
 You will almost always want to use our [Command Line Interface](/worker/reference/cli/) to make uploading easier.
 
@@ -270,6 +270,9 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/codes
 The request should be JSON-encoded and contain the following information:
 
 * **name**: A unique name for your worker. This will be used to assign tasks to the worker as well as to update the code. If a worker with this name already exists, the code you are uploading will be added as a new revision.
+
+When uploading code, the following are required (not required if just updating code options below):
+
 * **file**: A multipart-encoded string containing the zip file you are uploading.
 * **file_name**: The name of the file within the zip that will be executed when a task is run.
 * **runtime**: The language to execute your worker with. The following values are valid:
@@ -280,6 +283,7 @@ The request should be JSON-encoded and contain the following information:
 
 The request also accepts the following optional parameters:
 
+* **config**: An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. File location will be passed in via the -config argument. The config cannot be larger than 64KB in size.
 * **max_concurrency**: The maximum number of workers that should be run in parallel. This is useful for keeping your workers from hitting API quotas or overloading databases that are not prepared to handle the highly-concurrent worker environment. If omitted, there will be no limit on the number of concurrent workers.
 * **retries**: The maximum number of times failed tasks should be retried, in the event that there's an error while running them. If omitted, tasks will not be retried. Tasks cannot be retried more than ten times.
 * **retries_delay**: The number of seconds to wait before retries. If omitted, tasks will be immediately retried.
@@ -587,7 +591,6 @@ Optionally, each object in the array can also contain the following:
 * **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. 0 is the default. 
 * **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration. 
 * **delay**: The number of seconds to delay before actually queuing the task. Default is 0.
-* **config**: An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. File location will be passed in via the -config argument. The config cannot be larger than 64KB in size.
 
 The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header. 
 
