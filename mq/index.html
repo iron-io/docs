@@ -163,7 +163,7 @@ func main() {
 {% highlight java %}
 Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
 Queue queue = client.queue("test_queue");
-queue.Push("Hello world!");
+queue.push("Hello world!");
 {% endhighlight %}</div>
 
 <div class="language clojure"><h3>Clojure Example</h3>
@@ -180,7 +180,7 @@ queue.Push("Hello world!");
 {% highlight c# %}
 Client client = new Client("{PROJECT_ID}", "{TOKEN}");
 Queue queue = client.queue("test_queue");
-queue.Push("Hello world!");
+queue.push("Hello world!");
 {% endhighlight %}</div>
 
 <h2 id="get">3. Get a Message off the Queue</h2>

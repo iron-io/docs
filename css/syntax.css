@@ -16,6 +16,7 @@
 .highlight .k { color: #008000 !important; font-weight: bold !important } /* Keyword */
 .highlight .o { color: #303030 !important } /* Operator */
 .highlight .n { color: #303030 !important }
+.highlight .nx { color: #303030 !important }
 .highlight .cm { color: #808080 !important } /* Comment.Multiline */
 .highlight .cp { color: #507090 !important } /* Comment.Preproc */
 .highlight .c1 { color: #808080 !important } /* Comment.Single */
