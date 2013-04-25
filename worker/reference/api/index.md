@@ -220,7 +220,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 * **Project ID**: The ID of the project whose code packages you want to get a list of.
 
-#### Optional URL Parameters
+#### Optional Query Parameters
 
 * **page**: The page of code packages you want to retrieve, starting from 0. Default is 0, maximum is 100.
 * **per_page**: The number of code packages to return per page. Note this is a maximum value, so there may be fewer packages returned if there aren’t enough results. Default is 30, maximum is 100.
@@ -397,7 +397,7 @@ Sample:
 * **Project ID**: The ID of the project that the task belongs to.
 * **Code Package ID**: The ID of the task you want details on.
 
-#### Optional URL Parameters
+#### Optional Query Parameters
 
 * **revision**: The revision of the code package you want to download. If not specified, the latest revision will be downloaded.
 
@@ -418,7 +418,7 @@ The response will be a zip file containing your code package. The response heade
 * **Project ID**: The ID of the project that the task belongs to.
 * **Code Package ID**: The ID of the code package whose revisions you’re retrieving.
 
-#### Optional URL Parameters
+#### Optional Query Parameters
 
 * **page**: The page of revisions you want to retrieve, starting from 0. Default is 0, maximum is 100.
 * **per_page**: The number of revisions to return per page. Note this is a maximum value, so there may be less revisions returned if there aren’t enough results. Default is 30, maximum is 100.
@@ -524,14 +524,18 @@ Tasks have timeouts associated with them that specify the amount of time (in sec
 #### Endpoint
 
 <div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
+GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_name={CODE NAME}
 </div>
 
 #### URL Parameters
 
 * **Project ID**: The ID of the project whose tasks you want to get a list of.
 
-#### Optional URL Parameters
+#### Required Query Parameters
+
+* **code_name**: The name of your worker (code package).
+
+#### Optional Query Parameters
 
 * **page**: The page of tasks you want to retrieve, starting from 0. Default is 0, maximum is 100.
 * **per_page**: The number of tasks to return per page. Note this is a maximum value, so there may be less tasks returned if there aren’t enough results. Default is 30, maximum is 100.
@@ -825,7 +829,7 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 
 * **Project ID**: The ID of the project whose scheduled tasks you want to get a list of.
 
-#### Optional URL Parameters
+#### Optional Query Parameters
 
 * **page**: The page of scheduled tasks you want to retrieve, starting from 0. Default is 0, maximum is 100.
 * **per_page**: The number of scheduled tasks to return per page. Note this is a maximum value, so there may be less tasks returned if there aren’t enough results. Default is 30, maximum is 100.
