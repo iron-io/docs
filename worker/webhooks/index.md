@@ -41,7 +41,8 @@ So, you no need any updates in existing worker to use it. Common scheme of using
 * Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/reference/push_queues)
 * Do something to trigger webhook, say, commit to GitHub or post message to Push Queue.
 
-When webhook is triggered request body is passed to a worker as a file, specified by [`-payload` option](/worker/reference/payload).
+When the IronWorker service receives HTTP POST request to webhook endpoint,
+it will pass request's body to a worker as a file, specified by [`-payload` option](/worker/reference/payload).
 
 The URL's scheme for webhooks is:
 {% highlight bash %}
