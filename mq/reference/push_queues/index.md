@@ -16,7 +16,7 @@ breadcrumbs:
 To turn a queue into a push queue (or create one), POST to your queue endpoint with the following parameters:
 
 - subscribers - required - an array of hashes containing subscribers. eg: {"url": "http://myserver.com/endpoint"}
-- push_type - multicast or unicast. Default is multicast.
+- push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - retries - number of times to retry. Default is 3.
 - retries_delay - time in seconds between retries. Default is 60.
 

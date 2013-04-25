@@ -242,7 +242,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 The following parameters are all related to Push Queues.
 
 * **subscribers**: An array of subscriber hashes containing a "url" field. This set of subscribers will replace the existing subscribers. To add or remove subscribers, see the <a href="#add_subscribers_to_a_queue">add subscribers endpoint</a> or the <a href="#remove_subscribers_from_a_queue">remove subscribers endpoint</a>. See below for example json.
-* **push_type**: Either multicast to push to all subscribers or unicast to push to one and only one subscriber. Default is "multicast".
+* **push_type**: Either multicast to push to all subscribers or unicast to push to one and only one subscriber. Default is "multicast". Set this to "pull" to revert back to a pull queue.
 * **retries**: How many times to retry on failure. Default is 3.
 * **retries_delay**: Delay between each retry in seconds. Default is 60.
 
