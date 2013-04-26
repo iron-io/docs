@@ -33,10 +33,10 @@ So, you no need any updates in existing worker to use it. Common scheme of using
 
 * [Create and upload a worker](/worker)
 * Obtain webhook link:
-  * Through the [HUD](https://hud.iron.io)
+  * From the [HUD](https://hud.iron.io)
   * Or by the [CLI](/worker/reference/cli)
     {% highlight bash %}
-    iron_worker webhook $WORKER_NAME
+$ iron_worker webhook $WORKER_NAME
     {% endhighlight %}
 * Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/reference/push_queues)
 * Do something to trigger webhook, say, commit to GitHub or post message to Push Queue.
