@@ -23,6 +23,7 @@ breadcrumbs:
         <li><a href="#push_queue_headers">Push Queue Headers</a></li>
       </ul>
     </li>
+    <li><a href="#encription_and_security">Encription and Security</a></li>
     <li><a href="#important_notes">Important Notes</a></li>
   </ul>  
 </section>
@@ -107,6 +108,21 @@ Each message pushed will have some special headers as part of the HTTP request.
 - Iron-Subscriber-Message-Id - The ID for the message to the particular subscriber.
 - Iron-Subscriber-Message-Url - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
 IronMQ that you're done with the message. Send a DELETE http request to this URL to delete it.
+
+## Encription and Security
+
+When you are using your private API as subscriber
+and want to secure connection to IronMQ you are able to use HTTPS endpoints.
+
+    https://subscriber.domain.com/push/endpoint
+
+Also, if you want some kind of authentication you can use various standards for authorization with tokens.
+Like OAuth or OpenID. In this case, specify a token in your subscriber's URL.
+
+    https://subscriber.domain.com/push/endpoint?auth=TOKEN
+
+Another possibility to specify a token is put it to your messages' bodies and parse it on your side.
+In this case a token will be encrypted by SSL/TLS.
 
 ## Important Notes
 
