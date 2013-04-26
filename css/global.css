@@ -260,7 +260,7 @@ ul#breadcrumbs li {
 }
 
 .content-container #toc ul li {
-  margin: 0 0 0;
+  margin: 0 0 5px;
   position: relative;
   list-style: none;
 }
@@ -418,10 +418,10 @@ span.fixed-width {
   padding: 5px 10px 5px 10px;
   margin: 10px 0 30px;
   min-height: 53px;
-  background: #F5FBFD;
-  border: 2px solid #A6CDEB;
+  background: #FCFFE4;
+  border: 2px solid #EBC089;
   border-radius: 5px;
-  color: #57768D;
+  color: #8D7757;
 }
 
 .alert p {
