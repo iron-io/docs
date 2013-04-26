@@ -24,23 +24,46 @@ You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wik
 
 Here's a sample list of languages available (with multiple clients libs to choose from for many languages):
 
-<table class="reference">
-  <thead>
-    <tr><th>Beanstalkd Language Clients</th><th> </th></tr>
-  </thead>
-  <tbody>
-    <tr><td>C</td><td>Node.js</td></tr>
-    <tr><td>C++</td><td>OCaml</td></tr>
-    <tr><td>Clojure</td><td>Perl</td></tr>
-    <tr><td>Django</td><td>PHP</td></tr>
-    <tr><td>Common Lisp</td><td>Python</td></tr>
-    <tr><td>Erlang</td><td>Rails</td></tr>
-    <tr><td>Go</td><td>Ruby</td></tr>
-    <tr><td>Haskell</td><td>Scheme (Chicken)</td></tr>
-    <tr><td>Io</td><td>.NET/C#</td></tr>
-    <tr><td>Java</td></tr>
-  </tbody>
+<table style="border: 0px; width: 100%;">
+  <tr>
+    <td style="width: 25%;">
+      <ul>
+        <li>C</li>
+        <li>C++</li>
+        <li>Clojure</li>
+        <li>Django</li>
+        <li>Common Lisp</li>
+      </ul>
+    </td>
+    <td style="width: 25%">
+      <ul>
+        <li>Erlang</li>
+        <li>Go</li>
+        <li>Haskell</li>
+        <li>Io</li>
+        <li>Java</li>
+      </ul>
+    </td>
+    <td style="width: 25%">
+      <ul>
+        <li>Node.js</li>
+        <li>OCaml</li>
+        <li>Perl</li>
+        <li>PHP</li>
+        <li>Python</li>
+      </ul>
+    </td>
+    <td style="width: 25%" valign="top">
+      <ul>
+        <li>Rails</li>
+        <li>Ruby</li>
+        <li>Scheme (Chicken)</li>
+        <li>.NET/C#</li>
+      </ul>
+    </td>
+  </tr>
 </table>
+
 
 Check out list of client libraries [on GitHub](https://github.com/kr/beanstalkd/wiki/client-libraries)
 
