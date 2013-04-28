@@ -75,8 +75,12 @@ This should return a response like this:
 
 ## How the Endpoint Should Handle Push Messages
 
-These are the things the endpoint that is receiving the push should know about. The receiving endpoint must respond
-with a 200 or 202 if they have accepted the message successfully.
+These are the things the endpoint that is receiving the push should know about.
+
+Push messages' bodies will be sent to endpoints as is (strings) as POST request body.
+To obtain message's body just read request body.
+
+The receiving endpoint must respond with a 200 or 202 if they have accepted the message successfully.
 
 ### Response Codes
 
