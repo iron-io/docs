@@ -28,22 +28,21 @@ Also, when using `ruby` or `php` runtimes JSON payload will be automatically par
 
 ## Get Payload in a Worker
 
-If payload is specified on worker queue or schedule store it in the database.
-Before worker will be launched in our [environment](worker/reference/environment)
-the payload is put to the instance as file.
-The payload is stored in a file in the worker's directory when the worker is queued,
-and the location of that file is passed to the worker using the `-payload` command line flag.
+When payload is specified during *queue* or *schedule*, then it is stored in the database.
+Before your worker is launched in the IronWorker [environment](worker/reference/environment),
+this payload is then stored in your worker's runtime directory. The location of that file is passed to the worker using the `-payload` command line flag.
+
 To get the contents of your payload, you need to:
 
 1. Read the `-payload` flag using `ARGV` (or whatever your language uses to read command line flags)
 2. Open and read the file specified by the `-payload`> flag
 3. Parse the contents of the file (for example, if you encoded the payload when queuing the task)
 
-Workers which use `ruby` and `php` runtime have more possibilities to access the payload.
+Workers that use either `ruby` or `php` runtimes have more possibilities to access the payload.
 
 #### Access to a Payload in Ruby Runtime
 
-When worker is in Ruby it has access to special methods to obtain payload.
+Ruby workers have access to special methods to obtain the payload.
 
 <div class="language ruby">
 {% highlight ruby %}
@@ -62,7 +61,7 @@ parsed_payload = params # parsed JSON
 #### Access to a Payload in PHP Runtime
 
 The payload in PHP runtime is accessible by calling method `getPayload()`.
-If payload is parsable JSON string it will be converted automatically.
+If payload is a parsable JSON string it will be converted automatically.
 
 <div class="language php">
 {% highlight php %}

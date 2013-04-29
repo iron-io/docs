@@ -23,13 +23,13 @@ party service that supports webhooks.
         <li><a href="#step_3_commit_and_push_some_code_to_your_github_project_and_watch_the_magic_happen">Step 3</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 ## How to Use IronWorker Webhooks
 
-Webhook is just [HTTP POST API endpoint](http://localhost:4000/worker/reference/api/#queue_a_task_from_a_webhook).
-So, you no need any updates in existing worker to use it. Common scheme of using is:
+A Webhook is simply an [HTTP POST API endpoint](http://localhost:4000/worker/reference/api/#queue_a_task_from_a_webhook) so
+you don't need any updates in your existing workers to use them. A typical workflow for a webhook is:
 
 * [Create and upload a worker](/worker)
 * Obtain webhook link:
@@ -39,10 +39,10 @@ So, you no need any updates in existing worker to use it. Common scheme of using
 $ iron_worker webhook $WORKER_NAME
     {% endhighlight %}
 * Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/reference/push_queues)
-* Do something to trigger webhook, say, commit to GitHub or post message to Push Queue.
+* Do something to trigger the webhook, say, commit to GitHub or post a message to a Push Queue.
 
-When the IronWorker service receives HTTP POST request to webhook endpoint,
-it will pass request's body to a worker as a file, specified by [`-payload` option](/worker/reference/payload).
+When the IronWorker service receives the HTTP POST request to your webhook endpoint,
+it will pass the request's body to a worker as a file, specified by [`-payload` option](/worker/reference/payload).
 
 The URL's scheme for webhooks is:
 {% highlight bash %}
