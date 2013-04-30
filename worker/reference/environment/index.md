@@ -7,6 +7,22 @@ breadcrumbs:
   - ['Environment', '/environment']
 ---
 
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#operating_system">Operating System</a></li>
+    <li><a href="#installed_linux_packages">Installed Linux Packages</a></li>
+    <li><a href="#maximum_data_payload">Maximum Data Payload</a></li>
+    <li><a href="#memory_per_worker">Memory per Worker</a></li>
+    <li><a href="#local_disk_space_per_worker">Local Disk Space per Worker</a></li>
+    <li><a href="#maximum_run_time_per_worker">Maximum Run Time per Worker</a></li>
+    <li><a href="#priority_queue_management">Priority Queue Management</a></li>
+    <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
+    <li><a href="#minimum__time">Minimum <code>run_every</code> Time</a></li>
+    <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
+  </ul>  
+</section>
+
 ## Operating System
 The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
 
@@ -51,14 +67,14 @@ The standard worker sandbox environment contains a certain amount of accessible 
 
 Tip: We recommend distributing workloads over multiple workers&mdash;not only for better resource management, but also to take advantage of the massive concurrency enabled by a cloud worker system. 
 
-## Local Disk Space (per Worker)
+## Local Disk Space per Worker
 Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files inside this space, and can perform most ordinary file operations. This directory is used as the current working directory ("<span class="fixed-width">.</span>") when executing your workers.
 
 <div class="grey-box">
 <b>Local Disk Space:</b> 10GB
 </div>
 
-## Max Run Time (per Worker)
+## Maximum Run Time per Worker
 There is a system-wide limit for the maximum length a task may run. Tasks that exceed this limit will be terminated and will have `timeout` as their status. 
 
 <div class="grey-box">
@@ -90,7 +106,7 @@ Each priority (p0, p1, p2) has a targeted maximum time limit for tasks sitting i
 </tbody>
 </table>
 
-## Max Scheduled Tasks (per Project)
+## Maximum Scheduled Tasks per Project
 The following is the default number of scheduled tasks. It should be sufficient for even the largest projects. If you would like this number increased, however, please feel free to contact us.
 
 <div class="grey-box">
@@ -99,7 +115,7 @@ The following is the default number of scheduled tasks. It should be sufficient 
 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When scheduled tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the [page on scheduling](/worker/scheduling) for more information on scheduling patterns and best practices.
 
-## Minimum run_every Time
+## Minimum `run_every` Time
 
 Tasks can only be scheduled to run **every 60 seconds or more** using the `run_every` parameter.
 

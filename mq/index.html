@@ -13,6 +13,8 @@ languages:
     slug: php
   - name: Python
     slug: python
+  - name: "Node.js"
+    slug: nodejs
   - name: Go
     slug: go
   - name: Java
@@ -120,14 +122,40 @@ queue = ironmq.queue("test_queue")
 queue.post("hello world!")
 {% endhighlight %}</div>
 
+<div class="language nodejs"><h3>Node.js Example</h3>
+
+	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
+
+{% highlight js %}
+var iron_mq = require('iron_mq');
+var imq = new iron_mq.Client();
+
+var queue = imq.queue("test_queue");
+
+queue.post("Hello, IronMQ!", function(error, body) {
+  console.log(error, body);
+});
+{% endhighlight %}</div>
+
 <div class="language go"><h3>Go Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight go %}
-client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
-queue := client.Queue("test_queue")
-id, err := queue.Push("Hello world!")
+package main
+
+import (
+        "fmt"
+        "github.com/iron-io/iron_go/mq"
+)
+
+func main() {
+        queue := mq.New("hello_queue")
+
+        id, err := queue.PushString("Hello, world!")
+        fmt.Println(id, err)
+}
 {% endhighlight %}</div>
+
 
 <div class="language java"><h3>Java Example</h3>
 <p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
@@ -135,7 +163,7 @@ id, err := queue.Push("Hello world!")
 {% highlight java %}
 Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
 Queue queue = client.queue("test_queue");
-queue.Push("Hello world!");
+queue.push("Hello world!");
 {% endhighlight %}</div>
 
 <div class="language clojure"><h3>Clojure Example</h3>
@@ -152,7 +180,7 @@ queue.Push("Hello world!");
 {% highlight c# %}
 Client client = new Client("{PROJECT_ID}", "{TOKEN}");
 Queue queue = client.queue("test_queue");
-queue.Push("Hello world!");
+queue.push("Hello world!");
 {% endhighlight %}</div>
 
 <h2 id="get">3. Get a Message off the Queue</h2>
@@ -202,6 +230,7 @@ msg = @queue.get()
 	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight php %}
+<?php
 $ironmq = new IronMQ();
 $ironmq->getMessage("test_queue");
 {% endhighlight %}</div>
@@ -216,13 +245,38 @@ queue = ironmq.queue("test_queue")
 msg = queue.get()
 {% endhighlight %}</div>
 
+<div class="language nodejs"><h3>Node.js Example</h3>
+
+	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
+
+{% highlight js %}
+var iron_mq = require('iron_mq');
+var imq = new iron_mq.Client();
+
+var queue = imq.queue("test_queue");
+
+queue.get({n: 1}, function(error, body) {
+  console.log(error, body);
+});
+{% endhighlight %}</div>
+
 <div class="language go"><h3>Go Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight go %}
-client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
-queue := client.Queue("test_queue")
-msg, err := queue.Get()
+package main
+
+import (
+        "fmt"
+        "github.com/iron-io/iron_go/mq"
+)
+
+func main() {
+        queue := mq.New("hello_queue")
+
+        msg, err := queue.Get()
+        fmt.Println(msg, err)
+}
 {% endhighlight %}</div>
 
 <div class="language java"><h3>Java Example</h3>
@@ -301,6 +355,7 @@ msg.delete
 	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight php %}
+<?php
 $ironmq = new IronMQ();
 $msg = $ironmq->getMessage("test_queue");
 $ironmq->deleteMessage($msg->id);
@@ -317,14 +372,64 @@ response = queue.get()
 queue.delete(response["messages"][0]["id"])
 {% endhighlight %}</div>
 
+<div class="language nodejs"><h3>Node.js Example</h3>
+
+	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
+
+{% highlight js %}
+var iron_mq = require('iron_mq');
+var imq = new iron_mq.Client();
+
+var queue = imq.queue("test_queue");
+
+queue.post("Hello, IronMQ!", function(error, body) {
+  console.log(error, body);
+});
+
+var message_id;
+queue.get({n: 1}, function(error, body) {
+  console.log(error, body);
+  if (error == null) {
+    message_id = body.id;
+  }
+});
+
+queue.del(message_id, function(error, body) {
+  console.log(error, body);
+});
+{% endhighlight %}</div>
+
 <div class="language go"><h3>Go Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
+<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight go %}
-client := ironmq.NewClient("{PROJECT_ID}", "{TOKEN}", ironmq.IronAWSUSEast)
-queue := client.Queue("test_queue")
-id, err := queue.Push("Hello world!")
-err := msg.Delete()
+package main
+
+import (
+        "fmt"
+        "github.com/iron-io/iron_go/mq"
+)
+
+func main() {
+        queue := mq.New("hello_queue")
+
+        ids, err := queue.PushStrings("Hello", "world", "!")
+        fmt.Println(ids, err)
+
+        msg, err := queue.Get()
+        fmt.Println(msg, err)
+        if err == nil {
+                m.Delete()
+        }
+
+        msgs, err := queue.Get(2)
+        fmt.Println(msgs, err)
+        if err != nil {
+                for _, m := range append(msgs, msg) {
+                        m.Delete()
+                }
+        }
+}
 {% endhighlight %}</div>
 
 <div class="language java"><h3>Java Example</h3>

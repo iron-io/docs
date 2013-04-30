@@ -7,6 +7,14 @@ breadcrumbs:
   - ['Environment', '/system']
 ---
 
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#item_structure">Item Structure</a></li>
+    <li><a href="#item_constraints">Item Constraints</a></li>
+  </ul>  
+</section>
+
 ## Item Structure
 Caches are key/value stores comprised of *items*. The Item structure is 
 flexible and straight-forward. Items can be variable in size and can contain almost any text or data format.

@@ -9,7 +9,53 @@ breadcrumbs:
 Using IronWorker webhooks enables you to run pretty much anything you want whenever an event happens at a third
 party service that supports webhooks.
 
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li>
+      <a href="#how_to_use_ironworker_webhooks">How to Use IronWorker Webhooks</a>
+    </li>
+    <li>
+      <a href="#example">Example</a>
+      <ul>
+        <li><a href="#step_1_create_a_worker_and_upload_it_to_ironworker">Step 1</a></li>
+        <li><a href="#step_2_add_your_workers_webhook_url_to_github_service_hooks">Step 2</a></li>
+        <li><a href="#step_3_commit_and_push_some_code_to_your_github_project_and_watch_the_magic_happen">Step 3</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
 ## How to Use IronWorker Webhooks
+
+A Webhook is simply an [HTTP POST API endpoint](http://localhost:4000/worker/reference/api/#queue_a_task_from_a_webhook) so
+you don't need any updates in your existing workers to use them. A typical workflow for a webhook is:
+
+* [Create and upload a worker](/worker)
+* Obtain webhook link:
+  * From the [HUD](https://hud.iron.io)
+  * Or by the [CLI](/worker/reference/cli)
+    {% highlight bash %}
+$ iron_worker webhook $WORKER_NAME
+    {% endhighlight %}
+* Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/reference/push_queues)
+* Do something to trigger the webhook, say, commit to GitHub or post a message to a Push Queue.
+
+When the IronWorker service receives the HTTP POST request to your webhook endpoint,
+it will pass the request's body to a worker as a file, specified by [`-payload` option](/worker/reference/payload).
+
+The URL's scheme for webhooks is:
+{% highlight bash %}
+$WORKER_API_URL/projects/$PROJECT_ID/tasks/webhook?code_name=$CODE_NAME&oauth=$TOKEN
+{% endhighlight %}
+
+Where:
+
+* `$WORKER_API_URL` is `https://worker-aws-us-east-1.iron.io/2`
+* `$PROJECT_ID` and `$TOKEN` are credentials to access to your project
+* `$CODE_NAME` is name of your worker
+
+## Example
 
 The best way to see how this works is via an example. The rest of this section will use a **Github to Hipchat** webhook
 where Github will hit the webhook and the worker will post to Hipchat. [The full code is here](https://github.com/iron-io/iron_worker_examples/tree/master/ruby_ng/github_to_hipchat_webhook_worker).
