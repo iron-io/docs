@@ -21,7 +21,7 @@ processing queues immediately or scheduled to run at a later time&mdash;you only
     <li>
       <a href="#quick_start">Quick Start</a>
       <ul>
-        <li><a href="#get_the__gem">Get the <code>iron_worker_ng</code> Gem</a></li>
+        <li><a href="#get_the_cli">Get the CLI</a></li>
         <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
         <li><a href="#write_your_go_worker">Write Your Go Worker</a></li>
         <li><a href="#compile_your_go_worker_to_a_binary_file">Compile Your Go Worker to a Binary File</a></li>
@@ -43,16 +43,17 @@ processing queues immediately or scheduled to run at a later time&mdash;you only
 
 ## Quick Start
 
-### Get the `iron_worker_ng` Gem
+### Get the CLI
 
-We've created a [command line interface](/worker/reference/cli) to the IronWorker service that makes working with the service a lot easier and more convenient. It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem. Once Ruby 1.9+ is installed, you can just the following command to get the gem:
+We've created a [command line interface](/worker/reference/cli) to the IronWorker service
+that makes working with the service a lot easier and more convenient.
+It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem.
+Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
 $ gem install iron_worker_ng
 {% endhighlight %}
-
-It is possible to use our [other client libraries](/worker/languages/#full_support) or even our [API](/worker/reference/api) to upload a package, but these samples will use the CLI.
 
 ### Create Your Configuration File
 
