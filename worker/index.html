@@ -95,7 +95,7 @@ $ iron_worker queue firstworker
 $ iron_worker queue firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "arr1": ["item1", "item2"]}'
 {% endhighlight %}
 
-<p>Most clients&mdash;including the CLI&mdash;will automatically handle parsing the payload in your worker, so you can just access the variable or function they give you in your worker's code. We have <a href="/worker/payloads">more information</a> on payloads, if you're curious.</p>
+<p>Most clients&mdash;including the CLI&mdash;will automatically handle parsing the payload in your worker, so you can just access the variable or function they give you in your worker's code. We have <a href="/worker/reference/payload">more information</a> on payloads, if you're curious.</p>
 
 <div class="alert">
   <p><strong>Protip:</strong> we also offer a <a href="/worker/webhooks">webhook endpoint</a>&mdash;it's great for automating tasks. <a href="http://blog.iron.io/2012/04/one-webhook-to-rule-them-all-one-url.html">Check out our blog post</a> for more information on this.</p>
