@@ -9,26 +9,63 @@ breadcrumbs:
 
 You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice. 
 
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#beanstalk_libraries">Beanstalk Libraries</a></li>
+    <li><a href="#host_information">Host Information</a></li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li><a href="#tubes_vs_queues">Tubes vs Queues</a></li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>  
+</section>
+
+## Beanstalk Libraries
+
 Here's a sample list of languages available (with multiple clients libs to choose from for many languages):
 
-<table class="reference">
-  <thead>
-    <tr><th>Beanstalkd Language Clients</th><th> </th></tr>
-  </thead>
-  <tbody>
-    <tr><td>C</td><td>Node.js</td></tr>
-    <tr><td>C++</td><td>OCaml</td></tr>
-    <tr><td>Clojure</td><td>Perl</td></tr>
-    <tr><td>Django</td><td>PHP</td></tr>
-    <tr><td>Common Lisp</td><td>Python</td></tr>
-    <tr><td>Erlang</td><td>Rails</td></tr>
-    <tr><td>Go</td><td>Ruby</td></tr>
-    <tr><td>Haskell</td><td>Scheme (Chicken)</td></tr>
-    <tr><td>Io</td><td>.NET/C#</td></tr>
-    <tr><td>Java</td></tr>
-  </tbody>
+<table style="border: 0px; width: 100%;">
+  <tr>
+    <td style="width: 25%;">
+      <ul>
+        <li>C</li>
+        <li>C++</li>
+        <li>Clojure</li>
+        <li>Django</li>
+        <li>Common Lisp</li>
+      </ul>
+    </td>
+    <td style="width: 25%">
+      <ul>
+        <li>Erlang</li>
+        <li>Go</li>
+        <li>Haskell</li>
+        <li>Io</li>
+        <li>Java</li>
+      </ul>
+    </td>
+    <td style="width: 25%">
+      <ul>
+        <li>Node.js</li>
+        <li>OCaml</li>
+        <li>Perl</li>
+        <li>PHP</li>
+        <li>Python</li>
+      </ul>
+    </td>
+    <td style="width: 25%" valign="top">
+      <ul>
+        <li>Rails</li>
+        <li>Ruby</li>
+        <li>Scheme (Chicken)</li>
+        <li>.NET/C#</li>
+      </ul>
+    </td>
+  </tr>
 </table>
 
+
+Check out list of client libraries [on GitHub](https://github.com/kr/beanstalkd/wiki/client-libraries)
 
 ## Host Information
 To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on the [cloud you're using](/mq/reference/clouds)). 

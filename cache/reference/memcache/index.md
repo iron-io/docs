@@ -7,8 +7,7 @@ breadcrumbs:
   - ['Memcache', '/memcache']
 ---
 
-You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
-with IronCache. As an industry standard, memcached has accumulated an 
+As an industry standard, memcached has accumulated an 
 extensive list of supported languages, so it's extremely likely your 
 language of choice is supported.
 
@@ -23,6 +22,24 @@ Using the memcached interface <em>does not</em> encrypt
 your credentials during transport.
 </p>
 </div>
+
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#memcache_libraries">Memcache Libraries</a></li>
+    <li><a href="#host_information">Host Information</a></li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li>
+      <a href="#example">Example</a>
+      <ul>
+        <li><a href="#install_the_library">Install the Library</a></li>
+        <li><a href="#run_the_example">Run the Example</a></li>
+      </ul>
+    </li>
+  </ul>  
+</section>
+
+## Memcache Libraries
 
 Here's a sample list of languages available (with multiple clients libs to 
 choose from for many languages):
@@ -65,6 +82,9 @@ choose from for many languages):
 </ul>
 </td></tr>
 </table>
+
+You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
+with IronCache.
 
 ## Host Information
 To connect to IronCache using memcached, use the host below:

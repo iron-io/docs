@@ -13,6 +13,19 @@ the convention of using a command line interface to interact with your apps.
 In our effort to provide tools that work with developers' current work flow, 
 IronWorker has created a command line tool to interact with the service.
 
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#installing">Installing</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#testing_your_workers_locally">Testing Your Workers Locally</a></li>
+    <li><a href="#creating__uploading_code_packages">Creating &amp; Uploading Code Packages</a></li>
+    <li><a href="#queuing_tasks">Queuing Tasks</a></li>
+    <li><a href="#scheduling_tasks">Scheduling Tasks</a></li>
+    <li><a href="#retrieving_a_tasks_log">Retrieving a Task's Log</a></li>
+  </ul>  
+</section>
+
 ## Installing
 
 The command line interface for IronWorker uses the [IronWorkerNG gem](http://github.com/iron-io/iron_worker_ruby_ng), 
@@ -82,6 +95,28 @@ $ iron_worker run $WORKER --payload '{"this": "is a test", "that": {"test": "obj
 $ # specify a file containing the payload
 $ iron_worker run $WORKER --payload-file /path/to/payload.json
 {% endhighlight %}
+
+#### Important notes:
+
+The CLI offers the run command to try and help test and debug workers locally.
+Because it is so complicated to manage an environment, this may not function in every environment.
+Here are some scenarios in which you may not be able to use the run command:
+
+1. When running under Windows.
+
+2. When running compiled binaries or packages on OS X or 32-bit Linux.
+
+3. When using the `deb` feature in your `.worker` file under non-Debian systems:
+    <figcaption><span>Ruby Code</span></figcaption>
+    {% highlight ruby %}
+    deb "feature-package.deb"
+    {% endhighlight %}
+    Possible solution: install `dpkg`.
+
+4. Trying to use a dependency (like "mono") that is present in IronWorker's environment but not your local environment.
+
+For best results, we recommend using the run command in an environment that matches
+IronWorker's as closely as possible: 64-bit (x86-64) Ubuntu Linux, with the same pre-installed packages installed.
 
 ## Creating & Uploading Code Packages
 
