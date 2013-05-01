@@ -24,7 +24,7 @@ constraints. See the [.worker file](/worker/reference/dotworker) reference for m
 
 <div class="alert">
 <p><strong>Note:</strong> Gems with binary extensions will not be merged by default.
-If you have such gems use <a href="/worker/reference/builds/#remote_build">remote build</a>.
+If you have such gems use <a href="/worker/reference/builds/#remote_build">remote build</a>.</p>
 </div>
 
 You can also use the `gemfile` command to merge gems from a Gemfile 
