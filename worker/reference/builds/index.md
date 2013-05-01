@@ -54,14 +54,14 @@ This is what the remote build is for. It automatically creates a worker that wil
 
 To enable remote build, add the following line to your `.worker` file:
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 full_remote_build true
 {% endhighlight %}
 
 or just
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 remote
 {% endhighlight %}
@@ -82,7 +82,7 @@ In this case `exec`, `file`, `gemfile`, and `deb` directives are all prepended w
 
 If the `http://my.site/my.worker` file looks like this:
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 exec "my_exec"
 file "my_file"
@@ -92,7 +92,7 @@ gemfile "Gemfile"
 
 It will be read by the remote build worker as this:
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 exec "http://my.site/my_exec"
 file "http://my.site/my_file"
