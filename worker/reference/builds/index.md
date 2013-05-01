@@ -37,7 +37,7 @@ Just type
 
 <figcaption><span>Command Line</span></figcaption>
 {% highlight bash %}
-iron_worker upload cool_feature
+$ iron_worker upload cool_feature
 {% endhighlight %}
 
 and relax. The CLI will merge the directories, files, libraries, and modules you listed in your [.worker file](/worker/reference/dotworker) into a zip archive that is then uploaded to IronWorker using [the API](/worker/reference/api).
@@ -74,7 +74,7 @@ Using HTTP link as your `.worker` file enables full remote build automatically.
 
 <figcaption><span>Command Line</span></figcaption>
 {% highlight bash %}
-iron_worker upload http://my.site/my.worker
+$ iron_worker upload http://my.site/my.worker
 {% endhighlight %}
 
 This could be helpful when you want to load the worker from HTTP endpoint.
