@@ -24,7 +24,7 @@ breadcrumbs:
         <li><a href="#push_queue_headers">Push Queue Headers</a></li>
       </ul>
     </li>
-    <li><a href="#encription_and_security">Encryption and Security</a></li>
+    <li><a href="#encryption_and_security">Encryption and Security</a></li>
     <li><a href="#important_notes">Important Notes</a></li>
   </ul>  
 </section>
@@ -138,7 +138,7 @@ Each message pushed will have some special headers as part of the HTTP request.
 - Iron-Subscriber-Message-Url - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
 IronMQ that you're done with the message. Send a DELETE http request to this URL to delete it.
 
-## Encription and Security
+## Encryption and Security
 
 When you are using your private API as subscriber
 and want to secure connection to IronMQ you are able to use HTTPS endpoints.
