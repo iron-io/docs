@@ -37,7 +37,7 @@ Just type
 
 <figcaption><span>Command Line</span></figcaption>
 {% highlight bash %}
-iron_worker upload cool_feature
+$ iron_worker upload cool_feature
 {% endhighlight %}
 
 and relax. The CLI will merge the directories, files, libraries, and modules you listed in your [.worker file](/worker/reference/dotworker) into a zip archive that is then uploaded to IronWorker using [the API](/worker/reference/api).
@@ -54,14 +54,14 @@ This is what the remote build is for. It automatically creates a worker that wil
 
 To enable remote build, add the following line to your `.worker` file:
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 full_remote_build true
 {% endhighlight %}
 
 or just
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 remote
 {% endhighlight %}
@@ -74,7 +74,7 @@ Using HTTP link as your `.worker` file enables full remote build automatically.
 
 <figcaption><span>Command Line</span></figcaption>
 {% highlight bash %}
-iron_worker upload http://my.site/my.worker
+$ iron_worker upload http://my.site/my.worker
 {% endhighlight %}
 
 This could be helpful when you want to load the worker from HTTP endpoint.
@@ -82,7 +82,7 @@ In this case `exec`, `file`, `gemfile`, and `deb` directives are all prepended w
 
 If the `http://my.site/my.worker` file looks like this:
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 exec "my_exec"
 file "my_file"
@@ -92,7 +92,7 @@ gemfile "Gemfile"
 
 It will be read by the remote build worker as this:
 
-<figcaption><span>Ruby Code</span></figcaption>
+<figcaption><span>.worker</span></figcaption>
 {% highlight ruby %}
 exec "http://my.site/my_exec"
 file "http://my.site/my_file"
