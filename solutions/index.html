@@ -5,13 +5,15 @@ section: solutions
 ---
 
 <section class="information-area">
-      <ul class="solutions-list">
-		{% for post in site.categories.solutions %}
-			<li>
-  			<h3><a href="{{ site.baseurl }}{{ post.permalink}}" title="{{ post.title }}">{{ post.title }}</a></h3>
-				<p>{{ post.summary }}</p>
-				<a href="{{ site.baseurl }}{{ post.permalink }}" class="btn orange" title="{{ post.title }}">Learn More <span class="arrow">&#10143;</span></a><br>
-			</li>
-		{% endfor %}
-      </ul>
-    </section>
+    <ul class="solutions-list">
+        {% for post in site.categories.solutions %}
+        <li>
+            <h3><a href="{{ post.permalink}}" title="{{ post.title }}">{{ post.title }}</a></h3>
+
+            <p>{{ post.summary }}</p>
+            <a href="{{ post.permalink }}" class="btn orange" title="{{ post.title }}">Learn More
+                <span class="arrow">&#10143;</span></a><br>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
