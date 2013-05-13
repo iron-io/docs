@@ -6,7 +6,7 @@
 2. Install jekyll gem: `sudo gem install jekyll`
 3. clone this repo.
 
-Detailed instruction for different environments: https://github.com/mojombo/jekyll/wiki/install
+Detailed instructions for different environments: https://github.com/mojombo/jekyll/wiki/install
 
 # Launching
 
