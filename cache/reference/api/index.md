@@ -308,7 +308,7 @@ Each item object should contain the following keys:
 
 ## Increment an Item's value
 
-This call increments the value of an item in the cache. It is only valid for numeric amounts, and can only be applied to items with numeric values. Negative amounts may be passed to decrement the value.
+This call increments the numeric value of an item in the cache. The amount must be a number and attempting to increment non-numeric values results in an error. Negative amounts may be passed to decrement the value. The increment is atomic, so concurrent increments will all be observed.
 
 ### Endpoint
 
