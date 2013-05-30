@@ -4802,3 +4802,77 @@ ul#architecture li {
   margin-top: 25px;
   margin-right: 10px
 }
+
+.content-container .content .libs {
+  padding: 0;
+  margin-right: -20px;
+  height: 120px;
+  margin-top: 30px;
+}
+
+.content-container .content .libs li {
+  float: left;
+  list-style: none;
+  background: -webkit-linear-gradient(#fff, #f8f8f8);
+  background: -moz-linear-gradient(#fff, #f8f8f8);
+  background: -ms-linear-gradient(#fff, #f8f8f8);
+  background: -o-linear-gradient(#fff, #f8f8f8);
+  background: linear-gradient(#fff, #f8f8f8);
+  padding: 0;
+  width: 106px;
+  margin: 0 10px 10px 0;
+}
+
+.content-container .content .libs li a {
+  display: block;
+  background: url(/images/libs/language_node.png) no-repeat 21px 6px;
+  padding: 0;
+  border: 1px solid #CCC;
+  width: 105px;
+  height: 100px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 172px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #CCC;
+  font-size: 14px;
+}
+
+.content-container .content .libs li a:hover {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+  color: #aaa;
+}
+
+.content-container .content .libs li a[data-lang="ruby"] {
+  background: url(/images/libs/language_ruby.png) no-repeat 21px 9px;
+}
+
+.content-container .content .libs li a[data-lang="php"] {
+  background: url(/images/libs/language_php.png) no-repeat 2px 11px;
+}
+
+.content-container .content .libs li a[data-lang="python"] {
+  background: url(/images/libs/language_python.png) no-repeat 3px 18px;
+}
+
+.content-container .content .libs li a[data-lang="java"] {
+  background: url(/images/libs/language_java.png) no-repeat 9px 3px;
+}
+
+.content-container .content .libs li a[data-lang="node"] {
+  background: url(/images/libs/language_node.png) no-repeat 3px 13px;
+}
+
+.content-container .content .libs li a[data-lang="go"] {
+  background: url(/images/libs/language_go.png) no-repeat 22px 8px;
+}
+
+.content-container .content .libs li a[data-lang="dotnet"] {
+  background: url(/images/libs/language_dotnet.png) no-repeat 8px 0px;
+}
+
+.content-container .content .libs li a[data-lang="clojure"] {
+  background: url(/images/libs/language_clojure.png) no-repeat 22px 12px;
+}
