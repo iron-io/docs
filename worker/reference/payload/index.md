@@ -50,7 +50,7 @@ payload_string = payload # string
 {% endhighlight %}
 </div>
 
-If specified payload is in JSON format it will be parsed automatically.
+If specified payload is in JSON format it will be parsed automatically into params.
 
 <div class="language ruby">
 {% highlight ruby %}
