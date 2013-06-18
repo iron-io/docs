@@ -13,6 +13,7 @@ breadcrumbs:
     <li><a href="#overview">Overview</a></li>
     <li><a href="#push_queue_settings">Push Queue Settings</a></li>
     <li><a href="#queueing_messages">Queueing Messages</a></li>
+    <li><a href="#retries">Retries</a></li>
     <li><a href="#checking_status">Checking Status</a></li>
     <li>
       <a href="#how_the_endpoint_should_handle_push_messages">How the Endpoint Should Handle Push Messages</a>
