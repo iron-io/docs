@@ -60,6 +60,19 @@ You should get a curl response that looks like this:
 <script src="https://gist.github.com/4489435.js"> </script>
 </div>
 
+## Retries
+
+IronMQ will automatically retry if it fails to deliver a message. This can be either a connection error, an error response (eg: 5xx), 
+or any other scenario that does not return 2xx response. The behavior is a bit different depending on whether it's unicast or
+multicast as follows:
+
+- multicast treats each endpoint separately and will try each endpoint once per retry. If one endpoint fails,
+  it will retry that single endpoint after retries_delay, it won't retry endpoints that were successful.
+- unicast will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered. 
+  If it fails, a different endpoint is tried immediately and this continues until a successful response is returned 
+  or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
+  be retried after retries_delay. 
+
 ## Checking Status
 
 If you want the detailed status of the delivery to each of your subscribers, you can check that too. In the curl example below, you'll need to exchange MESSAGE_ID with the id that was returned in the response above when you posted a message.
