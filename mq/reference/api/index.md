@@ -47,6 +47,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td><td>POST</td><td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/peek</td><td>GET</td><td><a href="#peek_messages_on_a_queue" title="Peek Messages on a Queue">Peek Messages on a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>GET</td><td><a href="#view_a_message" title="View a Message from a Queue">View a Message from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch</td><td>POST</td><td><a href="#touch_a_message_on_a_queue" title="Touch a Message on a Queue">Touch a Message on a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release</td><td>POST</td><td><a href="#release_a_message_on_a_queue" title="Release a Message on a Queue">Release a Message on a Queue</a></td></tr>
@@ -685,6 +686,33 @@ Any empty JSON body.
 {% endhighlight %}
 
 
+## View a Message from a Queue
+
+
+This call will delete the message. Be sure you call this after you're done with a message or it will be placed back on the queue.
+
+### Endpoint
+
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The project this message belongs to.
+* **Queue Name**: The name of queue.
+* **Message ID**: The id of the message to view.
+
+#### Response
+{% highlight js %}
+{
+    "id": "5831237764476661217",
+    "body": "hi",
+    "timeout": 60,
+    "reserved_count": 0,
+}
+{% endhighlight %}
+
 ## Delete a Message from a Queue
 
 This call will delete the message. Be sure you call this after you're done with a message or it will be placed back on the queue.
@@ -697,7 +725,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 
 #### URL Parameters
 
-* **Project ID**: The project these messages belong to.
+* **Project ID**: The project this message belongs to.
 * **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to delete.
 
@@ -707,8 +735,6 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
   "msg": "Deleted"
 }
 {% endhighlight %}
-
-
 
 
 ## Get Push Status for a Message
