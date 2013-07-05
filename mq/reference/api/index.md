@@ -553,15 +553,18 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
     {
        "id": 1,
        "body": "first message body",
-       "timeout": 600
+       "timeout": 600,
+       "reserved_count": 1,
+       "push_status": {"retries_remaining": 1}
     },
     {
        "id": 2,
        "body": "second message body",
-       "timeout": 600
+       "timeout": 600,
+       "reserved_count": 1,
+       "push_status": {"retries_remaining": 1}
     }
-  ],
-  "timeout": 600
+  ]
 }
 {% endhighlight %}
 
