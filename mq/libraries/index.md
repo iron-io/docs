@@ -31,6 +31,7 @@ These are some unofficial client libraries that use the IronMQ <a href="/mq/refe
 <li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> (Thanks to <a href="https://github.com/odeits" target="_blank">Oscar Deits</a>)</li>
 <li><a href="https://github.com/acropolium/Rest4Net/tree/master/src/Rest4Net.IronMq" target="_blank">.NET - Rest4Net.IronMq</a> (Thanks to <a href="https://github.com/acropolium" target="_blank">Acropolium Studio</a>)</li>
 <li><a href="https://github.com/eventio/bbq" target="_blank">PHP - BBQ - Queue Abstraction Layer</a> (Thanks to <a href="https://github.com/vmattila" target="_blank">Ville Matilla</a>)</li>
+<li><a href="https://github.com/trevershick/ironmq-si" target="_blank">IronMQ Spring Integration</a> (Thanks to <a href="https://github.com/trevershick" target="_blank">Trevor Shick</a>)</li>
 </ul>
 </div>
 
