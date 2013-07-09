@@ -68,17 +68,8 @@ Here's a sample list of languages available (with multiple clients libs to choos
 Check out list of client libraries [on GitHub](https://github.com/kr/beanstalkd/wiki/client-libraries)
 
 ## Host Information
-To connect to IronMQ using Beanstalkd, use one of the hosts below (depending on the [cloud you're using](/mq/reference/clouds)). 
 
-<table class="reference">
-  <thead>
-    <tr><th style="width: 30%;">Cloud</th><th style="width: 55%;">Host</th><th style="width: 15%;">Port</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>AWS</td><td>mq-aws-us-east-1.iron.io</td><td>11300</td></tr>
-    <tr><td>Rackspace</td><td>mq-rackspace-dfw.iron.io</td><td>11300</td></tr>
-  </tbody>
-</table>
+To connect to IronMQ using Beanstalkd, use one of the [hosts on our Clouds page](/mq/reference/clouds). 
 
 **NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our 
 [HTTP clients](/mq/libraries) if you are on Rackspace. 
