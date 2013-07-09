@@ -105,7 +105,16 @@ The domains for the clouds IronMQ supports are as follows:
   </thead>
   <tbody>
     <tr><td>AWS</td><td>mq-aws-us-east-1</td></tr>
-    <tr><td>Rackspace</td><td>mq-rackspace-dfw</td></tr>
+    <tr>
+			<td>Rackspace ORD</td>
+			<td>mq-rackspace-ord.iron.io</td>
+		</tr>
+		<tr>
+			<td>Rackspace DFW<br/>
+			Deprecated - please use ORD.
+			</td>
+			<td>mq-rackspace-dfw.iron.io</td>
+		</tr>
   </tbody>
 </table>
 
