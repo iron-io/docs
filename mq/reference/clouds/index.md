@@ -36,6 +36,8 @@ Each of the official IronMQ [client libraries](/mq/libraries) allows you to chan
 	</tbody>
 </table>
 
+[Alternative domains can be found here in case of dns failures](https://plus.google.com/u/0/101022900381697718949/posts/36PS2dQH3Gn).
+
 **NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our 
 [HTTP clients](/mq/libraries) if you are on Rackspace. 
 
