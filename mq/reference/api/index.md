@@ -96,15 +96,18 @@ All request bodies should be in JSON format, with Content-Type of `application/j
 
 All endpoints should be prefixed with the following:
 
-https://<span class="variable domain">{Domain}</span>.iron.io/1
+https://<span class="variable domain">{host}</span>/1
 
-The domains for the clouds IronMQ supports are as follows:
+The hosts for the clouds IronMQ supports are as follows:
 <table class="reference">
   <thead>
-    <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{Domain}</span></th></tr>
+    <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{host}</span></th></tr>
   </thead>
   <tbody>
-    <tr><td>AWS</td><td>mq-aws-us-east-1</td></tr>
+    <tr>
+      <td>AWS</td>
+      <td>mq-aws-us-east-1.iron.io</td>
+    </tr>
     <tr>
 			<td>Rackspace ORD</td>
 			<td>mq-rackspace-ord.iron.io</td>
@@ -117,6 +120,8 @@ The domains for the clouds IronMQ supports are as follows:
 		</tr>
   </tbody>
 </table>
+
+[Alternative domains can be found here in case of dns failures](https://plus.google.com/u/0/101022900381697718949/posts/36PS2dQH3Gn).
 
 ### Pagination
 
