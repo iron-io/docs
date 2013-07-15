@@ -728,7 +728,7 @@ small {
 }
 
 .wrapper-holder {
-  padding: 0 0 271px;
+  padding: 0;
   width: 970px;
   margin: 0 auto;
   background: url(http://www.iron.io/assets/transparent.gif) no-repeat
@@ -736,18 +736,50 @@ small {
 
 #header {
   overflow: hidden;
-  width: 969px;
-  height: 48px;
-  padding: 8px 0 0 1px;
-  margin: 0 0 16px
+  margin: 0 auto;
+  height: auto;
+  padding: 0;
+  background: #111;
+  background: -webkit-linear-gradient(#444, #111);
+  background: -moz-linear-gradient(#444, #111);
+  background: -ms-linear-gradient(#444, #111);
+  background: -o-linear-gradient(#444, #111);
+  background: linear,top,#444,#111;
+  position: relative;
+}
+
+#header .nav-texture {
+  position: absolute;
+  content: '';
+  display: block;
+  background: url(http://www.iron.io/assets/nav-texture.png) repeat;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#header .wrapper-holder {
+  margin: 10px auto 0;
+  padding: 0;
+  position: relative;
+  z-index: 100;
+  width: 940px;
 }
 
 .logo {
+  left: 0;
+  margin: 0 0 10px;
+  position: relative;
   float: left;
   width: 105px;
   height: 40px;
   overflow: hidden;
   text-indent: -9999px;
+  -webkit-transition: left .2s linear, margin-left .2s linear;
+  -moz-transition: left .2s linear, margin-left .2s linear;
+  -ms-transition: left .2s linear, margin-left .2s linear;
+  -o-transition: left .2s linear, margin-left .2s linear;
+  transition: left .2s linear, margin-left .2s linear;
   background: url(http://www.iron.io/assets/logo.png) no-repeat
 }
 
@@ -757,9 +789,20 @@ small {
 }
 
 #nav {
-  float: right;
   padding: 1px 0 0;
-  margin-top: 2px
+  margin-top: 2px;
+  margin-right: -10px;
+
+  float: right;
+  height: auto;
+  width: auto;
+  clear: none;
+  opacity: 1;
+  -webkit-transition: height .2s linear, opacity .3s linear;
+  -moz-transition: height .2s linear, opacity .3s linear;
+  -ms-transition: height .2s linear, opacity .3s linear;
+  -o-transition: height .2s linear, opacity .3s linear;
+  transition: height .2s linear, opacity .3s linear;
 }
 
 #nav ul {
@@ -1070,7 +1113,7 @@ small {
 .container {
   overflow: hidden;
   width: 100%;
-  margin: 0 0 29px;
+  margin: 20px 0 30px;
   position: relative;
   border-radius: 4px
 }
@@ -2777,7 +2820,6 @@ body.worker .page-menu .active a {
 
 #footer {
   height: 271px;
-  margin: -271px 0 0;
   position: relative;
   font-size: 11px;
   line-height: 14px;
