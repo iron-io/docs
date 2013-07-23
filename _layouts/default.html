@@ -6,13 +6,16 @@
 <body class="team">
 
 <div id="wrapper">
-  <div class="wrapper-holder">
 
-    <header id="header">
+  <header id="header">
+    <div class="nav-texture"></div>
+    <div class="wrapper-holder">
       {% include nav.html %}
-    </header>
+    </div>
+  </header>
 
-    <div id="main">
+  <div id="main">
+    <div class="wrapper-holder">
       <section class="container">
         {% if page.section == "cache" %}
         <!--<img src="/images/beta_ribbon.png" style="position:absolute; width:135px; height:78px; z-index:999;right:-2px;top:-2px;" />-->
@@ -73,10 +76,10 @@
   {% include footer.html %}
 </footer>
 {% if page.languages %}
-<script src="{{ site.baseurl }}/js/bootstrap-dropdown.js" type="text/javascript"></script>
-<script src="{{ site.baseurl }}/js/language_switcher.js" type="text/javascript"></script>
-<script src="{{ site.baseurl }}/js/purl.js" type="text/javascript"></script>
-<script src="{{ site.baseurl }}/js/cookies.min.js" type="text/javascript"></script>
+<script src="/js/bootstrap-dropdown.js" type="text/javascript"></script>
+<script src="/js/language_switcher.js" type="text/javascript"></script>
+<script src="/js/purl.js" type="text/javascript"></script>
+<script src="/js/cookies.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	{% assign default_lang = "ruby" %}
 	var languages = { {% for lang in page.languages %}{% if lang.default %}{% assign default_lang = lang.slug %}{% endif %}

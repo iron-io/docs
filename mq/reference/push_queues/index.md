@@ -13,7 +13,8 @@ breadcrumbs:
     <li><a href="#overview">Overview</a></li>
     <li><a href="#subscribers">Subscribers</a></li>
     <li><a href="#push_queue_settings">Push Queue Settings</a></li>
-    <li><a href="#queuing_messages">Queuing Messages</a></li>
+    <li><a href="#queueing_messages">Queueing Messages</a></li>
+    <li><a href="#retries">Retries</a></li>
     <li><a href="#checking_status">Checking Status</a></li>
     <li>
       <a href="#how_the_endpoint_should_handle_push_messages">How the Endpoint Should Handle Push Messages</a>
@@ -83,6 +84,19 @@ You should get a curl response that looks like this:
 <div>
 <script src="https://gist.github.com/4489435.js"> </script>
 </div>
+
+## Retries
+
+IronMQ will automatically retry if it fails to deliver a message. This can be either a connection error, an error response (eg: 5xx), 
+or any other scenario that does not return 2xx response. The behavior is a bit different depending on whether it's unicast or
+multicast as follows:
+
+- multicast treats each endpoint separately and will try each endpoint once per retry. If one endpoint fails,
+  it will retry that single endpoint after retries_delay, it won't retry endpoints that were successful.
+- unicast will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered. 
+  If it fails, a different endpoint is tried immediately and this continues until a successful response is returned 
+  or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
+  be retried after retries_delay. 
 
 ## Checking Status
 

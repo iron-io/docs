@@ -7,7 +7,7 @@ breadcrumbs:
 ---
 
 <ul>
-  {% for post in site.categories.articles %}
-  <li><a href="{{ site.baseurl }}{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
-  {% endfor %}
+    {% for post in site.categories.articles %}
+    <li><a href="{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a></li>
+    {% endfor %}
 </ul>

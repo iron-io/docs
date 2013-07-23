@@ -728,7 +728,7 @@ small {
 }
 
 .wrapper-holder {
-  padding: 0 0 271px;
+  padding: 0;
   width: 970px;
   margin: 0 auto;
   background: url(http://www.iron.io/assets/transparent.gif) no-repeat
@@ -736,18 +736,50 @@ small {
 
 #header {
   overflow: hidden;
-  width: 969px;
-  height: 48px;
-  padding: 8px 0 0 1px;
-  margin: 0 0 16px
+  margin: 0 auto;
+  height: auto;
+  padding: 0;
+  background: #111;
+  background: -webkit-linear-gradient(#444, #111);
+  background: -moz-linear-gradient(#444, #111);
+  background: -ms-linear-gradient(#444, #111);
+  background: -o-linear-gradient(#444, #111);
+  background: linear,top,#444,#111;
+  position: relative;
+}
+
+#header .nav-texture {
+  position: absolute;
+  content: '';
+  display: block;
+  background: url(http://www.iron.io/assets/nav-texture.png) repeat;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#header .wrapper-holder {
+  margin: 10px auto 0;
+  padding: 0;
+  position: relative;
+  z-index: 100;
+  width: 940px;
 }
 
 .logo {
+  left: 0;
+  margin: 0 0 10px;
+  position: relative;
   float: left;
   width: 105px;
   height: 40px;
   overflow: hidden;
   text-indent: -9999px;
+  -webkit-transition: left .2s linear, margin-left .2s linear;
+  -moz-transition: left .2s linear, margin-left .2s linear;
+  -ms-transition: left .2s linear, margin-left .2s linear;
+  -o-transition: left .2s linear, margin-left .2s linear;
+  transition: left .2s linear, margin-left .2s linear;
   background: url(http://www.iron.io/assets/logo.png) no-repeat
 }
 
@@ -757,9 +789,20 @@ small {
 }
 
 #nav {
-  float: right;
   padding: 1px 0 0;
-  margin-top: 2px
+  margin-top: 2px;
+  margin-right: -10px;
+
+  float: right;
+  height: auto;
+  width: auto;
+  clear: none;
+  opacity: 1;
+  -webkit-transition: height .2s linear, opacity .3s linear;
+  -moz-transition: height .2s linear, opacity .3s linear;
+  -ms-transition: height .2s linear, opacity .3s linear;
+  -o-transition: height .2s linear, opacity .3s linear;
+  transition: height .2s linear, opacity .3s linear;
 }
 
 #nav ul {
@@ -1070,7 +1113,7 @@ small {
 .container {
   overflow: hidden;
   width: 100%;
-  margin: 0 0 29px;
+  margin: 20px 0 30px;
   position: relative;
   border-radius: 4px
 }
@@ -2777,7 +2820,6 @@ body.worker .page-menu .active a {
 
 #footer {
   height: 271px;
-  margin: -271px 0 0;
   position: relative;
   font-size: 11px;
   line-height: 14px;
@@ -4801,4 +4843,78 @@ ul#architecture li {
   width: 140px;
   margin-top: 25px;
   margin-right: 10px
+}
+
+.content-container .content .libs {
+  padding: 0;
+  margin-right: -20px;
+  height: 120px;
+  margin-top: 30px;
+}
+
+.content-container .content .libs li {
+  float: left;
+  list-style: none;
+  background: -webkit-linear-gradient(#fff, #f8f8f8);
+  background: -moz-linear-gradient(#fff, #f8f8f8);
+  background: -ms-linear-gradient(#fff, #f8f8f8);
+  background: -o-linear-gradient(#fff, #f8f8f8);
+  background: linear-gradient(#fff, #f8f8f8);
+  padding: 0;
+  width: 106px;
+  margin: 0 10px 10px 0;
+}
+
+.content-container .content .libs li a {
+  display: block;
+  background: url(/images/libs/language_node.png) no-repeat 21px 6px;
+  padding: 0;
+  border: 1px solid #CCC;
+  width: 105px;
+  height: 100px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 172px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #CCC;
+  font-size: 14px;
+}
+
+.content-container .content .libs li a:hover {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+  color: #aaa;
+}
+
+.content-container .content .libs li a[data-lang="ruby"] {
+  background: url(/images/libs/language_ruby.png) no-repeat 21px 9px;
+}
+
+.content-container .content .libs li a[data-lang="php"] {
+  background: url(/images/libs/language_php.png) no-repeat 2px 11px;
+}
+
+.content-container .content .libs li a[data-lang="python"] {
+  background: url(/images/libs/language_python.png) no-repeat 3px 18px;
+}
+
+.content-container .content .libs li a[data-lang="java"] {
+  background: url(/images/libs/language_java.png) no-repeat 9px 3px;
+}
+
+.content-container .content .libs li a[data-lang="node"] {
+  background: url(/images/libs/language_node.png) no-repeat 3px 13px;
+}
+
+.content-container .content .libs li a[data-lang="go"] {
+  background: url(/images/libs/language_go.png) no-repeat 22px 8px;
+}
+
+.content-container .content .libs li a[data-lang="dotnet"] {
+  background: url(/images/libs/language_dotnet.png) no-repeat 8px 0px;
+}
+
+.content-container .content .libs li a[data-lang="clojure"] {
+  background: url(/images/libs/language_clojure.png) no-repeat 22px 12px;
 }
