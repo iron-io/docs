@@ -11,6 +11,7 @@ breadcrumbs:
   <h3>Table of Contents</h3>
   <ul>
     <li><a href="#overview">Overview</a></li>
+    <li><a href="#subscribers">Subscribers</a></li>
     <li><a href="#push_queue_settings">Push Queue Settings</a></li>
     <li><a href="#queueing_messages">Queueing Messages</a></li>
     <li><a href="#retries">Retries</a></li>
@@ -24,14 +25,37 @@ breadcrumbs:
         <li><a href="#push_queue_headers">Push Queue Headers</a></li>
       </ul>
     </li>
-    <li><a href="#encription_and_security">Encription and Security</a></li>
+    <li><a href="#encryption_and_security">Encryption and Security</a></li>
     <li><a href="#important_notes">Important Notes</a></li>
   </ul>  
 </section>
 
 ## Overview
 
-[Blog Post for Overview](http://blog.iron.io/2013/01/ironmq-push-queues-reliable-message.html)
+[Blog Post for Overview](http://blog.iron.io/2013/01/ironmq-push-queues-reliable-message.html). You should also review
+the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/api/).
+
+## Subscribers
+
+Subscribers are simply URL's that IronMQ will post to whenever a message is posted to your queue. There are currently
+three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
+
+1. HTTP endpoints: Any http url, for instance, http://mydomain.com/some/action
+1. IronMQ endpoints: IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
+1. IronWorker endpoints: IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
+
+### Iron.io URL Formats
+
+The basic format is similar to any other URL:
+
+    [ironmq_or_ironworker]://[project_id:token]@[host]/queue_or_worker_name
+
+Here are some examples:
+
+- ironmq:///queue_name - refers to the queue named "queue_name" in the same project.
+- ironmq://project_id:token@/queue_name - refers to the queue named "queue_name" in a different project on same region/cloud.
+- ironmq://project_id:token@mq-rackspace-dfw.iron.io/queue_name - refers to the queue named "queue_name" on a different region/cloud.
+- ironworker::///worker_name - refers to a worker on IronWorker called "worker_name".
 
 ## Push Queue Settings
 
@@ -47,7 +71,7 @@ The maximum is 64kb for JSONify array of subscribers' hashes.
 <script src="https://gist.github.com/4479844.js"> </script>
 </div>
 
-## Queueing Messages
+## Queuing Messages
 
 This is the same as posting any message to IronMQ. Here is a curl example to post a message to the queue:
 
@@ -128,7 +152,7 @@ Each message pushed will have some special headers as part of the HTTP request.
 - Iron-Subscriber-Message-Url - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
 IronMQ that you're done with the message. Send a DELETE http request to this URL to delete it.
 
-## Encription and Security
+## Encryption and Security
 
 When you are using your private API as subscriber
 and want to secure connection to IronMQ you are able to use HTTPS endpoints.
