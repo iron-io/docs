@@ -139,7 +139,7 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 
 ## Default Languages Versions
 
-Below you can see pre-installed versions of languages in the IronWorker environment.
+Below you can see the pre-installed versions of languages in the IronWorker environment.
 
 <table>
   <thead>
