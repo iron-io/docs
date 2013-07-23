@@ -23,6 +23,7 @@ Also, when using `ruby` or `php` runtimes JSON payload will be automatically par
   <ul>
     <li><a href="#get_payload_in_a_worker">Get Payload in a Worker</a></li>
     <li><a href="#other_information">Other Information</a></li>
+    <li><a href="#payload_filtering_in_the_hud">Payload Filtering in the HUD</a></li>
   </ul>
 </section>
 
@@ -76,3 +77,59 @@ Your worker will also be passed `-id` and `-d` command line arguments.
 The value of `-id` will be the ID of the task that is currently being executed,
 and the value of `-d` will be the user-writable directory
 that can be used for temporary storage for the duration of the task's execution.
+
+## Payload Filtering in the HUD
+
+You can see your tasks payload in the [HUD](https://hud.iron.io).
+Go to Worker project's section, click on "Tasks" tab and then on one of your workers where you use payload.
+Click on "Details" link on task.
+
+HUD filters payload by the next rule.
+It looks for all keys on any level of nesting which contains substrings:
+
+* `token`
+* `security`
+* `password`
+* `secret`
+* `pass`
+* `connectionstring`
+* `api_key`
+* `license`
+
+and change their values to `[FILTERED]`.
+
+#### Example: original payload
+
+{% highlight js %}
+{
+  "database": {
+    "connectionstring": "postgres://usr:pass@host:port/db"
+  },
+  "iron": {
+    "project_id": "1234567890",
+    "token": "TOKEN1234"
+  },
+  "3rdparty_service": {
+    "user": "username",
+    "service_pass": "userp4ss"
+  }
+}
+{% endhighlight %}
+
+#### Example: payload visible through the HUD
+
+{% highlight js %}
+{
+  "database": {
+    "connectionstring": "[FILTERED]"
+  },
+  "iron": {
+    "project_id": "1234567890",
+    "token": "[FILTERED]"
+  },
+  "3rdparty_service": {
+    "user": "username",
+    "service_pass": "[FILTERED]"
+  }
+}
+{% endhighlight %}
