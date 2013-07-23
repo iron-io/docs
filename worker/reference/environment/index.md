@@ -20,6 +20,7 @@ breadcrumbs:
     <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
     <li><a href="#minimum__time">Minimum <code>run_every</code> Time</a></li>
     <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
+    <li><a href="#default_languages_versions">Default Languages Versions</a></li>
   </ul>  
 </section>
 
@@ -134,4 +135,25 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 <td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td>
 </tr>
 </tbody>
+</table>
+
+## Default Languages Versions
+
+Below you can see pre-installed versions of languages in IronWorker sandbox.
+If you want another version of choosen language try to update it by
+[adding related `deb` packages to your worker](/worker/reference/dotworker/#syntax_reference).
+
+<table>
+  <thead>
+    <tr><th>Language</th><th>Version Installed</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Ruby</td><td>1.9.3</td></tr>
+    <tr><td>Python</td><td>2.7.3</td></tr>
+    <tr><td>Node.js</td><td>0.8.8</td></tr>
+    <tr><td>Go</td><td>1.0.2</td></tr>
+    <tr><td>PHP</td><td>5.3.10</td></tr>
+    <tr><td>Java</td><td>1.7.0</td></tr>
+    <tr><td>.NET (Mono JIT)</td><td>2.10.8.1</td></tr>
+  </tbody>
 </table>
