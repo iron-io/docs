@@ -139,7 +139,7 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 
 ## Default Languages Versions
 
-Below you can see pre-installed versions of languages in IronWorker sandbox.
+Below you can see pre-installed versions of languages in the IronWorker environment.
 If you want another version of choosen language try to update it by
 [adding related `deb` packages to your worker](/worker/reference/dotworker/#syntax_reference).
 
