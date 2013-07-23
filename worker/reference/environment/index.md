@@ -140,8 +140,6 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 ## Default Languages Versions
 
 Below you can see pre-installed versions of languages in the IronWorker environment.
-If you want another version of choosen language try to update it by
-[adding related `deb` packages to your worker](/worker/reference/dotworker/#syntax_reference).
 
 <table>
   <thead>
@@ -149,11 +147,21 @@ If you want another version of choosen language try to update it by
   </thead>
   <tbody>
     <tr><td>Ruby</td><td>1.9.3</td></tr>
+    <tr><td>PHP</td><td>5.3.10</td></tr>
     <tr><td>Python</td><td>2.7.3</td></tr>
+    <tr><td>Java</td><td>1.7.0</td></tr>
     <tr><td>Node.js</td><td>0.8.8</td></tr>
     <tr><td>Go</td><td>1.0.2</td></tr>
-    <tr><td>PHP</td><td>5.3.10</td></tr>
-    <tr><td>Java</td><td>1.7.0</td></tr>
     <tr><td>.NET (Mono JIT)</td><td>2.10.8.1</td></tr>
   </tbody>
 </table>
+
+<div class="alert">
+  <p>
+    <strong>Note:</strong>
+    It may be possible to update the language by
+    <a href="/worker/reference/dotworker/#syntax_reference">adding related <span class="fixed-width">deb</span> packages to your worker</a>
+    although you only go this route only if necessary.
+    Use of earlier versions, especially major versions, may run into difficulties.
+  </p>
+</div>
