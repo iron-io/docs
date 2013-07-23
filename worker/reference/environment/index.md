@@ -161,7 +161,7 @@ Below you can see pre-installed versions of languages in the IronWorker environm
     <strong>Note:</strong>
     It may be possible to update the language by
     <a href="/worker/reference/dotworker/#syntax_reference">adding related <span class="fixed-width">deb</span> packages to your worker</a>
-    although you only go this route only if necessary.
+    although you should go this route only if necessary.
     Use of earlier versions, especially major versions, may run into difficulties.
   </p>
 </div>
