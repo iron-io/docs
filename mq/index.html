@@ -89,7 +89,7 @@ POST https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_qu
 <p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
 
 {%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X POST -d '{"messages":[{"body":"hello world!"}]}' "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X POST -d '{"messages":[{"body":"hello world!"}]}' "https://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
 {% endhighlight %}</div>
 
 <div class="language ruby"><h3>Ruby Example</h3>
@@ -211,7 +211,7 @@ GET https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_que
 	<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
 
 {%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" "https://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
 {% endhighlight %}</div>
 
 <div class="language ruby"><h3>Ruby Example</h3>
@@ -335,7 +335,7 @@ DELETE https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_
 <p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
 
 {%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X DELETE "http://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages/{MESSAGE_ID}"
+curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X DELETE "https://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages/{MESSAGE_ID}"
 {% endhighlight %}</div>
 
 <div class="language ruby"><h3>Ruby Example</h3>
