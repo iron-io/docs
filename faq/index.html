@@ -1,0 +1,133 @@
+---
+layout: default
+section: faq
+breadcrumbs: hidden
+title: Iron.io Frequently Asked Questions
+---
+
+<small class="subtitle">This a compilation of helpful answers to frequently asked questions. If you don't see your question on here fear not! as we have a highly active 24/7 public support channel at <a href="http://get.iron.io/chat">get.iron.io/chat</a> The Iron Team also encourages you to <a href="/community/docs/">contribute</a> to our documentation.</small>
+
+
+
+<h2>IronMQ</h2>
+<ul>
+<li><a href="#MQfaq-1">What is IronMQ?</a></li>
+<li><a href="#MQfaq-2">What can I do with IronMQ?</a></li>
+<li><a href="#MQfaq-3">How do I get started with IronMQ?</a></li>
+<li><a href="#MQfaq-4">What resources are available on IronMQ?</a></li>
+<li><a href="#MQfaq-5">What are the benefits of IronMQ vs RabbitMQ?</a></li>
+<li><a href="#MQfaq-6">What are the benefits of IronMQ vs SQS?</a></li>
+<li><a href="#MQfaq-7">What happens to messages if no clients pull them off after put?</a></li>
+<li><a href="#MQfaq-8">Why are GETs and DELETEs separate actions? </a></li>
+<li><a href="#MQfaq-9">What is a push queue?</a></li>
+<li><a href="#MQfaq-10">What is the difference between unicast and multicast?</a></li>
+<li><a href="#MQfaq-11">Is the retry limit on unicast based on individual push attempt?</a></li>
+<li><a href="#MQfaq-12">Can a queue be a push queue and a pull queue at the same time?</a></li>
+<li><a href="#MQfaq-13">What security measures are used within IronMQ?</a></li>
+</ul>
+
+<h2>IronWorker</h2>
+<ul>
+<li><a href="#Wfaq-1">What is IronWorker?</a></li>
+</ul>
+
+<h2>IronCache</h2>
+<ul>
+<li><a href="#Wfaq-1">What is IronCache?</a></li>
+</ul>
+
+<div id="MQfaq-1">
+<h3> What is IronMQ? </h3>
+<p>IronMQ is an elastic message queue created specifically with the cloud in mind. It’s easy to use, runs on industrial-strength cloud infrastructure, and offers developers ready-to use messaging with highly reliable delivery options and cloud-optimized performance.  </p>
+</div>
+
+<div id="MQfaq-2">
+<h3>What can I do with IronMQ?</h3>
+<p>A messaging layer is key to creating reliable and scalable distributed systems. It lets your orchestrate and manage the volume of messages and events that flow within your application and between other applications, sites, and services. IronMQ is a cloud-based solution that eliminates any setup or maintenance and provides work dispatch, load buffering, synchronicity, database offloading, and many other core needs for scalable cloud application.</p></div>
+
+<div id="MQfaq-3">
+<h3>How do I get started with IronMQ?</h3>
+<p>Users can get up and running in a few minutes. Just sign up and get an auth token, and then you can send and receiving messages on one or more queues. It’s that simple. IronMQ has a generous free plan with no credit card required and so it’s easy to build in message queuing right from the start.</p></div>
+
+<div id="MQfaq-4">
+<h3>What resources are available on IronMQ?</h3>	
+<p>See our developer section for information on how IronMQ works, API reference guide and other technical details. There are also a growing list of client libraries and framework integrations. These cover most common languages as well as frameworks such as Celery, YII, Laravel, DelayedJob and other. </p>
+
+Download examples from Github and get to work.  
+
+What are the benefits of IronMQ vs self-managed message queues?
+Cloud services provide many advantages over standing up software on self-managed servers. Primary ones include reduced complexity, greater speed to market, and increased reliability and scalability. 
+
+It’s reasonably easy to stand up an open-source message queuing solution on a single virtual server but it’s exceedingly difficult to make a queuing system highly scalable and reliable. It takes multiple instances across zones or regions and redundancy within every layer and component including load balancing and the persistence layer. Robust logging and introspection tools add additional complexity. Multiple this across multiple environments, applications, systems, and business units, and the task of operating self-managed queues becomes </div>
+
+<div id="MQfaq-5">
+<h3>What are the benefits of IronMQ vs RabbitMQ?</h3>
+<p>RabbitMQ is an open-source packaged based on the AMQP protocol. It’s a strong messaging standard that has a lot of backing and inertia behind it. Unfortunately, it’s built for a different time – one that is pre-cloud and behind the firewall. It requires a lot of work to scale and make redundant and is more complex than most developers need. 
+
+IronMQ is based on HTTP, takes JSON packages, and uses OAuth for authentication – all protocols and standards that are well-known to cloud developers. AMQP is a separate application layer protocol that is different than the one developers are used to using on a daily basis. 
+
+AMQP also uses a less common default socket as part of the transport layer. Whereas certain cloud application hosts don’t allow most socket connections from within their sandbox, they do allow HTTP requests. HTTP and HTTPS are always open on most enterprise firewalls, but special ports may not always be. Everyone can easily speak HTTP, but it takes special effort to speak AMQP. This greatly limits the environments into which AMQP can be deployed.
+
+For more information on the differences between IronMQ and RabbitMQ, please see the comparison matrix on the website.</p></div>
+
+<div id="MQfaq-6">
+<h3>What are the benefits of IronMQ vs SQS?</h3>
+<p>For more information on the differences between IronMQ and SQS, please see the comparison matrix on the website.</p>
+</div>
+
+<div id="MQfaq-7">
+<h3>What happens to messages if no clients pull them off after putting them in the queue? </h3>
+<p>Messages will persist in the queue until a receiver takes them off.</p>
+</div>
+
+
+<div id="MQfaq-8">
+<h3>Why are GETs and DELETEs separate actions? </h3>
+<p>Receiving a message (GET) and deleting a message (DELETE) are separate actions because it provides a reliable paradigm for processing messages. An explicit delete protects messages from being only partially processed. If the receiving process dies or encounters an error, the message will be automatically put back on the queue once the timeout is reached.
+</p>
+<aside>Note that with push queues, messages are deleted from the queue once a successful push takes place. (Messages can be retried multiple times.)</aside></div>
+
+<div id="MQfaq-9">
+<h3>What is a push queue?</h3>
+<p>A push queue is a queue that automatically pushes messages to endpoints. These endpoints can be HTTP/REST endpoints, IronMQ endpoints (in the form of a webhook), or an IronWorker endpoint (also in the form of a webhook). After a succesful push, messages are automatically deleted from the message queue. </p></div>
+
+<div id="MQfaq-10">
+<h3>What is the difference between unicast and multicast?</h3>
+<p>Unicast is a routing pattern that will cycle through the endpoints pushing to one endpoint after another until a success push occurs.
+
+Multicast is a routing pattern that will push the messages to all the subscribers.</p></div>
+
+Question: Will multicast retry messages to endpoints that fail? Will they be put on an error queue if one or more of the subscribers fail? Will there be indication of which endpoint failed.
+
+<div id="MQfaq-11">
+<h3>Is the retry limit on unicast based on individual push attempts or based on the number of cycles of pushes?</h3>
+<p>
+It is transient so events and the associated data only exists until it has been delivered to all connected clients. If there are no clients subscribed to the channel that the message has been triggered on then that event is instantly lost.
+
+At present, we do not persist messages beyond the timeout value (default or user-set).</p>
+</div>
+
+<div id="MQfaq-12">
+<h3>Can a queue be a push queue and a pull queue at the same time?</h3>
+<p>No. Queues are either on or the other (messages don’t last long on a push queue). You can switch from a pull queue to a push queue and vice versa at any point. (For example, to turn a push queue into a pull queue,you would just send push_type : pull.) Messages on a push queue at the time of a change will remain on the queue. 
+
+You can also make a pull queue a subscriber of a push queue – either statically or by adding/deleting subscribers dynamically. (Just add the webhook endpoint for the pull queue as a subscriber for the push queue.) 
+</p>
+</div>
+
+<div id="MQfaq-13">
+<h3>What security measures are used within IronMQ?</h3>
+<p>Iron.io services run on top of industrial-strength clouds such as AWS and Rackspace and so we inherit many of their security measures and certifications that these clouds offer regarding VM security, network security, and physical security.
+
+Strong authentication using OAuth is provided to ensure that Iron.io accounts, services,  and projects are secured against unauthorized access. Only account owners and accounts that queues have been shares with can access the queues, workers, and caches they create.
+
+We use SSL to protect data in transit and provide a high levels of security for the data within the system. We have a number of customers using us for transactional data and believe we offer a secure, reliable solution for cloud messaging. We do, however, recommend that for especially sensitive data, clients do client-level encryption of data payloads so that is has even added protection when data is at rest. 
+
+We’re happy to discuss these measures as well as custom plans that can address areas that include SLAs, architectural help and enhanced support, and custom data retention options.</p></<div>
+
+
+<!-- <h3>What are the performance characteristics?</h3> -->
+
+
+<p>We keep an active presence on Twitter as <a href="http://twitter.com/getiron">@getiron</a>, on Google+ as <a href="https://plus.google.com/107979826672004784735">+Iron.io</a>, and via chat at <a href="http://get.iron.io/chat">get.iron.io/chat</a>. Follow us, circle us, tweet us, or chat us up. We'd love to hear from you. 
+
