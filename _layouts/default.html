@@ -30,7 +30,7 @@
 		<nav class="sidebar-nav">
 			<div class="sidebar-content">
             <form action="/search">
-              <input type="text" name="q" id="q" placeholder="Search Dev Center" size="18" />
+              <input type="text" name="search-input" id="search-input" placeholder="Search Dev Center" size="18" />
             </form>
 
             {% case page.section %}
@@ -60,7 +60,7 @@
 
 
           <div style="float: right; width: 700px" class="content">
-						<h1>{{ page.title }} {% if page.languages %}{% include language-dropdown.html %}{% endif %}</h1>{% if page.summary %}
+						{% if page.languages %}{% include language-dropdown.html %}{% endif %}<h1>{{ page.title }}</h1> {% if page.summary %}
 						<p class="subtitle">{{ page.summary }}</p>{% endif %}
             {{ content }}
           </div>
