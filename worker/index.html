@@ -129,12 +129,15 @@ $ iron_worker schedule firstworker --run-every 60
 <p>There are a lot of options to configure scheduling tasks; check our <a href="/worker/scheduling">more detailed guide</a> to see more of the options.</p>
 
 <h2 id="inspect">4. Inspect Your Worker (Logging)</h2>
-
+<h2 id="default_logging">Logging to STDOUT (default)</h2>
 <p>In a perfect world, your workers would just work. Sometimes though, workers have bugs in them or an API is down or something goes wrong. In these situations, it's helpful to have some debugging tools.</p>
 
 <p>To aid in debugging, everything that is printed to STDOUT (everything from <span class="fixed-width">puts</span> or <span class="fixed-width">print</span> or <span class="fixed-width">echo</span> or your language's equivalent) in a worker is logged in the <a href="https://hud.iron.io">HUD</a>.</p>
 
 <p>Also, in case you think your package wasn't built correctly or forget which version of your worker is running, the HUD offers downloads for every revision of every code package you upload.</p>
+
+<h2 id="external_logging">Logging to External Services</h2>
+<p>Sometimes it is more helpful to have all logs in one place. Say you have a big web application and want to consolidate the logs of all your tasks and run global searches. We make that super simple to do. Read this <a href="http://blog.iron.io/2013/07/real-time-logging-for-ironworker.html">blog article</a> on how to setup real-time remote logging to external services. In the article, Papertrail is used as an example but you can send your log output to any syslog endpoint and see it in real-time. You can run your own syslog server with something like <a href="http://www.debuntu.org/how-to-remote-syslog-logging-on-debian-and-ubuntu/">syslogd</a> or <a href="http://danielmiessler.com/blog/howto-use-splunk-as-your-remote-syslog-server">Splunk</a>, or you can use popular logging services such as <a href="https://papertrailapp.com">Papertrail</a> or <a href="http://loggly.com/">Loggly</a>.</p>
 
 <h2>Next Steps</h2>
 
