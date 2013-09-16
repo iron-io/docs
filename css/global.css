@@ -374,7 +374,7 @@ a.tag, a.tag:hover {
 }
 
 
-#search-input {
+#q {
   padding:2px;
   border-radius: 10px;
   border: 1px solid #AAA;
@@ -391,7 +391,7 @@ a.tag, a.tag:hover {
   background: linear-gradient(#F8F8F8, white 50%);
 }
 
-#search-input:focus {
+#q:focus {
   border-color: rgb(51, 163, 242);
   background: rgb(245, 251, 255);
 }
