@@ -15,6 +15,7 @@ breadcrumbs:
     <li><a href="#push_queue_settings">Push Queue Settings</a></li>
     <li><a href="#queueing_messages">Queueing Messages</a></li>
     <li><a href="#retries">Retries</a></li>
+    <li><a href="#error_queues">Error Queues</a></li>
     <li><a href="#checking_status">Checking Status</a></li>
     <li>
       <a href="#how_the_endpoint_should_handle_push_messages">How the Endpoint Should Handle Push Messages</a>
@@ -66,6 +67,7 @@ The maximum is 64kb for JSONify array of subscribers' hashes.
 - push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - retries - number of times to retry. Default is 3. Maximum is 100.
 - retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
+- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. See <a href="#error_queues">Error Queues</a> section below. 
 
 <div>
 <script src="https://gist.github.com/4479844.js"> </script>
@@ -97,6 +99,18 @@ multicast as follows:
   If it fails, a different endpoint is tried immediately and this continues until a successful response is returned 
   or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
   be retried after retries_delay. 
+
+## Error Queues
+
+Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to 
+push a message. If an error queue is set with the `error_queue` parameter, then after the set number of `retries`, a 
+message will be put in the error queue. The message will contain the following information:
+
+<div>
+<script src="https://gist.github.com/6596528.js"> </script>
+</div>
+
+You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id). 
 
 ## Checking Status
 
