@@ -55,7 +55,7 @@ Here are some examples:
 - ironmq:///queue_name - refers to the queue named "queue_name" in the same project.
 - ironmq://project_id:token@/queue_name - refers to the queue named "queue_name" in a different project on same region/cloud.
 - ironmq://project_id:token@mq-rackspace-dfw.iron.io/queue_name - refers to the queue named "queue_name" on a different region/cloud.
-- ironworker::///worker_name - refers to a worker on IronWorker called "worker_name".
+- ironworker:///worker_name - refers to a worker on IronWorker called "worker_name".
 
 ## Push Queue Settings
 
