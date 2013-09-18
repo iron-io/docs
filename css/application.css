@@ -4918,3 +4918,8 @@ ul#architecture li {
 .content-container .content .libs li a[data-lang="clojure"] {
   background: url(/images/libs/language_clojure.png) no-repeat 22px 12px;
 }
+
+.faq-image{
+  width:70%;
+  border:2px solid black;
+}
