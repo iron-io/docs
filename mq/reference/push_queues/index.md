@@ -110,7 +110,8 @@ message will be put in the error queue. The message will contain the following i
 <script src="https://gist.github.com/6596528.js"> </script>
 </div>
 
-You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id). 
+You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
+the `source_msg_id` value. 
 
 ## Checking Status
 
