@@ -42,27 +42,27 @@ title: Iron.io Frequently Asked Questions
 
 <div id="MQfaq-1">
 <h3> What is IronMQ? </h3>
-<p>IronMQ is an elastic message queue created specifically with the cloud in mind. It’s easy to use, runs on industrial-strength cloud infrastructure, and offers developers ready-to use messaging with highly reliable delivery options and cloud-optimized performance.  </p>
+<p>IronMQ is an elastic message queue created specifically with the cloud in mind. It’s easy to use, runs on industrial-strength cloud infrastructure, and offers developers ready-to-use messaging with highly reliable delivery options and cloud-optimized performance.  </p>
 </div>
 
 <div id="MQfaq-2">
 <h3>What can I do with IronMQ?</h3>
-<p>A messaging layer is key to creating reliable and scalable distributed systems. It lets your orchestrate and manage the volume of messages and events that flow within your application and between other applications, sites, and services. IronMQ is a cloud-based solution that eliminates any setup or maintenance and provides work dispatch, load buffering, synchronicity, database offloading, and many other core needs for scalable cloud application.</p></div>
+<p>A messaging layer is key to creating reliable and scalable distributed systems. It lets you orchestrate and manage the volume of messages and events that flow within your application and between other applications, sites, and services. IronMQ is a cloud-based solution that eliminates any setup or maintenance and provides work dispatch, load buffering, synchronicity, database offloading, and many other core needs for scalable cloud applications.</p></div>
 
 <div id="MQfaq-3">
 <h3>How do I get started with IronMQ?</h3>
-<p>Users can get up and running in a few minutes. Just sign up and get an auth token, and then you can send and receiving messages on one or more queues. It’s that simple. IronMQ has a generous free plan with no credit card required and so it’s easy to build in message queuing right from the start.</p></div>
+<p>Users can get up and running in a few minutes. Just sign up and get an auth token, and then you can send and receive messages on one or more queues. It’s that simple. IronMQ has a generous free plan with no credit card required and so it’s easy to build in message queuing right from the start.</p></div>
 
 <div id="MQfaq-4">
 <h3>What resources are available on IronMQ?</h3>
-<p>See our developer section for information on how IronMQ works, API reference guide and other technical details. There are also a growing list of <a href="/mq/libraries/">client libraries</a> and framework integrations. These cover most common languages as well as frameworks such as Celery, YII, Laravel, DelayedJob and other. </p>
+<p>See our developer section for information on how IronMQ works, API reference guide and other technical details. There are also a growing list of <a href="/mq/libraries/">client libraries</a> and framework integrations. These cover most common languages as well as frameworks such as Celery, YII, Laravel, DelayedJob and others. </p>
 </div>
 
 <div id="MQfaq-5">
 <h3>What are the benefits of IronMQ vs self-managed message queues?</h3>
 <p>Cloud services provide many advantages over standing up software on self-managed servers. Primary ones include reduced complexity, greater speed to market, and increased reliability and scalability.
 
-It’s reasonably easy to stand up an open-source message queuing solution on a single virtual server but it’s exceedingly difficult to make a queuing system highly scalable and reliable. It takes multiple instances across zones or regions and redundancy within every layer and component including load balancing and the persistence layer. Robust logging and introspection tools add additional complexity. Multiple this across multiple environments, applications, systems, and business units, and the task of operating self-managed queues becomes</p></div>
+It’s reasonably easy to stand up an open-source message queuing solution on a single virtual server but it’s exceedingly difficult to make a queuing system highly scalable and reliable. It takes multiple instances across zones or regions and redundancy within every layer and component including load balancing and the persistence layer. Robust logging and introspection tools add additional complexity. Multiply this across multiple environments, applications, systems, and business units, and the task of operating self-managed queues becomes almost impossible.</p></div>
 
 <div id="MQfaq-6">
 <h3>What are the benefits of IronMQ vs RabbitMQ?</h3>
@@ -101,8 +101,6 @@ For more information on the differences between IronMQ and RabbitMQ, please see 
 
 Multicast is a routing pattern that will push the messages to all the subscribers.</p></div>
 
-Question: Will multicast retry messages to endpoints that fail? Will they be put on an error queue if one or more of the subscribers fail? Will there be indication of which endpoint failed.
-
 <div id="MQfaq-12">
 <h3>Is the retry limit on unicast based on individual push attempts or based on the number of cycles of pushes?</h3>
 <p>
@@ -123,16 +121,16 @@ You can also make a pull queue a subscriber of a push queue – either staticall
 <h3>What security measures are used within IronMQ?</h3>
 <p>Iron.io services run on top of industrial-strength clouds such as AWS and Rackspace and so we inherit many of their security measures and certifications that these clouds offer regarding VM security, network security, and physical security.
 
-Strong authentication using OAuth is provided to ensure that Iron.io accounts, services,  and projects are secured against unauthorized access. Only account owners and accounts that queues have been shares with can access the queues, workers, and caches they create.
+Strong authentication using OAuth is provided to ensure that Iron.io accounts, services,  and projects are secured against unauthorized access. Only account owners and accounts that queues have been shared with can access the queues, workers, and caches they create.
 
-We use SSL to protect data in transit and provide a high levels of security for the data within the system. We have a number of customers using us for transactional data and believe we offer a secure, reliable solution for cloud messaging. We do, however, recommend that for especially sensitive data, clients do client-level encryption of data payloads so that is has even added protection when data is at rest.
+We use SSL to protect data in transit and provide a high levels of security for the data within the system. We have a number of customers using us for transactional data and believe we offer a secure, reliable solution for cloud messaging. We do, however, recommend that for especially sensitive data, clients do client-level encryption of data payloads so that it has added protection even when data is at rest.
 
 We’re happy to discuss these measures as well as custom plans that can address areas that include SLAs, architectural help and enhanced support, and custom data retention options.</p>
 </div>
 
 <div id="MQfaq-15">
 <h3>What happens once the set number of api requests, compute hours, or data volume in a plan isreached?</h3>
-<p>It’s up to you. Service can continue seamlessly on a usage-rated basis or you can set a hard stop at the plan amount. The default is unlimited usage. See each service for the usage-based rates.</p>
+<p>It’s up to you. Service can continue seamlessly on a usage-based rates or you can set a hard stop at the plan amount. The default is unlimited usage. See each service for the usage-based rates.</p>
 </div>
 
 <div id="MQfaq-16">
@@ -164,7 +162,7 @@ If you’re a heavy user and have specific needs, please let us know and we’d 
 <div id="Workerfaq-2">
 	<h3>What are the advantages of IronWorker vs Heroku Workers, Celery, or Resque?</h3>
 	<p>Our workers give you a wide range of flexibility and scalability that other services can't match.
-	We support a wide range of languages. Python, Ruby, PHP, .NET, Java, Clojure, Node.js, Go, and binary code! Have a up to the second reporting and analytics though our Heads up Display(HUD). By not having to manage your own servers, queues, and schedulers, we allow you scale accordingly to your needs, only processing time is counted.<a href="http://www.iron.io/worker#comparison">See our Comparison Chart</a> </p>
+	We support a wide range of languages. Python, Ruby, PHP, .NET, Java, Clojure, Node.js, Go, and binary code! Have a up to the second reporting and analytics though our Heads Up Display (HUD). By not having to manage your own servers, queues, and schedulers, we allow you scale accordingly to your needs, only processing time is counted.<a href="http://www.iron.io/worker#comparison">See our Comparison Chart</a> </p>
 </div>
 <div id="Workerfaq-3">
 	<h3>What client libraries are available for IronWorker?</h3>
