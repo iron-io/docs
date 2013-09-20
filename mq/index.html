@@ -359,7 +359,6 @@ msg.delete
 	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight php %}
-<?php
 $ironmq = new IronMQ();
 $msg = $ironmq->getMessage("test_queue");
 $ironmq->deleteMessage($msg->id);
