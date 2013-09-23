@@ -67,7 +67,7 @@ The maximum is 64kb for JSONify array of subscribers' hashes.
 - push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - retries - number of times to retry. Default is 3. Maximum is 100.
 - retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
-- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. See <a href="#error_queues">Error Queues</a> section below. 
+- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable error queues. Default is disabled. See <a href="#error_queues">Error Queues</a> section below. 
 
 <div>
 <script src="https://gist.github.com/4479844.js"> </script>
