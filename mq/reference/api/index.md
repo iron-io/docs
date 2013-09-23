@@ -296,7 +296,7 @@ The following parameters are all related to Push Queues.
 Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
 * **retries**: How many times to retry on failure. Default is 3. Maximum is 100.
 * **retries_delay**: Delay between each retry in seconds. Default is 60.
-* **error_queue**: The name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. See [Push Queues](/mq/reference/push_queues/) to learn more. 
+* **error_queue**: The name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable error queues. Default is disabled. See [Push Queues](/mq/reference/push_queues/) to learn more. 
 
 ### Request
 
