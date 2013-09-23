@@ -100,7 +100,7 @@ multicast as follows:
   or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
   be retried after retries_delay. 
 
-## Error Queues
+## Error Queues - BETA
 
 Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to 
 push a message. If an error queue is set with the `error_queue` parameter, then after the set number of `retries`, a 
