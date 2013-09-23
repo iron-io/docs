@@ -10,6 +10,7 @@ Here are the worker system integrations for IronMQ:
 
 - [Celery for Python](/mq/workers/celery)
 - [Delayed Job for Ruby](/mq/workers/delayed_job)
+- [Bernard for PHP](/mq/workers/bernard)
 
 ## Contributing
 
