@@ -47,6 +47,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td><td>POST</td><td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/peek</td><td>GET</td><td><a href="#peek_messages_on_a_queue" title="Peek Messages on a Queue">Peek Messages on a Queue</a></td></tr>
+    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>GET</td><td><a href="#get_message_by_id" title="Get Message by ID">Get Message by ID</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>DELETE</td><td><a href="#delete_multiple_messages_from_a_queue" title="Delete Multiple Messages from a Queue">Delete Multiple Messages from a Queue</a></td></tr>
     <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch</td><td>POST</td><td><a href="#touch_a_message_on_a_queue" title="Touch a Message on a Queue">Touch a Message on a Queue</a></td></tr>
@@ -295,6 +296,7 @@ The following parameters are all related to Push Queues.
 Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
 * **retries**: How many times to retry on failure. Default is 3. Maximum is 100.
 * **retries_delay**: Delay between each retry in seconds. Default is 60.
+* **error_queue**: The name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. See [Push Queues](/mq/reference/push_queues/) to learn more. 
 
 ### Request
 
@@ -625,6 +627,41 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
        "timeout": 600
     }
   ],
+}
+{% endhighlight %}
+
+
+
+## Get Message by ID
+
+Get a message by ID. 
+
+### Endpoint
+
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/peek
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The Project these messages belong to.
+* **Queue Name**: The name of queue.
+* **Message ID**: The id of the message to release.
+
+### Sample Request
+
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
+</div>
+
+### Response
+
+{% highlight js %}
+{
+  "id": "5924625841136130921", 
+  "body": "hello 265", 
+  "timeout": 60, 
+  "reserved_count": 1
 }
 {% endhighlight %}
 
