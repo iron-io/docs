@@ -74,7 +74,7 @@ We recommend that you not pass any large data objects or data files in to worker
 
 You can find more examples of making use of local disk storage here:
 
-* [Image Processing Example](https://github.com/iron-io/iron_worker_examples/blob/master/ruby/Image_processing/image_processor.rb) on Github
-* [Image Processing Example with Carrierwave](https://github.com/iron-io/iron_worker_examples/tree/master/ruby/carrierwave) on Github
-* [S3 Example](https://github.com/iron-io/iron_worker_examples/blob/master/ruby/s3_tester/s3_worker.rb) on Github
-* [S3 Example 2](https://github.com/iron-io/iron_worker_examples/tree/master/ruby/download_to_s3) on Github
+* [Image Processing Example](https://github.com/iron-io/iron_worker_examples/blob/master/ruby_ng/image_processing/image_processor.rb) on Github
+* [Image Processing Example with Carrierwave](https://github.com/iron-io/iron_worker_examples/tree/master/legacy/ruby_legacy/carrierwave) on Github
+* [S3 Example](https://github.com/iron-io/iron_worker_examples/blob/master/legacy/ruby_legacy/s3_tester/s3_worker.rb) on Github
+* [S3 Example 2](https://github.com/iron-io/iron_worker_examples/tree/master/legacy/ruby_legacy/download_to_s3) on Github
