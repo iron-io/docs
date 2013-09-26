@@ -227,3 +227,17 @@ exec "hello_worker.js" # replace with your file
 dir "node_modules" # include dependency files when uploading
 file "package.json" # include dependency manifest when uploading
 {% endhighlight %}
+
+### Packaging Dependencies with remote build
+
+If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add a `dir "node_modules"` line and a `file "package.json"` line to your .worker file:
+
+<figcaption><span>hello.worker </span></figcaption>
+{% highlight ruby %}
+runtime "node"
+exec "hello_worker.js" # replace with your file
+file "package.json" # include dependency manifest when uploading
+build "npm install" # run npm install 
+# build your dependencies remotely from package.json
+remote # you can use "full_remote_build true" or shorthand "remote"
+{% endhighlight %}
