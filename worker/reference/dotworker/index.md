@@ -22,7 +22,7 @@ code that it will take for your worker to run. Workers can finally be their
 own self-contained units.
 
 <section id="toc">
-  <h3>Table of Contents</h3>
+  <h2>Table of Contents</h2>
   <ul>
     <li>
       <a href="#making_a_worker_file">Making a Worker File</a>
@@ -168,6 +168,17 @@ The following syntax is valid in `.worker` files:
       <td><code>true</code> or <code>false</code>, defaults to <code>false</code></td>
     </tr>
 
+    <tr id="syntax-build">
+      <td>build</td>
+      <td>node</td>
+      <td>package dependencies remotely through uploaded package.json</td>
+      <td>
+        <ol>
+          <li>"npm install"</li>
+        </ol>
+      </td>
+    </tr>  
+
     <tr id="syntax-exec">
       <td>exec</td>
       <td>all</td>
@@ -267,6 +278,7 @@ The following syntax is valid in `.worker` files:
           <li>The version requirement for the pip package. Defaults to latest available at pypi.</li>
         </ol>
       </td>
-    </tr>  
+    </tr>
+
   </tbody>
 </table>
