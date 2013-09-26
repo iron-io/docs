@@ -26,10 +26,11 @@ These are our official client libraries that use the IronCache <a href="/cache/r
 These are some unofficial client libraries that use the IronCache <a href="/cache/reference/api">REST/HTTP API</a>.&nbsp;<br>
 <div>
 <ul>
-<li><a href="https://github.com/ahallock/node-ironio" target="_blank">Node.JS - node-ironio</a> (Thanks to <a href="https://github.com/ahallock" target="_blank">Andrew Hallock</a>)</li>
-<li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> (Thanks to <a href="https://github.com/odeits" target="_blank">Oscar Deits</a>)</li>
-<li><a href="https://github.com/mrcritical/ironcache" target="_blank">Java - IronCache</a> (Thanks to <a href="https://github.com/mrcritical" target="_blank">Philip/mrcritical</a>)</li>
-<li><a href="https://github.com/skitsanos/IronCache-Client" target="_blank">ActionScript 3.0 - IronCache-Client</a> (Thanks to <a href="https://github.com/skitsanos">Evgenios Skitsanos</a>)</li>
+<li><a href="https://github.com/ahallock/node-ironio" target="_blank">Node.JS - node-ironio</a> by <a href="https://github.com/ahallock" target="_blank">Andrew Hallock</a></li>
+<li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> by <a href="https://github.com/odeits" target="_blank">Oscar Deits</a></li>
+<li><a href="https://github.com/mrcritical/ironcache" target="_blank">Java - IronCache</a> by <a href="https://github.com/mrcritical" target="_blank">Philip/mrcritical</a></li>
+<li><a href="https://github.com/skitsanos/IronCache-Client" target="_blank">ActionScript 3.0 - IronCache-Client</a> by <a href="https://github.com/skitsanos">Evgenios Skitsanos</a></li>
+<li><a href="https://github.com/jrutheiser/Codeigniter-Iron.io" target="_blank">PHP - Codeigniter-Iron.io</a> by <a href="https://github.com/jrutheiser" target="_blank">jrutheiser</a></li>
 </ul>
 </div>
 
