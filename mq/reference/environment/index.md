@@ -85,6 +85,13 @@ To get the information about a queue, use the [Info API call](/mq/reference/api/
     <tr><td><code>retries</code></td><td>Maximum number of times messages will be sent to each HTTP endpoint. Messages will not be resent after a call receives an HTTP response with a status code of 200. Default is 3 seconds. Maximum is 100 seconds.</td></tr>
     <tr><td><code>retries_delay</code></td><td>Delay between retries in seconds. Default is 60 seconds. Minimum is 3 and maximum is 86400 seconds.</td></tr>
     <tr><td><code>subscribers</code></td><td>List of subscribers, format is <code>[{url: "http://..."}, ...]</code>.</td></tr>
+    <tr><td><code>error_queue (Beta)</code></td>
+    <td>Enable error queue <code>{"error_queue": "ERROR_QUEUE_NAME"}</code>.
+    </br>
+    Empty string defaults to disabled <code>{"error_queue": ""}</code>
+    </br>
+    Defaults to disabled if not declared.</br>
+    <strong>note:</strong> error queue will not appear in the hud.iron.io until first error occurs. </td> </tr>
   </tbody>
 </table>
 
