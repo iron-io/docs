@@ -25,7 +25,8 @@ These are our official client libraries that use the IronWorker <a href="/worker
 These are some unofficial client libraries that use the IronWorker <a href="/worker/reference/api">REST/HTTP API</a>.&nbsp;<br>
 <div>
 <ul>
-	<li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> (Thanks to <a href="https://github.com/odeits" target="_blank">Oscar Deits</a>)</li>
+	<li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> by <a href="https://github.com/odeits" target="_blank">Oscar Deits</a></li>
+  <li><a href="https://github.com/jrutheiser/Codeigniter-Iron.io" target="_blank">PHP - Codeigniter-Iron.io</a> by <a href="https://github.com/jrutheiser" target="_blank">jrutheiser</a></li>
 </ul>
 </div>
 
