@@ -111,7 +111,6 @@ curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X
 	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight php %}
-<?php
 $ironmq = new IronMQ();
 $ironmq->postMessage("test_queue", "Hello world!");
 {% endhighlight %}</div>
@@ -234,7 +233,6 @@ msg = @queue.get()
 	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
 
 {% highlight php %}
-<?php
 $ironmq = new IronMQ();
 $ironmq->getMessage("test_queue");
 {% endhighlight %}</div>
