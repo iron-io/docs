@@ -142,6 +142,7 @@ The receiving endpoint must respond with a 200 or 202 if they have accepted the 
 
 - 200 - message is deleted / acknowledged and removed from the queue.
 - 202 - message is reserved until explicitly deleted or the timeout is exceeded. See 202 section below.
+- 3xx - push queues' HTTP(S) client does not follow redirects, the response will be treated as error and the push request will be retried.
 - 4XX or 5XX - the push request will be retried.
 
 ### Timeout
