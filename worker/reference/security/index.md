@@ -11,6 +11,15 @@ Years of work and many layers are involved in ensuring cloud resources are secur
 
 Iron.io takes further measures to isolate and protect **processes** at the IronWorker platform level, just as we isolate and protect **instances** at the infrastructure level. These steps include access restrictions, process isolation, resource monitoring/management, service restrictions, and more.
 
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#security_measures">Security Measures</a></li>
+    <li><a href="#security_guidelinesbest_practices">Security Guidelines/Best Practices</a></li>
+    <li><a href="#questionsconcerns_about_security_issues">Questions/Concerns About Security Issues</a></li>
+  </ul>
+</section>
+
 ## Security Measures
 
 ### OAuth2 Authorization
@@ -38,20 +47,27 @@ IronWorker, by design, does not provide SMTP host services. Workers must use thi
 
 ### Security Groups and IP Ranges
 
-IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges. **Please note that this security group only works in the US regions.**
+IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
 
 <table>
 <thead>
 <tr>
-<th>EC2 Security Group</th><th>Account ID</th>Security Group ID</th>
+<th>EC2 Security Group</th><th>Account ID</th><th>Security Group String</th><th>Security Group ID</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>simple_worker_sg</td><td>7227-1646-5567</td><td>sg-0d500c64</td>
+<td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td><td>sg-0d500c64</td>
 </tr>
 </tbody>
 </table>
+
+<div class="alert">
+  <p>
+    <strong>Note:</strong>
+    Security group only works in the US regions.
+  </p>
+</div>
 
 ## Security Guidelines/Best Practices
 
