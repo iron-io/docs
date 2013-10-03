@@ -163,6 +163,9 @@ The success failure for request is indicated by an HTTP status code. A 2xx statu
             <td>401</td><td>Unauthorized: The OAuth token is either not provided or invalid.</td>
         </tr>
         <tr>
+            <td>403</td><td>Project suspected, resource limits.</td>
+        </tr>
+        <tr>
             <td>404</td><td>Not Found: The resource, project, or endpoint being requested doesn’t exist.</td>
         </tr>
         <tr>
