@@ -15,7 +15,7 @@ and submitting a pull request.
 
 <div>
 <ul class="framework-libs">
-    <li><a href="/mq/integrations/delayed_job" target="_blank" data-lang="rails">Delayed Job for Rails</a></li>
+    <li><a href="/mq/integrations/delayed_job" data-lang="rails">Delayed Job for Rails</a></li>
     <li><a href="http://www.sumoheavy.com/message-queues-in-magento/" target="_blank" data-lang="zend">Zend Framework</a></li>
     <li><a href="/mq/integrations/celery/" data-lang="celery">Celery for Python</a></li>
   </ul>
