@@ -9,6 +9,31 @@ breadcrumbs:
 
 IronWorker provides a RESTful HTTP API to allow you to interact programmatically with our service and your workers.
 
+<section id="toc">
+  <h3>Table of Contents</h3>
+  <ul> 
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#authentication">Authentication</a></li>
+    <li> 
+      <a href="#requests">Requests</a>
+      <ul> 
+        <li><a href="#base-url">Base URL</a></li>
+        <li><a href="#pagination">Pagination</a></li>
+      </ul>
+    </li>
+    <li> 
+      <a href="#responses">Responses</a>
+      <ul> 
+        <li><a href="#status-codes">Status Codes</a></li>
+        <li><a href="#exponential-backoff">Exponential Backoff</a></li>
+      </ul>
+    </li>
+    <li><a href="#code-packages">Code Packages</a></li>
+    <li><a href="#tasks">Tasks</a></li>
+    <li><a href="#scheduled-tasks">Scheduled Tasks</a></li>
+  </ul>  
+</section>
+
 ## Endpoints
 
 ### Code Packages
