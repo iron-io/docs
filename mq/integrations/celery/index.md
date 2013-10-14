@@ -33,10 +33,10 @@ We expand on these steps in the [integration libary docs](https://github.com/iro
 
 ## Further Reading
 
-iron_celery Module: [https://github.com/iron-io/iron_celery](https://github.com/iron-io/iron_celery)
+- iron_celery Module: [https://github.com/iron-io/iron_celery](https://github.com/iron-io/iron_celery)
 
-Getting Started Blog Post: [http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html](http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html)
+- Getting Started Blog Post: [http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html](http://blog.iron.io/2013/02/using-ironmq-as-celery-broker.html)
 
-Getting Started Video (2 mins): [Iron.io/celery](http://www.iron.io/celery)
+- Getting Started Video (2 mins): [Iron.io/celery](http://www.iron.io/celery)
 
-Celery on Heroku: [https://github.com/iron-io/heroku-iron-celery-demo](https://github.com/iron-io/heroku-iron-celery-demo)
+- Celery on Heroku: [https://github.com/iron-io/heroku-iron-celery-demo](https://github.com/iron-io/heroku-iron-celery-demo)
