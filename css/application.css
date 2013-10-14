@@ -4918,10 +4918,6 @@ ul#architecture li {
   background: url(/images/libs/language_clojure.png) no-repeat 22px 12px;
 }
 /*framework stlying*/
-.content-container .content .frameworks {
-  /*text-align: center;*/
-}
-
 .content-container .content .frameworks-row li {
   display:inline-block;
   list-style: none;
@@ -4931,22 +4927,21 @@ ul#architecture li {
   background: -o-linear-gradient(#fff, #f8f8f8);
   background: linear-gradient(#fff, #f8f8f8);
   padding: 0;
-  width: 171px;
   margin: 0 10px 5px 0;
 }
 
 .content-container .content .frameworks-row li a {
   display: block;
-  /*padding: 5px;*/
   border: 1px solid #CCC;
   width: 170px;
-  height: 125px;
+  height: 139px;
   border-radius: 5px;
   text-align: center;
-  line-height: 230px;
+  line-height: 235px;
   text-decoration: none;
   color: black;
   font-size: 14px;
+  padding-right: 0;
 }
 
 .content-container .content .frameworks-row li a:hover {

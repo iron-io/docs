@@ -9,7 +9,7 @@ breadcrumbs:
 
 IronMQ is The Message Queue for the Cloud, and have helpful libraries to help with integration into many frameworks by our users.
 
-<div class = "frameworks">
+<div>
 <ul class="frameworks-row">
     <li><a href="/mq/integrations/delayed_job" data-lang="rails">Delayed Job for Rails</a></li>
     <li><a href="http://www.sumoheavy.com/message-queues-in-magento/" target="_blank" data-lang="zend">Zend Framework</a></li>
