@@ -4886,7 +4886,6 @@ ul#architecture li {
   box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
   color: #aaa;
 }
-
 .content-container .content .libs li a[data-lang="ruby"] {
   background: url(/images/libs/language_ruby.png) no-repeat 21px 9px;
 }
@@ -4918,6 +4917,77 @@ ul#architecture li {
 .content-container .content .libs li a[data-lang="clojure"] {
   background: url(/images/libs/language_clojure.png) no-repeat 22px 12px;
 }
+/*framework stlying*/
+.content-container .content .frameworks {
+  /*text-align: center;*/
+}
+
+.content-container .content .frameworks-row li {
+  display:inline-block;
+  list-style: none;
+  background: -webkit-linear-gradient(#fff, #f8f8f8);
+  background: -moz-linear-gradient(#fff, #f8f8f8);
+  background: -ms-linear-gradient(#fff, #f8f8f8);
+  background: -o-linear-gradient(#fff, #f8f8f8);
+  background: linear-gradient(#fff, #f8f8f8);
+  padding: 0;
+  width: 171px;
+  margin: 0 10px 5px 0;
+}
+
+.content-container .content .frameworks-row li a {
+  display: block;
+  /*padding: 5px;*/
+  border: 1px solid #CCC;
+  width: 170px;
+  height: 125px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 230px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+.content-container .content .frameworks-row li a:hover {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .6);
+  color: #aaa;
+}
+
+.content-container .content .frameworks-row li a[data-lang="rails"] {
+  background: url(/images/frameworks/rails.png) no-repeat 50px 8px;
+}
+
+.content-container .content .frameworks-row li a[data-lang="celery"] {
+  background: url(/images/frameworks/celery.png) no-repeat 38px 8px;
+}
+
+.content-container .content .frameworks-row li a[data-lang="drupal"] {
+  background: url(/images/frameworks/drupal.png) no-repeat 35px 8px;
+}
+
+.content-container .content .frameworks-row li a[data-lang="apachecamel"] {
+  background: url(/images/frameworks/language_java.png) no-repeat 9px 0px;
+}
+
+.content-container .content .frameworks-row li a[data-lang="yii"] {
+  background: url(/images/frameworks/yii.png) no-repeat 45px -4px;
+}
+
+.content-container .content .frameworks-row li a[data-lang="zend"] {
+  background: url(/images/frameworks/zend.png) no-repeat 28px 24px;
+}
+
+.content-container .content .frameworks-row li a[data-lang="laravel"] {
+  background: url(/images/frameworks/laravel.png) no-repeat 25px -5px;
+}
+
+.content-container .content .frameworks-row li a[data-lang="dotnetframework"] {
+  background: url(/images/frameworks/dotnetframework.png) no-repeat 43px 8px;
+}
+/*end framework styling*/
+
+
 
 .faq-image{
   width:70%;
