@@ -19,8 +19,8 @@ IronWorker has created a command line tool to interact with the service.
     <li><a href="#installing">Installing</a></li>
     <li><a href="#configuration">Configuration</a></li>
     <li><a href="#testing_your_workers_locally">Testing Your Workers Locally</a></li>
-    <li><a href="#upload_with_multiple_environments">Upload with Multiple Environments</a></li>
     <li><a href="#creating__uploading_code_packages">Creating and Uploading Code Packages</a></li>
+    <li><a href="#upload_with_multiple_environments">Upload with Multiple Environments</a></li>
     <li><a href="#queuing_tasks">Queuing Tasks</a></li>
     <li><a href="#scheduling_tasks">Scheduling Tasks</a></li>
     <li><a href="#retrieving_a_tasks_log">Retrieving a Task's Log</a></li>
@@ -119,6 +119,41 @@ Here are some scenarios in which you may not be able to use the run command:
 For best results, we recommend using the run command in an environment that matches
 IronWorker's as closely as possible: 64-bit (x86-64) Ubuntu Linux, with the same pre-installed packages installed.
 
+## Creating & Uploading Code Packages
+
+The command to upload a worker is:
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker upload $WORKER
+{% endhighlight %}
+
+Where `$WORKER` is replaced by the name of your worker file, minus the .worker.
+
+Sometimes, you want to limit the number of parallel workers for any given task, to prevent external resources like databases or APIs from crashing under the weight of your workers' requests. We have a [max_concurrency](http://blog.iron.io/2012/08/ironworkers-most-requested-feature-is.html) feature that lets you do just this. To use it, simply use the `--max-concurrency` option when uploading a worker, with the maximum number of workers that can be run in parallel:
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker upload $WORKER --max-concurrency 10
+{% endhighlight %}
+
+If you're worried about errors, your worker is idempotent (meaning that it can be run multiple times without affecting the result), and you'd like to automatically retry your worker if it errors out, you can use the `retries` and `retries-delay` options. `retries` allows you to specify the maximum number of times failed tasks will be re-run:
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker upload $WORKER --retries 5
+{% endhighlight %}
+
+You can also optionally specify the delay between retries by using `retries-delay`:
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker upload $WORKER --retries 5 --retries-delay 10
+{% endhighlight %}
+
+There are additional options available to the upload command; you can find 
+a list of them by running `iron_worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
+
 ## Upload with Multiple Environments (-env)
 
 It is common to want to use IronWorker across many different development environments.
@@ -156,41 +191,6 @@ Below is an example of a typical iron.json with multiple environments iron.json 
   }
 }
 {% endhighlight %}
-
-## Creating & Uploading Code Packages
-
-The command to upload a worker is:
-
-<figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
-$ iron_worker upload $WORKER
-{% endhighlight %}
-
-Where `$WORKER` is replaced by the name of your worker file, minus the .worker.
-
-Sometimes, you want to limit the number of parallel workers for any given task, to prevent external resources like databases or APIs from crashing under the weight of your workers' requests. We have a [max_concurrency](http://blog.iron.io/2012/08/ironworkers-most-requested-feature-is.html) feature that lets you do just this. To use it, simply use the `--max-concurrency` option when uploading a worker, with the maximum number of workers that can be run in parallel:
-
-<figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
-$ iron_worker upload $WORKER --max-concurrency 10
-{% endhighlight %}
-
-If you're worried about errors, your worker is idempotent (meaning that it can be run multiple times without affecting the result), and you'd like to automatically retry your worker if it errors out, you can use the `retries` and `retries-delay` options. `retries` allows you to specify the maximum number of times failed tasks will be re-run:
-
-<figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
-$ iron_worker upload $WORKER --retries 5
-{% endhighlight %}
-
-You can also optionally specify the delay between retries by using `retries-delay`:
-
-<figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
-$ iron_worker upload $WORKER --retries 5 --retries-delay 10
-{% endhighlight %}
-
-There are additional options available to the upload command; you can find 
-a list of them by running `iron_worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
 ## Queuing Tasks
 
