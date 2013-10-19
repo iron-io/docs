@@ -30,7 +30,7 @@ Also, when using `ruby` or `php` runtimes JSON payload will be automatically par
 ## Get Payload in a Worker
 
 When payload is specified during *queue* or *schedule*, then it is stored in the database.
-Before your worker is launched in the IronWorker [environment](worker/reference/environment),
+Before your worker is launched in the IronWorker [environment](/worker/reference/environment),
 this payload is then stored in your worker's runtime directory. The location of that file is passed to the worker using the `-payload` command line flag.
 
 To get the contents of your payload, you need to:
