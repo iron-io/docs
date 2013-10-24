@@ -26,8 +26,8 @@ These are some unofficial client libraries that use the IronWorker <a href="/wor
 <div>
 <ul>
   <li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> by <a href="https://github.com/odeits" target="_blank">Oscar Deits</a></li>
-  <li><a href="https://github.com/jrutheiser/Codeigniter-Iron.io" target="_blank">PHP - Codeigniter-Iron.io</a> by <a href="https://github.com/jrutheiser" target="_blank">jrutheiser</a></li>
   <li><a href="http://grcodemonkey.github.io/iron_sharp/" target="_blank">.NET - IronSharp</a> by <a href="https://github.com/grcodemonkey" target="_blank">Jeremy Bell</a></li>
+  <li><a href="https://github.com/jrutheiser/Codeigniter-Iron.io" target="_blank">PHP - Codeigniter-Iron.io</a> by <a href="https://github.com/jrutheiser" target="_blank">jrutheiser</a></li>
 </ul>
 </div>
 
