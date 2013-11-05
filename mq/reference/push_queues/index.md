@@ -108,7 +108,7 @@ multicast as follows:
 Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to push a message. 
 
 ### To create an error queue
-post to your push queue post the a message with the "error_queue" option defined.
+post to your push queue a message with the "error_queue" option defined.
 
 ```
 {"push_type":"multicast/unicast",
@@ -118,7 +118,7 @@ post to your push queue post the a message with the "error_queue" option defined
 "error_queue": "MY_EXAMPLE_ERROR_QUEUE"}
 ```
 
-If an push queue is set with the `error_queue` parameter, then after the set number of `retries`, a message will be put in the named error queue and viewable via hud. By default the error queue will be a pull queue.
+If a push queue is set with the `error_queue` parameter, then after the set number of `retries`, a message will be put in the named error queue and viewable via hud. By default the error queue will be a pull queue.
 
 <div>
 <img src="http://i.imgur.com/PVyiVWG.png" alt="appearence of first error message on a iron error queue" class="img-med">
