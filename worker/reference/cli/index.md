@@ -19,7 +19,8 @@ IronWorker has created a command line tool to interact with the service.
     <li><a href="#installing">Installing</a></li>
     <li><a href="#configuration">Configuration</a></li>
     <li><a href="#testing_your_workers_locally">Testing Your Workers Locally</a></li>
-    <li><a href="#creating__uploading_code_packages">Creating &amp; Uploading Code Packages</a></li>
+    <li><a href="#creating__uploading_code_packages">Creating and Uploading Code Packages</a></li>
+    <li><a href="#upload_with_multiple_environments">Upload with Multiple Environments</a></li>
     <li><a href="#queuing_tasks">Queuing Tasks</a></li>
     <li><a href="#scheduling_tasks">Scheduling Tasks</a></li>
     <li><a href="#retrieving_a_tasks_log">Retrieving a Task's Log</a></li>
@@ -152,6 +153,44 @@ $ iron_worker upload $WORKER --retries 5 --retries-delay 10
 
 There are additional options available to the upload command; you can find 
 a list of them by running `iron_worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
+
+## Upload with Multiple Environments (-env)
+
+It is common to want to use IronWorker across many different development environments.
+
+When uploading your worker you can specify an environment via the ** -env ** option.
+
+<figcaption><span>Command Line </span></figcaption>
+{% highlight bash %}
+$ iron_worker upload helloworker -env development
+$ iron_worker upload helloworker -env staging
+$ iron_worker upload helloworker -env test
+$ iron_worker upload helloworker -env production
+{% endhighlight %}
+
+ We reccomend you create seperate projects for each development environment.
+Below is an example of a typical iron.json with multiple environments iron.json into multiple development environments via different project id's and tokens.
+
+{% highlight js %}
+{
+  "production": {
+    "token": "AAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "project_id": "000000000000000000000001"
+  },
+  "staging": {
+    "token": "BBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "project_id": "000000000000000000000002"
+  },
+  "development": {
+    "token": "CCCCCCCCCCCCCCCCCCCCCCCCCC",
+    "project_id": "000000000000000000000003"
+  },
+  "test": {
+    "token": "DDDDDDDDDDDDDDDDDDDDDDDDDD",
+    "project_id": "000000000000000000000004"
+  }
+}
+{% endhighlight %}
 
 ## Queuing Tasks
 

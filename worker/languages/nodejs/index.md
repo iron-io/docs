@@ -214,9 +214,36 @@ fs.readFile(process.argv[payloadIndex], 'ascii', function(err, data) {
 });
 {% endhighlight %}
 
-### Packaging Dependencies
+### Packaging Worker Dependencies using Node
 
-If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add a `dir "node_modules"` line and a `file "package.json"` line to your .worker file:
+dependencies with Node require that you create a package.json file
+To generate a package.json the following **more info:**[npm init](https://github.com/isaacs/init-package-json)
+
+{% highlight sh %}
+npm-init
+{% endhighlight %}
+
+when adding and installing modules run then following to automatically update your package.json manifest.
+
+{% highlight sh %}
+npm install <module name> --save
+{% endhighlight %}
+
+### Local build
+
+**requirements**
+- package.json with included dependencies
+  -/node_modules directory 
+
+If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add 
+
+`dir "node_modules"`
+
+and 
+
+`file "package.json"` 
+
+to your .worker file:
 
 <figcaption><span>hello.worker </span></figcaption>
 {% highlight ruby %}
@@ -228,7 +255,10 @@ dir "node_modules" # include dependency files when uploading
 file "package.json" # include dependency manifest when uploading
 {% endhighlight %}
 
-### Packaging Dependencies with remote build
+### Remote build
+
+**requirements**
+- package.json with included dependencies
 
 If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add a `dir "node_modules"` line and a `file "package.json"` line to your .worker file:
 

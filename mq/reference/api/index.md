@@ -552,7 +552,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 #### Optional Parameters
 
-* **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
+* **n**: The maximum number of messages to get. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages. 
 * **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message
 from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
 
@@ -603,7 +603,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 #### Optional Parameters
 
-* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100.
+* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages. 
 
 ### Sample Request
 
