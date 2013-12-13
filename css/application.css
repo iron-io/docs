@@ -4886,6 +4886,11 @@ ul#architecture li {
   box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
   color: #aaa;
 }
+
+.content-container .content .libs li a[data-lang="rails"] {
+  background: url(/images/libs/framework_rails.png) no-repeat 29px 9px;
+}
+
 .content-container .content .libs li a[data-lang="ruby"] {
   background: url(/images/libs/language_ruby.png) no-repeat 21px 9px;
 }
