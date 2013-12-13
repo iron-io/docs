@@ -67,7 +67,8 @@ The maximum is 64kb for JSONify array of subscribers' hashes.
 - push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - retries - number of times to retry. Default is 3. Maximum is 100.
 - retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
-- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable error queues. Default is disabled. See <a href="#error_queues">Error Queues</a> section below. 
+- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
+The default queue type for an error queue will be a pull queue. See <a href="#error_queues">Error Queues</a> section below. 
 
 <div>
 <script src="https://gist.github.com/4479844.js"> </script>
@@ -102,18 +103,49 @@ multicast as follows:
 
 ## Error Queues
 
-NOTE: Error queues are in BETA. 
+**NOTE:** Error queues are in BETA.
 
-Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to 
-push a message. If an error queue is set with the `error_queue` parameter, then after the set number of `retries`, a 
-message will be put in the error queue. The message will contain the following information:
+Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to push a message. 
 
+### To create an error queue
+post to your push queue a message with the "error_queue" option defined.
+
+```
+{"push_type":"multicast/unicast",
+"subscribers": [
+  {"url": "http://thiswebsitewillthrowanerror.com"}
+  ],
+"error_queue": "MY_EXAMPLE_ERROR_QUEUE"}
+```
+
+If a push queue is set with the `error_queue` parameter, then after the set number of `retries`, a message will be put in the named error queue and viewable via hud. By default the error queue will be a pull queue.
+
+<div>
+<img src="http://i.imgur.com/PVyiVWG.png" alt="appearence of first error message on a iron error queue" class="img-med">
+</div>
+
+**NOTE:** Error queue will not appear in your hud until an initial error message is received.
+
+The Error queue message will contain the following information:
 <div>
 <script src="https://gist.github.com/6596528.js"> </script>
 </div>
 
 You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
 the `source_msg_id` value. 
+
+### To turn off/disable Error queue
+post to your push queue set the error queue option to an empty string. ex: "error_queue": "".
+
+```
+{"push_type":"multicast/unicast",
+"subscribers": [
+  {"url": "http://thiswebsitewillthrowanerror.com"}
+  ],
+"error_queue": ""}
+```
+
+**NOTE:** ommitting the "error_queue" option will not disable the error queue
 
 ## Checking Status
 
