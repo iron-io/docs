@@ -103,12 +103,10 @@ multicast as follows:
 
 ## Error Queues
 
-**NOTE:** Error queues are in BETA.
-
 Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to push a message. 
 
 ### To create an error queue
-post to your push queue a message with the "error_queue" option defined.
+Post to your push queue a message with the "error_queue" option defined.
 
 ```
 {"push_type":"multicast/unicast",
@@ -134,8 +132,8 @@ The Error queue message will contain the following information:
 You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
 the `source_msg_id` value. 
 
-### To turn off/disable Error queue
-post to your push queue set the error queue option to an empty string. ex: "error_queue": "".
+### To turn off/disable an error queue
+Post to your push queue set the error queue option to an empty string. ex: "error_queue": "".
 
 ```
 {"push_type":"multicast/unicast",
@@ -145,7 +143,7 @@ post to your push queue set the error queue option to an empty string. ex: "erro
 "error_queue": ""}
 ```
 
-**NOTE:** ommitting the "error_queue" option will not disable the error queue
+**NOTE:** Ommitting the "error_queue" option will not disable the error queue.
 
 ## Checking Status
 
