@@ -116,15 +116,15 @@ Post to your push queue a message with the "error_queue" option defined.
 "error_queue": "MY_EXAMPLE_ERROR_QUEUE"}
 ```
 
-If a push queue is set with the `error_queue` parameter, then after the set number of `retries`, a message will be put in the named error queue and viewable via hud. By default the error queue will be a pull queue.
+If a push queue is set with the `error_queue` parameter, then after the set number of `retries`, a message will be put in the named error queue and viewable via your account dashboard. By default, the error queue will be a pull queue.
 
 <div>
 <img src="http://i.imgur.com/PVyiVWG.png" alt="appearence of first error message on a iron error queue" class="img-med">
 </div>
 
-**NOTE:** Error queue will not appear in your hud until an initial error message is received.
+**NOTE:** An error queue will not appear in your dashboard until an initial error message is received.
 
-The Error queue message will contain the following information:
+The error queue message will contain the following information:
 <div>
 <script src="https://gist.github.com/6596528.js"> </script>
 </div>
