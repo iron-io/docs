@@ -28,6 +28,7 @@ breadcrumbs:
     </li>
     <li><a href="#encryption_and_security">Encryption and Security</a></li>
     <li><a href="#important_notes">Important Notes</a></li>
+    <li><a href="#testing_on_localhost">Testing on localhost</a></li>
   </ul>  
 </section>
 
@@ -224,3 +225,7 @@ Also, messages put on the queue before it becomes a Push Queue will not be sent 
 New messages will be processed as usual for Push Queues, and pushed to your subscribers.
 
 - To revert your Push Queue to regular Pull Queue just update `push_type` to `"pull"`.
+
+## Testing on localhost
+
+To be able to develop and test on your local machine, you'll need to make your localhost accessible for IronMQ. This can be easily done by tunneling it to the outside world with tools such as [ngrok](https://ngrok.com/).
