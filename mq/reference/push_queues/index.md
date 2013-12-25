@@ -28,6 +28,7 @@ breadcrumbs:
     </li>
     <li><a href="#encryption_and_security">Encryption and Security</a></li>
     <li><a href="#important_notes">Important Notes</a></li>
+    <li><a href="#testing_on_localhost">Testing on localhost</a></li>
   </ul>  
 </section>
 
@@ -41,9 +42,9 @@ the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/ap
 Subscribers are simply URL's that IronMQ will post to whenever a message is posted to your queue. There are currently
 three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
 
-1. HTTP endpoints: Any http url, for instance, http://mydomain.com/some/action
-1. IronMQ endpoints: IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
-1. IronWorker endpoints: IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
+1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint
+1. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
+1. **IronWorker endpoints:** IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
 
 ### Iron.io URL Formats
 
@@ -67,7 +68,8 @@ The maximum is 64kb for JSONify array of subscribers' hashes.
 - push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - retries - number of times to retry. Default is 3. Maximum is 100.
 - retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
-- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable error queues. Default is disabled. See <a href="#error_queues">Error Queues</a> section below. 
+- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
+The default queue type for an error queue will be a pull queue. See <a href="#error_queues">Error Queues</a> section below. 
 
 <div>
 <script src="https://gist.github.com/4479844.js"> </script>
@@ -102,18 +104,47 @@ multicast as follows:
 
 ## Error Queues
 
-NOTE: Error queues are in BETA. 
+Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to push a message. 
 
-Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to 
-push a message. If an error queue is set with the `error_queue` parameter, then after the set number of `retries`, a 
-message will be put in the error queue. The message will contain the following information:
+### To create an error queue
+Post to your push queue a message with the "error_queue" option defined.
 
+```
+{"push_type":"multicast/unicast",
+"subscribers": [
+  {"url": "http://thiswebsitewillthrowanerror.com"}
+  ],
+"error_queue": "MY_EXAMPLE_ERROR_QUEUE"}
+```
+
+If a push queue is set with the `error_queue` parameter, then after the set number of `retries`, a message will be put in the named error queue and viewable via your account dashboard. By default, the error queue will be a pull queue.
+
+<div>
+<img src="http://i.imgur.com/PVyiVWG.png" alt="appearence of first error message on a iron error queue" class="img-med">
+</div>
+
+**NOTE:** An error queue will not appear in your dashboard until an initial error message is received.
+
+The error queue message will contain the following information:
 <div>
 <script src="https://gist.github.com/6596528.js"> </script>
 </div>
 
 You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
 the `source_msg_id` value. 
+
+### To turn off/disable an error queue
+Post to your push queue set the error queue option to an empty string. ex: "error_queue": "".
+
+```
+{"push_type":"multicast/unicast",
+"subscribers": [
+  {"url": "http://thiswebsitewillthrowanerror.com"}
+  ],
+"error_queue": ""}
+```
+
+**NOTE:** Ommitting the "error_queue" option will not disable the error queue.
 
 ## Checking Status
 
@@ -194,3 +225,7 @@ Also, messages put on the queue before it becomes a Push Queue will not be sent 
 New messages will be processed as usual for Push Queues, and pushed to your subscribers.
 
 - To revert your Push Queue to regular Pull Queue just update `push_type` to `"pull"`.
+
+## Testing on localhost
+
+To be able to develop and test on your local machine, you'll need to make your localhost accessible for IronMQ. This can be easily done by tunneling it to the outside world with tools such as [ngrok](https://ngrok.com/).

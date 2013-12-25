@@ -294,7 +294,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 The following parameters are all related to Push Queues.
 
-* **subscribers**: An array of subscriber hashes containing a "url" field. This set of subscribers will replace the existing subscribers. See [Push Queues](/mq/reference/push_queues/) to learn more about types of subscribers. To add or remove subscribers, see the <a href="#add_subscribers_to_a_queue">add subscribers endpoint</a> or the <a href="#remove_subscribers_from_a_queue">remove subscribers endpoint</a>. The maximum is 64kb for JSONify array of subscribers' hashes. See below for example JSON.
+* **subscribers**: An array of subscriber hashes containing a required "url" field and an optional "headers" map for custom headers. This set of subscribers will replace the existing subscribers. See [Push Queues](/mq/reference/push_queues/) to learn more about types of subscribers. To add or remove subscribers, see the <a href="#add_subscribers_to_a_queue">add subscribers endpoint</a> or the <a href="#remove_subscribers_from_a_queue">remove subscribers endpoint</a>. The maximum is 64kb for JSON array of subscribers' hashes. See below for example JSON.
 * **push_type**: Either `multicast` to push to all subscribers or `unicast` to push to one and only one subscriber.
 Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
 * **retries**: How many times to retry on failure. Default is 3. Maximum is 100.
@@ -308,7 +308,10 @@ Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
   "push_type":"multicast",
    "subscribers": [
      {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
-     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+     {
+        "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+        "headers": {"Content-Type": "application/json"}
+     }
    ]
 }
 {% endhighlight %}
@@ -327,7 +330,7 @@ Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
   "retries_delay":60,
   "subscribers":[
     {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
-    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2", "headers": {"Content-Type": "application/json"}}
   ]
 }
 {% endhighlight %}
@@ -355,14 +358,17 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 The following parameters are all related to Push Queues.
 
-* **subscribers**: An array of subscriber hashes containing a "url" field. See below for example. See [Push Queues](/mq/reference/push_queues/) to learn more about types of subscribers.
+* **subscribers**: An array of subscriber hashes containing a required "url" field and an optional "headers" map for custom headers. See below for example. See [Push Queues](/mq/reference/push_queues/) to learn more about types of subscribers.
 
 ### Request
 
 {% highlight js %}
 {
    "subscribers": [
-     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+     {
+        "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+        "headers": {"Content-Type": "application/json"}
+     }
    ]
 }
 {% endhighlight %}
@@ -381,7 +387,7 @@ The following parameters are all related to Push Queues.
   "retries_delay":60,
   "subscribers":[
     {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
-    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
+    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2", "headers": {"Content-Type": "application/json"}}
   ]
 }
 {% endhighlight %}
@@ -555,7 +561,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 #### Optional Parameters
 
-* **n**: The maximum number of messages to get. Default is 1. Maximum is 100.
+* **n**: The maximum number of messages to get. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages. 
 * **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message
 from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
 
@@ -606,7 +612,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 #### Optional Parameters
 
-* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100.
+* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages. 
 
 ### Sample Request
 
