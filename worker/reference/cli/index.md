@@ -154,18 +154,18 @@ $ iron_worker upload $WORKER --retries 5 --retries-delay 10
 There are additional options available to the upload command; you can find 
 a list of them by running `iron_worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
-## Upload with Multiple Environments (-env)
+## Upload with Multiple Environments (--env)
 
 It is common to want to use IronWorker across many different development environments.
 
-When uploading your worker you can specify an environment via the ** -env ** option.
+When uploading your worker you can specify an environment via the ** --env ** (or ** -e ** option).
 
 <figcaption><span>Command Line </span></figcaption>
 {% highlight bash %}
-$ iron_worker upload helloworker -env development
-$ iron_worker upload helloworker -env staging
-$ iron_worker upload helloworker -env test
-$ iron_worker upload helloworker -env production
+$ iron_worker upload helloworker --env development
+$ iron_worker upload helloworker --env staging
+$ iron_worker upload helloworker -e test
+$ iron_worker upload helloworker -e production
 {% endhighlight %}
 
  We reccomend you create seperate projects for each development environment.
