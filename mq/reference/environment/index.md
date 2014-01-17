@@ -66,7 +66,7 @@ To get the information about a queue, use the [Info API call](/mq/reference/api/
   </thead>
 
   <tbody>
-    <tr><td><code>name</code></td><td>Name of the queue. (Names with spaces should URL encode/use "%20".)/td></tr>
+    <tr><td><code>name</code></td><td>Name of the queue. (Names with spaces should URL encode/use "%20".)</td></tr>
     <tr><td><code>id</code></td><td>Unique queue's ID.</td></tr>
     <tr><td><code>size</code></td><td>Current queue size. It's usually 0 for Push Queues.</td></tr>
     <tr><td><code>total_messages</code></td><td>Number of messages which were posted to the queue.</td></tr>
