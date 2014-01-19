@@ -118,7 +118,7 @@ Tip: A common mistake is to create scheduled jobs on a per user or per item basi
 
 ## Scheduled Task Frequency
 
-Tasks can be scheduled to run **every N seconds or more** specifying **n** using the `run_every` parameter and where **N** > 60. (The minimum frequency is every 60 seconds.)
+Tasks can be scheduled to run **every N seconds or more** specifying **N** using the `run_every` parameter and where **N** > 60. (The minimum frequency is every 60 seconds.)
 <div class="alert">
   <p>
     <strong>Note:</strong>
