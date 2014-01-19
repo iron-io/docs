@@ -18,7 +18,7 @@ breadcrumbs:
     <li><a href="#maximum_run_time_per_worker">Maximum Run Time per Worker</a></li>
     <li><a href="#priority_queue_management">Priority Queue Management</a></li>
     <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
-    <li><a href="#minimum__time">Scheduled Task Frequency</a></li>
+    <li><a href="#scheduled_task_frequency">Scheduled Task Frequency</a></li>
     <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
     <li><a href="#default_languages_versions">Default Languages Versions</a></li>
   </ul>  
@@ -116,14 +116,13 @@ The following is the default number of scheduled tasks. It should be sufficient 
 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When scheduled tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the [page on scheduling](/worker/scheduling) for more information on scheduling patterns and best practices.
 
-##  Scheduled Task Frequency
+## Scheduled Task Frequency
 
-Tasks can be scheduled to run **every X seconds or more** using the `run_every` parameter.
-The minimum frequency is 60 seconds.
+Tasks can be scheduled to run **every N seconds or more** specifying **n** using the `run_every` parameter and where **N** > 60. (The minimum frequency is every 60 seconds.)
 <div class="alert">
   <p>
     <strong>Note:</strong>
-     a task may be executed a short time after it is scheduled frequency depending on it's priority level. (Scheduled tasks can be given a priority; higher priorities can reduce the maximum time allowed in queue.)
+     A task may be executed a short time after its scheduled frequency depending on the priority level. (Scheduled tasks can be given a priority; higher priorities can reduce the maximum time allowed in queue.)
   </p>
 </div>
 
