@@ -1,3 +1,6 @@
+{% case page.section %}
+{% when "overview" %}
+{% else %}
 <div class="subnavigation">
   <ul class="menu page-menu">
     <li {% if page.section == "overview" %}class="active"{% endif %}><a href="/">Overview</a></li>
@@ -5,7 +8,8 @@
     <li {% if page.section == "worker" %}class="active"{% endif %}><a href="/worker">IronWorker</a></li>
     <li {% if page.section == "cache" %}class="active"{% endif%}><a href="/cache">IronCache</a></li>
     <!--<li {% if page.section == "solutions" %}class="active"{% endif %}><a href="/solutions">Solutions</a></li>-->
-    <li {% if page.section == "community" %}class="active"{% endif %}><a href="/community">Community</a></li>
-    <li {% if page.section == "FAQ" %}class="active"{% endif %}><a href="/faq">FAQ</a></li>
+    <!-- <li {% if page.section == "community" %}class="active"{% endif %}><a href="/community">Community</a></li>
+    <li {% if page.section == "FAQ" %}class="active"{% endif %}><a href="/faq">FAQ</a></li> -->
   </ul>
 </div>
+{% endcase %}

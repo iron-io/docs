@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+</head>
+<body class="team">
+
+  <div id="wrapper">
+
+    <header id="header">
+      <div class="nav-texture"></div>
+      <div class="wrapper-holder">
+        {% include nav.html %}
+      </div>
+    </header>
+
+    <div id="main">
+      <div class="wrapper-holder">
+        <section class="container">
+          <header>
+            {% include content_header.html %}
+          </header>
+
+          {% include subnav.html %}
+
+          <div class="content-container docs overview">
+            <div class="content" style = "min-height: 230px;">
+              <h2>Pick your docs!</h2>
+              <div class="overview-search">
+                {% include search.html %}
+              </div>
+              {{ content }}
+            </div>
+            <div>
+              <h2>Support</h2>
+              <div class="overview-support">
+                {% include sidemenu_all.html %}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer id="footer">
+    {% include footer.html %}
+  </footer>
+  {% if page.languages %}
+  <script src="/js/bootstrap-dropdown.js" type="text/javascript"></script>
+  <script src="/js/language_switcher.js" type="text/javascript"></script>
+  <script src="/js/purl.js" type="text/javascript"></script>
+  <script src="/js/cookies.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  {% assign default_lang = "ruby" %}
+  var languages = { {% for lang in page.languages %}{% if lang.default %}{% assign default_lang = lang.slug %}{% endif %}
+  '{{ lang.slug }}': '{{ lang.name }}'{% unless forloop.last %},{% endunless %}{% endfor %}
+};
+</script>
+<script>
+$(document).ready(function() {
+  if ($.url().param('lang')!=null) {
+    desiredLanguage = $.url().param('lang');
+  } else {
+    if (Cookies.get('desired_language')!=null || localStorage.getItem("desired_language")!=null) {
+      if (Cookies.get('desired_language')!=null) {
+        desiredLanguage = Cookies.get('desired_language');
+      } else {
+        desiredLanguage = localStorage.getItem('desired_language');
+      }
+    } else {
+      desiredLanguage = "{{ default_lang }}";
+    }
+  };
+  if(!validLanguage(desiredLanguage)) {
+    switchLanguage("{{ default_lang }}", false);
+  } else {
+    switchLanguage(desiredLanguage);
+  }
+});
+</script>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<nav class="sidebar-nav">
+  <div class="sidebar-content">
+    {% include search.html %}
+
+    {% case page.section %}
+    {% when "overview" %}
+    
+    {% when "mq" %}
+    {% include sidemenu_mq.html %}
+    {% when "worker" %}
+    {% include sidemenu_worker.html %}
+    {% when "cache" %}
+    {% include sidemenu_cache.html %}
+    {% when "support" %}
+    {% include sidemenu_support.html %}
+    {% when "community" %}
+    {% include sidemenu_community.html %}
+    {% when "solutions" %}
+    {% include sidemenu_solutions.html %}
+    {% else %}
+    {% include sidemenu_default.html %}
+    {% endcase %}
+
+    {% if page.section == "search" %}
+    <p style="width: 100%; text-align: center;">
+      <a href="#" id="addSearch">Search From Your Browser</a>
+    </p>
+    {% endif %}
+  </div>
+</nav>
