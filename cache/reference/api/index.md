@@ -28,7 +28,7 @@ IronCache provides a REST/HTTP API to allow you to interact programmatically wit
         <li><a href="#exponential_backoff">Exponential Backoff</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 ## Endpoints
@@ -54,10 +54,10 @@ IronCache uses OAuth2 tokens to authenticate API requests. All methods require a
 
 Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
 
-**Example Authorization Header**:  
+**Example Authorization Header**:
 Authorization: OAuth abc4c7c627376858
 
-**Example Query with Parameters**:  
+**Example Query with Parameters**:
 GET https://cache-aws-us-east-1.iron.io/1/projects/<span class="variable project_id">{Project ID}</span>/caches?oauth=abc4c7c627376858
 
 Notes:
@@ -93,7 +93,7 @@ The domains for the clouds IronCache supports are as follows:
 For endpoints that return lists/arrays of values:
 
 * page - The page of results to return. Default is 0. Maximum is 100.
-* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100. 
+* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
 
 ## Responses
 
@@ -104,7 +104,7 @@ All responses are in JSON, with Content-Type of `application/json`. A response i
 {% endhighlight %}
 
 ### Status Codes
-The success or failure of a request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx or 5xx status code indicates an error. 
+The success or failure of a request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx or 5xx status code indicates an error.
 
 <table class="reference">
     <thead>
