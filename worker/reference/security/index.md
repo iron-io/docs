@@ -43,12 +43,12 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 <table>
 <thead>
 <tr>
-<th>EC2 Security Group</th><th>Account ID</th><th>Security Group String</th>
+<th>EC2 Security Group</th><th>Account ID</th><th>Security Group String</th><th>Security Group ID</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td>
+<td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td><td>sg-0d500c64</td>
 </tr>
 </tbody>
 </table>
