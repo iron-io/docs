@@ -466,7 +466,7 @@ span.fixed-width {
 .product-box {
   float: left;
   text-align: left;
-  width: 220px;
+  width: 295px;
   margin:20px 20px 0 0;
 }
 
@@ -486,10 +486,12 @@ span.fixed-width {
 
 .product-box a {
   text-decoration: none;
+  color: inherit;
 }
 
 .product-box a:hover {
   text-decoration: none;
+  color: inherit;
 }
 
 .product-box a.btn {
@@ -1117,37 +1119,77 @@ figcaption a {
   float: right;
   }*/
 
-  .dropdown a {
-    text-decoration: none;
-    vertical-align: text-bottom
-  }
+.dropdown a {
+  text-decoration: none;
+  vertical-align: text-bottom
+}
 
-  .dropdown a:hover {
-    text-decoration: none;
-    color: white;
-  }
+.dropdown a:hover {
+  text-decoration: none;
+  color: white;
+}
 
-  div .dropdown {
-    display: inline;
-  }
+div .dropdown {
+  display: inline;
+}
 
-  .dropdown.pull-right {
-    float: right;
-  }
+.dropdown.pull-right {
+  float: right;
+}
 
-  .btn.orange .caret {
-    border-top: 4px solid white;
-  }
+.btn.orange .caret {
+  border-top: 4px solid white;
+}
 
-  .dropdown-menu {
-    font-size: 14px
-  }
+.dropdown-menu {
+  font-size: 14px
+}
 
-  .dropdown ul li {
-    margin: 0;
-  }
+.dropdown ul li {
+  margin: 0;
+}
 
-  .second-level {
-    padding-left: 15px;
-    font-style: italic;
-  }
+.second-level {
+  padding-left: 15px;
+  font-style: italic;
+}
+
+.overview {
+  min-height: 400px;
+}
+
+.overview .content h2 {
+  margin-top: 0px;
+}
+
+.overview-search #q {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.overview-support {
+  float: left;
+  -moz-column-count:3; /* Firefox */
+  -webkit-column-count:3; /* Safari and Chrome */
+  column-count:3;
+}
+
+.overview-support ul {
+  margin-top: -10px;
+  margin-bottom: 26px;
+  padding-left: 16px;
+  list-style-type: none;
+}
+
+.overview-support ul li {
+  padding-bottom: 4px;
+}
+
+.overview-support ul a {
+  text-decoration: none;
+}
+
+.overview-support h4 {
+  display: none;
+}
+
