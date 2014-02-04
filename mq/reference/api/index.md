@@ -28,7 +28,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
         <li><a href="#exponential_backoff">Exponential Backoff</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 ## Endpoints
@@ -76,10 +76,10 @@ IronMQ uses OAuth2 tokens to authenticate API requests. All methods require auth
 
 Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
 
-**Example Authorization Header**:  
+**Example Authorization Header**:
 Authorization: OAuth abc4c7c627376858
 
-**Example Query with Parameters**:  
+**Example Query with Parameters**:
 GET https://<span class="variable host">mq-aws-us-east-1</span>.iron.io/1/projects/<span class="variable project_id">{Project ID}</span>/queues?oauth=abc4c7c627376858
 
 Notes:
@@ -114,6 +114,10 @@ The hosts for the clouds IronMQ supports are as follows:
 			<td>Rackspace ORD</td>
 			<td>mq-rackspace-ord.iron.io</td>
 		</tr>
+    <tr>
+      <td>AWS EU-WEST</td>
+      <td>mq-aws-eu-west-1.iron.io</td>
+    </tr>
 		<tr>
 			<td>Rackspace DFW<br/>
 			Deprecated - please use ORD.
@@ -130,7 +134,7 @@ The hosts for the clouds IronMQ supports are as follows:
 For endpoints that return lists/arrays of values:
 
 * page - The page of results to return. Default is 0. Maximum is 100.
-* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100. 
+* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
 
 ## Responses
 
@@ -141,7 +145,7 @@ All responses are in JSON, with Content-Type of `application/json`. A response i
 {% endhighlight %}
 
 ### Status Codes
-The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error. 
+The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error.
 
 <table class="reference">
     <thead>
@@ -299,7 +303,7 @@ The following parameters are all related to Push Queues.
 Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
 * **retries**: How many times to retry on failure. Default is 3. Maximum is 100.
 * **retries_delay**: Delay between each retry in seconds. Default is 60.
-* **error_queue**: The name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable error queues. Default is disabled. See [Push Queues](/mq/reference/push_queues/) to learn more. 
+* **error_queue**: The name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable error queues. Default is disabled. See [Push Queues](/mq/reference/push_queues/) to learn more.
 
 ### Request
 
@@ -546,7 +550,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ## Get Messages from a Queue
 
-This call gets/reserves messages from the queue. The messages will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the messages are deleted, the messages will be placed back onto the queue. As a result, be sure to **delete** the messages after you're done with them.  
+This call gets/reserves messages from the queue. The messages will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the messages are deleted, the messages will be placed back onto the queue. As a result, be sure to **delete** the messages after you're done with them.
 
 ### Endpoint
 
@@ -561,7 +565,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 #### Optional Parameters
 
-* **n**: The maximum number of messages to get. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages. 
+* **n**: The maximum number of messages to get. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages.
 * **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message
 from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
 
@@ -612,7 +616,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 #### Optional Parameters
 
-* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages. 
+* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages.
 
 ### Sample Request
 
@@ -643,7 +647,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 ## Get Message by ID
 
-Get a message by ID. 
+Get a message by ID.
 
 ### Endpoint
 
@@ -667,9 +671,9 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 {% highlight js %}
 {
-  "id": "5924625841136130921", 
-  "body": "hello 265", 
-  "timeout": 60, 
+  "id": "5924625841136130921",
+  "body": "hello 265",
+  "timeout": 60,
   "reserved_count": 1
 }
 {% endhighlight %}
