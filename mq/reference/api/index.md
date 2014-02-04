@@ -101,6 +101,7 @@ All endpoints should be prefixed with the following:
 https://<span class="variable domain">{host}</span>/1
 
 The hosts for the clouds IronMQ supports are as follows:
+
 <table class="reference">
   <thead>
     <tr>
@@ -114,12 +115,12 @@ The hosts for the clouds IronMQ supports are as follows:
       <td>mq-aws-us-east-1.iron.io</td>
     </tr>
     <tr>
-      <td>Rackspace ORD</td>
-      <td>mq-rackspace-ord.iron.io</td>
-    </tr>
-    <tr>
       <td>AWS EU-WEST</td>
       <td>mq-aws-eu-west-1.iron.io</td>
+    </tr>
+    <tr>
+      <td>Rackspace ORD</td>
+      <td>mq-rackspace-ord.iron.io</td>
     </tr>
     <tr>
       <td> Rackspace LON </td>

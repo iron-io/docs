@@ -24,12 +24,12 @@ Each of the official IronMQ [client libraries](/mq/libraries) allows you to chan
       <td>mq-aws-us-east-1.iron.io</td>
     </tr>
     <tr>
-      <td>Rackspace ORD</td>
-      <td>mq-rackspace-ord.iron.io</td>
-    </tr>
-    <tr>
       <td>AWS EU-WEST</td>
       <td>mq-aws-eu-west-1.iron.io</td>
+    </tr>
+    <tr>
+      <td>Rackspace ORD</td>
+      <td>mq-rackspace-ord.iron.io</td>
     </tr>
     <tr>
       <td> Rackspace LON </td>
