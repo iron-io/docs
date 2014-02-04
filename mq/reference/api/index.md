@@ -127,8 +127,8 @@ The hosts for the clouds IronMQ supports are as follows:
       <td>mq-rackspace-lon-1.iron.io</td>
     </tr>
     <tr>
-      <td>Rackspace DFW (Pro and Enterprise Plans Only, <a href="http://www.iron.io/pricing"> More Info</a>)</td>
-      <td>mq-rackspace-dfw.iron.io</td>
+      <td>Rackspace DFW</td>
+      <td>Pro Plans Only - <a href="http://support.iron.io/customer/portal/emails/new">Contact Us</a></td>
     </tr>
   </tbody>
 </table>
