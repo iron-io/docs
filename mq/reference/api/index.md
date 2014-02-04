@@ -103,7 +103,10 @@ https://<span class="variable domain">{host}</span>/1
 The hosts for the clouds IronMQ supports are as follows:
 <table class="reference">
   <thead>
-    <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{host}</span></th></tr>
+    <tr>
+      <th>Cloud</th>
+      <th>Host</th>
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -111,19 +114,21 @@ The hosts for the clouds IronMQ supports are as follows:
       <td>mq-aws-us-east-1.iron.io</td>
     </tr>
     <tr>
-			<td>Rackspace ORD</td>
-			<td>mq-rackspace-ord.iron.io</td>
-		</tr>
+      <td>Rackspace ORD</td>
+      <td>mq-rackspace-ord.iron.io</td>
+    </tr>
     <tr>
       <td>AWS EU-WEST</td>
       <td>mq-aws-eu-west-1.iron.io</td>
     </tr>
-		<tr>
-			<td>Rackspace DFW<br/>
-			Deprecated - please use ORD.
-			</td>
-			<td>mq-rackspace-dfw.iron.io</td>
-		</tr>
+    <tr>
+      <td> Rackspace LON </td>
+      <td>mq-rackspace-lon-1.iron.io</td>
+    </tr>
+    <tr>
+      <td>Rackspace DFW (Pro and Enterprise Plans Only, <a href="http://www.iron.io/pricing"> More Info</a>)</td>
+      <td>mq-rackspace-dfw.iron.io</td>
+    </tr>
   </tbody>
 </table>
 
