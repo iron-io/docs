@@ -111,7 +111,7 @@ The hosts for the clouds IronMQ supports are as follows:
   </thead>
   <tbody>
     <tr>
-      <td>AWS</td>
+      <td>AWS US-EAST</td>
       <td>mq-aws-us-east-1.iron.io</td>
     </tr>
     <tr>

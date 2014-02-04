@@ -20,7 +20,7 @@ Each of the official IronMQ [client libraries](/mq/libraries) allows you to chan
   </thead>
   <tbody>
     <tr>
-      <td>AWS</td>
+      <td>AWS US-EAST</td>
       <td>mq-aws-us-east-1.iron.io</td>
     </tr>
     <tr>
