@@ -27,6 +27,10 @@ Each of the official IronMQ [client libraries](/mq/libraries) allows you to chan
 			<td>Rackspace ORD</td>
 			<td>mq-rackspace-ord.iron.io</td>
 		</tr>
+    <tr>
+      <td>AWS EU-WEST</td>
+      <td>mq-aws-eu-west-1.iron.io</td>
+    </tr>
 		<tr>
 			<td>Rackspace DFW<br/>
 			Deprecated - please use ORD.
@@ -38,8 +42,8 @@ Each of the official IronMQ [client libraries](/mq/libraries) allows you to chan
 
 [Alternative domains can be found here in case of dns failures](https://plus.google.com/u/0/101022900381697718949/posts/36PS2dQH3Gn).
 
-**NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our 
-[HTTP clients](/mq/libraries) if you are on Rackspace. 
+**NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our
+[HTTP clients](/mq/libraries) if you are on Rackspace.
 
 Check your library's documentation for information on switching the host within the library.
 
