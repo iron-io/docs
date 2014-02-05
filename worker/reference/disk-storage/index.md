@@ -9,31 +9,31 @@ breadcrumbs:
 
 Workers can make use of a [large amount](/worker/reference/environment/) of local temporary storage space that's dedicated on a per-worker basis. You can perform almost any file operations with it that you could within a local environment.
 
-You access this storage by making use of the variable `user_dir` in the worker. This variable contains the path of the directory your worker has write access to.
+You access this storage by making use of the `PWD` environment variable in the worker. This contains the path of the directory your worker has write access to.
 
 ## Saving Files to Disk
 
-Here's an example that downloads a file from the web and saves it in local storage. The log snippet just logs the contents of `user_dir`.
+Here's an example that downloads a file from the web and saves it in local storage. The end snippet just logs the contents of your worker's directory.
 
 <figcaption><span>local_file.rb </span></figcaption>
 {% highlight ruby %}
-class S3Worker < IronWorker::Base
+require 'open-uri'
 
-  filepath = user_dir + "ironman.jpg"
-  File.open(filepath, 'wb') do |fo|
-    fo.write open("http://www.iron.io/assets/banner-mq-ironio-robot.png").read
-  end
+filepath = ENV["PWD"] + "/ironman.jpg"
 
-  user_files = %x[ls #{user_dir.inspect}]
-  log "\nLocal Temporary Storage ('user_dir')"
-  log "#{user_files}"
-
+File.open(filepath, 'wb') do |fo|
+  fo.write open("http://www.iron.io/assets/banner-scale-robot.png").read
 end
+
+user_files = %x[ls #{ENV['PWD']}]
+puts  "\nLocal Temporary Storage ('ENV[\"PWD\"]')"
+puts "#{user_files}"
+
 {% endhighlight ruby %}
 
 ## Location of Uploaded Files and Folders
 
-The `user_dir` directory also contains any uploaded files that you've included with your code. Note that any folders or nested files will appear at the top level.
+Your local storage directory also contains any uploaded files that you've included with your code. Note that any folders or nested files will appear at the top level.
 
 For example, let's say you upload a file with the following structure:
 
@@ -41,10 +41,10 @@ For example, let's say you upload a file with the following structure:
 merge "../site_stats/client.rb"
 {% endhighlight ruby %}
 
-This file will be placed in the `user_dir` directory. You can make use of it there, create local/remote path references (using the local/remote query switch in your worker), or replicate the path and move the file there. (We recommend one of the first two options.)
+This file will be placed in your local storage directory. You can make use of it there, create local/remote path references (using the local/remote query switch in your worker), or replicate the path and move the file there. (We recommend one of the first two options.)
 
 <pre class="grey-box fixed-width">
-user_dir/
+$PWD/
   ...
   client.rb
   ...
