@@ -1,5 +1,5 @@
 ---
-title: IronWorker REST/HTTP API
+title: IronWorker REST HTTP API
 layout: default
 section: worker
 breadcrumbs:
