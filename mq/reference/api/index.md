@@ -146,9 +146,9 @@ For endpoints that return lists/arrays of values:
 
 All responses are in JSON, with Content-Type of `application/json`. A response is structured as follows:
 
-{% highlight js %}
+```js
 { "msg": "some success or error message" }
-{% endhighlight %}
+```
 
 ### Status Codes
 The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error.
@@ -194,9 +194,9 @@ Specific endpoints may provide other errors in other situations.
 
 When there's an error, the response body contains a JSON object something like:
 
-{% highlight js %}
+```js
 { "msg": "reason for error" }
-{% endhighlight %}
+```
 
 ### Exponential Backoff
 
@@ -224,7 +224,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues
 
 ### Response
 
-{% highlight js %}
+```js
 [
   {
     "id": "1234567890abcdef12345678",
@@ -232,7 +232,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues
     "name": "queue name"
   }
 ]
-{% endhighlight %}
+```
 
 
 ## Get Info About a Message Queue
@@ -251,11 +251,11 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 * **Queue Name**: Name of the queue
 
 ### Response
-{% highlight js %}
+```js
 {
   "size": "queue size"
 }
-{% endhighlight %}
+```
 
 
 ## Delete a Message Queue
@@ -274,11 +274,11 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 * **Queue Name**: Name of the queue
 
 ### Response
-{% highlight js %}
+```js
 {
   "msg": "Deleted."
 }
-{% endhighlight %}
+```
 
 
 
@@ -313,7 +313,7 @@ Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
 
 ### Request
 
-{% highlight js %}
+```js
 {
   "push_type":"multicast",
    "subscribers": [
@@ -324,11 +324,11 @@ Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
      }
    ]
 }
-{% endhighlight %}
+```
 
 
 ### Response
-{% highlight js %}
+```js
 {
   "id":"50eb546d3264140e8638a7e5",
   "name":"pushq-demo-1",
@@ -343,7 +343,7 @@ Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
     {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2", "headers": {"Content-Type": "application/json"}}
   ]
 }
-{% endhighlight %}
+```
 
 
 
@@ -372,7 +372,7 @@ The following parameters are all related to Push Queues.
 
 ### Request
 
-{% highlight js %}
+```js
 {
    "subscribers": [
      {
@@ -381,11 +381,11 @@ The following parameters are all related to Push Queues.
      }
    ]
 }
-{% endhighlight %}
+```
 
 
 ### Response
-{% highlight js %}
+```js
 {
   "id":"50eb546d3264140e8638a7e5",
   "name":"pushq-demo-1",
@@ -400,7 +400,7 @@ The following parameters are all related to Push Queues.
     {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2", "headers": {"Content-Type": "application/json"}}
   ]
 }
-{% endhighlight %}
+```
 
 
 
@@ -429,17 +429,17 @@ The following parameters are all related to Push Queues.
 
 ### Request
 
-{% highlight js %}
+```js
 {
    "subscribers": [
      {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
    ]
 }
-{% endhighlight %}
+```
 
 
 ### Response
-{% highlight js %}
+```js
 {
   "id":"50eb546d3264140e8638a7e5",
   "name":"pushq-demo-1",
@@ -453,7 +453,7 @@ The following parameters are all related to Push Queues.
     {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"}
   ]
 }
-{% endhighlight %}
+```
 
 
 ## Clear All Messages from a Queue
@@ -473,11 +473,11 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "msg": "Cleared"
 }
-{% endhighlight %}
+```
 
 
 ## Add Messages to a Queue
@@ -511,7 +511,7 @@ Multiple messages may be added in a single request, provided that the messages s
 
 ### Request
 
-{% highlight js %}
+```js
 {
   "messages": [
     {
@@ -525,16 +525,16 @@ Multiple messages may be added in a single request, provided that the messages s
     }
   ]
 }
-{% endhighlight %}
+```
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "ids": ["message 1 ID", "message 2 ID"],
   "msg": "Messages put on queue."
 }
-{% endhighlight %}
+```
 
 
 ## Add Messages to a Queue via Webhook
@@ -583,7 +583,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "messages": [
     {
@@ -602,7 +602,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
     }
   ]
 }
-{% endhighlight %}
+```
 
 
 ## Peek Messages on a Queue
@@ -632,7 +632,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "messages": [
     {
@@ -647,7 +647,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
     }
   ],
 }
-{% endhighlight %}
+```
 
 
 
@@ -675,14 +675,14 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "id": "5924625841136130921",
   "body": "hello 265",
   "timeout": 60,
   "reserved_count": 1
 }
-{% endhighlight %}
+```
 
 
 ## Release a Message on a Queue
@@ -707,24 +707,24 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ### Request Body
 
-{% highlight js %}
+```js
 {
   "delay": 60
 }
-{% endhighlight %}
+```
 
 A JSON document body is required even if all parameters are omitted.
 
-{% highlight js %}
+```js
 {}
-{% endhighlight %}
+```
 
 ### Response
-{% highlight js %}
+```js
 {
   "msg": "Released"
 }
-{% endhighlight %}
+```
 
 ## Touch a Message on a Queue
 
@@ -747,16 +747,16 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 Any empty JSON body.
 
-{% highlight js %}
+```js
 {}
-{% endhighlight %}
+```
 
 #### Response
-{% highlight js %}
+```js
 {
   "msg": "Touched"
 }
-{% endhighlight %}
+```
 
 
 ## Delete a Message from a Queue
@@ -776,11 +776,11 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 * **Message ID**: The id of the message to delete.
 
 #### Response
-{% highlight js %}
+```js
 {
   "msg": "Deleted"
 }
-{% endhighlight %}
+```
 
 
 ## Delete Multiple Messages from a Queue
@@ -804,22 +804,22 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 
 ### Request Body
 
-{% highlight js %}
+```js
 {
   "ids": [
     "MESSAGE_ID_1",
     "MESSAGE_ID_2"
   ]
 }
-{% endhighlight %}
+```
 
 
 #### Response
-{% highlight js %}
+```js
 {
   "msg": "Deleted"
 }
-{% endhighlight %}
+```
 
 
 
@@ -839,7 +839,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 * **Message ID**: The id of the message to retrieve status for.
 
 ### Response
-{% highlight js %}
+```js
 {
   "subscribers":[
     {
@@ -860,7 +860,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
     }
   ]
 }
-{% endhighlight %}
+```
 
 
 ## Acknowledge / Delete Push Message for a Subscriber
@@ -879,8 +879,8 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 * **Subscriber ID**: The id of the subscriber to delete.
 
 ### Response
-{% highlight js %}
+```js
 {
   "msg": "Deleted"
 }
-{% endhighlight %}
+```
