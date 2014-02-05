@@ -18,36 +18,36 @@ breadcrumbs:
 
 <div class="ruby">
 
-```ruby
+{% highlight ruby %}
 schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now + 3600})
-```
+{% endhighlight %}
 </div>
 
 <p>To run on a regular schedule, then just include an interval to repeat execution of the scheduled task. (This is useful, for example, for sending out daily notifications or cleaning up old database entries.)</p>
 
 <div class="ruby">
 
-```ruby
+{% highlight ruby %}
 schedule = client.schedules.create('MyWorker', payload, {:run_every => 3600}) # will be run every hour
-```
+{% endhighlight %}
 </div>
 
 <p>These repeating tasks can also be set to queued at a specific start time:</p>
 
 <div class="ruby">
 
-```ruby
+{% highlight ruby %}
 schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now + 3600, :run_every => 3600}) # will be run every hour, starting an hour from now
-```
+{% endhighlight %}
 </div>
 
 <p>You can also schedule a task to be queued after a certain delay:</p>
 
 <div class="ruby">
 
-```ruby
+{% highlight ruby %}
 schedule = client.tasks.create('MyWorker', payload, {:delay => 3600}) # queues the task after one hour
-```
+{% endhighlight %}
 </div>
 
 <div class="alert">
@@ -58,9 +58,9 @@ schedule = client.tasks.create('MyWorker', payload, {:delay => 3600}) # queues t
 
 <div class="ruby">
 
-```ruby
+{% highlight ruby %}
 schedule = client.schedules.create('MyWorker', payload, {:start_at => Time.now + 3600, :run_every => 3600, :run_times => 24 }) # will be run every hour for one day, starting an hour from now
-```
+{% endhighlight %}
 </div>
 
 
