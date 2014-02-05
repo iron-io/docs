@@ -5,3 +5,5 @@ pygments: true
 markdown: redcarpet
 
 exclude: ['partner_docs']
+
+extensions: ['fenced_code_blocks']
