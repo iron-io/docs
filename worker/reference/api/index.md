@@ -195,7 +195,6 @@ The success failure for request is indicated by an HTTP status code. A 2xx statu
 ### Errors
 In the event of an error, the appropriate status code will be returned with a body containing more information. An error response is structured as follows:
 
-
 ```js
 {
     "msg": "reason for error"
@@ -234,7 +233,6 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 The response will be a JSON object. The "codes" property will contain a JSON array of objects, each representing a code package.
 
 Sample:
-
 
 ```js
 {
@@ -310,7 +308,6 @@ Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec
 Content-Disposition: form-data; name="data"
 Content-Type: text/plain; charset=utf-8
 
-
 ```js
 {
     "file_name": "MyWorker.rb",
@@ -333,7 +330,6 @@ Content-Type: application/zip
 The response will be a JSON object containing a "msg" property that contains a description of the response.
 
 Sample:
-
 
 ```js
 {
@@ -359,7 +355,6 @@ Sample:
 The response will be a JSON object containing the details of the code package.
 
 Sample:
-
 
 ```js
 {
@@ -392,7 +387,6 @@ Sample:
 The response will be a JSON object containing a message property explaining whether the request was successful or not.
 
 Sample:
-
 
 ```js
 {
@@ -444,7 +438,6 @@ The response will be a zip file containing your code package. The response heade
 The response will be a JSON object with a revisions property, containing a list of JSON objects, each representing a revision to the code package.
 
 Sample:
-
 
 ```js
 {
@@ -568,7 +561,6 @@ The response will be a JSON object. The "tasks" property will contain a JSON arr
 Sample:
 
 
-
 ```js
 {
     "tasks": [
@@ -621,7 +613,6 @@ The request also needs to be sent with a "Content-Type: application/json" header
 
 Sample:
 
-
 ```js
 {
     "tasks": [
@@ -638,7 +629,6 @@ Sample:
 The response will be a JSON object containing a "msg" property that contains a description of the response and a "tasks" property that contains an array of objects, each with an "id" property that contains the created task’s ID.
 
 Sample:
-
 
 ```js
 {
@@ -672,7 +662,6 @@ The response will be a JSON object containing a "msg" property that contains a d
 
 Sample:
 
-
 ```js
 {
     "id": "4f3595381cf75447be029da5",
@@ -698,7 +687,6 @@ Sample:
 The response will be a JSON object containing the details of the task.
 
 Sample:
-
 
 ```js
 {
@@ -758,7 +746,6 @@ The response will be a JSON object containing a message explaining whether the r
 
 Sample:
 
-
 ```js
 {
     "msg": "Cancelled"
@@ -790,7 +777,6 @@ The request also needs to be sent with a "Content-Type: application/json" header
 
 Sample:
 
-
 ```js
 {
     "percent": 25,
@@ -803,7 +789,6 @@ Sample:
 The response will be a JSON object containing a message explaining whether the request was successful or not.
 
 Sample:
-
 
 ```js
 {
@@ -837,7 +822,6 @@ The request also needs to be sent with a "Content-Type: application/json" header
 The response will be a JSON object containing a message explaining whether the request was successful or not.
 
 Sample:
-
 
 ```js
 {
@@ -876,7 +860,6 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 The response will be a JSON object. The "schedules" property will contain a JSON array of objects, each representing a schedule.
 
 Sample:
-
 
 ```js
 {
@@ -932,7 +915,6 @@ The request also needs to be sent with a "Content-Type: application/json" header
 Sample:
 
 
-
 ```js
 {
   schedules: [
@@ -951,7 +933,6 @@ Sample:
 The response will be a JSON object containing a "msg" property that contains a description of the response and a "schedules" property that contains an array of objects, each with an "id" property that contains the scheduled task’s ID.
 
 Sample:
-
 
 
 ```js
@@ -983,7 +964,6 @@ Sample:
 The response will be a JSON object containing the details of the scheduled task.
 
 Sample:
-
 
 ```js
 {
@@ -1022,7 +1002,6 @@ Sample:
 The response will be a JSON object containing a message explaining whether the request was successful or not.
 
 Sample:
-
 
 ```js
 {
