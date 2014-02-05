@@ -33,7 +33,7 @@ Each of the official IronMQ [client libraries](/mq/libraries) allows you to chan
     </tr>
     <tr>
       <td> Rackspace LON </td>
-      <td>mq-rackspace-lon-1.iron.io</td>
+      <td>mq-rackspace-lon.iron.io</td>
     </tr>
     <tr>
       <td>Rackspace DFW</td>

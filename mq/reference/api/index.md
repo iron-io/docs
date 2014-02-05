@@ -124,7 +124,7 @@ The hosts for the clouds IronMQ supports are as follows:
     </tr>
     <tr>
       <td> Rackspace LON </td>
-      <td>mq-rackspace-lon-1.iron.io</td>
+      <td>mq-rackspace-lon.iron.io</td>
     </tr>
     <tr>
       <td>Rackspace DFW</td>
