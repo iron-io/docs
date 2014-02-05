@@ -99,9 +99,9 @@ For endpoints that return lists/arrays of values:
 
 All responses are in JSON, with Content-Type of `application/json`. A response is structured as follows:
 
-{% highlight js %}
+```js
 { "msg": "some success or error message" }
-{% endhighlight %}
+```
 
 ### Status Codes
 The success or failure of a request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx or 5xx status code indicates an error.
@@ -150,9 +150,9 @@ Specific endpoints may provide other errors in other situations.
 
 When there's an error, the response body contains a JSON object similar to the following:
 
-{% highlight js %}
+```js
 { "msg": "reason for error" }
-{% endhighlight %}
+```
 
 ### Exponential Backoff
 
@@ -178,7 +178,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches
 
 ### Response
 
-{% highlight js %}
+```js
 [
   {
     "project_id": "PROJECT ID",
@@ -189,7 +189,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches
     "name": "CACHE NAME"
   }
 ]
-{% endhighlight %}
+```
 
 ## Get Info About a Cache
 
@@ -208,11 +208,11 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches/<span
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "size": "cache size"
 }
-{% endhighlight %}
+```
 
 ## Delete a Cache
 
@@ -231,11 +231,11 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/caches/<s
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "msg": "Deleted."
 }
-{% endhighlight %}
+```
 
 ## Clear a Cache
 
@@ -254,11 +254,11 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/caches/<spa
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "msg": "Cleared."
 }
-{% endhighlight %}
+```
 
 ## Put an Item into a Cache
 
@@ -293,21 +293,21 @@ Each item object should contain the following keys:
 
 ### Request
 
-{% highlight js %}
+```js
 {
   "value": "This is my cache item.",
   "expires_in": 86400,
   "replace": true
 }
-{% endhighlight %}
+```
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "msg": "Stored."
 }
-{% endhighlight %}
+```
 
 ## Increment an Item's value
 
@@ -335,20 +335,20 @@ The request body should contain the following keys:
 
 ### Request
 
-{% highlight js %}
+```js
 {
   "amount": 10
 }
-{% endhighlight %}
+```
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "msg": "Added",
   "value": 132
 }
-{% endhighlight %}
+```
 
 ## Get an Item from a Cache
 
@@ -368,14 +368,14 @@ GET /projects/<span class="project_id variable">{Project ID}</span>/caches/<span
 
 ### Response
 
-{% highlight js %}
+```js
 {
   "cache": "CACHE NAME",
   "key": "ITEM KEY",
   "value": "ITEM VALUE",
   "cas": "12345"
 }
-{% endhighlight %}
+```
 
 ## Delete an Item from a Cache
 
@@ -394,8 +394,8 @@ DELETE /projects/<span class="project_id variable">{Project ID}</span>/caches/<s
 * **Key**: The key the item is stored under in the cache.
 
 ### Response
-{% highlight js %}
+```js
 {
   "msg": "Deleted."
 }
-{% endhighlight %}
+```

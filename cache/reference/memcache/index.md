@@ -128,9 +128,10 @@ before you can use the sample.
 To install memcache-client, just run the following from your command line:
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+```sh
 $ gem install memcache-client
-{% endhighlight %}
+```
 
 <!-- Python
 
@@ -139,22 +140,22 @@ before you can use the sample.
 
 To install python-memcached, just run the following from your command line:
 
-{% highlight bash %}
+```sh
 pip install python-memcached
-{% endhighlight %}
+```
 
 If you prefer <span class="fixed-width">easy_install</span>, you can run:
 
-{% highlight bash %}
+```sh
 easy_install python-memcached
-{% endhighlight %}
+```
 
 -->
 
 ### Run the Example
 
 <figcaption><span>iron_cache_memcache.rb </span></figcaption>
-{% highlight ruby %}
+```ruby
 require 'memcache'
 
 # connect
@@ -179,11 +180,11 @@ sleep 5
 
 # and it's gone
 p mc.get('abc')
-{% endhighlight %}
+```
 
 <!-- PYTHON
 
-{% highlight ruby %}
+```ruby
 import memcache
 import time
 
@@ -208,5 +209,5 @@ mc.set("this-value", "disappears after 3 seconds", time=3)
 time.sleep(4)
 
 print(mc.get("this-value"))
-{% endhighlight %}
+```
 -->
