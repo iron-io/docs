@@ -46,13 +46,14 @@ section: worker
 <p>The suggested way to do this is through a <span class="fixed-width">.worker</span> (pronounced "dotworker") file. There's extensive <a href="/worker/reference/dotworker">documentation</a> for <span class="fixed-width">.worker</span> files, but the snippet below should be enough to get you started. Just save it as "<span class="fixed-width">firstworker.worker</span>" in the same directory as your code.</p>
 
 <figcaption><span>firstworker.worker </span></figcaption>
-{% highlight ruby %}
+
+```ruby
 runtime "ruby" # The runtime the code should be run under: ruby, python, php, or sh
 
 exec "path/to/file.rb" # The file to execute when a task is queued. Your worker's entry point
 
 file "config.json" # The path to a file to upload as a dependency of the worker; just leave this out if you don't have any dependencies.
-{% endhighlight %}
+```
 
 <div class="alert">
 	<p><strong>Note:</strong> You should never have a file named <em>just</em> ".worker". Always use a unique, recognisable name&mdash;it's what your code package will be named. "helloworld.worker" will create a code package named "helloworld", "turnintoaunicorn.worker" will create a code package named "turnintoaunicorn", etc.</p>
@@ -63,20 +64,23 @@ file "config.json" # The path to a file to upload as a dependency of the worker;
 <p>To interact with the IronWorker API, you'll need your project's ID and an auth token from the <a href="https://hud.iron.io">HUD</a>. Once you retrieve them, you need to <a href="/worker/reference/configuration">configure the CLI to use them</a>. Create an <span class="fixed-width">iron.json</span> file in the same folder as your <span class="fixed-width">firstworker.worker</span> file that looks like this:</p>
 
 <figcaption><span>iron.json </span></figcaption>
-{% highlight js %}
+
+```js
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
   "token": "INSERT YOUR AUTH TOKEN HERE"
 }
-{% endhighlight %}
+```
 
 <p>Once that's done, you can just run the following command:</p>
 
 <figcaption><span>Command Line </span></figcaption>
 <div class="cli">
-{% highlight bash %}
+
+
+```sh
 $ iron_worker upload firstworker
-{% endhighlight %}
+```
 </div>
 
 <p>That will upload the code package to IronWorker and name it "firstworker"&mdash;you'll use the name to queue tasks to the package. That's it, your code is ready to be run!</p>
@@ -86,16 +90,20 @@ $ iron_worker upload firstworker
 <p>Now that you've uploaded your worker, you can just queue tasks against it to run them, in parallel, in the cloud. You can queue a task directly from <a href="/worker/languages">your favorite language</a> or from the command line:</p>
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker queue firstworker
-{% endhighlight %}
+```
 
 <p>You can also specify a payload, which is a string that will be supplied to your worker while it runs the task, letting you pass in information. Almost all payloads are JSON strings:</p>
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker queue firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "arr1": ["item1", "item2"]}'
-{% endhighlight %}
+```
 
 <p>Most clients&mdash;including the CLI&mdash;will automatically handle parsing the payload in your worker, so you can just access the variable or function they give you in your worker's code. We have <a href="/worker/reference/payload">more information</a> on payloads, if you're curious.</p>
 
@@ -108,23 +116,29 @@ $ iron_worker queue firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "
 <p>Again, you can schedule a task from your <a href="/worker/languages">favorite language</a> or from the command line:</p>
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker schedule firstworker --start-at "2012-07-19T23:51:00-04:00"
-{% endhighlight %}
+```
 
 <p>If you want to just start a task after a short delay, you can do that too. Just specify <span class="fixed-width">--delay</span> followed by the number of seconds the task should be delayed.</p>
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker schedule firstworker --delay 120
-{% endhighlight %}
+```
 
 </p>If you want to have a task repeat, you can just specify the <span class="fixed-width">--run-every</span> option, followed by the number of seconds between each run:</p>
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker schedule firstworker --run-every 60
-{% endhighlight %}
+```
 
 <p>There are a lot of options to configure scheduling tasks; check our <a href="/worker/scheduling">more detailed guide</a> to see more of the options.</p>
 

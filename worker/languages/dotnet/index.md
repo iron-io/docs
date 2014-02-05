@@ -30,7 +30,7 @@ breadcrumbs:
         <li><a href="#payload_example">Payload Example</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 ## Quick Start
@@ -43,26 +43,29 @@ It does, however, require you to have Ruby 1.9+ installed and to install the `ir
 Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ gem install iron_worker_ng
-{% endhighlight %}
+```
 
 ### Create Your Configuration File
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have [documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
-{% highlight js %}
+
+```js
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
   "token": "INSERT YOUR TOKEN HERE"
 }
-{% endhighlight %}
+```
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 ### Write Your .NET Worker
 
-{% highlight c# %}
+```c#
 public class HelloWorld
 {
     static public void Main(string[] args)
@@ -71,40 +74,47 @@ public class HelloWorld
     }
 
 }
-{% endhighlight %}
+```
 
 ### Compile Your .NET Worker
 
 For .NET code, IronWorker runs the compiled executables in the cloud, so you're going to need to generate the executable. It's likely your development environment (e.g. Visual Studio) has a simple way to do this; that will work just fine. If you're a Mono users, use `gmcs`:
 
-{% highlight bash %}
+
+
+```sh
 gmcs hello.cs
-{% endhighlight %}
+```
 
 ### Create a .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
-{% highlight ruby %}
+
+```ruby
 # set the runtime language; this should be "mono" for .NET workers
 runtime "mono"
 # exec is the file that will be executed when you queue a task
 exec "hello.exe" # replace with your file
-{% endhighlight %}
+```
 
 ### Upload Your Worker
 
-{% highlight bash %}
+
+
+```sh
 iron_worker upload hello
-{% endhighlight %}
+```
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list, which will be empty, but not for long.
 
 Let’s quickly test it by running:
 
-{% highlight bash %}
+
+
+```sh
 iron_worker queue hello
-{% endhighlight %}
+```
 
 Now look at the task list in [HUD](https://hud.iron.io) and you should see your task show up and go from "queued" to "running" to "completed".
 
@@ -112,12 +122,12 @@ Now that we know it works, let’s queue up a bunch of tasks from code. **Note**
 
 ### Queue Up Tasks for Your Worker
 
-Once your code has been uploaded, it's easy to queue a task to it. It's a single, 
-authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON 
-object. The example below queues up a task for your worker. Just insert your 
+Once your code has been uploaded, it's easy to queue a task to it. It's a single,
+authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
+object. The example below queues up a task for your worker. Just insert your
 project ID and token at the bottom (that third argument is the name of your worker).
 
-{% highlight c# %}
+```c#
 using System;
 using System.Net;
 
@@ -154,13 +164,14 @@ public class QueueTask
         Console.WriteLine(queue_task("INSERT PROJECT ID", "INSERT TOKEN", "hello"));
     }
 }
-{% endhighlight %}
+```
 
 Save this as "enqueue.cs", compile it, and run it to queue up the task to your worker. You should get a response similar to this:
 
-{% highlight js %}
+
+```js
 {"msg":"Queued up","tasks":[{"id":"506e1a8e29a33a57650db95d"}]}
-{% endhighlight %}
+```
 
 For most people, calling the API by hand is overkill. We don't have an official IronWorker library for .NET yet, but our community has built a great project for interacting with our APIs. If you're using Iron.io from .NET, you may wish to check out [IronTools](https://github.com/odeits/IronTools).
 
@@ -170,11 +181,11 @@ For most people, calling the API by hand is overkill. We don't have an official 
 
 ### Payload Example
 
-Retrieving the payload in .NET is the same as it is on any other language. 
-Retrieve the `-payload` argument passed to the script, load that file, and 
+Retrieving the payload in .NET is the same as it is on any other language.
+Retrieve the `-payload` argument passed to the script, load that file, and
 parse it as JSON. **Note**: This script only parses payloads that consist of strings in a key/value pair. Implementing more advanced parsing is an exercise left to the reader.
 
-{% highlight c# %}
+```c#
 using System;
 using System.IO;
 using System.Linq;
@@ -199,10 +210,12 @@ public class HelloWorld
     }
 
 }
-{% endhighlight %}
+```
 
 You'll notice that we're using the `System.Web.Script` assembly in the payload example; you'll need to specify that when compiling the binary. `System.Web.Script` lives in System.Web.Extensions.dll, so the command looks like this:
 
-{% highlight bash %}
+
+
+```sh
 gmcs payloadworker.cs -r:System.Web.Extensions.dll
-{% endhighlight %}
+```

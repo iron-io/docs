@@ -34,7 +34,7 @@ This article will walk you through the specifics of things, but you should be fa
         <li><a href="#ruby_on_rails">Ruby on Rails</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 
@@ -42,7 +42,7 @@ This article will walk you through the specifics of things, but you should be fa
 
 ### Get the `iron_worker_ng` Ruby Gem
 
-We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) 
+We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng)
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier.
 It also contains [CLI](/worker/reference/cli).
 Older customers may be using the [iron_worker](https://github.com/iron-io/iron_worker_ruby) gem.
@@ -54,9 +54,11 @@ Note that we are running Ruby 1.9 on worker servers, so your workers must be com
 You can install the `iron_worker_ng` gem from the command line:
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ gem install iron_worker_ng
-{% endhighlight %}
+```
 
 ### Create Your Configuration File
 
@@ -65,12 +67,13 @@ We have some [pretty good documentation](/worker/reference/configuration) about 
 but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
 <figcaption><span>iron.json</span></figcaption>
-{% highlight js %}
+
+```js
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
   "token": "INSERT YOUR TOKEN HERE"
 }
-{% endhighlight %}
+```
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file.
 Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
@@ -78,7 +81,8 @@ Then, assuming you're running the commands from within the folder, the CLI will 
 ### Write Your Ruby Worker
 
 <figcaption><span>hello_worker.rb</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 # Worker code can be anything you want.
 puts "Starting HelloWorker at #{Time.now}"
 puts "Payload: #{params}"
@@ -88,7 +92,7 @@ puts "Simulating hard work for 5 seconds..."
   sleep 1
 end
 puts "HelloWorker completed at #{Time.now}"
-{% endhighlight %}
+```
 
 ### Create a .worker File
 
@@ -96,21 +100,24 @@ Worker files are a simple way to define your worker and its dependencies. Save t
 following in a file called `hello.worker`
 
 <figcaption><span>hello.worker</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 # set the runtime language. Ruby workers use "ruby"
 runtime "ruby"
 # exec is the file that will be executed:
 exec "hello_worker.rb"
-{% endhighlight %}
+```
 
 You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
 ### Upload Your Worker
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker upload hello
-{% endhighlight %}
+```
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.
 Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab.
@@ -120,9 +127,11 @@ Click on it to show the task list which will be empty, but not for long.
 Let’s quickly test it by running:
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker queue hello
-{% endhighlight %}
+```
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 
@@ -140,39 +149,42 @@ You will want to look at the docs for the client library for your language for h
 The following is an example in ruby, save the following into a file called `enqueue.rb`:
 
 <figcaption><span>enqueue.rb</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 require 'iron_worker_ng'
 client = IronWorkerNG::Client.new
 100.times do
    client.tasks.create("hello", "foo"=>"bar")
 end
-{% endhighlight %}
+```
 
 You can run that code with:
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ ruby enqueue.rb
-{% endhighlight %}
+```
 
 ## Deep Dive
 
 ### A Note on Libraries
 
-We currently offer both the [iron_worker](https://github.com/iron-io/iron_worker_ruby) 
-and [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) gems as 
+We currently offer both the [iron_worker](https://github.com/iron-io/iron_worker_ruby)
+and [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) gems as
 officially supported client libraries. The `iron_worker` gem is deprecated and will no longer be under active
 development; the `iron_worker_ng` gem is actively maintained and is considered to be the gold standard gem.
 
-We suggest that new users use the `iron_worker_ng` gem and that users who are 
-currently using the `iron_worker` gem slowly and carefully transition over when 
+We suggest that new users use the `iron_worker_ng` gem and that users who are
+currently using the `iron_worker` gem slowly and carefully transition over when
 they get the opportunity.
 
 ### Payload Example
 
-Retrieving the payload in Ruby workers is a bit different&mdash;some of the 
-clients take care of the dirty work for you. So while it's still the same 
-process&mdash;get the `-payload` argument passed to the script at runtime, 
+Retrieving the payload in Ruby workers is a bit different&mdash;some of the
+clients take care of the dirty work for you. So while it's still the same
+process&mdash;get the `-payload` argument passed to the script at runtime,
 read the file it specifies, and parse the JSON contained within that file&mdash;
 the official client library takes care of that for you and lets you just access
 the payload as a variable at runtime. Here's an example:
@@ -180,50 +192,53 @@ the payload as a variable at runtime. Here's an example:
 In the task queuing script:
 
 <figcaption><span>enqueue.rb</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 require 'iron_worker_ng'
 
 client = IronWorkerNG::Client.new
 task_id = client.tasks.create('Worker Name Here',
                               {:arg1 => "Test",
                                :another_arg => ["apples", "oranges"]})
-{% endhighlight %}
+```
 
 In the worker:
 
 <figcaption><span>hello_worker.rb</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 puts params['arg1']
 puts params['another_arg'].inspect
-{% endhighlight %}
+```
 
 Please note that for non-JSON arguments, you should use the `payload` variable instead of the `params` variable.
 The `payload` variable is simply the raw contents of the file specified by `-payload`, without any JSON parsing being applied.
 
 <figcaption><span>hello_worker.rb</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 puts payload
-{% endhighlight %}
+```
 
 ### Merging
 
-Because your Ruby workers run in a Ruby environment in the cloud, you need to 
-upload all your gems and other dependencies with your workers. Fortunately, the 
+Because your Ruby workers run in a Ruby environment in the cloud, you need to
+upload all your gems and other dependencies with your workers. Fortunately, the
 official client library has a built-in solution for this, called "merging".
 
 #### Gems
 
-You can find out how to merge gems and more about best practices on the 
+You can find out how to merge gems and more about best practices on the
 [Merging Gems page](/worker/languages/ruby/merging-gems).
 
 #### Files and Directories
 
-It's often the case that a worker needs files besides the script that contains 
-its functionality. You may need configuration files, other scripts, or other 
-static resources. Both official client libraries have made it easy to include 
+It's often the case that a worker needs files besides the script that contains
+its functionality. You may need configuration files, other scripts, or other
+static resources. Both official client libraries have made it easy to include
 these auxiliary files.
 
-You can find out more about merging files and directories on the 
+You can find out more about merging files and directories on the
 [Merging Files & Directories page](/worker/languages/ruby/merging-files-and-dirs).
 
 ### Ruby on Rails

@@ -46,17 +46,19 @@ Workers that use either `ruby` or `php` runtimes have more possibilities to acce
 Ruby workers have access to special methods to obtain the payload.
 
 <div class="language ruby">
-{% highlight ruby %}
+
+```ruby
 payload_string = payload # string
-{% endhighlight %}
+```
 </div>
 
 If specified payload is in JSON format it will be parsed automatically into params.
 
 <div class="language ruby">
-{% highlight ruby %}
+
+```ruby
 parsed_payload = params # parsed JSON
-{% endhighlight %}
+```
 </div>
 
 #### Access to a Payload in PHP Runtime
@@ -65,10 +67,11 @@ The payload in PHP runtime is accessible by calling method `getPayload()`.
 If payload is a parsable JSON string it will be converted automatically.
 
 <div class="language php">
-{% highlight php %}
+
+```php
 <?php
 payload = getPayload(); // parsed JSON or string
-{% endhighlight %}
+```
 </div>
 
 ## Other Information
@@ -100,7 +103,8 @@ and change their values to `[FILTERED]`.
 
 #### Example: original payload
 
-{% highlight js %}
+
+```js
 {
   "database": {
     "connectionstring": "postgres://usr:pass@host:port/db"
@@ -114,11 +118,12 @@ and change their values to `[FILTERED]`.
     "service_pass": "userp4ss"
   }
 }
-{% endhighlight %}
+```
 
 #### Example: payload visible through the HUD
 
-{% highlight js %}
+
+```js
 {
   "database": {
     "connectionstring": "[FILTERED]"
@@ -132,4 +137,4 @@ and change their values to `[FILTERED]`.
     "service_pass": "[FILTERED]"
   }
 }
-{% endhighlight %}
+```

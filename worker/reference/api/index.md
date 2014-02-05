@@ -113,12 +113,12 @@ IronWorker uses OAuth2 tokens to authenticate API requests. You can find and cre
 
 Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
 
-**Example Authorization Header**:  
+**Example Authorization Header**:
 Authorization: OAuth abc4c7c627376858
 
 **Note**: Be sure you have the correct case: it's **OAuth**, not Oauth.
 
-**Example Query with Parameters**:  
+**Example Query with Parameters**:
 GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/projects/<span class="variable project_id">{Project ID}</span>/tasks?oauth=abc4c7c627376858
 
 ## Requests
@@ -127,9 +127,9 @@ Requests to the API are simple HTTP requests against the API endpoints.
 
 All request bodies should be in JSON format.
 
-Unless otherwise noted, all requests should use the following headers (in addition to their authentication):  
-\- Accept : application/json  
-\- Accept-Encoding : gzip/deflate  
+Unless otherwise noted, all requests should use the following headers (in addition to their authentication):
+\- Accept : application/json
+\- Accept-Encoding : gzip/deflate
 \- Content-Type : application/json
 
 ### Base URL
@@ -154,7 +154,7 @@ The domains for the clouds IronWorker supports are as follows:
 For endpoints that return lists/arrays of values:
 
 * page - The page of results to return. Default is 0. Maximum is 100.
-* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100. 
+* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
 
 ## Responses
 
@@ -195,13 +195,14 @@ The success failure for request is indicated by an HTTP status code. A 2xx statu
 ### Errors
 In the event of an error, the appropriate status code will be returned with a body containing more information. An error response is structured as follows:
 
-{% highlight js %}
+
+```js
 {
     "msg": "reason for error"
 }
-{% endhighlight %}
+```
 
-#### Exponential Backoff
+### Exponential Backoff
 
 When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 
@@ -232,8 +233,10 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 The response will be a JSON object. The "codes" property will contain a JSON array of objects, each representing a code package.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "codes": [
         {
@@ -248,7 +251,7 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 ### Upload or Update a Code Package
 
@@ -298,27 +301,31 @@ Your request also needs the following headers, in addition to the headers requir
 
 **Note**: This request is not limited to 64 KB, unlike other requests.
 
-**Sample Headers**:  
-Content-Length: 3119  
+**Sample Headers**:
+Content-Length: 3119
 Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec
 
 **Sample Body**:
---39f5903459794ad483153244cc6486ec  
-Content-Disposition: form-data; name="data"  
-Content-Type: text/plain; charset=utf-8  
-{% highlight js %}
+--39f5903459794ad483153244cc6486ec
+Content-Disposition: form-data; name="data"
+Content-Type: text/plain; charset=utf-8
+
+
+```js
 {
     "file_name": "MyWorker.rb",
     "name": "MyWorker",
     "runtime": "ruby",
     "max_concurrency": 12
-}{% endhighlight %}
---39f5903459794ad483153244cc6486ec  
-Content-Disposition: form-data; name="file"; filename="MyWorker.zip"  
-Content-Type: application/zip  
+}
+```
+
+--39f5903459794ad483153244cc6486ec
+Content-Disposition: form-data; name="file"; filename="MyWorker.zip"
+Content-Type: application/zip
 
 { Form-encoded zip data goes here }
-    
+
 --39f5903459794ad483153244cc6486ec--
 
 #### Response
@@ -326,11 +333,13 @@ Content-Type: application/zip
 The response will be a JSON object containing a "msg" property that contains a description of the response.
 
 Sample:
-{% highlight js %}
+
+
+```js
 {
     "msg": "Upload successful."
 }
-{% endhighlight %}
+```
 
 ### Get Info About a Code Package
 
@@ -349,8 +358,10 @@ Sample:
 
 The response will be a JSON object containing the details of the code package.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "id": "4eb1b241cddb13606500000b",
     "project_id": "4eb1b240cddb13606500000a",
@@ -361,7 +372,7 @@ Sample:
     "latest_history_id": "4eb1b241cddb13606500000c",
     "latest_change": 1328737460598000000
 }
-{% endhighlight %}
+```
 
 ### Delete a Code Package
 
@@ -380,12 +391,14 @@ Sample:
 
 The response will be a JSON object containing a message property explaining whether the request was successful or not.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "msg":"Deleted"
 }
-{% endhighlight %}
+```
 
 ### Download a Code Package
 
@@ -430,8 +443,10 @@ The response will be a zip file containing your code package. The response heade
 
 The response will be a JSON object with a revisions property, containing a list of JSON objects, each representing a revision to the code package.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "revisions": [
         {
@@ -454,7 +469,7 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 ## Tasks
 
@@ -550,8 +565,11 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_n
 
 The response will be a JSON object. The "tasks" property will contain a JSON array of objects, each representing a task.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+
+```js
 {
     "tasks": [
         {
@@ -572,7 +590,7 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 ### Queue a Task
 
@@ -595,14 +613,16 @@ The request should be JSON-encoded and consist of an object with a single proper
 
 Optionally, each object in the array can also contain the following:
 
-* **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. 0 is the default. 
-* **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration. 
+* **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. 0 is the default.
+* **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration.
 * **delay**: The number of seconds to delay before actually queuing the task. Default is 0.
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header. 
+The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "tasks": [
         {
@@ -611,14 +631,16 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 #### Response
 
 The response will be a JSON object containing a "msg" property that contains a description of the response and a "tasks" property that contains an array of objects, each with an "id" property that contains the created task’s ID.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "msg": "Queued up",
     "tasks": [
@@ -627,7 +649,7 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 ### Queue a Task From a Webhook
 
@@ -648,13 +670,15 @@ The request body is free-form: anything at all can be sent. Whatever the request
 
 The response will be a JSON object containing a "msg" property that contains a description of the response.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "id": "4f3595381cf75447be029da5",
     "msg":"Queued up."
 }
-{% endhighlight %}
+```
 
 ### Get Info About a Task
 
@@ -673,8 +697,10 @@ Sample:
 
 The response will be a JSON object containing the details of the task.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "id": "4eb1b471cddb136065000010",
     "project_id": "4eb1b46fcddb13606500000d",
@@ -687,11 +713,11 @@ Sample:
     "end_time": 1320268924000000000,
     "duration": 43,
     "timeout": 3600,
-    "payload": "{\"foo\":\"bar\"}", 
-    "updated_at": "2012-11-10T18:31:08.064Z", 
+    "payload": "{\"foo\":\"bar\"}",
+    "updated_at": "2012-11-10T18:31:08.064Z",
     "created_at": "2012-11-10T18:30:43.089Z"
 }
-{% endhighlight %}
+```
 
 ### Get a Task’s Log
 
@@ -710,7 +736,7 @@ Sample:
 
 Unlike the other API methods, this method will return a Content-Type of "text/plain". The response will only include the task’s log.
 
-Sample:  
+Sample:
 Hello World!
 
 ### Cancel a Task
@@ -730,12 +756,14 @@ Hello World!
 
 The response will be a JSON object containing a message explaining whether the request was successful or not.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "msg": "Cancelled"
 }
-{% endhighlight %}
+```
 
 ### Set a Task’s Progress
 
@@ -760,24 +788,28 @@ The request should be JSON-encoded and can contain the following information:
 
 The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "percent": 25,
     "msg": "Any message goes here."
 }
-{% endhighlight %}
+```
 
 #### Response
 
 The response will be a JSON object containing a message explaining whether the request was successful or not.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "msg": "Progress set"
 }
-{% endhighlight %}
+```
 
 ### Retry a Task
 
@@ -804,8 +836,10 @@ The request also needs to be sent with a "Content-Type: application/json" header
 
 The response will be a JSON object containing a message explaining whether the request was successful or not.
 
-Sample:  
-{% highlight js %}
+Sample:
+
+
+```js
 {
     "msg": "Queued up",
     "tasks": [
@@ -814,7 +848,7 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 ## Scheduled Tasks
 
@@ -842,7 +876,9 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 The response will be a JSON object. The "schedules" property will contain a JSON array of objects, each representing a schedule.
 
 Sample:
-{% highlight js %}
+
+
+```js
 {
     "schedules": [
         {
@@ -862,7 +898,7 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 ### Schedule a Task
 
@@ -894,7 +930,10 @@ Optionally, each object in the array can specify the following properties:
 The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
 
 Sample:
-{% highlight js %}
+
+
+
+```js
 {
   schedules: [
     {
@@ -905,14 +944,17 @@ Sample:
     }
   ]
 }
-{% endhighlight %}
+```
 
 #### Response
 
 The response will be a JSON object containing a "msg" property that contains a description of the response and a "schedules" property that contains an array of objects, each with an "id" property that contains the scheduled task’s ID.
 
 Sample:
-{% highlight js %}
+
+
+
+```js
 {
     "msg": "Scheduled",
     "schedules": [
@@ -921,7 +963,7 @@ Sample:
         }
     ]
 }
-{% endhighlight %}
+```
 
 ### Get Info About a Scheduled Task
 
@@ -941,7 +983,9 @@ Sample:
 The response will be a JSON object containing the details of the scheduled task.
 
 Sample:
-{% highlight js %}
+
+
+```js
 {
     "id": "4eb1b490cddb136065000011",
     "created_at": "2011-11-02T21:22:51Z",
@@ -958,7 +1002,7 @@ Sample:
     "run_times": 1,
     "run_count": 1
 }
-{% endhighlight %}
+```
 
 ### Cancel a Scheduled Task
 
@@ -978,8 +1022,10 @@ Sample:
 The response will be a JSON object containing a message explaining whether the request was successful or not.
 
 Sample:
-{% highlight js %}
+
+
+```js
 {
     "msg": "Cancelled"
 }
-{% endhighlight %}
+```

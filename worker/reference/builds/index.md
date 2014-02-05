@@ -26,7 +26,7 @@ locally (on your machine) and remotely (in a build worker on Iron.io's servers).
     		<li><a href="#remote__file">Remote <code>.worker</code> File</a></li>
     	</ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 ## Local Build
@@ -36,9 +36,11 @@ If your worker does not need any binary extensions or compiled components, build
 Just type
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker upload cool_feature
-{% endhighlight %}
+```
 
 and relax. The CLI will merge the directories, files, libraries, and modules you listed in your [.worker file](/worker/reference/dotworker) into a zip archive that is then uploaded to IronWorker using [the API](/worker/reference/api).
 
@@ -55,16 +57,18 @@ This is what the remote build is for. It automatically creates a worker that wil
 To enable remote build, add the following line to your `.worker` file:
 
 <figcaption><span>.worker</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 full_remote_build true
-{% endhighlight %}
+```
 
 or just
 
 <figcaption><span>.worker</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 remote
-{% endhighlight %}
+```
 
 This forces to install all your dependencies in IronWorker [environment](/worker/reference/environment).
 
@@ -73,9 +77,11 @@ This forces to install all your dependencies in IronWorker [environment](/worker
 Using HTTP link as your `.worker` file enables full remote build automatically.
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker upload http://my.site/my.worker
-{% endhighlight %}
+```
 
 This could be helpful when you want to load the worker from HTTP endpoint.
 In this case `exec`, `file`, `gemfile`, and `deb` directives are all prepended with the base URL of the `.worker` file.
@@ -83,19 +89,21 @@ In this case `exec`, `file`, `gemfile`, and `deb` directives are all prepended w
 If the `http://my.site/my.worker` file looks like this:
 
 <figcaption><span>.worker</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 exec "my_exec"
 file "my_file"
 deb "my.deb"
 gemfile "Gemfile"
-{% endhighlight %}
+```
 
 It will be read by the remote build worker as this:
 
 <figcaption><span>.worker</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 exec "http://my.site/my_exec"
 file "http://my.site/my_file"
 deb "http://my.site/my.deb"
 gemfile "http://my.site/Gemfile"
-{% endhighlight %}
+```

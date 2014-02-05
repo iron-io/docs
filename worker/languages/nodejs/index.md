@@ -7,9 +7,9 @@ breadcrumbs:
   - ['Node.js', '/nodejs']
 ---
 
-[Node.js](http://www.nodejs.org) is an evented language that brings the well-known 
-Javascript language to server-side development, using Google's [V8](http://code.google.com/p/v8/) 
-runtime. The evented model of programming lends itself nicely to the asynchronous 
+[Node.js](http://www.nodejs.org) is an evented language that brings the well-known
+Javascript language to server-side development, using Google's [V8](http://code.google.com/p/v8/)
+runtime. The evented model of programming lends itself nicely to the asynchronous
 nature of workers, making it a natural fit for IronWorker. This article will walk you through getting your Node.js workers running on IronWorker, but you should still be familiar with the [basics of IronWorker](/worker).
 
 <section id="toc">
@@ -33,7 +33,7 @@ nature of workers, making it a natural fit for IronWorker. This article will wal
         <li><a href="#packaging_dependencies">Packaging Dependencies</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 ## Quick Start
@@ -46,49 +46,56 @@ It does, however, require you to have Ruby 1.9+ installed and to install the `ir
 Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ gem install iron_worker_ng
-{% endhighlight %}
+```
 
 ### Create Your Configuration File
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
 <figcaption><span>iron.json </span></figcaption>
-{% highlight js %}
+
+```js
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
   "token": "INSERT YOUR TOKEN HERE"
 }
-{% endhighlight %}
+```
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 ### Write Your Node.js Worker
 
 <figcaption><span>hello_worker.js </span></figcaption>
-{% highlight js %}
+
+```js
 console.log("Hello World from Node.js.");
-{% endhighlight %}
+```
 
 ### Create a .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
 <figcaption><span>hello.worker </span></figcaption>
-{% highlight ruby %}
+
+```ruby
 # set the runtime language; this should be "node" for Node.js workers
 runtime "node"
 # exec is the file that will be executed when you queue a task
 exec "hello_worker.js" # replace with your file
-{% endhighlight %}
+```
 
 ### Upload Your Worker
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker upload hello
-{% endhighlight %}
+```
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
 
@@ -102,13 +109,14 @@ Now that we know it works, let’s queue up a bunch of tasks from code. **Note**
 
 ### Queue Up Tasks for Your Worker
 
-Once your code has been uploaded, it's easy to queue a task to it. It's a single, 
-authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON 
-object. The example below queues up a task for your NodeWorker. Just insert your 
+Once your code has been uploaded, it's easy to queue a task to it. It's a single,
+authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
+object. The example below queues up a task for your NodeWorker. Just insert your
 project ID and token at the bottom (that third argument is the name of your worker).
 
 <figcaption><span>enqueue.js </span></figcaption>
-{% highlight js %}
+
+```js
 var https = require("https");
 
 function queue_task(project, token, code_name) {
@@ -117,7 +125,7 @@ function queue_task(project, token, code_name) {
     "arg1": "Test",
     "another_arg": ["apples", "oranges"]
   };
-  
+
   var req_json = {
     "tasks": [{
       "code_name": code_name,
@@ -150,7 +158,7 @@ function queue_task(project, token, code_name) {
       process.stdout.write(d);
     });
   });
-  
+
   post_req.write(req_data)
   post_req.end();
 
@@ -160,15 +168,16 @@ function queue_task(project, token, code_name) {
 }
 
 queue_task("INSERT PROJECT ID", "INSERT TOKEN", "NodeWorker");
-{% endhighlight %}
+```
 
-Save this as "enqueue.js" and use `node enqueue.js` to queue up the task to your 
+Save this as "enqueue.js" and use `node enqueue.js` to queue up the task to your
 worker. You should get a response similar to this:
 
-{% highlight js %}
+
+```js
 statusCode:  200
 {"msg":"Queued up","status_code":200,"tasks":[{"id":"4f9ecdd01bab47589b02a097"}]}
-{% endhighlight %}
+```
 
 
 **Note**: For most people, calling the API by hand is overkill. Please make sure to check out our [node client libraries](/worker/languages/#full_support), including
@@ -180,12 +189,13 @@ a community supported and potentially more active project called [node-ironio](h
 
 ### Payload Example
 
-Retrieving the payload in Node.js is the same as it is on any other language. 
-Retrieve the `-payload` argument passed to the script, load that file, and 
+Retrieving the payload in Node.js is the same as it is on any other language.
+Retrieve the `-payload` argument passed to the script, load that file, and
 parse it as JSON.
 
 <figcaption><span>payload.js </span></figcaption>
-{% highlight js %}
+
+```js
 var fs = require('fs');
 var payloadIndex = -1;
 
@@ -212,48 +222,53 @@ fs.readFile(process.argv[payloadIndex], 'ascii', function(err, data) {
         }
         console.log(JSON.parse(data));
 });
-{% endhighlight %}
+```
 
 ### Packaging Worker Dependencies using Node
 
 dependencies with Node require that you create a package.json file
 To generate a package.json the following **more info:**[npm init](https://github.com/isaacs/init-package-json)
 
-{% highlight sh %}
+
+
+```sh
 npm-init
-{% endhighlight %}
+```
 
 when adding and installing modules run then following to automatically update your package.json manifest.
 
-{% highlight sh %}
+
+
+```sh
 npm install <module name> --save
-{% endhighlight %}
+```
 
 ### Local build
 
 **requirements**
 - package.json with included dependencies
-  -/node_modules directory 
+  -/node_modules directory
 
-If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add 
+If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add
 
 `dir "node_modules"`
 
-and 
+and
 
-`file "package.json"` 
+`file "package.json"`
 
 to your .worker file:
 
 <figcaption><span>hello.worker </span></figcaption>
-{% highlight ruby %}
+
+```ruby
 # set the runtime language; this should be "node" for Node.js workers
 runtime "node"
 # exec is the file that will be executed when you queue a task
 exec "hello_worker.js" # replace with your file
 dir "node_modules" # include dependency files when uploading
 file "package.json" # include dependency manifest when uploading
-{% endhighlight %}
+```
 
 ### Remote build
 
@@ -263,11 +278,12 @@ file "package.json" # include dependency manifest when uploading
 If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add a `dir "node_modules"` line and a `file "package.json"` line to your .worker file:
 
 <figcaption><span>hello.worker </span></figcaption>
-{% highlight ruby %}
+
+```ruby
 runtime "node"
 exec "hello_worker.js" # replace with your file
 file "package.json" # include dependency manifest when uploading
-build "npm install" # run npm install 
+build "npm install" # run npm install
 # build your dependencies remotely from package.json
 remote # you can use "full_remote_build true" or shorthand "remote"
-{% endhighlight %}
+```

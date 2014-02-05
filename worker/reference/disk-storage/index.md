@@ -16,7 +16,8 @@ You access this storage by making use of the variable `user_dir` in the worker. 
 Here's an example that downloads a file from the web and saves it in local storage. The log snippet just logs the contents of `user_dir`.
 
 <figcaption><span>local_file.rb </span></figcaption>
-{% highlight ruby %}
+
+```ruby
 class S3Worker < IronWorker::Base
 
   filepath = user_dir + "ironman.jpg"
@@ -29,7 +30,7 @@ class S3Worker < IronWorker::Base
   log "#{user_files}"
 
 end
-{% endhighlight ruby %}
+```
 
 ## Location of Uploaded Files and Folders
 
@@ -37,9 +38,10 @@ The `user_dir` directory also contains any uploaded files that you've included w
 
 For example, let's say you upload a file with the following structure:
 
-{% highlight ruby %}
+
+```ruby
 merge "../site_stats/client.rb"
-{% endhighlight ruby %}
+```
 
 This file will be placed in the `user_dir` directory. You can make use of it there, create local/remote path references (using the local/remote query switch in your worker), or replicate the path and move the file there. (We recommend one of the first two options.)
 
@@ -52,9 +54,10 @@ user_dir/
 
 In Ruby, to make use of the file (in the case of a code file), you would use a `require_relative` statement with the base path.
 
-{% highlight ruby %}
+
+```ruby
  require_relative './client'
-{% endhighlight ruby %}
+```
 
 ## Use Cases
 

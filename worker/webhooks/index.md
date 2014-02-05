@@ -35,9 +35,11 @@ you don't need any updates in your existing workers to use them. A typical workf
 * Obtain webhook link:
   * From the [HUD](https://hud.iron.io)
   * Or by the [CLI](/worker/reference/cli)
-    {% highlight bash %}
+
+
+```sh
 $ iron_worker webhook $WORKER_NAME
-    {% endhighlight %}
+    ```
 * Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/reference/push_queues)
 * Do something to trigger the webhook, say, commit to GitHub or post a message to a Push Queue.
 
@@ -45,9 +47,11 @@ When the IronWorker service receives the HTTP POST request to your webhook endpo
 it will pass the request's body to a worker as a file, specified by [`-payload` option](/worker/reference/payload).
 
 The URL's scheme for webhooks is:
-{% highlight bash %}
+
+
+```sh
 $WORKER_API_URL/projects/$PROJECT_ID/tasks/webhook?code_name=$CODE_NAME&oauth=$TOKEN
-{% endhighlight %}
+```
 
 Where:
 

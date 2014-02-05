@@ -33,7 +33,7 @@ This article will get you started writing Python workers, but you should be fami
         <li><a href="#environment">Environment</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 ## Quick Start
@@ -46,9 +46,11 @@ It does, however, require you to have Ruby 1.9+ installed and to install the `ir
 Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 
 <figcaption><span>Command Line </span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ gem install iron_worker_ng
-{% endhighlight %}
+```
 
 ### Get the Python Client Library
 
@@ -64,12 +66,13 @@ We have some [pretty good documentation](/worker/reference/configuration) about 
 but for simplicity's sake, just save the following as `iron.json` in the root of your project:
 
 <figcaption><span>iron.json</span></figcaption>
-{% highlight js %}
+
+```js
 {
   "project_id": "INSERT YOUR PROJECT ID HERE",
   "token": "INSERT YOUR TOKEN HERE"
 }
-{% endhighlight %}
+```
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file.
 Then, assuming you're running the commands from within the folder, the library will pick up your credentials and use them automatically.
@@ -77,30 +80,34 @@ Then, assuming you're running the commands from within the folder, the library w
 ### Write Your Python Worker
 
 <figcaption><span>hello_worker.py</span></figcaption>
-{% highlight python %}
+
+```python
 print "Hello from Python"
-{% endhighlight %}
+```
 
 ### Create a .worker File
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`
 
 <figcaption><span>hello.worker</span></figcaption>
-{% highlight ruby %}
+
+```ruby
 # set the runtime language. Python workers use "python"
 runtime "python"
 # exec is the file that will be executed:
 exec "hello_worker.py"
-{% endhighlight %}
+```
 
 You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
 ### Upload the Worker
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker upload hello
-{% endhighlight %}
+```
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.
 Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab.
@@ -109,21 +116,24 @@ You should see your new worker listed there with zero runs. Click on it to show 
 ### Queue Up Tasks for Your Worker
 
 <figcaption><span>enqueue.py</span></figcaption>
-{% highlight python %}
+
+```python
 from iron_worker import *
 
 worker = IronWorker()
 response = worker.queue(code_name="hello")
-{% endhighlight %}
+```
 
 You can now queue up a task by calling `python enqueue.py` from your shell.
 
 Another way is to use CLI:
 
 <figcaption><span>Command Line</span></figcaption>
-{% highlight bash %}
+
+
+```sh
 $ iron_worker queue hello
-{% endhighlight %}
+```
 
 Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
 
@@ -138,12 +148,13 @@ You only need to re-upload the code package when your code changes.</p>
 
 ### Payload Example
 
-Retrieving the payload in Python is the same as it is on any other language. 
-Retrieve the `-payload` argument passed to the script, load that file, and 
+Retrieving the payload in Python is the same as it is on any other language.
+Retrieve the `-payload` argument passed to the script, load that file, and
 parse it as JSON.
 
 In your worker:
-{% highlight python %}
+
+```python
 import sys, json
 
 payload_file = None
@@ -156,7 +167,7 @@ for i in range(len(sys.argv)):
             payload = json.loads(f.read())
         break
 
-{% endhighlight %}
+```
 
 ### Environment
 
@@ -198,16 +209,16 @@ The Python environment that the workers run in on IronWorker is as follows:
   </tbody>
 </table>
 
-You can just use `import {MODULE_NAME}` to use these modules in your workers. 
+You can just use `import {MODULE_NAME}` to use these modules in your workers.
 
 <div class="alert">
-<p><strong>Note:</strong> While it is possible to use these modules without bundling them, we 
-<i>highly recommend</i> that you include modules your code is reliant upon in the 
-code package whenever possible. Most of these modules are included in the 
-environment because they are binary modules, making it impossible to supply them 
-at runtime. The ones that are not binary modules are some of the more popular 
-modules, which we include to allow users to try things out and test things with 
-minimal setup and pain. We cannot guarantee which version of the module will be 
-available, and we may update them without warning. Reliance on these modules may 
+<p><strong>Note:</strong> While it is possible to use these modules without bundling them, we
+<i>highly recommend</i> that you include modules your code is reliant upon in the
+code package whenever possible. Most of these modules are included in the
+environment because they are binary modules, making it impossible to supply them
+at runtime. The ones that are not binary modules are some of the more popular
+modules, which we include to allow users to try things out and test things with
+minimal setup and pain. We cannot guarantee which version of the module will be
+available, and we may update them without warning. Reliance on these modules may
 cause some unexpected conflicts in your code.</p>
 </div>
