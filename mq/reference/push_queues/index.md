@@ -136,7 +136,7 @@ the `source_msg_id` value.
 ### To turn off/disable an error queue
 Post to your push queue set the error queue option to an empty string. ex: "error_queue": "".
 
-```
+```js
 {"push_type":"multicast/unicast",
 "subscribers": [
   {"url": "http://thiswebsitewillthrowanerror.com"}
