@@ -39,7 +39,7 @@ your credentials during transport.
   </ul>  
 </section>
 
-## Memcache Libraries
+<h2 id="memcache_libraries"> Memcache Libraries </h2>
 
 Here's a sample list of languages available (with multiple clients libs to 
 choose from for many languages):
@@ -86,7 +86,7 @@ choose from for many languages):
 You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
 with IronCache.
 
-## Host Information
+<h2 id="host_information"> Host Information </h2>
 To connect to IronCache using memcached, use the host below:
 
 <table class="reference">
@@ -104,7 +104,8 @@ To connect to IronCache using memcached, use the host below:
   </tbody>
 </table>
 
-## Authentication
+<h2 id="authentication">Authentication</h2>
+
 Because IronCache requires authentication, clients must set a pseudo-item as 
 soon as they connect. Set the "oauth" key to the following:
 
@@ -113,12 +114,12 @@ soon as they connect. Set the "oauth" key to the following:
 This **will not** be stored in your cache. Subsequent attempts to set the value 
 of the "oauth" key, however, will be stored in the cache.
 
-## Example
+<h2 id="example">Example</h2>
 
 The following example should help you get up and running using IronCache 
 with memcached quickly:
 
-### Install the Library
+<h2 id="install_the_library">Install the Library</h2>
 
 The sample uses the memcache-client gem; you'll need to install it 
 before you can use the sample.
@@ -152,7 +153,7 @@ easy_install python-memcached
 
 -->
 
-### Run the Example
+<h3 id="run_the_example">Run the Example</h3>
 
 <figcaption><span>iron_cache_memcache.rb </span></figcaption>
 
