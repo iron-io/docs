@@ -37,7 +37,6 @@ Just type
 
 <figcaption><span>Command Line</span></figcaption>
 
-
 ```sh
 $ iron_worker upload cool_feature
 ```
@@ -73,13 +72,11 @@ remote
 
 This forces to install all your dependencies in IronWorker [environment](/worker/reference/environment).
 
-
 <h3 id="remote__file">Remote <code>.worker</code> File</h3>
 
 Using HTTP link as your `.worker` file enables full remote build automatically.
 
 <figcaption><span>Command Line</span></figcaption>
-
 
 ```sh
 $ iron_worker upload http://my.site/my.worker

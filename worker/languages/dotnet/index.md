@@ -108,8 +108,6 @@ That command will read your .worker file, create your worker code package and up
 
 Let’s quickly test it by running:
 
-
-
 ```sh
 iron_worker queue hello
 ```
