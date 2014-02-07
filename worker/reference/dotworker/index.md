@@ -34,7 +34,7 @@ own self-contained units.
   </ul>
 </section>
 
-## Making a Worker File
+<h2 id="making_a_worker_file">Making a Worker File</h2>
 
 A common misconception is that `.worker` files are named ".worker" (e.g., `~/my_worker/.worker`).
 This is not the case. Instead, the files are given unique names that will identify your worker in our system.
@@ -45,7 +45,7 @@ So, for example, `cool_worker.worker` will create a worker named "cool_worker".
  "HelloWorld.worker", "SendMail.worker", "do_something_awesome.worker", etc.</p>
 </div>
 
-### Structure
+<h3 id="structure">Structure</h3>
 
 The `.worker` file mirrors the code you would use to construct a package
 in your application. Here's a simple example:
@@ -100,7 +100,7 @@ file will not be automatically required in your worker files, just as they
 are not when you merge gems in your application's code.</p>
 </div>
 
-## Syntax Reference
+<h2 id="syntax_reference">Syntax Reference</h2>
 
 The following syntax is valid in `.worker` files:
 

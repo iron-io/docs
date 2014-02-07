@@ -33,9 +33,9 @@ breadcrumbs:
   </ul>
 </section>
 
-## Quick Start
+<h2 id="quick_start">Quick Start</h2>
 
-### Get the CLI
+<h3 id="get_the_cli">Get the CLI</h3>
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service
 that makes working with the service a lot easier and more convenient.
@@ -49,7 +49,7 @@ Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 $ gem install iron_worker_ng
 ```
 
-### Create Your Configuration File
+<h3 id="create_your_configuration_file">Create Your Configuration File</h3>
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have [documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
@@ -63,7 +63,7 @@ The CLI needs a configuration file or environment variables set that tell it wha
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
-### Write Your .NET Worker
+<h3 id="write_your_net_worker">Write Your .NET Worker</h3>
 
 ```c#
 public class HelloWorld
@@ -76,7 +76,7 @@ public class HelloWorld
 }
 ```
 
-### Compile Your .NET Worker
+<h3 id="compile_your_net_worker">Compile Your .NET Worker</h3>
 
 For .NET code, IronWorker runs the compiled executables in the cloud, so you're going to need to generate the executable. It's likely your development environment (e.g. Visual Studio) has a simple way to do this; that will work just fine. If you're a Mono users, use `gmcs`:
 
@@ -86,7 +86,7 @@ For .NET code, IronWorker runs the compiled executables in the cloud, so you're 
 gmcs hello.cs
 ```
 
-### Create a .worker File
+<h3 id="create_a_worker_file">Create a .worker File</h3>
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
@@ -98,9 +98,7 @@ runtime "mono"
 exec "hello.exe" # replace with your file
 ```
 
-### Upload Your Worker
-
-
+<h3 id="upload_your_worker">Upload Your Worker</h3>
 
 ```sh
 iron_worker upload hello
@@ -110,8 +108,6 @@ That command will read your .worker file, create your worker code package and up
 
 Let’s quickly test it by running:
 
-
-
 ```sh
 iron_worker queue hello
 ```
@@ -120,7 +116,7 @@ Now look at the task list in [HUD](https://hud.iron.io) and you should see your 
 
 Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
-### Queue Up Tasks for Your Worker
+<h3 id="queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</h3>
 
 Once your code has been uploaded, it's easy to queue a task to it. It's a single,
 authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
@@ -177,9 +173,9 @@ For most people, calling the API by hand is overkill. We don't have an official 
 
 **Note:** One of our customers, [Oscar Deits](https://github.com/odeits) lent us his considerable expertise with .NET as we came up with this sample code. Thanks Oscar!
 
-## Deep Dive
+<h2 id="deep_dive">Deep Dive</h2>
 
-### Payload Example
+<h3 id="payload_example">Payload Example</h3>
 
 Retrieving the payload in .NET is the same as it is on any other language.
 Retrieve the `-payload` argument passed to the script, load that file, and

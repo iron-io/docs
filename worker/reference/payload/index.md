@@ -27,7 +27,7 @@ Also, when using `ruby` or `php` runtimes JSON payload will be automatically par
   </ul>
 </section>
 
-## Get Payload in a Worker
+<h2 id="get_payload_in_a_worker">Get Payload in a Worker</h2>
 
 When payload is specified during *queue* or *schedule*, then it is stored in the database.
 Before your worker is launched in the IronWorker [environment](/worker/reference/environment),
@@ -71,17 +71,18 @@ If payload is a parsable JSON string it will be converted automatically.
 ```php
 <?php
 payload = getPayload(); // parsed JSON or string
+?>
 ```
 </div>
 
-## Other Information
+<h2 id="other_information">Other Information</h2>
 
 Your worker will also be passed `-id` and `-d` command line arguments.
 The value of `-id` will be the ID of the task that is currently being executed,
 and the value of `-d` will be the user-writable directory
 that can be used for temporary storage for the duration of the task's execution.
 
-## Payload Filtering in the HUD
+<h2 id="payload_filtering_in_the_hud">Payload Filtering in the HUD</h2>
 
 You can see your tasks payload in the [HUD](https://hud.iron.io).
 Go to Worker project's section, click on "Tasks" tab and then on one of your workers where you use payload.

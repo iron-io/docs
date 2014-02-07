@@ -31,7 +31,7 @@ IronCache provides a REST/HTTP API to allow you to interact programmatically wit
   </ul>
 </section>
 
-## Endpoints
+<h2 id="endpoints"> Endpoints </h2>
 
 <table class="reference">
   <thead>
@@ -49,7 +49,7 @@ IronCache provides a REST/HTTP API to allow you to interact programmatically wit
   </tbody>
 </table>
 
-## Authentication
+<h2 id="authentication"> Authentication </h2>
 IronCache uses OAuth2 tokens to authenticate API requests. All methods require authentication unless specified otherwise. You can find and create your API tokens [in the HUD](https://hud.iron.io/tokens). To authenticate your request, you should include a token in the Authorization header for your request or in your query parameters. Tokens are universal, and can be used across services.
 
 Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
@@ -66,13 +66,13 @@ Notes:
 * In URL parameter form, this will be represented as:
         `?oauth=abc4c7c627376858`
 
-## Requests
+<h2 id="requests"> Requests </h2>
 
 Requests to the API are simple HTTP requests against the API endpoints.
 
 All request bodies should be in JSON format, with Content-Type of `application/json`.
 
-### Base URL
+<h3 id="base_url"> Base URL </h3>
 
 All endpoints should be prefixed with the following:
 
@@ -88,14 +88,14 @@ The domains for the clouds IronCache supports are as follows:
   </tbody>
 </table>
 
-### Pagination
+<h3 id="pagination"> Pagination </h3>
 
 For endpoints that return lists/arrays of values:
 
 * page - The page of results to return. Default is 0. Maximum is 100.
 * per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
 
-## Responses
+<h2 id="responses"> Responses </h2>
 
 All responses are in JSON, with Content-Type of `application/json`. A response is structured as follows:
 
@@ -103,7 +103,7 @@ All responses are in JSON, with Content-Type of `application/json`. A response i
 { "msg": "some success or error message" }
 ```
 
-### Status Codes
+<h3 id="status_codes"> Status Codes </h3>
 The success or failure of a request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx or 5xx status code indicates an error.
 
 <table class="reference">
@@ -154,7 +154,7 @@ When there's an error, the response body contains a JSON object similar to the f
 { "msg": "reason for error" }
 ```
 
-### Exponential Backoff
+<h3 id="exponential_backoff"> Exponential Backoff </h3>
 
 When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 

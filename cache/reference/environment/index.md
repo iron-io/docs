@@ -15,7 +15,7 @@ breadcrumbs:
   </ul>  
 </section>
 
-## Item Structure
+<h2 id="item_structure"> Item Structure </h2>
 Caches are key/value stores comprised of *items*. The Item structure is 
 flexible and straight-forward. Items can be variable in size and can contain almost any text or data format.
 
@@ -31,7 +31,7 @@ flexible and straight-forward. Items can be variable in size and can contain alm
   </tbody>
 </table>
 
-## Item Constraints
+<h2 id="item_constraints"> Item Constraints </h2>
 
 <table class="reference">
   <thead>

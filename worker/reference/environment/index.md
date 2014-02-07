@@ -24,14 +24,14 @@ breadcrumbs:
   </ul>  
 </section>
 
-## Operating System
+<h2 id="operating_system">Operating System</h2>
 The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
 
 <div class="grey-box">
 <b>Operating System:</b> Ubuntu Linux 12.04 x64
 </div>
 
-## Installed Linux Packages
+<h2 id="installed_linux_packages">Installed Linux Packages</h2>
 IronWorker contains several popular Linux packages as part of the standard worker environment.
 
 <table class="reference">
@@ -50,7 +50,7 @@ These are included because they are common binary libraries. Other binary librar
 
 If you don't see what you need here, please [contact us](http://support.iron.io/customer/portal/emails/new) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
 
-## Maximum Data Payload
+<h2 id="maximum_data_payload">Maximum Data Payload</h2>
 The following is the maximum data payload that can be passed to IronWorker. A data payload that exceeds this size will generate an error response from the API.
 
 <div class="grey-box">
@@ -59,7 +59,7 @@ The following is the maximum data payload that can be passed to IronWorker. A da
 
 Tip: We recommend that you avoid sending large payloads with your workers. Instead use a data store to hold the data and then pass an ID or reference to the worker. The worker can grab the data and then do its processing. It's more efficient on the API as well as better in terms of creating atomic/stateless processing. 
 
-## Memory per Worker
+<h2 id="memory_per_worker">Memory per Worker</h2>
 The standard worker sandbox environment contains a certain amount of accessible memory. This amount should be sufficient for almost all workloads. We are working on a super worker environment that would allow greater memory allocations. Please contact us if you have specific needs here.
 
 <div class="grey-box">
@@ -68,14 +68,14 @@ The standard worker sandbox environment contains a certain amount of accessible 
 
 Tip: We recommend distributing workloads over multiple workers&mdash;not only for better resource management, but also to take advantage of the massive concurrency enabled by a cloud worker system. 
 
-## Local Disk Space per Worker
+<h2 id="local_disk_space_per_worker">Local Disk Space per Worker</h2>
 Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files inside this space, and can perform most ordinary file operations. This directory is used as the current working directory ("<span class="fixed-width">.</span>") when executing your workers.
 
 <div class="grey-box">
 <b>Local Disk Space:</b> 10GB
 </div>
 
-## Maximum Run Time per Worker
+<h2 id="maximum_run_time_per_worker">Maximum Run Time per Worker</h2>
 There is a system-wide limit for the maximum length a task may run. Tasks that exceed this limit will be terminated and will have `timeout` as their status. 
 
 <div class="grey-box">
@@ -84,7 +84,7 @@ There is a system-wide limit for the maximum length a task may run. Tasks that e
 
 Tip: You should design your tasks to be moderate in terms of the length of time they take to run. If operations are small in nature (seconds or milliseconds) then you'll want to group them together so as to amortize the worker setup costs. Likewise, if they are long-running operations, you should break them up into a number of workers. Note that you can chain together workers as well as use IronMQ, scheduled jobs, and datastores to orchestrate a complex series or sequence of tasks.
 
-## Priority Queue Management
+<h2 id="priority_queue_management">Priority Queue Management</h2>
 
 Each priority (p0, p1, p2) has a targeted maximum time limit for tasks sitting in the queue. Average queue times will typically be less than those listed on the pricing page. High numbers of tasks, however, could raise those average queue times for all users. To keep the processing time for high priority jobs down, per user capacities are in place for high priority queues. Limits are on per-queue basis and are reset hourly. High priority tasks that exceed the limit, are queued at the next highest priority. Only under high overall system load should queue times for tasks exceeding the capacity extend beyond the initial targeted time limits. Usage rates will be based on the actual priority tasks run on, not the priority initially queued.
 
@@ -107,7 +107,7 @@ Each priority (p0, p1, p2) has a targeted maximum time limit for tasks sitting i
 </tbody>
 </table>
 
-## Maximum Scheduled Tasks per Project
+<h2 id="maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</h2>
 The following is the default number of scheduled tasks. It should be sufficient for even the largest projects. If you would like this number increased, however, please feel free to contact us.
 
 <div class="grey-box">
@@ -116,7 +116,7 @@ The following is the default number of scheduled tasks. It should be sufficient 
 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When scheduled tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the [page on scheduling](/worker/scheduling) for more information on scheduling patterns and best practices.
 
-## Scheduled Task Frequency
+<h2 id="scheduled_task_frequency">Scheduled Task Frequency</h2>
 
 Tasks can be scheduled to run **every N seconds or more** specifying **N** using the `run_every` parameter and where **N** > 60. (The minimum frequency is every 60 seconds.)
 <div class="alert">
@@ -126,7 +126,7 @@ Tasks can be scheduled to run **every N seconds or more** specifying **N** using
   </p>
 </div>
 
-## Security Groups and IP Ranges
+<h2 id="security_groups_and_ip_ranges">Security Groups and IP Ranges</h2>
 
 IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
 
@@ -143,7 +143,7 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 </tbody>
 </table>
 
-## Default Languages Versions
+<h2 id="default_languages_versions">Default Languages Versions</h2>
 
 Below you can see the pre-installed versions of languages in the IronWorker environment.
 

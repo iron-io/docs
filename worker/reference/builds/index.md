@@ -29,14 +29,13 @@ locally (on your machine) and remotely (in a build worker on Iron.io's servers).
   </ul>
 </section>
 
-## Local Build
+<h2 id="local_build">Local Build</h2>
 
 By default, workers are built locally.
 If your worker does not need any binary extensions or compiled components, building locally is the best choice.
 Just type
 
 <figcaption><span>Command Line</span></figcaption>
-
 
 ```sh
 $ iron_worker upload cool_feature
@@ -46,9 +45,10 @@ and relax. The CLI will merge the directories, files, libraries, and modules you
 
 Now you are able to [queue](/worker/reference/cli/#queuing_tasks) or [schedule](/worker/scheduling) tasks against the worker.
 
-## Remote Build
 
-### Resolve the Issue with Native Extensions
+<h2 id="remote_build">Remote Build</h2>
+
+<h3 id="resolve_the_issue_with_native_extensions">Resolve the Issue with Native Extensions</h3>
 
 When you worker requires a native extension or is written in a compiled language that produces a binary, it needs to be compiled against the IronWorker architecture. While you can compile everything manually against 64-bit (x86-64) Linux and write scripts to set up your worker environment, it's a lot easier to just let the worker build everything for you.
 
@@ -72,12 +72,11 @@ remote
 
 This forces to install all your dependencies in IronWorker [environment](/worker/reference/environment).
 
-### Remote `.worker` File
+<h3 id="remote__file">Remote <code>.worker</code> File</h3>
 
 Using HTTP link as your `.worker` file enables full remote build automatically.
 
 <figcaption><span>Command Line</span></figcaption>
-
 
 ```sh
 $ iron_worker upload http://my.site/my.worker

@@ -41,9 +41,9 @@ processing queues immediately or scheduled to run at a later time&mdash;you only
 </section>
 
 
-## Quick Start
+<h2 id="quick_start">Quick Start</h2>
 
-### Get the CLI
+<h3 id="get_the_cli">Get the CLI</h3>
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service
 that makes working with the service a lot easier and more convenient.
@@ -57,7 +57,7 @@ Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 $ gem install iron_worker_ng
 ```
 
-### Create Your Configuration File
+<h3 id="create_your_configuration_file">Create Your Configuration File</h3>
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
 
@@ -72,7 +72,7 @@ The CLI needs a configuration file or environment variables set that tell it wha
 
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
-### Write Your Go Worker
+<h3 id="write_your_go_worker">Write Your Go Worker</h3>
 
 <figcaption><span>hello_worker.go </span></figcaption>
 
@@ -86,7 +86,7 @@ func main() {
 }
 ```
 
-### Compile Your Go Worker to a Binary File
+<h3 id="compile_your_go_worker_to_a_binary_file">Compile Your Go Worker to a Binary File</h3>
 
 You may need to recompile Go with `GOOS=linux`, `GOARCH=amd64`, and
 `CGO_ENABLED=0` before you can [cross compile](#cross_compiling) from Windows, Mac, or a 32 bit
@@ -98,7 +98,7 @@ machine.
 GOOS=linux GOARCH=amd64 go build
 ```
 
-### Create a .worker File
+<h3 id="create_a_worker_file">Create a .worker File</h3>
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
 
@@ -111,7 +111,7 @@ runtime "binary"
 exec "hello_worker" # replace with your Go executable
 ```
 
-### Upload Your Worker
+<h3 id="upload_your_worker">Upload Your Worker</h3>
 
 <figcaption><span>Command Line </span></figcaption>
 
@@ -130,7 +130,7 @@ Now look at the task list in HUD and you should see your task show up and go fro
 
 Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 
-### Queue Up Tasks for Your Worker
+<h3 id="queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</h3>
 
 Once your code has been uploaded, it's easy to queue a task to it. It's a single,
 authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
@@ -226,9 +226,9 @@ your worker. You should get a response similar to this:
 
 If you check in the [HUD](https://hud.iron.io), you should see the task.
 
-## Deep Dive
+<h2 id="deep_dive">Deep Dive</h2>
 
-### Payload Example
+<h3 id="payload_example">Payload Example</h3>
 
 Retrieving the payload from within the worker on Go is the same as it is on any
 other language. Retrieve the `-payload` argument passed to the script, load that
@@ -271,7 +271,7 @@ func main() {
 }
 ```
 
-### Cross Compiling
+<h3 id="cross_compiling">Cross Compiling</h3>
 
 To make a binary distribution that runs on the IronWorker cloud, it's often
 necessary to compile your Go executable for a system different from your
