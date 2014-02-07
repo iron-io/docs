@@ -26,7 +26,7 @@ party service that supports webhooks.
   </ul>
 </section>
 
-## How to Use IronWorker Webhooks
+<h2 id="how_to_use_ironworker_webhooks">How to Use IronWorker Webhooks</h2>
 
 A Webhook is simply an [HTTP POST API endpoint](http://localhost:4000/worker/reference/api/#queue_a_task_from_a_webhook) so
 you don't need any updates in your existing workers to use them. A typical workflow for a webhook is:
@@ -59,12 +59,12 @@ Where:
 * `$PROJECT_ID` and `$TOKEN` are credentials to access to your project
 * `$CODE_NAME` is name of your worker
 
-## Example
+<h2 id="example">Example</h2>
 
 The best way to see how this works is via an example. The rest of this section will use a **Github to Hipchat** webhook
 where Github will hit the webhook and the worker will post to Hipchat. [The full code is here](https://github.com/iron-io/iron_worker_examples/tree/master/ruby_ng/github_to_hipchat_webhook_worker).
-
-### Step 1: Create a worker and upload it to IronWorker
+ 
+<h3 id="step_1_create_a_worker_and_upload_it_to_ironworker">Step 1: Create a worker and upload it to IronWorker</h3>
 
 This is the same as you would create and upload a worker normally, the difference is in how the task
 is queued up.
@@ -76,8 +76,8 @@ First let's create the worker:
 Now let's upload it:
 
 <script src="https://gist.github.com/2308369.js?file=upload.rb">---</script>
-
-### Step 2: Add your workers webhook URL to Github service hooks
+ 
+<h3 id="step_2_add_your_workers_webhook_url_to_github_service_hooks">Step 2: Add your workers webhook URL to Github service hooks</h3>
 
 [Github service hooks](http://help.github.com/post-receive-hooks/) are where you can add webhooks for Github events. In
 your Github project, click Admin, Service Hooks, then Post-Receive URLs.
@@ -92,7 +92,7 @@ your worker, it should look something like this:
     https://worker-aws-us-east-1.iron.io/2/projects/{Project ID}/tasks/webhook?code_name={Code Name}&oauth={Token}
 
 The upload script above will print the exact URL to your console so you can just copy and paste it.
-
-### Step 3: Commit and push some code to your github project and watch the magic happen!
+ 
+<h3 id="step_3_commit_and_push_some_code_to_your_github_project_and_watch_the_magic_happen">Step 3: Commit and push some code to your github project and watch the magic happen!</h3>
 
 That's it! It will post your github commit information to the Hipchat room you specified in the config file.

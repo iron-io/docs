@@ -36,9 +36,9 @@ This article will get you started writing Python workers, but you should be fami
   </ul>
 </section>
 
-## Quick Start
+<h2 id="quick_start">Quick Start</h2>
 
-### Get the CLI
+<h3 id="get_the_cli">Get the CLI</h3>
 
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service
 that makes working with the service a lot easier and more convenient.
@@ -52,14 +52,14 @@ Once Ruby 1.9+ is installed, you can just the following command to get the gem:
 $ gem install iron_worker_ng
 ```
 
-### Get the Python Client Library
+<h3 id="get_the_python_client_library">Get the Python Client Library</h3>
 
 You can download the Python client library, `iron_worker_python`,
 from [Github](https://github.com/iron-io/iron_worker_python)&mdash;note
 that you'll need the [iron_core_python](https://github.com/iron-io/iron_core_python) library installed, too.
 Users of pip or easy_install can simply use `pip install iron_worker` and `easy_install iron_worker`.
 
-### Create Your Configuration File
+<h3 id="create_your_configuration_file">Create Your Configuration File</h3>
 
 The Python library uses a configuration file or environment variables set that tell it what your credentials are.
 We have some [pretty good documentation](/worker/reference/configuration) about how this works,
@@ -77,7 +77,7 @@ but for simplicity's sake, just save the following as `iron.json` in the root of
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file.
 Then, assuming you're running the commands from within the folder, the library will pick up your credentials and use them automatically.
 
-### Write Your Python Worker
+<h3 id="write_your_python_worker">Write Your Python Worker</h3>
 
 <figcaption><span>hello_worker.py</span></figcaption>
 
@@ -85,7 +85,7 @@ Then, assuming you're running the commands from within the folder, the library w
 print "Hello from Python"
 ```
 
-### Create a .worker File
+<h3 id="create_a_worker_file">Create a .worker File</h3>
 
 Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`
 
@@ -100,7 +100,7 @@ exec "hello_worker.py"
 
 You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
-### Upload the Worker
+<h3 id="upload_the_worker">Upload the Worker</h3>
 
 <figcaption><span>Command Line</span></figcaption>
 
@@ -113,7 +113,7 @@ That command will read your .worker file, create your worker code package and up
 Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab.
 You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
 
-### Queue Up Tasks for Your Worker
+<h3 id="queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</h3>
 
 <figcaption><span>enqueue.py</span></figcaption>
 
@@ -144,9 +144,9 @@ Now that we know it works, let’s queue up a bunch of tasks from code.
 You only need to re-upload the code package when your code changes.</p>
 </div>
 
-## Deep Dive
+<h2 id="deep_dive">Deep Dive</h2>
 
-### Payload Example
+<h3 id="payload_example">Payload Example</h3>
 
 Retrieving the payload in Python is the same as it is on any other language.
 Retrieve the `-payload` argument passed to the script, load that file, and
@@ -169,7 +169,7 @@ for i in range(len(sys.argv)):
 
 ```
 
-### Environment
+<h3 id="environment">Environment</h3>
 
 The Python environment that the workers run in on IronWorker is as follows:
 

@@ -38,9 +38,9 @@ This article will walk you through the specifics of things, but you should be fa
 </section>
 
 
-## Quick Start
+<h2 id="quick_start">Quick Start</h2>
 
-### Get the `iron_worker_ng` Ruby Gem
+<h3 id="get_the__ruby_gem">Get the <code>iron_worker_ng</code> Ruby Gem</h3>
 
 We recommend new users use the [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng)
 gem for Ruby workers, which makes packaging code libraries and other dependencies much easier.
@@ -60,7 +60,7 @@ You can install the `iron_worker_ng` gem from the command line:
 $ gem install iron_worker_ng
 ```
 
-### Create Your Configuration File
+<h3 id="create_your_configuration_file">Create Your Configuration File</h3>
 
 The CLI needs a configuration file or environment variables set that tell it what your credentials are.
 We have some [pretty good documentation](/worker/reference/configuration) about how this works,
@@ -78,7 +78,7 @@ but for simplicity's sake, just save the following as `iron.json` in the same fo
 You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file.
 Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
-### Write Your Ruby Worker
+<h3 id="write_your_ruby_worker">Write Your Ruby Worker</h3>
 
 <figcaption><span>hello_worker.rb</span></figcaption>
 
@@ -94,7 +94,7 @@ end
 puts "HelloWorker completed at #{Time.now}"
 ```
 
-### Create a .worker File
+<h3 id="create_a_worker_file">Create a .worker File</h3>
 
 Worker files are a simple way to define your worker and its dependencies. Save the
 following in a file called `hello.worker`
@@ -110,7 +110,7 @@ exec "hello_worker.rb"
 
 You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
-### Upload Your Worker
+<h3 id="upload_your_worker">Upload Your Worker</h3>
 
 <figcaption><span>Command Line</span></figcaption>
 
@@ -142,7 +142,7 @@ Now that we know it works, let’s queue up a bunch of tasks from code.
 You only need to re-upload the code package when your code changes.</p>
 </div>
 
-### Queue Up Tasks for Your Worker
+<h3 id="queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</h3>
 
 Now you can queue up as many tasks as you want, whenever you want, from whatever language you want.
 You will want to look at the docs for the client library for your language for how to queue or create a task.
@@ -167,9 +167,9 @@ You can run that code with:
 $ ruby enqueue.rb
 ```
 
-## Deep Dive
+<h2 id="deep_dive">Deep Dive</h2>
 
-### A Note on Libraries
+<h3 id="a_note_on_libraries">A Note on Libraries</h3>
 
 We currently offer both the [iron_worker](https://github.com/iron-io/iron_worker_ruby)
 and [iron_worker_ng](https://github.com/iron-io/iron_worker_ruby_ng) gems as
@@ -180,7 +180,7 @@ We suggest that new users use the `iron_worker_ng` gem and that users who are
 currently using the `iron_worker` gem slowly and carefully transition over when
 they get the opportunity.
 
-### Payload Example
+<h3 id="payload_example">Payload Example</h3>
 
 Retrieving the payload in Ruby workers is a bit different&mdash;some of the
 clients take care of the dirty work for you. So while it's still the same
@@ -220,7 +220,7 @@ The `payload` variable is simply the raw contents of the file specified by `-pay
 puts payload
 ```
 
-### Merging
+<h3 id="merging">Merging</h3>
 
 Because your Ruby workers run in a Ruby environment in the cloud, you need to
 upload all your gems and other dependencies with your workers. Fortunately, the
@@ -241,7 +241,7 @@ these auxiliary files.
 You can find out more about merging files and directories on the
 [Merging Files & Directories page](/worker/languages/ruby/merging-files-and-dirs).
 
-### Ruby on Rails
+<h3 id="ruby_on_rails">Ruby on Rails</h3>
 
 It is possible to upload, queue, and manage your workers from
 within a Rails application, but it's important to note that IronWorker
