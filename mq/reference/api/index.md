@@ -151,7 +151,6 @@ All responses are in JSON, with Content-Type of `application/json`. A response i
 ```
 
 <h3 id="status_codes">Status Codes</h3>
-
 The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error.
 
 <table class="reference">

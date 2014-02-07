@@ -105,7 +105,6 @@ To connect to IronCache using memcached, use the host below:
 </table>
 
 <h2 id="authentication">Authentication</h2>
-
 Because IronCache requires authentication, clients must set a pseudo-item as 
 soon as they connect. Set the "oauth" key to the following:
 
