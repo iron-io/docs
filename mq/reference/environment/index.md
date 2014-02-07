@@ -17,7 +17,7 @@ breadcrumbs:
   </ul>  
 </section>
 
-## Message Structure
+<h2 id="message_structure">Message Structure</h2>
 The message structure is flexible and straight-forward. Messages can be variable in size and can contain almost any text or data format.
 
 <table class="reference">
@@ -34,7 +34,7 @@ The message structure is flexible and straight-forward. Messages can be variable
 </table>
 
 
-## Message Constraints
+<h2 id="message_constraints">Message Constraints</h2>
 The basic message handling operation is put-get-delete. Messages are put on the queue by senders. The messages can have **delays** associated with them. If included, the message is not made available on the queue until the delay is up (default is 0 or no delay). 
 
 Receivers get one or more messages (up to 100). Once the receive is done processing a message, it deletes it. If a message is not deleted prior to the **timeout** (default 60 sec), it is put back on the queue. Messages on the queue will **expire** after a certain amount of time (default is 7 days).
@@ -53,7 +53,7 @@ Receivers get one or more messages (up to 100). Once the receive is done process
 </table>
 
 
-## Queue Attributes
+<h2 id="queue_attributes">Queue Attributes</h2>
 
 Queues have their own set of attributes.
 To get the information about a queue, use the [Info API call](/mq/reference/api/#get_info_about_a_message_queue).
@@ -95,7 +95,7 @@ To get the information about a queue, use the [Info API call](/mq/reference/api/
   </tbody>
 </table>
 
-## Security Groups and IP Ranges
+<h2 id="security_groups_and_ip_ranges">Security Groups and IP Ranges</h2>
 
 IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
 

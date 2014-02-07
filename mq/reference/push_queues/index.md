@@ -32,12 +32,12 @@ breadcrumbs:
   </ul>  
 </section>
 
-## Overview
+<h2 id="overview">Overview</h2>
 
 [Blog Post for Overview](http://blog.iron.io/2013/01/ironmq-push-queues-reliable-message.html). You should also review
 the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/api/).
 
-## Subscribers
+<h2 id="subscribers">Subscribers</h2>
 
 Subscribers are simply URL's that IronMQ will post to whenever a message is posted to your queue. There are currently
 three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
@@ -59,7 +59,7 @@ Here are some examples:
 - ironmq://project_id:token@mq-rackspace-dfw.iron.io/queue_name - refers to the queue named "queue_name" on a different region/cloud.
 - ironworker:///worker_name - refers to a worker on IronWorker called "worker_name".
 
-## Push Queue Settings
+<h2 id="push_queue_settings">Push Queue Settings</h2>
 
 To turn a queue into a push queue (or create one), POST to your queue endpoint with the following parameters:
 
@@ -75,7 +75,7 @@ The default queue type for an error queue will be a pull queue. See <a href="#er
 <script src="https://gist.github.com/4479844.js"> </script>
 </div>
 
-## Queuing Messages
+<h2 id="queueing_messages">Queueing Messages</h2>
 
 This is the same as posting any message to IronMQ. Here is a curl example to post a message to the queue:
 
@@ -89,7 +89,7 @@ You should get a curl response that looks like this:
 <script src="https://gist.github.com/4489435.js"> </script>
 </div>
 
-## Retries
+<h2 id="retries">Retries</h2>
 
 IronMQ will automatically retry if it fails to deliver a message. This can be either a connection error, an error response (eg: 5xx), 
 or any other scenario that does not return 2xx response. The behavior is a bit different depending on whether it's unicast or
@@ -102,7 +102,7 @@ multicast as follows:
   or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
   be retried after retries_delay. 
 
-## Error Queues
+<h2 id="error_queues">Error Queues</h2>
 
 Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to push a message. 
 
@@ -146,7 +146,7 @@ Post to your push queue set the error queue option to an empty string. ex: "erro
 
 **NOTE:** Ommitting the "error_queue" option will not disable the error queue.
 
-## Checking Status
+<h2 id="checking_status">Checking Status</h2>
 
 If you want the detailed status of the delivery to each of your subscribers, you can check that too. In the curl example below, you'll need to exchange MESSAGE_ID with the id that was returned in the response above when you posted a message.
 
@@ -160,7 +160,7 @@ This should return a response like this:
 <script src="https://gist.github.com/4489402.js"> </script>
 </div>
 
-## How the Endpoint Should Handle Push Messages
+<h2 id="how_the_endpoint_should_handle_push_messages">How the Endpoint Should Handle Push Messages</h2>
 
 These are the things the endpoint that is receiving the push should know about.
 
@@ -169,13 +169,13 @@ To obtain message's body just read request body.
 
 The receiving endpoint must respond with a 200 or 202 if they have accepted the message successfully.
 
-### Response Codes
+<h3 id="response_codes">Response Codes</h3>
 
 - 200 - message is deleted / acknowledged and removed from the queue.
 - 202 - message is reserved until explicitly deleted or the timeout is exceeded. See 202 section below.
 - 4XX or 5XX - the push request will be retried.
 
-### Timeout
+<h3 id="timeout">Timeout</h3>
 
 If an endpoint doesn't respond within timeout, it's marked as failed/error and will be retried.
 
@@ -183,14 +183,14 @@ Default timeout is 60 seconds.
 
 If you'd like to take more time to process messages, see 202 section below.
 
-### Long Running Processes - aka 202's
+<h3 id="long_running_processes__aka_202s">Long Running Processes - aka 202</h3>
 
 If you'd like to take some time to process a message, more than the 60 second timeout, you must respond with HTTP status code 202.
 Be sure to set the "timeout" value when [posting your message](/mq/reference/api) to the maximum amount of time you'd like your processing to take.
 If you do not explicitly delete the message before the "timeout" has passed, the message will be retried.
 To delete the message, check the "Iron-Subscriber-Message-Url" header and send a DELETE request to that URL.
 
-### Push Queue Headers
+<h3 id="push_queue_headers">Push Queue Headers</h3>
 
 Each message pushed will have some special headers as part of the HTTP request.
 
@@ -200,7 +200,7 @@ Each message pushed will have some special headers as part of the HTTP request.
 - Iron-Subscriber-Message-Url - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
 IronMQ that you're done with the message. Send a DELETE http request to this URL to delete it.
 
-## Encryption and Security
+<h2 id="encryption_and_security">Encryption and Security</h2>
 
 When you are using your private API as subscriber
 and want to secure connection to IronMQ you are able to use HTTPS endpoints.
@@ -215,7 +215,7 @@ Like OAuth or OpenID. In this case, specify a token in your subscriber's URL.
 Another possibility to specify a token is put it to your messages' bodies and parse it on your side.
 In this case a token will be encrypted by SSL/TLS.
 
-## Important Notes
+<h2 id="important_notes">Important Notes</h2>
 
 - You should not push and pull from a queue, a push queue's messages will be deleted/acknowledged immediately and not be
 available for pulling.
@@ -226,6 +226,6 @@ New messages will be processed as usual for Push Queues, and pushed to your subs
 
 - To revert your Push Queue to regular Pull Queue just update `push_type` to `"pull"`.
 
-## Testing on localhost
+<h2 id="testing_on_localhost">Testing on localhost</h2>
 
 To be able to develop and test on your local machine, you'll need to make your localhost accessible for IronMQ. This can be easily done by tunneling it to the outside world with tools such as [ngrok](https://ngrok.com/).
