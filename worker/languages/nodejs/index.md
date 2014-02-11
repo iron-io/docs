@@ -7,6 +7,15 @@ breadcrumbs:
   - ['Node.js', '/nodejs']
 ---
 
+<span class="notice-highlight">
+Notice -- For the NPM Certificate Error. Please use the following in your ".worker" file:
+</span>
+
+```js
+npm config set strict-ssl false; npm install --production
+```
+<hr>
+
 [Node.js](http://www.nodejs.org) is an evented language that brings the well-known
 Javascript language to server-side development, using Google's [V8](http://code.google.com/p/v8/)
 runtime. The evented model of programming lends itself nicely to the asynchronous

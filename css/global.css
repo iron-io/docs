@@ -1196,3 +1196,7 @@ div .dropdown {
 .overview .product-box p {
   min-height: 135px;
 }
+
+.notice-highlight {
+  background-color: rgb(254, 254, 86);
+}
