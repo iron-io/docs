@@ -12,47 +12,102 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
 <section id="toc">
   <h3>Table of Contents</h3>
   <ul>
-    <li><a href="#endpoints">Endpoints</a></li>
-    <li><a href="#authentication">Authentication</a></li>
+    <li>[Endpoints](#endpoints)</li>
+    <li>[Authentication](#authentication)</li>
     <li>
-      <a href="#requests">Requests</a>
+      [Requests](#requests)
       <ul>
-        <li><a href="#base_url">Base URL</a></li>
-        <li><a href="#pagination">Pagination</a></li>
+        <li>[Base URL](#base_url)</li>
+        <li>[Pagination](#pagination)</li>
       </ul>
     </li>
     <li>
-      <a href="#responses">Responses</a>
+      [Responses](#responses)
       <ul>
-        <li><a href="#status_codes">Status Codes</a></li>
-        <li><a href="#exponential_backoff">Exponential Backoff</a></li>
+        <li>[Status Codes](#status_codes)</li>
+        <li>[Exponential Backoff](#exponential_backoff)</li>
       </ul>
     </li>
   </ul>
 </section>
 
-<h2 id="endpoints"> Endpoints </h2>
+## <a name="endpoints"></a> Endpoints 
 
 <table class="reference">
   <thead>
     <tr><th style="width: 58%;">URL</th><th style="width: 10%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
   </thead>
   <tbody>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td><td>GET</td><td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>GET</td><td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>POST</td><td><a href="#update_a_message_queue" title="Update a Message Queue">Update a Message Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td><td>DELETE</td><td><a href="#delete_a_message_queue" title="Delete a Message Queue">Delete a Message Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/clear</td><td>POST</td><td><a href="#clear_all_messages_from_a_queue" title="Clear All Messages from a Queue">Clear All Messages from a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>POST</td><td><a href="#add_messages_to_a_queue" title="Add Messages to a Queue">Add Messages to a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td><td>POST</td><td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>GET</td><td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/peek</td><td>GET</td><td><a href="#peek_messages_on_a_queue" title="Peek Messages on a Queue">Peek Messages on a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>GET</td><td><a href="#get_message_by_id" title="Get Message by ID">Get Message by ID</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td><td>DELETE</td><td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td><td>DELETE</td><td><a href="#delete_multiple_messages_from_a_queue" title="Delete Multiple Messages from a Queue">Delete Multiple Messages from a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch</td><td>POST</td><td><a href="#touch_a_message_on_a_queue" title="Touch a Message on a Queue">Touch a Message on a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release</td><td>POST</td><td><a href="#release_a_message_on_a_queue" title="Release a Message on a Queue">Release a Message on a Queue</a></td></tr>
-
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td>
+      <td>GET</td>
+      <td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td>
+      <td>GET</td>
+      <td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td>
+      <td>POST</td>
+      <td><a href="#update_a_message_queue" title="Update a Message Queue">Update a Message Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td>
+      <td>DELETE</td>
+      <td><a href="#delete_a_message_queue" title="Delete a Message Queue">Delete a Message Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/clear</td>
+      <td>POST</td>
+      <td><a href="#clear_all_messages_from_a_queue" title="Clear All Messages from a Queue">Clear All Messages from a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td>
+      <td>POST</td>
+      <td><a href="#add_messages_to_a_queue" title="Add Messages to a Queue">Add Messages to a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td>
+      <td>POST</td>
+      <td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td>
+      <td>GET</td>
+      <td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/peek</td>
+      <td>GET</td>
+      <td><a href="#peek_messages_on_a_queue" title="Peek Messages on a Queue">Peek Messages on a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td>
+      <td>GET</td>
+      <td><a href="#get_message_by_id" title="Get Message by ID">Get Message by ID</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td>
+      <td>DELETE</td>
+      <td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td>
+      <td>DELETE</td>
+      <td><a href="#delete_multiple_messages_from_a_queue" title="Delete Multiple Messages from a Queue">Delete Multiple Messages from a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch</td>
+      <td>POST</td>
+      <td><a href="#touch_a_message_on_a_queue" title="Touch a Message on a Queue">Touch a Message on a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release</td>
+      <td>POST</td>
+      <td><a href="#release_a_message_on_a_queue" title="Release a Message on a Queue">Release a Message on a Queue</a></td>
+    </tr>
   </tbody>
 </table>
 
@@ -60,18 +115,38 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
 
 <table class="reference">
   <thead>
-    <tr><th style="width: 58%;">URL</th><th style="width: 10%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
+    <tr>
+      <th style="width: 58%;">URL</th>
+      <th style="width: 10%;">HTTP Verb</th>
+      <th style="width: 32%;">Purpose</th>
+    </tr>
   </thead>
   <tbody>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/subscribers</td><td>POST</td><td><a href="#add_subscribers_to_a_queue" title="Add Subscribers to a Queue">Add Subscribers to a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/subscribers</td><td>DELETE</td><td><a href="#remove_subscribers_from_a_queue" title="Remove Subscribers from a Queue">Remove Subscribers from a Queue</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers</td><td>GET</td><td><a href="#get_push_status_for_a_message" title="Get Push Status for a Message">Get Push Status for a Message</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers/<span class="subscriber_id variable">{Subscriber ID}</span></td><td>DELETE</td><td><a href="#acknowledge__delete_push_message_for_a_subscriber" title="Delete Push Message for a Subscriber">Delete Push Message for a Subscriber</a></td></tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/subscribers</td>
+      <td>POST</td>
+      <td><a href="#add_subscribers_to_a_queue" title="Add Subscribers to a Queue">Add Subscribers to a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/subscribers</td>
+      <td>DELETE</td>
+      <td><a href="#remove_subscribers_from_a_queue" title="Remove Subscribers from a Queue">Remove Subscribers from a Queue</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers</td>
+      <td>GET</td>
+      <td><a href="#get_push_status_for_a_message" title="Get Push Status for a Message">Get Push Status for a Message</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers/<span class="subscriber_id variable">{Subscriber ID}</span></td>
+      <td>DELETE</td>
+      <td><a href="#acknowledge__delete_push_message_for_a_subscriber" title="Delete Push Message for a Subscriber">Delete Push Message for a Subscriber</a></td>
+    </tr>
   </tbody>
 </table>
 
 
-<h2 id="authentication">Authentication</h2>
+## <a name="authentication"></a>Authentication
 IronMQ uses OAuth2 tokens to authenticate API requests. All methods require authentication unless specified otherwise. You can find and create your API tokens [in the HUD](https://hud.iron.io/tokens). To authenticate your request, you should include a token in the Authorization header for your request or in your query parameters. Tokens are universal, and can be used across services.
 
 Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
@@ -88,7 +163,7 @@ Notes:
 * In URL parameter form, this will be represented as:
         `?oauth=abc4c7c627376858`
 
-<h2 id="requests">Requests</h2>
+## <a name="requests"></a>Requests
 
 Requests to the API are simple HTTP requests against the API endpoints.
 
@@ -142,7 +217,7 @@ For endpoints that return lists/arrays of values:
 * page - The page of results to return. Default is 0. Maximum is 100.
 * per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
 
-<h2 id="responses">Responses</h2>
+## <a name="responses"></a>Responses
 
 All responses are in JSON, with Content-Type of `application/json`. A response is structured as follows:
 
@@ -202,8 +277,7 @@ When there's an error, the response body contains a JSON object something like:
 
 When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 
-
-## List Message Queues
+## <a name="list_message_queues"></a> List Message Queues 
 
 Get a list of all queues in a project. By default, 30 queues are listed at a time. To see more, use the `page` parameter or the `per_page` parameter. Up to 100 queues may be listed on a single page.
 
@@ -235,7 +309,8 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues
 ```
 
 
-## Get Info About a Message Queue
+## <a name="get_info_about_a_message_queue"></a> Get Info About a Message Queue 
+
 
 This call gets general information about the queue.
 
@@ -257,8 +332,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-
-## Delete a Message Queue
+## <a name="delete_a_message_queue"></a> Delete a Message Queue 
 
 This call deletes a message queue and all its messages.
 
@@ -280,9 +354,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 }
 ```
 
-
-
-## Update a Message Queue
+## <a name="update_a_message_queue"></a> Update a Message Queue 
 
 This allows you to change the properties of a queue including setting subscribers and the push type if you want it to be a
 push queue.
@@ -345,9 +417,9 @@ Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
 }
 ```
 
+## <a name="add_subscribers_to_a_queue"></a> Add Subscribers to a Queue 
 
-
-## Add Subscribers to a Queue
+__delete_push_message_for_a_subscriber
 
 Add subscribers (HTTP endpoints) to a queue. This is for Push Queues only.
 
@@ -402,9 +474,7 @@ The following parameters are all related to Push Queues.
 }
 ```
 
-
-
-## Remove Subscribers from a Queue
+## <a name="remove_subscribers_from_a_queue"></a> Remove Subscribers from a Queue 
 
 Remove subscriber from a queue. This is for Push Queues only.
 
@@ -455,8 +525,7 @@ The following parameters are all related to Push Queues.
 }
 ```
 
-
-## Clear All Messages from a Queue
+## <a name="clear_all_messages_from_a_queue"></a> Clear All Messages from a Queue 
 
 This call deletes all messages on a queue, whether they are reserved or not.
 
@@ -479,8 +548,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 }
 ```
 
-
-## Add Messages to a Queue
+## <a name="add_messages_to_a_queue"></a> Add Messages to a Queue 
 
 This call adds or pushes messages onto the queue.
 
@@ -537,7 +605,7 @@ Multiple messages may be added in a single request, provided that the messages s
 ```
 
 
-## Add Messages to a Queue via Webhook
+## <a name="add_messages_to_a_queue_via_webhook"></a> Add Messages to a Queue via Webhook 
 
 By adding the queue URL below to a third party service that supports webhooks, every webhook event that the third party posts
 will be added to your queue. The request body as is will be used as the "body" parameter in normal POST to queue above.
@@ -554,7 +622,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 * **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
 
 
-## Get Messages from a Queue
+## <a name="get_messages_from_a_queue"></a> Get Messages from a Queue 
 
 This call gets/reserves messages from the queue. The messages will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the messages are deleted, the messages will be placed back onto the queue. As a result, be sure to **delete** the messages after you're done with them.
 
@@ -604,8 +672,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-
-## Peek Messages on a Queue
+## <a name="peek_messages_on_a_queue"></a> Peek Messages on a Queue 
 
 Peeking at a queue returns the next messages on the queue, but it does not reserve them.
 
@@ -649,9 +716,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-
-
-## Get Message by ID
+## <a name="get_message_by_id"></a> Get Message by ID 
 
 Get a message by ID.
 
@@ -684,8 +749,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-
-## Release a Message on a Queue
+## <a name="release_a_message_on_a_queue"></a> Release a Message on a Queue 
 
 Releasing a reserved message unreserves the message and puts it back on the queue as if the message had timed out.
 
@@ -726,7 +790,7 @@ A JSON document body is required even if all parameters are omitted.
 }
 ```
 
-## Touch a Message on a Queue
+## <a name="touch_a_message_on_a_queue"></a> Touch a Message on a Queue 
 
 Touching a reserved message extends its timeout to the duration specified when the message was created. Default is 60 seconds.
 
@@ -758,8 +822,7 @@ Any empty JSON body.
 }
 ```
 
-
-## Delete a Message from a Queue
+## <a name="delete_a_message_from_a_queue"></a> Delete a Message from a Queue 
 
 This call will delete the message. Be sure you call this after you're done with a message or it will be placed back on the queue.
 
@@ -783,7 +846,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 ```
 
 
-## Delete Multiple Messages from a Queue
+## <a name="delete_multiple_messages_from_a_queue"></a> Delete Multiple Messages from a Queue 
 
 This call will delete multiple messages in one call.
 
@@ -821,9 +884,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 }
 ```
 
-
-
-## Get Push Status for a Message
+## <a name="get_push_status_for_a_message"></a> Get Push Status for a Message 
 
 You can retrieve the push status for a particular message which will let you know which subscribers have received the
 message, which have failed, how many times it's tried to be delivered and the status code returned from the endpoint.
@@ -862,8 +923,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-
-## Acknowledge / Delete Push Message for a Subscriber
+## <a name="acknowledge"></a> Acknowledge / Delete Push Message for a Subscriber 
 
 This is only for use with long running processes that have previously returned a 202. Read Push Queues page for more information on [Long Running Processes](http://dev.iron.io/mq/reference/push_queues/#how_the_endpoint_should_handle_push_messages)
 

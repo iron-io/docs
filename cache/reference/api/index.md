@@ -12,20 +12,20 @@ IronCache provides a REST/HTTP API to allow you to interact programmatically wit
 <section id="toc">
   <h3>Table of Contents</h3>
   <ul>
-    <li><a href="#endpoints">Endpoints</a></li>
-    <li><a href="#authentication">Authentication</a></li>
+    <li>[Endpoints](#endpoints)</li>
+    <li>[Authentication](#authentication)</li>
     <li>
-      <a href="#requests">Requests</a>
+      [Requests](#requests)
       <ul>
-        <li><a href="#base_url">Base URL</a></li>
-        <li><a href="#pagination">Pagination</a></li>
+        <li>[Base URL](#base_url)</li>
+        <li>[Pagination](#pagination)</li>
       </ul>
     </li>
     <li>
-      <a href="#responses">Responses</a>
+      [Responses](#responses)
       <ul>
-        <li><a href="#status_codes">Status Codes</a></li>
-        <li><a href="#exponential_backoff">Exponential Backoff</a></li>
+        <li>[Status Codes](#status_codes)</li>
+        <li>[Exponential Backoff](#exponential_backoff)</li>
       </ul>
     </li>
   </ul>
@@ -38,14 +38,44 @@ IronCache provides a REST/HTTP API to allow you to interact programmatically wit
     <tr><th style="width: 58%;">URL</th><th style="width: 10%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
   </thead>
   <tbody>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches</td><td>GET</td><td><a href="#list_caches" title="List Caches">List Caches</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span></td><td>GET</td><td><a href="#get_info_about_a_cache" title="Get Info About a Cache">Get Info About a Cache</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span></td><td>DELETE</td><td><a href="#delete_a_cache" title="Delete a Cache">Delete a Cache</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/clear</td><td>POST</td><td><a href="#clear_a_cache" title="Clear a Cache">Clear a Cache</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span></td><td>PUT</td><td><a href="#put_an_item_into_a_cache" title="Put an Item into a Cache">Put an Item into a Cache</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span>/increment</td><td>POST</td><td><a href="#increment_an_items_value" title="Increment an Item's value">Increment an Item's value</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span></td><td>GET</td><td><a href="#get_an_item_from_a_cache" title="Get an Item from a Cache">Get an Item from a Cache</a></td></tr>
-    <tr><td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="variable item_key">{Key}</span></td><td>DELETE</td><td><a href="#delete_an_item_from_a_cache" title="Delete an Item from a Cache">Delete an Item from a Cache</a></td></tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches</td>
+      <td>GET</td><td><a href="#list_caches" title="List Caches">List Caches</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span></td>
+      <td>GET</td>
+      <td><a href="#get_info_about_a_cache" title="Get Info About a Cache">Get Info About a Cache</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span></td>
+      <td>DELETE</td>
+      <td><a href="#delete_a_cache" title="Delete a Cache">Delete a Cache</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/clear</td>
+      <td>POST</td>
+      <td><a href="#clear_a_cache" title="Clear a Cache">Clear a Cache</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span></td>
+      <td>PUT</td>
+      <td><a href="#put_an_item_into_a_cache" title="Put an Item into a Cache">Put an Item into a Cache</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span>/increment</td><td>POST</td>
+      <td><a href="#increment_an_items_value" title="Increment an Item's value">Increment an Item's value</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="item_key variable">{Key}</span></td>
+      <td>GET</td>
+      <td><a href="#get_an_item_from_a_cache" title="Get an Item from a Cache">Get an Item from a Cache</a></td>
+    </tr>
+    <tr>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/caches/<span class="cache_name variable">{Cache Name}</span>/items/<span class="variable item_key">{Key}</span></td>
+      <td>DELETE</td>
+      <td><a href="#delete_an_item_from_a_cache" title="Delete an Item from a Cache">Delete an Item from a Cache</a></td>
+    </tr>
   </tbody>
 </table>
 
@@ -158,7 +188,7 @@ When there's an error, the response body contains a JSON object similar to the f
 
 When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 
-## List Caches
+## <a name="list_caches"></a> List Caches
 
 Get a list of all caches in a project. 100 caches are listed at a time. To see more, use the page parameter.
 
@@ -191,7 +221,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches
 ]
 ```
 
-## Get Info About a Cache
+## <a name="get_info_about_a_cache"></a> Get Info About a Cache
 
 This call gets general information about a cache.
 
@@ -214,7 +244,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/caches/<span
 }
 ```
 
-## Delete a Cache
+## <a name="delete_a_cache"></a> Delete a Cache
 
 Delete a cache and all items in it.
 
@@ -237,7 +267,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/caches/<s
 }
 ```
 
-## Clear a Cache
+## <a name="clear_a_cache"></a> Clear a Cache
 
 Delete all items in a cache. This cannot be undone.
 
@@ -260,7 +290,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/caches/<spa
 }
 ```
 
-## Put an Item into a Cache
+## <a name="put_an_item_into_a_cache"></a> Put an Item into a Cache
 
 This call puts an item into a cache.
 
@@ -309,7 +339,7 @@ Each item object should contain the following keys:
 }
 ```
 
-## Increment an Item's value
+## <a name="increment_an_items_value"></a> Increment an Item's value
 
 This call increments the numeric value of an item in the cache. The amount must be a number and attempting to increment non-numeric values results in an error. Negative amounts may be passed to decrement the value. The increment is atomic, so concurrent increments will all be observed.
 
@@ -350,7 +380,7 @@ The request body should contain the following keys:
 }
 ```
 
-## Get an Item from a Cache
+## <a name="get_an_item_from_a_cache"></a> Get an Item from a Cache
 
 This call retrieves an item from the cache. The item will not be deleted.
 
@@ -377,7 +407,7 @@ GET /projects/<span class="project_id variable">{Project ID}</span>/caches/<span
 }
 ```
 
-## Delete an Item from a Cache
+## <a name="delete_an_item_from_a_cache"></a> Delete an Item from a Cache
 
 This call will delete the item from the cache.
 
