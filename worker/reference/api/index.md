@@ -33,16 +33,24 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
             <td><a href="#upload_or_update_a_code_package" title="Upload or Update a Code Package">Upload or Update a Code Package</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td><td>GET</td><td><a href="#get_info_about_a_code_package" title="Get Info About a Code Package">Get Info About A Code Package</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td>
+            <td>GET</td>
+            <td><a href="#get_info_about_a_code_package" title="Get Info About a Code Package">Get Info About A Code Package</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td><td>DELETE</td><td><a href="#delete_a_code_package" title="Delete a Code Package">Delete a Code Package</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span></td>
+            <td>DELETE</td>
+            <td><a href="#delete_a_code_package" title="Delete a Code Package">Delete a Code Package</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/download</td><td>GET</td><td><a href="#download_a_code_package" title="Download a Code Package">Download a Code Package</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/download</td>
+            <td>GET</td>
+            <td><a href="#download_a_code_package" title="Download a Code Package">Download a Code Package</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/revisions</td><td>GET</td><td><a href="#list_code_package_revisions" title="List Code Package Revisions">List Code Package Revisions</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/revisions</td>
+            <td>GET</td>
+            <td><a href="#list_code_package_revisions" title="List Code Package Revisions">List Code Package Revisions</a></td>
         </tr>
     </tbody>
 </table>
@@ -57,28 +65,44 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
     </thead>
     <tbody>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>GET</td><td><a href="#list_tasks" title="List Tasks">List Tasks</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td>
+            <td>GET</td>
+            <td><a href="#list_tasks" title="List Tasks">List Tasks</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td><td>POST</td><td><a href="#queue_a_task" title="Queue a Task">Queue a Task</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks</td>
+            <td>POST</td>
+            <td><a href="#queue_a_task" title="Queue a Task">Queue a Task</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/webhook</td><td>POST</td><td><a href="#queue_a_task_from_a_webhook" title="Queue a Task from a Webhook">Queue a Task from a Webhook</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/webhook</td>
+            <td>POST</td>
+            <td><a href="#queue_a_task_from_a_webhook" title="Queue a Task from a Webhook">Queue a Task from a Webhook</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span></td><td>GET</td><td><a href="#get_info_about_a_task" title="Get Info About a Task">Get Info About a Task</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span></td>
+            <td>GET</td>
+            <td><a href="#get_info_about_a_task" title="Get Info About a Task">Get Info About a Task</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/log</td><td>GET</td><td><a href="#get_a_tasks_log" title="Get a Task's Log">Get a Task's Log</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/log</td>
+            <td>GET</td>
+            <td><a href="#get_a_tasks_log" title="Get a Task's Log">Get a Task's Log</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/cancel</td><td>POST</td><td><a href="#cancel_a_task" title="Cancel a Task">Cancel a Task</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/cancel</td>
+            <td>POST</td>
+            <td><a href="#cancel_a_task" title="Cancel a Task">Cancel a Task</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/progress</td><td>POST</td><td><a href="#set_a_tasks_progress" title="Set a Task's Progress">Set a Task's Progress</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/progress</td>
+            <td>POST</td>
+            <td><a href="#set_a_tasks_progress" title="Set a Task's Progress">Set a Task's Progress</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/retry</td><td>POST</td><td><a href="#retry_a_task" title="Retry a Task">Retry a Task</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/tasks/<span class="task_id variable">{Task ID}</span>/retry</td>
+            <td>POST</td>
+            <td><a href="#retry_a_task" title="Retry a Task">Retry a Task</a></td>
         </tr>
     </tbody>
 </table>
@@ -93,16 +117,24 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
     </thead>
     <tbody>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td><td>GET</td><td><a href="#list_scheduled_tasks" title="List Scheduled Tasks">List Scheduled Tasks</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td>
+            <td>GET</td>
+            <td><a href="#list_scheduled_tasks" title="List Scheduled Tasks">List Scheduled Tasks</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td><td>POST</td><td><a href="#schedule_a_task" title="Schedule a Task">Schedule a Task</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules</td>
+            <td>POST</td>
+            <td><a href="#schedule_a_task" title="Schedule a Task">Schedule a Task</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span></td><td>GET</td><td><a href="#get_info_about_a_scheduled_task" title="Get Info About a Scheduled Task">Get Info About a Scheduled Task</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span></td>
+            <td>GET</td>
+            <td><a href="#get_info_about_a_scheduled_task" title="Get Info About a Scheduled Task">Get Info About a Scheduled Task</a></td>
         </tr>
         <tr>
-            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span>/cancel</td><td>POST</td><td><a href="#cancel_a_scheduled_task" title="Cancel a Scheduled Task">Cancel a Scheduled Task</a></td>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/schedules/<span class="schedule_id variable">{Schedule ID}</span>/cancel</td>
+            <td>POST</td>
+            <td><a href="#cancel_a_scheduled_task" title="Cancel a Scheduled Task">Cancel a Scheduled Task</a></td>
         </tr>
     </tbody>
 </table>
@@ -213,7 +245,7 @@ All dates, times, and timestamps will use the [ISO 8601](http://en.wikipedia.org
 
 Your workers are run against code packages that can be updated and deleted over time. The code packages define the functionality a worker has through the code they contain. Put simply, code packages are simply the code that will run when your worker runs.
 
-### List Code Packages
+### <a name="list_code_packages"></a> List Code Packages
 
 #### Endpoint
 
@@ -251,7 +283,7 @@ Sample:
 }
 ```
 
-### Upload or Update a Code Package
+### <a name="upload_or_update_a_code_package"></a> Upload or Update a Code Package
 
 You will almost always want to use our [Command Line Interface](/worker/reference/cli/) to make uploading easier.
 
@@ -337,7 +369,7 @@ Sample:
 }
 ```
 
-### Get Info About a Code Package
+### <a name="get_info_about_a_code_package"></a> Get Info About a Code Package
 
 #### Endpoint
 
@@ -369,7 +401,7 @@ Sample:
 }
 ```
 
-### Delete a Code Package
+### <a name="delete_a_code_package"></a> Delete a Code Package
 
 #### Endpoint
 
@@ -394,7 +426,7 @@ Sample:
 }
 ```
 
-### Download a Code Package
+### <a name="download_a_code_package"></a> Download a Code Package
 
 #### Endpoint
 
@@ -415,7 +447,7 @@ Sample:
 
 The response will be a zip file containing your code package. The response header will include a Content-Disposition header containing "filename=yourworker_rev.zip", where yourworker is the code package’s name and rev is the numeric revision. The response’s Content-Type will be "application/zip".
 
-### List Code Package Revisions
+### <a name="list_code_package_revisions"></a> List Code Package Revisions
 
 #### Endpoint
 
@@ -530,7 +562,7 @@ Tasks have timeouts associated with them that specify the amount of time (in sec
     </tbody>
 </table>
 
-### List Tasks
+### <a name="list_tasks"></a> List Tasks
 
 #### Endpoint
 
@@ -584,7 +616,7 @@ Sample:
 }
 ```
 
-### Queue a Task
+### <a name="queue_a_task"></a> Queue a Task
 
 #### Endpoint
 
@@ -641,7 +673,7 @@ Sample:
 }
 ```
 
-### Queue a Task From a Webhook
+### <a name="queue_a_task_from_a_webhook"></a> Queue a Task From a Webhook
 
 #### Endpoint
 
@@ -669,7 +701,7 @@ Sample:
 }
 ```
 
-### Get Info About a Task
+### <a name="get_info_about_a_task"></a> Get Info About a Task
 
 #### Endpoint
 
@@ -707,7 +739,7 @@ Sample:
 }
 ```
 
-### Get a Task’s Log
+### <a name="get_a_tasks_log"></a> Get a Task’s Log
 
 #### Endpoint
 
@@ -727,7 +759,7 @@ Unlike the other API methods, this method will return a Content-Type of "text/pl
 Sample:
 Hello World!
 
-### Cancel a Task
+### <a name="cancel_a_task"></a> Cancel a Task
 
 #### Endpoint
 
@@ -752,7 +784,7 @@ Sample:
 }
 ```
 
-### Set a Task’s Progress
+### <a name="set_a_tasks_progress"></a> Set a Task’s Progress
 
 #### Endpoint
 
@@ -796,7 +828,7 @@ Sample:
 }
 ```
 
-### Retry a Task
+### <a name="retry_a_task"></a> Retry a Task
 
 #### Endpoint
 
@@ -838,7 +870,7 @@ Sample:
 
 Scheduled tasks are just tasks that run on a schedule. While the concept is simple, it enables a powerful class of functionality: tasks can be used as cron workers, running at specific intervals a set (or unlimited) number of times.
 
-### List Scheduled Tasks
+### <a name="list_scheduled_tasks"></a> List Scheduled Tasks
 
 #### Endpoint
 
@@ -883,7 +915,7 @@ Sample:
 }
 ```
 
-### Schedule a Task
+### <a name="schedule_a_task"></a> Schedule a Task
 
 #### Endpoint
 
@@ -946,7 +978,7 @@ Sample:
 }
 ```
 
-### Get Info About a Scheduled Task
+### <a name="get_info_about_a_scheduled_task"></a> Get Info About a Scheduled Task
 
 #### Endpoint
 
@@ -984,7 +1016,7 @@ Sample:
 }
 ```
 
-### Cancel a Scheduled Task
+### <a name="cancel_a_scheduled_task"></a> Cancel a Scheduled Task
 
 #### Endpoint
 
