@@ -350,7 +350,7 @@ ul#breadcrumbs li {
   color: blue;
 }
 
-.variable.item_key, .variable.message_id {
+.variable.item_key, .variable.message_id, .variable.alert_id {
   color: green;
 }
 
