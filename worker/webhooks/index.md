@@ -28,7 +28,7 @@ party service that supports webhooks.
 
 <h2 id="how_to_use_ironworker_webhooks">How to Use IronWorker Webhooks</h2>
 
-A Webhook is simply an [HTTP POST API endpoint](http://localhost:4000/worker/reference/api/#queue_a_task_from_a_webhook) so
+A Webhook is simply an [HTTP POST API endpoint](/worker/reference/api/#queue_a_task_from_a_webhook) so
 you don't need any updates in your existing workers to use them. A typical workflow for a webhook is:
 
 * [Create and upload a worker](/worker)
@@ -39,7 +39,8 @@ you don't need any updates in your existing workers to use them. A typical workf
 
 ```sh
 $ iron_worker webhook $WORKER_NAME
-    ```
+```
+
 * Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/reference/push_queues)
 * Do something to trigger the webhook, say, commit to GitHub or post a message to a Push Queue.
 
@@ -50,7 +51,7 @@ The URL's scheme for webhooks is:
 
 
 ```sh
-$WORKER_API_URL/projects/$PROJECT_ID/tasks/webhook?code_name=$CODE_NAME&oauth=$TOKEN
+$ WORKER_API_URL/projects/$PROJECT_ID/tasks/webhook?code_name=$CODE_NAME&oauth=$TOKEN
 ```
 
 Where:
