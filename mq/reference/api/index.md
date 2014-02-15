@@ -408,7 +408,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ##### Optional
 
-* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "delay" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more. To add, remove or update alerts see the <a href="#add_alerts_to_a_queue">add alerts</a>, <a href="#remove_alerts_from_a_queue">remove alerts</a> and <a href="#update_alerts_on_a_queue">update alerts</a>. Alerts does not work on [Push Queues](/mq/reference/push_queues/).
+* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "buffer" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more. To add, update or remove alerts see the <a href="#add_alerts_to_a_queue">add alerts</a>, <a href="#update_alerts_on_a_queue">update alerts</a> and <a href="#remove_alerts_from_a_queue">remove alerts</a>. Alerts does not work on [Push Queues](/mq/reference/push_queues/).
 
 The following parameters are all related to Push Queues.
 
@@ -464,7 +464,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ##### Optional
 
-* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "delay" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
+* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "buffer" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
 
 ### Request
 
@@ -472,7 +472,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 {
    "alerts": [
      {
-       "type": "size",
+       "type": "fixed",
        "direction": "asc",
        "trigger": 1000,
        "queue": "my_queue_for_alerts"
@@ -506,7 +506,7 @@ PUT /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 ##### Optional
 
-* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "delay" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
+* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "buffer" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
 
 ### Request
 
@@ -514,8 +514,8 @@ PUT /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 {
    "alerts": [
      {
-       "type": "size",
-       "direction": "asc",
+       "type": "progressive",
+       "direction": "desc",
        "trigger": 1000,
        "queue": "my_queue_for_alerts"
      }

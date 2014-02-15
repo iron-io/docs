@@ -34,11 +34,11 @@ Request body example:
 {
    "alerts": [
      {
-       "type": "size",
+       "type": "fixed",
        "direction": "asc",
        "trigger": 1000,
        "queue": "queue-to-post-size-alerts-to",
-       "delay": 120
+       "buffer": 120
      },
      {
        "type": "progressive",
@@ -54,8 +54,8 @@ Request body example:
 
 Acceptable fields of alert hash are:
 
-* **type** - required - "size" or "progressive".
-In case of alert's type set to "size", alert will be triggered when queue size pass value
+* **type** - required - "fixed" or "progressive".
+In case of alert's type set to "fixed", alert will be triggered when queue size pass value
 set by **trigger** parameter.
 When type set to "progressive", alert will be triggered when queue size pass any of values,
 calculated by `trigger * N` where N >= 1. For example, if **trigger** set to 10,
@@ -68,9 +68,9 @@ When direction is "desc" queue size must decreasing to trigger alert.
 * **trigger** - required. It will be used to calculate actual values of queue size when alert must be triggered.
 See **type** field description. Trigger must be integer value greater than 0.
 * **queue** - required. Name of queue which will be used to post alert messages.
-* **delay** - optional. Number of seconds between alerts.
+* **buffer** - optional. Number of seconds between alerts.
 If alert must be triggered but delay is still active, alert will be omitted.
-Delay must be integer value greater than or equal to 0.
+Buffer must be integer value greater than or equal to 0.
 
 ##### Delete Alerts Endpoints
 
