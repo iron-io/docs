@@ -408,6 +408,8 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ##### Optional
 
+Parameters, related to Pull (regular) Queues:
+
 * **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "buffer" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more. To add, update or remove alerts see the <a href="#add_alerts_to_a_queue">add alerts</a>, <a href="#update_alerts_on_a_queue">update alerts</a> and <a href="#remove_alerts_from_a_queue">remove alerts</a>. Alerts does not work on [Push Queues](/mq/reference/push_queues/).
 
 The following parameters are all related to Push Queues.

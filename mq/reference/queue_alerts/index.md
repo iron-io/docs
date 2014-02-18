@@ -12,6 +12,7 @@ breadcrumbs:
   <ul>
     <li><a href="#overview">Overview</a></li>
     <li><a href="#alerts_parameters">Alerts Parameters</a></li>
+    <li><a href="#alerts_messages">Alerts Messages</a></li>
   </ul>  
 </section>
 
@@ -32,21 +33,21 @@ Request body example:
 
 ```js
 {
-   "alerts": [
-     {
-       "type": "fixed",
-       "direction": "asc",
-       "trigger": 1000,
-       "queue": "queue-to-post-size-alerts-to",
-       "buffer": 120
-     },
-     {
-       "type": "progressive",
-       "direction": "desc",
-       "trigger": 100,
-       "queue": "queue-to-post-progressive-to"
-     }
-   ]
+  "alerts": [
+    {
+      "type": "fixed",
+      "direction": "asc",
+      "trigger": 1000,
+      "queue": "queue-to-post-size-alerts-to",
+      "snooze": 120
+    },
+    {
+      "type": "progressive",
+      "direction": "desc",
+      "trigger": 100,
+      "queue": "queue-to-post-progressive-to"
+    }
+  ]
 }
 ```
 
@@ -68,11 +69,28 @@ When direction is "desc" queue size must decreasing to trigger alert.
 * **trigger** - required. It will be used to calculate actual values of queue size when alert must be triggered.
 See **type** field description. Trigger must be integer value greater than 0.
 * **queue** - required. Name of queue which will be used to post alert messages.
-* **buffer** - optional. Number of seconds between alerts.
+* **snooze** - optional. Number of seconds between alerts.
 If alert must be triggered but delay is still active, alert will be omitted.
-Buffer must be integer value greater than or equal to 0.
+Snooze must be integer value greater than or equal to 0.
 
 ##### Delete Alerts Endpoints
 
 * [Delete alerts from a queue](/mq/reference/api/#delete_alerts_from_a_queue)
 * [Delete alert from a queue by ID](/mq/reference/api/#delete_alert_from_a_queue_by_id)
+
+
+<h2 id="alerts_messages">Alerts Messages</h2>
+
+Alerts messages are JSONified strings in the following format:
+
+```js
+{
+  "source_queue": "test_queue",
+  "queue_size": 12,
+  "alert_id": "530392f41185ab1f2a0005f7",
+  "alert_type": "progressive",
+  "alert_direction": "asc",
+  "alert_trigger": 5,
+  "created_at": "2014-02-18T17:10:43Z"
+}
+```
