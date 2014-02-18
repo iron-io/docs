@@ -907,6 +907,12 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 * **Queue Name**: The name of queue.
 * **Message ID**: The id of the message to release.
 
+### Sample Request
+
+<div class="grey-box">
+GET /projects/4ccf55250948510894024119/queues/test_queue/messages/5981787539458424851
+</div>
+
 ### Response
 
 ```js
