@@ -13,6 +13,7 @@ breadcrumbs:
     <li><a href="#overview">Overview</a></li>
     <li><a href="#alerts_parameters">Alerts Parameters</a></li>
     <li><a href="#alerts_messages">Alerts Messages</a></li>
+    <li><a href="#setting_alerts_in_dashboad">Setting Alerts in Dashboard</a></li>
   </ul>  
 </section>
 
@@ -96,3 +97,14 @@ Alerts messages are JSONified strings in the following format:
   "created_at": "2014-02-18T17:10:43Z"
 }
 ```
+
+<h2 id="setting_alerts_in_dashboad">Setting Alerts in Dashboard</h2>
+You can easily create an alert through our interface on our queue view in the Iron.io dashboard.
+Navigate down and click view queue alerts on the left hand side of the queue view.
+
+![IronMQ-Alerts-Location-Dashboard](/images/mq/reference/alerts/IronMQ-Alerts-Location-Dashboard.png "IronMQ-Alerts-Location-Dashboard")
+
+Here you can add up to 5 alerts per queue.
+
+![IronMQ-Alerts-Dashboard](/images/mq/reference/alerts/IronMQ-Alerts-Dashboard.png "IronMQ-Alerts-Dashboard")
+
