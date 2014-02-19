@@ -21,7 +21,7 @@ breadcrumbs:
 
 [Blog Post for Overview](http://blog.iron.io).
 
-Alerts have now been incorporated into IronMQ. This feature lets developers control actions based on the activity within a queue. With alerts, actions can be triggered when the number of messages in a queue reach a certain threshold. These actions can include things like auto-scaling, failure detection, load-monitoring, and system health.&nbsp;
+Alerts allows developers to notify other systems based on the activity within a queue. With alerts, actions can be triggered when the number of messages in a queue reach a certain threshold. These actions can include things like auto-scaling, failure detection, load-monitoring, and system health.&nbsp;
 
 <h2 id="alerts_parameters">Alerts Parameters</h2>
 
