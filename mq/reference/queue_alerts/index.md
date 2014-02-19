@@ -17,7 +17,6 @@ breadcrumbs:
     <li><a href="#example_alerts_meaning">Example Alert Settings and their meaning</a></li>
   </ul>  
 </section>
-
 <h2 id="overview">Overview</h2>
 
 [Check out our Blog Post on Queue Alerts](http://blog.iron.io).
