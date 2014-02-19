@@ -14,6 +14,7 @@ breadcrumbs:
     <li><a href="#alerts_parameters">Alerts Parameters</a></li>
     <li><a href="#alerts_messages">Alerts Messages</a></li>
     <li><a href="#setting_alerts_in_dashboad">Setting Alerts in Dashboard</a></li>
+    <li><a href="#example_alerts_meaning">Example Alert Settings and their meaning</a></li>
   </ul>  
 </section>
 
@@ -107,4 +108,30 @@ Navigate down and click view queue alerts on the left hand side of the queue vie
 Here you can add up to 5 alerts per queue.
 
 ![IronMQ-Alerts-Dashboard](/images/mq/reference/alerts/IronMQ-Alerts-Dashboard.png "IronMQ-Alerts-Dashboard")
+
+
+<h2 id="example_alerts_meaning">Example Alert Settings and their meaning</h2>
+The following serve as examples of how you may do about setting your alert settings.
+
+```
+{
+  "type": "progressive",
+  "direction": "asc",
+  "trigger": 1000,
+  "queue": "worker_push_queue"
+}
+```
+
+Interpretation: For every progressive increment of 1,000 messages on my queue in the ascending direction trigger an alert to my queue entitled “worker_push_queue”. This pattern would trigger additional workers to run for seamless autoscaling.
+
+```
+{
+  "type": "fixed",
+  "direction": "asc",
+  "trigger": 1,
+  "queue": "worker_polling_queue"
+}
+```
+
+Interpretation: When my queue passes the fixed value of 1 post to my “worker_polling_queue”. This pattern would trigger a worker to run whenever there are items within the queue.
 
