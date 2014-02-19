@@ -2685,6 +2685,10 @@ body.worker .page-menu .active a {
   margin: 0 0 9px
 }
 
+h2#overview {
+  margin-top: 0px;
+}
+
 #overview.article-container {
   background: url(http://www.iron.io/assets/products/overview-worker-bg.png) no-repeat right top;
   margin: 0;
