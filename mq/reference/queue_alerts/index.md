@@ -20,6 +20,8 @@ breadcrumbs:
 
 [Blog Post for Overview](http://blog.iron.io).
 
+Alerts have now been incorporated into IronMQ. This feature lets developers control actions based on the activity within a queue. With alerts, actions can be triggered when the number of messages in a queue reach a certain threshold. These actions can include things like auto-scaling, failure detection, load-monitoring, and system health.&nbsp;
+
 <h2 id="alerts_parameters">Alerts Parameters</h2>
 
 IronMQ provides number of routes to manipulate queue alerts.
@@ -70,7 +72,7 @@ When direction is "desc" queue size must decreasing to trigger alert.
 See **type** field description. Trigger must be integer value greater than 0.
 * **queue** - required. Name of queue which will be used to post alert messages.
 * **snooze** - optional. Number of seconds between alerts.
-If alert must be triggered but delay is still active, alert will be omitted.
+If alert must be triggered but snooze is still active, alert will be omitted.
 Snooze must be integer value greater than or equal to 0.
 
 ##### Delete Alerts Endpoints
