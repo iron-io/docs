@@ -76,10 +76,10 @@ See **type** field description. Trigger must be integer value greater than 0.
 If alert must be triggered but snooze is still active, alert will be omitted.
 Snooze must be integer value greater than or equal to 0.
 
-##### Delete Alerts Endpoints
+<!-- ##### Delete Alerts Endpoints
 
 * [Delete alerts from a queue](/mq/reference/api/#delete_alerts_from_a_queue)
-* [Delete alert from a queue by ID](/mq/reference/api/#delete_alert_from_a_queue_by_id)
+* [Delete alert from a queue by ID](/mq/reference/api/#delete_alert_from_a_queue_by_id) -->
 
 
 <h2 id="alerts_messages">Alerts Messages</h2>
