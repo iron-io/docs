@@ -138,7 +138,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
       <td><a href="#remove_alerts_from_a_queue" title="Remove Alerts from a Queue">Remove Alerts from a Queue</a></td>
     </tr>
     <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts/<span class="variable alert_id>{Alert ID}</span></td>
+      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts/<span class="variable alert_id">{Alert ID}</span></td>
       <td>DELETE</td>
       <td><a href="#remove_alert_from_a_queue_by_id" title="Remove Alert from a Queue by ID">Remove Alert from a Queue by ID</a></td>
     </tr>
