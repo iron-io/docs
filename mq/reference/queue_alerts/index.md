@@ -14,6 +14,7 @@ breadcrumbs:
     <li><a href="#alerts_parameters">Alerts Parameters</a></li>
     <li><a href="#alerts_messages">Alerts Messages</a></li>
     <li><a href="#setting_alerts_in_dashboad">Setting Alerts in Dashboard</a></li>
+    <li><a href="#important_notes">Important Notes</a></li>
   </ul>  
 </section>
 
@@ -65,7 +66,7 @@ When type set to "progressive", alert will be triggered when queue size pass any
 calculated by `trigger * N` where N >= 1. For example, if **trigger** set to 10,
 alert will be triggered at queue sizes 10, 20, 30, etc. 
 
-* **direction** - required - "asc" or "desc".
+* **direction** - optional - "asc" or "desc". Defaults to "asc".
 Set direction in which queue size must be changed when pass trigger value.
 If direction set to "asc" queue size must growing to trigger alert.
 When direction is "desc" queue size must decreasing to trigger alert.
@@ -108,3 +109,14 @@ Here you can add up to 5 alerts per queue.
 
 ![IronMQ-Alerts-Dashboard](/images/mq/reference/alerts/IronMQ-Alerts-Dashboard.png "IronMQ-Alerts-Dashboard")
 
+<h2 id="important_notes">Important Notes</h2>
+
+* IronMQ backend checks for alerts duplications each time you
+  add new alerts to a queue. It compares `type`, `direction`, and
+  `trigger` parameters to find duplicates. If one or more of new
+  alerts duplicates existing, backend return `HTTP 400` error, message
+  will be `{"msg": "At least one new alert duplicates current queue alerts."}`.
+* When you try to add alerts to a [Push Queues](/mq/reference/push_queues/)
+  or convert Pull Queue with alerts to Push Queue, IronMQ will
+  respond with `HTTP 400` error, message will be
+  `{"msg": "Push queues do not support alerts."}`
