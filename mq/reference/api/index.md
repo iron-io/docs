@@ -462,7 +462,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ##### Optional
 
-* **alerts**: An array of alerts hashes containing required "type", "queue", "trigger", and optional "direction", "snooze" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
+* **alerts**: An array of alert hashes containing required "type", "queue", "trigger", and optional "direction", "snooze" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
 
 ### Request
 
@@ -521,8 +521,8 @@ PUT /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-Note: to clear all alerts on a queue send empty alerts array like
-the following.
+Note: to clear all alerts on a queue send an empty alerts array like
+so:
 
 ```js
 {
