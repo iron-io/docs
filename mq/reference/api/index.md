@@ -130,7 +130,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
     <tr>
       <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts</td>
       <td>PUT</td>
-      <td><a href="#update_alerts_to_a_queue" title="Update Alerts on a Queue">Update Alerts on a Queue</a></td>
+      <td><a href="#replace_alerts_on_a_queue" title="Update Alerts on a Queue">Replace Alerts on a Queue</a></td>
     </tr>
     <tr>
       <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts</td>
@@ -462,7 +462,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ##### Optional
 
-* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "buffer" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
+* **alerts**: An array of alerts hashes containing required "type", "queue", "trigger", and optional "direction", "snooze" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
 
 ### Request
 
@@ -483,11 +483,11 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 
 ```js
 {
-  "msg": "Updated"
+  "msg": "Alerts were added."
 }
 ```
 
-## <a name="update_alerts_on_a_queue"></a> Update Alerts on a Queue
+## <a name="replace_alerts_on_a_queue"></a> Replace Alerts on a Queue
 
 Replace current queue alerts with a given list of alerts. This is for Pull Queue only.
 
@@ -504,7 +504,7 @@ PUT /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 
 ##### Optional
 
-* **alerts**: An array of alerts hashes containing required "type", "direction", "queue", "trigger", and optional "buffer" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
+* **alerts**: An array of alerts hashes containing required "type", "queue", "trigger", and optional "direction", "snooze" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
 
 ### Request
 
@@ -521,11 +521,20 @@ PUT /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
+Note: to clear all alerts on a queue send empty alerts array like
+the following.
+
+```js
+{
+  "alerts": []
+}
+```
+
 #### Response
 
 ```js
 {
-  "msg": "Updated"
+  "msg": "Alerts were replaced."
 }
 ```
 
@@ -562,7 +571,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 
 ```js
 {
-  "msg": "Deleted"
+  "msg": "Alerts were deleted."
 }
 ```
 
@@ -584,7 +593,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 
 ```js
 {
-  "msg": "Deleted"
+  "msg": "Alerts were deleted."
 }
 ```
 
