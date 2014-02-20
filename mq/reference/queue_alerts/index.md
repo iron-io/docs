@@ -20,13 +20,13 @@ breadcrumbs:
 
 <h2 id="overview">Overview</h2>
 
-[Blog Post for Overview](http://blog.iron.io).
+[Blog Post Overview](http://blog.iron.io/2014/02/ironio-announces-alerts-for-ironmq.html).
 
-Alerts allows developers to notify other systems based on the activity within a queue. With alerts, actions can be triggered when the number of messages in a queue reach a certain threshold. These actions can include things like auto-scaling, failure detection, load-monitoring, and system health.&nbsp;
+Alerts, triggered when the queue hits a pre-determined number of messages (both ascending and descending), allow developers to notify other systems based on the activity of a queue. Actions include things like: auto-scaling, failure detection, load-monitoring, and system health.&nbsp;
 
 <h2 id="alerts_parameters">Alerts Parameters</h2>
 
-IronMQ provides number of routes to manipulate queue alerts.
+IronMQ provides a number of routes to manipulate queue alerts.
 
 ##### Add and Update Alerts Endpoints
 
@@ -57,25 +57,25 @@ Request body example:
 
 * **alerts** - optional - array of hashes containing alerts hashes.
 
-Acceptable fields of alert hash are:
-
-* **type** - required - "fixed" or "progressive".
-In case of alert's type set to "fixed", alert will be triggered when queue size pass value
+#### Required
+* **type** - set to "fixed" or "progressive"
+  * A "fixed" alert will trigger an alert when the queue size passes the value
 set by **trigger** parameter.
-When type set to "progressive", alert will be triggered when queue size pass any of values,
-calculated by `trigger * N` where N >= 1. For example, if **trigger** set to 10,
-alert will be triggered at queue sizes 10, 20, 30, etc. 
+  * A "progressive" alert will trigger when queue size passes any of values calculated by `trigger * N` where `N >= 1`. Example: **trigger** is set to 10, alerts will be triggered at queue sizes 10, 20, 30, etc. 
 
-* **direction** - optional - "asc" or "desc". Defaults to "asc".
-Set direction in which queue size must be changed when pass trigger value.
-If direction set to "asc" queue size must growing to trigger alert.
-When direction is "desc" queue size must decreasing to trigger alert.
-* **trigger** - required. It will be used to calculate actual values of queue size when alert must be triggered.
-See **type** field description. Trigger must be integer value greater than 0.
-* **queue** - required. Name of queue which will be used to post alert messages.
-* **snooze** - optional. Number of seconds between alerts.
-If alert must be triggered but snooze is still active, alert will be omitted.
-Snooze must be integer value greater than or equal to 0.
+* **trigger** - must be integer value > 0.
+  * Used to calculate actual values of queue size when alert must be triggered. See **type** field description.
+
+* **queue** 
+  - Name of queue which will be used to post alert messages.
+
+#### Optional
+* **direction** - set to "asc" (default) or "desc"
+  * An "asc" setting will trigger alerts as the queue **grows** in size.
+  * A "desc" setting will trigger alerts as the queue **decreases** in size.
+
+* **snooze** - Number of seconds between alerts. Must be integer value >= 0
+  * If alert must be triggered but snooze is still active, alert will be omitted.
 
 ##### Delete Alerts Endpoints
 
@@ -85,7 +85,7 @@ Snooze must be integer value greater than or equal to 0.
 
 <h2 id="alerts_messages">Alerts Messages</h2>
 
-Alerts messages are JSONified strings in the following format:
+Alert messages are JSONified strings in the following format:
 
 ```js
 {
@@ -111,12 +111,11 @@ Here you can add up to 5 alerts per queue.
 
 <h2 id="important_notes">Important Notes</h2>
 
-* IronMQ backend checks for alerts duplications each time you
-  add new alerts to a queue. It compares `type`, `direction`, and
-  `trigger` parameters to find duplicates. If one or more of new
-  alerts duplicates existing, backend return `HTTP 400` error, message
-  will be `{"msg": "At least one new alert duplicates current queue alerts."}`.
-* When you try to add alerts to a [Push Queues](/mq/reference/push_queues/)
-  or convert Pull Queue with alerts to Push Queue, IronMQ will
-  respond with `HTTP 400` error, message will be
+* Our system checks for duplicate alerts each time you
+  add a new alert to a queue. It the compares `type`, `direction`, and
+  `trigger` parameters to find duplicates. If one or more of the new
+  alerts is a duplicate, we will return a `HTTP 400` error and message as such: `{"msg": "At least one new alert duplicates current queue alerts."}`.
+* When you try to add alerts to a [Push Queue](/mq/reference/push_queues/)
+  or convert Pull Queue with alerts to a Push Queue, IronMQ will
+  respond with `HTTP 400` error and message as such:
   `{"msg": "Push queues do not support alerts."}`
