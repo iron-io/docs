@@ -18,6 +18,7 @@ These are our official client libraries that use the IronMQ <a href="/mq/referen
 	<li style="clear:left;"><a href="https://github.com/iron-io/iron_mq_php" target="_blank" data-lang="php">PHP</a></li>
 	<li><a href="https://github.com/iron-io/iron_mq_node" target="_blank" data-lang="node">Node.JS</a></li>
 	<li><a href="https://github.com/iron-io/iron_mq_clojure" target="_blank" data-lang="clojure">Clojure</a></li>
+  <li><a href="https://github.com/iron-io/iron_dotnet" target="_blank" data-lang="dotnet">.Net</a></li>
 </ul>
 </div>
 

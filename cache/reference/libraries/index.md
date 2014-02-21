@@ -19,6 +19,7 @@ These are our official client libraries that use the IronCache <a href="/cache/r
 		<li><a href="https://github.com/iron-io/iron_cache_dotnet" target="_blank" data-lang="dotnet">.NET</a></li>
 		<li><a href="https://github.com/iron-io/iron_go" target="_blank" data-lang="go">Go</a></li>
     <li><a href="https://github.com/iron-io/iron_cache_rails" target="_blank" data-lang="rails">Rails</a></li>
+    <li><a href="https://github.com/iron-io/iron_dotnet" target="_blank" data-lang="dotnet">.Net</a></li>
 	</ul>
 </div>
 
