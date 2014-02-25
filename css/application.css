@@ -4927,10 +4927,6 @@ ul#architecture li {
   background: url(/images/libs/language_clojure.png) no-repeat 22px 12px;
 }
 
-.content-container .content .libs li a[data-lang="dotnet"] {
-  background: url(/images/libs/language_dotnet.png) no-repeat 22px 8px;
-}
-
 /*framework stlying*/
 .content-container .content .frameworks-row li {
   display:inline-block;
