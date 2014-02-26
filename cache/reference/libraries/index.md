@@ -16,7 +16,7 @@ These are our official client libraries that use the IronCache <a href="/cache/r
 		<li><a href="https://github.com/iron-io/iron_cache_ruby" target="_blank" data-lang="ruby">Ruby</a></li>
 		<li><a href="https://github.com/iron-io/iron_cache_php" target="_blank" data-lang="php">PHP</a></li>
 		<li><a href="https://github.com/iron-io/iron_cache_python" target="_blank" data-lang="python">Python</a></li>
-		<li><a href="https://github.com/iron-io/iron_cache_dotnet" target="_blank" data-lang="dotnet">.NET</a></li>
+		<li><a href="https://github.com/iron-io/iron_dotnet" target="_blank" data-lang="dotnet">.NET</a></li>
 		<li><a href="https://github.com/iron-io/iron_go" target="_blank" data-lang="go">Go</a></li>
     <li><a href="https://github.com/iron-io/iron_cache_rails" target="_blank" data-lang="rails">Rails</a></li>
 	</ul>
