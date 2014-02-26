@@ -64,11 +64,26 @@ IRON_PROJECT_ID=MY_PROJECT_ID
   <li>The arguments passed when instantiating the client library overwrite everything before them.</li>
 </ul>
 
-<h3 id="the_environment_variables">The Environment Variables</h3>
+<h3 id="the_environment_variables">The Client's Environment Variables set in iron.json</h3>
 
 <p>The environment variables the scheme looks for are all of the same formula: the camel-cased product name is switched to an underscore ("IronWorker" becomes "iron_worker") and converted to be all capital letters. For the global environment variables, "IRON" is used by itself. The value being loaded is then joined by an underscore to the name, and again capitalised. For example, to retrieve the OAuth token, the client looks for "IRON_TOKEN".</p>
 
 <p>In the case of product-specific variables (which override global variables), it would be "IRON_WORKER_TOKEN" (for IronWorker).</p>
+
+<h3 id="accepted_values">Accepted Values</h3>
+
+<p>The configuration scheme looks for the following values:</p>
+
+<ul>
+  <li><strong>project_id</strong>: The ID of the project to use for requests.</li>
+  <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud.iron.io/tokens">in the HUD</a>.</li>
+  <li><strong>host</strong>: The domain name the API can be located at. Defaults to a product-specific value, but always using Amazon's cloud.</li>
+  <li><strong>protocol</strong>: The protocol that will be used to communicate with the API. Defaults to "https", which should be sufficient for 99% of users.</li>
+  <li><strong>port</strong>: The port to connect to the API through. Defaults to 443, which should be sufficient for 99% of users.</li>
+  <li><strong>api_version</strong>: The version of the API to connect through. Defaults to the version supported by the client. End-users should probably never change this.</li>
+</ul>
+
+<p>Note that <strong>only</strong> the <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> values need to be set. They do not need to be set at <strong>every</strong> level of the configuration, but they must be set at least once by the levels that are used in any given configuration. It is recommended that you specify a default <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> in your <span class="fixed-width">iron.json</span> file.
 
 <h3 id="the_file_hierarchy">The File Hierarchy</h3>
 
@@ -132,18 +147,3 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 {% endhighlight %}
 
 <p>If you don't want to write things to disk or on Heroku or a similar platform that has integrated with Iron.io to provide your project ID and token automatically, the library will pick them up for you automatically.</p>
-
-<h2 id="accepted_values">Accepted Values</h2>
-
-<p>The configuration scheme looks for the following values:</p>
-
-<ul>
-  <li><strong>project_id</strong>: The ID of the project to use for requests.</li>
-  <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud.iron.io/tokens">in the HUD</a>.</li>
-  <li><strong>host</strong>: The domain name the API can be located at. Defaults to a product-specific value, but always using Amazon's cloud.</li>
-  <li><strong>protocol</strong>: The protocol that will be used to communicate with the API. Defaults to "https", which should be sufficient for 99% of users.</li>
-  <li><strong>port</strong>: The port to connect to the API through. Defaults to 443, which should be sufficient for 99% of users.</li>
-  <li><strong>api_version</strong>: The version of the API to connect through. Defaults to the version supported by the client. End-users should probably never change this.</li>
-</ul>
-
-<p>Note that <strong>only</strong> the <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> values need to be set. They do not need to be set at <strong>every</strong> level of the configuration, but they must be set at least once by the levels that are used in any given configuration. It is recommended that you specify a default <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> in your <span class="fixed-width">iron.json</span> file.
