@@ -1,9 +1,9 @@
 ---
-title: Configuring the Official Client Libraries
+title: IronWorker Configuration Variables
 section: worker
 breadcrumbs:
   - ['Reference', '/reference']
-  - ['Configuration', '/configuration']
+  - ['Configuration', '/configuration-variables']
 layout: post
 ---
 
