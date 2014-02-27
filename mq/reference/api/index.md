@@ -402,8 +402,11 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 #### URL Parameters
 
 * **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
+* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you. **WARNING:**Do not use the following RFC 3986 Reserved Characters  within your subscriber urls.
 
+<div class="grey-box">
+  <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
+</div>
 #### Body Parameters
 
 ##### Optional
