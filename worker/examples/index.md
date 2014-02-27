@@ -1,14 +1,14 @@
 ---
-title: Example Workers
+title: Worker Samples & Examples
 layout: default
 section: worker
 breadcrumbs:
-  - ['Example Workers', '/examples']
+  - ['Worker Samples & Examples', '/examples']
 ---
 
 This page lists a bunch of places to find example code that you can copy and modify to suit your needs or just to get
 a feel for how to make workers.
-
+<h3><strong>Check out our Post on Top 10 Use Cases for IronWorker <a href="http://blog.iron.io/2014/02/top-10-uses-of-ironworker.html">Here!</a></strong></h3>
 ## List of example repositories
 
 - [Examples Repository](https://github.com/iron-io/iron_worker_examples) - A repository full of example workers in a bunch of different languages.
