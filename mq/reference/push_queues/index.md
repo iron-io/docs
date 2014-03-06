@@ -66,7 +66,7 @@ To turn a queue into a push queue (or create one), POST to your queue endpoint w
 - subscribers - required - an array of hashes containing subscribers. eg: `{"url": "http://myserver.com/endpoint"}`.
 The maximum is 64kb for JSONify array of subscribers' hashes. **WARNING:** Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
   <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
-</div>
+
 - push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - retries - number of times to retry. Default is 3. Maximum is 100.
 - retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
