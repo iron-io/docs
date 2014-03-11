@@ -54,6 +54,7 @@ in your application. Here's a simple example:
 
 ```ruby
 runtime "ruby"
+stack "ruby-1.9"
 exec "hello_worker.rb"
 ```
 
@@ -67,6 +68,7 @@ You can also add the files your worker is dependent upon:
 
 ```ruby
 runtime "ruby"
+stack "ruby-1.9"
 exec "hello_worker.rb"
 
 file "dependency.rb"
@@ -83,6 +85,7 @@ can do in a `.worker` file. Here's an example that includes a gem:
 
 ```ruby
 runtime "ruby"
+stack "ruby-1.9"
 exec "hello_worker.rb"
 
 file "dependency.rb"
@@ -152,6 +155,47 @@ The following syntax is valid in `.worker` files:
           <li>
             <code>"ruby"</code>
             <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/ruby.rb">How it runs</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+<tr id="syntax-name">
+      <td>stack</td>
+      <td>all</td>
+      <td>Set worker's stack</td>
+      <td>
+        <ul>
+          <li>
+            <code>"ruby-1.9"</code>
+          </li>
+          <li>
+            <code>"ruby-2.1"</code>
+          </li>
+          <li>
+            <code>"java-1.7"</code>
+          </li>
+          <li>
+            <code>"scala-2.9"</code>
+          </li>
+          <li>
+            <code>"mono-2.10"</code>
+          </li>
+          <li>
+            <code>"mono-3.0"</code>
+          </li>
+          <li>
+            <code>"php-5.4"</code>
+          </li>
+          <li>
+          <li>
+            <code>"node-0.10"</code>
+          </li>
+          <li>
+            <code>"python-2.7"</code>
+          </li>
+          <li>
+            <code>"python-3.2"</code>
           </li>
         </ul>
       </td>
