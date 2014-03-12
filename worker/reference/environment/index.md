@@ -20,7 +20,7 @@ breadcrumbs:
     <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
     <li><a href="#scheduled_task_frequency">Scheduled Task Frequency</a></li>
     <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
-    <li><a href="#default_languages_versions">Default Languages Versions</a></li>
+    <li><a href="#default_language_versions">Default Language Versions</a></li>
   </ul>  
 </section>
 
@@ -143,10 +143,10 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 </tbody>
 </table>
 
-<h2 id="default_languages_versions">Default Languages Versions</h2>
+<h2 id="default_language_versions">Default Language Versions</h2>
 
 Below you can see the pre-installed versions of languages in the IronWorker environment in different stacks.
-You could select proper stack using 'stack "stack_name"' in your worker file
+You can select the proper stack by using 'stack "stack_name"' in your worker file.
 
 <table>
   <thead>
