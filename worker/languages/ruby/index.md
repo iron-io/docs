@@ -49,7 +49,7 @@ Older customers may be using the [iron_worker](https://github.com/iron-io/iron_w
 We recommend switching off that at your earliest convenience.
 
 If you are running Ruby 1.8, you'll need to install `json` gem additionally.
-Note that we are running Ruby 1.9 on worker servers, so your workers must be compatible.
+Note that we are providing Ruby 1.9/Ruby 2.1 and you could select proper version using 'stack' keyword in your .worker file.
 
 You can install the `iron_worker_ng` gem from the command line:
 
