@@ -139,6 +139,23 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
     </tbody>
 </table>
 
+### Stacks
+
+<table class="reference" style="padding-bottom: 20px;">
+    <thead>
+        <tr>
+            <th style="width: 55%;">URL</th><th style="width: 11%;">HTTP Verb</th><th style="width: 34%;">Purpose</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>/stacks</td>
+            <td>GET</td>
+            <td><a href="#list_stacks" title="List of available stacks">List of available stacks</a></td>
+        </tr>
+    </tbody>
+</table>
+
 ## Authentication
 
 IronWorker uses OAuth2 tokens to authenticate API requests. You can find and create your API tokens [in the HUD](https://hud.iron.io/tokens). To authenticate your request, you should include a token in the Authorization header for your request or in your query parameters. Tokens are universal, and can be used across services.
@@ -1040,3 +1057,28 @@ Sample:
     "msg": "Cancelled"
 }
 ```
+
+## Stacks
+
+List of available stacks
+
+### <a name="list_stacks"></a> List of stacks
+
+#### Endpoint
+
+<div class="grey-box">
+    GET /stacks
+</div>
+
+#### Response
+
+The response will be a JSON object.
+
+Sample:
+
+```js
+{
+  ["scala-2.9","ruby-2.1","ruby-1.9","python-3.2","python-2.7","php-5.4","node-0.10","java-1.7","mono-3.0","mono-2.10"]
+}
+```
+
