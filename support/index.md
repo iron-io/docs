@@ -12,7 +12,7 @@ Drop into our chat room to get help directly from our engineers: [http://get.iro
 
 ## 2. Public Forums
 
-We've decided to use [Stack Overflow](http://stackoverflow.com) for users to ask questions and get answers. We'll
+We've decided to use [Stack Overflow](http://stackoverflow.com/questions/tagged/ironworker+or+ironmq+or+iron.io+or+ironcache) for users to ask questions and get answers. We'll
 be monitoring the following tags: `ironworker` , `ironmq`, `ironcache` or `iron.io` so be sure to tag your questions so we can find
 them.
 
