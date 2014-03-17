@@ -207,6 +207,12 @@ The following syntax is valid in `.worker` files:
       <td>Set worker's name</td>
       <td>The name to give the worker</td>
     </tr>
+    <tr id="syntax-name">
+      <td>set_env</td>
+      <td>all</td>
+      <td>Sets an environment variable accessible within your worker.</td>
+      <td><code>set_env "KEY", "VALUE"</code> </td>
+    </tr>
 
     <tr id="syntax-frb">
       <td>full_remote_build</td>
