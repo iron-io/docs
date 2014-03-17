@@ -14,9 +14,9 @@ layout: post
 <section id="toc">
   <h3>Table of Contents</h3> 
   <ul>
-    <li><a href="#via_task_payload">set config variables via task payload</a></li>
-    <li><a href="#config-via-file">set config variables via file(.yaml or .json)</a></li>
-    <li><a href="#config-via-hud">set config variables via Iron.io HUD aka dashboard</a></li>
+    <li><a href="#via_task_payload">Setting Config Variables via Task Payload</a></li>
+    <li><a href="#config-via-file">Setting Config Variables via File (yaml & json)</a></li>
+    <li><a href="#config-via-hud">Setting Config Variables via Iron.io HUD</a></li>
   </ul>
 </section>
 
