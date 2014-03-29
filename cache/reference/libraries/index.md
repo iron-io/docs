@@ -33,6 +33,7 @@ These are some unofficial client libraries that use the IronCache <a href="/cach
   <li><a href="https://github.com/mrcritical/ironcache" target="_blank">Java - IronCache</a> by <a href="https://github.com/mrcritical" target="_blank">Philip/mrcritical</a></li>
   <li><a href="https://github.com/skitsanos/IronCache-Client" target="_blank">ActionScript 3.0 - IronCache-Client</a> by <a href="https://github.com/skitsanos">Evgenios Skitsanos</a></li>
   <li><a href="https://github.com/jrutheiser/Codeigniter-Iron.io" target="_blank">PHP - Codeigniter-Iron.io</a> by <a href="https://github.com/jrutheiser" target="_blank">jrutheiser</a></li>
+  <li><a href="https://metacpan.org/release/IO-Iron" target="_blank">Perl - IO::Iron</a> by <a href="https://metacpan.org/author/MIKKOI" target="_blank">Mikko Koivunalho</a></li>
 </ul>
 </div>
 
