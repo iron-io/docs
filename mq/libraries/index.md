@@ -35,6 +35,7 @@ These are some unofficial client libraries that use the IronMQ <a href="/mq/refe
   <li><a href="https://github.com/eventio/bbq" target="_blank">PHP - BBQ - Queue Abstraction Layer</a> by <a href="https://github.com/vmattila" target="_blank">Ville Matilla</a></li>
   <li><a href="https://github.com/jrutheiser/Codeigniter-Iron.io" target="_blank">PHP - Codeigniter-Iron.io</a> by <a href="https://github.com/jrutheiser" target="_blank">jrutheiser</a></li>
   <li><a href="https://github.com/trevershick/ironmq-si" target="_blank">IronMQ Spring Integration</a> by <a href="https://github.com/trevershick" target="_blank">Trevor Shick</a></li>
+  <li><a href="https://metacpan.org/release/IO-Iron" target="_blank">Perl - IO::Iron</a> by <a href="https://metacpan.org/author/MIKKOI" target="_blank">Mikko Koivunalho</a></li>
 </ul>
 </div>
 
