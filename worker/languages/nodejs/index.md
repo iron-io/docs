@@ -30,6 +30,7 @@ nature of workers, making it a natural fit for IronWorker. This article will wal
         <li><a href="#get_the_cli">Get the CLI</a></li>
         <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
         <li><a href="#write_your_nodejs_worker">Write Your Node.js Worker</a></li>
+        <li><a href="#params_and_config_inside_worker">Accessing the Params and Config Variables.</a></li>
         <li><a href="#create_a_worker_file">Create a .worker File</a></li>
         <li><a href="#upload_your_worker">Upload Your Worker</a></li>
         <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
@@ -81,6 +82,17 @@ You should insert your [project ID](https://hud.iron.io) and [token](https://hud
 
 ```js
 console.log("Hello World from Node.js.");
+```
+
+<h3 id="params_and_config_inside_worker">Accessing the Params and Config Variables.</h3>
+To access the contents of the configuration and payload variables from within your worker use the following helpers we've included in your environment. see source for these helpers <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/node.rb">here</a>.
+<figcaption><span>hello_worker.js </span></figcaption>
+
+```js
+var worker = require('node_helper');
+console.log("params:", worker.params);
+console.log("config:", worker.config);
+console.log("task_id:", worker.task_id);
 ```
 
 <h3 id="create_a_worker_file">Create a .worker File</h3>

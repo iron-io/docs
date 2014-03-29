@@ -78,11 +78,13 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
       <td>GET</td>
       <td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td>
     </tr>
+    <!--
     <tr>
       <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/peek</td>
       <td>GET</td>
       <td><a href="#peek_messages_on_a_queue" title="Peek Messages on a Queue">Peek Messages on a Queue</a></td>
     </tr>
+    -->
     <tr>
       <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td>
       <td>GET</td>
@@ -856,6 +858,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
+<!--
 ## <a name="peek_messages_on_a_queue"></a> Peek Messages on a Queue 
 
 Peeking at a queue returns the next messages on the queue, but it does not reserve them.
@@ -898,7 +901,9 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
     }
   ],
 }
+
 ```
+-->
 
 ## <a name="get_message_by_id"></a> Get Message by ID 
 
