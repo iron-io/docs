@@ -35,7 +35,14 @@ The operating system and version information is provided for completeness and tr
 <h2 id="default_language_versions">Default Language Versions</h2>
 
 Below you can see the pre-installed versions of languages in the IronWorker environment in different stacks.
-You can select the proper stack by using 'stack "stack_name"' in your worker file.
+
+To use, add 'stack "stack_name"' to your .worker file. Example:
+
+```ruby
+runtime "ruby"
+stack "ruby-2.1"
+exec "hello_worker.rb"
+```
 
 <table>
   <thead>
