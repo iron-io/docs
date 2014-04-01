@@ -11,6 +11,7 @@ breadcrumbs:
   <h3>Table of Contents</h3>
   <ul>
     <li><a href="#operating_system">Operating System</a></li>
+    <li><a href="#default_language_versions">Default Language Versions</a></li>
     <li><a href="#installed_linux_packages">Installed Linux Packages</a></li>
     <li><a href="#maximum_data_payload">Maximum Data Payload</a></li>
     <li><a href="#memory_per_worker">Memory per Worker</a></li>
@@ -20,7 +21,6 @@ breadcrumbs:
     <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
     <li><a href="#scheduled_task_frequency">Scheduled Task Frequency</a></li>
     <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
-    <li><a href="#default_language_versions">Default Language Versions</a></li>
   </ul>  
 </section>
 
@@ -30,6 +30,41 @@ The operating system and version information is provided for completeness and tr
 <div class="grey-box">
 <b>Operating System:</b> Ubuntu Linux 13.10 x64
 </div>
+
+
+<h2 id="default_language_versions">Default Language Versions</h2>
+
+Below you can see the pre-installed versions of languages in the IronWorker environment in different stacks.
+You can select the proper stack by using 'stack "stack_name"' in your worker file.
+
+<table>
+  <thead>
+    <tr><th>Stack name</th><th>Language Version</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>ruby-1.9</td><td>Ruby 1.9.3p194</td></tr>
+    <tr><td>ruby-2.1</td><td>Ruby 2.1.0p0</td></tr>
+    <tr><td>java-1.7</td><td>Java 1.7.0_51 OpenJDK</td></tr>
+    <tr><td>scala-2.9</td><td>Scala 2.9.2</td></tr>
+    <tr><td>mono-2.10</td><td>Mono JIT 2.10.8.1</td></tr>
+    <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td></tr>
+    <tr><td>php-5.4</td><td>PHP 5.4.26</td></tr>
+    <tr><td>node-0.10</td><td>Node.js 0.10</td></tr>
+    <tr><td>python-2.7</td><td>Python 2.7.6</td></tr>
+    <tr><td>python-3.2</td><td>Python 3.2.5</td></tr>
+  </tbody>
+</table>
+
+<div class="alert">
+  <p>
+    <strong>Note:</strong>
+    It may be possible to update the language by
+    <a href="/worker/reference/dotworker/#syntax_reference">adding related <span class="fixed-width">deb</span> packages to your worker</a>
+    although you should go this route only if necessary.
+    Use of earlier versions, especially major versions, may run into difficulties.
+  </p>
+</div>
+
 
 <h2 id="installed_linux_packages">Installed Linux Packages</h2>
 IronWorker contains several popular Linux packages as part of the standard worker environment.
@@ -142,36 +177,3 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 </tr>
 </tbody>
 </table>
-
-<h2 id="default_language_versions">Default Language Versions</h2>
-
-Below you can see the pre-installed versions of languages in the IronWorker environment in different stacks.
-You can select the proper stack by using 'stack "stack_name"' in your worker file.
-
-<table>
-  <thead>
-    <tr><th>Stack name</th><th>Language Version</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>ruby-1.9</td><td>Ruby 1.9.3p194</td></tr>
-    <tr><td>ruby-2.1</td><td>Ruby 2.1.0p0</td></tr>
-    <tr><td>java-1.7</td><td>Java 1.7.0_51 OpenJDK</td></tr>
-    <tr><td>scala-2.9</td><td>Scala 2.9.2</td></tr>
-    <tr><td>mono-2.10</td><td>Mono JIT 2.10.8.1</td></tr>
-    <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td></tr>
-    <tr><td>php-5.4</td><td>PHP 5.4.26</td></tr>
-    <tr><td>node-0.10</td><td>Node.js 0.10</td></tr>
-    <tr><td>python-2.7</td><td>Python 2.7.6</td></tr>
-    <tr><td>python-3.2</td><td>Python 3.2.5</td></tr>
-  </tbody>
-</table>
-
-<div class="alert">
-  <p>
-    <strong>Note:</strong>
-    It may be possible to update the language by
-    <a href="/worker/reference/dotworker/#syntax_reference">adding related <span class="fixed-width">deb</span> packages to your worker</a>
-    although you should go this route only if necessary.
-    Use of earlier versions, especially major versions, may run into difficulties.
-  </p>
-</div>
