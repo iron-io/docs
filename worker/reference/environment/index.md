@@ -43,6 +43,7 @@ runtime "ruby"
 stack "ruby-2.1"
 exec "hello_worker.rb"
 ```
+<br />
 
 <table>
   <thead>
