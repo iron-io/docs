@@ -12,7 +12,7 @@ layout: post
 <p>There are three primary methods of setting important configuration information for your IronWorker, <strong>setting the config variable</strong>, sending your worker the variables via the payload/params, and finally through our hud interface</p>
 
 <section id="toc">
-  <h3>Table of Contents</h3> 
+  <h3>Table of Contents</h3>
   <ul>
     <li><a href="#via_task_payload">Setting Config Variables via Task Payload</a></li>
     <li><a href="#config-via-file">Setting Config Variables via File (yaml & json)</a></li>
@@ -58,7 +58,7 @@ iron_worker upload --worker-config config.yml
 <img src="/images/worker/reference/config-uploaded.png" alt="config-uploaded">
 
 <h2 id="#config-via-hud">Set config variables in the Iron.io HUD aka dashboard</h2>
-<p>it is often times useful to beable to change configuration variables without having to reupload your code. We allow you to do so visually with our HUD (dashboard) by following two simple steps.</p>
+<p>it is often times useful to change configuration variables without having to reupload your code. We allow you to do so visually with our HUD (dashboard) by following two simple steps.</p>
 
 <p>Navigate to the hud <a href="http://hud.iron.io">http://hud.iron.io</a>. next navigate to your uploaded code's information by clicking on the code tab and your worker's name. NOTE: for those who remotely build their workers, please make sure you select your worker and not the remote build process</p>
 <img src="/images/worker/reference/hud-view-code.png" alt="hud-view-code">
