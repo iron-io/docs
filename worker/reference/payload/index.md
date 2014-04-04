@@ -36,7 +36,7 @@ this payload is then stored in your worker's runtime directory. The location of 
 To get the contents of your payload, you need to:
 
 1. Read the `-payload` flag using `ARGV` (or whatever your language uses to read command line flags)
-2. Open and read the file specified by the `-payload`> flag
+2. Open and read the file specified by the `-payload` flag
 3. Parse the contents of the file (for example, if you encoded the payload when queuing the task)
 
 Workers that use either `ruby` or `php` runtimes have more possibilities to access the payload.
