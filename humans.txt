@@ -12,5 +12,5 @@ about taking the headache out of building your cloud infrastructure, and
 we bring together developers, designers, and creators of every kind from
 various backgrounds in our pursuit of this goal.
 
-If that sounds like fun to you, let us know: http://jobs.iron.io.
+If that sounds like fun to you, let us know: http://iron.io/jobs.
 We'd love to add you to the team.
