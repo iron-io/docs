@@ -18,6 +18,7 @@
       </ul>
     </li>
     <li><a href="#example">Example</a></li>
+    <li><a href="#host_example">Setting Host Example</a></li>
     <li><a href="#accepted_values">Accepted Values</a></li>
   </ul>
 </section>
@@ -147,3 +148,18 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 {% endhighlight %}
 
 <p>If you don't want to write things to disk or on Heroku or a similar platform that has integrated with Iron.io to provide your project ID and token automatically, the library will pick them up for you automatically.</p>
+
+<h2 id="host_example">Setting Host</h2>
+It is useful to quickly change your host in cases where your region has gone down.
+<p>If want to set the Host, Post, and Protocol specifically, simply include those keys in that project's <span class="fixed-width">iron.json</span> file:</p>
+
+<figcaption><span>iron.json </span></figcaption>
+{% highlight js %}
+{
+  "project_id": "PROJECT ID HERE",
+  "token": "YOUR TOKEN HERE"
+  "port":443,
+  "protocol": "https",
+  "host":"mq-rackspace-ord.iron.io"
+}
+{% endhighlight %}

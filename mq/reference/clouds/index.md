@@ -50,3 +50,33 @@ Each of the official IronMQ [client libraries](/mq/libraries) allows you to chan
 Check your library's documentation for information on switching the host within the library.
 
 Do we not support your cloud of choice? [Let us know](http://support.iron.io/customer/portal/emails/new), and we'll try to add support for it.
+
+<h2 id="host_example">Setting Host</h2>
+It is useful to quickly change your host in cases where your region has gone down.
+<p>If want to set the Host, Post, and Protocol specifically, simply include those keys in that project's <span class="fixed-width">iron.json</span> file:</p>
+
+
+<figcaption><span>iron.json </span></figcaption>
+{% highlight js %}
+{
+  "project_id": "PROJECT ID HERE",
+  "token": "YOUR TOKEN HERE"
+  "host":"mq-aws-us-east-1.iron.io"
+}
+{% endhighlight %}
+<figcaption><span>iron.json </span></figcaption>
+{% highlight js %}
+{
+  "project_id": "PROJECT ID HERE",
+  "token": "YOUR TOKEN HERE"
+  "host":"mq-rackspace-lon.iron.io"
+}
+{% endhighlight %}
+<figcaption><span>iron.json </span></figcaption>
+{% highlight js %}
+{
+  "project_id": "PROJECT ID HERE",
+  "token": "YOUR TOKEN HERE"
+  "host":"mq-aws-eu-west-1.iron.io"
+}
+{% endhighlight %}
