@@ -11,7 +11,7 @@ breadcrumbs:
   <h3>Table of Contents</h3>
   <ul>
     <li><a href="#operating_system">Operating System</a></li>
-    <li><a href="#default_language_versions">Default Language Versions</a></li>
+    <li><a href="#default_language_versions">Runtime Environments</a></li>
     <li><a href="#installed_linux_packages">Installed Linux Packages</a></li>
     <li><a href="#maximum_data_payload">Maximum Data Payload</a></li>
     <li><a href="#memory_per_worker">Memory per Worker</a></li>
@@ -32,7 +32,7 @@ The operating system and version information is provided for completeness and tr
 </div>
 
 
-<h2 id="default_language_versions">Default Language Versions</h2>
+<h2 id="default_language_versions">Runtime Environments</h2>
 
 Below you can see the pre-installed versions of languages in the IronWorker environment in different stacks.
 

@@ -40,6 +40,7 @@ nature of workers, making it a natural fit for IronWorker. This article will wal
       <a href="#deep_dive">Deep Dive</a>
       <ul>
         <li><a href="#payload_example">Payload Example</a></li>
+        <li><a href="#exit_example">Exit Worker expicitly with an exit code</a></li>
         <li><a href="#packaging_dependencies">Packaging Dependencies</a></li>
       </ul>
     </li>
@@ -249,6 +250,15 @@ fs.readFile(process.argv[payloadIndex], 'ascii', function(err, data) {
 dependencies with Node require that you create a package.json file
 To generate a package.json the following **more info:**[npm init](https://github.com/isaacs/init-package-json)
 
+<h3 id="exit_example">Ensuring your script exits with the right exit ciode</h3>
+
+It is important in some cases to declare a explicit exit code to give our systems a indication if your worker has completed sucessfully or failed. this also prevents instances where your worker may just hang or wait.  
+In your worker:
+
+```python
+process.exit(1);
+process.exit(0);
+```
 
 
 ```sh

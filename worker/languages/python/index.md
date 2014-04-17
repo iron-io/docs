@@ -30,7 +30,9 @@ This article will get you started writing Python workers, but you should be fami
       <a href="#deep_dive">Deep Dive</a>
       <ul>
         <li><a href="#payload_example">Payload Example</a></li>
+        <li><a href="#exit_example">Exit Worker expicitly with an exit code</a></li>
         <li><a href="#environment">Environment</a></li>
+
       </ul>
     </li>
   </ul>
@@ -167,6 +169,16 @@ for i in range(len(sys.argv)):
             payload = json.loads(f.read())
         break
 
+```
+
+<h3 id="exit_example">Ensuring your script exits with the right exit code</h3>
+
+It is important in some cases to declare a explicit exit code to give our systems a indication if your worker has completed sucessfully or failed. this also prevents instances where your worker may just hang or wait.  
+In your worker:
+
+```python
+Python: exit(1)
+sys.exit(1)
 ```
 
 <h3 id="environment">Environment</h3>
