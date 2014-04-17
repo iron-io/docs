@@ -32,7 +32,7 @@ The operating system and version information is provided for completeness and tr
 </div>
 
 
-<h2 id="default_language_versions">Default Language Versions</h2>
+<h2 id="default_language_versions">Runtime Environments</h2>
 
 Below you can see the pre-installed versions of languages in the IronWorker environment in different stacks.
 
