@@ -57,6 +57,18 @@ iron_worker upload --worker-config config.yml
 <p>and you should see in the upload logs that your configuration variables were uploaded with your worker</p>
 <img src="/images/worker/reference/config-uploaded.png" alt="config-uploaded">
 
+When your task is run, a file containing this configuration will be available to your worker and the location of this file will be provided via the program args right after `-config`. For example, to load your config with Ruby:
+
+```ruby
+require 'json'
+config = {}
+ARGV.each_with_index do |arg, i|
+  if arg == "-config"
+    config = JSON.parse(IO.read(ARGV[i+1]))
+  end
+end
+```
+
 <h2 id="#config-via-hud">Set config variables in the Iron.io HUD aka dashboard</h2>
 <p>it is often times useful to change configuration variables without having to reupload your code. We allow you to do so visually with our HUD (dashboard) by following two simple steps.</p>
 
