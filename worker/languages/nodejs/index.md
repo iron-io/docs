@@ -214,35 +214,17 @@ Retrieving the payload in Node.js is the same as it is on any other language.
 Retrieve the `-payload` argument passed to the script, load that file, and
 parse it as JSON.
 
+We've included a useful helper module in node to assist in retrieving the payload and configuration variables in node. Simply require the helper module  and call config, params, task_id.
+
 <figcaption><span>payload.js </span></figcaption>
 
 ```js
-var fs = require('fs');
-var payloadIndex = -1;
+var worker = require('node_helper');
+console.log("params:", worker.params);
 
-process.argv.forEach(function(val, index, array) {
-        if(val == "-payload") {
-                payloadIndex = index + 1;
-        }
-});
-
-if(payloadIndex == -1) {
-        console.error("No payload argument");
-        process.exit(1);
-}
-
-if(payloadIndex >= process.argv.length) {
-        console.error("No payload value");
-        process.exit(1);
-}
-
-fs.readFile(process.argv[payloadIndex], 'ascii', function(err, data) {
-        if(err) {
-                console.error("Could not open file: %s", err);
-                process.exit(1);
-        }
-        console.log(JSON.parse(data));
-});
+// you can also access the following
+console.log("config:", worker.config);
+console.log("task_id:", worker.task_id);
 ```
 
 <h3 id="packaging_dependencies"> Packaging Worker Dependencies using Node </h3>
@@ -250,27 +232,24 @@ fs.readFile(process.argv[payloadIndex], 'ascii', function(err, data) {
 dependencies with Node require that you create a package.json file
 To generate a package.json the following **more info:**[npm init](https://github.com/isaacs/init-package-json)
 
-<h3 id="exit_example">Ensuring your script exits with the right exit ciode</h3>
-
-It is important in some cases to declare a explicit exit code to give our systems a indication if your worker has completed sucessfully or failed. this also prevents instances where your worker may just hang or wait.  
-In your worker:
-
-```python
-process.exit(1);
-process.exit(0);
-```
-
-
 ```sh
 npm-init
 ```
 
 when adding and installing modules run then following to automatically update your package.json manifest.
 
-
-
 ```sh
 npm install <module name> --save
+```
+
+<h3 id="exit_example">Ensuring your script exits with the right exit ciode</h3>
+
+It is important in some cases to declare a explicit exit code to give our systems a indication if your worker has completed sucessfully or failed. this also prevents instances where your worker may just hang or wait.
+In your worker:
+
+```python
+process.exit(1);
+process.exit(0);
 ```
 
 ### Local build
