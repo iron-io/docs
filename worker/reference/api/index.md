@@ -185,12 +185,14 @@ Unless otherwise noted, all requests should use the following headers (in additi
 
 All endpoints should be prefixed with the following:
 
-https://<span class="variable domain">{Domain}</span>.iron.io/<span class="variable version">2</span>
+<strong>https://<span class="variable domain project_id">{Host}</span>.iron.io/<span class="variable version project_id">{API Version}</span>/</strong>
 
-The domains for the clouds IronWorker supports are as follows:
+<strong>API Version Support</strong> : IronWorker API supports version <strong>2</strong>
+
+The domains for the clouds Iron Worker supports are as follows:
 <table class="reference">
   <thead>
-    <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{Domain}</span></th></tr>
+    <tr><th style="width: 30%;">Cloud</th><th style="width: 70%;"><span class="variable domain">{Host}</span></th></tr>
   </thead>
   <tbody>
     <tr><td>AWS</td><td>worker-aws-us-east-1</td></tr>

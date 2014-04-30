@@ -106,7 +106,9 @@ All request bodies should be in JSON format, with Content-Type of `application/j
 
 All endpoints should be prefixed with the following:
 
-https://<span class="variable domain">{Domain}</span>.iron.io/1
+<strong>https://<span class="variable domain project_id">{Host}</span>.iron.io/<span class="variable version project_id">{API Version}</span>/</strong>
+
+<strong>API Version Support</strong> : IronCache API supports version <strong>1</strong>
 
 The domains for the clouds IronCache supports are as follows:
 <table class="reference">

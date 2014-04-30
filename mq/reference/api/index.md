@@ -31,7 +31,7 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
   </ul>
 </section>
 
-## <a name="endpoints"></a> Endpoints 
+## <a name="endpoints"></a> Endpoints
 
 <table class="reference">
   <thead>
@@ -209,7 +209,10 @@ All request bodies should be in JSON format, with Content-Type of `application/j
 
 All endpoints should be prefixed with the following:
 
-https://<span class="variable domain">{host}</span>/1
+<strong>https://<span class="variable domain project_id">{Host}</span>.iron.io/<span class="variable version project_id">{API Version}</span>/</strong>
+
+<strong>API Version Support</strong> : IronMQ API supports version <strong>1</strong>
+
 
 The hosts for the clouds IronMQ supports are as follows:
 
@@ -313,7 +316,7 @@ When there's an error, the response body contains a JSON object something like:
 
 When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 
-## <a name="list_message_queues"></a> List Message Queues 
+## <a name="list_message_queues"></a> List Message Queues
 
 Get a list of all queues in a project. By default, 30 queues are listed at a time. To see more, use the `page` parameter or the `per_page` parameter. Up to 100 queues may be listed on a single page.
 
@@ -345,7 +348,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues
 ```
 
 
-## <a name="get_info_about_a_message_queue"></a> Get Info About a Message Queue 
+## <a name="get_info_about_a_message_queue"></a> Get Info About a Message Queue
 
 
 This call gets general information about the queue.
@@ -368,7 +371,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-## <a name="delete_a_message_queue"></a> Delete a Message Queue 
+## <a name="delete_a_message_queue"></a> Delete a Message Queue
 
 This call deletes a message queue and all its messages.
 
@@ -390,7 +393,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 }
 ```
 
-## <a name="update_a_message_queue"></a> Update a Message Queue 
+## <a name="update_a_message_queue"></a> Update a Message Queue
 
 This allows you to change the properties of a queue including setting subscribers and the push type if you want it to be a
 push queue.
@@ -404,7 +407,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 #### URL Parameters
 
 * **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you. 
+* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
 
 <div class="grey-box">
 <strong>WARNING:</strong> Do not use the following RFC 3986 Reserved Characters  within your in the naming of your queues.
@@ -659,7 +662,7 @@ The following parameters are all related to Push Queues.
 }
 ```
 
-## <a name="remove_subscribers_from_a_queue"></a> Remove Subscribers from a Queue 
+## <a name="remove_subscribers_from_a_queue"></a> Remove Subscribers from a Queue
 
 Remove subscriber from a queue. This is for Push Queues only.
 
@@ -711,7 +714,7 @@ The following parameters are all related to Push Queues.
 }
 ```
 
-## <a name="clear_all_messages_from_a_queue"></a> Clear All Messages from a Queue 
+## <a name="clear_all_messages_from_a_queue"></a> Clear All Messages from a Queue
 
 This call deletes all messages on a queue, whether they are reserved or not.
 
@@ -734,7 +737,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 }
 ```
 
-## <a name="add_messages_to_a_queue"></a> Add Messages to a Queue 
+## <a name="add_messages_to_a_queue"></a> Add Messages to a Queue
 
 This call adds or pushes messages onto the queue.
 
@@ -791,7 +794,7 @@ Multiple messages may be added in a single request, provided that the messages s
 ```
 
 
-## <a name="add_messages_to_a_queue_via_webhook"></a> Add Messages to a Queue via Webhook 
+## <a name="add_messages_to_a_queue_via_webhook"></a> Add Messages to a Queue via Webhook
 
 By adding the queue URL below to a third party service that supports webhooks, every webhook event that the third party posts
 will be added to your queue. The request body as is will be used as the "body" parameter in normal POST to queue above.
@@ -808,7 +811,7 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 * **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
 
 
-## <a name="get_messages_from_a_queue"></a> Get Messages from a Queue 
+## <a name="get_messages_from_a_queue"></a> Get Messages from a Queue
 
 This call gets/reserves messages from the queue. The messages will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the messages are deleted, the messages will be placed back onto the queue. As a result, be sure to **delete** the messages after you're done with them.
 
@@ -861,7 +864,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 ```
 
 <!--
-## <a name="peek_messages_on_a_queue"></a> Peek Messages on a Queue 
+## <a name="peek_messages_on_a_queue"></a> Peek Messages on a Queue
 
 Peeking at a queue returns the next messages on the queue, but it does not reserve them.
 
@@ -907,7 +910,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 ```
 -->
 
-## <a name="get_message_by_id"></a> Get Message by ID 
+## <a name="get_message_by_id"></a> Get Message by ID
 
 Get a message by ID.
 
@@ -940,7 +943,7 @@ GET /projects/4ccf55250948510894024119/queues/test_queue/messages/59817875394584
 }
 ```
 
-## <a name="release_a_message_on_a_queue"></a> Release a Message on a Queue 
+## <a name="release_a_message_on_a_queue"></a> Release a Message on a Queue
 
 Releasing a reserved message unreserves the message and puts it back on the queue as if the message had timed out.
 
@@ -981,7 +984,7 @@ A JSON document body is required even if all parameters are omitted.
 }
 ```
 
-## <a name="touch_a_message_on_a_queue"></a> Touch a Message on a Queue 
+## <a name="touch_a_message_on_a_queue"></a> Touch a Message on a Queue
 
 Touching a reserved message extends its timeout to the duration specified when the message was created. Default is 60 seconds.
 
@@ -1013,7 +1016,7 @@ Any empty JSON body.
 }
 ```
 
-## <a name="delete_a_message_from_a_queue"></a> Delete a Message from a Queue 
+## <a name="delete_a_message_from_a_queue"></a> Delete a Message from a Queue
 
 This call will delete the message. Be sure you call this after you're done with a message or it will be placed back on the queue.
 
@@ -1037,7 +1040,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 ```
 
 
-## <a name="delete_multiple_messages_from_a_queue"></a> Delete Multiple Messages from a Queue 
+## <a name="delete_multiple_messages_from_a_queue"></a> Delete Multiple Messages from a Queue
 
 This call will delete multiple messages in one call.
 
@@ -1075,7 +1078,7 @@ DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<s
 }
 ```
 
-## <a name="get_push_status_for_a_message"></a> Get Push Status for a Message 
+## <a name="get_push_status_for_a_message"></a> Get Push Status for a Message
 
 You can retrieve the push status for a particular message which will let you know which subscribers have received the
 message, which have failed, how many times it's tried to be delivered and the status code returned from the endpoint.
@@ -1114,7 +1117,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span
 }
 ```
 
-## <a name="acknowledge"></a> Acknowledge / Delete Push Message for a Subscriber 
+## <a name="acknowledge"></a> Acknowledge / Delete Push Message for a Subscriber
 
 This is only for use with long running processes that have previously returned a 202. Read Push Queues page for more information on [Long Running Processes](http://dev.iron.io/mq/reference/push_queues/#how_the_endpoint_should_handle_push_messages)
 
