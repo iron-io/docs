@@ -30,10 +30,9 @@ breadcrumbs:
     <li><a href="#important_notes">Important Notes</a></li>
     <li><a href="#troubleshooting_push_queues">Troubleshooting Your Push Queues</a>
       <ul>
-        <li><a href="#requestbin">Using Requestb.in</a></li>
         <li><a href="#using_error_queue">Using Error Queues feature</a></li>
-      <li><a href="#using_ngrok">Testing on localhost with Ngrok</a></li>
-
+        <li><a href="#requestbin">Using Requestb.in</a></li>
+        <li><a href="#using_ngrok">Testing on localhost with Ngrok</a></li>
       </ul>
     </li>
   </ul>
