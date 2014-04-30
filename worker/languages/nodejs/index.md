@@ -109,6 +109,8 @@ runtime "node"
 exec "hello_worker.js" # replace with your file
 ```
 
+_To change your worker's version, you may place `stack "node-0.10"` (e.x.) in your .worker file, for more see [.worker syntax](/worker/reference/dotworker/#syntax_reference)._ 
+
 <h3 id="upload_your_worker">Upload Your Worker</h3>
 
 <figcaption><span>Command Line </span></figcaption>
