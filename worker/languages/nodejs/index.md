@@ -8,11 +8,11 @@ breadcrumbs:
 ---
 
 <span class="notice-highlight">
-Notice -- For the NPM Certificate Error. Please use the following in your ".worker" file:
+Notice -- For the NPM Certificate Error. Please use the following in your ".worker" file, instead of <code>build "npm install"</code>:
 </span>
 
 ```js
-npm config set strict-ssl false; npm install --production
+build "npm config set strict-ssl false; npm install --production"
 ```
 <hr>
 
