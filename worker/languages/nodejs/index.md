@@ -242,7 +242,7 @@ when adding and installing modules run then following to automatically update yo
 npm install <module name> --save
 ```
 
-<h3 id="exit_example">Ensuring your script exits with the right exit ciode</h3>
+<h3 id="exit_example">Ensuring your script exits with the right exit code</h3>
 
 It is important in some cases to declare a explicit exit code to give our systems a indication if your worker has completed sucessfully or failed. this also prevents instances where your worker may just hang or wait.
 In your worker:
