@@ -21,11 +21,11 @@ breadcrumbs:
     <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
     <li><a href="#scheduled_task_frequency">Scheduled Task Frequency</a></li>
     <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
-  </ul>  
+  </ul>
 </section>
 
 <h2 id="operating_system">Operating System</h2>
-The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.  
+The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.
 
 <div class="grey-box">
 <b>Operating System:</b> Ubuntu Linux 13.10 x64
@@ -47,19 +47,19 @@ exec "hello_worker.rb"
 
 <table>
   <thead>
-    <tr><th>Stack name</th><th>Language Version</th></tr>
+    <tr><th>Stack name</th><th>Language Version</th><th>Default Version if "stack not set"</th></tr>
   </thead>
   <tbody>
-    <tr><td>ruby-1.9</td><td>Ruby 1.9.3p194</td></tr>
-    <tr><td>ruby-2.1</td><td>Ruby 2.1.0p0</td></tr>
-    <tr><td>java-1.7</td><td>Java 1.7.0_51 OpenJDK</td></tr>
-    <tr><td>scala-2.9</td><td>Scala 2.9.2</td></tr>
-    <tr><td>mono-2.10</td><td>Mono JIT 2.10.8.1</td></tr>
-    <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td></tr>
-    <tr><td>php-5.4</td><td>PHP 5.4.26</td></tr>
-    <tr><td>node-0.10</td><td>Node.js 0.10</td></tr>
-    <tr><td>python-2.7</td><td>Python 2.7.6</td></tr>
-    <tr><td>python-3.2</td><td>Python 3.2.5</td></tr>
+    <tr><td>ruby-1.9</td><td>Ruby 1.9.3p194</td><td>yes</td></tr>
+    <tr><td>ruby-2.1</td><td>Ruby 2.1.0p0</td><td>no</td></tr>
+    <tr><td>java-1.7</td><td>Java 1.7.0_51 OpenJDK</td><td>yes</td></tr>
+    <tr><td>scala-2.9</td><td>Scala 2.9.2</td><td>yes</td></tr>
+    <tr><td>mono-2.10</td><td>Mono JIT 2.10.8.1</td><td>yes</td></tr>
+    <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td><td>no</td></tr>
+    <tr><td>php-5.4</td><td>PHP 5.4.26</td><td>yes</td></tr>
+    <tr><td>node-0.10</td><td>Node.js 0.10</td><td>yes</td></tr>
+    <tr><td>python-2.7</td><td>Python 2.7.6</td><td>yes</td></tr>
+    <tr><td>python-3.2</td><td>Python 3.2.5</td><td>no</td></tr>
   </tbody>
 </table>
 
@@ -100,7 +100,7 @@ The following is the maximum data payload that can be passed to IronWorker. A da
 <b>Maximum Data Payload:</b>  64KB
 </div>
 
-Tip: We recommend that you avoid sending large payloads with your workers. Instead use a data store to hold the data and then pass an ID or reference to the worker. The worker can grab the data and then do its processing. It's more efficient on the API as well as better in terms of creating atomic/stateless processing. 
+Tip: We recommend that you avoid sending large payloads with your workers. Instead use a data store to hold the data and then pass an ID or reference to the worker. The worker can grab the data and then do its processing. It's more efficient on the API as well as better in terms of creating atomic/stateless processing.
 
 <h2 id="memory_per_worker">Memory per Worker</h2>
 The standard worker sandbox environment contains a certain amount of accessible memory. This amount should be sufficient for almost all workloads. We are working on a super worker environment that would allow greater memory allocations. Please contact us if you have specific needs here.
@@ -109,7 +109,7 @@ The standard worker sandbox environment contains a certain amount of accessible 
 <b>Memory per Worker:</b>  ~ 320MB
 </div>
 
-Tip: We recommend distributing workloads over multiple workers&mdash;not only for better resource management, but also to take advantage of the massive concurrency enabled by a cloud worker system. 
+Tip: We recommend distributing workloads over multiple workers&mdash;not only for better resource management, but also to take advantage of the massive concurrency enabled by a cloud worker system.
 
 <h2 id="local_disk_space_per_worker">Local Disk Space per Worker</h2>
 Each worker task has local disk space available to it for use on a temporary basis while the worker is running. You have full read/write privileges to create directories and files inside this space, and can perform most ordinary file operations. This directory is used as the current working directory ("<span class="fixed-width">.</span>") when executing your workers.
@@ -119,7 +119,7 @@ Each worker task has local disk space available to it for use on a temporary bas
 </div>
 
 <h2 id="maximum_run_time_per_worker">Maximum Run Time per Worker</h2>
-There is a system-wide limit for the maximum length a task may run. Tasks that exceed this limit will be terminated and will have `timeout` as their status. 
+There is a system-wide limit for the maximum length a task may run. Tasks that exceed this limit will be terminated and will have `timeout` as their status.
 
 <div class="grey-box">
 <b>Max Worker Run Time:</b> 3600 seconds (60 minutes)
