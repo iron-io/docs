@@ -47,21 +47,23 @@ exec "hello_worker.rb"
 
 <table>
   <thead>
-    <tr><th>Stack name</th><th>Language Version</th><th>Default Version if "stack not set"</th></tr>
+    <tr><th>Stack name</th><th>Language Version</th></tr>
   </thead>
   <tbody>
-    <tr><td>ruby-1.9</td><td>Ruby 1.9.3p194</td><td>yes</td></tr>
-    <tr><td>ruby-2.1</td><td>Ruby 2.1.0p0</td><td>no</td></tr>
-    <tr><td>java-1.7</td><td>Java 1.7.0_51 OpenJDK</td><td>yes</td></tr>
-    <tr><td>scala-2.9</td><td>Scala 2.9.2</td><td>yes</td></tr>
-    <tr><td>mono-2.10</td><td>Mono JIT 2.10.8.1</td><td>yes</td></tr>
-    <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td><td>no</td></tr>
-    <tr><td>php-5.4</td><td>PHP 5.4.26</td><td>yes</td></tr>
-    <tr><td>node-0.10</td><td>Node.js 0.10</td><td>yes</td></tr>
-    <tr><td>python-2.7</td><td>Python 2.7.6</td><td>yes</td></tr>
-    <tr><td>python-3.2</td><td>Python 3.2.5</td><td>no</td></tr>
+    <tr><td>ruby-1.9*</td><td>Ruby 1.9.3p194</td></tr>
+    <tr><td>ruby-2.1</td><td>Ruby 2.1.0p0</td></tr>
+    <tr><td>java-1.7*</td><td>Java 1.7.0_51 OpenJDK</td></tr>
+    <tr><td>scala-2.9*</td><td>Scala 2.9.2</td></tr>
+    <tr><td>mono-2.10*</td><td>Mono JIT 2.10.8.1</td></tr>
+    <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td></tr>
+    <tr><td>php-5.4*</td><td>PHP 5.4.26</td></tr>
+    <tr><td>node-0.10*</td><td>Node.js 0.10</td></tr>
+    <tr><td>python-2.7*</td><td>Python 2.7.6</td></tr>
+    <tr><td>python-3.2*</td><td>Python 3.2.5</td></tr>
   </tbody>
 </table>
+
+<p>*default language version if a specific "stack" is not declared in .worker file</p>
 
 <div class="alert">
   <p>
