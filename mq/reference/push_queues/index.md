@@ -235,7 +235,7 @@ New messages will be processed as usual for Push Queues, and pushed to your subs
 - Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
 
 <h2 id="troubleshooting_push_queues">Troubleshooting Push Queues</h2>
-Push queues are extremely powerful but do by default give you introspection on what happens to your message once it leaves the push queue. Did it hit the endpoint? did it retry multple times due to an server timeout error? Do I need to set a different content-type header?
+Push queues are extremely powerful but do not by default give insight on what happens to your message once it leaves queue. Did it hit the endpoint? did it retry multple times due to an server timeout error? Do I need to set a different content-type header?
 
 At Iron we have 3 reccomended ways to debug problems you may encounter with your push queues using IronMQ's Error Queue feature, RequestBin, and Ngrok
 
