@@ -235,9 +235,9 @@ New messages will be processed as usual for Push Queues, and pushed to your subs
 - Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
 
 <h2 id="troubleshooting_push_queues">Troubleshooting Push Queues</h2>
-Push queues are extremely powerful but do not by default give insight on what happens to your message once it leaves queue. Did it hit the endpoint? did it retry multple times due to an server timeout error? Do I need to set a different content-type header?
+Push queues are extremely powerful but do not by default give insight on what happens to your message once it leaves queue. Did it hit the endpoint? Did it retry multple times due to a server timeout error? Do I need to set a different content-type header?
 
-At Iron we have 3 reccomended ways to debug problems you may encounter with your push queues using IronMQ's Error Queue feature, RequestBin, and Ngrok
+At Iron we have 3 reccomended ways to debug problems you may encounter with your push queues: using IronMQ's Error Queue feature, RequestBin, and Ngrok
 
 <h3 id="using_error_queue">Using Error Queues (IronMQ Feature)</h3>
 Error queues are vastly useful to record, document, and react to retries, errors, and bugs that involve your Message queue endpoint.
@@ -252,7 +252,7 @@ See our <a href="http://localhost:4000/mq/reference/push_queues/#error_queues">E
   <li><strong>Step 4:</strong> post a message to your push queue, return to your unique RequestBin's inspect page. Here you will be able to view and inspect your the headers and response body amongst other very useful information about your push queue's request.
     <img src="/images/mq/reference/troubleshooting/step-4.png" width="100%" alt="push queue troubleshooting step 4"></li>
 </ol>
-<p>Seeing that your message was delivered successfully to a bin will easily tell you that there may be a problem with how your server is handling the message that is coming from your pushqueue. Often times it could be a endpoint that has not been coded to handle the post parameter's content type, endpoints that don't exist, or returning a bad response code due to internal server errors.</p>
+<p>Seeing that your message was delivered successfully to a bin will easily tell you that there may be a problem with how your server is handling the message that is coming from your push queue. Often times it could be an endpoint that has not been coded to handle the post parameter's content type, endpoints that don't exist, or returning a bad response code due to internal server errors.</p>
 
 <h2 id="using_ngrok">Testing on localhost with Ngrok</h2>
 To be able to develop and test on your local machine, you'll need to make your localhost accessible for IronMQ. This can be easily done by tunneling it to the outside world with tools such as [ngrok](https://ngrok.com/).
