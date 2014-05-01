@@ -28,8 +28,14 @@ breadcrumbs:
     </li>
     <li><a href="#encryption_and_security">Encryption and Security</a></li>
     <li><a href="#important_notes">Important Notes</a></li>
-    <li><a href="#testing_on_localhost">Testing on localhost</a></li>
-  </ul>  
+    <li><a href="#troubleshooting_push_queues">Troubleshooting Your Push Queues</a>
+      <ul>
+        <li><a href="#using_error_queue">Using Error Queues feature</a></li>
+        <li><a href="#requestbin">Using Requestb.in</a></li>
+        <li><a href="#using_ngrok">Testing on localhost with Ngrok</a></li>
+      </ul>
+    </li>
+  </ul>
 </section>
 
 <h2 id="overview">Overview</h2>
@@ -71,7 +77,7 @@ The maximum is 64kb for JSONify array of subscribers' hashes. **WARNING:** Do no
 - retries - number of times to retry. Default is 3. Maximum is 100.
 - retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
 - error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
-The default queue type for an error queue will be a pull queue. See <a href="#error_queues">Error Queues</a> section below. 
+The default queue type for an error queue will be a pull queue. See <a href="#error_queues">Error Queues</a> section below.
 
 <div>
 <script src="https://gist.github.com/4479844.js"> </script>
@@ -93,20 +99,20 @@ You should get a curl response that looks like this:
 
 <h2 id="retries">Retries</h2>
 
-IronMQ will automatically retry if it fails to deliver a message. This can be either a connection error, an error response (eg: 5xx), 
+IronMQ will automatically retry if it fails to deliver a message. This can be either a connection error, an error response (eg: 5xx),
 or any other scenario that does not return 2xx response. The behavior is a bit different depending on whether it's unicast or
 multicast as follows:
 
 - multicast treats each endpoint separately and will try each endpoint once per retry. If one endpoint fails,
   it will retry that single endpoint after retries_delay, it won't retry endpoints that were successful.
-- unicast will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered. 
-  If it fails, a different endpoint is tried immediately and this continues until a successful response is returned 
+- unicast will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered.
+  If it fails, a different endpoint is tried immediately and this continues until a successful response is returned
   or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
-  be retried after retries_delay. 
+  be retried after retries_delay.
 
 <h2 id="error_queues">Error Queues</h2>
 
-Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to push a message. 
+Error queues are used to get information about messages that we were unable to deliver due to errors/failures while trying to push a message.
 
 ### To create an error queue
 Post to your push queue a message with the "error_queue" option defined.
@@ -133,7 +139,7 @@ The error queue message will contain the following information:
 </div>
 
 You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
-the `source_msg_id` value. 
+the `source_msg_id` value.
 
 ### To turn off/disable an error queue
 Post to your push queue set the error queue option to an empty string. ex: "error_queue": "".
@@ -228,6 +234,32 @@ New messages will be processed as usual for Push Queues, and pushed to your subs
 - To revert your Push Queue to regular Pull Queue just update `push_type` to `"pull"`.
 - Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
 
-<h2 id="testing_on_localhost">Testing on localhost</h2>
+<h2 id="troubleshooting_push_queues">Troubleshooting Push Queues</h2>
+Push queues are extremely powerful but do not by default give insight on what happens to your message once it leaves queue. Did it hit the endpoint? Did it retry multple times due to a server timeout error? Do I need to set a different content-type header?
 
+At Iron we have 3 reccomended ways to debug problems you may encounter with your push queues: using IronMQ's Error Queue feature, RequestBin, and Ngrok
+
+<h3 id="using_error_queue">Using Error Queues (IronMQ Feature)</h3>
+Error queues are vastly useful to record, document, and react to retries, errors, and bugs that involve your Message queue endpoint.
+See our <a href="http://localhost:4000/mq/reference/push_queues/#error_queues">Error Queue Documentation</a> on how to setup and read error queue messages.
+
+<h3 id="requestbin">Using RequestBin</h3>
+<a href="http://requestb.in/">RequestBin</a> is a very useful and free service provided by Iron.io's friends at <a href="https://www.runscope.com/">Runscope</a> that helps users debug all kinds of request to a unqiuely generated endpoint. A bin will keep the last 20 requests made to it and remain available for 48 hours after it was created.You can create a more permanent bin by signing up  <a href="https://www.runscope.com/signup">here</a>.
+<ol style="list-style-type: none">
+  <li><strong>Step 1:</strong> go to <a href="http://requestb.in/">http://requestb.in/</a> and click on "Create a RequestBin <br><img src="/images/mq/reference/troubleshooting/step-1.png" alt="push queue troubleshooting step 1">  </li>
+  <li><strong>Step 2:</strong> copy the unique url<br> <img src="/images/mq/reference/troubleshooting/step-2.png" alt="push queue troubleshooting step 2"></li>
+  <li><strong>Step 3:</strong> paste it as a subscriber endpoint on your queue. This example shows us pasting it via the hud/dashboard interface but you an do the same using th raw api.<br><img src="/images/mq/reference/troubleshooting/step-3.png" alt="push queue troubleshooting step 3" width="100%"></li>
+  <li><strong>Step 4:</strong> post a message to your push queue, return to your unique RequestBin's inspect page. Here you will be able to view and inspect your the headers and response body amongst other very useful information about your push queue's request.
+    <img src="/images/mq/reference/troubleshooting/step-4.png" width="100%" alt="push queue troubleshooting step 4"></li>
+</ol>
+<p>Seeing that your message was delivered successfully to a bin will easily tell you that there may be a problem with how your server is handling the message that is coming from your push queue. Often times it could be an endpoint that has not been coded to handle the post parameter's content type, endpoints that don't exist, or returning a bad response code due to internal server errors.</p>
+
+<h2 id="using_ngrok">Testing on localhost with Ngrok</h2>
 To be able to develop and test on your local machine, you'll need to make your localhost accessible for IronMQ. This can be easily done by tunneling it to the outside world with tools such as [ngrok](https://ngrok.com/).
+<ol style="list-style-type: none">
+  <li><strong>Step 1:</strong> install ngrok</li>
+  <li><strong>Step 2:</strong> open ngrok to your localhost's port and recieve a unique subdomain on http://XXXXX.ngrok.com or https://XXXXX.ngrok.com<img src="/images/mq/reference/troubleshooting/ngrok-step-2.png" width="100%" alt="push queue troubleshooting with ngrok step 2"></li>
+  <li><strong>Step 3:</strong> inspect your traffic via Ngrok's local interface at http://localhost:4040 <img src="/images/mq/reference/troubleshooting/ngrok-step-3.png" width="100%" alt="push queue troubleshooting with ngrok step 3"></li>
+  <li><strong>Last Step: debug, debug, debug!</strong> You can reply the message to your local server at which point you can debug consistantly with your favorite debugging methods, i.e print statements and runtime debuggers.
+  </li>
+</ol>
