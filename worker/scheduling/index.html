@@ -6,7 +6,7 @@ breadcrumbs:
   - ["Scheduling Tasks", "/scheduling"]
 ---
 
-<p>IronWorker tasks are flexible; they don't have to be queued immediately. Rather, you can schedule a task to be queued at a specific time or after a set amount of time. This article shows you how to create them using the <span class="fixed-width">iron_worker_ng</span> Ruby gem, but they can be scheduled from any <a href="/worker/languages">client library</a> or even from <a href="/worker/reference/api">the API</a>.</p>
+<p>IronWorker tasks are flexible; they don't have to be queued immediately. Rather, you can schedule a task to be queued at a specific time or after a set amount of time. This article shows you how to create them using the <span class="fixed-width">iron_worker_ng</span> Ruby gem, but they can be scheduled from any <a href="/worker/languages">client library</a>, from <a href="/worker/reference/api">the API</a> or via the <a href="worker/reference/cli/#scheduling_tasks">iron_worker cli tool</a>.</p>
 
 <p>Scheduled jobs are separate resources than queued tasks. When scheduled tasks run, they queue a task to execute the worker code. The Scheduled Task has a Scheduled ID. The task that executes is separate and has a distinct Task ID. You monitor Scheduled Tasks in the Schedule tab in the HUD. Tasks that subsequently queued can be monitored within the Task tab.</p>
 
