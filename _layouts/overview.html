@@ -8,27 +8,24 @@
   <div id="wrapper">
 
     <header id="header" class="headroom">
-      <div class="nav-texture"></div>
       <div class="wrapper-holder">
         {% include nav.html %}
+      </div>
+        {% include content_header.html %}
+      <div class="sub-nav-wrapper-holder">
+        <div class="wrapper-holder">
+        {% include subnav.html %}
+        </div>
       </div>
     </header>
 
     <div id="main">
       <div class="wrapper-holder">
         <section class="container">
-          <header>
-            {% include content_header.html %}
-          </header>
-
-          {% include subnav.html %}
 
           <div class="content-container docs overview">
             <div class="content" style = "min-height: 260px;">
               <h2>Choose a Product</h2>
-              <div class="overview-search">
-                {% include search.html %}
-              </div>
               {{ content }}
             </div>
             <div>

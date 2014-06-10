@@ -388,6 +388,7 @@ a.tag, a.tag:hover {
   position: relative;
   display: block;
   overflow: visible;
+  float: right;
   height:20px;
 }
 

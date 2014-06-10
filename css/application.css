@@ -733,14 +733,14 @@ small {
   padding: 0;
   width: 970px;
   margin: 0 auto;
-  background: url(http://www.iron.io/assets/transparent.gif) no-repeat
+  /*background: url(http://www.iron.io/assets/transparent.gif) no-repeat*/
 }
 .sub-nav-wrapper-holder{
   padding: 0;
   width: 100%;
   margin: 0 auto;
   background-color: #E6E7E6;
-  /*background: url(http://www.iron.io/assets/transparent.gif) no-repeat*/
+  display: inline-block;
 }
 
 #header {
@@ -749,7 +749,7 @@ small {
   z-index: 10000;
   overflow: hidden;
   margin: 0 auto;
-  height: auto;
+  height: 100px;
   padding: 0;
   background: #3c4750;
 /*  background: -webkit-linear-gradient(#444, #111);
@@ -771,7 +771,7 @@ small {
 }
 
 #header .wrapper-holder {
-  margin: 10px auto 0;
+  margin: 0 auto;
   padding: 0;
   position: relative;
   z-index: 100;
@@ -781,10 +781,10 @@ small {
 
 .logo {
   left: 0;
-  margin: 0 0 10px;
+  margin: 5px 0 5px 0;
   position: relative;
   float: left;
-  width: 105px;
+  width: 300px;
   height: 40px;
   overflow: hidden;
   text-indent: -9999px;
@@ -1158,7 +1158,7 @@ small {
 .title-box h1 {
   font-size: 28px;
   margin-top: 18px;
-  margin-left: 304px;
+  /*margin-left: 304px;*/
   margin-bottom: 0px;
   line-height: 32px;
   color: #F2F2F2;
@@ -2295,7 +2295,7 @@ body.worker .container header .title-box .info {
   list-style: none;
   margin: 0;
   height: 30px;
-  padding: 9px 10px 11px;
+  padding: 10px 10px 10px;
   position: relative;
   z-index: 10;
   line-height: 16px;

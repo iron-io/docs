@@ -1,6 +1,3 @@
-{% case page.section %}
-{% when "overview" %}
-{% else %}
 <div class="subnavigation">
   <ul class="menu page-menu">
     <li {% if page.section == "overview" %}class="active"{% endif %}><a href="/">Overview</a></li>
@@ -15,4 +12,4 @@
     <li {% if page.section == "FAQ" %}class="active"{% endif %}><a href="/faq">FAQ</a></li> -->
   </ul>
 </div>
-{% endcase %}
+
