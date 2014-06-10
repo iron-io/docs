@@ -56,10 +56,11 @@ exec "hello_worker.rb"
     <tr><td>scala-2.9*</td><td>Scala 2.9.2</td></tr>
     <tr><td>mono-2.10*</td><td>Mono JIT 2.10.8.1</td></tr>
     <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td></tr>
-    <tr><td>php-5.4*</td><td>PHP 5.4.26</td></tr>
+    <tr><td>php-5.3*</td><td>PHP 5.4.26</td></tr>
+    <tr><td>php-5.4</td><td>PHP 5.4.26</td></tr>
     <tr><td>node-0.10*</td><td>Node.js 0.10</td></tr>
     <tr><td>python-2.7*</td><td>Python 2.7.6</td></tr>
-    <tr><td>python-3.2*</td><td>Python 3.2.5</td></tr>
+    <tr><td>python-3.2</td><td>Python 3.2.5</td></tr>
   </tbody>
 </table>
 
