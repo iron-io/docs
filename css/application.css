@@ -735,6 +735,13 @@ small {
   margin: 0 auto;
   background: url(http://www.iron.io/assets/transparent.gif) no-repeat
 }
+.sub-nav-wrapper-holder{
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #E6E7E6;
+  /*background: url(http://www.iron.io/assets/transparent.gif) no-repeat*/
+}
 
 #header {
   position: fixed;
@@ -769,6 +776,7 @@ small {
   position: relative;
   z-index: 100;
   width: 940px;
+  /*height:100px;*/
 }
 
 .logo {
@@ -889,7 +897,7 @@ small {
 }*/
 
 #main {
-  padding-top: 50px;
+  padding-top: 100px;
   width: 100%
 }
 
@@ -1133,12 +1141,29 @@ small {
   overflow: hidden;
   height: 30px;
   color: #fff;
-  padding: 14px 14px 8px 18px
+  padding: 14px 14px 8px 18px;
 }
 
 .container header .title-box {
   float: left
 }
+/*#documentation-title {
+  float: left;
+  line-height: 24px;
+  font-size:24px;
+  padding-left: 20px
+}*/
+
+
+.title-box h1 {
+  font-size: 28px;
+  margin-top: 18px;
+  margin-left: 304px;
+  margin-bottom: 0px;
+  line-height: 32px;
+  color: #F2F2F2;
+}
+
 .container h1 {
   margin: 0;
   font-size: 30px;
@@ -2131,7 +2156,7 @@ body.worker .container header .title-box .info {
   text-shadow: 0 1px 1px white;
   float: left;
   position: relative;
-  width: 620px;
+  width: 100%;
 }
 
 .menu li {

@@ -134,11 +134,13 @@ input:-moz-placeholder {
 
 nav.sidebar-nav {
   position:relative;
-  width: 210px;
+  width: 215px;
   padding:0px 0 30px;
   /*margin:11px 0 0;*/
   float:left;
   overflow-y:auto;
+  overflow-x:none:;
+
 }
 .sidebar-content {
   overflow-y:auto;
@@ -296,7 +298,7 @@ ul#breadcrumbs li {
 .content table td {
   padding: 5px 0 5px 10px;
   text-align: left;
-  color:#E6E7E5;
+  color:#000000;
   /*border-right: 1px solid #F8F8F8;*/
 }
 
@@ -377,24 +379,21 @@ a.tag, a.tag:hover {
 
 #q {
   padding:2px;
-  /*border-radius: 10px;*/
-  border: 1px solid #AAA;
+  margin-top: -5px;
+  border: none;
+  /*border: 1px solid #AAA;*/
   padding: 4px 0 3px 10px;
   font-weight: light;
-  width: 180px;
+  width: 240px;
   position: relative;
   display: block;
   overflow: visible;
-  height:40px;
-  background: -webkit-linear-gradient(#F8F8F8, white 50%);
-  background: -moz-linear-gradient(#F8F8F8, white 50%);
-  background: -ms-linear-gradient(#F8F8F8, white 50%);
-  background: linear-gradient(#F8F8F8, white 50%);
+  height:20px;
 }
 
 #q:focus {
-  border-color: rgb(51, 163, 242);
-  background: rgb(245, 251, 255);
+  /*border-color: rgb(51, 163, 242);*/
+  /*background: rgb(245, 251, 255);*/
 }
 
 a.language-switcher.selected {

@@ -7,28 +7,33 @@
 
 <div id="wrapper">
 
-  <header id="header">
+  <header id="header" class="headroom">
     <div class="nav-texture"></div>
     <div class="wrapper-holder">
       {% include nav.html %}
+      <!-- <header> -->
+    </div>
+      {% include content_header.html %}
+    <!-- </header> -->
+    <div class="sub-nav-wrapper-holder">
+      <div class="wrapper-holder">
+      {% include subnav.html %}
+      </div>
     </div>
   </header>
 
   <div id="main">
     <div class="wrapper-holder">
       <section class="container">
-        <header>
-          {% include content_header.html %}
-        </header>
-        {% include subnav.html %}
+
 
         <div class="content-container docs">
 
           {% include sidebar_nav.html %}
 
           <div style="float: right; width: 700px" class="content">
-						{% if page.languages %}{% include language-dropdown.html %}{% endif %}<h1>{{ page.title }}</h1> {% if page.summary %}
-						<p class="subtitle">{{ page.summary }}</p>{% endif %}
+            {% if page.languages %}{% include language-dropdown.html %}{% endif %}<h1>{{ page.title }}</h1> {% if page.summary %}
+            <p class="subtitle">{{ page.summary }}</p>{% endif %}
             {{ content }}
           </div>
 
@@ -50,10 +55,10 @@
 <script src="/js/purl.js" type="text/javascript"></script>
 <script src="/js/cookies.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-	{% assign default_lang = "ruby" %}
-	var languages = { {% for lang in page.languages %}{% if lang.default %}{% assign default_lang = lang.slug %}{% endif %}
-		'{{ lang.slug }}': '{{ lang.name }}'{% unless forloop.last %},{% endunless %}{% endfor %}
-	};
+  {% assign default_lang = "ruby" %}
+  var languages = { {% for lang in page.languages %}{% if lang.default %}{% assign default_lang = lang.slug %}{% endif %}
+    '{{ lang.slug }}': '{{ lang.name }}'{% unless forloop.last %},{% endunless %}{% endfor %}
+  };
 </script>
 <script>
 $(document).ready(function() {
@@ -67,14 +72,14 @@ $(document).ready(function() {
         desiredLanguage = localStorage.getItem('desired_language');
       }
     } else {
-  		desiredLanguage = "{{ default_lang }}";
+      desiredLanguage = "{{ default_lang }}";
     }
   };
-	if(!validLanguage(desiredLanguage)) {
-		switchLanguage("{{ default_lang }}", false);
-	} else {
-	  switchLanguage(desiredLanguage);
-	}
+  if(!validLanguage(desiredLanguage)) {
+    switchLanguage("{{ default_lang }}", false);
+  } else {
+    switchLanguage(desiredLanguage);
+  }
 });
 </script>
 {% endif %}
