@@ -2890,7 +2890,8 @@ h2#overview {
 }
 
 #footer .footer-box .box-holder {
-  float: right
+  width: 700px;
+  margin: 0 auto;
 }
 
 #footer .footer-box .box {
