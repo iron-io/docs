@@ -7,7 +7,7 @@
 
   <div id="wrapper">
 
-    <header id="header">
+    <header id="header" class="headroom">
       <div class="nav-texture"></div>
       <div class="wrapper-holder">
         {% include nav.html %}
@@ -47,6 +47,8 @@
   <footer id="footer">
     {% include footer.html %}
   </footer>
+  <script src="/js/jquery.headroom.js" type="text/javascript"></script>
+  <script src="/js/headroom.min.js" type="text/javascript"></script>
   {% if page.languages %}
   <script src="/js/bootstrap-dropdown.js" type="text/javascript"></script>
   <script src="/js/language_switcher.js" type="text/javascript"></script>

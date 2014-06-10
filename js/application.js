@@ -7,6 +7,9 @@ function initCufon(){Cufon.replace(".main-container h2, .content-container h2,.b
 
 
 $(document).ready(function() {
+
+  $("#header").headroom();
+
 	function pin_sidebar() {
 
 		sidebar_height = $('.sidebar-content').height();
@@ -15,8 +18,8 @@ $(document).ready(function() {
 		offset = $(window).scrollTop();
 		bottom_of_sidebar = sidebar_height + offset;
 		bottom_of_container = $(".docs").offset().top + $(".docs").height();
-		sticking_point = bottom_of_container;		
-		
+		sticking_point = bottom_of_container;
+
 
 		if ($(window).height() < 484)
 		{
@@ -32,7 +35,7 @@ $(document).ready(function() {
 		    else if (offset > $('.content-container').height()-$('.content-container').offset().top) //bottom_of_container - 275)
 		    {
 		        $('.sidebar-content').attr('style','');
-		        $('.sidebar-content').css('top', bottom_of_container - 700); 
+		        $('.sidebar-content').css('top', bottom_of_container - 700);
 		        $(".sidebar-content").removeClass("pinned");
                 $(".sidebar-content").addClass("stuck");
                 $('.sidebar-content').removeClass('scrolly');
@@ -51,15 +54,15 @@ $(document).ready(function() {
 		        return;
 		    }
 		}
-		
+
 		if($(".docs").height() - sidebar_height < 100) {
 			$(".sidebar-content").removeClass("pinned");
 			$(".sidebar-content").removeClass("stuck");
 			$(".sidebar-content").css("top", "");
 			return;
 		}
-		
-		
+
+
 		// if (window_height - sidebar_height < 0) {
 		// 	$('.sidebar-content').css("max-height", whatever_scrollbar);
 		// 	$('.sidebar-content').css("overflow-y", "scroll");
@@ -83,7 +86,7 @@ $(document).ready(function() {
 				$(".sidebar-content").css("top", -(bottom_of_sidebar-sticking_point));
 		}
 	}
-	
+
 	$(function() {
 		$(window).scroll(pin_sidebar);
 		$(window).resize(pin_sidebar);

@@ -10,8 +10,10 @@ html {
 body {
     margin: 0;
     color: #363636;
-    font: 11px Helvetica, Arial, sans-serif;
-    background: #fff url(http://www.iron.io/assets/bg-body.png) repeat-x;
+    font-family:'Open Sans', sans-serif;
+    font-size: 11px;
+    /*font-family: Helvetica, Arial, sans-serif;*/
+    /*background: #fff url(http://www.iron.io/assets/bg-body.png) repeat-x;*/
     height: 100%;
     min-width: 990px;
 }
@@ -735,24 +737,27 @@ small {
 }
 
 #header {
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
   overflow: hidden;
   margin: 0 auto;
   height: auto;
   padding: 0;
-  background: #111;
-  background: -webkit-linear-gradient(#444, #111);
+  background: #3c4750;
+/*  background: -webkit-linear-gradient(#444, #111);
   background: -moz-linear-gradient(#444, #111);
   background: -ms-linear-gradient(#444, #111);
   background: -o-linear-gradient(#444, #111);
-  background: linear,top,#444,#111;
-  position: relative;
+  background: linear,top,#444,#111;*/
+  /*position: relative;*/
 }
 
 #header .nav-texture {
   position: absolute;
   content: '';
   display: block;
-  background: url(http://www.iron.io/assets/nav-texture.png) repeat;
+  /*background: url(http://www.iron.io/assets/nav-texture.png) repeat;*/
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -810,43 +815,42 @@ small {
   padding: 0;
   margin: 0;
   float: left;
-  font-size: 16px;
-  line-height: 16px
+  font-size: 14px;
+  line-height: 27px
 }
 
 #nav ul li {
   float: left;
   padding: 1px;
-  margin: 0 0 0 6px
+  margin: 0 0 0 6px;
+  font-family:'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 #nav ul li a {
   float: left;
-  color: #fff;
+  text-decoration: none;
+  color: #e6e7e6;
   padding: 7px 14px 6px;
-  background: url(http://www.iron.io/assets/transparent.gif) no-repeat;
+  /*background: url(http://www.iron.io/assets/transparent.gif) no-repeat;*/
   overflow: hidden;
   position: relative;
-  border-radius: 4px
+  /*border-radius: 4px*/
 }
 
 #nav ul li a:hover, #nav ul li.active a {
-  color: #959595;
-  border: 1px solid #141414;
-  margin: -1px;
+  float: left;
   text-decoration: none;
-  box-shadow: #3a3a3a 0px 1px 1px;
-  border-radius: 4px;
-  background: #1e1e1e;
-  background: -moz-linear-gradient(top, #1e1e1e, #303030);
-  background: -o-linear-gradient(top, #1e1e1e, #303030);
-  background: -ms-linear-gradient(top, #1e1e1e, #303030);
-  background: linear-gradient(top, #1e1e1e, #303030);
-  background: -webkit-linear-gradient(top, #1e1e1e, #303030)
+  color: #e6e7e6;
+  padding: 7px 14px 6px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 5px solid #9f251f;
 }
 
 #nav ul li.signup a {
-  color: white;
+  font-style: bold;
+/*  color: white;
   margin-top: -1px;
   margin-right: -1px;
   margin-bottom: -1px;
@@ -859,10 +863,10 @@ small {
   background: -ms-linear-gradient(top, #c00, #600);
   background: linear-gradient(top, #c00, #600);
   background: -webkit-linear-gradient(top, #c00, #600);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset*/
 }
 
-#nav ul li.signup a:hover {
+/*#nav ul li.signup a:hover {
   background: red;
   background: -moz-linear-gradient(top, red, #600);
   background: -o-linear-gradient(top, red, #600);
@@ -882,9 +886,10 @@ small {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset;
   text-shadow: none;
   color: rgba(255, 255, 255, 0.8)
-}
+}*/
 
 #main {
+  padding-top: 50px;
   width: 100%
 }
 
@@ -983,7 +988,10 @@ small {
   color: #464646;
   overflow: hidden;
   letter-spacing: -1px;
-  font-family: Helvetica, Arial, sans-serif
+  /*font-family: Helvetica, Arial, sans-
+  */
+  font-family:'Open Sans', sans-serif;
+
 }
 
 .main-container h2 .cufon {
@@ -1115,14 +1123,15 @@ small {
   width: 100%;
   margin: 20px 0 30px;
   position: relative;
-  border-radius: 4px
+  /*border-radius: 4px*/
 }
 
 .container header {
-  background: #b90700 url(http://www.iron.io/assets/bg-heading-page.png) no-repeat;
-  border-radius: 5px 5px 0 0;
+  background: #7a1722 url(http://www.iron.io/assets/bg-heading-page.png) no-repeat;
+  /*border-radius: 5px 5px 0 0;*/
+  background-color:#7a1722;
   overflow: hidden;
-  height: 52px;
+  height: 30px;
   color: #fff;
   padding: 14px 14px 8px 18px
 }
@@ -1132,8 +1141,8 @@ small {
 }
 .container h1 {
   margin: 0;
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 30px;
+  line-height: 30px;
   font-weight: bold;
   float: left;
   padding: 3px 0 0;
@@ -1185,17 +1194,19 @@ body.worker .container header .title-box .info {
 }
 
 .content-container {
-  padding: 10px 20px 0;
+  padding: 15px 10px 0;
   background: #fff;
   overflow: hidden;
-  border: 1px solid #b2b2b2;
+  border: 1px solid #f4f4f4;
   border-width: 0 1px 1px;
   position: relative;
   font-size: 17px;
   line-height: 23px;
-  border-radius: 0 0 4px 4px
 }
 
+.content-container .content h1 {
+  margin-top: 0px;
+}
 .content-container .table-holder {
   overflow: hidden;
   width: 928px;
@@ -1371,14 +1382,14 @@ body.worker .container header .title-box .info {
   color: #333333;
   font-size: 14px;
   line-height: 20px;
-  border: 1px solid #999;
+  /*border: 1px solid #999;*/
   padding: 4px 14px;
   margin: 0 0;
   cursor: pointer;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(255, 255, 255, 0.3) inset, 1px 0 0 rgba(255, 255, 255, 0.3) inset, -1px 0 0 rgba(255, 255, 255, 0.3) inset;
-  border-radius: 5px;
-  font-weight: normal;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+/*  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(255, 255, 255, 0.3) inset, 1px 0 0 rgba(255, 255, 255, 0.3) inset, -1px 0 0 rgba(255, 255, 255, 0.3) inset;*/
+  /*border-radius: 5px;*/
+  font-weight: 300;
+  /*text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);*/
   text-decoration: none;
   background: #f0f0f0;
   background: -moz-linear-gradient(top, #f0f0f0, #dfdfdf);
@@ -1401,7 +1412,7 @@ body.worker .container header .title-box .info {
   background: -ms-linear-gradient(top, #f5f5f5, #e0e0e0);
   background: linear-gradient(top, #f5f5f5, #e0e0e0);
   background: -webkit-linear-gradient(top, #f5f5f5, #e0e0e0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(255, 255, 255, 0.3) inset, 1px 0 0 rgba(255, 255, 255, 0.3) inset, -1px 0 0 rgba(255, 255, 255, 0.3) inset
+  /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(255, 255, 255, 0.3) inset, 1px 0 0 rgba(255, 255, 255, 0.3) inset, -1px 0 0 rgba(255, 255, 255, 0.3) inset*/
 }
 
 .btn:active, .button:active {
@@ -1508,18 +1519,18 @@ body.worker .container header .title-box .info {
 
 .btn.red, .button.red {
   color: white;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
-  border: 1px solid #7c0e0e;
-  background: #c00;
-  background: -moz-linear-gradient(top, #c00, #600);
+  /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);*/
+  /*border: 1px solid #7c0e0e;*/
+  background: #96001b;
+/*  background: -moz-linear-gradient(top, #c00, #600);
   background: -o-linear-gradient(top, #c00, #600);
   background: -ms-linear-gradient(top, #c00, #600);
   background: linear-gradient(top, #c00, #600);
-  background: -webkit-linear-gradient(top, #c00, #600);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset
+  background: -webkit-linear-gradient(top, #c00, #600);*/
+  /*box-shadow: 0 0 3px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset*/
 }
 
-.btn.red:hover, .button.red:hover {
+/*.btn.red:hover, .button.red:hover {
   background: red;
   background: -moz-linear-gradient(top, red, #600);
   background: -o-linear-gradient(top, red, #600);
@@ -1527,7 +1538,7 @@ body.worker .container header .title-box .info {
   background: linear-gradient(top, red, #600);
   background: -webkit-linear-gradient(top, red, #600);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(255, 255, 255, 0.1) inset, 1px 0 0 rgba(255, 255, 255, 0.1) inset, -1px 0 0 rgba(255, 255, 255, 0.1) inset
-}
+}*/
 
 .btn.red:active, .button.red:active {
   background: #600;
@@ -2139,7 +2150,7 @@ body.worker .container header .title-box .info {
   float: left;
   text-shadow: 1px 1px 1px #fff;
   padding: 6px 12px 7px;
-  border-radius: 5px
+  /*border-radius: 5px*/
 }
 
 .menu .active a, .menu a:hover {
@@ -2210,7 +2221,8 @@ body.worker .container header .title-box .info {
 }
 
 .media-post blockquote {
-  font-family: 'Georgia', 'Times New Roman' serif;
+  font-family:'Open Sans', sans-serif;
+  /*font-family: 'Georgia', 'Times New Roman' serif;*/
   margin: 10px 0 10px
 }
 
@@ -2261,14 +2273,14 @@ body.worker .container header .title-box .info {
   padding: 9px 10px 11px;
   position: relative;
   z-index: 10;
-  line-height: 18px;
-  border: 1px solid #b0aaaa;
+  line-height: 16px;
+  /*border: 1px solid #b0aaaa;*/
   border-top: none;
-  background: #d9d9d9;
-  background: -webkit-linear-gradient(#fafafa, #d9d9d9);
+  background: #E6E7E6;
+/*  background: -webkit-linear-gradient(#fafafa, #d9d9d9);
   background: -moz-linear-gradient(#fafafa, #d9d9d9);
   background: -ms-linear-gradient(#fafafa, #d9d9d9);
-  background: linear-gradient(#fafafa, #d9d9d9)
+  background: linear-gradient(#fafafa, #d9d9d9)*/
 }
 
 .subnavigation.mq .page-menu, .subnavigation.worker .page-menu {
@@ -2289,7 +2301,7 @@ body.worker .container header .title-box .info {
   text-shadow: 1px 1px 1px #fff;
   padding: 0 12px 7px;
   color: #666;
-  font-size: 16px;
+  font-size: 14px;
   position: relative;
   background: none;
   border: none;
@@ -2841,7 +2853,7 @@ h2#overview {
 #footer .footer-box .holder {
   border: 1px solid #f2f2f2;
   border-width: 1px 0;
-  background: #e0e0e0;
+  background: #3C4750;
   overflow: hidden
 }
 
@@ -2865,18 +2877,19 @@ h2#overview {
 #footer .footer-box .box hgroup {
   overflow: hidden;
   width: 100%;
-  border-bottom: 1px solid #bbb;
-  color: #252525;
+  /*border-bottom: 1px solid #bbb;*/
+  color: #e6e7e6;
   padding: 0 0 6px;
   margin: 0 0 10px
 }
 
 #footer .footer-box .box h3 {
   margin: 0;
+  color: #e6e7e6;
   font-weight: bold;
   font-size: 15px;
   line-height: 18px;
-  text-shadow: 1px 1px 1px #fff
+  /*text-shadow: 1px 1px 1px #fff*/
 }
 
 #footer .footer-box .box ul {
@@ -2888,7 +2901,8 @@ h2#overview {
 }
 
 #footer .footer-box .box a {
-  color: #666
+  color: #e6e7e6;
+  text-decoration: none;
 }
 
 #footer .footer-holder {
@@ -2897,6 +2911,7 @@ h2#overview {
 }
 
 #footer .footer-holder a {
+  text-decoration: none;
   color: #4d4d4d
 }
 
@@ -3543,7 +3558,8 @@ nav#howitworks-tabs .crumbs ul li:first-child a:before {
 }
 
 .threecolumns .column .content h3 {
-  font-family: 'Myriad Pro';
+  /*font-family: 'Myriad Pro';*/
+  font-family:'Open Sans', sans-serif;
   padding-top: 30px;
   margin-bottom: 30px
 }
@@ -4153,7 +4169,8 @@ ul#architecture li {
   border-radius: 5px;
   width: auto;
   margin-bottom: 10px;
-  font-family: 'Molengo', Helvetica, Arial, sans-serif;
+  font-family:'Open Sans', sans-serif;
+  /*font-family: 'Molengo', Helvetica, Arial, sans-serif;*/
   font-weight: normal;
   color: #888;
   overflow: hidden;
@@ -4172,7 +4189,8 @@ ul#architecture li {
 }
 
 #see-in-action #choosen-file {
-  font-family: 'Molengo', Helvetica, Arial, sans-serif;
+  font-family:'Open Sans', sans-serif;
+  /*font-family: 'Molengo', Helvetica, Arial, sans-serif;*/
   font-weight: normal;
   overflow: hidden;
   border-top: 1px solid #aaa;
@@ -4358,7 +4376,8 @@ ul#architecture li {
   line-height: 1em;
   color: white;
   cursor: default;
-  font-family: 'Molengo', Helvetica, Arial, sans-serif;
+  font-family:'Open Sans', sans-serif;
+  /*font-family: 'Molengo', Helvetica, Arial, sans-serif;*/
   font-weight: normal;
   color: #888;
   font-size: 21px;
@@ -4877,7 +4896,7 @@ ul#architecture li {
   width: 105px;
   height: 100px;
   margin-right: 10px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   text-align: center;
   line-height: 172px;
   text-decoration: none;
@@ -4945,7 +4964,7 @@ ul#architecture li {
   border: 1px solid #CCC;
   width: 170px;
   height: 139px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   text-align: center;
   line-height: 235px;
   text-decoration: none;
@@ -5002,3 +5021,26 @@ ul#architecture li {
 .img-med{
   width:80%;
 }
+
+.headroom {
+    -moz-transition: -moz-transform 200ms linear;
+    -o-transition: -o-transform 200ms linear;
+    -webkit-transition: -webkit-transform 200ms linear;
+    transition: transform 200ms linear
+    }
+
+.headroom--pinned {
+    -moz-transform: translatey(0%);
+    -ms-transform: translatey(0%);
+    -o-transform: translatey(0%);
+    -webkit-transform: translatey(0%);
+    transform: translatey(0%)
+    }
+
+.headroom--unpinned {
+    -moz-transform: translatey(-100%);
+    -ms-transform: translatey(-100%);
+    -o-transform: translatey(-100%);
+    -webkit-transform: translatey(-100%);
+    transform: translatey(-100%)
+    }
