@@ -793,7 +793,7 @@ small {
   -ms-transition: left .2s linear, margin-left .2s linear;
   -o-transition: left .2s linear, margin-left .2s linear;
   transition: left .2s linear, margin-left .2s linear;
-  background: url(http://www.iron.io/assets/logo.png) no-repeat
+  background: url(/images/logo-white.png) no-repeat;
 }
 
 .logo a {
