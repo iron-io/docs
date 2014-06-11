@@ -5049,10 +5049,10 @@ ul#architecture li {
 }
 
 .headroom {
-    -moz-transition: -moz-transform 200ms linear;
-    -o-transition: -o-transform 200ms linear;
-    -webkit-transition: -webkit-transform 200ms linear;
-    transition: transform 200ms linear
+    -moz-transition: -moz-transform 400ms linear;
+    -o-transition: -o-transform 400ms linear;
+    -webkit-transition: -webkit-transform 400ms linear;
+    transition: transform 400ms linear
     }
 
 .headroom--pinned {
