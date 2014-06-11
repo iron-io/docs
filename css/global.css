@@ -294,12 +294,15 @@ ul#breadcrumbs li {
   border: 1px solid #ccc;
 }
 
-.content table.reference td,
 .content table td {
   padding: 5px 0 5px 10px;
   text-align: left;
+}
+
+#newsletter-subscribe table td {
+  padding: 5px 0 5px 10px;
+  text-align: left;
   color:#e6e7e6;
-  /*border-right: 1px solid #F8F8F8;*/
 }
 
 .content table.reference td:last-child,
