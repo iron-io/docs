@@ -35,7 +35,7 @@ section: worker
 
 <h2 id="write">1. Write Your Worker</h2>
 
-<p>IronWorker's <a href="/worker/reference/environment">environment</a> is just a Linux sandbox that your task is executed in. Anything you write that runs on your machine, if packaged correctly, should be able to be run in IronWorker. For example workers, check out the <a href="https://github.com/iron-io/iron_worker_examples">examples repository</a> or the page for <a href="/worker/languages">your favorite language</a>.</p>
+<p>IronWorker's <a href="/worker/reference/environment">environment</a> is just a Linux sandbox that your task is executed in. Anything you write that runs on your machine, if packaged correctly, should be able to be run in IronWorker. For example workers, check out the <a href="https://github.com/iron-io/iron_worker_examples">examples repository</a> or the page for <a href="/worker/reference/environment/#default_language_versions">your favorite language versions and runtime environments</a>.</p>
 
 <h2 id="upload">2. Create and Upload Your Code Package</h2>
 
@@ -89,7 +89,7 @@ $ iron_worker upload firstworker
 
 <h2 id="tasks">3. Queue/Schedule Your Task</h2>
 
-<p>Now that you've uploaded your worker, you can just queue tasks against it to run them, in parallel, in the cloud. You can queue a task directly from <a href="/worker/languages">your favorite language</a> or from the command line:</p>
+<p>Now that you've uploaded your worker, you can just queue tasks against it to run them, in parallel, in the cloud. You can queue a task directly from <a href="/worker/reference/environment/#default_language_versions">your favorite language versions and runtime environments</a> or from the command line:</p>
 
 <figcaption><span>Command Line </span></figcaption>
 
@@ -115,7 +115,7 @@ $ iron_worker queue firstworker -p '{"key1": "val1", "obj1": {"key2": "val2"}, "
 
 <p>Sometimes you want tasks that repeat periodically, or that will be queued (queued, not executed) at a specific time or even date. IronWorker supports <a href="/worker/scheduling">scheduled tasks</a> for this purpose. They're just like regular tasks (payloads, executed in the cloud, in parallel), but they're queued on your schedule.</p>
 
-<p>Again, you can schedule a task from your <a href="/worker/languages">favorite language</a> or from the command line:</p>
+<p>Again, you can schedule a task from your <a href="/worker/reference/environment/#default_language_versions">your favorite language versions and runtime environments</a> or from the command line:</p>
 
 <figcaption><span>Command Line </span></figcaption>
 
@@ -157,4 +157,4 @@ $ iron_worker schedule firstworker --run-every 60
 
 <h2>Next Steps</h2>
 
-<p>You should be well-grounded in the IronWorker paradigm now&mdash;now you need to build something cool! Check out our <a href="/worker/languages">language documentation</a> or <a href="/worker/reference">reference material</a> to explore the boundaries of IronWorker's system. If you're looking for ideas about what you can accomplish with IronWorker, you may want to check out our <a href="/solutions">solutions</a>.</p>
+<p>You should be well-grounded in the IronWorker paradigm now&mdash;now you need to build something cool! Check out our <a href="/worker/reference/environment/#default_language_versions">runtime/languagea . documentation</a> or <a href="/worker/reference">reference material</a> to explore the boundaries of IronWorker's system. If you're looking for ideas about what you can accomplish with IronWorker, you may want to check out our <a href="/solutions">solutions</a>.</p>
