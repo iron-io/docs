@@ -4,6 +4,8 @@
     <li {% if page.section == "mq" %}class="active"{% endif %}><a href="/mq">IronMQ</a></li>
     <li {% if page.section == "worker" %}class="active"{% endif %}><a href="/worker">IronWorker</a></li>
     <li {% if page.section == "cache" %}class="active"{% endif%}><a href="/cache">IronCache</a></li>
+    <verticalbreak></verticalbreak>
+    <li {% if page.section == "mq-onpremise" %}class="active"{% endif%}><a href="/mq-onpremise">IronMQ : On-Premise</a></li>
     <li>
     {% include search.html %}
     </li>

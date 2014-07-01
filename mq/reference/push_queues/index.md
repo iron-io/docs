@@ -237,7 +237,7 @@ New messages will be processed as usual for Push Queues, and pushed to your subs
 <h2 id="troubleshooting_push_queues">Troubleshooting Push Queues</h2>
 Push queues are extremely powerful but do not by default give insight on what happens to your message once it leaves queue. Did it hit the endpoint? Did it retry multple times due to a server timeout error? Do I need to set a different content-type header?
 
-At Iron we have 3 reccomended ways to debug problems you may encounter with your push queues: using IronMQ's Error Queue feature, RequestBin, and Ngrok
+At Iron we have 3 recommended ways to debug problems you may encounter with your push queues: using IronMQ's Error Queue feature, RequestBin, and Ngrok
 
 <h3 id="using_error_queue">Using Error Queues (IronMQ Feature)</h3>
 Error queues are vastly useful to record, document, and react to retries, errors, and bugs that involve your Message queue endpoint.
