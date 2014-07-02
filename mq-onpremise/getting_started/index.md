@@ -15,7 +15,7 @@ section: mq-onpremise
   <h3>Getting Started</h3>
   <ul>
     <li><a href="#download">Download</a></li>
-    <li><a href="#requirements">Recomended System Requirements</a></li>
+    <li><a href="#requirements">Recommended System Requirements</a></li>
     <li><a href="#install">Install</a></li>
     <li><a href="#setup_user_project">Setup New User and Project</a></li>
     <li><a href="#update_installation">Updating Installation</a></li>
@@ -25,7 +25,7 @@ section: mq-onpremise
 
 <h2 id="download">Download Single Server Binary</h2>
 You can download our single sever evaluation version <a href="http://iron.io/mq-enterprise">here</a>.
-<h2 id="requirements">Recomended System Requirements</h2>
+<h2 id="requirements">Recommended System Requirements</h2>
 <ul>
   <li>Operating System: x64 linux (kernel 3+) or docker container</li>
   <li>RAM : 8GB+  </li>
