@@ -939,6 +939,7 @@ GET /projects/4ccf55250948510894024119/queues/test_queue/messages/59817875394584
   "id": "5924625841136130921",
   "body": "hello 265",
   "timeout": 60,
+  "status":"deleted",
   "reserved_count": 1
 }
 ```
