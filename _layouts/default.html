@@ -23,6 +23,14 @@
     <div class="wrapper-holder">
       <section class="container">
 
+        <ol class="breadcrumbs">
+        {% for p in page.ancestors %}
+                <li><a href="{{ p.url }}">{{ p.title }}</a>
+                <li class="divider">&gt;</li>
+        {% endfor %}
+                <li class="active">{{ page.title }}</li>
+        </ol>
+
 
         <div class="content-container docs">
 
