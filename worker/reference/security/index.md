@@ -7,7 +7,7 @@ breadcrumbs:
   - ['Securing Your Workers', '/security']
 ---
 
-Years of work and many layers are involved in ensuring cloud resources are secure. Iron.io inherits these industrial-strength security measures through the infrastructures we operate on. These measures include physical, network, data continuity, service access and service-specific protections, among others. Please refer to the [AWS Security Whitepaper](http://d36cz9buwru1tt.cloudfront.net/pdf/AWS_Security_Whitepaper.pdf) for a detailed description of this extensive list. 
+Years of work and many layers are involved in ensuring cloud resources are secure. Iron.io inherits these industrial-strength security measures through the infrastructures we operate on. These measures include physical, network, data continuity, service access and service-specific protections, among others. Please refer to the [AWS Security Whitepaper](http://d36cz9buwru1tt.cloudfront.net/pdf/AWS_Security_Whitepaper.pdf) for a detailed description of this extensive list.
 
 Iron.io takes further measures to isolate and protect **processes** at the IronWorker platform level, just as we isolate and protect **instances** at the infrastructure level. These steps include access restrictions, process isolation, resource monitoring/management, service restrictions, and more.
 
@@ -15,11 +15,11 @@ Iron.io takes further measures to isolate and protect **processes** at the IronW
 
 ### OAuth2 Authorization
 
-Iron's [API](/worker/refrence/api) uses [OAuth 2](http://www.oauth.net/2/), an industry-standard authentication scheme, to securely authenticate API requests. This scheme relies on SSL for security, instead of requiring your application to do cryptographic signing directly. This makes the API easy to use without compromising security.  
+Iron's [API](/worker/refrence/api) uses [OAuth 2](http://www.oauth.net/2/), an industry-standard authentication scheme, to securely authenticate API requests. This scheme relies on SSL for security, instead of requiring your application to do cryptographic signing directly. This makes the API easy to use without compromising security.
 
 ### HTTPS Encryption
 
-The IronWorker [API](/worker/reference/api) is the standard method of interacting with workers and projects. **HTTPS encryption** is the default access method for the API and the recommended approach for all access requests. All the client libraries provided by Iron.io use HTTPS encryption by default. This renders most common packet-interception attacks useless. 
+The IronWorker [API](/worker/reference/api) is the standard method of interacting with workers and projects. **HTTPS encryption** is the default access method for the API and the recommended approach for all access requests. All the client libraries provided by Iron.io use HTTPS encryption by default. This renders most common packet-interception attacks useless.
 
 ### Process Isolation
 
@@ -36,7 +36,7 @@ IronWorker uses process-level runtime monitoring/management to ensure that worke
 
 IronWorker, by design, does not provide SMTP host services. Workers must use third-party services such as [GMail](http://gmail.com), [SendGrid](http://www.sendgrid.com), [Amazon SES](http://aws.amazon.com/ses), or other service providers. Users must also adhere to Iron.io's [Use Policy](http://iron.io/legal).
 
-### Security Groups and IP Ranges
+### <a name="aws_security_groups"></a> AWS Security Groups and IP Ranges
 
 IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges. **Please note that this security group only works in the US East region.**
 
@@ -52,6 +52,21 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 </tr>
 </tbody>
 </table>
+
+<h4 id="accessing_rds">Accessing AWS RDS Resource</h4>
+<p>When accessing Amazon RDS resources please use the private ip address of your instances rather than the public DNS url that amazon provides.</p>
+<ol>
+  <li>To retrieve the Private IP of your RDS instance navigate to your [https://console.aws.amazon.com](Amazon Web Services Console) and copy your public endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/6qEZ1C4NlyxUgbicSYDh5Z3qqxtcGW.png" alt=""> </li>
+  <li>Ping the public endpoint in your commandline using the <strong>ping</strong> command to retrieve the private ip address. example: <strong>ping exampledb.XXXX.us-east-2.rds.amazonaws.com</strong>. note to omit the port when running this command.</li>
+  <li>Use the IP address you get that comes back as your connection endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/OS4hu6dpf40z7CDk1sVcW1MA10kMFV.png" alt=""></li>
+</ol>
+
+<h4 id="accessing_ec2">Accessing AWS EC2</h4>
+<p>When accessing Amazon EC2 resources again use the private ip address of your instances rather than the public dns url that amazon provides. AWS's EC2 dashboard makes accessing this ip simpler than the previous example.</p>
+<ol>
+  <li>To retrieve the private ip of your RDS resource navigate to your [https://console.aws.amazon.com](Amazon Web Services Console) and copy your public endpoint.
+  <li>Use the IP address that is available on this view <img width="100%" target="_blank" src="https://monosnap.com/image/6sv8TJwVu6zs4kYj3Al9YRGHqqBVs8.png" alt=""></li>
+</ol>
 
 ## Security Guidelines/Best Practices
 
