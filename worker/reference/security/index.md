@@ -56,16 +56,18 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 <h4 id="accessing_rds">Accessing AWS RDS Resource</h4>
 <p>When accessing Amazon RDS resources please use the private ip address of your instances rather than the public DNS url that amazon provides.</p>
 <ol>
-  <li>To retrieve the Private IP of your RDS instance navigate to your [https://console.aws.amazon.com](Amazon Web Services Console) and copy your public endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/6qEZ1C4NlyxUgbicSYDh5Z3qqxtcGW.png" alt=""> </li>
-  <li>Ping the public endpoint in your commandline using the <strong>ping</strong> command to retrieve the private ip address. example: <strong>ping exampledb.XXXX.us-east-2.rds.amazonaws.com</strong>. note to omit the port when running this command.</li>
-  <li>Use the IP address you get that comes back as your connection endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/OS4hu6dpf40z7CDk1sVcW1MA10kMFV.png" alt=""></li>
+  <li>Retrieve the Private IP of your RDS instance navigate to your [https://console.aws.amazon.com](Amazon Web Services Console) and copy your public endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/6qEZ1C4NlyxUgbicSYDh5Z3qqxtcGW.png" alt=""> </li>
+  <li>Ping the public endpoint in your commandline using the <strong>ping</strong> command to get the private ip address. example: <strong>ping exampledb.XXXX.us-east-2.rds.amazonaws.com</strong>. note to omit the port when running this command.</li>
+  <li>Use this ip address you get that comes back as your connection endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/OS4hu6dpf40z7CDk1sVcW1MA10kMFV.png" alt=""></li>
 </ol>
 
 <h4 id="accessing_ec2">Accessing AWS EC2</h4>
+
 <p>When accessing Amazon EC2 resources again use the private ip address of your instances rather than the public dns url that amazon provides. AWS's EC2 dashboard makes accessing this ip simpler than the previous example.</p>
+
 <ol>
-  <li>To retrieve the private ip of your RDS resource navigate to your [https://console.aws.amazon.com](Amazon Web Services Console) and copy your public endpoint.
-  <li>Use the IP address that is available on this view <img width="100%" target="_blank" src="https://monosnap.com/image/6sv8TJwVu6zs4kYj3Al9YRGHqqBVs8.png" alt=""></li>
+  <li>Retrieve the private ip of your RDS resource navigate to your [https://console.aws.amazon.com](Amazon Web Services Console) and copy your public endpoint.
+  <li>Use the ip address that is available on this view <img width="100%" target="_blank" src="https://monosnap.com/image/6sv8TJwVu6zs4kYj3Al9YRGHqqBVs8.png" alt=""></li>
 </ol>
 
 ## Security Guidelines/Best Practices
