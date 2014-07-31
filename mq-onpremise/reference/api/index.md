@@ -31,8 +31,9 @@ cause some tests to fail.)
   3. [Update Queue](#update-queue)
   4. [Delete Queue](#delete-queue)
   4. [List Queues](#list-queues)
-  5. [Add Subscriber](#add-subscriber)
-  6. [Remove Subscriber](#remove-subscriber)
+  5. [Add or Update Subscribers](#add-subscribers)
+  5. [Replace Subscribers](#replace-subscribers)
+  6. [Remove Subscribers](#remove-subscribers)
   5. [Add Alert](#add-alert)
   6. [Remove Alert](#remove-alert)
 1. [Messages](#messages)
@@ -46,9 +47,10 @@ cause some tests to fail.)
   2. [Release Message](#release-message) - Makes a message available for another process
   3. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
   3. [Clear Messages](#clear-messages) - Removes all messages from a queue
+  4. [Get Push Statuses for a Message](#get-push-statuses)
 
 
-## Global Stuff
+## <a name="global-stuff"></a> Global Stuff
 
 Base path: `/3/projects/{project_id}`
 
@@ -64,9 +66,9 @@ Headers:
 
 - Authorization: OAuth TOKEN
 
-## Queues
+## <a name="queues"></a> Queues
 
-### Create Queue
+### <a name="create-queue"></a> Create Queue
 
 PUT `/queues/{queue_name}`
 
@@ -115,7 +117,7 @@ Response: 201 Created
 
 SAME AS GET QUEUE INFO
 
-### Get Queue Info
+### <a name="get-queue"></a> Get Queue Info
 
 GET `/queues/{queue_name}`
 
@@ -159,7 +161,7 @@ there are no alerts.
 ```
 
 
-### Update Queue
+### <a name="update-queue"></a> Update Queue
 
 PATCH `/queues/{queue_name}`
 
@@ -174,7 +176,7 @@ there are no alerts.
 
 SAME AS GET QUEUE INFO
 
-### Delete Queue
+### <a name="delete-queue"></a> Delete Queue
 
 DELETE `/queues/{queue_id}`
 
@@ -186,7 +188,7 @@ Response: 200 or 404
 }
 ```
 
-### List Queues
+### <a name="list-queues"></a> List Queues
 
 GET `/queues`
 
@@ -210,9 +212,101 @@ Response: 200 or 404
 }
 ```
 
-## Messages
 
-### Post Messages
+### <a name="add-subscribers"></a> Add or Update Subscribers to a Queue
+
+POST `/queues/{queue_name}/subscribers`
+
+Add subscribers (HTTP endpoints) to a queue.
+In the case subscriber with given name exists, it will be updated.
+
+Request:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "first",
+      "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
+      "name": "other",
+      "url": "http://this.host.is/not/exist"
+    }
+  ]
+}
+```
+
+Response:
+
+```js
+{
+  "msg": "Updated"
+}
+```
+
+
+### <a name="replace-subscribers"></a> Replace Subscribers on a Queue
+
+PUT `/queues/{queue_name}/subscribers`
+
+Sets list of subscribers to a queue. Older subscribers will be removed.
+
+Request:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "the_only",
+      "url": "http://my.over9k.host.com/push"
+    }
+  ]
+}
+```
+
+Response:
+
+```js
+{
+  "msg": "Updated"
+}
+```
+
+
+### <a name="remove-subscribers"></a> Remove Subscribers from a Queue
+
+DELETE `/queues/{Queue Name}/subscribers`
+
+Remove subscriber from a queue. This is for Push Queues only.
+
+Request:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "other"
+    }
+  ]
+}
+```
+
+Response:
+
+```js
+{
+  "msg": "Updated"
+}
+```
+
+
+## <a name="messages"></a> Messages
+
+### <a name="post-messages"></a> Post Messages
 
 POST `/queues/{queue_name}/messages`
 
@@ -243,7 +337,7 @@ Returns a list of message ids in the same order as they were sent in.
 ```
 
 
-### Reserve Messages
+### <a name="reserve-messages"></a> Reserve Messages
 
 POST `/queues/{queue_name}/reservations`
 
@@ -282,7 +376,7 @@ Response: 200
 
 Will return an empty array if no messages are available in queue.
 
-### Get Message by Id
+### <a name="get-message-by-id"></a> Get Message by Id
 
 GET `/queues/{queue_name}/messages/{message_id}`
 
@@ -301,7 +395,7 @@ TODO push queue info ?
 }
 ```
 
-### Peek Messages
+### <a name="peek-messages"></a> Peek Messages
 
 GET `/queues/{queue_name}/messages`
 
@@ -326,7 +420,7 @@ there are no alerts.
 }
 ```
 
-### Delete Message
+### <a name="delete-message"></a> Delete Message
 
 DELETE `/queues/{queue_name}/messages/{message_id}`
 
@@ -350,7 +444,7 @@ Response: 200 or 404
 }
 ```
 
-### Delete Messages
+### <a name="delete-messages"></a> Delete Messages
 
 DELETE `/queues/{queue_name}/messages`
 
@@ -379,7 +473,7 @@ Response: 200 or 404
 }
 ```
 
-### Touch Message
+### <a name="touch-message"></a> Touch Message
 
 POST `/queues/{queue_name}/messages/{message_id}/touch`
 
@@ -400,7 +494,7 @@ Response: 200 or 404
 ```
 
 
-### Release Message
+### <a name="release-message"></a> Release Message
 
 POST `/queues/{queue_name}/messages/{message_id}/release`
 
@@ -422,7 +516,7 @@ Response: 200 or 404
 ```
 
 
-### Clear Messages
+### <a name="clear-messages"></a> Clear Messages
 
 DELETE `/queues/{queue_name}/messages`
 
@@ -440,5 +534,38 @@ Response: 200 or 404
 ```json
 {
   "msg": "Cleared"
+}
+```
+
+
+### <a name="get-push-statuses"></a> Get Push Statuses for a Message
+
+GET `/queues/{queue_name}/messages/{message_id}/subscribers`
+
+You can retrieve the push statuses for a particular message which will let you know which subscribers have received the
+message, which have failed, how many times it's tried to be delivered and the status code returned from the endpoint.
+
+Response:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "first"
+      "retries_remaining": 2,
+      "retries_total": 6,
+      "status_code": 200,
+      "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+      "last_try_at": "2014-07-30T15:45:03Z"
+    },
+    {
+      "name": "other"
+      "retries_remaining": 2,
+      "retries_total": 6,
+      "status_code": 200,
+      "url": "http://this.host.is/not/exist",
+      "last_try_at": "2014-07-30T15:44:29Z"
+    }
+  ]
 }
 ```
