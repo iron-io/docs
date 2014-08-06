@@ -92,6 +92,7 @@ A `push` queue cannot have alerts.
     "push": {
       "subscribers": [
         {
+          "name": "subscriber_name",
           "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
           "headers": {"Content-Type": "application/json"}
         }
@@ -139,6 +140,7 @@ there are no alerts.
     "push": {
       "subscribers": [
         {
+          "name": "subscriber_name",
           "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
           "headers": {"Content-Type": "application/json"}
         }
@@ -167,7 +169,9 @@ PATCH `/queues/{queue_name}`
 
 Request:
 
-SAME AS CREATE QUEUE
+SAME AS CREATE QUEUE, except queue type, which is static.
+
+**Note:** API raises error when you try to set subscribers to pull type queue or alerts on push queue.
 
 Response: 200 or 404
 
