@@ -37,8 +37,8 @@ cause some tests to fail.)
   5. [Add Alert](#add-alert)
   6. [Remove Alert](#remove-alert)
 1. [Messages](#messages)
-  1. [Post Message](#post-messages) - Core operation to add messages to a queue
-  2. [Post Message via Webhook](#post-message-via-webhook)
+  1. [Post Messages](#post-messages) - Core operation to add messages to a queue
+  2. [Post Messages via Webhook](#post-message-via-webhook)
   2. [Reserve/Get Messages](#reserve-messages) - Core operation to get message(s) off the queue.
   2. [Get Message by Id](#get-message-by-id)
   2. [Peek Messages](#peek-messages) - View first messages in queue without reserving them
@@ -339,6 +339,12 @@ Returns a list of message ids in the same order as they were sent in.
   "msg": "Messages put on queue."
 }
 ```
+
+### <a name="post-message-via-webhook"></a> Post Messages via Webhook
+
+POST `/queues/{queue_name}/webhook`
+
+
 
 
 ### <a name="reserve-messages"></a> Reserve Messages
