@@ -1,6 +1,6 @@
 ---
-title: IronMQ On-Premise Auth API over LevelDB
-summary: "With the release of IronMQ On-Premise comes newly updated client libraries."
+title: IronAuth API
+summary: "IronAuth API used to authenticate users that hit the IronMQ API."
 layout: default
 section: mq-onpremise
 ---
