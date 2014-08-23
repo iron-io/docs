@@ -79,7 +79,7 @@ All fields are optional.
 
 If `push` field is defined, this queue will be created as a push queue and must contain at least one subscriber. Everything else in the push map is optional.
 
-[//]: # A `push` queue cannot have alerts.
+<!--A `push` queue cannot have alerts.-->
 
 
 ```json
@@ -99,8 +99,13 @@ If `push` field is defined, this queue will be created as a push queue and must 
       "retries": 3,
       "retries_delay": 60,
       "error_queue": "error_queue_name"
-    }
-    "alerts": [
+    }]
+  }
+}
+```
+
+<!--
+"alerts": [
       {
        "type": "fixed",
        "trigger": 100,
@@ -108,10 +113,8 @@ If `push` field is defined, this queue will be created as a push queue and must 
        "queue": "target_queue_name",
        "snooze": 60
       }
-    ]
-  }
-}
-```
+      -->
+
 
 Response: 201 Created
 
