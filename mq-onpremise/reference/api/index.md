@@ -19,8 +19,6 @@ section: mq-onpremise
   5. [Add or Update Subscribers](#add-subscribers)
   5. [Replace Subscribers](#replace-subscribers)
   6. [Remove Subscribers](#remove-subscribers)
-  5. [Add Alert](#add-alert)
-  6. [Remove Alert](#remove-alert)
 4. [Messages](#messages)
   1. [Post Messages](#post-messages) - Core operation to add messages to a queue
   2. [Post Messages via Webhook](#post-message-via-webhook)
@@ -81,7 +79,7 @@ All fields are optional.
 
 If `push` field is defined, this queue will be created as a push queue and must contain at least one subscriber. Everything else in the push map is optional.
 
-A `push` queue cannot have alerts.
+[//]: # A `push` queue cannot have alerts.
 
 
 ```json
@@ -149,7 +147,12 @@ there are no alerts.
       "retries": 3,
       "retries_delay": 60,
       "error_queue": "error_queue_name"
-    },
+    }]
+  }
+}
+```
+
+<!--,
     "alerts": [
       {
         "type": "fixed",
@@ -158,10 +161,7 @@ there are no alerts.
         "queue": "target_queue_name",
         "snooze": 60
       }
-    ]
-  }
-}
-```
+-->
 
 
 ### <a name="update-queue"></a> Update Queue
