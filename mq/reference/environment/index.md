@@ -13,7 +13,7 @@ breadcrumbs:
     <li><a href="#message_structure">Message Structure</a></li>
     <li><a href="#message_constraints">Message Constraints</a></li>
     <li><a href="#queue_attributes">Queue Attributes</a></li>
-    <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
+    <!-- <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li> -->
   </ul>
 </section>
 
@@ -95,7 +95,7 @@ To get the information about a queue, use the [Info API call](/mq/reference/api/
   </tbody>
 </table>
 
-<h2 id="security_groups_and_ip_ranges">Security Groups and IP Ranges</h2>
+<!-- <h2 id="security_groups_and_ip_ranges">Security Groups and IP Ranges</h2>
 
 IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
 
@@ -110,4 +110,4 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 <td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td>
 </tr>
 </tbody>
-</table>
+</table> -->
