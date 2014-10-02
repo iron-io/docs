@@ -56,7 +56,6 @@ exec "hello_worker.rb"
     <tr><td>node-0.10</td><td>Node.js 0.10</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/d6c0d6b2db26bf753ffb">Packages</a></td></tr>
     <tr><td>python-2.7</td><td>Python 2.7.6</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/cf3b4c9e5723f4faf3c6">Packages</a></td></tr>
     <tr><td>python-3.2</td><td>Python 3.2.5</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/1134917fabae3ff48975">Packages</a></td></tr>
-    <tr><td>crawler</td><td>Selenium 2.41.0</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/c7b0c6a373760309fa80">Packages</a></td></tr>
     <tr><td>ffmpeg-2.3</td><td>ffmpeg-2.3, GPAC-0.5.1, php-5.3, node-0.10, ruby-1.9.3p0, python-2.7, x264-0.142.x</td><td>Ubuntu 12.04.5</td><td><a href="https://gist.github.com/37de9d069e5bee68fadc">Packages</a></td></tr>
   </tbody>
 </table>
