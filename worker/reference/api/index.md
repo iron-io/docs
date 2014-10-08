@@ -706,6 +706,17 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webho
 * **Project ID**: The ID of the project that you are uploading the code to.
 * **Code Name**: The name of the code package you want to execute the task.
 
+Optionally, following URL parameters can be sent:
+
+* **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. Task priority determines how much time a task may sit in queue. Higher values means tasks spend less time in the queue once they come off the schedule. Access to priorities depends on your selected IronWorker plan [see plans](http://www.iron.io/products/worker/pricing). You must have access to higher priority levels in your chosen plan or your priority will automatically default back to 0.  The standard/default priority is 0.
+* **cluster**: cluster name ex: "high-mem" or "dedicated".  This is a premium feature for customers to have access to more powerful or custom built worker solutions. Dedicated worker clusters exist for users who want to reserve a set number of workers just for their queued tasks. If not set default is set to  "default" which is the public IronWorker cluster.
+* **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration.
+* **delay**: The number of seconds to delay before actually queuing the task. Default is 0.
+
+Sample endpoint with all optional parameters set:
+
+POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webhook?code_name=<span class="variable">{Code Name}</span>&priority=<span class="variable">{priority}</span>&delay=<span class="variable">{delay}</span>&cluster=<span class="variable">{cluster}</span>&timeout=<span class="variable">{timeout}</span>
+
 #### Request
 
 The request body is free-form: anything at all can be sent. Whatever the request body is will be passed along as the payload for the task, and therefore needs to be under 64KB in size.
