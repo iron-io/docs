@@ -32,7 +32,6 @@ This article will get you started writing Python workers, but you should be fami
         <li><a href="#payload_example">Payload Example</a></li>
         <li><a href="#exit_example">Exit Worker expicitly with an exit code</a></li>
         <li><a href="#environment">Environment</a></li>
-
       </ul>
     </li>
   </ul>
