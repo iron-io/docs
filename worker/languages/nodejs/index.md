@@ -203,9 +203,7 @@ statusCode:  200
 ```
 
 
-**Note**: For most people, calling the API by hand is overkill. Please make sure to check out our [node client libraries](/worker/languages/#full_support), including
-a community supported and potentially more active project called [node-ironio](https://github.com/ahallock/node-ironio) by [Andrew Hallock](https://github.com/ahallock/). Thanks Andrew!
-
+**Note**: Please make sure to check out our official [node client library](/worker/libraries) 
 
 
 <h2 id="deep_dive">Deep Dive</h2>
