@@ -242,7 +242,7 @@ The hosts for the clouds IronMQ supports are as follows:
     </tr>
     <tr>
       <td>Rackspace DFW</td>
-      <td>Pro Plans Only - <a href="http://support.iron.io/customer/portal/emails/new">Contact Us</a></td>
+      <td>Pro Plans Only - <a href="mailto:support@iron.io?subject=Iron.io%20Dev%20Center%20Question&amp;body=(please%20select%20those%20that%20apply%20to%20you)%0AI%20am%20asking%20a%20question%20about%20IronMQ%2FIronWorker%2FIronCache%20%0ALanguage%3A%0AQuestion%3A%0ALinks%3A" target="_blank">Email Support</a></td>
     </tr>
   </tbody>
 </table>
