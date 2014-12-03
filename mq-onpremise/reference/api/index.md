@@ -325,7 +325,11 @@ Request:
   "messages": [
     {
       "body": "This is my message 1.",
-      "delay": 0
+      "delay": 0,
+      "push_headers": {
+        "X-Custom-Header": "custom header value",
+        "Authentication": "the token"
+      }
     },
   ]
 }
@@ -344,10 +348,28 @@ Returns a list of message ids in the same order as they were sent in.
 }
 ```
 
+#### Push Headers Restrictions
+
+* the maximum number of push headers per message is 5
+* push header name cannot be empty
+* the maximum length of push header name is 64 bytes
+* push header name cannot be any of `Content-Type`, `User-Agent`, `Iron-Message-Id`, `Iron-Reservation-Id`, `Iron-Subscriber-Name`, `Iron-Subscriber-Message-Url`
+* push header value cannot be empty
+* the maximum length of header value is 1kb
+
+If request contravenes restrictions, IronMQ responds with HTTP 400 Bad Request.
+
 ### <a name="post-message-via-webhook"></a> Post Messages via Webhook
 
 By adding the queue URL below to a third party service that supports webhooks, every webhook event that the third party posts
 will be added to your queue. The request body as is will be used as the "body" parameter in normal POST to queue above.
+
+#### Push Headers
+
+It is possible to supply custom push headers for messages, posted via webhook. IronMQ treats headers, which start with `X-Subscribers-` prefix, as push headers.
+Prefix will be removed and reminder will be used as actual header name.
+
+**NOTE:** push headers, that contravene restrictions (see [Post Messages](#post-messages) section), will be ignored and error will not be raised.
 
 ### Endpoint
 
