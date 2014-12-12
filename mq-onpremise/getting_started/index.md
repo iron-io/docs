@@ -9,181 +9,114 @@ section: mq-onpremise
 <!--   IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team -->
 </p>
 
-
-
 <section id="toc">
   <h3>Getting Started</h3>
   <ul>
-    <li><a href="#download">Download</a></li>
     <li><a href="#requirements">Recommended System Requirements</a></li>
+    <li><a href="#download">Download</a></li>
     <li><a href="#install">Install</a></li>
     <li><a href="#setup_user_project">Setup New User and Project</a></li>
-    <li><a href="#updating_installation">Updating Installation</a></li>
-    <li><a href="#backups">Backups</a></li>
+    <li><a href="#start">Client lib and API docs</a></li>
+    <li><a href="#custom_config">Custom Configuration</a></li>
   </ul>
 </section>
 
-<h2 id="download">Download Single Server Binary</h2>
-You can download our single server evaluation version <a href="http://iron.io/mq-enterprise">here</a>.
-<h2 id="requirements">Recommended System Requirements</h2>
-<ul>
-  <li>Operating System: x64 linux (kernel 3+) or docker container</li>
-  <li>RAM : 8GB+  </li>
-  <li>CPU : Multicore CPU</li>
-  <li>Storage : SSD Drive</li>
-</ul>
+<h2 id="requirements">Recommended Minimum System Requirements</h2>
 
-<h2 id="install">Unpack, Install, and Start</h2>
+* __OS__: Docker installed
+* __RAM__ : 8GB+
+* __CPU__ : 2+ CPU
+* __Storage__ : SSD Drive
 
-  1. #### Unpack the provided archive
+Yes, it will probably work on your laptop. Don't benchmark on your laptop :)
 
-    ```
-    unzip ironmq-x.y.z....zip
-    ```
+<h2 id="download">Download</h2>
 
-    You will end up with a directory called `ironmq`, cd into that directory to
-    continue.
+```
+$ docker pull iron/mq
+$ docker pull iron/auth
+```
 
-  2. #### Run install script
+<h2 id="install">Install and Start</h2>
 
-    ```
-    ./iron install
-    ```
+Reference:
 
-  3. ####Start Services
+* `-d` runs as daemon, omit to run in foreground
+* `-p HOST:CONTAINER` binds to port on host machine
+* `--net=host` use host machines network interface
 
-    ```
-    ./iron start
-    ```
+__Note__: if you are familiar with Docker, you can run without `--net=host`,
+but you'll have to point mq to auth, see [configuration](#custom_config)
+
+```
+// MQ
+$ docker run -d -p 8080:8080 --net=host iron/mq
+
+// Auth
+$ docker run -d -p 8090:8090 --net=host iron/auth
+```
+
+You are welcome to further modify the docker environment for each of these containers, e.g. name them.
+Also, data inside of each of these containers is ephemeral to the lifetime of
+the container. If you would like to persist the data, the recommended way
+is to create a persistent data volume container that is mounted where you
+would like to store data. Here is a brief example, see Docker docs for details:
+
+```
+// create the data container, mounted on host at /mnt/data 
+// note: ironmq and ironauth both store their data at /ironmq/data in container by default
+$ docker run -name irondata -v /mnt/data:/ironmq/data busybox true
+
+// run mq with data volume
+$ docker run -d --volumes-from irondata -p 8080:8080 iron/mq
+```
 
 <h3 id="setup_user_project">Setup New User and Project</h3>
 
-  With the server running in a seperate terminal window run the following commands to create a new user and a new project.
+##### With the auth server running:
 
-1. create a new user
-  by default the admin password is set to ***superToken123***, it is recommended you change this after initially creating your first user account.
+__1)__ create a new user
 
-  ```
-  ./iron -t superToken123 create user somebody@somewhere.com password
-  ```
+```
+$ docker run -it --net=host iron/authcli iron -t adminToken create user somebody@somewhere.com password
+```
 
-2. create a new project
+__Note__: If auth is not located at `http://localhost:8090` on the host machine, you can do:
 
-  Grab the token that's printed after previous command, you'll need it for the
-  next ones.
+```
+$ docker run -it iron/authcli iron -t adminToken -h http://authHost[:port] create user somebody@somewhere.com password
+```
 
-  ```
-  ./iron -t NEWTOKEN create project myproject
-  ```
+__2)__ create a new project
 
-  Then you can use that new project with the new token to use the API.
+```
+$ docker run -it --net=host iron/authcli iron -t NEWTOKEN create project myproject
+```
 
-<h2 id="configuration">Configuration</h2>
-Some Cases you may want to change the default configuration options we have setup in our single server evaluation.
+__3)__ save your new token and project\_id into an iron.json or environment variables
 
-edit ironauth/config.json and/or ironmq/config.json
-Note: be sure super_user.token from ironauth config matches super_token in ironmq config.
+<h3 id="start">Start using MQ</h3>
 
-1. Locate the configuration file ***config.json*** within /bin/mq/config.json
+* [Client Libraries](http://dev.iron.io/mq-onpremise/reference/client_libraries/)
+* [REST API](http://dev.iron.io/mq-onpremise/reference/api/)
+* [Auth CLI](https://github.com/iron-io/enterprise/wiki/2.-Auth-CLI-Tool)
 
-  ```
-  {
-    "license": {
-      "description": "This is your license key provided by Iron.io",
-      "key": "DONTCHANGEME"
-    },
-    "api": {
-      "http_port": 8080
-    },
-    "auth": {
-      "host": "http://localhost:8090"
-    },
-    "logging": {
-      "to": "stdout/stderr",
-      "level": "debug",
-      "prefix": ""
-    },
-    "stathat":{
-      "email":""
-      "prefix":""
-    }
-    "pusher": {
-      "num_queues_brokers": 5,
-      "num_messages_consumers": 50,
-      "dial_timeout": 10,
-      "request_timeout": 60
-    },
-    "aes_key_description": "Key for generating id's.",
-    "aes_key": "770A8A65DA156D24EE2A093277530142",
-    "data": {
-      "dir_description": "Where data files will be stored",
-      "dir": "../data",
-      "cache_size_description": "Size of cache in MB -- don't get carried away",
-      "cache_size": 128
-    },
-    "host": "locahost"
-  }
-  ```
+<h2 id="custom_config">Configuration</h2>
 
-  * **license** - do not modify
-  * **api** - this is the default port for your IronMQ server
-  * **auth** - this is the default host for your IronMQ Auth Server
-  * **logging** - by default logs will be output to stdout/stderr. A prefix is useful should you be storing logs for a service like papertrail
-  * **stathat** - IronMQ and IronAuth will both default to sending logs in the form of metadata to Iron.io's internal tools. We would appreciate keeping this turned on in order to better assist with performance and configuration questions.
-  * **pusher** - do not modify
-  * **stathat** - IronMQ and IronAuth will both default to sending logs in the form of metadata to Iron.io's internal tools. We would appreciate keeping this turned on in order to better assist with performance and configuration questions.
-  * **aeskey** - do not modify
-  * **data**
-    * **dir** - this is the data directory that your server will be using.
-    * **cache_size** - this is the size of the cache in MB.
+This step is completely optional, you should already be up and running with the
+default configuration. If you would like to tinker, some instructions are below.
 
+You can download or copy & paste these to your file system:
 
-<h2 id="updating_installation">Update Installation</h2>
+* [MQ config](https://github.com/iron-io/enterprise/blob/master/mq_config.json)
+* [Auth config](https://github.com/iron-io/enterprise/blob/master/auth_config.json)
 
-  Get the latest zip package and unzip it (same as in getting started)
+These configs are good to get you up and running (they're the same as
+the ones in the docker container) but you can modify them.
 
-  1. ### Stop running services
+To start mq or auth with the updated config, simply pass it through the
+environment variable `CONFIG_JSON`. An example with mq:
 
-    ```
-    sudo stop ironmq
-    sudo stop ironauth
-    ```
-
-  2. ### Install upgrade
-
-    ```
-    ./iron install
-    ```
-
-  3. ### Start services again
-
-    ```
-    sudo start ironauth
-    sudo start ironmq
-    ```
-
-<h2 id="backups">Backing Up Data</h2>
-
-  ***CAUTION:*** Hot backups during runtime are currently not supported, you must stop the services before backing up.
-
-  1. ### Stop services
-    First stop the service. If using Upstart:
-
-    ```
-    sudo stop ironmq
-    sudo stop ironauth
-    ```
-
-  2. ### Copy data directory
-
-    Make a copy of the data directory to another directory. Data files will be stored at `$HOME/iron/data` by default if you haven't changed the configs.
-
-  3. ### Start services
-    After you've copied the files, you can start the services back up again:
-
-    ```
-    sudo start ironauth
-    sudo start ironmq
-    ```
-
-  4. ### Archive safely.
+```
+$ docker run -d -p 8090:8090 --net=host -e CONFIG_JSON="`cat path/to/mq_config.json`" iron/mq
+```
