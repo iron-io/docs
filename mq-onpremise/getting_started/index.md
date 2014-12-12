@@ -93,7 +93,7 @@ __2)__ create a new project
 $ docker run -it --net=host iron/authcli iron -t NEWTOKEN create project myproject
 ```
 
-__3)__ save your new token and project\_id into an iron.json or environment variables
+__3)__ save your new token and project\_id into an [iron.json file or environment variables.](http://dev.iron.io/mq-onpremise/reference/client_libraries/)
 
 <h3 id="start">Start using MQ</h3>
 
