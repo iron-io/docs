@@ -52,6 +52,16 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
             <td>GET</td>
             <td><a href="#list_code_package_revisions" title="List Code Package Revisions">List Code Package Revisions</a></td>
         </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/pause_task_queue</td>
+            <td>POST</td>
+            <td><a href="#pause_task_queue_for_code_package" title="Pause Task Queue for Code Package">Pause Task Queue for Code Package</a></td>
+        </tr>
+        <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/resume_task_queue</td>
+            <td>POST</td>
+            <td><a href="#resume_task_queue_for_code_package" title="Resume Task Queue for Code Package">Resume Paused Task Queue for Code Package</a></td>
+        </tr>
     </tbody>
 </table>
 
@@ -457,7 +467,7 @@ Sample:
 
 #### URL Parameters
 
-* **Project ID**: The ID of the project that the task belongs to.
+* **Project ID**: The ID of the project that the code package belongs to.
 * **Code Package ID**: The ID of the task you want details on.
 
 #### Optional Query Parameters
@@ -478,7 +488,7 @@ The response will be a zip file containing your code package. The response heade
 
 #### URL Parameters
 
-* **Project ID**: The ID of the project that the task belongs to.
+* **Project ID**: The ID of the project that the code package belongs to.
 * **Code Package ID**: The ID of the code package whose revisions you’re retrieving.
 
 #### Optional Query Parameters
@@ -514,6 +524,56 @@ Sample:
             "file_name": "worker.rb",
         }
     ]
+}
+```
+
+### <a name="pause_task_queue_for_code_package"></a> Pause Task Queue for Code Package
+
+#### Endpoint
+
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>/pause_task_queue
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the code package belongs to.
+* **Code Package ID**: The ID of the code package whose tasks (queued and scheduled) you want to pause.
+
+#### Response
+
+The response will be a JSON object containing a message explaining whether the request was successful or not.
+
+Sample:
+
+```js
+{
+    "msg": "Paused"
+}
+```
+
+### <a name="resume_task_queue_for_code_package"></a> Resume Paused Task Queue for Code Package
+
+#### Endpoint
+
+<div class="grey-box">
+    POST /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>/resume_task_queue
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the code package belongs to.
+* **Code Package ID**: The ID of the code package whose paused tasks (queued and scheduled) you want to resume.
+
+#### Response
+
+The response will be a JSON object containing a message explaining whether the request was successful or not.
+
+Sample:
+
+```js
+{
+    "msg": "Resumed"
 }
 ```
 
