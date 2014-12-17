@@ -19,7 +19,7 @@ Every application in the cloud needs to process workloads on a continuous basis,
         <li><a href="create_a_worker">Upload your first IronWorker</a></li>
         <li><a href="queue_a_task">Start Queueing Tasks on Azure</a></li>
       </ul>
-    <li><a href="reference">Reference</a></li>
+    <li><a href="reference">Additional Reference</a></li>
   </ul>
 </section>
 
@@ -76,9 +76,9 @@ When queueing a task add the cluster param along with your POST request to creat
 }
 ```
 
-<h2 id="reference">Reference</h2>
-IronWorker Client Libraries [http://dev.iron.io/worker/libraries](link)
-API Reference [http://dev.iron.io/worker/reference/api](link)
+<h2 id="reference">Additional Reference</h2>
+- IronWorker Client Libraries [http://dev.iron.io/worker/libraries](link)
+- API Reference [http://dev.iron.io/worker/reference/api](link)
 
 
 
