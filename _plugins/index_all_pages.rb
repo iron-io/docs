@@ -39,7 +39,8 @@ module Jekyll
           entry = SearchEntry.create(item, content_renderer)
           entry.strip_index_suffix_from_url! if @strip_index_html
           entry.strip_stopwords!(stopwords, @min_length) if File.exists?(@stopwords_file)
-
+          puts entry.body.split.slice(0, 60).join(" ")
+          puts "*"
           index << {
             :title => entry.title,
             :url => entry.url,
@@ -47,6 +48,7 @@ module Jekyll
             :date => entry.date,
             :categories => entry.categories,
             :summary => (entry.summary if entry.respond_to?(:summary)),
+            :short => entry.body.split.slice(0, 60).join(" "),
             :body => entry.body
           }
         # puts 'Indexed ' << "#{entry.title} (#{entry.url})"
