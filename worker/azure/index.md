@@ -77,7 +77,12 @@ When queueing a task add the cluster param along with your POST request to creat
 }
 ```
 
-<h2 id="reference">Additional Reference</h2>
+<h2 id="reference">Additional Reference/Notes</h2>
+
+<h3>Regions</h3>
+IronWorker on Azure is currently only available to the "West US  California" Region
+We are open to bringing IronWorker to any region Azure is available in <a href="http://azure.microsoft.com/en-us/regions/">link</a> for more information please email us with the name of your region and more details of your request. <a href="mailto:sales@iron.io?subject=Azure Region Request">Email</a>
+
 - IronWorker Client Libraries [http://dev.iron.io/worker/libraries](link)
 - API Reference [http://dev.iron.io/worker/reference/api](link)
 
