@@ -27,18 +27,25 @@ Every application in the cloud needs to process workloads on a continuous basis,
 If you havent already sign up for a Microsoft Azure Account  <a href="http://azure.microsoft.com/en-us/pricing/free-trial/">link</a><br>
  <i>for a limited time you'll receive a $200 credit with Azure</i>
 <h2 id="azure_portal"> Azure Marketplace</h2>
-Once you've signed in and have access to the Azure Dashboard you can add a new marketplace addon
+Once you've signed in and have access to the Azure Dashboard you can add a new App Service from the Marketplace
 <ol>
-  <li>click on this button <br>
+  <li>click on the 'New' button<br>
    <img src="/images/worker/azure/azure-new-button.jpg" alt="">
-  </li>
-  <li>select the azure marketplace <img width="100%" src="/images/worker/azure/azure-select-marketplace.jpg" alt=""> </li>
-  <li>select the IronWorker from the list <img width="100%" src="/images/worker/azure/azure-select-iron-worker.jpg" alt=""> </li>
-  <li>wait for the addon to install. <img width="100%" src="/images/worker/azure/azure-provisioning-addon.jpg" alt="">
-  <p>if the addon doesn't change after a minute, refresh your browser.</p>
-  </li>
-  <li>Getting Iron Credentials <br>
-  on Azure's Dashboard click on the connection info button <br>
+  </li><br>
+  <li>select Marketplace<br>
+   <img width="100%" src="/images/worker/azure/azure-select-marketplace.jpg" alt="">
+  </li><br>
+  <li>select IronWorker from the list<br>
+   <img width="100%" src="/images/worker/azure/azure-select-iron-worker.jpg" alt="">
+  </li><br>
+  <li>choose a plan and select settings<br>
+   <img width="100%" src="/images/worker/azure/azure-select-plan.jpg" alt="">
+  <li>wait for IronWorker to install<br>
+   <img width="100%" src="/images/worker/azure/azure-provisioning-addon.jpg" alt="">
+   <p>if the status doesn't change after a minute, refresh your browser.</p>
+  </li><br>
+  <li>Getting Iron credentials<br>
+  on Azure's Dashboard click on the connection info button<br>
   <img src="/images/worker/azure/azure-button-connection-info.jpg" alt=""><br>
   <img width="100%" src="/images/worker/azure/azure-iron-credentials.jpg" alt=""><br>
   on Iron.io's Dashboard click on the key button to access your credentials <br>
@@ -47,7 +54,6 @@ Once you've signed in and have access to the Azure Dashboard you can add a new m
 </ol>
 
 <h2 id="upload_a_worker">Upload your first IronWorker</h2>
-We've written a simple tutorial on how to package and upload your first IronWorker. [http://dev.iron.io/4000/worker/](link)
 
 configure your client via our client wrappers[http://dev.iron.io/worker/reference/configuration/](link)
 
