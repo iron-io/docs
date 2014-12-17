@@ -16,15 +16,16 @@ Every application in the cloud needs to process workloads on a continuous basis,
     <li><a href="#getting_started">Getting Started</a></li>
       <ul>
         <li><a href="#azure_portal">Azure Marketplace</a></li>
-        <li><a href="create_a_worker">Upload your first IronWorker</a></li>
-        <li><a href="queue_a_task">Start Queueing Tasks on Azure</a></li>
+        <li><a href="#create_a_worker">Upload your first IronWorker</a></li>
+        <li><a href="#queue_a_task">Start Queueing Tasks on Azure</a></li>
       </ul>
-    <li><a href="reference">Additional Reference</a></li>
+    <li><a href="#reference">Additional Reference</a></li>
   </ul>
 </section>
 
 <h2 id="getting_started">Getting Started</h2>
-If you havent already sign up for a Microsoft Azure Account  [http://azure.microsoft.com/en-us/pricing/free-trial/](link) **for a limited time you'll receive a $200 credit with Azure**
+If you havent already sign up for a Microsoft Azure Account  <a href="http://azure.microsoft.com/en-us/pricing/free-trial/">link</a><br>
+ <i>for a limited time you'll receive a $200 credit with Azure</i>
 <h2 id="azure_portal"> Azure Marketplace</h2>
 Once you've signed in and have access to the Azure Dashboard you can add a new marketplace addon
 <ol>
@@ -41,7 +42,7 @@ Once you've signed in and have access to the Azure Dashboard you can add a new m
   <img src="/images/worker/azure/azure-button-connection-info.jpg" alt=""><br>
   <img width="100%" src="/images/worker/azure/azure-iron-credentials.jpg" alt=""><br>
   on Iron.io's Dashboard click on the key button to access your credentials <br>
-  <img src="/images/worker/azure/azure-iron-hud-credentials" alt=""> <br>
+  <img src="/images/worker/azure/azure-iron-hud-credentials.jpg" alt=""> <br>
   </li>
 </ol>
 
