@@ -32,7 +32,6 @@ This article will get you started writing Python workers, but you should be fami
         <li><a href="#payload_example">Payload Example</a></li>
         <li><a href="#exit_example">Exit Worker expicitly with an exit code</a></li>
         <li><a href="#environment">Environment</a></li>
-
       </ul>
     </li>
   </ul>
@@ -59,7 +58,7 @@ $ gem install iron_worker_ng
 You can download the Python client library, `iron_worker_python`,
 from [Github](https://github.com/iron-io/iron_worker_python)&mdash;note
 that you'll need the [iron_core_python](https://github.com/iron-io/iron_core_python) library installed, too.
-Users of pip or easy_install can simply use `pip install iron_worker` and `easy_install iron_worker`.
+Users of pip or easy_install can simply use `pip install iron-worker` and `easy_install iron-worker`.
 
 <h3 id="create_your_configuration_file">Create Your Configuration File</h3>
 

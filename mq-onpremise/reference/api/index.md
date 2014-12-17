@@ -6,9 +6,35 @@ section: mq-onpremise
 ---
 
 
-## Changes
+## Contents
 
-Changes from v2.0:
+1. [Changes](#changes)
+2. [Global Stuff](#global-stuff)
+3. [Queues](#queues)
+  1. [Create Queue](#create-queue)
+  2. [Get Queue](#get-queue)
+  3. [Update Queue](#update-queue)
+  4. [Delete Queue](#delete-queue)
+  4. [List Queues](#list-queues)
+  5. [Add or Update Subscribers](#add-subscribers)
+  5. [Replace Subscribers](#replace-subscribers)
+  6. [Remove Subscribers](#remove-subscribers)
+4. [Messages](#messages)
+  1. [Post Messages](#post-messages) - Core operation to add messages to a queue
+  2. [Post Messages via Webhook](#post-message-via-webhook)
+  2. [Reserve/Get Messages](#reserve-messages) - Core operation to get message(s) off the queue.
+  2. [Get Message by Id](#get-message-by-id)
+  2. [Peek Messages](#peek-messages) - View first messages in queue without reserving them
+  3. [Delete Message](#delete-message) - Core operation to delete a message after it's been processed
+  3. [Delete Messages](#delete-messages) - Batch delete
+  2. [Release Message](#release-message) - Makes a message available for another process
+  3. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
+  3. [Clear Messages](#clear-messages) - Removes all messages from a queue
+  4. [Get Push Statuses for a Message](#get-push-statuses)
+  
+## <a name="changes"></a> Changes
+
+Changes from v2.0.1:
 
 - Per-message expirations turn into per-queue expirations
 - Timed out and released messages go to the front of the queue. (This
@@ -22,33 +48,8 @@ cause some tests to fail.)
 - Webhook url is no longer /queues/{queue_name}/messages/webhook, it's now /queues/{queue_name}/webhook
 - Pagination principle in List Queues changed. It doesn’t support `page` parameter. You should specify the name of queue prior to the first desirable queue in result.
 
-## Contents
 
-1. [Global Stuff](#global-stuff)
-2. [Queues](#queues)
-  1. [Create Queue](#create-queue)
-  2. [Get Queue](#get-queue)
-  3. [Update Queue](#update-queue)
-  4. [Delete Queue](#delete-queue)
-  4. [List Queues](#list-queues)
-  5. [Add Subscriber](#add-subscriber)
-  6. [Remove Subscriber](#remove-subscriber)
-  5. [Add Alert](#add-alert)
-  6. [Remove Alert](#remove-alert)
-1. [Messages](#messages)
-  1. [Post Message](#post-messages) - Core operation to add messages to a queue
-  2. [Post Message via Webhook](#post-message-via-webhook)
-  2. [Reserve/Get Messages](#reserve-messages) - Core operation to get message(s) off the queue.
-  2. [Get Message by Id](#get-message-by-id)
-  2. [Peek Messages](#peek-messages) - View first messages in queue without reserving them
-  3. [Delete Message](#delete-message) - Core operation to delete a message after it's been processed
-  3. [Delete Messages](#delete-messages) - Batch delete
-  2. [Release Message](#release-message) - Makes a message available for another process
-  3. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
-  3. [Clear Messages](#clear-messages) - Removes all messages from a queue
-
-
-## Global Stuff
+## <a name="global-stuff"></a> Global Stuff
 
 Base path: `/3/projects/{project_id}`
 
@@ -64,9 +65,9 @@ Headers:
 
 - Authorization: OAuth TOKEN
 
-## Queues
+## <a name="queues"></a> Queues
 
-### Create Queue
+### <a name="create-queue"></a> Create Queue
 
 PUT `/queues/{queue_name}`
 
@@ -78,7 +79,7 @@ All fields are optional.
 
 If `push` field is defined, this queue will be created as a push queue and must contain at least one subscriber. Everything else in the push map is optional.
 
-A `push` queue cannot have alerts.
+<!--A `push` queue cannot have alerts.-->
 
 
 ```json
@@ -90,6 +91,7 @@ A `push` queue cannot have alerts.
     "push": {
       "subscribers": [
         {
+          "name": "subscriber_name",
           "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
           "headers": {"Content-Type": "application/json"}
         }
@@ -97,8 +99,13 @@ A `push` queue cannot have alerts.
       "retries": 3,
       "retries_delay": 60,
       "error_queue": "error_queue_name"
-    }
-    "alerts": [
+    }]
+  }
+}
+```
+
+<!--
+"alerts": [
       {
        "type": "fixed",
        "trigger": 100,
@@ -106,16 +113,14 @@ A `push` queue cannot have alerts.
        "queue": "target_queue_name",
        "snooze": 60
       }
-    ]
-  }
-}
-```
+      -->
+
 
 Response: 201 Created
 
 SAME AS GET QUEUE INFO
 
-### Get Queue Info
+### <a name="get-queue"></a> Get Queue Info
 
 GET `/queues/{queue_name}`
 
@@ -137,6 +142,7 @@ there are no alerts.
     "push": {
       "subscribers": [
         {
+          "name": "subscriber_name",
           "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
           "headers": {"Content-Type": "application/json"}
         }
@@ -144,7 +150,12 @@ there are no alerts.
       "retries": 3,
       "retries_delay": 60,
       "error_queue": "error_queue_name"
-    },
+    }]
+  }
+}
+```
+
+<!--,
     "alerts": [
       {
         "type": "fixed",
@@ -153,19 +164,18 @@ there are no alerts.
         "queue": "target_queue_name",
         "snooze": 60
       }
-    ]
-  }
-}
-```
+-->
 
 
-### Update Queue
+### <a name="update-queue"></a> Update Queue
 
 PATCH `/queues/{queue_name}`
 
 Request:
 
-SAME AS CREATE QUEUE
+SAME AS CREATE QUEUE, except queue type, which is static.
+
+**Note:** API raises error when you try to set subscribers to pull type queue or alerts on push queue.
 
 Response: 200 or 404
 
@@ -174,7 +184,7 @@ there are no alerts.
 
 SAME AS GET QUEUE INFO
 
-### Delete Queue
+### <a name="delete-queue"></a> Delete Queue
 
 DELETE `/queues/{queue_id}`
 
@@ -186,7 +196,7 @@ Response: 200 or 404
 }
 ```
 
-### List Queues
+### <a name="list-queues"></a> List Queues
 
 GET `/queues`
 
@@ -210,9 +220,101 @@ Response: 200 or 404
 }
 ```
 
-## Messages
 
-### Post Messages
+### <a name="add-subscribers"></a> Add or Update Subscribers to a Queue
+
+POST `/queues/{queue_name}/subscribers`
+
+Add subscribers (HTTP endpoints) to a queue.
+In the case subscriber with given name exists, it will be updated.
+
+Request:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "first",
+      "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
+      "name": "other",
+      "url": "http://this.host.is/not/exist"
+    }
+  ]
+}
+```
+
+Response:
+
+```js
+{
+  "msg": "Updated"
+}
+```
+
+
+### <a name="replace-subscribers"></a> Replace Subscribers on a Queue
+
+PUT `/queues/{queue_name}/subscribers`
+
+Sets list of subscribers to a queue. Older subscribers will be removed.
+
+Request:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "the_only",
+      "url": "http://my.over9k.host.com/push"
+    }
+  ]
+}
+```
+
+Response:
+
+```js
+{
+  "msg": "Updated"
+}
+```
+
+
+### <a name="remove-subscribers"></a> Remove Subscribers from a Queue
+
+DELETE `/queues/{Queue Name}/subscribers`
+
+Remove subscriber from a queue. This is for Push Queues only.
+
+Request:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "other"
+    }
+  ]
+}
+```
+
+Response:
+
+```js
+{
+  "msg": "Updated"
+}
+```
+
+
+## <a name="messages"></a> Messages
+
+### <a name="post-messages"></a> Post Messages
 
 POST `/queues/{queue_name}/messages`
 
@@ -242,8 +344,26 @@ Returns a list of message ids in the same order as they were sent in.
 }
 ```
 
+### <a name="post-message-via-webhook"></a> Post Messages via Webhook
 
-### Reserve Messages
+By adding the queue URL below to a third party service that supports webhooks, every webhook event that the third party posts
+will be added to your queue. The request body as is will be used as the "body" parameter in normal POST to queue above.
+
+### Endpoint
+
+<div class="grey-box">
+POST /queues/<span class="variable queue_name">{Queue Name}</span>/webhook
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The project these messages belong to.
+* **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
+
+
+
+
+### <a name="reserve-messages"></a> Reserve Messages
 
 POST `/queues/{queue_name}/reservations`
 
@@ -282,7 +402,7 @@ Response: 200
 
 Will return an empty array if no messages are available in queue.
 
-### Get Message by Id
+### <a name="get-message-by-id"></a> Get Message by Id
 
 GET `/queues/{queue_name}/messages/{message_id}`
 
@@ -301,7 +421,7 @@ TODO push queue info ?
 }
 ```
 
-### Peek Messages
+### <a name="peek-messages"></a> Peek Messages
 
 GET `/queues/{queue_name}/messages`
 
@@ -326,7 +446,7 @@ there are no alerts.
 }
 ```
 
-### Delete Message
+### <a name="delete-message"></a> Delete Message
 
 DELETE `/queues/{queue_name}/messages/{message_id}`
 
@@ -350,7 +470,7 @@ Response: 200 or 404
 }
 ```
 
-### Delete Messages
+### <a name="delete-messages"></a> Delete Messages
 
 DELETE `/queues/{queue_name}/messages`
 
@@ -379,7 +499,7 @@ Response: 200 or 404
 }
 ```
 
-### Touch Message
+### <a name="touch-message"></a> Touch Message
 
 POST `/queues/{queue_name}/messages/{message_id}/touch`
 
@@ -400,7 +520,7 @@ Response: 200 or 404
 ```
 
 
-### Release Message
+### <a name="release-message"></a> Release Message
 
 POST `/queues/{queue_name}/messages/{message_id}/release`
 
@@ -422,7 +542,7 @@ Response: 200 or 404
 ```
 
 
-### Clear Messages
+### <a name="clear-messages"></a> Clear Messages
 
 DELETE `/queues/{queue_name}/messages`
 
@@ -440,5 +560,38 @@ Response: 200 or 404
 ```json
 {
   "msg": "Cleared"
+}
+```
+
+
+### <a name="get-push-statuses"></a> Get Push Statuses for a Message
+
+GET `/queues/{queue_name}/messages/{message_id}/subscribers`
+
+You can retrieve the push statuses for a particular message which will let you know which subscribers have received the
+message, which have failed, how many times it's tried to be delivered and the status code returned from the endpoint.
+
+Response:
+
+```js
+{
+  "subscribers": [
+    {
+      "name": "first"
+      "retries_remaining": 2,
+      "retries_total": 6,
+      "status_code": 200,
+      "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+      "last_try_at": "2014-07-30T15:45:03Z"
+    },
+    {
+      "name": "other"
+      "retries_remaining": 2,
+      "retries_total": 6,
+      "status_code": 200,
+      "url": "http://this.host.is/not/exist",
+      "last_try_at": "2014-07-30T15:44:29Z"
+    }
+  ]
 }
 ```

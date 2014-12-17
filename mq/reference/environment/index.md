@@ -14,7 +14,7 @@ breadcrumbs:
     <li><a href="#message_constraints">Message Constraints</a></li>
     <li><a href="#queue_attributes">Queue Attributes</a></li>
     <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
-  </ul>  
+  </ul>
 </section>
 
 <h2 id="message_structure">Message Structure</h2>
@@ -35,7 +35,7 @@ The message structure is flexible and straight-forward. Messages can be variable
 
 
 <h2 id="message_constraints">Message Constraints</h2>
-The basic message handling operation is put-get-delete. Messages are put on the queue by senders. The messages can have **delays** associated with them. If included, the message is not made available on the queue until the delay is up (default is 0 or no delay). 
+The basic message handling operation is put-get-delete. Messages are put on the queue by senders. The messages can have **delays** associated with them. If included, the message is not made available on the queue until the delay is up (default is 0 or no delay).
 
 Receivers get one or more messages (up to 100). Once the receive is done processing a message, it deletes it. If a message is not deleted prior to the **timeout** (default 60 sec), it is put back on the queue. Messages on the queue will **expire** after a certain amount of time (default is 7 days).
 
@@ -44,7 +44,7 @@ Receivers get one or more messages (up to 100). Once the receive is done process
     <tr><th style="width: 16%;">Message Var</th><th style="width: 15%;">Default</th><th style="width: 15%;">Maximum</th><th style="width: 54%;">Notes</th></tr>
   </thead>
   <tbody>
-    <tr><td>Message Size</td><td>--</td><td>64KB</td><td>Includes the entire request (delay, timeout, expiration).</td></tr>
+    <tr><td>Message Size</td><td>dependent on plan</td><td>64KB, 256KB</td><td>Includes the entire request (delay, timeout, expiration). Limit will vary depending on current plan. Please view plan comparision page <a href="http://www.iron.io/pricing">here</a>. If message size limits higher than 256KB are needed, please contact <a href="mailto:support@iron.io">support@iron.io</a>.</td></tr>
     <tr><td>Delay</td><td>0sec</td><td>604,800sec</td><td>Message is made available on queue after the delay expires.</td></tr>
     <tr><td>Timeout</td><td>60sec</td><td>86,400sec</td><td>Message goes back on queue after timeout unless deleted.</td></tr>
     <tr><td>Expiration</td><td>604,800sec</td><td>2,592,000sec</td><td>Equates to 7 days and 30 days, respectively.</td></tr>
@@ -85,7 +85,7 @@ To get the information about a queue, use the [Info API call](/mq/reference/api/
     <tr><td><code>retries</code></td><td>Maximum number of times messages will be sent to each HTTP endpoint. Messages will not be resent after a call receives an HTTP response with a status code of 200. Default is 3 seconds. Maximum is 100 seconds.</td></tr>
     <tr><td><code>retries_delay</code></td><td>Delay between retries in seconds. Default is 60 seconds. Minimum is 3 and maximum is 86400 seconds.</td></tr>
     <tr><td><code>subscribers</code></td><td>List of subscribers, format is <code>[{url: "http://..."}, ...]</code>.</td></tr>
-    <tr><td><code>error_queue (Beta)</code></td>
+    <tr><td><code>error_queue</code></td>
     <td>Enable error queue <code>{"error_queue": "ERROR_QUEUE_NAME"}</code>.
     </br>
     Empty string defaults to disabled <code>{"error_queue": ""}</code>
@@ -97,7 +97,7 @@ To get the information about a queue, use the [Info API call](/mq/reference/api/
 
 <h2 id="security_groups_and_ip_ranges">Security Groups and IP Ranges</h2>
 
-IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
+Iron.io provides an AWS security group for IronMQ, generally used in the case of push queues, In the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
 
 <table>
 <thead>
@@ -107,7 +107,7 @@ IronWorker provides an AWS security group and [IP ranges](https://forums.aws.ama
 </thead>
 <tbody>
 <tr>
-<td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td>
+<td>simple_deployer_web</td><td>7227-1646-5567</td><td>722716465567/simple_deployer_web</td>
 </tr>
 </tbody>
 </table>

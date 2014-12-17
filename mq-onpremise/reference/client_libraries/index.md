@@ -11,8 +11,10 @@ These are our official client libraries for IronMQ Enterprise <a href="/mq/refer
 <div>
 <ul class="libs" style="min-height: 100px;">
   <li><a href="https://github.com/iron-io/iron_go3" target="_blank" data-lang="go">Go</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_ruby/tree/v3" target="_blank" data-lang="ruby">Ruby</a></li>
   <li><a href="https://github.com/iron-io/iron_dotnet/tree/v3" target="_blank" data-lang="dotnet">.Net</a></li>
-  <li><a href="https://github.com/iron-io/iron_mq_java" target="_blank" data-lang="java">Java</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_java/tree/v3" target="_blank" data-lang="java">Java</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_php/tree/v3" target="_blank" data-lang="php">PHP</a></li>
 </ul>
 </div>
 
