@@ -79,9 +79,18 @@ When queueing a task add the cluster param along with your POST request to creat
 
 <h2 id="reference">Additional Reference/Notes</h2>
 
+<h3>Resource Limitations</h3>
+Azure Workers follow all our resource guidelines for standard workers
+environments docs [http://dev.iron.io/worker/reference/environment/](link)
+
+<h3>Custom Resource Configuration</h3>
+If your worker needs custom requirements such as ram, static IPs, and CPU resources please please email us  with  details of your specific needs. <a href="mailto:sales@iron.io?subject=Azure Custom Worker Request">Email</a>
+
 <h3>Regions</h3>
 IronWorker on Azure is currently only available to the "West US  California" Region
 We are open to bringing IronWorker to any region Azure is available in <a href="http://azure.microsoft.com/en-us/regions/">link</a> for more information please email us with the name of your region and more details of your request. <a href="mailto:sales@iron.io?subject=Azure Region Request">Email</a>
+
+
 
 - IronWorker Client Libraries [http://dev.iron.io/worker/libraries](link)
 - API Reference [http://dev.iron.io/worker/reference/api](link)
