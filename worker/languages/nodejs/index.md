@@ -54,7 +54,7 @@ nature of workers, making it a natural fit for IronWorker. This article will wal
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service
 that makes working with the service a lot easier and more convenient.
 It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem.
-Once Ruby 1.9+ is installed, you can just the following command to get the gem:
+Once Ruby 1.9+ is installed, you can just run the following command to get the gem:
 
 <figcaption><span>Command Line </span></figcaption>
 
@@ -109,7 +109,7 @@ runtime "node"
 exec "hello_worker.js" # replace with your file
 ```
 
-_To change your worker's version, you may place `stack "node-0.10"` (e.x.) in your .worker file, for more see [.worker syntax](/worker/reference/dotworker/#syntax_reference)._ 
+_To change your worker's version, you may place `stack "node-0.10"` (e.x.) in your .worker file, for more see [.worker syntax](/worker/reference/dotworker/#syntax_reference)._
 
 <h3 id="upload_your_worker">Upload Your Worker</h3>
 
@@ -203,7 +203,7 @@ statusCode:  200
 ```
 
 
-**Note**: Please make sure to check out our official [node client library](/worker/libraries) 
+**Note**: Please make sure to check out our official [node client library](/worker/libraries)
 
 
 <h2 id="deep_dive">Deep Dive</h2>
