@@ -47,7 +47,7 @@ Java workers need to be compiled into jar files before they're uploaded. Once th
 We've created a [command line interface](/worker/reference/cli) to the IronWorker service
 that makes working with the service a lot easier and more convenient.
 It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem.
-Once Ruby 1.9+ is installed, you can just the following command to get the gem:
+Once Ruby 1.9+ is installed, you can just run the following command to get the gem:
 
 <figcaption><span>Command Line </span></figcaption>
 
