@@ -3,6 +3,7 @@ domain: "dev.iron.io"
 google_cse_id: 012672112220120861281:u1mwwky5lri
 pygments: true
 markdown: redcarpet
+gems: ['jekyll-lunr-js-search']
 
 exclude: ['partner_docs']
 
