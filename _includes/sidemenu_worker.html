@@ -1,22 +1,27 @@
-<h4><a {%if page.url == "/worker/index.html" %}class="selected" {% endif %}href="/worker">Overview</a></h4>
-
-<h4>Reference</h4>
+<h4>Getting Started</h4>
 <ul>
-  <li><a {% if page.url == "/worker/reference/api/index.html" %}class="selected"{% endif %} href="/worker/reference/api">REST/HTTP API</a></li>
+  <li><a {% if page.url == "/worker/getting_started/index.html" %}class="selected"{% endif %} href="/worker/getting_started">Quick Start</a></li>
+  <li><a {% if page.url == "/worker/reference/cli/index.html" %}class="selected" {% endif %} href="/worker/reference/cli" title="Command Line Interface">IronWorker CLI Tool</a></li>
+  <li><a {% if page.url == "/worker/reference/api/index.html" %}class="selected"{% endif %} href="/worker/reference/api">REST API Reference
+  </a></li>
   <li><a {% if page.url == "/worker/libraries/index.html" %}class="selected"{% endif %} href="/worker/libraries">Client Libraries</a></li>
   <li><a {% if page.url == "/worker/reference/configuration/index.html" %}class="selected"{% endif %} href="/worker/reference/configuration">Client Configuration</a></li>
+  </ul>
+
+<h4>Advanced Resources</h4>
+<ul>
   <li><a {% if page.url == "/worker/reference/environment/index.html" %}class="selected"{% endif %} href="/worker/reference/environment">System Environment</a></li>
   <li><a {% if page.url == "/worker/reference/dotworker/index.html" %}class="selected"{% endif %} href="/worker/reference/dotworker">The .worker File</a></li>
-  <li><a {% if page.url == "/worker/reference/cli/index.html" %}class="selected" {% endif %} href="/worker/reference/cli" title="Command Line Interface">IronWorker CLI</a></li>
   <li><a {% if page.url == "/worker/reference/configuration-variables/index.html" %}class="selected"{% endif %} href="/worker/reference/configuration-variables">Configuration Variables</a></li>
   <li><a {% if page.url == "/worker/reference/payload/index.html" %}class="selected" {% endif %}href="/worker/reference/payload" title="Payload">Payload Retrieval</a></li>
-  <li><a {% if page.url == "/worker/reference/security/index.html" %}class="selected" {% endif %}href="/worker/reference/security" title="Security">Securing your Workers</a></li>
+  <li><a {% if page.url == "/worker/reference/security/index.html" %}class="selected" {% endif %}href="/worker/reference/security" title="Security">IronWorker Security</a></li>
   <li><a {% if page.url == "/worker/scheduling/index.html" %}class="selected" {% endif %}href="/worker/scheduling" title="Scheduling">Scheduling</a></li>
   <li><a href="/worker/reference/environment#local_disk_space_per_worker" title="Local Disk">Local Disk</a></li>
   <li><a href="/worker#inspect" title="Logging">Logging</a></li>
   <li><a {% if page.url == "/worker/webhooks/index.html" %}class="selected" {% endif %}href="/worker/webhooks" title="Webhooks">Webhooks</a></li>
   <li><a {% if page.url == "/worker/builds/index.html" %}class="selected" {% endif %}href="/worker/reference/builds" title="Builds">Local/Remote Builds</a></li>
 </ul>
+
 <h4>Deployments</h4>
 <ul>
   <li><a {% if page.url == "/worker/azure/index.html" %}class="selected" {% endif %}href="/worker/azure" title="azure">Microsoft Azure</a></li>
