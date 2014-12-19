@@ -127,7 +127,7 @@ Download iron_cache.phar from from [Github](https://github.com/iron-io/iron_cach
     $cache->delete("mykey");
 
     # Increment an item in the cache
-    $cache->increment("mykey", 1);    
+    $cache->increment("mykey", 1);
 
 
 ## Next Steps
@@ -137,5 +137,5 @@ You can find full documentation at the [Iron.io Dev Center](http://dev.iron.io/c
 ## Support
 
 Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the
-[Iron.io support chat room](http://get.iron.io/chat) and chat with Iron.io staff about issues. You can also find more
+[Iron.io support chat room](http://hud.iron.io/users/support) and chat with Iron.io staff about issues. You can also find more
 resources at the [Iron.io Dev Center](http://dev.iron.io).

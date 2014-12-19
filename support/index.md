@@ -8,7 +8,7 @@ Iron.io has three support channels:
 
 ## 1. Real-time Live Chat
 
-Drop into our chat room to get help directly from our engineers: [http://get.iron.io/chat](http://get.iron.io/chat)
+Drop into our chat room to get help directly from our engineers: [http://hud.iron.io/users/support](http://hud.iron.io/users/support)
 
 ## 2. Public Forums
 

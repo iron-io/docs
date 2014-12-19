@@ -56,20 +56,20 @@ Once you have the jar file added as a dependency, you have a simple wrapper that
     :::java
     // Get your Iron.io credentials from the environment
     Map<String, String> env = System.getenv();
-    
+
     // Create a Client object
     Client client = new Client(env.get("IRON_MQ_PROJECT_ID"), env.get("IRON_MQ_TOKEN"), Cloud.IronAWSUSEast);
-    
+
     // Get a queue (if it doesn't exist, it will be created when you first post a message)
     Queue queue = client.queue("my_queue");
-    
+
     // Post a message
     queue.Push("hello world!");
-    
+
     // Get a message
     Message msg = queue.get();
     System.out.println(msg.getBody());
-    
+
     // Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
     queue.deleteMessage(msg);
 
@@ -95,7 +95,7 @@ Once the package is installed, you have a simple wrapper that allows you to inte
 
     # Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
     queue.delete(msg["messages"][0]["id"])
-    
+
 
 ## Clojure
 
@@ -108,16 +108,16 @@ Use these to create a client that allows you to interact with your queues:
 
     :::clojure
     (require '[iron-mq-clojure.client :as mq])
-    
+
     (def client (mq/create-client (System/getenv "IRON_MQ_TOKEN") (System/getenv "IRON_MQ_PROJECT_ID")))
-    
+
     ; Post a message
     (mq/post-message client "my_queue" "Hello world!")
-    
+
     ; Get a message
     (let [msg (mq/get-message client "my_queue")]
       (println (get msg "body"))
-      
+
       ; Delete a message (you must delete a message when you're done with it or it will go back on the queue after a timeout)
       (mq/delete-message client "my_queue" msg))
 
@@ -129,15 +129,15 @@ Once that's done, you can require it to get a simple wrapper for the API:
 
 	:::javascript
 	var iron_mq = require("iron_mq");
-	
+
 	var client = new iron_mq.Client({"queue_name": "my_queue"});
-	
+
 	// Post a message
 	client.post("test message", function(error, body) {
 	  console.log(body);
 	  console.log(error);
 	});
-	
+
 	// Get a message
 	client.get({}, function(error, body) {
 	  console.log(error);
@@ -160,5 +160,5 @@ at [https://github.com/iron-io/heroku_sinatra_example](https://github.com/iron-i
 ## Support
 
 Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the
-[Iron.io support chat room](http://get.iron.io/chat) and chat with Iron.io staff about issues. You can also find more
+[Iron.io support chat room](http://hud.iron.io/users/support) and chat with Iron.io staff about issues. You can also find more
 resources at the [Iron.io Dev Center](http://dev.iron.io).
