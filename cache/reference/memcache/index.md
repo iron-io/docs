@@ -1,5 +1,5 @@
 ---
-title: Memcache Interface
+title: IronCache: Memcache Interface
 layout: default
 section: cache
 breadcrumbs:
@@ -7,8 +7,8 @@ breadcrumbs:
   - ['Memcache', '/memcache']
 ---
 
-As an industry standard, memcached has accumulated an 
-extensive list of supported languages, so it's extremely likely your 
+As an industry standard, memcached has accumulated an
+extensive list of supported languages, so it's extremely likely your
 language of choice is supported.
 
 <div class="alert">
@@ -36,12 +36,12 @@ your credentials during transport.
         <li><a href="#run_the_example">Run the Example</a></li>
       </ul>
     </li>
-  </ul>  
+  </ul>
 </section>
 
 <h2 id="memcache_libraries"> Memcache Libraries </h2>
 
-Here's a sample list of languages available (with multiple clients libs to 
+Here's a sample list of languages available (with multiple clients libs to
 choose from for many languages):
 
 <table style="border: 0px; width: 100%;">
@@ -83,7 +83,7 @@ choose from for many languages):
 </td></tr>
 </table>
 
-You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients) 
+You can use any of the [memcached clients](http://code.google.com/p/memcached/wiki/Clients)
 with IronCache.
 
 <h2 id="host_information"> Host Information </h2>
@@ -105,22 +105,22 @@ To connect to IronCache using memcached, use the host below:
 </table>
 
 <h2 id="authentication">Authentication</h2>
-Because IronCache requires authentication, clients must set a pseudo-item as 
+Because IronCache requires authentication, clients must set a pseudo-item as
 soon as they connect. Set the "oauth" key to the following:
 
 <div class="grey-box"><span class="variable token">{TOKEN}</span> <span class="variable project_id">{PROJECT_ID}</span> <span class="variable cache_name">{CACHE_NAME}</span></div>
 
-This **will not** be stored in your cache. Subsequent attempts to set the value 
+This **will not** be stored in your cache. Subsequent attempts to set the value
 of the "oauth" key, however, will be stored in the cache.
 
 <h2 id="example">Example</h2>
 
-The following example should help you get up and running using IronCache 
+The following example should help you get up and running using IronCache
 with memcached quickly:
 
 <h2 id="install_the_library">Install the Library</h2>
 
-The sample uses the memcache-client gem; you'll need to install it 
+The sample uses the memcache-client gem; you'll need to install it
 before you can use the sample.
 
 **Note:** The popular Dalli client **will not** work, as it requires support for the binary memcached protocol, which IronCache does not support at this time.
@@ -135,7 +135,7 @@ $ gem install memcache-client
 
 <!-- Python
 
-The sample uses the python-memcached client; you'll need to install it 
+The sample uses the python-memcached client; you'll need to install it
 before you can use the sample.
 
 To install python-memcached, just run the following from your command line:

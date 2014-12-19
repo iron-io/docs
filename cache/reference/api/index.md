@@ -1,5 +1,5 @@
 ---
-title: IronCache REST/HTTP API
+title: IronCache API Reference
 layout: default
 section: cache
 breadcrumbs:
