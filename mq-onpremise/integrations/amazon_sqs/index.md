@@ -1,5 +1,5 @@
 ---
-title: IronMQ On-Premise Installation
+title: IronMQ On-Premise SQS Instructions
 summary: "We allow our customers to make seamless transitions to IronMQ by allowing them to utilitze the power of IronMQ without having to write a line of extra code"
 layout: default
 section: mq-onpremise

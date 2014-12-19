@@ -1,5 +1,5 @@
 ---
-title: IronMQ Environment
+title: IronMQ Environment : Message and Queue Attributes
 layout: default
 section: mq
 breadcrumbs:

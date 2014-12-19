@@ -1,5 +1,5 @@
 ---
-title: The IronWorker's Payload
+title: Sending and Accessing a Payload to IronWorker
 layout: default
 section: worker
 breadcrumbs:

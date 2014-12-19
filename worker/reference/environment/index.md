@@ -1,5 +1,5 @@
 ---
-title: IronWorker Environment
+title: IronWorker Environment & Stack Information
 layout: default
 section: worker
 breadcrumbs:

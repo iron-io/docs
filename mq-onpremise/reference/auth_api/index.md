@@ -1,5 +1,5 @@
 ---
-title: IronAuth API
+title: IronAuth API Reference
 summary: "IronAuth API used to authenticate users that hit the IronMQ API."
 layout: default
 section: mq-onpremise
@@ -136,7 +136,7 @@ GET `/1/users`
 
  * **previous**: to paginate, the id of the last user from the last page; if not specified, will start from beginning.
  * **per_page**: size of the list to return. Default: 30, max: 100.
-  
+
 
 ```js
 response: {

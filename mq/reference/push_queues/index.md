@@ -1,5 +1,5 @@
 ---
-title: IronMQ Push Queues
+title: IronMQ Push Queues Reference
 layout: default
 section: mq
 breadcrumbs:

@@ -1,5 +1,5 @@
 ---
-title: Beanstalk Interface
+title: Beanstalk Reference Guide
 layout: default
 section: mq
 breadcrumbs:
@@ -7,7 +7,7 @@ breadcrumbs:
   - ['Beanstalk Interface', '/beanstalk']
 ---
 
-You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice. 
+You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wiki/client-libraries) with IronMQ. The list of supported languages is extensive and so there is sure to one for your language of choice.
 
 <section id="toc">
   <h3>Table of Contents</h3>
@@ -17,7 +17,7 @@ You can use any of the [Beanstalkd clients](https://github.com/kr/beanstalkd/wik
     <li><a href="#authentication">Authentication</a></li>
     <li><a href="#tubes_vs_queues">Tubes vs Queues</a></li>
     <li><a href="#notes">Notes</a></li>
-  </ul>  
+  </ul>
 </section>
 
 <h2 id="beanstalk_libraries">Beanstalk Libraries</h2>
@@ -69,10 +69,10 @@ Check out list of client libraries [on GitHub](https://github.com/kr/beanstalkd/
 
 <h2 id="host_information">Host Information</h2>
 
-To connect to IronMQ using Beanstalkd, use one of the [hosts on our Clouds page](/mq/reference/clouds). 
+To connect to IronMQ using Beanstalkd, use one of the [hosts on our Clouds page](/mq/reference/clouds).
 
-**NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our 
-[HTTP clients](/mq/libraries) if you are on Rackspace. 
+**NOTE**: Beanstalkd is currently not supported on Rackspace. Please use one of our
+[HTTP clients](/mq/libraries) if you are on Rackspace.
 
 <h2 id="authentication">Authentication</h2>
 Because IronMQ requires authentication, the first command you send must put a message onto the queue with the contents:

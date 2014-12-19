@@ -126,6 +126,6 @@ When trying to troubleshoot a worker, the best first step is to try and run the 
 The most common source of worker errors is a mismatch between your local environment and the cloud's environment. Double-check your `Gemfile` and your Ruby version -- workers run under Ruby >1.9. Also, make sure your `Gemfile.lock` has been updated. Run `bundle install` to make sure.
 
 Issues should get logged with [Heroku Support](https://support.heroku.com).
-You're also welcome to stop by the Iron.io [support chat room](http://get.iron.io/chat) and chat with
+You're also welcome to stop by the Iron.io [support chat room](http://hud.iron.io/users/support) and chat with
 Iron's staff about issues. You can also find more resources and documentation on the
 Iron.io [Dev Center](http://dev.iron.io).

@@ -1,5 +1,5 @@
 ---
-title: Securing Your Workers
+title: IronWorker Security
 layout: default
 section: worker
 breadcrumbs:
@@ -92,4 +92,4 @@ Do not log sensitive data. This includes sending information to STDOUT, as STDOU
 
 We've taken measures to ensure the security of your data in our systems, and we're working hard to educate customers on how to make the most of that security. Our mission is to take the stress out of managing cloud infrastructure, and that includes concerns about security and compromised data.
 
-If you have any questions, please do not hesitate to get in touch with us. We **encourage the dialogue** and want to do everything we can to ensure the safety of your data. Enter a [support ticket](http://support.iron.io/customer/portal/emails/new) or join the [public support chat room](http://get.iron.io/chat). It's staffed almost constantly, around the clock, and we'd be happy to answer questions or provide advice on a case-by-case basis.
+If you have any questions, please do not hesitate to get in touch with us. We **encourage the dialogue** and want to do everything we can to ensure the safety of your data. Enter a [support ticket](http://support.iron.io/customer/portal/emails/new) or join the [public support chat room](http://hud.iron.io/users/support). It's staffed almost constantly, around the clock, and we'd be happy to answer questions or provide advice on a case-by-case basis.

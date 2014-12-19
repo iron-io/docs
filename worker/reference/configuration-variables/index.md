@@ -1,5 +1,5 @@
 ---
-title: IronWorker Configuration Variables
+title: Using Configuration Variables with IronWorker
 section: worker
 breadcrumbs:
   - ['Reference', '/reference']

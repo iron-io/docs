@@ -1,5 +1,5 @@
 ---
-title: Writing Workers in Go
+title: IronWorkers in Go
 layout: default
 section: worker
 breadcrumbs:

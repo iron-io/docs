@@ -1,473 +1,61 @@
 ---
-title: IronMQ Documentation
-summary: "Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages."
+title: IronMQ Reference
 layout: default
 section: mq
-languages:
-  - name: curl
-    slug: curl
-    default: true
-  - name: Ruby
-    slug: ruby
-  - name: PHP
-    slug: php
-  - name: Python
-    slug: python
-  - name: "Node.js"
-    slug: nodejs
-  - name: Go
-    slug: go
-  - name: Java
-    slug: java
-  - name: Clojure
-    slug: clojure
-  - name: ".NET"
-    slug: dotnet
+breadcrumbs:
+  - ['Reference', '/reference']
 ---
 
-<div class="flow-steps">
-    <div class="step">
-        <a class="number" href="#configure">1</a>
-        <a class="title" href="#configure">Configure Your Client</a>
-    </div>
-        <i class="icon-long-arrow-right icon-2x"></i>
-    
-
-    <div class="step">
-        <a class="number" href="#post">2</a>
-        <a class="title" href="#post">Post a Message to the Queue</a>
-    </div>
-        <i class="icon-long-arrow-right icon-2x"></i>
-
-    <div class="step">
-        <a class="number" href="#get">3</a>
-        <a class="title" href="#get">Get a Message off the Queue</a>
-    </div>
-        <i class="icon-long-arrow-right icon-2x"></i>
-
-    <div class="step">
-        <a class="number" href="#delete">4</a>
-        <a class="title" href="#delete">Delete a Message from the Queue</a>
-    </div>
-</div>
-
-<h2>The Post/Get/Delete Paradigm</h2>
-
-<p>IronMQ was designed to be fault-tolerant while still maintaining an only-delivered-once promise. It accomplishes this through a special Post/Get/Delete paradigm for messages. Essentially, messages are posted to a queue. Clients then get the messages off the queue; each get "reserves" the message for a configurable amount of time&mdash;<a href="/mq/reference/environment">the default is one minute</a>&mdash;after which the message is returned to the queue. While the client has the message reserved, it should complete its operation, then delete the message from the queue. This paradigm ensures that failures while processing a message simply return the message to the queue to be reprocessed and that only one client will ever be processing a message at any given point. Assuming the client deletes the message (as it should), the message will only ever be processed once.</p>
-
-<h2 id="configure">1. Get a project ID and auth token</h2>
-
-<p>You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a> by clicking on a project then clicking the little key icon.
-</p>
-
-<h2 id="post">2. Post a Message to a Queue</h2>
-
-<p>All the Iron.io APIs are REST-based with JSON bodies and use OAuth2 for authentication. Here's an example HTTP request for posting to a queue:</p>
-
-<div class="grey-box">
-POST https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_queue/messages
-</div>
-
-<h3>Request</h3>
-
-<h4>Headers</h4>
-
-<ul>
-    <li>Authorization: OAuth {TOKEN}</li>
-    <li>Content-Type: application/json</li>
-</ul>
-
-<h4>Body</h4>
-{%  highlight js%}
-{"messages":[{"body":"hello world!"}]}
-{% endhighlight %}
-
-<h3>Response</h3>
-
-{%  highlight js%}
-{"ids":["5824513078343549739"],"msg":"Messages put on queue."}
-{% endhighlight %}
-
-<div class="language curl"><h3>Curl Example</h3>
-	
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X POST -d '{"messages":[{"body":"hello world!"}]}' "https://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
-{% endhighlight %}</div>
-
-<div class="language ruby"><h3>Ruby Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("test_queue")
-@queue.post("hello world!")
-{% endhighlight %}</div>
-
-<div class="language php"><h3>PHP Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight php %}
-<?php
-$ironmq = new IronMQ();
-$ironmq->postMessage("test_queue", "Hello world!");
-{% endhighlight %}</div>
-
-<div class="language python"><h3>Python Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight python %}
-ironmq = IronMQ()
-queue = ironmq.queue("test_queue")
-queue.post("hello world!")
-{% endhighlight %}</div>
-
-<div class="language nodejs"><h3>Node.js Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight js %}
-var iron_mq = require('iron_mq');
-var imq = new iron_mq.Client();
-
-var queue = imq.queue("test_queue");
-
-queue.post("Hello, IronMQ!", function(error, body) {
-  console.log(error, body);
-});
-{% endhighlight %}</div>
-
-<div class="language go"><h3>Go Example</h3>
-<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight go %}
-package main
-
-import (
-        "fmt"
-        "github.com/iron-io/iron_go/mq"
-)
-
-func main() {
-        queue := mq.New("hello_queue")
-
-        id, err := queue.PushString("Hello, world!")
-        fmt.Println(id, err)
-}
-{% endhighlight %}</div>
-
-
-<div class="language java"><h3>Java Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight java %}
-Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
-Queue queue = client.queue("test_queue");
-queue.push("Hello world!");
-{% endhighlight %}</div>
-
-<div class="language clojure"><h3>Clojure Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight clojure %}
-(def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
-(mq/post-message client "test_queue" "Hello world!")
-{% endhighlight %}</div>
-
-<div class="language dotnet"><h3>.NET Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight c# %}
-Client client = new Client("{PROJECT_ID}", "{TOKEN}");
-Queue queue = client.queue("test_queue");
-queue.push("Hello world!");
-{% endhighlight %}</div>
-
-<h2 id="get">3. Get a Message off the Queue</h2>
-
-<p>Getting a message off the queue is simple:</p>
-
-{% highlight bash %}
-GET https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_queue/messages
-{% endhighlight %}
-
-<h3>Request</h3>
-
-<h4>Headers</h4>
-
-<ul>
-    <li>Authorization: OAuth {TOKEN}</li>
-    <li>Content-Type: application/json</li>
-</ul>
-
-<h3>Response</h3>
-
-{%  highlight js%}
-{"messages":[{"id":"5824513078343549739","body":"hello","timeout":60}]}
-{% endhighlight %}
-
-<div class="language curl"><h3>Curl Example</h3>
-	
-	<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" "https://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages"
-{% endhighlight %}</div>
-
-<div class="language ruby"><h3>Ruby Example</h3>
-
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("test_queue")
-msg = @queue.get()	
-{% endhighlight %}</div>
-
-<div class="language php"><h3>PHP Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight php %}
-<?php
-$ironmq = new IronMQ();
-$ironmq->getMessage("test_queue");
-{% endhighlight %}</div>
-
-<div class="language python"><h3>Python Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight python %}
-ironmq = IronMQ()
-queue = ironmq.queue("test_queue")
-msg = queue.get()
-{% endhighlight %}</div>
-
-<div class="language nodejs"><h3>Node.js Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight js %}
-var iron_mq = require('iron_mq');
-var imq = new iron_mq.Client();
-
-var queue = imq.queue("test_queue");
-
-queue.get({n: 1}, function(error, body) {
-  console.log(error, body);
-});
-{% endhighlight %}</div>
-
-<div class="language go"><h3>Go Example</h3>
-<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight go %}
-package main
-
-import (
-        "fmt"
-        "github.com/iron-io/iron_go/mq"
-)
-
-func main() {
-        queue := mq.New("hello_queue")
-
-        msg, err := queue.Get()
-        fmt.Println(msg, err)
-}
-{% endhighlight %}</div>
-
-<div class="language java"><h3>Java Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight java %}
-Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
-Queue queue = client.queue("test_queue");
-Message msg = queue.get();
-{% endhighlight %}</div>
-
-<div class="language clojure"><h3>Clojure Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight clojure %}
-(def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
-(let [msg (mq/get-message client "test_queue")])
-{% endhighlight %}</div>
-
-<div class="language dotnet"><h3>.NET Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight c# %}
-Client client = new Client("{PROJECT_ID}", "{TOKEN}");
-Queue queue = client.queue("test_queue");
-Message msg = queue.get();
-{% endhighlight %}</div>
-
-<h2 id="delete">4. Delete a Message from the Queue</h2>
-
-<p>Once you've gotten a message off the queue and have processed it, you need to delete the message from the queue. This
-    ensures that the message is only processed once, but that it will not be lost if the processor fails during
-    processing. Deleting is as simple as posting and getting:</p>
-
-{% highlight bash %}
-DELETE https://mq-aws-us-east-1.iron.io:443/1/projects/{PROJECT_ID}/queues/test_queue/messages/{MESSAGE_ID}
-{% endhighlight %}
-
-<h3>Request</h3>
-
-<h4>Headers</h4>
-
-<ul>
-    <li>Authorization: OAuth {TOKEN}</li>
-    <li>Content-Type: application/json</li>
-</ul>
-
-<h3>Response</h3>
-
-{%  highlight js%}
-{"msg":"Deleted"}
-{% endhighlight %}
-
-<div class="language curl"><h3>Curl Example</h3>
-
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{%  highlight bash %}
-curl -i -H "Content-Type: application/json" -H "Authorization: OAuth {TOKEN}" -X DELETE "https://mq-aws-us-east-1.iron.io/1/projects/{PROJECT_ID}/queues/test_queue/messages/{MESSAGE_ID}"
-{% endhighlight %}</div>
-
-<div class="language ruby"><h3>Ruby Example</h3>
-
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight ruby %}
-@ironmq = IronMQ::Client.new()
-@queue = @ironmq.queue("test_queue")
-msg = @queue.get()
-msg.delete
-{% endhighlight %}</div>
-
-<div class="language php"><h3>PHP Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight php %}
-$ironmq = new IronMQ();
-$msg = $ironmq->getMessage("test_queue");
-$ironmq->deleteMessage($msg->id);
-{% endhighlight %}</div>
-
-<div class="language python"><h3>Python Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight python %}
-ironmq = IronMQ()
-queue = ironmq.queue("test_queue")
-response = queue.get()
-queue.delete(response["messages"][0]["id"])
-{% endhighlight %}</div>
-
-<div class="language nodejs"><h3>Node.js Example</h3>
-
-	<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight js %}
-var iron_mq = require('iron_mq');
-var imq = new iron_mq.Client();
-
-var queue = imq.queue("test_queue");
-
-queue.post("Hello, IronMQ!", function(error, body) {
-  console.log(error, body);
-});
-
-var message_id;
-queue.get({n: 1}, function(error, body) {
-  console.log(error, body);
-  if (error == null) {
-    message_id = body.id;
-  }
-});
-
-queue.del(message_id, function(error, body) {
-  console.log(error, body);
-});
-{% endhighlight %}</div>
-
-<div class="language go"><h3>Go Example</h3>
-<p>Make sure you've <a href="/mq/reference/configuration">set up your configuration file</a>.</p>
-
-{% highlight go %}
-package main
-
-import (
-        "fmt"
-        "github.com/iron-io/iron_go/mq"
-)
-
-func main() {
-        queue := mq.New("hello_queue")
-
-        ids, err := queue.PushStrings("Hello", "world", "!")
-        fmt.Println(ids, err)
-
-        msg, err := queue.Get()
-        fmt.Println(msg, err)
-        if err == nil {
-                m.Delete()
-        }
-
-        msgs, err := queue.Get(2)
-        fmt.Println(msgs, err)
-        if err != nil {
-                for _, m := range append(msgs, msg) {
-                        m.Delete()
-                }
-        }
-}
-{% endhighlight %}</div>
-
-<div class="language java"><h3>Java Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight java %}
-Client client = new Client("{PROJECT_ID}", "{TOKEN}", Cloud.IronAWSUSEast);
-Queue queue = client.queue("test_queue");
-Message msg = queue.get();
-queue.deleteMessage(msg);
-{% endhighlight %}</div>
-
-<div class="language clojure"><h3>Clojure Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight clojure %}
-(def client (mq/create-client "{TOKEN}" "{PROJECT_ID}"))
-(let [msg (mq/get-message client "test_queue")]
-  (mq.delete-message client "test_queue" msg))
-{% endhighlight %}</div>
-
-<div class="language dotnet"><h3>.NET Example</h3>
-<p>Replace {TOKEN} and {PROJECT_ID} with your credentials obtained from <a href="http://hud.iron.io">HUD</a>.</p>
-
-{% highlight c# %}
-Client client = new Client("{PROJECT_ID}", "{TOKEN}");
-Queue queue = client.queue("test_queue");
-Message msg = queue.get();
-queue.deleteMessage(msg);
-{% endhighlight %}</div>
-
-<h2>Next Steps</h2>
-
-<p>You should be well-grounded in the post/get/delete paradigm now&mdash;now you need to build something cool! To get up
-    and running quickly, you may want to look into our <a href="/mq/reference/beanstalk">Beanstalk</a> support. Check
-    out our <a href="/mq/reference">reference material</a> to explore the boundaries of IronMQ's system. If you need
-    ideas for what you can accomplish with IronMQ, you may want to take a look at our <a href="/solutions">solutions</a>.
-</p>
+<p class="subtitle">This IronMQ reference documentation will help you navigate the basics</p>
+
+<a class="grid-box" href="/mq/reference/api">
+	<div class="img-bg api-bg mq"></div>
+	<span class="grid-box-text">
+	<h3>API Reference</h3>
+    <p>Every endpoint, every parameter of our API is at your fingertips.</p>
+    </span>
+</a>
+
+<a class="grid-box second" href="/mq/reference/environment">
+  <div class="img-bg environment-bg mq"></div>
+  <span class="grid-box-text">
+  <h3>Environment</h3>
+  <p>Know <em>exactly</em> what environment your messages will be passed through <em>before</em> you queue them.</p>
+  </span>
+</a>
+
+<br style="clear: both;" />
+
+<a class="grid-box" href="/mq/reference/configuration">
+	<div class="img-bg configuration-bg mq"></div>
+	<span class="grid-box-text">
+	<h3>Configuration</h3>
+	<p>Everything you need to know to make the IronMQ client libraries work they way you want them to.</p>
+	</span>
+</a>
+
+<a class="grid-box second" href="/mq/reference/clouds">
+	<div class="img-bg clouds-bg mq"></div>
+	<span class="grid-box-text">
+	<h3>Cloud Providers</h3>
+	<p>Get the specifics on how to choose where your message queues live.</p>
+	</span>
+</a>
+
+<br style="clear: both;" />
+
+<a class="grid-box" href="/mq/reference/push_queues">
+    <div class="img-bg push-queues-bg mq"></div>
+  <span class="grid-box-text">
+  <h3>Push Queues</h3>
+  <p>Everything you need to know about Push Queues.</p>
+    </span>
+</a>
+
+<a class="grid-box second" href="http://hud.iron.io/users/support">
+  <div class="img-bg chat-bg worker"></div>
+  <span class="grid-box-text">
+  <h3>Something Missing?</h3>
+  <p>Can't find the information you need here? Our engineers are always available and will be happy to answer questions.</p>
+        </span>
+</a>

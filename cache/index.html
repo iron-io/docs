@@ -1,119 +1,54 @@
 ---
-title: IronCache Documentation
+title: IronCache Reference
 layout: default
 section: cache
+breadcrumbs:
+  - ['Reference', '/reference']
 ---
 
-<p class="subtitle">Share state between your applications and processes using a key/value store built for the cloud.</p>
+<p class="subtitle">This IronCache reference documentation will help you navigate the basics</p>
 
-<div class="flow-steps">
-	<div class="step">
-		<a class="number" href="#configure">1</a>
-		<a class="title" href="#configure">Configure Your Client</a>
-	</div>
-	<i class="icon-long-arrow-right icon-2x"></i>
+<a class="grid-box" href="/cache/reference/api">
+	<div class="img-bg api-bg cache"></div>
+	<span class="grid-box-text">
+	<h3>API Reference</h3>
+    <p>Every endpoint, every parameter of our API is at your fingertips.</p>
+    </span>
+</a>
 
-	<div class="step">
-		<a class="number" href="#set">2</a>
-		<a class="title" href="#set">Set the Item in the Cache</a>
-	</div>
-	<i class="icon-long-arrow-right icon-2x"></i>
+<a class="grid-box second" href="/cache/reference/environment">
+	<div class="img-bg environment-bg cache"></div>
+	<span class="grid-box-text">
+	<h3>Environment</h3>
+	<p>Know <em>exactly</em> how your information will be stored in your caches.</p>
+	</span>
+</a>
 
-	<div class="step">
-		<a class="number" href="#get">3</a>
-		<a class="title" href="#get">Retrieve the Item from the Cache</a>
-	</div>
-	<i class="icon-long-arrow-right icon-2x"></i>
+<br style="clear: both;" />
 
-	<div class="step">
-		<a class="number" href="#delete">4</a>
-		<a class="title" href="#delete">Delete the Item from the Cache</a>
-	</div>
-</div>
+<a class="grid-box" href="/cache/reference/configuration">
+	<div class="img-bg configuration-bg cache"></div>
+	<span class="grid-box-text">
+	<h3>Configuration</h3>
+	<p>Everything you need to know to make the IronCache client libraries work they way you want them to.</p>
+	</span>
+</a>
 
-<h2 id="configure">1. Configure Your Client</h2>
+<a class="grid-box second" href="/cache/reference/libraries">
+	<div class="img-bg libraries-bg cache"></div>
+	<span class="grid-box-text">
+	<h3>Client Libraries</h3>
+	<p>A big list of the officially-supported client libraries, so you can use IronCache in your language-of-choice.</p>
+	</span>
+</a>
 
-<p>Before you can interact with IronCache, you're going to have to configure your <a href="/cache/reference/libraries">library of choice</a> to use your project ID and your OAuth2 token. You can retrieve your project ID and token from the <a href="https://hud.iron.io">HUD</a>. Our official client libraries all support <a href="/cache/reference/configuration">the same configuration scheme</a>, which you can read up on if you want a highly-customised development environment. To get started though, just save the following as "<span class="fixed-width">iron.json</span>":</p>
+<br style="clear: both;" />
 
-<figcaption><span>iron.json </span></figcaption>
-{% highlight js %}
-{
-	"project_id": "INSERT YOUR PROJECT ID HERE",
-	"token": "INSERT YOUR TOKEN HERE"
-}
-{% endhighlight %}
+<a class="grid-box second" href="http://hud.iron.io/users/support">
+	<div class="img-bg chat-bg worker"></div>
+	<span class="grid-box-text">
+	<h3>Something Missing?</h3>
+	<p>Can't find the information you need here? Our engineers are always available and will be happy to answer questions.</p>
+        </span>
+</a>
 
-<p>You're all configured! The client libraries will all automatically just read that file and use your credentials to authenticate requests.</p>
-
-<h2 id="set">2. Set the Item in the Cache</h2>
-
-<p>Adding an item to a cache and updating an item in a cache are the same thing; if the item exists, it will be overwritten. Otherwise, it will be created.</p>
-
-<p>You can set an item using any of the <a href="/cache/reference/libraries">client libraries</a> or even using our <a href="/cache/reference/api">REST/HTTP API</a> directly. We're going to use the Ruby library for these examples.</p>
-
-<figcaption><span>iron_cache.rb </span></figcaption>
-{% highlight ruby %}
-@client = IronCache::Client.new
-@cache = @client.cache("test_cache")
-@cache.put("test_item", "Hello, World!")
-{% endhighlight %}
-
-<p>The cache is technically a key/value store that enforces strings as the key and the value. It is common, however, to use JSON to store complex objects in the cache. The client libraries will all transparently translate all non-string values into their JSON equivalent before storing them in the cache.</p>
-
-<figcaption><span>iron_cache.rb </span></figcaption>
-{% highlight ruby %}
-@client = IronCache::Client.new
-@cache = @client.cache("test_cache")
-@cache.put("complex_item", {"greeting" => "Hello", "target" => "world"})
-{% endhighlight %}
-
-<p>The server also detects numbers and stores them natively as numbers, which lets you increment and decrement them atomically. This means that if two clients try to increment the item at the same time, they won't overwrite each other; the item will be incremented twice. This is extremely useful when clients are run in a highly parallel environment like IronWorker.</p>
-
-<figcaption><span>iron_cache.rb </span></figcaption>
-{% highlight ruby %}
-@client = IronCache::Client.new
-@cache = @client.cache("test_cache")
-@cache.put("number_item", 42) # store a number
-item = @cache.get("number_item") # retrieve the item
-p item.value # output the value
-@cache.increment("number_item") # increment the item
-p @cache.get("number_item").value  # retrieve the item and print its value again
-{% endhighlight %}
-
-<p>Although IronCache was originally designed for short-term storage, it has since evolved into a permanent data storage solution. By default, your cache items will not be deleted until you <a href="#delete">manually delete</a> them. Sometimes, however, it's still helpful to set an expiration date on data you want to be short-lived. To do this, just use the <span class="fixed-width">expires_in</span> parameter to set the number of seconds the data should be available for.</p>
-
-<figcaption><span>iron_cache.rb </span></figcaption>
-{% highlight ruby %}
-@client = IronCache::Client.new
-@cache = @client.cache("test_cache")
-@cache.put("long_lived_item", 42, {:expires_in => 60 * 60 * 24 * 30}) # this item won't expire for a month
-{% endhighlight %}
-
-<h2 id="get">3. Retrieve the Item from the Cache</h2>
-
-<p>Retrieving an item from the cache is fairly straightforward:</p>
-
-<figcaption><span>iron_cache.rb </span></figcaption>
-{% highlight ruby %}
-@client = IronCache::Client.new
-@cache = @client.cache("test_cache")
-item = @cache.get("number_item")
-p item.value
-{% endhighlight %}
-
-<p>Unlike IronMQ, you do not lock an item when you retrieve it from a cache. Two or more clients may retrieve an item at the same time.</p>
-
-<h2 id="delete">4. Delete the Item from the Cache</h2>
-
-<p>Should you decide you would like to remove an item from a cache before its expiration date (or to remove items with no expiration date), you can do so with a simple API call:</p>
-
-<figcaption><span>iron_cache.rb </span></figcaption>
-{% highlight ruby %}
-@client = IronCache::Client.new
-@cache = @client.cache("test_cache")
-@cache.delete("number_item") # remove it
-{% endhighlight %}
-
-<h2>Next Steps</h2>
-
-<p>You should be pretty familiar with IronCache now&mdash;now you need to build something cool! To get up and running quickly, you may want to look into our <a href="/cache/reference/memcache">Memcache</a> support. Check out our <a href="/cache/reference">reference material</a> to explore the boundaries of IronCache's system. If you need suggestions for how to use IronCache, you may want to take a look at our <a href="/solutions">solutions</a> for some inspiration.</p>
