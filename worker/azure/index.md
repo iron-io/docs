@@ -1,5 +1,5 @@
 ---
-title: IronWorker on Azure
+title: IronWorker Getting Started on Azure
 layout: default
 section: worker
 breadcrumbs:

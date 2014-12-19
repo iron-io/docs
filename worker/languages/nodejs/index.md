@@ -1,5 +1,5 @@
 ---
-title: Writing Workers in Node.js
+title: IronWorkers in Node.js
 layout: default
 section: worker
 breadcrumbs:
@@ -109,7 +109,7 @@ runtime "node"
 exec "hello_worker.js" # replace with your file
 ```
 
-_To change your worker's version, you may place `stack "node-0.10"` (e.x.) in your .worker file, for more see [.worker syntax](/worker/reference/dotworker/#syntax_reference)._ 
+_To change your worker's version, you may place `stack "node-0.10"` (e.x.) in your .worker file, for more see [.worker syntax](/worker/reference/dotworker/#syntax_reference)._
 
 <h3 id="upload_your_worker">Upload Your Worker</h3>
 
@@ -203,7 +203,7 @@ statusCode:  200
 ```
 
 
-**Note**: Please make sure to check out our official [node client library](/worker/libraries) 
+**Note**: Please make sure to check out our official [node client library](/worker/libraries)
 
 
 <h2 id="deep_dive">Deep Dive</h2>

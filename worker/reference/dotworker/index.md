@@ -1,5 +1,5 @@
 ---
-title: .worker Files
+title: .worker File Reference Guide
 layout: default
 section: worker
 breadcrumbs:

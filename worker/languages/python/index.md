@@ -1,5 +1,5 @@
 ---
-title: Writing Workers in Python
+title: IronWorkers in Python
 layout: default
 section: worker
 breadcrumbs:
@@ -172,7 +172,7 @@ for i in range(len(sys.argv)):
 
 <h3 id="exit_example">Ensuring your script exits with the right exit code</h3>
 
-It is important in some cases to declare a explicit exit code to give our systems a indication if your worker has completed sucessfully or failed. this also prevents instances where your worker may just hang or wait.  
+It is important in some cases to declare a explicit exit code to give our systems a indication if your worker has completed sucessfully or failed. this also prevents instances where your worker may just hang or wait.
 In your worker:
 
 ```python

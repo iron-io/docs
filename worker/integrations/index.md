@@ -1,5 +1,5 @@
 ---
-title: Integrations
+title: IronWorker Integrations
 layout: default
 section: worker
 breadcrumbs:

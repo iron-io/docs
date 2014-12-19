@@ -1,5 +1,5 @@
 ---
-title: Writing Workers in Ruby
+title: IronWorkers in Ruby
 layout: default
 section: worker
 breadcrumbs:

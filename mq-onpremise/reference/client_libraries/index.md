@@ -7,7 +7,7 @@ section: mq-onpremise
 
 ## Official Client Libraries
 
-These are our official client libraries for IronMQ Enterprise <a href="/mq/reference/api">REST/HTTP API</a>.&nbsp;<br>
+These are our official client libraries for IronMQ On-Premise  <a href="/mq/reference/api">REST/HTTP API</a>.&nbsp;<br>
 <div>
 <ul class="libs" style="min-height: 100px;">
   <li><a href="https://github.com/iron-io/iron_go3" target="_blank" data-lang="go">Go</a></li>

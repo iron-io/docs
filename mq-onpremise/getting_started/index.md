@@ -1,5 +1,5 @@
 ---
-title: IronMQ On-Premise Installation
+title: IronMQ On-Premise Getting Started
 summary: "IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team"
 layout: default
 section: mq-onpremise
@@ -63,7 +63,7 @@ is to create a persistent data volume container that is mounted where you
 would like to store data. Here is a brief example, see Docker docs for details:
 
 ```
-// create the data container, mounted on host at /mnt/data 
+// create the data container, mounted on host at /mnt/data
 // note: ironmq and ironauth both store their data at /ironmq/data in container by default
 $ docker run -name irondata -v /mnt/data:/ironmq/data busybox true
 

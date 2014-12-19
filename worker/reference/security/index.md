@@ -1,5 +1,5 @@
 ---
-title: Securing Your Workers
+title: IronWorker Security
 layout: default
 section: worker
 breadcrumbs:
