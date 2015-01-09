@@ -98,7 +98,8 @@ If `push` field is defined, this queue will be created as a push queue and must 
       ],
       "retries": 3,
       "retries_delay": 60,
-      "error_queue": "error_queue_name"
+      "error_queue": "error_queue_name",
+      "rate_limit": 10
     }]
   }
 }
@@ -144,13 +145,16 @@ there are no alerts.
         {
           "name": "subscriber_name",
           "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
-          "headers": {"Content-Type": "application/json"}
+          "headers": {
+            "Content-Type": "application/json"
+          }
         }
       ],
       "retries": 3,
       "retries_delay": 60,
-      "error_queue": "error_queue_name"
-    }]
+      "error_queue": "error_queue_name",
+      "rate_limit": 10
+    }
   }
 }
 ```
@@ -330,7 +334,7 @@ Request:
         "X-Custom-Header": "custom header value",
         "Authentication": "the token"
       }
-    },
+    }
   ]
 }
 ```
