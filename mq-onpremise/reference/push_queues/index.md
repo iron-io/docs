@@ -49,8 +49,8 @@ Subscribers are simply URL's that IronMQ will post to whenever a message is post
 three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
 
 1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
-1. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
-1. **IronWorker endpoints:** IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
+2. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
+3. **IronWorker endpoints:** IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
 
 ### Iron.io URL Formats
 
