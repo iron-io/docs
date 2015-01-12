@@ -27,6 +27,7 @@ These are our official client libraries that use the IronMQ <a href="/mq/referen
 These are some unofficial client libraries that use the IronMQ <a href="/mq/reference/api">REST/HTTP API</a>.&nbsp;<br>
 <div>
 <ul>
+  <li><a href="https://github.com/arnoblalam/iron_mq_haskell" target="_blank">Haskell</a> by <a href="https://github.com/arnoblalam" target="_blank">Arnob Alam</a></li>
   <li><a href="https://github.com/ahallock/node-ironio" target="_blank">Node.JS - node-ironio - IronMQ</a> by <a href="https://github.com/ahallock/" target="_blank">Andrew Hallock</a></li>
   <li><a href="https://github.com/khalidabuhakmeh/blacksmith" target="_blank">.NET - Blacksmith</a> by <a href="https://github.com/khalidabuhakmeh/" target="_blank">Khalid Abuhakmeh</a></li>
   <li><a href="https://github.com/odeits/IronTools" target="_blank">.NET - IronTools</a> by <a href="https://github.com/odeits" target="_blank">Oscar Deits</a></li>
