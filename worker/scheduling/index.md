@@ -1,6 +1,6 @@
 ---
 layout: default
-title: IronWorker: Scheduling Tasks with Scheduler
+title: IronWorker&colon; Scheduling Tasks with Scheduler
 section: worker
 breadcrumbs:
   - ["Scheduling Tasks", "/scheduling"]
