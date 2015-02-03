@@ -36,7 +36,8 @@ section: mq-onpremise
 
 Changes from v2.0.1:
 
-- Per-message expirations turn into per-queue expirations
+- Dequeue now returns a reservation. This reservation and message_id are required to perform any action (ie deleting, touching, releasing). The reservation is valid for the length of the message timeout (inherited from the queues timeout) unless a timeout was specified on the dequeue call.
+- Expiration and timeout can no longer be set on message enqueue.
 - Timed out and released messages go to the front of the queue. (This
 is not an API change, but it is a behavior change that will likely
 cause some tests to fail.)
