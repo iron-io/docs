@@ -45,7 +45,6 @@ cause some tests to fail.)
 - All json objects are wrapped at the root level.
 - All object structures changed a bit, please review json.
 - Clear messages endpoint changed to be part of delete messages.
-- Can no longer set timeout when posting a message, only when reserving one.
 - Webhook url is no longer /queues/{queue_name}/messages/webhook, it's now /queues/{queue_name}/webhook
 - Pagination principle in List Queues changed. It doesn’t support `page` parameter. You should specify the name of queue prior to the first desirable queue in result.
 
