@@ -48,6 +48,7 @@ cause some tests to fail.)
 - Can no longer set timeout when posting a message, only when reserving one.
 - Webhook url is no longer /queues/{queue_name}/messages/webhook, it's now /queues/{queue_name}/webhook
 - Pagination principle in List Queues changed. It doesn’t support `page` parameter. You should specify the name of queue prior to the first desirable queue in result.
+- Trying to get messages from a queue that doesn't exist now returns a "Queue not found" error
 
 
 ## <a name="global-stuff"></a> Global Stuff
