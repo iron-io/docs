@@ -16,6 +16,7 @@ These are our official client libraries for IronMQ On-Premise  <a href="/mq/refe
   <li><a href="https://github.com/iron-io/iron_mq_java/tree/v3" target="_blank" data-lang="java">Java</a></li>
   <li><a href="https://github.com/iron-io/iron_mq_php/tree/v3" target="_blank" data-lang="php">PHP</a></li>
   <li><a href="https://github.com/iron-io/iron_mq_python/tree/v3" target="_blank" data-lang="python">Python</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_node/tree/v3" target="_blank" data-lang="node">Node</a></li>
 </ul>
 </div>
 
