@@ -480,9 +480,9 @@ DELETE `/queues/{queue_name}/messages/{message_id}`
 
 Request:
 
-- reservation_id: This id is returned when you [reserve a message](#reserve-messages) and must be provided to delete a message that is reserved.
+- reservation\_id: This id is returned when you [reserve a message](#reserve-messages) and must be provided to delete a message that is reserved.
 If a reservation times out, this will return an error when deleting so the consumer knows that some other consumer will be processing this message and can rollback or react accordingly.
-If the message isn't reserved, it can be deleted without the reservation_id.
+If the message isn't reserved, it can be deleted without the reservation\_id.
 
 ```json
 {
