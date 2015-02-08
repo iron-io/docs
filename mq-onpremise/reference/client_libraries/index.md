@@ -20,6 +20,18 @@ These are our official client libraries for IronMQ On-Premise  <a href="/mq/refe
 </ul>
 </div>
 
-<h2>Client Configuration</h2>
+## Community Supported Client Libraries
+
+These are some unofficial client libraries, that use the
+<a href="/mq-onpremise/reference/api">IronMQ v3 REST/HTTP API</a>.
+
+<div><ul>
+<li>
+  <a href="https://github.com/efficiosro/clj-ironmq" target="_blank">Clojure - clj-ironmq</a>
+  by <a href="https://github.com/featalion" target="_blank">Yury Yantsevich</a>
+</li>
+</ul></div>
+
+## Client Configuration
 
 {% include configuration.md %}
