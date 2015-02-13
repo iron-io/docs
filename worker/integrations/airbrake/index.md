@@ -31,7 +31,7 @@ Once you have authenticated with Airbrake, you can activate the integration for 
 <img src="/images/worker/integrations/airbrake_activation2.png" alt="Airbrake Activation">
 
 <h2 id="Test">Test the Integration</h2>
-With Airbrake authenticated and activated, any IronWorker tasks that errors will deliver the data to Airbrake and create an Unresolved Error. To test, write, upload, and run a simple task that you know will generate an error. Once complete, you will see the error in your Airbrake dashboard and can take further action.
+With Airbrake authenticated and activated, any IronWorker tasks that errors or timeouts will deliver the data to Airbrake and create an Unresolved Error. To test, write, upload, and run a simple task that you know will generate an error. Once complete, you will see the error in your Airbrake dashboard and can take further action.
 
 <img src="/images/worker/integrations/airbrake_exception.png" alt="Airbrake Exception">
 
