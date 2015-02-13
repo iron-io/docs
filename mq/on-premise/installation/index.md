@@ -2,7 +2,7 @@
 title: IronMQ On-Premise Getting Started
 summary: "IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team"
 layout: default
-section: mq-onpremise
+section: mq-on-premise
 ---
 
 <p class="subtitle">
@@ -15,11 +15,19 @@ section: mq-onpremise
     <li><a href="#requirements">Recommended System Requirements</a></li>
     <li><a href="#download">Download</a></li>
     <li><a href="#install">Install</a></li>
-    <li><a href="#setup_user_project">Setup New User and Project</a></li>
+    <li><a href="#create_new_user_account">Setup New User Account</a></li>
     <li><a href="#start">Client lib and API docs</a></li>
     <li><a href="#custom_config">Custom Configuration</a></li>
   </ul>
 </section>
+
+
+<h2 id="download">Download</h2>
+
+```
+$ docker pull iron/mq
+$ docker pull iron/auth
+```
 
 <h2 id="requirements">Recommended Minimum System Requirements</h2>
 
@@ -29,13 +37,6 @@ section: mq-onpremise
 * __Storage__ : SSD Drive
 
 Yes, it will probably work on your laptop. Don't benchmark on your laptop :)
-
-<h2 id="download">Download</h2>
-
-```
-$ docker pull iron/mq
-$ docker pull iron/auth
-```
 
 <h2 id="install">Install and Start</h2>
 
@@ -71,7 +72,7 @@ $ docker run -name irondata -v /mnt/data:/ironmq/data busybox true
 $ docker run -d --volumes-from irondata -p 8080:8080 iron/mq
 ```
 
-<h3 id="setup_user_project">Setup New User and Project</h3>
+<h3 id="create_new_user_account">Setup New User and Project</h3>
 
 ##### With the auth server running:
 

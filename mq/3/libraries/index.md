@@ -2,7 +2,7 @@
 title: IronMQ On-Premise Official Client Libraries
 summary: "With the release of IronMQ On-Premise comes newly updated client libraries."
 layout: default
-section: mq-onpremise
+section: mq-v3
 ---
 
 ## Official Client Libraries

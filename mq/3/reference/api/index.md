@@ -2,7 +2,7 @@
 title: IronMQ On-Premise API Reference
 summary: "IronMQ On-Premise has made a vew improvements over our previous API. This reference is a continuing work in progress"
 layout: default
-section: mq-onpremise
+section: mq-v3
 ---
 
 
@@ -31,7 +31,7 @@ section: mq-onpremise
   3. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
   3. [Clear Messages](#clear-messages) - Removes all messages from a queue
   4. [Get Push Statuses for a Message](#get-push-statuses)
-  
+
 ## <a name="changes"></a> Changes
 
 Changes from v2.0.1:
