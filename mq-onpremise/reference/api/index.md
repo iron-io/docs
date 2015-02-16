@@ -525,6 +525,10 @@ and must be provided to delete a message that is reserved. If a reservation time
 this will return an error when deleting so the consumer knows that some other consumer
 will be processing this message and can rollback or react accordingly.
 If the message isn't reserved, it can be deleted without the reservation\_id.
+- `subscriber_name`: This field could be used in case of push message processing acknowledge.
+When request from IronMQ Pusher is received, and subscriber endpoint returns `HTTP 202 Accepted`,
+message must be acknowledged, otherwise it will be pushed again (if retries are configured).
+Send both reservation\_id and subscriber\_name to acknowledge processed message.
 
 ```json
 {
@@ -554,6 +558,10 @@ Request:
 and must be provided to delete a message that is reserved. If a reservation times out,
 this will return an error when deleting so the worker knows that some other worker
 will be processing this message and can rollback or react accordingly.
+- `subscriber_name`: This field could be used in case of push message processing acknowledge.
+When request from IronMQ Pusher is received, and subscriber endpoint returns `HTTP 202 Accepted`,
+message must be acknowledged, otherwise it will be pushed again (if retries are configured).
+Send both reservation\_id and subscriber\_name to acknowledge processed message.
 
 ```json
 {
