@@ -22,6 +22,17 @@ section: mq-v3
 4. [Messages](#messages)
   1. [Post Messages](#post-messages) - Core operation to add messages to a queue
   2. [Post Messages via Webhook](#post-message-via-webhook)
+<<<<<<< HEAD:mq/3/reference/api/index.md
+  2. [Reserve/Get Messages](#reserve-messages) - Core operation to get message(s) off the queue.
+  2. [Get Message by Id](#get-message-by-id)
+  2. [Peek Messages](#peek-messages) - View first messages in queue without reserving them
+  3. [Delete Message](#delete-message) - Core operation to delete a message after it's been processed
+  3. [Delete Messages](#delete-messages) - Batch delete
+  2. [Release Message](#release-message) - Makes a message available for another process
+  3. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
+  3. [Clear Messages](#clear-messages) - Removes all messages from a queue
+  4. [Get Push Statuses for a Message](#get-push-statuses)
+=======
   3. [Reserve/Get Messages](#reserve-messages) - Core operation to get message(s) off the queue.
   4. [Get Message by Id](#get-message-by-id)
   5. [Peek Messages](#peek-messages) - View first messages in queue without reserving them
@@ -31,6 +42,8 @@ section: mq-v3
   9. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
   10. [Clear Messages](#clear-messages) - Removes all messages from a queue
   11. [Get Push Statuses for a Message](#get-push-statuses)
+
+>>>>>>> gh-pages:mq-onpremise/reference/api/index.md
 
 ## <a name="changes"></a> Changes
 
@@ -595,7 +608,7 @@ Request:
 - `reservation_id`: appropriate message's reservation ID.
 - `timeout`: optional. How many seconds new reservation will be valid.
 Defaults to queue's `message_timeout` option.
-
+  
 ```json
 {
   "reservation_id": "5259a40cf166faa76a23f7450daaf497",

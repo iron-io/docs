@@ -16,9 +16,22 @@ These are our official client libraries for IronMQ On-Premise  <a href="/mq/refe
   <li><a href="https://github.com/iron-io/iron_mq_java/tree/v3" target="_blank" data-lang="java">Java</a></li>
   <li><a href="https://github.com/iron-io/iron_mq_php/tree/v3" target="_blank" data-lang="php">PHP</a></li>
   <li><a href="https://github.com/iron-io/iron_mq_python/tree/v3" target="_blank" data-lang="python">Python</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_node/tree/v3" target="_blank" data-lang="node">Node</a></li>
 </ul>
 </div>
 
-<h2>Client Configuration</h2>
+## Community Supported Client Libraries
+
+These are some unofficial client libraries, that use the
+<a href="/mq-onpremise/reference/api">IronMQ v3 REST/HTTP API</a>.
+
+<div><ul>
+<li>
+  <a href="https://github.com/efficiosro/clj-ironmq" target="_blank">Clojure - clj-ironmq</a>
+  by <a href="https://github.com/featalion" target="_blank">Yury Yantsevich</a>
+</li>
+</ul></div>
+
+## Client Configuration
 
 {% include configuration.md %}
