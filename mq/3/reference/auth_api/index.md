@@ -2,7 +2,7 @@
 title: IronAuth API Reference
 summary: "IronAuth API used to authenticate users that hit the IronMQ API."
 layout: default
-section: mq-onpremise
+section: mq-v3
 ---
 
 ## Objects (json)

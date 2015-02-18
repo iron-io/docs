@@ -1,7 +1,7 @@
 ---
 title: IronMQ Push Queues Reference
 layout: default
-section: mq-onpremise
+section: mq-v3
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Push Queues', '/push_queues']
@@ -57,7 +57,7 @@ three types subscribers supported, all differentiated by the URL scheme (first p
 The basic formats are similar to any other URL:
 
     ironmq://[{ProjectID}:{Token}@[{Host}[:{Port}]]]/{QueueName}
-    
+
     ironworker://{ProjectID}:{Token}@{Host}[:{Port}]/{CodeName}
 
 Here are some examples:
