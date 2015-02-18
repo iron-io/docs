@@ -1,5 +1,5 @@
 ---
-title: IronCasts: IronWorker
+title: IronCasts - IronWorker
 layout: default
 section: worker
 breadcrumbs:

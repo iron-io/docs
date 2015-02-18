@@ -1,5 +1,5 @@
 ---
-title: IronWorker: Turnkey Workers : Deploying Workers from Github
+title: IronWorker - Turnkey Workers Deploy from Github
 layout: default
 section: worker
 breadcrumbs:

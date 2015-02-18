@@ -1,7 +1,7 @@
 ---
-title: IronMQ Environment : Message and Queue Attributes
+title: IronMQ Message and Queue Attributes
 layout: default
-section: mq
+section: worker
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Environment', '/environment']
@@ -34,7 +34,6 @@ The message structure is flexible and straight-forward. Messages can be variable
   </tbody>
 </table>
 
-
 <h2 id="message_constraints">Message Constraints</h2>
 The basic message handling operation is put-get-delete. Messages are put on the queue by senders. The messages can have **delays** associated with them. If included, the message is not made available on the queue until the delay is up (default is 0 or no delay).
 
@@ -52,7 +51,6 @@ Receivers get one or more messages (up to 100). Once the receive is done process
     <tr><td>Messages per Get</td><td>1</td><td>100</td><td>One or more messages can be handled at a time.</td></tr>
   </tbody>
 </table>
-
 
 <h2 id="queue_attributes">Queue Attributes</h2>
 

@@ -1,5 +1,5 @@
 ---
-title: IronCache: Memcache Interface
+title: IronCache - Memcache Interface
 layout: default
 section: cache
 breadcrumbs:
