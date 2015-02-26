@@ -45,8 +45,8 @@ If you have an Amazon Web Services account, follow these instructions to launch 
 
 <ol>
   <li><a href="https://terraform.io/downloads.html">Download and install Terraform</a>. An introduction to Terraform can be found <a href="https://terraform.io/intro/">here</a>.</li>
-  <li>Download or `git clone` the IronMQ Terraform configuration from <a href="https://github.com/iron-io/enterprise/blob/master/trial_mq">this GitHub repository</a>.</li>
-  <li>Create a `terraform.tfvars.json` file with your credentials.  A sample configuration can be found <a href="https://github.com/iron-io/enterprise/blob/master/trial_mq/sample.tfvars.json">here</a></li>
+  <li>Download or `git clone` the IronMQ Terraform configuration from <a href="https://github.com/iron-io/enterprise/blob/master/terraform/ironmq">this GitHub repository</a>.</li>
+  <li>Create a `terraform.tfvars.json` file with your credentials.  A sample configuration can be found <a href="https://github.com/iron-io/enterprise/blob/master/terraform/ironmq/sample.tfvars.json">here</a></li>
   <li>Run `terraform plan -out=plan -var-file=terraform.tfvars.json`, review the plan, then run `terraform apply plan`.</li>
 </ol>
 
