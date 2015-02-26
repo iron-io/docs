@@ -12,10 +12,13 @@ section: mq-on-premise
 <section id="toc">
   <h3>Getting Started</h3>
   <ul>
-    <li><a href="#terraform">Automatic Setup with Terraform</a></li>
+    <li><a href="#requirements">System Requirements</a></li>
+    <li><a href="#automatic_setup">Automatic Setup</a></li>
+    <ul>
+      <li><a href="#terraform">Terraform</a></li>
+    </ul>
     <li><a href="#manual">Manual Setup</a></li>
     <ul>
-      <li><a href="#requirements">Recommended System Requirements</a></li>
       <li><a href="#download">Download</a></li>
       <li><a href="#install">Install</a></li>
       <li><a href="#create_new_user_account">Setup New User Account</a></li>
@@ -25,7 +28,18 @@ section: mq-on-premise
   </ul>
 </section>
 
-<h2 id="terraform">Automatic Setup with Terraform</h2>
+<h2 id="requirements">Minimum System Requirements</h2>
+
+* __OS__: Docker installed
+* __RAM__ : 8GB+
+* __CPU__ : 2+ CPU
+* __Storage__ : SSD Drive
+
+Yes, it will probably work on your laptop. Don't benchmark on your laptop :)
+
+<h2 id="automatic_setup">Automatic Setup</h2>
+
+<h3 id="terraform">Terraform</h3>
 
 Terraform is an infrastructure deployment tool which can be used to automatically launch IronMQ.
 
@@ -41,15 +55,6 @@ If you have an Amazon Web Services account, follow these instructions to launch 
 <h2 id="manual">Manual Setup</h2>
 
 If you would like to manually set up IronMQ instead, follow the instructions below.
-
-<h2 id="requirements">Recommended Minimum System Requirements</h2>
-
-* __OS__: Docker installed
-* __RAM__ : 8GB+
-* __CPU__ : 2+ CPU
-* __Storage__ : SSD Drive
-
-Yes, it will probably work on your laptop. Don't benchmark on your laptop :)
 
 <h2 id="download">Download</h2>
 
