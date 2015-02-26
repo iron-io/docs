@@ -13,7 +13,7 @@ section: mq-on-premise
   <h3>Getting Started</h3>
   <ul>
     <li><a href="#requirements">System Requirements</a></li>
-    <li><a href="#automatic_setup">Automatic Setup</a></li>
+    <li><a href="#automated">Automated Setup</a></li>
     <ul>
       <li><a href="#terraform">Terraform</a></li>
     </ul>
@@ -35,9 +35,7 @@ section: mq-on-premise
 * __CPU__ : 2+ CPU
 * __Storage__ : SSD Drive
 
-Yes, it will probably work on your laptop. Don't benchmark on your laptop :)
-
-<h2 id="automatic_setup">Automatic Setup</h2>
+<h2 id="automated">Automated Setup</h2>
 
 <h3 id="terraform">Terraform</h3>
 
