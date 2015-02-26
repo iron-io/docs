@@ -12,15 +12,47 @@ section: mq-on-premise
 <section id="toc">
   <h3>Getting Started</h3>
   <ul>
-    <li><a href="#requirements">Recommended System Requirements</a></li>
-    <li><a href="#download">Download</a></li>
-    <li><a href="#install">Install</a></li>
-    <li><a href="#create_new_user_account">Setup New User Account</a></li>
-    <li><a href="#start">Client lib and API docs</a></li>
-    <li><a href="#custom_config">Custom Configuration</a></li>
+    <li><a href="#requirements">System Requirements</a></li>
+    <li><a href="#automated">Automated Setup</a></li>
+    <ul>
+      <li><a href="#terraform">Terraform</a></li>
+    </ul>
+    <li><a href="#manual">Manual Setup</a></li>
+    <ul>
+      <li><a href="#download">Download</a></li>
+      <li><a href="#install">Install</a></li>
+      <li><a href="#create_new_user_account">Setup New User Account</a></li>
+      <li><a href="#start">Client lib and API docs</a></li>
+      <li><a href="#custom_config">Custom Configuration</a></li>
+    </ul>
   </ul>
 </section>
 
+<h2 id="requirements">Minimum System Requirements</h2>
+
+* __OS__: Docker installed
+* __RAM__ : 8GB+
+* __CPU__ : 2+ CPU
+* __Storage__ : SSD Drive
+
+<h2 id="automated">Automated Setup</h2>
+
+<h3 id="terraform">Terraform</h3>
+
+Terraform is an infrastructure deployment tool which can be used to automatically launch IronMQ.
+
+If you have an Amazon Web Services account, follow these instructions to launch IronMQ with Terraform.
+
+<ol>
+  <li><a href="https://terraform.io/downloads.html">Download and install Terraform</a>. An introduction to Terraform can be found <a href="https://terraform.io/intro/">here</a>.</li>
+  <li>Download or `git clone` the IronMQ Terraform configuration from <a href="https://github.com/iron-io/enterprise/blob/master/terraform/ironmq">this GitHub repository</a>.</li>
+  <li>Create a `terraform.tfvars.json` file with your credentials.  A sample configuration can be found <a href="https://github.com/iron-io/enterprise/blob/master/terraform/ironmq/sample.tfvars.json">here</a></li>
+  <li>Run `terraform plan -out=plan -var-file=terraform.tfvars.json`, review the plan, then run `terraform apply plan`.</li>
+</ol>
+
+<h2 id="manual">Manual Setup</h2>
+
+If you would like to manually set up IronMQ instead, follow the instructions below.
 
 <h2 id="download">Download</h2>
 
@@ -28,15 +60,6 @@ section: mq-on-premise
 $ docker pull iron/mq
 $ docker pull iron/auth
 ```
-
-<h2 id="requirements">Recommended Minimum System Requirements</h2>
-
-* __OS__: Docker installed
-* __RAM__ : 8GB+
-* __CPU__ : 2+ CPU
-* __Storage__ : SSD Drive
-
-Yes, it will probably work on your laptop. Don't benchmark on your laptop :)
 
 <h2 id="install">Install and Start</h2>
 
