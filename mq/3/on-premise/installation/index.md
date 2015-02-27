@@ -39,7 +39,7 @@ section: mq-on-premise
 
 <h3 id="terraform">Terraform</h3>
 
-Terraform is an infrastructure deployment tool which can be used to automatically launch IronMQ.
+Terraform is an infrastructure deployment tool which can be used to automatically launch an IronMQ cluster.
 
 If you have an Amazon Web Services account, follow these instructions to launch IronMQ with Terraform.
 
@@ -52,7 +52,7 @@ If you have an Amazon Web Services account, follow these instructions to launch 
 
 <h2 id="manual">Manual Setup</h2>
 
-If you would like to manually set up IronMQ instead, follow the instructions below.
+If you would like to manually set up an instance of IronMQ instead, follow the instructions below.
 
 <h2 id="download">Download</h2>
 
