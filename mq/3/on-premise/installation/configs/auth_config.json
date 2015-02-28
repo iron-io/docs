@@ -1,0 +1,17 @@
+{
+    "license": {
+        "key": "abcdef123456"
+    },
+    "api": {
+        "http_port": 8090
+    },
+    "data": {
+        "dir_description": "Where data files will be stored",
+        "dir": "../data"
+    },
+    "super_user": {
+        "token": "adminToken",
+        "email": "admin@somewhere.com",
+        "password": "password"
+    }
+}

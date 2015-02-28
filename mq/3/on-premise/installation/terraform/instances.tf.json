@@ -1,0 +1,235 @@
+{
+    "resource": {
+        "aws_instance": {
+            "ironmq": {
+				"ami": "${lookup(var.ami, var.aws_region)}",
+                "instance_type": "${var.instance_type}",
+                "count": "${var.count}",
+                "subnet_id": "${aws_subnet.ironmq.id}",
+                "security_groups": ["${aws_security_group.ironmq.id}"],
+                "user_data": "#cloud-config
+
+write_files:
+  - path: /etc/modules-load.d/nf.conf
+    content: |
+      nf_conntrack
+      nf_conntrack_ipv4
+  - path: /etc/sysctl.d/nf.conf
+    permissions: 0644
+    owner: root
+    content: |
+      net.netfilter.nf_conntrack_tcp_timeout_established = 600
+      net.netfilter.nf_conntrack_generic_timeout = 60
+      net.netfilter.nf_conntrack_tcp_timeout_unacknowledged = 30
+      net.netfilter.nf_conntrack_max=524288
+  - path: /etc/systemd/system/docker.service.d/increase-ulimit.conf
+    owner: core:core
+    permissions: 0644
+    content: |
+      [Service]
+      LimitMEMLOCK=infinity
+      LimitNOFILE=262144
+  - path: /home/core/ironmq/ironauth.json
+    owner: core:core
+    permissions: 0644
+    content: |
+      {
+          \"license\": {
+              \"key\": \"\"
+          },
+          \"api\": {
+              \"http_port\": 8090
+          },
+          \"data\": {
+              \"dir_description\": \"Where data files will be stored\",
+              \"dir\": \"../data\"
+          },
+          \"super_user\": {
+              \"token\": \"${var.iron_auth_admin_token}\",
+              \"email\": \"${var.iron_auth_admin_email}\",
+              \"password\": \"${var.iron_auth_admin_password}\"
+          }
+      }
+  - path: /home/core/ironmq/ironmq.json
+    owner: core:core
+    permissions: 0644
+    content: |
+      {
+        \"license\": {
+          \"key\": \"\"
+        },
+        \"api\": {
+          \"http_port\": 8080
+        },
+        \"auth\": {
+          \"host\": \"${var.iron_auth_host}\"
+        },
+        \"logging\": {
+            \"to\": \"papertrail\",
+            \"level\": \"info\",
+            \"prefix\": \"${var.cluster_name}\"
+        },
+        \"stathat\":{
+            \"email\":\"${var.stathat_email}\",
+            \"prefix\":\"${var.cluster_name}\"
+        },
+        \"pusher\": {
+          \"num_queues_brokers\": 10,
+          \"num_messages_consumers\": 50,
+          \"dial_timeout\": 10,
+          \"request_timeout\": 60,
+          \"num_dequeue_messages\": 3,
+          \"base_url\": \"${var.iron_mq_pusher_base_url}\"
+        },
+        \"data\": {
+          \"aes_key_description\": \"Key for generating id's.\",
+          \"aes_key\": \"770A8A65DA156D24EE2A093277530142\",
+          \"dir_description\": \"Where data files will be stored\",
+          \"dir\": \"../data\",
+          \"cache_size_description\": \"Size of cache in MB -- don't get carried away\",
+          \"cache_size\": 4096
+        }
+      }
+  - path: /home/core/ironmq/setconfig.sh
+    owner: core:core
+    permissions: 0744
+    content: |
+      #!/usr/bin/env bash
+      set -e
+      setconfig() {
+          if ! etcdctl get /ironmq/config.json; then
+              etcdctl set /ironmq/config.json \"`cat /home/core/ironmq/ironmq.json`\"
+          fi
+          if ! etcdctl get /ironauth/config.json; then
+              etcdctl set /ironauth/config.json \"`cat /home/core/ironmq/ironauth.json`\"
+          fi
+      }
+
+      n=0
+      until [ $n -ge 10 ]
+      do
+          setconfig && exit
+          n=$[$n+1]
+          sleep 2
+      done
+
+coreos:
+  update:
+    reboot-strategy: off
+  etcd:
+    discovery: ${var.coreos_discovery_url}
+    addr: $private_ipv4:4001
+    peer-addr: $private_ipv4:7001
+  fleet:
+    public-ip: $private_ipv4
+  units:
+    - name: format-mnt-data.service
+      command: start
+      content: |
+        [Unit]
+        Description=Format the IronMQ data drive
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=/usr/sbin/mkfs -t ext4 /dev/xvdb
+    - name: mnt-data.mount
+      command: start
+      content: |
+        [Unit]
+        After=format-mnt-data.service
+        [Mount]
+        What=/dev/xvdb
+        Where=/mnt/data
+        Type=ext4
+    - name: docker.service
+      command: restart # restart docker for new ulimits
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: ironmq-setconfig.service
+      command: start
+      content: |
+        [Unit]
+        Description=Load first config into etcd for subsequent instances
+        After=etcd.service
+        Requires=etcd.service
+
+        [Service]
+        TimeoutStartSec=0
+        ExecStart=/usr/bin/bash /home/core/ironmq/setconfig.sh
+        Type=oneshot
+        RemainAfterExit=yes
+    - name: irondata.service
+      command: start
+      content: |
+        [Unit]
+        Description=Volume for persistent iron service data and configs
+        After=docker.service mnt-data.mount
+        Requires=docker.service
+
+        [Service]
+        TimeoutStartSec=0
+        ExecStart=/usr/bin/docker run -name irondata -v /mnt/data:/ironmq/data busybox true
+        Type=oneshot
+        RemainAfterExit=yes
+    - name: ironauth.service
+      command: ${var.iron_auth_command}
+      content: |
+        [Unit]
+        Description=IronAuth
+        After=docker.service etcd.service ironmq-setconfig.service
+        Requires=docker.service etcd.service
+
+        [Service]
+        User=core
+        EnvironmentFile=/etc/environment
+        TimeoutStartSec=0
+        Restart=on-failure
+        ExecStartPre=-/usr/bin/docker kill ironauth
+        ExecStartPre=-/usr/bin/docker rm ironauth
+        ExecStartPre=/usr/bin/docker pull iron/auth
+        ExecStartPre=/usr/bin/etcdctl set \"/ironauth/peers/$private_ipv4:8090\" \"$private_ipv4:8090\"
+        ExecStart=/usr/bin/bash -c '/usr/bin/docker run --net=host --name ironauth --volumes-from irondata -p 8090:8090 -p 8091:8091 -p 8092:8092 -e CONFIG_JSON=\"`/usr/bin/etcdctl get /ironauth/config.json`\" -e DATACONFIG_COHOSTS=`/usr/bin/etcdctl ls /ironauth/peers | /usr/bin/xargs -n 1 etcdctl get | /usr/bin/sed -e \"s/\\(.*\\)/\\\\\"\\1\\\\\"/\" | /usr/bin/paste -sd \",\" - | /usr/bin/sed -e \"s/\\(.*\\)/[\\1]/\"` iron/auth'
+        ExecStop=/usr/bin/docker stop ironauth
+
+        [X-Fleet]
+        Global=true
+    - name: ironmq.service
+      command: start
+      content: |
+        [Unit]
+        Description=IronMQ
+        After=docker.service etcd.service irondata.service ironauth.service ironmq-setconfig.service
+        Requires=docker.service etcd.service irondata.service ironauth.service
+
+        [Service]
+        User=core
+        EnvironmentFile=/etc/environment
+        Restart=on-failure
+        TimeoutStartSec=0
+        ExecStartPre=-/usr/bin/docker kill ironmq
+        ExecStartPre=-/usr/bin/docker rm ironmq
+        ExecStartPre=/usr/bin/docker pull iron/mq:${var.iron_mq_docker_tag}
+        ExecStartPre=/usr/bin/etcdctl set \"/ironmq/peers/$private_ipv4:8080\" \"$private_ipv4:8080\"
+        ExecStart=/usr/bin/bash -c '/usr/bin/docker run --net=host --name ironmq --volumes-from irondata -p 8080:8080 -p 8081:8081 -p 8082:8082 -e CONFIG_JSON=\"`/usr/bin/etcdctl get /ironmq/config.json`\" -e LEVELDB_CONFIG_COHOSTS=`/usr/bin/etcdctl ls /ironmq/peers | /usr/bin/xargs -n 1 etcdctl get | /usr/bin/sed -e \"s/\\(.*\\)/\\\\\"\\1\\\\\"/\" | /usr/bin/paste -sd \",\" - | /usr/bin/sed -e \"s/\\(.*\\)/[\\1]/\"` iron/mq:${var.iron_mq_docker_tag}'
+        ExecStop=/usr/bin/docker stop ironmq
+
+        [X-Fleet]
+        Global=true",
+
+                "key_name": "${var.ssh_key_name}",
+
+                "block_device": {
+                    "device_name": "/dev/xvdb",
+                    "volume_size": "100",
+                    "volume_type": "gp2"
+                },
+
+                "tags": {
+                    "Name": "IronMQ (${var.cluster_name})"
+                }
+            }
+        }
+    }
+}

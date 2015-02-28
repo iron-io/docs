@@ -1,0 +1,196 @@
+---
+title: IronMQ On-Premise Management
+summary: "Management information for IronMQ clusters"
+layout: default
+section: mq-on-premise
+---
+
+<p class="subtitle">
+<!--   IronMQ On-Premise administration -->
+</p>
+
+<section id="toc">
+<h3>Administration</h3>
+<ul>
+<li><a href="#stats">Stats endpoint</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#backups">Backups</a></li>
+</ul>
+</section>
+
+<h2 id="stats">Statistics</h2>
+
+You can get statistics from an IronMQ instance by using the endpoint:
+
+`GET /3/stats`
+
+You'll have to specify an admin token either in the query string `oauth` or in
+the Authorization headers, `Authorization: OAuth $token`.
+
+Response will be up to the last 60 intervals of stats, where interval can be set in the
+config (default: 60 seconds), at line: `"stats":{"interval":60}`.
+
+```
+{
+  "stat_history": [
+  {
+    "stats": {
+      "reserved": {
+        "requests": 22,
+        "messages": 22,
+        "avg_latency_ms": 38.416678136363636
+      },
+      "totals": {
+        "requests":42,
+        "messages":42,
+        "avg_latency_ms": 42.00
+      }
+    },
+    "start_time": "2015-02-27T17:17:33.11477666Z",
+    "end_time": "2015-02-27T17:18:33.114765082Z"
+  },
+  ...
+  ]
+}
+```
+
+<h2 id="troubleshooting"></h2>
+
+# IronMQ Enterprise Troubleshooting Guide
+
+This guide is the first stop for any issues you might be having with IronMQ Enterprise. Please read through it before contacting support.
+
+## Log Messages
+
+IronMQ's log messages are encoded with logfmt. This format is intended to be easy to read for both machines and humans.
+
+All log lines have, at minimum, these keys:
+
+* msg: a human-readable message summarizing the log entry
+* lvl: a verbosity level, which is one of the following values from most verbose to least: "dbug", "info", "warn", "eror", "crit"
+* t: an RFC 3339-formatted timestamp
+
+## HUD
+
+HUD is a fairly thin layer in front of IronMQ and your auth service. It's likely that any issues you have with HUD are in communicating with these services.
+
+The first thing to check is HUD's log. If you don't see anything, you can try increasing the log level in `config/environments/production.rb`. There should be a line that looks like:
+
+```
+config.log_level = :info
+```
+
+Change it to:
+
+```
+config.log_level = :debug
+```
+
+You must restart HUD for these changes to take effect. If your log messages are unclear or nonexistent, please contact support.
+
+## HTTP Status Codes
+
+Every HTTP response should be JSON-encoded and the top-level object has a `msg` field. This field provides details about error statuses.
+
+### 400 - Bad Request
+
+IronMQ can return 400 for a variety of reasons and the JSON `msg` field should do a pretty good job of illuminating the reason.
+
+Examples of things that can cause 400 include:
+
+* Malformed JSON in the request or JSON fields with unexpected types
+* A parameter being out of range or having an unexpected value
+
+Please contact support if you come across a 400 response that does not provide a clear message.
+
+### 401 - Unauthorized
+
+401 means that IronMQ was not able to verify your token with the auth service (either IronAuth or Keystone).
+
+### 403 - Forbidden
+
+There are two reasons you might receive a 403.
+
+#### Wrong reservation\_id
+IronMQ returns 403 when you try to operate on a message with an invalid reservation ID. Usually this means that you've reserved a message, but the reservation timed out before you were able to operate on the message.
+
+You can do one of two things to resolve this issue:
+
+* Increase the timeout either on the queue or when reserving the message
+* Change your code so that it doesn't take as long to handle a message
+
+The appropriate action depends on your use case and expectations.
+
+#### Trying to Change Immutable Queue Parameters
+
+IronMQ also responds with 403 if you try to change a queue's type after it is created. If you really need to do this, you must delete the queue and create a new one with the correct type.
+
+### 404 - Not Found
+
+Usually 404 means that you tried to access a resource that doesn't exist. Check for typos and make sure that the resource you're trying to access actually does exist.
+
+IronMQ also uses 404 when you try to access a resource that you are not allowed to access. If you're sure that the resource exist, check your permissions.
+
+### 500 - Internal Server Error
+
+A 500 status code means one of two things:
+
+* Something critical to the system is unavailable. This could mean that disk is full or that the authentication mechanism is unavailable, for example
+* There is a bug in the system.
+
+In any case, there should always be something in the logs to indicate why a 500 occurred. If the log indicates a probable bug or if there isn't, please [file a bug](#bugs).
+
+### 503 - Service Unavailable
+
+IronMQ never returns 503, but often some kind of load balancer or proxy is placed in front of IronMQ and might return this status. Please examine the HTTP response body (which is not generated by IronMQ) and refer to the manual for any load balancer or proxy you might be using.
+
+Often this means that IronMQ is unresponsive or not running. It's worth checking IronMQ's logs if you think it should be working.
+
+### 504 - Gateway Timeout
+
+IronMQ never returns 504, but like 503, load balancers and proxies sometimes return this status. Take the same steps that you would for a 503 status.
+
+<h2 id="support">Contacting Support</h2>
+
+Email <support@iron.io>. Please include as much information about your problem as possible. If you're reporting a bug, refer to [filing bugs](#bugs).
+
+<h2 id="bugs">Filing Bugs</h2>
+
+If you've read through this document and are still having problems, please email <support@iron.io> and include:
+
+* All relevant error information, including HTTP status code, JSON `msg` field, and any log lines from near the time the error occurred.
+* What you were doing when the error occurred, including URL, HTTP method, and parameters. Sample code can be fine too.
+* Anything else you think might be relevant.
+
+<h2 id="backups">Backups</h2>
+
+# Creating backups of your data
+
+CAUTION: Hot backups are currently not supported, you must stop the services before backing up. 
+
+## 1. Stop services
+
+First stop the service. If using Upstart:
+
+```
+sudo stop ironmq
+sudo stop ironauth
+```
+
+## 2. Copy data directory
+
+Make a copy of the data directory to another directory. Data files will be stored at `$HOME/iron/data` by default if you 
+haven't changed the configs.  
+
+## 3. Start services
+
+After you've copied the files, you can start the services back up again:
+
+```
+sudo start ironauth
+sudo start ironmq
+```
+
+## 4. Archive copy to long term storage
+
+Zip/tar the copy you made, then transfer it to a secure location. 

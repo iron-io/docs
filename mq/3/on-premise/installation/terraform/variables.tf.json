@@ -1,0 +1,81 @@
+{
+    "variable": {
+        "aws_access_key": {
+            "description": "AWS Access Key"
+        },
+        "aws_secret_key": {
+            "description": "AWS Secret Key"
+        },
+        "aws_region": {
+            "default": "us-east-1",
+            "description": "The region of AWS, for AMI lookups."
+        },
+        "ami": {
+            "default": {
+                "us-east-1": "ami-f669f29e",
+                "ap-southeast-2": "ami-e37f09d9"
+            }
+        },
+        "instance_type": {
+            "default": "c3.large"
+        },
+        "ssh_key_name": {
+            "description": "SSH key name in your AWS account for AWS instances."
+        },
+        "ssh_key_path": {
+            "description": "Path to the private key specified by key_name."
+        },
+        "count": {
+            "default": "3",
+            "description": "The number of IronMQ servers to launch."
+        },
+        "cluster_name": {
+            "description": "Name tag"
+        },
+        "iron_auth_command": {
+            "description": "Cloud config unit command for IronAuth. To disable hosting IronAuth locally set this to 'stop'",
+            "default": "start"
+        },
+        "iron_auth_host": {
+            "description": "",
+            "default": "http://localhost:8090"
+        },
+        "iron_auth_admin_token": {
+            "description": "",
+            "default": "demotoken"
+        },
+        "iron_auth_admin_email": {
+            "description": "",
+            "default": "email@example.com"
+        },
+        "iron_auth_admin_password": {
+            "description": "",
+            "default": "demopassword"
+        },
+        "docker_auth_token": {
+            "description": "",
+            "default": ""
+        },
+        "docker_auth_email": {
+            "description": "",
+            "default": ""
+        },
+        "iron_mq_docker_tag": {
+            "default": "latest"
+        },
+        "iron_mq_pusher_base_url": {
+            "default": "http://localhost:8080"
+        },
+        "iron_license": {
+            "description": "",
+            "default": ""
+        },
+        "stathat_email": {
+            "description": "",
+            "default": ""
+        },
+        "coreos_discovery_url": {
+            "description": ""
+        }
+    }
+}
