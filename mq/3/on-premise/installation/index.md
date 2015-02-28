@@ -191,7 +191,7 @@ hud-e, public:
 :3000 tcp
 ```
 
-You'll probably want an odd numbered amount of boxes, because IronMQ and
+You'll want an odd numbered (>=3) amount of boxes, because IronMQ and
 IronAuth both use a quorum-based approach to handle network partitions. We
 recommend starting with 3 nodes and scaling up once you're comfortable with
 managing IronMQ clusters. We also recommend creating a load balancer to point to
