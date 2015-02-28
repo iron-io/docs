@@ -10,7 +10,7 @@ section: mq-v3
 IronMQ is a fully featured high-performance messaging solution that can be more easily 
 deployed in high availability configurations across clouds.
 
-These docs should help get you installed and running on your cloud du joir. 
+These docs should help get you installed and running on your cloud du jour. 
 
 * [Installation](/mq/3/on-premise/installation) 
 * [Management](/mq/3/on-premise/management)
