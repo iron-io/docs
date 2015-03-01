@@ -17,7 +17,7 @@ section: mq-on-premise
     <ul>
       <li><a href="#terraform">Terraform</a></li>
     </ul>
-    <li><a href="#manual">Manual Setup</a></li>
+    <li><a href="#manual">Manual Setup Single Node</a></li>
     <ul>
       <li><a href="#download">Download</a></li>
       <li><a href="#install">Install</a></li>
@@ -25,6 +25,7 @@ section: mq-on-premise
       <li><a href="#start">Client lib and API docs</a></li>
       <li><a href="#custom_config">Custom Configuration</a></li>
     </ul>
+    <li><a href="#manual-cluster">Manual Setup Cluster</a></li>
   </ul>
 </section>
 
@@ -39,7 +40,7 @@ section: mq-on-premise
 
 <h3 id="terraform">Terraform</h3>
 
-Terraform is an infrastructure deployment tool which can be used to automatically launch IronMQ.
+Terraform is an infrastructure deployment tool which can be used to automatically launch an IronMQ cluster.
 
 If you have an Amazon Web Services account, follow these instructions to launch IronMQ with Terraform.
 
@@ -52,7 +53,7 @@ If you have an Amazon Web Services account, follow these instructions to launch 
 
 <h2 id="manual">Manual Setup</h2>
 
-If you would like to manually set up IronMQ instead, follow the instructions below.
+If you would like to manually set up an instance of IronMQ instead, follow the instructions below.
 
 <h2 id="download">Download</h2>
 
@@ -61,7 +62,7 @@ $ docker pull iron/mq
 $ docker pull iron/auth
 ```
 
-<h2 id="install">Install and Start</h2>
+<h2 id="install">Install and Start Single Instance</h2>
 
 Reference:
 
@@ -144,3 +145,104 @@ environment variable `CONFIG_JSON`. An example with mq:
 ```
 $ docker run -d -p 8090:8090 --net=host -e CONFIG_JSON="`cat path/to/mq_config.json`" iron/mq
 ```
+
+<h2 id="manual-cluster">Manual Setup of a cluster</h2>
+
+This section is meant to provide additional information about setting up an MQ
+cluster, for a much more streamlined experience, check out the [terraform](#terraform) section above.
+
+For clustering we use and recommend CoreOS to do basic service discovery and configuration
+management. The below instructions could easily be altered for other kinds of
+deployments, but this will be tailored towards a CoreOS cluster. Before you get
+started, See [our requirements](#requirements) for the minimum recommended box configuration.
+The bigger, the better.
+
+We provide a `cloud-config` to make provisioning boxes with a few parameters and
+files pretty easy, you can find it here: [cloud-config](https://github.com/iron-io/enterprise/blob/master/cloud-config).
+WARN: you'll have to enter a new CoreOS discovery url, you can grab one [here](https://discovery.etcd.io/new).
+
+You'll want to at least have the `cloud-config` copied into your clipboard or downloaded, to
+stick it into the platform's configuration. For AWS, you can find this section
+in "Configure instance -> Advanced Details -> user data".
+
+This will not take care of security groups if you're on AWS, so you'll need the
+following ports opened up (note: private ones could be public, but not recommended):
+
+```
+coreos, private ports: 
+:4001 tcp
+:7001 tcp
+
+ironmq, public:
+:8080 tcp
+
+ironmq, private:
+:8081 tcp & udp
+:8082 tcp
+
+ironauth, public:
+:8090 tcp
+
+ironauth, private:
+:8091 tcp & udp
+:8092 tcp
+
+hud-e, public:
+:3000 tcp
+```
+
+You'll want an odd numbered (>=3) amount of boxes, because IronMQ and
+IronAuth both use a quorum-based approach to handle network partitions. We
+recommend starting with 3 nodes and scaling up once you're comfortable with
+managing IronMQ clusters. We also recommend creating a load balancer to point to
+these nodes. IronMQ runs on `:8080` and IronAuth runs on `:8090`. 
+
+After getting the boxes provisioned and running, you can ssh onto one of them to
+take care of fixing up the configs however you might like. They should be in the
+home directory as `mq_config.json` and `auth_config.json`. You should also see
+the service files, we'll need these in a minute.
+
+To get started, you'll have to submit the configs to etcd. For example:
+
+```
+$ etcdctl set /ironmq/config.json “`cat mq_config.json`”
+$ etcdctl set /ironauth/config.json “`cat auth_config.json`”
+```
+
+Afterwards, you can start up the services.
+
+```
+$ fleetctl start ironmq.service
+$ fleetctl start ironauth.service
+$ fleetctl start hud-e.service
+```
+
+You can see that everything is running, and where to find hud-e, by doing:
+
+```
+$ fleetctl list-units
+```
+
+Afterwards, you should be able to go to HUD-e in your browser, it's running on
+port 3000 on the box it landed on. From there, you can use the initial login
+(from `auth_config.json`) to get in, and then we recommend creating other users, 
+tokens and projects to get started. You'll have to add an address in HUD-e in 
+the `manage clusters` section of the admin section for MQ, a load balancer address 
+works great.
+
+This should give you a basic installation of IronMQ, IronAuth and
+HUD-enterprise. We do not recommend using the above instructions in a production
+environment. This is because IronMQ is counting on IronAuth running on the same
+instance and being available. In a production setting, IronAuth should probably
+run on separate boxes, and IronMQ should access it through a load balancer or
+DNS -- you can find the auth URL in `mq_config.json`. 
+For HUD-e, we deploy on Heroku internally, and recommend that approach, as well. 
+
+We will add more information about the configuration for IronMQ, IronAuth and
+HUD-enterprise soon.
+
+<!-- TODO list all config options for ironmq, ironauth, hud-e -->
+
+If you ran into any issues, feel free to contact us at <support@iron.io> and we'd be
+happy to help, otherwise feel free to [get started](#start).
+

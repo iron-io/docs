@@ -1,5 +1,5 @@
 ---
-title: IronMQ v3.0 changelog
+title: IronMQ v3 changelog
 summary: "Our IronMQ engineers will be updating this page with the latest major and minor changes to the api and behavior"
 layout: default
 section: mq-v3
