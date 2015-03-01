@@ -31,6 +31,7 @@ section: mq-v3
   9. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
   10. [Clear Messages](#clear-messages) - Removes all messages from a queue
   11. [Get Push Statuses for a Message](#get-push-statuses)
+5. [Stats](#stats) 
 
 ## <a name="changes"></a> Changes
 
@@ -693,3 +694,36 @@ Response:
   ]
 }
 ```
+
+## <a name="stats"></a> Stats
+
+<div class="grey-box">
+GET /stats
+</div>
+
+Response:
+
+Returns a vector of records, one per minute.
+
+```
+  [
+    {
+      "stats": {
+        "reserved": {
+          "requests": 22,
+          "messages": 22,
+          "avg_latency_ms": 38.416678136363636
+        },
+        "totals": {
+          "requests": 22,
+          "messages": 22,
+          "avg_latency_ms": 38.416678136363636
+        }
+      },
+      "start_time": "2015-02-27T17:17:33.11477666Z",
+      "end_time": "2015-02-27T17:18:33.114765082Z"
+    }
+    …
+  ]
+  ```
+
