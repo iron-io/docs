@@ -16,7 +16,6 @@ just a piece of information you want to supply at runtime and make available in 
 
 Client is able to specify payload for queued or scheduled workers.
 Payloads are strings. But usually we suggest to use JSON format.
-Also, when using `ruby`, `php`, and `node` runtimes JSON payload will be automatically parsed.
 
 <section id="toc">
   <h3>Table of Contents</h3>
@@ -29,61 +28,17 @@ Also, when using `ruby`, `php`, and `node` runtimes JSON payload will be automat
 
 <h2 id="get_payload_in_a_worker">Get Payload in a Worker</h2>
 
-When payload is posted to a worker when using the *queue* or *schedule* API endpoints, then it is stored in the database.
-Before your worker is launched in the IronWorker [environment](/worker/reference/environment),
-this payload is then stored in your worker's runtime directory. The location of that file is passed to the worker using the `-payload` command line flag.
+When payload is posted to a worker when using the *queue* or *schedule* API endpoints, that payload will be written
+to a file for your worker to use in it's working directory. The location of that file is passed to the worker using 
+the `-payload` command line flag.
 
 To get the contents of your payload, you need to:
 
-1. Read the `-payload` flag using `ARGV` (or whatever your language uses to read command line flags)
+1. Read the `-payload` flag/argument using whatever your language uses to read command line flags. 
 2. Open and read the file specified by the `-payload` flag
-3. Parse the contents of the file (for example, if you encoded the payload when queuing the task)
+3. Parse the contents of the file (for example, if your payload is JSON)
 
-Workers that use either `ruby` or `php` runtimes have more possibilities to access the payload.
-
-### Access to a Payload in Ruby Runtime
-
-Ruby workers have access to special methods to obtain the payload.
-
-```ruby
-payload # string representation of payload
-params  # json parsed payload
-
-# you can also access the following
-
-config # your configuration variables see the configuration variables page for more info
-iron_task_id # a worker's own task id, useful for checking status via api.
-```
-
-If specified payload is in a JSON format it will be parsed automatically into params.
-
-
-### Access to a Payload in PHP Runtime
-
-The payload in PHP runtime is accessible by calling method `getPayload()`.
-If payload is a parsable JSON string it will be converted automatically.
-
-
-```php
-<?php
-payload = getPayload(); // parsed JSON or string
-?>
-<!-- you can also access the following  -->
-<?php
-config = getConfig(); // parsed JSON or string
-?>
-```
-
-### Access to a Payload in Node.js Runtime
-
-```js
-var worker = require('node_helper');
-console.log("params:", worker.params);
-
-// you can also access the following
-console.log("config:", worker.config);
-console.log("task_id:", worker.task_id);
-```
+Most of our [client libraries](/worker/libraries/) have helper methods to help with this, see your client libs docs for more information.
 
 <h2 id="other_information">Other Information</h2>
 
