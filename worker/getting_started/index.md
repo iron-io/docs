@@ -54,6 +54,13 @@ and wrapping up your code to make it easy to run.
   	</div>
 </div>
 
+## Setup
+
+Before starting, you'll need to setup a couple of things. You only need to do this once.
+
+1. [Install the Iron.io cli tool](http://localhost:4000/worker/reference/cli/)
+1. [Setup your Iron.io credentials](http://localhost:4000/worker/reference/configuration/)
+1. [Install Docker](https://docs.docker.com/installation/#installation)
 
 ## Hello World Worker
 
