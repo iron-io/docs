@@ -98,7 +98,7 @@ console.log("task_id:", worker.task_id);
 
 <h3 id="create_a_worker_file">Create a .worker File</h3>
 
-Worker files are a simple way to define your worker and its dependencies. Save the following in a file called `hello.worker`:
+Worker files are a simple way to define your worker and its dependencies (package.json, node modules, files, directories, etc.). Save the following in a file called `hello.worker`:
 
 <figcaption><span>hello.worker </span></figcaption>
 
@@ -256,7 +256,8 @@ process.exit(0);
 
 **requirements**
 - package.json with included dependencies
-  -/node_modules directory
+- /node_modules directory
+- any other dependencies (files, directories, etc.) 
 
 If you're using NPM modules within your worker, you're going to need to package those dependencies when you upload the worker. To do this, add
 
