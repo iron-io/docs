@@ -100,6 +100,19 @@ runtime "python"
 exec "hello_worker.py"
 ```
 
+Or you could build a worker remotely if one of its libraries depends on some binary extensions.      
+[You can read more about remote build here](/worker/reference/builds/#remote_build).
+
+```ruby
+runtime "python"
+exec "hello_worker.py"
+
+pip 'twilio'
+pip 'mock', '1.0.1'
+
+remote
+```
+
 You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
 <h3 id="upload_the_worker">Upload the Worker</h3>
