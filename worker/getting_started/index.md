@@ -1,10 +1,17 @@
 ---
-title: IronWorker Getting Started
+title: IronWorker Getting Started 4-Step Standard Workflow
 layout: default
 section: worker
 ---
 
 <p class="subtitle">Offload your tasks to the parallel-processing power of the elastic cloud. Write your code, then queue tasks against it&mdash;no servers to manage, no scaling to worry about.</p>
+
+<div class="alert">
+<p><strong>Note:</strong> Before starting, be sure to read <a href="/worker/reference/configuration/">Client Configuration</a>
+ for information on creating an `iron.json` file with your Iron.io credentials. </p>
+</div>
+
+# IronWorkerNG Based Workflow
 
 <div class="flow-steps">
 	<div class="step">
