@@ -181,6 +181,12 @@ nav.sidebar-nav {
 .sidebar-content ul li a {
   padding: 0 0 0 16px;
 }
+.sidebar-content ol {
+  margin: 0;
+}
+.sidebar-content ol li {
+  padding: 0;
+}
 
 .sidebar-content a.selected {
   color: #000000;
@@ -198,7 +204,11 @@ nav.sidebar-nav {
   margin: 10px 0 3px 0;
   padding: 0;
 }
+.sidebar-content .sub-sidemenu-header{
+  margin: 10px 0 3px 5px;
+  padding: 0;
 
+}
 .sidebar-content ul {
   list-style-type: none;
   padding: 0;
