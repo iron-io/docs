@@ -100,7 +100,7 @@ runtime "python"
 exec "hello_worker.py"
 ```
 
-Or you could build a worker remotely if one of its libraries depends on some binary extensions.      
+Or you should build a worker remotely if one of its libraries depends on some binary extensions.
 [You can read more about remote build here](/worker/reference/builds/#remote_build).
 
 ```ruby
