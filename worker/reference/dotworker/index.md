@@ -333,5 +333,14 @@ The following syntax is valid in `.worker` files:
       </td>
     </tr>
 
+    <tr id="syntax-requirements">
+      <td>requirements</td>
+      <td>python</td>
+      <td>Merge all pip packages from the specified requirements.txt.</td>
+      <td>
+        The path to the requirements.txt
+      </td>
+    </tr>
+
   </tbody>
 </table>
