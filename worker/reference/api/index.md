@@ -339,12 +339,16 @@ The request should be JSON-encoded and contain the following information:
 When uploading code, the following are required (not required if just updating code options below):
 
 * **file**: A multipart-encoded string containing the zip file you are uploading.
-* **file_name**: The name of the file within the zip that will be executed when a task is run.
-* **runtime**: The language to execute your worker with. The following values are valid:
-  * sh
-  * ruby
-  * python
-  * php
+* If you are using the standard workflow:
+  * **file_name**: The name of the file within the zip that will be executed when a task is run.
+  * **runtime**: The language to execute your worker with. The following values are valid:
+    * sh
+    * ruby
+    * python
+    * php
+* Or if you are using the [Docker Workflow](/worker/beta/getting_started/):
+  * **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/beta/getting_started/) for more information.
+  * **stack**: The IronWorker stack to run your worker in. See [Stacks](/worker/reference/environment/#default_language_versions) for more information. 
 
 The request also accepts the following optional parameters:
 
