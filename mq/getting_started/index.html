@@ -395,10 +395,11 @@ queue.get({n: 1}, function(error, body) {
   if (error == null) {
     message_id = body.id;
   }
-});
 
-queue.del(message_id, function(error, body) {
-  console.log(error, body);
+
+  queue.del(message_id, function(error, body) {
+    console.log(error, body);
+  });
 });
 {% endhighlight %}</div>
 
