@@ -195,17 +195,37 @@ We recommend that you use [CoreOS](https://coreos.com/) to run IronMQ components
 clustered mode, because it includes basic service discovery and configuration management that
 you'll need for setup.
 
-We provide a `cloud-config` to make provisioning boxes with a few parameters and
-files pretty easy, you can find it here: [cloud-config](https://github.com/iron-io/enterprise/blob/master/cloud-config).
-Note that you'll need to enter a new CoreOS discovery url to bootstrap CoreOS's
-service discovery system. Set one up at [discovery.etcd.io/net](https://discovery.etcd.io/new).
+### 1. Download `cloud-config`
 
-You'll want to at least have the `cloud-config` copied into your clipboard or downloaded, to
-stick it into the platform's configuration. For AWS, you can find this section
-in "Configure instance -> Advanced Details -> user data".
+We provide a CoreOS `cloud-config` file to make provisioning new nodes easier.
+Please save it to a file with the following command:
 
-This will not take care of security groups if you're on AWS, so you'll need the
-following ports opened up (note: private ones could be public, but not recommended):
+```bash
+curl https://raw.githubusercontent.com/iron-io/enterprise/master/cloud-config > cloud_config
+```
+
+### 2. Configure etcd discovery token
+
+Go to [discovery.etcd.io/new](https://discovery.etcd.io/new) and copy the URL on
+that page. Open `cloud_config` and replace `https://discovery.etcd.io/{TODO_GET_A_NEW_ONE}` with
+the copied URL.
+
+### 3. Bootstrap cloud_config onto new nodes
+
+New nodes that start on your cloud will need to have `cloud_config` somewhere
+on the filesystem. You may need to manually build a VM image or include `cloud_config`
+in a startup script.
+
+On AWS, you can do it in the EC2 dashboard under the
+`"Configure instance" -> "Advanced Details" -> "User Data"` section.
+
+### 4. Open ports
+
+Depending on your provider, you'll need to open up ports to make
+CoreOS and IronMQ work properly in a distributed setting. On AWS, set up
+security groups in the same EC2 dashboard as in the last step.
+
+Below are the ports, protocols and visibilities of the required ports:
 
 ```
 coreos, private ports:
@@ -230,57 +250,108 @@ hud-e, public:
 :3000 tcp
 ```
 
-You'll want an odd numbered (>=3) amount of boxes, because IronMQ and
-IronAuth both use a quorum-based approach to handle network partitions. We
-recommend starting with 3 nodes and scaling up once you're comfortable with
-managing IronMQ clusters. We also recommend creating a load balancer to point to
-these nodes. IronMQ runs on `:8080` and IronAuth runs on `:8090`.
+### 5. Start nodes
 
-After getting the boxes provisioned and running, you can ssh onto one of them to
-take care of fixing up the configs however you might like. They should be in the
-home directory as `mq_config.json` and `auth_config.json`. You should also see
-the service files, we'll need these in a minute.
+You are now ready to start nodes to form your cluster. This process will
+depend on your cloud. In many, this can be done with a click of a button in
+your cloud dashboard.
 
-To get started, you'll have to submit the configs to etcd. For example:
+Please follow these guidelines when starting and maintaining your cluster:
+
+- Always run at least 3 nodes
+- Always run an odd number of nodes (`iron/mq` and `iron/auth` both use a quorum based
+distributed algorithm to handle network errors and failures)
+- We recommend sizing your cluster with 3 nodes and scaling up once you're comfortable with
+managing IronMQ clusters
+- We recommend creating a load balancer to point to these nodes. To do this, allow your load
+balancer to forward traffic on ports 8080 (`iron/mq`) and 8090 (`iron/auth`)
+
+### 6. Configure nodes & start services
+
+After your cluster is running, `ssh` into one of them.
+
+In each node's `$HOME` directory, you should see the following files:
+
+- `mq_config.json`
+- `auth_config.json`
+- `ironmq.service`
+- `ironauth.service`
+
+### 7. Add configuration
+
+The `*_config.json` files are stored in [etcd](https://github.com/coreos/etcd),
+a distributed, consistent storage system that CoreOS uses for storing
+configuration data.
+
+Add the `*_config.json` files to etcd with these commands:
 
 ```
-$ etcdctl set /ironmq/config.json “`cat mq_config.json`”
-$ etcdctl set /ironauth/config.json “`cat auth_config.json`”
+cd $HOME
+etcdctl set /ironmq/config.json "`cat mq_config.json`"
+etcdctl set /ironauth/config.json “`cat auth_config.json`”
 ```
 
-Afterwards, you can start up the services.
+### 8. Start services
+
+The `*.service` files describe the commands that CoreOS's [fleet](https://github.com/coreos/fleet)
+should execute on all nodes in the cluster. Fleet builds on etcd to coordinate all
+the startup steps.
+
+Start the services with these commands:
 
 ```
-$ fleetctl start ironmq.service
-$ fleetctl start ironauth.service
-$ fleetctl start hud-e.service
+fleetctl start ironmq.service
+fleetctl start ironauth.service
+fleetctl start hud-e.service
 ```
 
-You can see that everything is running, and where to find hud-e, by doing:
+Notice the final `fleetctl start hud-e.service` command. `hud-e` is IronMQ's web
+based user interface for viewing and managing user accounts, projects and queues.
+
+### 9. Visit Hud-e
+
+First, find `hud-e.service` in the list that the following command outputs:
 
 ```
-$ fleetctl list-units
+fleetctl list-units
 ```
 
-Afterwards, you should be able to go to HUD-e in your browser, it's running on
-port 3000 on the box it landed on. From there, you can use the initial login
-(from `auth_config.json`) to get in, and then we recommend creating other users,
-tokens and projects to get started. You'll have to add an address in HUD-e in
-the `manage clusters` section of the admin section for MQ, a load balancer address
-works great.
+The output of this command might look something like the following:
 
-This should give you a basic installation of IronMQ, IronAuth and
-HUD-enterprise. We do not recommend using the above instructions in a production
-environment. This is because IronMQ is counting on IronAuth running on the same
-instance and being available. In a production setting, IronAuth should probably
-run on separate boxes, and IronMQ should access it through a load balancer or
-DNS -- you can find the auth URL in `mq_config.json`.
-For HUD-e, we deploy on Heroku internally, and recommend that approach, as well.
+```
+ironmq.service	7a214547.../52.0.97.110	active	running
+ironmq.service	7e15465c.../52.0.27.248	active	running
+ironmq.service	e23d889d.../52.0.96.29	active	running
+hud-e.service	  7e15465c.../52.0.27.248	active	running
+```
 
-We will add more information about the configuration for IronMQ, IronAuth and
-HUD-enterprise soon.
+Open your browser and go to `http://$HUD_E_IP:3000` to see hud-e. In the above
+example, the URL would be `http://52.0.27.248:3000`.
 
-<!-- TODO list all config options for ironmq, ironauth, hud-e -->
+Hud-e will ask for a login. Login details are in `$HOME/auth_config.json`
+(found in step 6). Use those details to log in and manage clusters, users,
+tokens and projects.
 
-If you ran into any issues, feel free to contact us at <support@iron.io> and we'd be
-happy to help, otherwise feel free to [get started](#start).
+We recommend using your load balancer to forward traffic to Hud-e in addition
+to `iron/mq` and `iron/auth` so that you have a stable IP or hostname
+to manage clusters with.
+
+### Notes for production usage
+
+We do not recommend using the above instructions in a production
+environment because `iron/mq` depends on `iron/mq` to run on the same node.
+
+In a production setting, `iron/auth` should run on separate nodes with a separate
+load balancer rule (or via DNA). If you use this configuration, set the
+`iron/auth` IP or hostname in `iron/mq`'s `mq_config.json` file.
+
+Additionally, since HUD-e is completely API driven, we recommend hosting it on
+different nodes from `iron/mq` and `iron/auth`. We deploy it on Heroku for our
+hosted products.
+
+We will add more information about IronMQ production configurations soon.
+
+## Support
+
+If you find issues are problems during your setup, please contact us at
+<support@iron.io> and we'd be happy to help.
