@@ -99,7 +99,31 @@ runtime "python"
 exec "hello_worker.py"
 ```
 
-You could include gems and other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
+You could include python packages and build a worker remotely if one of its libraries depends on some binary extensions.
+[You can read more about remote build here](/worker/reference/builds/#remote_build).
+
+```ruby
+runtime "python"
+exec "hello_worker.py"
+
+pip 'twilio'
+pip 'mock', '1.0.1'
+
+remote
+```
+
+You also could include python packages from requirements.txt. The format of the requirements.txt should be a standard format.
+
+```ruby
+runtime "python"
+exec "hello_worker.py"
+
+requirements 'requirements.txt'
+
+remote
+```
+
+You could include other files in there too. [You can read more about .worker files here](/worker/reference/dotworker/).
 
 <h3 id="upload_the_worker">Upload the Worker</h3>
 
