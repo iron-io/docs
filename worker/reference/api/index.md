@@ -695,7 +695,11 @@ Sample:
             "duration": 241441,
             "run_times": 1,
             "timeout": 3600,
-            "percent": 100
+            "percent": 100,
+            "schedule_id": "52f02c01c872fd67b5020c06",
+            "log_size": 1000,
+            "message_id": "6000008730003365393",
+            "cluster": "default"
         }
     ]
 }
@@ -830,6 +834,9 @@ Sample:
     "end_time": 1320268924000000000,
     "duration": 43,
     "timeout": 3600,
+    "schedule_id": "52f02c01c872fd67b5020c06",
+    "log_size": 1000,
+    "message_id": "6000008730003365393",
     "payload": "{\"foo\":\"bar\"}",
     "updated_at": "2012-11-10T18:31:08.064Z",
     "created_at": "2012-11-10T18:30:43.089Z"
