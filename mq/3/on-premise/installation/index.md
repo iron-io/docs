@@ -7,8 +7,6 @@ section: mq-on-premise
 
 ## Outline
 
-- <a href="#requirements">System requirements</a>
-  - <a href="#reference-config">Reference configuration</a>
 - <a href="#setup">Setting up IronMQ</a>
 - <a href="#terraform">Automated setup with Terraform</a>
 - <a href="#manual">Manual setup (single node)</a>
@@ -19,23 +17,6 @@ section: mq-on-premise
   - <a href="#custom_config">Custom Configuration</a>
 - <a href="#manual-cluster">Manual setup (clustered)</a>
 
-# <h2 id="requirements">Minimum System Requirements</h2>
-
-* __OS__: Docker 1.5.0 installed
-* __RAM__: 8GB+
-* __CPU__: 2+ CPU
-* __Storage__: 64GB SSD Drive
-* __Individual Nodes__: 3, for high availability and redundancy
-
-<a id="reference-config"></a>
-### Reference configuration
-
-We run one of our hosted multi-tenant environments in Amazon's EC2. We use
-three c3.2xlarge instances. Those nodes each 2 80GB SSDs, 15 GB RAM and 8 VCPUs.
-This setup serves many high throughput queues.
-
-Please contact us if you have specific questions or want help estimating your
-system requirements.
 
 <a id="setup"></a>
 ## Setting up IronMQ
