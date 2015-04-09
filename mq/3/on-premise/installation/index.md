@@ -1,9 +1,22 @@
 ---
 title: IronMQ On-Premise - Getting Started
-summary: "IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team"
+#summary: "IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team"
 layout: default
 section: mq-on-premise
 ---
+
+We support a variety of deployment options for IronMQ. This section provides instructions
+for setting up IronMQ in 2 different configurations:
+
+- **single node** - for evaluation & testing purposes only. Do not run this configuration
+in production
+- **multi node cluster** - for High Availability (HA). Run this configuration in production.
+
+TODO: split the below parts into multiple sections...
+
+# Deployment Options
+
+We'll use [CoreOS](http://coreos.com/) for HA setup instructions, but
 
 ## Outline
 
