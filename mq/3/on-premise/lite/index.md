@@ -39,6 +39,8 @@ docker run -d -p 8080:8080 --name ironmq iron/mq:lite
 
 Then just simply start using it. 
 
+Note: You can use any values for the project_id and token that the clients use. 
+
 <h2 id="libraries">Client Libraries</h2>
 
 Be sure to use the v3 client libraries only, these will not be in the library repositories
