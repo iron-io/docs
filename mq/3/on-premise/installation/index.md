@@ -1,6 +1,5 @@
 ---
 title: IronMQ On-Premise - Installation
-#summary: "IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team"
 layout: default
 section: mq-on-premise
 ---

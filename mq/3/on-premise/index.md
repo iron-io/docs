@@ -23,7 +23,7 @@ available through outages
 - **Redundant** - message data and queue metadata are replicated to multiple nodes, and
 the database can do snapshot backups..
 - **Simple to configure** - our [installation](/mq/3/on-premise/installation) takes
-a few minutes, and we also offer a 3-step installation process using [Terraform](https://terraform.io/).
+a few minutes, and we also offer a quick setup process using [Terraform](https://terraform.io/).
 
 # Getting Started
 

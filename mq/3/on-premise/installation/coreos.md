@@ -1,13 +1,10 @@
 ---
-title: IronMQ On-Premise - Deploying with CoreOS
-#summary: "IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team"
+title: IronMQ On-Premise - Setup on CoreOS
 layout: default
 section: mq-on-premise
 ---
 
 This page is a work in progress.
-
-# Deploying IronMQ HA on CoreOS
 
 CoreOS is a convenient operating system for deploying IronMQ HA because it includes
 basic service discovery and configuration management tools that ease the deployment

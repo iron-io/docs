@@ -1,12 +1,10 @@
 ---
-title: IronMQ On-Premise - Getting Started
-#summary: "IronMQ On-Premise requires some knowledge of deployment and server management. If you do not possess these skills please schedule a consultation with our team"
+title: IronMQ On-Premise - Quick setup with Terraform
 layout: default
 section: mq-on-premise
 ---
 
 This page is a work in progress.
-## Automated setup with Terraform
 
 Terraform is an infrastructure deployment tool which you can use to automatically
 launch an IronMQ cluster. It only works for cloud based deployments, as it
