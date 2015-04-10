@@ -22,8 +22,8 @@ available through outages
 - **Scalable** - IronMQ scales horizontally, and every node is homogeneous. Simply add more nodes to the system to scale up the number of queues.
 - **Redundant** - message data and queue metadata are replicated to multiple nodes, and
 the database can do snapshot backups..
-- **Simple to configure** - you can [install](/mq/3/on-premise/installation) Iron MQ
-On Premise with [Terraform](https://terraform.io/) in 3 steps.
+- **Simple to configure** - our [installation](/mq/3/on-premise/installation) takes
+a few minutes, and we also offer a 3-step installation process using [Terraform](https://terraform.io/).
 
 # Getting Started
 
