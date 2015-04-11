@@ -57,7 +57,7 @@ The same applies to the `IRON_TOKEN` environment variable.
 
 <h2 id="creating__uploading_code_packages"> Creating and Uploading Code Packages </h2>
 
-Once you've got your worker running (see [Getting Started](/worker/getting_started) ), you need to package it up. Packaging
+Once you've got your worker running (see [Getting Started](/worker/beta/getting_started) ), you need to package it up. Packaging
 is simply making a zip out of your worker:
 
 ```sh
