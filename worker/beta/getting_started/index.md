@@ -100,7 +100,7 @@ Now let's get into more detail.
 <h2 id="write">1. Write and Test your Worker</h2>
 
 IronWorker's <a href="/worker/reference/environment">environment</a> is a Linux Docker container that your task is executed in.
- Anything you write that runs inside of our published Docker images, or [stacks](http://localhost:4000/worker/reference/environment/#default_language_versions)
+ Anything you write that runs inside of our published Docker images, or [stacks](/worker/reference/environment/#default_language_versions)
  should run just the same as on IronWorker. The key here is getting it to run with the Docker commands below and sample
  payloads.
  
@@ -110,7 +110,7 @@ The primary Docker command is:
 docker run --rm -v "$(pwd)":/worker -w /worker iron/images:MY_STACK sh -c 'MY_EXECUTABLE -payload MY_PAYLOAD.json'
 {% endhighlight %}
 
-* Replacing MY\_STACK with one of our [supported stacks](http://localhost:4000/worker/reference/environment/#default_language_versions)
+* Replacing MY\_STACK with one of our [supported stacks](/worker/reference/environment/#default_language_versions)
 * Replace MY\_COMMAND with what you'd like to execute. For instance, if your worker was a Ruby script called `myworker.rb`, you'd
 replace MY\_COMMAND with `ruby myworker.rb`. If it was a Go program, you'd change it to `./myworker`.
 * Replace MY_PAYLOAD with the name of an example payload file to test with. This payload file is the format that you'll use
