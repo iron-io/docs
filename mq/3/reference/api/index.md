@@ -358,6 +358,18 @@ Response:
 POST /queues/<span class="variable queue_name">{Queue Name}</span>/messages
 </div>
 
+#### Message Object
+
+Multiple messages may be added in a single request, provided that the messages should all be added to the same queue. Each message object should contain the following keys:
+
+##### Required
+
+* **body**: The message data
+
+##### Optional
+
+* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
+
 Request:
 
 ```json
