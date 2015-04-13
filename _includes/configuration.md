@@ -67,7 +67,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <h3 id="the_environment_variables">The Client's Environment Variables set in iron.json</h3>
 
-<p>The environment variables the scheme looks for are all of the same formula: the camel-cased product name is switched to an underscore ("IronWorker" becomes "iron_worker") and converted to be all capital letters. For the global environment variables, "IRON" is used by itself. The value being loaded is then joined by an underscore to the name, and again capitalised. For example, to retrieve the OAuth token, the client looks for "IRON_TOKEN".</p>
+<p>The environment variables the scheme looks for are all of the same formula: the camel-cased product name is switched to an underscore ("IronWorker" becomes "IRON_WORKER") and converted to be all capital letters. For the global environment variables, "IRON" is used by itself. The value being loaded is then joined by an underscore to the name, and again capitalised. For example, to retrieve the OAuth token, the client looks for "IRON_TOKEN".</p>
 
 <p>In the case of product-specific variables (which override global variables), it would be "IRON_WORKER_TOKEN" (for IronWorker).</p>
 
