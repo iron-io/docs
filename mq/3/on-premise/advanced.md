@@ -23,3 +23,14 @@ and tell the server to use the new file. Here's an example with `iron/mq`:
 ```
 docker run -d -p 8090:8090 --net=host -e CONFIG_JSON="`cat path/to/mq_config.json`" iron/mq
 ```
+
+##### Caveats for custom configurations
+
+* MQ and Auth must run on separate ports, offset by at least 4. This means that
+  if you run MQ on `:8080`, you __can not__ run Auth on `:8084`. The defaults are MQ on
+  `8080` and Auth on `8090`.
+* MQ and Auth __can not__ share the same data directory. Each will attempt to
+  create a unique directory for itself within the given path, but make sure not
+  to mix the files together.
+* MQ and Auth __can not__ have any instance of the other in their "cohosts" for
+  bootstrapping; i.e. MQ's cohosts must only contain other instances of MQ.
