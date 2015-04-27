@@ -21,14 +21,16 @@ to provide the high availability, redundancy, and other advantages that IronMQ's
 distributed algorithms provide.
 
 To facilitate that process, IronMQ implements a modified [gossip protocol](http://en.wikipedia.org/wiki/Gossip_protocol) to find all of the other
-nodes to talk to. On startup, you only need to tell the new node about one other
+nodes to talk to. On startup, you only need to tell the new node about at least one other
 existing node in the cluster (a **seed node**).
 
-We'll specify the seed node using the `LEVELDB_CONFIG_COHOSTS` environment variable:
+We'll specify the seed node using the `LEVELDB_CONFIG_COHOSTS` environment variable,
+which allows for easy use of separate service discovery services like etcd or
+consul (also can be done in a config line):
 
 ```
-docker run --name=ironmq1 -d -p 8180:8180 -e LEVELDB_CONFIG_COHOSTS='["127.0.0.1:8080"]' -e APICONFIG_HTTPPORT=8180 --net=host iron/mq
-docker run --name=ironmq2 -d -p 8280:8280 -e LEVELDB_CONFIG_COHOSTS='["127.0.0.1:8080"]' -e APICONFIG_HTTPPORT=8280 --net=host iron/mq
+docker run --name=ironmq1 -d -p 8180:8180 -e LEVELDB_CONFIG_COHOSTS='["127.0.0.1:8080","127.0.0.1:8280"]' -e APICONFIG_HTTPPORT=8180 --net=host iron/mq
+docker run --name=ironmq2 -d -p 8280:8280 -e LEVELDB_CONFIG_COHOSTS='["127.0.0.1:8080","127.0.0.1:8180"]' -e APICONFIG_HTTPPORT=8280 --net=host iron/mq
 ```
 
 These commands assume that all 3 nodes are running on the same machine.
@@ -85,7 +87,7 @@ At this point, you've successfully set up a 3 node IronMQ cluster and HUD-e.
 Remember that in the above configuration, *all* data is ephemeral and will be erased
 after a container is stopped. To persist the data, see [this guide](https://docs.docker.com/userguide/dockervolumes/).
 
-Also, we recommend running the `iron/auth` container on a separate set of nodes
+We also recommend running the `iron/auth` container on a separate set of nodes
 from the `iron/mq` nodes, for higher availability. They should also have a different
 load balancer in front of them.
 
