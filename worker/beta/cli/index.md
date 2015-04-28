@@ -98,13 +98,11 @@ a list of them by running `iron worker upload --help`. All of these options can 
 
 It is common to want to use IronWorker across many different development environments.
 
-When uploading your worker you can specify an environment via the ** --env ** (or ** -e ** option).
+When uploading your worker you can specify an environment via the ** --env **.
 
 ```sh
-iron worker upload helloworker --env development
-iron worker upload helloworker --env staging
-iron worker upload helloworker -e test
-iron worker upload helloworker -e production
+iron --env test       worker upload helloworker.zip ruby rubies.rb
+iron --env production worker upload helloworker.zip node nodes.js
 ```
 
 We reccomend you create seperate projects for each development environment.
