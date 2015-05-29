@@ -558,6 +558,11 @@ Sample:
 
 ### <a name="resume_task_queue_for_code_package"></a> Resume Paused Task Queue for Code Package
 
+If the given task is paused, resumes it.
+
+Tasks are assigned to the latest code revision when they are *queued*. If you
+have uploaded a new version of the specified code package since you paused the task, it will **not** execute the new revision after it is resumed.
+
 #### Endpoint
 
 <div class="grey-box">
@@ -1173,4 +1178,3 @@ Sample:
   ["scala-2.9","ruby-2.1","ruby-1.9","python-3.2","python-2.7","php-5.4","node-0.10","java-1.7","mono-3.0","mono-2.10"]
 }
 ```
-
