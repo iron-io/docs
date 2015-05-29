@@ -374,8 +374,9 @@ Your request also needs the following headers, in addition to the headers requir
 **Note**: This request is not limited to 64 KB, unlike other requests.
 
 **Sample Headers**:
-Content-Length: 3119
-Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec
+
+- `Content-Length: 3119`
+- `Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec`
 
 **Sample Body**:
 --39f5903459794ad483153244cc6486ec
