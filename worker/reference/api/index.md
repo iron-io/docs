@@ -348,7 +348,7 @@ When uploading code, the following are required (not required if just updating c
     * php
 * Or if you are using the [Docker Workflow](/worker/beta/getting_started/):
   * **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/beta/getting_started/) for more information.
-  * **stack**: The IronWorker stack to run your worker in. See [Stacks](/worker/reference/environment/#default_language_versions) for more information. 
+  * **stack**: The IronWorker stack to run your worker in. See [Stacks](/worker/reference/environment/#default_language_versions) for more information.
 
 The request also accepts the following optional parameters:
 
