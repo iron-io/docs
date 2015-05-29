@@ -379,10 +379,12 @@ Your request also needs the following headers, in addition to the headers requir
 - `Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec`
 
 **Sample Body**:
+
+```
 --39f5903459794ad483153244cc6486ec
 Content-Disposition: form-data; name="data"
 Content-Type: text/plain; charset=utf-8
-
+```
 ```js
 {
     "file_name": "MyWorker.rb",
@@ -391,7 +393,7 @@ Content-Type: text/plain; charset=utf-8
     "max_concurrency": 12
 }
 ```
-
+```
 --39f5903459794ad483153244cc6486ec
 Content-Disposition: form-data; name="file"; filename="MyWorker.zip"
 Content-Type: application/zip
@@ -399,10 +401,11 @@ Content-Type: application/zip
 { Form-encoded zip data goes here }
 
 --39f5903459794ad483153244cc6486ec--
+```
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response.
+The response will be a JSON object containing a `msg` property that contains a description of the response.
 
 Sample:
 
@@ -488,7 +491,7 @@ Sample:
 
 #### Response
 
-The response will be a zip file containing your code package. The response header will include a Content-Disposition header containing "filename=yourworker_rev.zip", where yourworker is the code package’s name and rev is the numeric revision. The response’s Content-Type will be "application/zip".
+The response will be a zip file containing your code package. The response header will include a `Content-Disposition` header containing `filename=yourworker_rev.zip`, where `yourworker` is the code package’s name and `rev` is the numeric revision. The response’s `Content-Type` will be `application/zip`.
 
 ### <a name="list_code_package_revisions"></a> List Code Package Revisions
 
@@ -686,7 +689,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_n
 
 #### Response
 
-The response will be a JSON object. The "tasks" property will contain a JSON array of objects, each representing a task.
+The response will be a JSON object. The `tasks` property will contain a JSON array of objects, each representing a task.
 
 Sample:
 
@@ -732,7 +735,7 @@ Sample:
 
 #### Request
 
-The request should be JSON-encoded and consist of an object with a single property, "tasks", which contains an array of objects. Each object in the array should consist of:
+The request should be JSON-encoded and consist of an object with a single property, `tasks`, which contains an array of objects. Each object in the array should consist of:
 
 * **code_name**: The name of the code package to execute for this task.
 * **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what worker it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. File location will be passed in via the -payload argument. The payload cannot be larger than 64KB in size.
@@ -761,7 +764,7 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response and a "tasks" property that contains an array of objects, each with an "id" property that contains the created task’s ID.
+The response will be a JSON object containing a `msg` property that contains a description of the response and a "tasks" property that contains an array of objects, each with an `id` property that contains the created task’s ID.
 
 Sample:
 
@@ -804,7 +807,7 @@ The request body is free-form: anything at all can be sent. Whatever the request
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response.
+The response will be a JSON object containing a `msg` property that contains a description of the response.
 
 Sample:
 
@@ -871,10 +874,13 @@ Sample:
 
 #### Response
 
-Unlike the other API methods, this method will return a Content-Type of "text/plain". The response will only include the task’s log.
+Unlike the other API methods, this method will return a `Content-Type` of `text/plain`. The response will only include the task’s log.
 
 Sample:
+
+```
 Hello World!
+```
 
 ### <a name="cancel_a_task"></a> Cancel a Task
 
@@ -922,7 +928,7 @@ The request should be JSON-encoded and can contain the following information:
 * **msg**: Any message or data describing the completion of the task. Must be a string value, and the 64KB request limit applies.
 
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
 
 Sample:
 
@@ -964,7 +970,7 @@ The request must be JSON-encoded and can contain the following information:
 
 * **delay**: The number of seconds the task should be delayed before it runs again.
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
 
 #### Response
 
@@ -1006,7 +1012,7 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 
 #### Response
 
-The response will be a JSON object. The "schedules" property will contain a JSON array of objects, each representing a schedule.
+The response will be a JSON object. The `schedules` property will contain a JSON array of objects, each representing a schedule.
 
 Sample:
 
@@ -1047,7 +1053,7 @@ Sample:
 
 #### Request
 
-The request should be a JSON object with a "schedules" property containing an array of objects with the following properties:
+The request should be a JSON object with a `schedules` property containing an array of objects with the following properties:
 
 * **code_name**: The name of the code package to execute.
 * **payload**: A string of data to pass to the code package on execution.
@@ -1064,7 +1070,7 @@ Optionally, each object in the array can specify the following properties:
 
 
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
 
 Sample:
 
@@ -1084,7 +1090,7 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response and a "schedules" property that contains an array of objects, each with an "id" property that contains the scheduled task’s ID.
+The response will be a JSON object containing a `msg` property that contains a description of the response and a "schedules" property that contains an array of objects, each with an `id` property that contains the scheduled task’s ID.
 
 Sample:
 
