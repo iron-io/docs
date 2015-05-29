@@ -173,9 +173,9 @@ IronWorker uses OAuth2 tokens to authenticate API requests. You can find and cre
 Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
 
 **Example Authorization Header**:
-Authorization: OAuth abc4c7c627376858
+`Authorization: OAuth abc4c7c627376858`
 
-**Note**: Be sure you have the correct case: it's **OAuth**, not Oauth.
+**Note**: Be sure you have the correct case: it's **`OAuth`**, not `Oauth`.
 
 **Example Query with Parameters**:
 GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/projects/<span class="variable project_id">{Project ID}</span>/tasks?oauth=abc4c7c627376858
@@ -186,10 +186,12 @@ Requests to the API are simple HTTP requests against the API endpoints.
 
 All request bodies should be in JSON format.
 
-Unless otherwise noted, all requests should use the following headers (in addition to their authentication):
-\- Accept : application/json
-\- Accept-Encoding : gzip/deflate
-\- Content-Type : application/json
+Unless otherwise noted, all requests should use the following headers in addition
+to the `Authentication` header:
+
+- `Accept : application/json`
+- `Accept-Encoding : gzip/deflate`
+- `Content-Type : application/json`
 
 ### Base URL
 
@@ -212,10 +214,11 @@ The domains for the clouds Iron Worker supports are as follows:
 
 ### Pagination
 
-For endpoints that return lists/arrays of values:
+Use the following parameters in the query string of the request for endpoints
+that return lists/arrays of values:
 
-* page - The page of results to return. Default is 0. Maximum is 100.
-* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
+* `page` - The page of results to return. Default is 0. Maximum is 100.
+* `per_page` - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
 
 ## Responses
 
@@ -264,7 +267,9 @@ In the event of an error, the appropriate status code will be returned with a bo
 
 ### Exponential Backoff
 
-When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
+When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request.
+
+Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 
 ### Dates and Times
 
@@ -275,6 +280,8 @@ All dates, times, and timestamps will use the [ISO 8601](http://en.wikipedia.org
 Your workers are run against code packages that can be updated and deleted over time. The code packages define the functionality a worker has through the code they contain. Put simply, code packages are simply the code that will run when your worker runs.
 
 ### <a name="list_code_packages"></a> List Code Packages
+
+Return a paginated list of all code packages owned by the given project.
 
 #### Endpoint
 
@@ -291,7 +298,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 #### Response
 
-The response will be a JSON object. The "codes" property will contain a JSON array of objects, each representing a code package.
+The response will be a JSON object. The `codes` property will contain a JSON array of objects, each representing a code package.
 
 Sample:
 
