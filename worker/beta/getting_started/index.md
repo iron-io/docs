@@ -12,12 +12,12 @@ section: worker
 ### Whats New? Why Docker?
 
 1. <strong>Development ENV == Local ENV</strong> Test workers locally in the exact same environment as when it's running on the IronWorker cloud.
-1. <strong>Fast testing.</strong> No more wasted time like the older process of write code, 
-upload (wait for build if doing remote build), queue a task, wait for it to run, view logs in HUD, repeat... Now you can 
-test your worker locally in milliseconds. 
+1. <strong>Fast testing.</strong> No more wasted time like the older process of write code,
+upload (wait for build if doing remote build), queue a task, wait for it to run, view logs in HUD, repeat... Now you can
+test your worker locally in milliseconds.
 1. <strong>No</strong> Ruby dependency for the cli tool.
-1. <strong>No</strong> .worker file required. The .worker file defined all your dependencies, this is no longer required since you're dependencies will be contained in your working directory. 
-1. <strong>No</strong> cli tool magic. The previous cli tool did a lot of magic behind the scenes, packaging up dependencies and wrapping up your code to make it easy to run. 
+1. <strong>No</strong> .worker file required. The .worker file defined all your dependencies, this is no longer required since you're dependencies will be contained in your working directory.
+1. <strong>No</strong> cli tool magic. The previous cli tool did a lot of magic behind the scenes, packaging up dependencies and wrapping up your code to make it easy to run.
 
 <div class="alert">
 <p><strong>Note:</strong> The Docker Workflow is in BETA. Meaning changes to how the workflow and tool should be expected.</p></div>
@@ -79,10 +79,10 @@ zip -r helloworld.zip .
 Then upload it:
 
 {% highlight bash %}
-iron worker upload --stack ruby-2.1 helloworld.zip ruby helloworld.rb
+iron worker upload --zip helloworld.zip iron/images:ruby-2.1 ruby helloworld.rb
 {% endhighlight %}
 
-Notice the --stack parameter is the same as the Docker container we used above.
+Notice that we use the same docker image as above.
 
 And finally queue up a job for it!
 
@@ -95,7 +95,7 @@ You will also see a link to [HUD](http://hud.iron.io) where you can see all the 
 
 That's it, you've ran a worker on the IronWorker cloud platform!
 
-Now let's get into more detail. 
+Now let's get into more detail.
 
 <h2 id="write">1. Write and Test your Worker</h2>
 
@@ -103,7 +103,7 @@ IronWorker's <a href="/worker/reference/environment">environment</a> is a Linux 
  Anything you write that runs inside of our published Docker images, or [stacks](/worker/reference/environment/#default_language_versions)
  should run just the same as on IronWorker. The key here is getting it to run with the Docker commands below and sample
  payloads.
- 
+
 The primary Docker command is:
 
 {% highlight bash %}
@@ -121,7 +121,7 @@ along with your worker. You'll find links to an example repository showing how t
 
 <h2 id="upload">2. Package and Upload your Worker</h2>
 
-Packing is pretty straightforward knowing that you got it working with the `docker run` command above, just zip it up. 
+Packing is pretty straightforward knowing that you got it working with the `docker run` command above, just zip it up.
 
 {% highlight bash %}
 zip -r myworkername.zip .
@@ -130,7 +130,7 @@ zip -r myworkername.zip .
 Then upload the zip you just created:
 
 {% highlight bash %}
-iron worker upload --stack MY_STACK myworkername.zip MY_PROGRAM
+iron worker upload --zip myworkername.zip iron/images:MY_STACK MY_PROGRAM
 {% endhighlight %}
 
 <h2 id="queue">3. Queue Tasks for your Worker</h2>
@@ -141,7 +141,7 @@ Now you get to queue up tasks/jobs for your Worker!
 iron worker queue --wait myworkername
 {% endhighlight %}
 
-Typically you'd use the [IronWorker API](/worker/reference/api/#queue_a_task) to actually queue up tasks from other systems. 
+Typically you'd use the [IronWorker API](/worker/reference/api/#queue_a_task) to actually queue up tasks from other systems.
 The cli queue command above is primarily for testing purposes.
 
 
