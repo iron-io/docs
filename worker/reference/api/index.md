@@ -173,9 +173,9 @@ IronWorker uses OAuth2 tokens to authenticate API requests. You can find and cre
 Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
 
 **Example Authorization Header**:
-Authorization: OAuth abc4c7c627376858
+`Authorization: OAuth abc4c7c627376858`
 
-**Note**: Be sure you have the correct case: it's **OAuth**, not Oauth.
+**Note**: Be sure you have the correct case: it's **`OAuth`**, not `Oauth`.
 
 **Example Query with Parameters**:
 GET https://<span class="variable host">worker-aws-us-east-1</span>.iron.io/2/projects/<span class="variable project_id">{Project ID}</span>/tasks?oauth=abc4c7c627376858
@@ -186,10 +186,12 @@ Requests to the API are simple HTTP requests against the API endpoints.
 
 All request bodies should be in JSON format.
 
-Unless otherwise noted, all requests should use the following headers (in addition to their authentication):
-\- Accept : application/json
-\- Accept-Encoding : gzip/deflate
-\- Content-Type : application/json
+Unless otherwise noted, all requests should use the following headers in addition
+to the `Authentication` header:
+
+- `Accept : application/json`
+- `Accept-Encoding : gzip/deflate`
+- `Content-Type : application/json`
 
 ### Base URL
 
@@ -212,10 +214,11 @@ The domains for the clouds Iron Worker supports are as follows:
 
 ### Pagination
 
-For endpoints that return lists/arrays of values:
+Use the following parameters in the query string of the request for endpoints
+that return lists/arrays of values:
 
-* page - The page of results to return. Default is 0. Maximum is 100.
-* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
+* `page` - The page of results to return. Default is 0. Maximum is 100.
+* `per_page` - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
 
 ## Responses
 
@@ -264,7 +267,9 @@ In the event of an error, the appropriate status code will be returned with a bo
 
 ### Exponential Backoff
 
-When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
+When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request.
+
+Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
 
 ### Dates and Times
 
@@ -275,6 +280,8 @@ All dates, times, and timestamps will use the [ISO 8601](http://en.wikipedia.org
 Your workers are run against code packages that can be updated and deleted over time. The code packages define the functionality a worker has through the code they contain. Put simply, code packages are simply the code that will run when your worker runs.
 
 ### <a name="list_code_packages"></a> List Code Packages
+
+Return a paginated list of all code packages owned by the given project.
 
 #### Endpoint
 
@@ -291,7 +298,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 #### Response
 
-The response will be a JSON object. The "codes" property will contain a JSON array of objects, each representing a code package.
+The response will be a JSON object. The `codes` property will contain a JSON array of objects, each representing a code package.
 
 Sample:
 
@@ -346,14 +353,14 @@ When uploading code, the following are required (not required if just updating c
     * ruby
     * python
     * php
-  * **stack**: The IronWorker stack to run your worker in. See [Stacks](/worker/reference/environment/#default_language_versions) for more information. 
 * Or if you are using the [Docker Workflow](/worker/beta/getting_started/):
-  * **image**: The IronWorker image to run your worker on (or any Docker image if you're account supports it). See [Stacks](/worker/reference/environment/#default_language_versions) for more information. 
   * **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/beta/getting_started/) for more information.
+  * **stack**: The IronWorker stack to run your worker in. See [Stacks](/worker/reference/environment/#default_language_versions) for more information.
 
 The request also accepts the following optional parameters:
 
 * **config**: An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. The config file location will be passed in via the -config argument to your worker. The config cannot be larger than 64KB in size.
+* **stack**: A string that, if provided, will set the specific language environment. If blank the language version will be set to default language version defined in runtime. [See More Information on Stack settings](http://dev.iron.io/worker/reference/environment/#default_language_versions).
 * **max_concurrency**: The maximum number of workers that should be run in parallel. This is useful for keeping your workers from hitting API quotas or overloading databases that are not prepared to handle the highly-concurrent worker environment. If omitted, there will be no limit on the number of concurrent workers.
 * **retries**: The maximum number of times failed tasks should be retried, in the event that there's an error while running them. If omitted, tasks will not be retried. Tasks cannot be retried more than ten times.
 * **retries_delay**: The number of seconds to wait before retries. If omitted, tasks will be immediately retried.
@@ -367,14 +374,17 @@ Your request also needs the following headers, in addition to the headers requir
 **Note**: This request is not limited to 64 KB, unlike other requests.
 
 **Sample Headers**:
-Content-Length: 3119
-Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec
+
+- `Content-Length: 3119`
+- `Content-Type: multipart/form-data; boundary=39f5903459794ad483153244cc6486ec`
 
 **Sample Body**:
+
+```
 --39f5903459794ad483153244cc6486ec
 Content-Disposition: form-data; name="data"
 Content-Type: text/plain; charset=utf-8
-
+```
 ```js
 {
     "file_name": "MyWorker.rb",
@@ -383,7 +393,7 @@ Content-Type: text/plain; charset=utf-8
     "max_concurrency": 12
 }
 ```
-
+```
 --39f5903459794ad483153244cc6486ec
 Content-Disposition: form-data; name="file"; filename="MyWorker.zip"
 Content-Type: application/zip
@@ -391,10 +401,11 @@ Content-Type: application/zip
 { Form-encoded zip data goes here }
 
 --39f5903459794ad483153244cc6486ec--
+```
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response.
+The response will be a JSON object containing a `msg` property that contains a description of the response.
 
 Sample:
 
@@ -480,7 +491,7 @@ Sample:
 
 #### Response
 
-The response will be a zip file containing your code package. The response header will include a Content-Disposition header containing "filename=yourworker_rev.zip", where yourworker is the code package’s name and rev is the numeric revision. The response’s Content-Type will be "application/zip".
+The response will be a zip file containing your code package. The response header will include a `Content-Disposition` header containing `filename=yourworker_rev.zip`, where `yourworker` is the code package’s name and `rev` is the numeric revision. The response’s `Content-Type` will be `application/zip`.
 
 ### <a name="list_code_package_revisions"></a> List Code Package Revisions
 
@@ -557,6 +568,11 @@ Sample:
 ```
 
 ### <a name="resume_task_queue_for_code_package"></a> Resume Paused Task Queue for Code Package
+
+If the given task is paused, resumes it.
+
+Tasks are assigned to the latest code revision when they are *queued*. If you
+have uploaded a new version of the specified code package since you paused the task, it will **not** execute the new revision after it is resumed.
 
 #### Endpoint
 
@@ -673,7 +689,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_n
 
 #### Response
 
-The response will be a JSON object. The "tasks" property will contain a JSON array of objects, each representing a task.
+The response will be a JSON object. The `tasks` property will contain a JSON array of objects, each representing a task.
 
 Sample:
 
@@ -719,7 +735,7 @@ Sample:
 
 #### Request
 
-The request should be JSON-encoded and consist of an object with a single property, "tasks", which contains an array of objects. Each object in the array should consist of:
+The request should be JSON-encoded and consist of an object with a single property, `tasks`, which contains an array of objects. Each object in the array should consist of:
 
 * **code_name**: The name of the code package to execute for this task.
 * **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what worker it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. File location will be passed in via the -payload argument. The payload cannot be larger than 64KB in size.
@@ -748,7 +764,7 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response and a "tasks" property that contains an array of objects, each with an "id" property that contains the created task’s ID.
+The response will be a JSON object containing a `msg` property that contains a description of the response and a "tasks" property that contains an array of objects, each with an `id` property that contains the created task’s ID.
 
 Sample:
 
@@ -791,7 +807,7 @@ The request body is free-form: anything at all can be sent. Whatever the request
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response.
+The response will be a JSON object containing a `msg` property that contains a description of the response.
 
 Sample:
 
@@ -858,10 +874,13 @@ Sample:
 
 #### Response
 
-Unlike the other API methods, this method will return a Content-Type of "text/plain". The response will only include the task’s log.
+Unlike the other API methods, this method will return a `Content-Type` of `text/plain`. The response will only include the task’s log.
 
 Sample:
+
+```
 Hello World!
+```
 
 ### <a name="cancel_a_task"></a> Cancel a Task
 
@@ -909,7 +928,7 @@ The request should be JSON-encoded and can contain the following information:
 * **msg**: Any message or data describing the completion of the task. Must be a string value, and the 64KB request limit applies.
 
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
 
 Sample:
 
@@ -951,7 +970,7 @@ The request must be JSON-encoded and can contain the following information:
 
 * **delay**: The number of seconds the task should be delayed before it runs again.
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
 
 #### Response
 
@@ -993,7 +1012,7 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 
 #### Response
 
-The response will be a JSON object. The "schedules" property will contain a JSON array of objects, each representing a schedule.
+The response will be a JSON object. The `schedules` property will contain a JSON array of objects, each representing a schedule.
 
 Sample:
 
@@ -1034,7 +1053,7 @@ Sample:
 
 #### Request
 
-The request should be a JSON object with a "schedules" property containing an array of objects with the following properties:
+The request should be a JSON object with a `schedules` property containing an array of objects with the following properties:
 
 * **code_name**: The name of the code package to execute.
 * **payload**: A string of data to pass to the code package on execution.
@@ -1051,7 +1070,7 @@ Optionally, each object in the array can specify the following properties:
 
 
 
-The request also needs to be sent with a "Content-Type: application/json" header, or it will respond with a 406 status code and a "msg" property explaining the missing header.
+The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
 
 Sample:
 
@@ -1071,7 +1090,7 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing a "msg" property that contains a description of the response and a "schedules" property that contains an array of objects, each with an "id" property that contains the scheduled task’s ID.
+The response will be a JSON object containing a `msg` property that contains a description of the response and a "schedules" property that contains an array of objects, each with an `id` property that contains the scheduled task’s ID.
 
 Sample:
 
@@ -1173,4 +1192,3 @@ Sample:
   ["scala-2.9","ruby-2.1","ruby-1.9","python-3.2","python-2.7","php-5.4","node-0.10","java-1.7","mono-3.0","mono-2.10"]
 }
 ```
-

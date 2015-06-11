@@ -199,10 +199,17 @@ To delete the message, check the "Iron-Subscriber-Message-Url" header and send a
 
 <h3 id="push_queue_headers">Push Queue Headers</h3>
 
-Each message pushed will have some special headers as part of the HTTP request.
+<p>
+Each message pushed will have the following special headers as part of the HTTP request.
+</p>
 
-- User-Agent - static - "IronMQ Pusherd"
-- Content-Type - static - "text/plain; encoding=utf-8"
+<p>
+Only <code>User-Agent</code> and <code>Content-Type</code> headers may be overwritten
+by subscriber or push headers, the others are always set by push queues.
+</p>
+
+- User-Agent - <code>IronMQ Pusherd</code> (default, may be overwritten by subscriber or message headers)
+- Content-Type - <code>text/plain; encoding=utf-8</code> (default, may be overwritten by subscriber or message headers)
 - Iron-Message-Id - The ID for your original message allowing you to check the status
 - Iron-Reservation-Id - The ID of a message reservation. If client respond with 202, it will be valid "retries_delay" seconds.
 Reservation ID is required to acknowledge a message.

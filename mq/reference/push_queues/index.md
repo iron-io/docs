@@ -48,7 +48,7 @@ the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/ap
 Subscribers are simply URL's that IronMQ will post to whenever a message is posted to your queue. There are currently
 three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
 
-1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
+1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters within your URL in the naming of your subscriber endpoints.
 1. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
 1. **IronWorker endpoints:** IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
 
@@ -152,7 +152,7 @@ Post to your push queue set the error queue option to an empty string. ex: "erro
 "error_queue": ""}
 ```
 
-**NOTE:** Ommitting the "error_queue" option will not disable the error queue.
+**NOTE:** Omitting the "error_queue" option will not disable the error queue.
 
 <h2 id="checking_status">Checking Status</h2>
 
@@ -173,7 +173,7 @@ This should return a response like this:
 These are the things the endpoint that is receiving the push should know about.
 
 Push messages' bodies will be sent to endpoints as is (strings) as POST request body.
-To obtain message's body just read request body.
+To obtain message's body, just read request body.
 
 The receiving endpoint must respond with a 200 or 202 if they have accepted the message successfully.
 
@@ -210,12 +210,12 @@ IronMQ that you're done with the message. Send a DELETE http request to this URL
 
 <h2 id="encryption_and_security">Encryption and Security</h2>
 
-When you are using your private API as subscriber
-and want to secure connection to IronMQ you are able to use HTTPS endpoints.
+When you use your private API as a subscriber
+and want to secure a connection to IronMQ, you can use HTTPS endpoints.
 
     https://subscriber.domain.com/push/endpoint
 
-Also, if you want some kind of authentication you can use various standards for authorization with tokens.
+Also, if you want some kind of authentication, you can use various standards for authorization with tokens.
 Like OAuth or OpenID. In this case, specify a token in your subscriber's URL.
 
     https://subscriber.domain.com/push/endpoint?auth=TOKEN
@@ -252,7 +252,7 @@ See our <a href="http://localhost:4000/mq/reference/push_queues/#error_queues">E
   <li><strong>Step 4:</strong> post a message to your push queue, return to your unique RequestBin's inspect page. Here you will be able to view and inspect your the headers and response body amongst other very useful information about your push queue's request.
     <img src="/images/mq/reference/troubleshooting/step-4.png" width="100%" alt="push queue troubleshooting step 4"></li>
 </ol>
-<p>Seeing that your message was delivered successfully to a bin will easily tell you that there may be a problem with how your server is handling the message that is coming from your push queue. Often times it could be an endpoint that has not been coded to handle the post parameter's content type, endpoints that don't exist, or returning a bad response code due to internal server errors.</p>
+<p>Seeing that your message was delivered successfully to a bin will easily tell you that there may be a problem with how your server handles the message that is coming from your push queue. Often times, it could be an endpoint that has not been coded to handle the post parameter's content type, endpoints that don't exist, or returning a bad response code due to internal server errors.</p>
 
 <h2 id="using_ngrok">Testing on localhost with Ngrok</h2>
 To be able to develop and test on your local machine, you'll need to make your localhost accessible for IronMQ. This can be easily done by tunneling it to the outside world with tools such as [ngrok](https://ngrok.com/).
