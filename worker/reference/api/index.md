@@ -346,14 +346,14 @@ When uploading code, the following are required (not required if just updating c
     * ruby
     * python
     * php
-* Or if you are using the [Docker Workflow](/worker/beta/getting_started/):
-  * **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/beta/getting_started/) for more information.
   * **stack**: The IronWorker stack to run your worker in. See [Stacks](/worker/reference/environment/#default_language_versions) for more information. 
+* Or if you are using the [Docker Workflow](/worker/beta/getting_started/):
+  * **image**: The IronWorker image to run your worker on (or any Docker image if you're account supports it). See [Stacks](/worker/reference/environment/#default_language_versions) for more information. 
+  * **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/beta/getting_started/) for more information.
 
 The request also accepts the following optional parameters:
 
 * **config**: An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. The config file location will be passed in via the -config argument to your worker. The config cannot be larger than 64KB in size.
-* **stack**: A string that, if provided, will set the specific language environment. If blank the language version will be set to default language version defined in runtime. [See More Information on Stack settings](http://dev.iron.io/worker/reference/environment/#default_language_versions).
 * **max_concurrency**: The maximum number of workers that should be run in parallel. This is useful for keeping your workers from hitting API quotas or overloading databases that are not prepared to handle the highly-concurrent worker environment. If omitted, there will be no limit on the number of concurrent workers.
 * **retries**: The maximum number of times failed tasks should be retried, in the event that there's an error while running them. If omitted, tasks will not be retried. Tasks cannot be retried more than ten times.
 * **retries_delay**: The number of seconds to wait before retries. If omitted, tasks will be immediately retried.

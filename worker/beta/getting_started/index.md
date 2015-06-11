@@ -79,10 +79,10 @@ zip -r helloworld.zip .
 Then upload it:
 
 {% highlight bash %}
-iron worker upload --stack ruby-2.1 helloworld.zip ruby helloworld.rb
+iron worker upload --zip helloworld.zip --name helloworld iron/images:ruby-2.1  ruby helloworld.rb
 {% endhighlight %}
 
-Notice the --stack parameter is the same as the Docker container we used above.
+Notice the --image parameter is the same as the Docker container we used above.
 
 And finally queue up a job for it!
 
@@ -124,13 +124,13 @@ along with your worker. You'll find links to an example repository showing how t
 Packing is pretty straightforward knowing that you got it working with the `docker run` command above, just zip it up. 
 
 {% highlight bash %}
-zip -r myworkername.zip .
+zip -r myworker.zip .
 {% endhighlight %}
 
 Then upload the zip you just created:
 
 {% highlight bash %}
-iron worker upload --stack MY_STACK myworkername.zip MY_PROGRAM
+iron worker upload [--zip myworker.zip] --name myworker DOCKER_IMAGE [COMMAND]
 {% endhighlight %}
 
 <h2 id="queue">3. Queue Tasks for your Worker</h2>
@@ -138,7 +138,7 @@ iron worker upload --stack MY_STACK myworkername.zip MY_PROGRAM
 Now you get to queue up tasks/jobs for your Worker!
 
 {% highlight bash %}
-iron worker queue --wait myworkername
+iron worker queue --wait myworker
 {% endhighlight %}
 
 Typically you'd use the [IronWorker API](/worker/reference/api/#queue_a_task) to actually queue up tasks from other systems. 
