@@ -159,6 +159,6 @@ at [https://github.com/iron-io/heroku_sinatra_example](https://github.com/iron-i
 
 ## Support
 
-Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to stop by the
-[Iron.io support chat room](http://hud.iron.io/users/support) and chat with Iron.io staff about issues. You can also find more
+Issues should get logged with [Heroku Support](https://support.heroku.com). You're also welcome to email 
+[support@iron.io](mailto:support@iron.io) to chat with Iron.io staff about issues. You can also find more
 resources at the [Iron.io Dev Center](http://dev.iron.io).
