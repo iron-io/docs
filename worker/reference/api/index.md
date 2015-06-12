@@ -1024,16 +1024,17 @@ Sample:
             "created_at": "2012-02-14T03:06:41Z",
             "updated_at": "2012-02-14T03:06:41Z",
             "project_id": "4eb1b46fcddb13606500000d",
-            "msg": "Ran max times.",
-            "status": "complete",
+            "status": "scheduled",
             "code_name": "MyWorker",
-            "start_at": "2011-11-02T21:22:34Z",
-            "end_at": "2262-04-11T23:47:16Z",
-            "next_start": "2011-11-02T21:22:34Z",
-            "last_run_time": "2011-11-02T21:22:51Z",
+            "start_at": "2012-02-14T11:30:00Z",
+            "end_at": "0001-01-01T00:00:00Z",
+            "next_start": "2012-02-14T11:30:00Z",
+            "last_run_time": "0001-01-01T00:00:00Z",
+            "timeout": 3600,
             "run_times": 1,
-            "run_count": 1,
-            "cluster": "high-memory"
+            "run_every": 60,
+            "cluster": "high-memory",
+            "payload": "{}"
         }
     ]
 }
