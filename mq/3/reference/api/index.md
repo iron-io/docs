@@ -109,8 +109,7 @@ contain at least one subscriber. Everything else in the push map is optional.
       ],
       "retries": 3,
       "retries_delay": 60,
-      "error_queue": "error_queue_name",
-      "rate_limit": 10
+      "error_queue": "error_queue_name"
     }
   }
 }
@@ -166,8 +165,7 @@ if it's not a push queue and `alerts` if there are no alerts.
       ],
       "retries": 3,
       "retries_delay": 60,
-      "error_queue": "error_queue_name",
-      "rate_limit": 10
+      "error_queue": "error_queue_name"
     }
   }
 }
