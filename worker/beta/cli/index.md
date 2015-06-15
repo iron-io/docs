@@ -50,7 +50,7 @@ or the environment variables. For example, to override the project ID for a
 single command, you could run the following:
 
 ```sh
-IRON_PROJECT_ID=new_project_id_here iron worker upload myworker.zip ruby myworker.rb
+IRON_PROJECT_ID=new_project_id_here iron worker upload --zip myworker.zip --name myworker iron/images:ruby-2.1 ruby myworker.rb
 ```
 
 The same applies to the `IRON_TOKEN` environment variable.
@@ -67,7 +67,7 @@ zip -r hello.zip .
 The command to upload the worker package/zip is:
 
 ```sh
-iron worker upload $WORKER.zip $COMMAND
+iron worker upload --zip $WORKER.zip --name $WORKER_NAME $IMAGE $COMMAND
 ```
 
 Where `$WORKER` is replaced by the name of your packaged worker zip and `$COMMAND` is the command you want executed, the same
@@ -76,19 +76,19 @@ one you used with `docker run`.
 Sometimes, you want to limit the number of parallel workers for any given task, to prevent external resources like databases or APIs from crashing under the weight of your workers' requests. We have a [max_concurrency](http://blog.iron.io/2012/08/ironworkers-most-requested-feature-is.html) feature that lets you do just this. To use it, simply use the `--max-concurrency` option when uploading a worker, with the maximum number of workers that can be run in parallel:
 
 ```sh
-iron worker upload --max-concurrency 10 $WORKER
+iron worker upload --max-concurrency 10 ...
 ```
 
 If you're worried about errors, your worker is idempotent (meaning that it can be run multiple times without affecting the result), and you'd like to automatically retry your worker if it errors out, you can use the `retries` and `retries-delay` options. `retries` allows you to specify the maximum number of times failed tasks will be re-run:
 
 ```sh
-iron worker upload --retries 5 $WORKER
+iron worker upload --retries 5 ...
 ```
 
 You can also optionally specify the delay between retries by using `retries-delay`:
 
 ```sh
-iron worker upload --retries 5 --retries-delay 10 $WORKER
+iron worker upload --retries 5 --retries-delay 10 ... 
 ```
 
 There are additional options available to the upload command; you can find
@@ -101,8 +101,8 @@ It is common to want to use IronWorker across many different development environ
 When uploading your worker you can specify an environment via the ** --env **.
 
 ```sh
-iron --env test       worker upload helloworker.zip ruby rubies.rb
-iron --env production worker upload helloworker.zip node nodes.js
+iron --env test       worker upload --zip helloworker.zip --name helloworker iron/images:ruby-2.1 ruby rubies.rb
+iron --env production worker upload --zip helloworker.zip --name helloworker iron/images:node-0.10 node nodes.js
 ```
 
 We reccomend you create seperate projects for each development environment.
