@@ -118,5 +118,5 @@ through this tight control over the number of running workers.
 
 ## More Info
 
-Need more help? Stop by the [chat room](http://hud.iron.io/users/support) and our
+Need more help? Email [support@iron.io](mailto:support@iron.io) and our
 engineers will help you architect a solution that fits your needs.

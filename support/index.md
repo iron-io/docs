@@ -6,9 +6,10 @@ breadcrumbs: hidden
 
 Iron.io has three support channels:
 
-## 1. Real-time Live Chat
+## 1. Slack Chat Community
 
-Drop into our chat room to get help directly from our engineers: [http://hud.iron.io/users/support](http://hud.iron.io/users/support)
+Drop into our Slack community to get help directly from our engineers and other Iron.io users: 
+[http://get.iron.io/slack](http://get.iron.io/slack)
 
 ## 2. Public Forums
 
