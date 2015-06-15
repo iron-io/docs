@@ -689,7 +689,7 @@ Response:
     {
       "name": "first"
       "retries_remaining": 2,
-      "retries_total": 6,
+      "tries": 1,
       "status_code": 200,
       "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
       "last_try_at": "2014-07-30T15:45:03Z"
@@ -697,7 +697,7 @@ Response:
     {
       "name": "other"
       "retries_remaining": 2,
-      "retries_total": 6,
+      "tries": 6,
       "status_code": 200,
       "url": "http://this.host.is/not/exist",
       "last_try_at": "2014-07-30T15:44:29Z"
