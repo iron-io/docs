@@ -36,4 +36,3 @@ List of engines:
 * [CloudControl](https://www.cloudcontrol.com/documentation/add-ons/ironworker)
 * [EngineYard](http://www.engineyard.com/partner/ironworker)
 * [Heroku IronWorker](https://addons.heroku.com/iron_worker)
-* [StackMob IronWorker](https://marketplace.stackmob.com/module/iron-worker)
