@@ -55,6 +55,59 @@ it is now `/queues/{Queue Name}/webhook`
 You should specify the name of queue prior to the first desirable queue in result.
 - Trying to get messages from a queue that doesn't exist now returns a "Queue not found" error.
 
+## <a name="basics"></a> Basics
+
+Typical usage and lifecycle for a message is `post-reserve-delete`.
+
+If you are moving from v2 to v3, this is slightly different from the previous `post-get-delete`.
+First, Make sure to update your [client library](http://dev.iron.io/mq/3/libraries/)
+from v2 to v3. For now, each library has a `v3` branch that you should use for this api.
+The v2 libraries will not work for the v3 api. You will also need new
+credentials, which you can obtain through <https://hud-e.iron.io/signup>.
+Your v2 credentials (`iron.json`, et al) will not work with v3.
+
+It is _very_ important not to conflate `Get` and `Reserve`. In typical usage, `Get` is
+unnecessary, and in terms of the v2 API, `Get` has been replaced by `Reserve`.
+This change has been reflected in the client libraries, as well as the api.
+It is also important not to use `Peek` or `Get` in order to _process_ messages,
+these endpoints should be used as strictly informative, since they do not
+guarantee sole access to a message for a given period of time.
+
+Typical usage for pull queues in pseudo-ruby is below.
+Other languages will have similar method and type names.
+
+```ruby
+# get a handle on the queue
+q = queue("my_queue")
+
+# post a message to the queue
+q.Post("some message")
+
+# reserve a message from the queue for 60s (default)
+msg = q.Reserve(1)
+
+# process the message in your application
+
+# when you're done, try to delete the message with the reservation_id
+q.Delete(:id => msg.id, :reservation_id => msg.reservation_id)
+```
+
+A common error to get back from `q.Delete` is a `403: Reservation timed out`.
+This means that the message has timed out and has been put back onto the queue.
+In order to delete the message, you will need a new `reservation_id`, which you
+can only get by reserving the message again.
+
+For some applications, it can be okay to process the message twice (idempotent
+operations, etc.). If the reservations are timing out frequently, we would
+recommend to raise the timeouts on the queue, 120 [seconds] is usually enough if
+the timeouts are intermittent. If you are using batching in your consumers, we
+also recommend raising the timeouts.
+
+Another issue is `401: Unauthorized`. This probably means you are attempting to
+use v2 credentials for v3. To get v3 credentials, go to <hud-e.iron.io/signup>.
+
+If you need any more support or are having any other issues, feel free to
+contact <support@iron.io> including any relevant information.
 
 ## <a name="global-stuff"></a> Global Stuff
 
