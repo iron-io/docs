@@ -25,8 +25,8 @@ We've setup a new repository of examples in our most popular languages. please c
     <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/node" target="_blank" data-lang="node">Node.JS</a></li>
     <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/go" target="_blank" data-lang="go">Go</a></li>
     <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/java/worker101" target="_blank" data-lang="java">Java</a></li>
-    <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/python" target="_blank" data-lang="python">Java</a></li>
-    <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/dotnet" target="_blank" data-lang="dotnet">Java</a></li>
+    <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/python" target="_blank" data-lang="python">Python</a></li>
+    <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/dotnet" target="_blank" data-lang="dotnet">.NET</a></li>
 </ul>
     <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/binary" target="_blank">Binary or shell scripted Workers</a></li>
     <li><a href="https://github.com/iron-io/iron_worker_examples/tree/master/deb-packages" target="_blank">Adding .deb dependencies</a></li>
