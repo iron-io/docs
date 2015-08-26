@@ -1,7 +1,7 @@
 ---
 title: IronMQ Push Queues Reference
 layout: default
-section: mq
+section: mq-v3
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Push Queues', '/push_queues']
@@ -48,39 +48,46 @@ the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/ap
 Subscribers are simply URL's that IronMQ will post to whenever a message is posted to your queue. There are currently
 three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
 
-1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters within your URL in the naming of your subscriber endpoints.
-1. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
-1. **IronWorker endpoints:** IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
+1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
+2. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
+3. **IronWorker endpoints:** IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
 
 ### Iron.io URL Formats
 
-The basic format is similar to any other URL:
+The basic formats are similar to any other URL:
 
-    [ironmq_or_ironworker]://[project_id:token]@[host]/queue_or_worker_name
+    ironmq://[{ProjectID}:{Token}@[{Host}[:{Port}]]]/{QueueName}
+
+    ironworker://{ProjectID}:{Token}@{Host}[:{Port}]/{CodeName}
 
 Here are some examples:
 
-- ironmq:///queue_name - refers to the queue named "queue_name" in the same project.
-- ironmq://project_id:token@/queue_name - refers to the queue named "queue_name" in a different project on same region/cloud.
-- ironmq://project_id:token@mq-rackspace-dfw.iron.io/queue_name - refers to the queue named "queue_name" on a different region/cloud.
-- ironworker:///worker_name - refers to a worker on IronWorker called "worker_name".
+- ironmq:///receiver-queue - refers to the queue named "receiver-queue" in the same project.
+- ironmq://ProjectId:Token@/QueueName - refers to the queue named "QueueName" in a different project on same region/cloud.
+- ironmq://ProjectId:Token@mq-rackspace-dfw.iron.io/MyQueue - refers to the queue named "MyQueue" on a different region/cloud.
+- ironworker://ProjectId:Token@worker-aws-us-east-1.iron.io/myWorker - refers to a worker on IronWorker called "MyWorker".
 
 <h2 id="push_queue_settings">Push Queue Settings</h2>
 
 To turn a queue into a push queue (or create one), POST to your queue endpoint with the following parameters:
 
-- subscribers - required - an array of hashes containing subscribers. eg: `{"url": "http://myserver.com/endpoint"}`.
-The maximum is 64kb for JSONify array of subscribers' hashes. **WARNING:** Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
+- subscribers - required - an array of hashes containing subscribers. eg: `{"name": "my-subscriber", "url": "http://myserver.com/endpoint"}`.
+The maximum is 64kb for JSONify array of subscribers' hashes. **WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints (URLs)
   <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
 
 - push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - retries - number of times to retry. Default is 3. Maximum is 100.
 - retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
-- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
-The default queue type for an error queue will be a pull queue. See <a href="#error_queues">Error Queues</a> section below.
+- error\_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number
+of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
+The default queue type for an error queue will be a pull queue. See
+<a href="#error_queues">Error Queues</a> section below.
+- rate_limit - the maximum number of push actions per second. The "push action" term means request to any subscriber endpoint.
+In other words, each message requires at least number of subscribers "push actions" to be completely pushed. -1 means no limit,
+0 means, that a push is disabled. Default is -1.
 
 <div>
-<script src="https://gist.github.com/4479844.js"> </script>
+<script src="https://gist.github.com/featalion/0d18d579f62361e70ed7.js"></script>
 </div>
 
 <h2 id="queueing_messages">Queueing Messages</h2>
@@ -88,7 +95,7 @@ The default queue type for an error queue will be a pull queue. See <a href="#er
 This is the same as posting any message to IronMQ. Here is a curl example to post a message to the queue:
 
 <div>
-<script src="https://gist.github.com/4479849.js"> </script>
+<script src="https://gist.github.com/featalion/a649e7e82401a8522da0.js"></script>
 </div>
 
 You should get a curl response that looks like this:
@@ -117,13 +124,9 @@ Error queues are used to get information about messages that we were unable to d
 ### To create an error queue
 Post to your push queue a message with the "error_queue" option defined.
 
-```
-{"push_type":"multicast/unicast",
-"subscribers": [
-  {"url": "http://thiswebsitewillthrowanerror.com"}
-  ],
-"error_queue": "MY_EXAMPLE_ERROR_QUEUE"}
-```
+<div>
+<script src="https://gist.github.com/featalion/eb48f00593b45e902e58.js"></script>
+</div>
 
 If a push queue is set with the `error_queue` parameter, then after the set number of `retries`, a message will be put in the named error queue and viewable via your account dashboard. By default, the error queue will be a pull queue.
 
@@ -135,7 +138,7 @@ If a push queue is set with the `error_queue` parameter, then after the set numb
 
 The error queue message will contain the following information:
 <div>
-<script src="https://gist.github.com/6596528.js"> </script>
+<script src="https://gist.github.com/featalion/ee02360cc129e5626a38.js"></script>
 </div>
 
 You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
@@ -144,28 +147,24 @@ the `source_msg_id` value.
 ### To turn off/disable an error queue
 Post to your push queue set the error queue option to an empty string. ex: "error_queue": "".
 
-```js
-{"push_type":"multicast/unicast",
-"subscribers": [
-  {"url": "http://thiswebsitewillthrowanerror.com"}
-  ],
-"error_queue": ""}
-```
+<div>
+<script src="https://gist.github.com/featalion/d4128ebb9812b3859020.js"></script>
+</div>
 
-**NOTE:** Omitting the "error_queue" option will not disable the error queue.
+**NOTE:** Ommitting the "error_queue" option will not disable the error queue.
 
 <h2 id="checking_status">Checking Status</h2>
 
 If you want the detailed status of the delivery to each of your subscribers, you can check that too. In the curl example below, you'll need to exchange MESSAGE_ID with the id that was returned in the response above when you posted a message.
 
 <div>
-<script src="https://gist.github.com/4489392.js"> </script>
+<script src="https://gist.github.com/featalion/76f4d924c5d904b2d48e.js"></script>
 </div>
 
 This should return a response like this:
 
 <div>
-<script src="https://gist.github.com/4489402.js"> </script>
+<script src="https://gist.github.com/featalion/1717c7d50c00ab00e14e.js"></script>
 </div>
 
 <h2 id="how_the_endpoint_should_handle_push_messages">How the Endpoint Should Handle Push Messages</h2>
@@ -173,7 +172,7 @@ This should return a response like this:
 These are the things the endpoint that is receiving the push should know about.
 
 Push messages' bodies will be sent to endpoints as is (strings) as POST request body.
-To obtain message's body, just read request body.
+To obtain message's body just read request body.
 
 The receiving endpoint must respond with a 200 or 202 if they have accepted the message successfully.
 
@@ -200,22 +199,32 @@ To delete the message, check the "Iron-Subscriber-Message-Url" header and send a
 
 <h3 id="push_queue_headers">Push Queue Headers</h3>
 
-Each message pushed will have some special headers as part of the HTTP request.
+<p>
+Each message pushed will have the following special headers as part of the HTTP request.
+</p>
 
-- User-Agent - static - "IronMQ Pusherd"
+<p>
+Only <code>User-Agent</code> and <code>Content-Type</code> headers may be overwritten
+by subscriber or push headers, the others are always set by push queues.
+</p>
+
+- User-Agent - <code>IronMQ Pusherd</code> (default, may be overwritten by subscriber or message headers)
+- Content-Type - <code>text/plain; encoding=utf-8</code> (default, may be overwritten by subscriber or message headers)
 - Iron-Message-Id - The ID for your original message allowing you to check the status
-- Iron-Subscriber-Message-Id - The ID for the message to the particular subscriber.
+- Iron-Reservation-Id - The ID of a message reservation. If client respond with 202, it will be valid "retries_delay" seconds.
+Reservation ID is required to acknowledge a message.
+- Iron-Subscriber-Name - A name of the particular subscriber.
 - Iron-Subscriber-Message-Url - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
-IronMQ that you're done with the message. Send a DELETE http request to this URL to delete it.
+IronMQ that you're done with the message. Send a DELETE http request to this URL to acknowledge it.
 
 <h2 id="encryption_and_security">Encryption and Security</h2>
 
-When you use your private API as a subscriber
-and want to secure a connection to IronMQ, you can use HTTPS endpoints.
+When you are using your private API as subscriber
+and want to secure connection to IronMQ you are able to use HTTPS endpoints.
 
     https://subscriber.domain.com/push/endpoint
 
-Also, if you want some kind of authentication, you can use various standards for authorization with tokens.
+Also, if you want some kind of authentication you can use various standards for authorization with tokens.
 Like OAuth or OpenID. In this case, specify a token in your subscriber's URL.
 
     https://subscriber.domain.com/push/endpoint?auth=TOKEN
@@ -225,14 +234,8 @@ In this case a token will be encrypted by SSL/TLS.
 
 <h2 id="important_notes">Important Notes</h2>
 
-- You should not push and pull from a queue, a push queue's messages will be deleted/acknowledged immediately and not be
-available for pulling.
-
-- When a Pull Queue contains messages and you turn it to Push Queue you are still able to get messages from the queue.
-Also, messages put on the queue before it becomes a Push Queue will not be sent to your subscribers.
-New messages will be processed as usual for Push Queues, and pushed to your subscribers.
-- To revert your Push Queue to regular Pull Queue just update `push_type` to `"pull"`.
-- Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
+- Queue type is static.
+- Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints.
 
 <h2 id="troubleshooting_push_queues">Troubleshooting Push Queues</h2>
 Push queues are extremely powerful but do not by default give insight on what happens to your message once it leaves queue. Did it hit the endpoint? Did it retry multple times due to a server timeout error? Do I need to set a different content-type header?
@@ -252,7 +255,7 @@ See our <a href="http://localhost:4000/mq/reference/push_queues/#error_queues">E
   <li><strong>Step 4:</strong> post a message to your push queue, return to your unique RequestBin's inspect page. Here you will be able to view and inspect your the headers and response body amongst other very useful information about your push queue's request.
     <img src="/images/mq/reference/troubleshooting/step-4.png" width="100%" alt="push queue troubleshooting step 4"></li>
 </ol>
-<p>Seeing that your message was delivered successfully to a bin will easily tell you that there may be a problem with how your server handles the message that is coming from your push queue. Often times, it could be an endpoint that has not been coded to handle the post parameter's content type, endpoints that don't exist, or returning a bad response code due to internal server errors.</p>
+<p>Seeing that your message was delivered successfully to a bin will easily tell you that there may be a problem with how your server is handling the message that is coming from your push queue. Often times it could be an endpoint that has not been coded to handle the post parameter's content type, endpoints that don't exist, or returning a bad response code due to internal server errors.</p>
 
 <h2 id="using_ngrok">Testing on localhost with Ngrok</h2>
 To be able to develop and test on your local machine, you'll need to make your localhost accessible for IronMQ. This can be easily done by tunneling it to the outside world with tools such as [ngrok](https://ngrok.com/).

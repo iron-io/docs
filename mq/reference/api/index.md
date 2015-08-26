@@ -1,756 +1,362 @@
 ---
-title: IronMQ REST/HTTP API
+title: IronMQ On-Premise API Reference
+summary: "IronMQ On-Premise has made a vew improvements over our previous API. This reference is a continuing work in progress"
 layout: default
-section: mq
-breadcrumbs:
-  - ['Reference', '/reference']
-  - ['REST/HTTP API', '/api']
+section: mq-v3
 ---
 
-IronMQ provides a REST/HTTP API to allow you to interact programmatically with your queues on IronMQ.
 
-<section id="toc">
-  <h3>Table of Contents</h3>
-  <ul>
-    <li>[Endpoints](#endpoints)</li>
-    <li>[Authentication](#authentication)</li>
-    <li>
-      [Requests](#requests)
-      <ul>
-        <li>[Base URL](#base_url)</li>
-        <li>[Pagination](#pagination)</li>
-      </ul>
-    </li>
-    <li>
-      [Responses](#responses)
-      <ul>
-        <li>[Status Codes](#status_codes)</li>
-        <li>[Exponential Backoff](#exponential_backoff)</li>
-      </ul>
-    </li>
-  </ul>
-</section>
+## Contents
 
-## <a name="endpoints"></a> Endpoints
+1. [Changes](#changes)
+2. [Global Stuff](#global-stuff)
+3. [Queues](#queues)
+  1. [Create Queue](#create-queue)
+  2. [Get Queue](#get-queue)
+  3. [Update Queue](#update-queue)
+  4. [Delete Queue](#delete-queue)
+  5. [List Queues](#list-queues)
+  6. [Add or Update Subscribers](#add-subscribers)
+  7. [Replace Subscribers](#replace-subscribers)
+  8. [Remove Subscribers](#remove-subscribers)
+4. [Messages](#messages)
+  1. [Post Messages](#post-messages) - Core operation to add messages to a queue
+  2. [Post Messages via Webhook](#post-message-via-webhook)
+  3. [Reserve/Get Messages](#reserve-messages) - Core operation to get message(s) off the queue.
+  4. [Get Message by Id](#get-message-by-id)
+  5. [Peek Messages](#peek-messages) - View first messages in queue without reserving them
+  6. [Delete Message](#delete-message) - Core operation to delete a message after it's been processed
+  7. [Delete Messages](#delete-messages) - Batch delete
+  8. [Release Message](#release-message) - Makes a message available for another process
+  9. [Touch Message](#touch-message) - Extends the timeout period so process can finish processing message
+  10. [Clear Messages](#clear-messages) - Removes all messages from a queue
+  11. [Get Push Statuses for a Message](#get-push-statuses)
 
-<table class="reference">
-  <thead>
-    <tr><th style="width: 58%;">URL</th><th style="width: 10%;">HTTP Verb</th><th style="width: 32%;">Purpose</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues</td>
-      <td>GET</td>
-      <td><a href="#list_message_queues" title="List Message Queues">List Message Queues</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td>
-      <td>GET</td>
-      <td><a href="#get_info_about_a_message_queue" title="Get Info About a Message Queue">Get Info About a Message Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td>
-      <td>POST</td>
-      <td><a href="#update_a_message_queue" title="Update a Message Queue">Update a Message Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span></td>
-      <td>DELETE</td>
-      <td><a href="#delete_a_message_queue" title="Delete a Message Queue">Delete a Message Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/clear</td>
-      <td>POST</td>
-      <td><a href="#clear_all_messages_from_a_queue" title="Clear All Messages from a Queue">Clear All Messages from a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td>
-      <td>POST</td>
-      <td><a href="#add_messages_to_a_queue" title="Add Messages to a Queue">Add Messages to a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/webhook</td>
-      <td>POST</td>
-      <td><a href="#add_messages_to_a_queue_via_webhook" title="Add Messages to a Queue via Webhook">Add Messages to a Queue via Webhook</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td>
-      <td>GET</td>
-      <td><a href="#get_messages_from_a_queue" title="Get Messages from a Queue">Get Messages from a Queue</a></td>
-    </tr>
-    <!--
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/peek</td>
-      <td>GET</td>
-      <td><a href="#peek_messages_on_a_queue" title="Peek Messages on a Queue">Peek Messages on a Queue</a></td>
-    </tr>
-    -->
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td>
-      <td>GET</td>
-      <td><a href="#get_message_by_id" title="Get Message by ID">Get Message by ID</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span></td>
-      <td>DELETE</td>
-      <td><a href="#delete_a_message_from_a_queue" title="Delete a Message from a Queue">Delete a Message from a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages</td>
-      <td>DELETE</td>
-      <td><a href="#delete_multiple_messages_from_a_queue" title="Delete Multiple Messages from a Queue">Delete Multiple Messages from a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch</td>
-      <td>POST</td>
-      <td><a href="#touch_a_message_on_a_queue" title="Touch a Message on a Queue">Touch a Message on a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release</td>
-      <td>POST</td>
-      <td><a href="#release_a_message_on_a_queue" title="Release a Message on a Queue">Release a Message on a Queue</a></td>
-    </tr>
-  </tbody>
-</table>
+## <a name="changes"></a> Changes
 
-#### Related to Pull Queues
+Changes from v2.0.1:
 
-<table class="reference">
-  <thead>
-    <tr>
-      <th style="width: 58%;">URL</th>
-      <th style="width: 10%;">HTTP Verb</th>
-      <th style="width: 32%;">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts</td>
-      <td>POST</td>
-      <td><a href="#add_alerts_to_a_queue" title="Add Alerts to a Queue">Add Alerts to a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts</td>
-      <td>PUT</td>
-      <td><a href="#replace_alerts_on_a_queue" title="Update Alerts on a Queue">Replace Alerts on a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts</td>
-      <td>DELETE</td>
-      <td><a href="#remove_alerts_from_a_queue" title="Remove Alerts from a Queue">Remove Alerts from a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/alerts/<span class="variable alert_id">{Alert ID}</span></td>
-      <td>DELETE</td>
-      <td><a href="#remove_alert_from_a_queue_by_id" title="Remove Alert from a Queue by ID">Remove Alert from a Queue by ID</a></td>
-    </tr>
-  </tbody>
-</table>
-
-#### Related to Push Queues
-
-<table class="reference">
-  <thead>
-    <tr>
-      <th style="width: 58%;">URL</th>
-      <th style="width: 10%;">HTTP Verb</th>
-      <th style="width: 32%;">Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/subscribers</td>
-      <td>POST</td>
-      <td><a href="#add_subscribers_to_a_queue" title="Add Subscribers to a Queue">Add Subscribers to a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/subscribers</td>
-      <td>DELETE</td>
-      <td><a href="#remove_subscribers_from_a_queue" title="Remove Subscribers from a Queue">Remove Subscribers from a Queue</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers</td>
-      <td>GET</td>
-      <td><a href="#get_push_status_for_a_message" title="Get Push Status for a Message">Get Push Status for a Message</a></td>
-    </tr>
-    <tr>
-      <td>/projects/<span class="project_id variable">{Project ID}</span>/queues/<span class="queue_name variable">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers/<span class="subscriber_id variable">{Subscriber ID}</span></td>
-      <td>DELETE</td>
-      <td><a href="#acknowledge__delete_push_message_for_a_subscriber" title="Delete Push Message for a Subscriber">Delete Push Message for a Subscriber</a></td>
-    </tr>
-  </tbody>
-</table>
+- Dequeue now returns a reservation. This `reservation_id` and `message_id` are required
+to perform any action (ie deleting, touching, releasing). The reservation is valid for
+the length of the message timeout (inherited from the queues timeout) unless a timeout
+was specified on the dequeue call.
+- Expiration and timeout can no longer be set on message enqueue.
+- Timed out and released messages go to the front of the queue. (This
+is not an API change, but it is a behavior change that will likely
+cause some tests to fail.)
+- Push queues must be explicitly created. There's no changing a queue's type.
+- All json objects are wrapped at the root level.
+- All object structures changed a bit, please review json.
+- Clear messages endpoint changed to be part of delete messages.
+- Can no longer set timeout when posting a message, only when reserving one.
+- Webhook url is no longer `/queues/{Queue Name}/messages/webhook`,
+it is now `/queues/{Queue Name}/webhook`
+- Pagination principle in List Queues changed. It doesn’t support `page` parameter.
+You should specify the name of queue prior to the first desirable queue in result.
+- Trying to get messages from a queue that doesn't exist now returns a "Queue not found" error.
 
 
-## <a name="authentication"></a>Authentication
-IronMQ uses OAuth2 tokens to authenticate API requests. All methods require authentication unless specified otherwise. You can find and create your API tokens [in the HUD](https://hud.iron.io/tokens). To authenticate your request, you should include a token in the Authorization header for your request or in your query parameters. Tokens are universal, and can be used across services.
+## <a name="global-stuff"></a> Global Stuff
 
-Note that each request also requires a Project ID to specify which project the action will be performed on. You can find your Project IDs [in the HUD](https://hud.iron.io). Project IDs are also universal, so they can be used across services as well.
+Base path: `/3/projects/{Project ID}`
 
-**Example Authorization Header**:
-Authorization: OAuth abc4c7c627376858
+All requests:
 
-**Example Query with Parameters**:
-GET https://<span class="variable host">mq-aws-us-east-1</span>.iron.io/1/projects/<span class="variable project_id">{Project ID}</span>/queues?oauth=abc4c7c627376858
+Headers:
 
-Notes:
+- Content-type: application/json
 
-* Be sure you have the correct case, it's **OAuth**, not Oauth.
-* In URL parameter form, this will be represented as:
-        `?oauth=abc4c7c627376858`
+Authentication
 
-## <a name="requests"></a>Requests
+Headers:
 
-Requests to the API are simple HTTP requests against the API endpoints.
-
-All request bodies should be in JSON format, with Content-Type of `application/json`.
-
-<h3 id="base_url">Base URL</h3>
-
-All endpoints should be prefixed with the following:
-
-<strong>https://<span class="variable domain project_id">{Host}</span>.iron.io/<span class="variable version project_id">{API Version}</span>/</strong>
-
-<strong>API Version Support</strong> : IronMQ API supports version <strong>1</strong>
+- Authorization: OAuth TOKEN
 
 
-The hosts for the clouds IronMQ supports are as follows:
+## <a name="queues"></a> Queues
 
-<table class="reference">
-  <thead>
-    <tr>
-      <th>Cloud</th>
-      <th>Host</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>AWS US-EAST</td>
-      <td>mq-aws-us-east-1.iron.io</td>
-    </tr>
-    <tr>
-      <td>AWS EU-WEST</td>
-      <td>mq-aws-eu-west-1.iron.io</td>
-    </tr>
-    <tr>
-      <td>Rackspace ORD</td>
-      <td>mq-rackspace-ord.iron.io</td>
-    </tr>
-    <tr>
-      <td> Rackspace LON </td>
-      <td>mq-rackspace-lon.iron.io</td>
-    </tr>
-    <tr>
-      <td>Rackspace DFW</td>
-      <td>Pro Plans Only - <a href="mailto:support@iron.io?subject=Iron.io%20Dev%20Center%20Question&amp;body=(please%20select%20those%20that%20apply%20to%20you)%0AI%20am%20asking%20a%20question%20about%20IronMQ%2FIronWorker%2FIronCache%20%0ALanguage%3A%0AQuestion%3A%0ALinks%3A" target="_blank">Email Support</a></td>
-    </tr>
-  </tbody>
-</table>
-
-[Alternative domains can be found here in case of dns failures](https://plus.google.com/u/0/101022900381697718949/posts/36PS2dQH3Gn).
-
-<h3 id="pagination">Pagination</h3>
-
-For endpoints that return lists/arrays of values:
-
-* page - The page of results to return. Default is 0. Maximum is 100.
-* per_page - The number of results to return. It may be less if there aren't enough results. Default is 30. Maximum is 100.
-
-## <a name="responses"></a>Responses
-
-All responses are in JSON, with Content-Type of `application/json`. A response is structured as follows:
-
-```js
-{ "msg": "some success or error message" }
-```
-
-<h3 id="status_codes">Status Codes</h3>
-The success failure for request is indicated by an HTTP status code. A 2xx status code indicates success, whereas a 4xx status code indicates an error.
-
-<table class="reference">
-    <thead>
-        <tr>
-            <th style="width: 10%">Code</th><th style="width: 90%">Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>200</td><td>OK: Successful GET</td>
-        </tr>
-        <tr>
-            <td>201</td><td>Created: Successful POST</td>
-        </tr>
-        <tr>
-            <td>400</td><td>Bad Request: Invalid JSON (can't be parsed or has wrong types).</td>
-        </tr>
-        <tr>
-            <td>401</td><td>Unauthorized: The OAuth token is either not provided or invalid.</td>
-        </tr>
-        <tr>
-            <td>403</td><td>Project suspected, resource limits.</td>
-        </tr>
-        <tr>
-            <td>404</td><td>Not Found: The resource, project, or endpoint being requested doesn’t exist.</td>
-        </tr>
-        <tr>
-            <td>405</td><td>Invalid HTTP method: A GET, POST, DELETE, or PUT was sent to an endpoint that doesn’t support that particular verb.</td>
-        </tr>
-        <tr>
-            <td>406</td><td>Not Acceptable: Required fields are missing.</td>
-        </tr>
-        <tr>
-            <td>503</td><td>Service Unavailable. Clients should implement <a href="#exponential_backoff">exponential backoff</a> to retry the request.</td>
-        </tr>
-    </tbody>
-</table>
-
-Specific endpoints may provide other errors in other situations.
-
-When there's an error, the response body contains a JSON object something like:
-
-```js
-{ "msg": "reason for error" }
-```
-
-<h3 id="exponential_backoff">Exponential Backoff</h3>
-
-When a 503 error code is returned, it signifies that the server is currently unavailable. This means there was a problem processing the request on the server-side; it makes no comment on the validity of the request. Libraries and clients should use [exponential backoff](http://en.wikipedia.org/wiki/Exponential_backoff) when confronted with a 503 error, retrying their request with increasing delays until it succeeds or a maximum number of retries (configured by the client) has been reached.
-
-## <a name="list_message_queues"></a> List Message Queues
-
-Get a list of all queues in a project. By default, 30 queues are listed at a time. To see more, use the `page` parameter or the `per_page` parameter. Up to 100 queues may be listed on a single page.
-
-### Endpoint
+### <a name="create-queue"></a> Create Queue
 
 <div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues
+PUT /queues/<span class="variable queue_name">{Queue Name}</span>
 </div>
 
-#### URL Parameters
+Request:
 
-* **Project ID**: Project these queues belong to
+All fields are optional.
 
-#### Optional URL Parameters
+`type` can be one of: [`multicast`, `unicast`, `pull`]
+where `multicast` and `unicast` define push queues. default is `pull`
 
-* **page**: The 0-based page to view. The default is 0.
-* **per_page**: The number of queues to return per page. The default is 30, the maximum is 100.
+If `push` field is defined, this queue will be created as a push queue and must
+contain at least one subscriber. Everything else in the push map is optional.
 
-### Response
+<!--A `push` queue cannot have alerts.-->
 
-```js
-[
-  {
-    "id": "1234567890abcdef12345678",
-    "project_id": "1234567890abcdef12345678",
-    "name": "queue name"
+```json
+{
+  "queue": {
+    "message_timeout": 60,
+    "message_expiration": 3600,
+    "type": "pull/unicast/multicast",
+    "push": {
+      "subscribers": [
+        {
+          "name": "subscriber_name",
+          "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
+          "headers": {"Content-Type": "application/json"}
+        }
+      ],
+      "retries": 3,
+      "retries_delay": 60,
+      "error_queue": "error_queue_name",
+      "rate_limit": 10
+    }
   }
-]
-```
-
-
-## <a name="get_info_about_a_message_queue"></a> Get Info About a Message Queue
-
-
-This call gets general information about the queue.
-
-### Endpoint
-
-<div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>
-</div>
-
-#### URL Parameters
-
-* **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue
-
-### Response
-```js
-{
-  "size": "queue size"
 }
 ```
 
-## <a name="delete_a_message_queue"></a> Delete a Message Queue
-
-This call deletes a message queue and all its messages.
-
-### Endpoint
-
-<div class="grey-box">
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>
-</div>
-
-#### URL Parameters
-
-* **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue
-
-### Response
-```js
-{
-  "msg": "Deleted."
-}
-```
-
-## <a name="update_a_message_queue"></a> Update a Message Queue
-
-This allows you to change the properties of a queue including setting subscribers and the push type if you want it to be a
-push queue.
-
-### Endpoint
-
-<div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>
-</div>
-
-#### URL Parameters
-
-* **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
-
-<div class="grey-box">
-<strong>WARNING:</strong> Do not use the following RFC 3986 Reserved Characters  within your in the naming of your queues.
-  <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
-</div>
-#### Body Parameters
-
-##### Optional
-
-The following parameters are all related to Push Queues.
-
-* **subscribers**: An array of subscriber hashes containing a required "url" field and an optional "headers" map for custom headers. This set of subscribers will replace the existing subscribers. See [Push Queues](/mq/reference/push_queues/) to learn more about types of subscribers. To add or remove subscribers, see the <a href="#add_subscribers_to_a_queue">add subscribers endpoint</a> or the <a href="#remove_subscribers_from_a_queue">remove subscribers endpoint</a>. The maximum is 64kb for JSON array of subscribers' hashes. See below for example JSON.
-* **push_type**: Either `multicast` to push to all subscribers or `unicast` to push to one and only one subscriber.
-Default is `multicast`. To revert push queue to reqular pull queue set `pull`.
-* **retries**: How many times to retry on failure. Default is 3. Maximum is 100.
-* **retries_delay**: Delay between each retry in seconds. Default is 60.
-* **error_queue**: The name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable error queues. Default is disabled. See [Push Queues](/mq/reference/push_queues/) to learn more.
-
-### Request
-
-```js
-{
-  "push_type":"multicast",
-   "subscribers": [
-     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
-     {
-        "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
-        "headers": {"Content-Type": "application/json"}
-     }
-   ]
-}
-```
-
-
-### Response
-```js
-{
-  "id":"50eb546d3264140e8638a7e5",
-  "name":"pushq-demo-1",
-  "size":7,
-  "total_messages":7,
-  "project_id":"4fd2729368a0197d1102056b",
-  "retries":3,
-  "push_type":"multicast",
-  "retries_delay":60,
-  "subscribers":[
-    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
-    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2", "headers": {"Content-Type": "application/json"}}
-  ]
-}
-```
-
-## <a name="add_alerts_to_a_queue"></a> Add Alerts to a Queue
-
-Add alerts to a queue. This is for Pull Queue only.
-
-<div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/alerts/
-</div>
-
-
-##### Optional
-
-* **alerts**: An array of alert hashes containing required "type", "queue", "trigger", and optional "direction", "snooze" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
-
-### Request
-
-```js
-{
-   "alerts": [
-     {
+<!--
+"alerts": [
+      {
        "type": "fixed",
+       "trigger": 100,
        "direction": "asc",
-       "trigger": 1000,
-       "queue": "my_queue_for_alerts"
-     }
-   ]
-}
-```
+       "queue": "target_queue_name",
+       "snooze": 60
+      }
+      -->
 
-#### Response
 
-```js
-{
-  "msg": "Alerts were added."
-}
-```
+Response: 201 Created
 
-## <a name="replace_alerts_on_a_queue"></a> Replace Alerts on a Queue
+SAME AS GET QUEUE INFO
 
-Replace current queue alerts with a given list of alerts. This is for Pull Queue only.
+
+### <a name="get-queue"></a> Get Queue Info
 
 <div class="grey-box">
-PUT /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/alerts/
+GET /queues/<span class="variable queue_name">{Queue Name}</span>
 </div>
 
-#### URL Parameters
+Response: 200 or 404
 
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
+Some fields will not be included if they are not applicable like `push`
+if it's not a push queue and `alerts` if there are no alerts.
 
-#### Body Parameters
-
-##### Optional
-
-* **alerts**: An array of alerts hashes containing required "type", "queue", "trigger", and optional "direction", "snooze" fields. Maximum number of alerts is 5. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
-
-### Request
-
-```js
+```json
 {
-   "alerts": [
-     {
-       "type": "progressive",
-       "direction": "desc",
-       "trigger": 1000,
-       "queue": "my_queue_for_alerts"
-     }
-   ]
+  "queue": {
+    "project_id": 123,
+    "name": "my_queue",
+    "size": 0,
+    "total_messages": 0,
+    "message_timeout": 60,
+    "message_expiration": 604800,
+    "type": "pull/unicast/multicast",
+    "push": {
+      "subscribers": [
+        {
+          "name": "subscriber_name",
+          "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      ],
+      "retries": 3,
+      "retries_delay": 60,
+      "error_queue": "error_queue_name",
+      "rate_limit": 10
+    }
+  }
 }
 ```
 
-Note: to clear all alerts on a queue send an empty alerts array like
-so:
+<!--,
+    "alerts": [
+      {
+        "type": "fixed",
+        "trigger": 100,
+        "direction": "asc",
+        "queue": "target_queue_name",
+        "snooze": 60
+      }
+-->
 
-```js
-{
-  "alerts": []
-}
-```
 
-#### Response
-
-```js
-{
-  "msg": "Alerts were replaced."
-}
-```
-
-## <a name="remove_alerts_from_a_queue"></a> Remove Alerts from a Queue
-
-Remove alerts from a queue. This is for Pull Queue only.
+### <a name="update-queue"></a> Update Queue
 
 <div class="grey-box">
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/alerts/
+PATCH /queues/<span class="variable queue_name">{Queue Name}</span>
 </div>
 
-#### URL Parameters
+Request:
 
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
+SAME AS CREATE QUEUE, except queue type, which is static.
 
-#### Body Parameters
+**Note:** API raises error when you try to set subscribers to pull type queue or alerts on push queue.
 
-##### Optional
+Response: 200 or 404
 
-* **alerts**: An array of alerts hashes containing "id" field. See [Queue Alerts](/mq/reference/queue_alerts/) to learn more.
+Some fields will not be included if they are not applicable like `push`
+if it's not a push queue and `alerts` if there are no alerts.
 
-### Request
+SAME AS GET QUEUE INFO
 
-```js
-{
-   "alerts": [
-     {"id": "5eee546df4a4140e8638a7e5"}
-   ]
-}
-```
 
-#### Response
-
-```js
-{
-  "msg": "Alerts were deleted."
-}
-```
-
-## <a name="remove_alert_from_a_queue_by_id"></a> Remove Alert from a Queue by ID
-
-Remove alert from a queue by its ID. This is for Pull Queue only.
+### <a name="delete-queue"></a> Delete Queue
 
 <div class="grey-box">
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/alerts/<span class="variable alert_id">{Alert ID}</span>
+DELETE /queues/<span class="variable queue_name">{Queue Name}</span>
 </div>
 
-#### URL Parameters
+Response: 200 or 404
 
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
-* **Alert ID**: The id of the alert to delete.
-
-#### Response
-
-```js
+```json
 {
-  "msg": "Alerts were deleted."
+  "msg": "Deleted"
 }
 ```
 
-## <a name="add_subscribers_to_a_queue"></a> Add Subscribers to a Queue
 
-Add subscribers (HTTP endpoints) to a queue. This is for Push Queues only.
-
-### Endpoint
+### <a name="list-queues"></a> List Queues
 
 <div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}/subscribers</span>
+GET /queues
 </div>
 
-#### URL Parameters
+Lists queues in alphabetical order.
 
-* **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
+Request URL Query Parameters:
 
-#### Body Parameters
+- `per_page`: number of elements in response, default is 30.
+- `previous`: this is the last queue on the previous page, it will start from the next one.
+If queue with specified name doesn’t exist result will contain first `per_page` queues that
+lexicographically greater than `previous`
+- `prefix`: an optional queue prefix to search on. e.g., prefix=ca could return
+queues ["cars", "cats", etc.]
 
-##### Optional
+Response: 200 or 404
 
-The following parameters are all related to Push Queues.
-
-* **subscribers**: An array of subscriber hashes containing a required "url" field and an optional "headers" map for custom headers. See below for example. See [Push Queues](/mq/reference/push_queues/) to learn more about types of subscribers.
-
-### Request
-
-```js
+```json
 {
-   "subscribers": [
-     {
-        "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
-        "headers": {"Content-Type": "application/json"}
-     }
-   ]
-}
-```
-
-
-### Response
-
-```js
-{
-  "id":"50eb546d3264140e8638a7e5",
-  "name":"pushq-demo-1",
-  "size":7,
-  "total_messages":7,
-  "project_id":"4fd2729368a0197d1102056b",
-  "retries":3,
-  "push_type":"multicast",
-  "retries_delay":60,
-  "subscribers":[
-    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"},
-    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2", "headers": {"Content-Type": "application/json"}}
+  "queues": [
+    {
+      "name": "queue_name_here"
+    },
+    {
+      "name": "another_queue_name"
+    }
   ]
 }
 ```
 
-## <a name="remove_subscribers_from_a_queue"></a> Remove Subscribers from a Queue
+
+### <a name="add-subscribers"></a> Add or Update Subscribers to a Queue
+
+<div class="grey-box">
+POST /queues/<span class="variable queue_name">{Queue Name}</span>/subscribers
+</div>
+
+Add subscribers (HTTP endpoints) to a queue.
+In the case subscriber with given name exists, it will be updated.
+
+Request:
+
+```json
+{
+  "subscribers": [
+    {
+      "name": "first",
+      "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
+      "name": "other",
+      "url": "http://this.host.is/not/exist"
+    }
+  ]
+}
+```
+
+Response:
+
+```json
+{
+  "msg": "Updated"
+}
+```
+
+
+### <a name="replace-subscribers"></a> Replace Subscribers on a Queue
+
+<div class="grey-box">
+PUT /queues/<span class="variable queue_name">{Queue Name}</span>/subscribers
+</div>
+
+Sets list of subscribers to a queue. Older subscribers will be removed.
+
+Request:
+
+```json
+{
+  "subscribers": [
+    {
+      "name": "the_only",
+      "url": "http://my.over9k.host.com/push"
+    }
+  ]
+}
+```
+
+Response:
+
+```json
+{
+  "msg": "Updated"
+}
+```
+
+
+### <a name="remove-subscribers"></a> Remove Subscribers from a Queue
+
+<div class="grey-box">
+DELETE /queues/<span class="variable queue_name">{Queue Name}</span>/subscribers
+</div>
 
 Remove subscriber from a queue. This is for Push Queues only.
 
-### Endpoint
+Request:
 
-<div class="grey-box">
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}/subscribers</span>
-</div>
-
-#### URL Parameters
-
-* **Project ID**: Project the queue belongs to
-* **Queue Name**: Name of the queue. If the queue does not exist, it will be created for you.
-
-#### Body Parameters
-
-##### Optional
-
-The following parameters are all related to Push Queues.
-
-* **subscribers**: An array of subscriber hashes containing a "url" field. See below for example.
-
-### Request
-
-```js
+```json
 {
-   "subscribers": [
-     {"url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2"}
-   ]
-}
-```
-
-
-### Response
-
-```js
-{
-  "id":"50eb546d3264140e8638a7e5",
-  "name":"pushq-demo-1",
-  "size":7,
-  "total_messages":7,
-  "project_id":"4fd2729368a0197d1102056b",
-  "retries":3,
-  "push_type":"multicast",
-  "retries_delay":60,
-  "subscribers":[
-    {"url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1"}
+  "subscribers": [
+    {
+      "name": "other"
+    }
   ]
 }
 ```
 
-## <a name="clear_all_messages_from_a_queue"></a> Clear All Messages from a Queue
+Response:
 
-This call deletes all messages on a queue, whether they are reserved or not.
-
-### Endpoint
-
-<div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/clear
-</div>
-
-### URL Parameters
-
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of the queue.
-
-### Response
-
-```js
+```json
 {
-  "msg": "Cleared"
+  "msg": "Updated"
 }
 ```
 
-## <a name="add_messages_to_a_queue"></a> Add Messages to a Queue
 
-This call adds or pushes messages onto the queue.
+## <a name="messages"></a> Messages
 
-### Endpoint
+### <a name="post-messages"></a> Post Messages
 
 <div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages
+POST /queues/<span class="variable queue_name">{Queue Name}</span>/messages
 </div>
-
-#### URL Parameters
-
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
 
 #### Message Object
 
@@ -762,47 +368,65 @@ Multiple messages may be added in a single request, provided that the messages s
 
 ##### Optional
 
-* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. Default is 60 seconds. Minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
 * **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
-* **expires_in**: How long in seconds to keep the item on the queue before it is deleted. Default is 604,800 seconds (7 days). Maximum is 2,592,000 seconds (30 days).
 
-### Request
+Request:
 
-```js
+```json
 {
   "messages": [
     {
-      "body": "This is my message 1."
-    },
-    {
-      "body": "This is my message 2.",
-      "timeout": 30,
-      "delay": 2,
-      "expires_in": 86400
+      "body": "This is my message 1.",
+      "delay": 0,
+      "push_headers": {
+        "X-Custom-Header": "custom header value",
+        "Authentication": "the token"
+      }
     }
   ]
 }
 ```
 
-### Response
+Response: 201 Created
 
-```js
+Returns a list of message ids in the same order as they were sent in.
+
+```json
 {
-  "ids": ["message 1 ID", "message 2 ID"],
+  "ids": [
+    "2605601678238811215"
+  ],
   "msg": "Messages put on queue."
 }
 ```
 
+#### Push Headers Restrictions
 
-## <a name="add_messages_to_a_queue_via_webhook"></a> Add Messages to a Queue via Webhook
+* the maximum number of push headers per message is 5
+* push header name cannot be empty
+* the maximum length of push header name is 64 bytes
+* push header name cannot be any of `Content-Type`, `User-Agent`, `Iron-Message-Id`, `Iron-Reservation-Id`, `Iron-Subscriber-Name`, `Iron-Subscriber-Message-Url`
+* push header value cannot be empty
+* the maximum length of header value is 1kb
+
+If request contravenes restrictions, IronMQ responds with HTTP 400 Bad Request.
+
+### <a name="post-message-via-webhook"></a> Post Messages via Webhook
 
 By adding the queue URL below to a third party service that supports webhooks, every webhook event that the third party posts
 will be added to your queue. The request body as is will be used as the "body" parameter in normal POST to queue above.
 
+#### Push Headers
+
+It is possible to supply custom push headers for messages, posted via webhook. IronMQ treats headers, which start with `X-Subscribers-` prefix, as push headers.
+Prefix will be removed and reminder will be used as actual header name.
+
+**NOTE:** push headers, that contravene restrictions (see [Post Messages](#post-messages) section), will be ignored and error will not be raised.
+
 ### Endpoint
 
 <div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/webhook
+POST /queues/<span class="variable queue_name">{Queue Name}</span>/webhook
 </div>
 
 #### URL Parameters
@@ -810,332 +434,274 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<spa
 * **Project ID**: The project these messages belong to.
 * **Queue Name**: The name of the queue. If the queue does not exist, it will be created for you.
 
-
-## <a name="get_messages_from_a_queue"></a> Get Messages from a Queue
-
-This call gets/reserves messages from the queue. The messages will not be deleted, but will be reserved until the timeout expires. If the timeout expires before the messages are deleted, the messages will be placed back onto the queue. As a result, be sure to **delete** the messages after you're done with them.
-
-### Endpoint
+### <a name="reserve-messages"></a> Reserve Messages
 
 <div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages
+POST /queues/<span class="variable queue_name">{Queue Name}</span>/reservations
 </div>
 
-#### URL Parameters
+Request:
 
-* **Project ID**: The Project these messages belong to.
-* **Queue Name**: The name of queue.
+All fields are optional.
 
-#### Optional Parameters
+- `n`: The maximum number of messages to get. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages.
+- `timeout`:  After timeout (in seconds), item will be placed back onto queue. You must delete the message from the queue to ensure it does not go back onto the queue. If not set, value from queue is used. Default is 60 seconds, minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
+- `wait`: Time to long poll for messages, in seconds. Max is 30 seconds. Default 0.
+- `delete`: If true, do not put each message back on to the queue after reserving. Default false.
 
-* **n**: The maximum number of messages to get. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages.
-* **timeout**: After timeout (in seconds), item will be placed back onto queue. You must delete the message
-from the queue to ensure it does not go back onto the queue. If not set, value from POST is used. Default is 60 seconds, minimum is 30 seconds, and maximum is 86,400 seconds (24 hours).
-* **wait**: Time in seconds to wait for a message to become available. This enables long polling. Default is 0 (does not wait), maximum is 30.
-* **delete**: true/false. This will delete the message on get. Be careful though, only use this if you are ok with losing a message if something goes wrong after you get it. Default is false.
+```json
+{
+  "n": 1,
+  "timeout": 60,
+  "wait": 0,
+  "delete": false
+}
+```
 
-### Sample Request
+Response: 200
 
-<div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages?<strong>n=10</strong>&amp;<strong>timeout=120</strong>
-</div>
-
-### Response
-
-```js
+```json
 {
   "messages": [
     {
-       "id": 1,
-       "body": "first message body",
-       "timeout": 600,
+       "id": 123,
+       "body": "this is the body",
        "reserved_count": 1,
-       "push_status": {"retries_remaining": 1}
+       "reservation_id": "def456"
     },
-    {
-       "id": 2,
-       "body": "second message body",
-       "timeout": 600,
-       "reserved_count": 1,
-       "push_status": {"retries_remaining": 1}
-    }
   ]
 }
 ```
 
-<!--
-## <a name="peek_messages_on_a_queue"></a> Peek Messages on a Queue
+Will return an empty array if no messages are available in queue.
 
-Peeking at a queue returns the next messages on the queue, but it does not reserve them.
-
-### Endpoint
+### <a name="get-message-by-id"></a> Get Message by Id
 
 <div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/peek
+GET /queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
 </div>
 
-#### URL Parameters
+Response: 200
 
-* **Project ID**: The Project these messages belong to.
-* **Queue Name**: The name of queue.
+```json
+{
+  "message": {
+    "id": 123,
+    "body": "This is my message 1.",
+    "reserved_count": 1,
+    "reservation_id": "abcdefghijklmnop"
+  }
+}
+```
 
-#### Optional Parameters
-
-* **n**: The maximum number of messages to peek. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages.
-
-### Sample Request
+### <a name="peek-messages"></a> Peek Messages
 
 <div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/peek?<strong>n=10</strong>
+GET /queues/<span class="variable queue_name">{Queue Name}</span>/messages
 </div>
 
-### Response
+Request:
 
-```js
+- `n`: The maximum number of messages to peek. Default is 1. Maximum is 100.
+Note: You may not receive all n messages on every request, the more sparse
+the queue, the less likely you are to receive all n messages.
+
+Response: 200
+
+Some fields will not be included if they are not applicable like `push`
+if it's not a push queue and `alerts` if there are no alerts.
+
+```json
 {
   "messages": [
     {
-       "id": 1,
-       "body": "first message body",
-       "reserved_count": 0
+       "id": 123,
+       "body": "message body",
+       "reserved_count": 1
     },
+  ]
+}
+```
+
+### <a name="delete-message"></a> Delete Message
+
+<div class="grey-box">
+DELETE /queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
+</div>
+
+Request:
+
+- `reservation_id`: This id is returned when you [reserve a message](#reserve-messages)
+and must be provided to delete a message that is reserved. If a reservation times out,
+this will return an error when deleting so the consumer knows that some other consumer
+will be processing this message and can rollback or react accordingly.
+If the message isn't reserved, it can be deleted without the reservation\_id.
+- `subscriber_name`: This field could be used in case of push message processing acknowledge.
+When request from IronMQ Pusher is received, and subscriber endpoint returns `HTTP 202 Accepted`,
+message must be acknowledged, otherwise it will be pushed again (if retries are configured).
+Send both reservation\_id and subscriber\_name to acknowledge processed message.
+
+```json
+{
+  "reservation_id": "def456"
+}
+```
+
+Response: 200 or 404
+
+```json
+{
+  "msg": "Deleted"
+}
+```
+
+### <a name="delete-messages"></a> Delete Messages
+
+<div class="grey-box">
+DELETE /queues/<span class="variable queue_name">{Queue Name}</span>/messages
+</div>
+
+This is for batch deleting messages. Maximum number of messages you can delete at once is 100.
+
+Request:
+
+- `reservation_id`: This id is returned when you [reserve a message](#reserve-messages)
+and must be provided to delete a message that is reserved. If a reservation times out,
+this will return an error when deleting so the worker knows that some other worker
+will be processing this message and can rollback or react accordingly.
+- `subscriber_name`: This field could be used in case of push message processing acknowledge.
+When request from IronMQ Pusher is received, and subscriber endpoint returns `HTTP 202 Accepted`,
+message must be acknowledged, otherwise it will be pushed again (if retries are configured).
+Send both reservation\_id and subscriber\_name to acknowledge processed message.
+
+```json
+{
+  "ids": [
     {
-       "id": 2,
-       "body": "second message body",
-       "reserved_count": 0
-    }
-  ],
-}
-
-```
--->
-
-## <a name="get_message_by_id"></a> Get Message by ID
-
-Get a message by ID.
-
-### Endpoint
-
-<div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
-</div>
-
-#### URL Parameters
-
-* **Project ID**: The Project these messages belong to.
-* **Queue Name**: The name of queue.
-* **Message ID**: The id of the message to release.
-
-### Sample Request
-
-<div class="grey-box">
-GET /projects/4ccf55250948510894024119/queues/test_queue/messages/5981787539458424851
-</div>
-
-### Response
-
-```js
-{
-  "id": "5924625841136130921",
-  "body": "hello 265",
-  "timeout": 60,
-  "status":"deleted",
-  "reserved_count": 1
+      "id": 123,
+      "reservation_id": "abc"
+    },
+  ]
 }
 ```
 
-## <a name="release_a_message_on_a_queue"></a> Release a Message on a Queue
+Response: 200 or 404
 
-Releasing a reserved message unreserves the message and puts it back on the queue as if the message had timed out.
+```json
+{
+  "msg": "Deleted"
+}
+```
 
-### Endpoint
+### <a name="touch-message"></a> Touch Message
 
 <div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release
+POST /queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch
 </div>
 
-### URL Parameters
+This request creates new reservation for a message. It requires valid `reservation_id`,
+and returns new `reservation_id` for the message.
 
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
-* **Message ID**: The id of the message to release.
+Request:
 
-### Body Parameters
+- `reservation_id`: appropriate message's reservation ID.
+- `timeout`: optional. How many seconds new reservation will be valid.
+Defaults to queue's `message_timeout` option.
 
-* **delay**: The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days).
-
-### Request Body
-
-```js
+```json
 {
+  "reservation_id": "5259a40cf166faa76a23f7450daaf497",
+  "timeout": 120
+}
+```
+
+Response: 200 or 404
+
+```json
+{
+  "reservation_id": "5359a40cf166faa76a23f7450daaffff",
+  "msg": "Touched"
+}
+```
+
+
+### <a name="release-message"></a> Release Message
+
+<div class="grey-box">
+POST /queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/release
+</div>
+
+Request:
+
+```json
+{
+  "reservation_id": "5359a40cf166faa76a23f7450daaffff",
   "delay": 60
 }
 ```
 
-A JSON document body is required even if all parameters are omitted.
+Response: 200 or 404
 
-```js
-{}
-```
-
-### Response
-```js
+```json
 {
   "msg": "Released"
 }
 ```
 
-## <a name="touch_a_message_on_a_queue"></a> Touch a Message on a Queue
 
-Touching a reserved message extends its timeout to the duration specified when the message was created. Default is 60 seconds.
-
-### Endpoint
+### <a name="clear-messages"></a> Clear Messages
 
 <div class="grey-box">
-POST /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/touch
+DELETE /queues/<span class="variable queue_name">{Queue Name}</span>/messages
 </div>
 
-#### URL Parameters
+This will remove all messages from a queue.
 
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
-* **Message ID**: The id of the message to touch.
+Request:
 
-
-#### Request
-
-Any empty JSON body.
-
-```js
+```json
 {}
 ```
 
-#### Response
-```js
+Response: 200 or 404
+
+```json
 {
-  "msg": "Touched"
+  "msg": "Cleared"
 }
 ```
 
-## <a name="delete_a_message_from_a_queue"></a> Delete a Message from a Queue
 
-This call will delete the message. Be sure you call this after you're done with a message or it will be placed back on the queue.
-
-### Endpoint
+### <a name="get-push-statuses"></a> Get Push Statuses for a Message
 
 <div class="grey-box">
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>
+GET /queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers
 </div>
 
-#### URL Parameters
-
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
-* **Message ID**: The id of the message to delete.
-
-#### Response
-```js
-{
-  "msg": "Deleted"
-}
-```
-
-
-## <a name="delete_multiple_messages_from_a_queue"></a> Delete Multiple Messages from a Queue
-
-This call will delete multiple messages in one call.
-
-### Endpoint
-
-<div class="grey-box">
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages
-</div>
-
-#### URL Parameters
-
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
-
-### Body Parameters
-
-* **ids**: An array of message ids as string.
-
-### Request Body
-
-```js
-{
-  "ids": [
-    "MESSAGE_ID_1",
-    "MESSAGE_ID_2"
-  ]
-}
-```
-
-
-#### Response
-```js
-{
-  "msg": "Deleted"
-}
-```
-
-## <a name="get_push_status_for_a_message"></a> Get Push Status for a Message
-
-You can retrieve the push status for a particular message which will let you know which subscribers have received the
+You can retrieve the push statuses for a particular message which will let you know which subscribers have received the
 message, which have failed, how many times it's tried to be delivered and the status code returned from the endpoint.
 
-<div class="grey-box">
-GET /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers
-</div>
+Response:
 
-#### URL Parameters
-
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
-* **Message ID**: The id of the message to retrieve status for.
-
-### Response
-```js
+```json
 {
-  "subscribers":[
+  "subscribers": [
     {
-      "retries_delay":60,
-      "retries_remaining":2,
-      "status_code":200,
-      "status":"deleted",
-      "url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
-      "id":"5831237764476661217"
+      "name": "first"
+      "retries_remaining": 2,
+      "retries_total": 6,
+      "status_code": 200,
+      "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
+      "last_try_at": "2014-07-30T15:45:03Z"
     },
     {
-      "retries_delay":60,
-      "retries_remaining":2,
-      "status_code":200,
-      "status":"deleted",
-      "url":"http://mysterious-brook-1807.herokuapp.com/ironmq_push_1",
-      "id":"5831237764476661218"
+      "name": "other"
+      "retries_remaining": 2,
+      "retries_total": 6,
+      "status_code": 200,
+      "url": "http://this.host.is/not/exist",
+      "last_try_at": "2014-07-30T15:44:29Z"
     }
   ]
-}
-```
-
-## <a name="acknowledge"></a> Acknowledge / Delete Push Message for a Subscriber
-
-This is only for use with long running processes that have previously returned a 202. Read Push Queues page for more information on [Long Running Processes](http://dev.iron.io/mq/reference/push_queues/#how_the_endpoint_should_handle_push_messages)
-
-<div class="grey-box">
-DELETE /projects/<span class="variable project_id">{Project ID}</span>/queues/<span class="variable queue_name">{Queue Name}</span>/messages/<span class="variable message_id">{Message ID}</span>/subscribers/<span class="variable subscriber_id">{Subscriber ID}</span>
-</div>
-
-#### URL Parameters
-
-* **Project ID**: The project these messages belong to.
-* **Queue Name**: The name of queue.
-* **Message ID**: The id of the message.
-* **Subscriber ID**: The id of the subscriber to delete.
-
-### Response
-```js
-{
-  "msg": "Deleted"
 }
 ```

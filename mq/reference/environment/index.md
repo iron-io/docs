@@ -1,13 +1,14 @@
 ---
-title: Message and Queue Attributes
+title: IronMQ Message and Queue Attributes
 layout: default
-section: mq
+section: worker
 breadcrumbs:
   - ['Reference', '/reference']
   - ['Environment', '/environment']
 ---
 
 <section id="toc">
+<h1>WORK IN PROGRESS</h1>
   <h3>Table of Contents</h3>
   <ul>
     <li><a href="#message_structure">Message Structure</a></li>
@@ -33,11 +34,10 @@ The message structure is flexible and straight-forward. Messages can be variable
   </tbody>
 </table>
 
-
 <h2 id="message_constraints">Message Constraints</h2>
 The basic message handling operation is put-get-delete. Messages are put on the queue by senders. The messages can have **delays** associated with them. If included, the message is not made available on the queue until the delay is up (default is 0 or no delay).
 
-Receivers get one or more messages (up to 100). Once the receiver is done processing a message, it deletes it. If a message is not deleted prior to the **timeout** (default 60 sec), it is put back on the queue. Messages on the queue will **expire** after a certain amount of time (default is 7 days).
+Receivers get one or more messages (up to 100). Once the receive is done processing a message, it deletes it. If a message is not deleted prior to the **timeout** (default 60 sec), it is put back on the queue. Messages on the queue will **expire** after a certain amount of time (default is 7 days).
 
 <table class="reference">
   <thead>
@@ -51,7 +51,6 @@ Receivers get one or more messages (up to 100). Once the receiver is done proces
     <tr><td>Messages per Get</td><td>1</td><td>100</td><td>One or more messages can be handled at a time.</td></tr>
   </tbody>
 </table>
-
 
 <h2 id="queue_attributes">Queue Attributes</h2>
 
@@ -97,7 +96,7 @@ To get the information about a queue, use the [Info API call](/mq/reference/api/
 
 <h2 id="security_groups_and_ip_ranges">Security Groups and IP Ranges</h2>
 
-Iron.io provides an AWS security group for IronMQ, generally used in the case of push queues, in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
+Iron.io provides an AWS security group for IronMQ, generally used in the case of push queues, In the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
 
 <table>
 <thead>
