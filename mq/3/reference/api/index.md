@@ -109,8 +109,7 @@ contain at least one subscriber. Everything else in the push map is optional.
       ],
       "retries": 3,
       "retries_delay": 60,
-      "error_queue": "error_queue_name",
-      "rate_limit": 10
+      "error_queue": "error_queue_name"
     }
   }
 }
@@ -166,8 +165,7 @@ if it's not a push queue and `alerts` if there are no alerts.
       ],
       "retries": 3,
       "retries_delay": 60,
-      "error_queue": "error_queue_name",
-      "rate_limit": 10
+      "error_queue": "error_queue_name"
     }
   }
 }
@@ -689,7 +687,7 @@ Response:
     {
       "name": "first"
       "retries_remaining": 2,
-      "retries_total": 6,
+      "tries": 1,
       "status_code": 200,
       "url": "http://mysterious-brook-1807.herokuapp.com/ironmq_push_2",
       "last_try_at": "2014-07-30T15:45:03Z"
@@ -697,7 +695,7 @@ Response:
     {
       "name": "other"
       "retries_remaining": 2,
-      "retries_total": 6,
+      "tries": 6,
       "status_code": 200,
       "url": "http://this.host.is/not/exist",
       "last_try_at": "2014-07-30T15:44:29Z"
