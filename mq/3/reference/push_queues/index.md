@@ -71,20 +71,16 @@ Here are some examples:
 
 To turn a queue into a push queue (or create one), POST to your queue endpoint with the following parameters:
 
-- subscribers - required - an array of hashes containing subscribers. eg: `{"name": "my-subscriber", "url": "http://myserver.com/endpoint"}`.
-The maximum is 64kb for JSONify array of subscribers' hashes. **WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints (URLs)
-  <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
-
-- push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
-- retries - number of times to retry. Default is 3. Maximum is 100.
-- retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
-- error\_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number
-of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
+- `subscribers` - required - an array of hashes containing subscribers. eg: `{"name": "my-subscriber", "url": "http://myserver.com/endpoint"}`.
+**WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints (URLs)
+<p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
+- `push_type` - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
+- `retries` - number of times to retry. Default is 3. Maximum is 100.
+- `retries_delay` - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
+- `error_queue` - the name of another queue where information about messages that can't be delivered after retrying `retries` number
+of times will be placed. Pass in an empty string to disable error queue. Default is disabled.
 The default queue type for an error queue will be a pull queue. See
 <a href="#error_queues">Error Queues</a> section below.
-- rate_limit - the maximum number of push actions per second. The "push action" term means request to any subscriber endpoint.
-In other words, each message requires at least number of subscribers "push actions" to be completely pushed. -1 means no limit,
-0 means, that a push is disabled. Default is -1.
 
 <div>
 <script src="https://gist.github.com/featalion/0d18d579f62361e70ed7.js"></script>
@@ -110,12 +106,12 @@ IronMQ will automatically retry if it fails to deliver a message. This can be ei
 or any other scenario that does not return 2xx response. The behavior is a bit different depending on whether it's unicast or
 multicast as follows:
 
-- multicast treats each endpoint separately and will try each endpoint once per retry. If one endpoint fails,
-  it will retry that single endpoint after retries_delay, it won't retry endpoints that were successful.
-- unicast will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered.
-  If it fails, a different endpoint is tried immediately and this continues until a successful response is returned
-  or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
-  be retried after retries_delay.
+- **multicast** treats each endpoint separately and will try each endpoint once per retry. If one endpoint fails,
+it will retry that single endpoint after retries_delay, it won't retry endpoints that were successful.
+- **unicast** will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered.
+If it fails, a different endpoint is tried immediately and this continues until a successful response is returned
+or all endpoints have been tried. If there is no successful response from all endpoints, then the message will
+be retried after retries_delay.
 
 <h2 id="error_queues">Error Queues</h2>
 
@@ -137,9 +133,24 @@ If a push queue is set with the `error_queue` parameter, then after the set numb
 **NOTE:** An error queue will not appear in your dashboard until an initial error message is received.
 
 The error queue message will contain the following information:
-<div>
-<script src="https://gist.github.com/featalion/ee02360cc129e5626a38.js"></script>
-</div>
+```json
+{
+  "source_msg_id": "5924620498196814694",
+  "body":"SOURCE_MESSAGE_BODY_HERE",
+  "headers":{
+    "USER_AGENT":"YOU",
+    "OTHER_HEADERS":"HERE"
+  },
+  "subscribers": [
+    {
+      "name": "my-subscriber",
+      "url": "http://thiswebsitewillthrowanerror.com",
+      "code": 500,
+      "msg": "Internal server error."
+    }
+  ]
+}
+```
 
 You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
 the `source_msg_id` value.
@@ -193,9 +204,9 @@ If you'd like to take more time to process messages, see 202 section below.
 <h3 id="long_running_processes__aka_202s">Long Running Processes - aka 202</h3>
 
 If you'd like to take some time to process a message, more than the 60 second timeout, you must respond with HTTP status code 202.
-Be sure to set the "timeout" value when [posting your message](/mq/reference/api) to the maximum amount of time you'd like your processing to take.
-If you do not explicitly delete the message before the "timeout" has passed, the message will be retried.
-To delete the message, check the "Iron-Subscriber-Message-Url" header and send a DELETE request to that URL.
+Be sure to set `timeout`'s value, when [reserving messages](/mq/3/reference/api/#reserve-messages), to the maximum amount of time you'd like your processing to take.
+If you do not explicitly delete the message before the timeout has passed, the message will be retried.
+To delete the message, check the `Iron-Subscriber-Message-Url` header and send a DELETE request to that URL.
 
 <h3 id="push_queue_headers">Push Queue Headers</h3>
 
@@ -208,13 +219,12 @@ Only <code>User-Agent</code> and <code>Content-Type</code> headers may be overwr
 by subscriber or push headers, the others are always set by push queues.
 </p>
 
-- User-Agent - <code>IronMQ Pusherd</code> (default, may be overwritten by subscriber or message headers)
-- Content-Type - <code>text/plain; encoding=utf-8</code> (default, may be overwritten by subscriber or message headers)
-- Iron-Message-Id - The ID for your original message allowing you to check the status
-- Iron-Reservation-Id - The ID of a message reservation. If client respond with 202, it will be valid "retries_delay" seconds.
-Reservation ID is required to acknowledge a message.
-- Iron-Subscriber-Name - A name of the particular subscriber.
-- Iron-Subscriber-Message-Url - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
+- `User-Agent` - <code>IronMQ Pusherd</code> (default, may be overwritten by subscriber or message headers)
+- `Content-Type` - <code>text/plain; encoding=utf-8</code> (default, may be overwritten by subscriber or message headers)
+- `Iron-Message-Id` - The ID for your original message allowing you to check the status
+- `Iron-Reservation-Id` - The ID of a message reservation. If client respond with 202, it will be valid "retries_delay" seconds.
+- `Iron-Subscriber-Name` - A name of the particular subscriber.
+- `Iron-Subscriber-Message-Url` - A URL to delete/acknowledge the message. Generally used with the 202 response code to tell
 IronMQ that you're done with the message. Send a DELETE http request to this URL to acknowledge it.
 
 <h2 id="encryption_and_security">Encryption and Security</h2>
