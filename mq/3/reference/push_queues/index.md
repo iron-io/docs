@@ -133,6 +133,7 @@ If a push queue is set with the `error_queue` parameter, then after the set numb
 **NOTE:** An error queue will not appear in your dashboard until an initial error message is received.
 
 The error queue message will contain the following information:
+
 ```json
 {
   "source_msg_id": "5924620498196814694",
