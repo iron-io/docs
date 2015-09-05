@@ -45,10 +45,11 @@ the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/ap
 
 <h2 id="subscribers">Subscribers</h2>
 
-Subscribers are simply URL's that IronMQ will post to whenever a message is posted to your queue. There are currently
+Subscribers are simply URLs that IronMQ will post to whenever a message is posted to your queue. There are currently
 three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
 
-1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters within your URL in the naming of your subscriber endpoints.
+1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints:
+  <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
 1. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
 1. **IronWorker endpoints:** IronWorker endpoints will fire up an IronWorker task with the message body as the payload. More info on the IronWorker URL format below.
 
@@ -69,14 +70,14 @@ Here are some examples:
 
 To turn a queue into a push queue (or create one), POST to your queue endpoint with the following parameters:
 
-- subscribers - required - an array of hashes containing subscribers. eg: `{"url": "http://myserver.com/endpoint"}`.
-The maximum is 64kb for JSONify array of subscribers' hashes. **WARNING:** Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
+- subscribers - required - an array of hashes containing subscribers. eg: `[{"url": "http://myserver.com/endpoint"}]`.
+The maximum is 64kb for JSONify array of subscribers' hashes. **WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints:
   <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
 
-- push_type - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
-- retries - number of times to retry. Default is 3. Maximum is 100.
-- retries_delay - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
-- error_queue - the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
+- `push_type` — multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
+- `retries` — number of times to retry. Default is 3. Maximum is 100.
+- `retries_delay` — time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
+- `error_queue` — the name of another queue where information about messages that can't be delivered after retrying `retries` number of times will be placed. Pass in an empty string to disable Error queues. Default is disabled.
 The default queue type for an error queue will be a pull queue. See <a href="#error_queues">Error Queues</a> section below.
 
 <div>
