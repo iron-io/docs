@@ -32,7 +32,7 @@ section: worker
 
 Before starting, you'll need to setup a couple of things. You only need to do this once.
 
-1. [Install the CLI tool](/worker/beta/cli/)
+1. [Install the CLI tool](/worker/cli/)
 1. [Setup your Iron.io credentials](/worker/reference/configuration/)
 1. [Install Docker](https://docs.docker.com/installation/#installation)
 

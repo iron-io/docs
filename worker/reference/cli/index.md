@@ -124,7 +124,7 @@ Instead, you can queue tasks directly from the command line:
 iron worker queue [--priority 0|1|2] [--payload '{"somekey": "some_value", "array": ["item1", "item2"]}'] $WORKER
 ```
 
-Alternatively, you can specifiy a payload file, instead of providing the payload inline:
+Alternatively, you can specify a payload file, instead of providing the payload inline:
 
 ```sh
 iron worker queue --payload-file /path/to/payload/file.json $WORKER

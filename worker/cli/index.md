@@ -3,11 +3,10 @@ title: The IronWorker Command Line Tool
 layout: default
 section: worker
 breadcrumbs:
-  - ['Reference', '/reference']
-  - ['Command Line', 'cli']
+  - ['CLI Tool', 'cli']
 ---
 
-The Iron.io command line tool will help you interact with the IronWorker API to make creating workers easier. 
+The Iron.io command line tool will help you interact with the IronWorker API to make creating workers easier.
 
 <section id="toc">
   <h3>Table of Contents</h3>
@@ -24,13 +23,13 @@ The Iron.io command line tool will help you interact with the IronWorker API to 
 
 <h2 id="installing">Installing</h2>
 
-The new [Iron cli](https://github.com/iron-io/ironcli) tool has an easy installer: 
+The new [Iron cli](https://github.com/iron-io/ironcli) tool has an easy installer:
 
 ```sh
 curl -sSL http://get.iron.io/cli | sh
 ```
 
-You can find downloads if you don't want to install it with the above command in the ironcli repo. 
+You can find downloads if you don't want to install it with the above command in the ironcli repo.
 
 You'll also need [Docker](http://docker.com) installed on your machine to test your workers.
 
@@ -88,7 +87,7 @@ iron worker upload --retries 5 ...
 You can also optionally specify the delay between retries by using `retries-delay`:
 
 ```sh
-iron worker upload --retries 5 --retries-delay 10 ... 
+iron worker upload --retries 5 --retries-delay 10 ...
 ```
 
 There are additional options available to the upload command; you can find
@@ -139,7 +138,7 @@ Instead, you can queue tasks directly from the command line:
 iron worker queue [--priority 0|1|2] [--payload '{"somekey": "some_value", "array": ["item1", "item2"]}'] $WORKER
 ```
 
-Alternatively, you can specifiy a payload file, instead of providing the payload inline:
+Alternatively, you can specify a payload file, instead of providing the payload inline:
 
 ```sh
 iron worker queue --payload-file /path/to/payload/file.json $WORKER
