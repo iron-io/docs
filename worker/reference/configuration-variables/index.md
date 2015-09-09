@@ -22,38 +22,32 @@ layout: post
 
 <h2 id="via_task_payload">Set config variables via Worker's task payload/params</h2>
 
-<p>When queueing up a task you can easily pass configuration information via the payload. Each enviroment has it's own way to access parameters inside a worker. in ruby you access it by calling the <strong>params</strong> variable, in php you access it via
-
-``` php
-  $postdata = file_get_contents("php://input");
-```
+<p>When queueing up a task you can easily pass configuration information via the payload. You can read more about
+<a href="/worker/reference/payload/">payloads here</a>.
 
 <p>This is preferable when your worker may have different variations, adapters or strategies when receiving different types of payload. </p>
 
-<p>That's it. The next example walks you through setting a static configuration on you IronWorker upon upload</p>
+<p>That's it. The next example walks you through setting a static configuration on your IronWorker upon upload.</p>
 
-<h2 id="#config-via-file">Set config variables on upload via .yml or .json</h2>
+<h2 id="#config-via-file">Set config variables on upload via a json file</h2>
 
-<p>First create a .yml or a .json file and save it within your worker directory or directory where you will be running your IronWorker commandline tools from ex: config.yml or config.json</p>
+<p>First create .json file and save it within your worker directory or directory where you will be running your IronWorker commandline tools from ex: config.yml or config.json</p>
 
 <figcaption><span>config.json </span></figcaption>
 
 ``` javascript
-{ "MY_CONFIG_VARIABLE": 12345678901234567890,
-  "MY_CONFIG_VARIABLE2": "ASDGFHJTHFVCBDXFGHSF",}
-```
-
-<figcaption><span>config.yml </span></figcaption>
-
-``` yaml
-"MY_CONFIG_VARIABLE": 12345678901234567890
-"MY_CONFIG_VARIABLE2": "ASDGFHJTHFVCBDXFGHSF"
+{
+  "MY_CONFIG_VARIABLE": 12345678901234567890,
+  "MY_CONFIG_VARIABLE2": "ASDGFHJTHFVCBDXFGHSF"
+}
 ```
 
 <p>Next run your standard upload command</p>
+
 ```sh
-iron_worker upload --worker-config config.yml
+iron worker upload --config-file config.json --name myworker --zip myworker.zip iron/images:ruby-2.1 ruby worker.rb
 ```
+
 <p>and you should see in the upload logs that your configuration variables were uploaded with your worker</p>
 <img src="/images/worker/reference/config-uploaded.png" alt="config-uploaded">
 
@@ -68,6 +62,8 @@ ARGV.each_with_index do |arg, i|
   end
 end
 ```
+
+All of our client libraries provide helper methods to make it easy to access.
 
 <h2 id="#config-via-hud">Set config variables in the Iron.io HUD aka dashboard</h2>
 <p>it is often times useful to change configuration variables without having to reupload your code. We allow you to do so visually with our HUD (dashboard) by following two simple steps.</p>

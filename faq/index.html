@@ -192,27 +192,6 @@ If you’re a heavy user and have specific needs, please let us know and we’d 
 	<li>.NET(unofficial): <a href ="https://github.com/odeits/IronTools">http://github.com/odeits/IronTools"</a></li>
 	</ul>
 </div>
-<div id="Workerfaq-4">
-  <h3>Help I'm getting an error "zip/zip (LoadError)"</h3>
-  <div class="highlight"><pre><span class="n">error:/usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in </span></pre>
-  	<pre><span class="n">
-  	`require': cannot load such file -- zip/zip (LoadError) </span></pre>
-
-  </div>
-  <p>You are likely using a old version of the iron_worker_ng gem. please update by running</p>
-
-  <figcaption><span>Command Line </span></figcaption>
-  <div class="cli">
-  <div class="highlight"><pre><code class="bash">
-  <span class="nv">$ </span>gem update iron_worker_ng
-	</code></pre></div>
-  your gem version should be 1.0.2 later. Check this running the following command.
-  <div class="highlight"><pre><code class="bash">
-  <span class="nv">$ </span>iron_worker -v
-  </code></pre></div>
-  </div>
-  <a href="http://stackoverflow.com/questions/18772409/iron-worker-zip-zip-loaderror-error-using-iron-worker-ng-gem/18772410#18772410">link: stackoverflow resource to this error.</a>
-</div>
 
 
 <div id="Cachefaq-1">
@@ -225,4 +204,3 @@ asynchronous processing and communication.</p>
 
 
 <p>We keep an active presence on Twitter as <a href ="http://twitter.com/getiron">@getiron</a>, on Google+ as <a href="https://plus.google.com/107979826672004784735">+Iron.io</a>, and on Slack at <a href="http://get.iron.io/slack">get.iron.io/slack</a>. Follow us, circle us, tweet us, or chat us up. We'd love to hear from you.
-

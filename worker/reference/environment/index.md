@@ -24,75 +24,7 @@ breadcrumbs:
   </ul>
 </section>
 
-<h2 id="default_language_versions">Runtime Environments</h2>
-
-Below you can see the pre-installed versions of languages/tools in the IronWorker environment in different stacks.
-
-To use, add 'stack "stack_name"' to your .worker file. Example:
-
-```ruby
-runtime "ruby"
-stack "ruby-2.1"
-exec "hello_worker.rb"
-```
-<br />
-
-<table>
-  <thead>
-    <tr><th>Stack name</th><th>Language/Tool Version</th><th>Operating System</th><th>Deb packages</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>default*</td><td>Ruby-1.9.3p194, java-1.7, scala-2.9, mono-2.10, php-5.3, node-0.8, python-2.7</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/b34b788935600e167e87">Packages</a></td></tr>
-    <tr><td>ffmpeg-2.3</td><td>ffmpeg-2.3, GPAC-0.5.1, php-5.3, node-0.10, ruby-1.9.3p0, python-2.7, x264-0.142.x</td><td>Ubuntu 12.04.5</td><td><a href="https://gist.github.com/37de9d069e5bee68fadc">Packages</a></td></tr>
-    <tr><td>go-1.4</td><td>Go 1.4</td><td>Ubuntu 14.04</td><td><a href="#"></a></td></tr>
-    <tr><td>java-1.7</td><td>Java 1.7.0_51 OpenJDK</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/10048560018e6e0ccc13">Packages</a></td></tr>
-    <tr><td>java-1.8</td><td>Java 1.8.0_20</td><td>Ubuntu 12.04.5</td><td><a href="https://gist.github.com/3397e0218659e61daa06">Packages</a></td></tr>
-    <tr><td>mono-3.0</td><td>Mono JIT 3.0.</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/08c358be6000267d40cd">Packages</a></td></tr>
-    <tr><td>mono-3.6</td><td>Mono JIT 3.6.</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/26982f568f85d96bb518">Packages</a></td></tr>
-    <tr><td>mono-2.10</td><td>Mono JIT 2.10.8.1</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/b45d55a92e4fcefe88e8">Packages</a></td></tr>
-    <tr><td>node-0.10</td><td>Node.js 0.10</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/d6c0d6b2db26bf753ffb">Packages</a></td></tr>
-    <tr><td>php-5.4</td><td>PHP 5.4.26</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/098d56acae25e122580e">Packages</a></td></tr>
-    <tr><td>php-5.5</td><td>PHP 5.5.10</td><td>Ubuntu 12.04.5</td><td><a href="https://gist.github.com/6865edb4410e934a3ca6">Packages</a></td></tr>
-    <tr><td>python-2.7</td><td>Python 2.7.6</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/cf3b4c9e5723f4faf3c6">Packages</a></td></tr>
-    <tr><td>python-3.2</td><td>Python 3.2.5</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/1134917fabae3ff48975">Packages</a></td></tr>
-    <tr><td>ruby-1.9</td><td>Ruby 1.9.3p194</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/c8305981a4842f75c261">Packages</a></td></tr>
-    <tr><td>ruby-2.1</td><td>Ruby 2.1.0p0</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/3bfbd412f8ba4b05045b">Packages</a></td></tr>
-    <tr><td>scala-2.9</td><td>Scala 2.9.2</td><td>Ubuntu 12.10</td><td><a href="https://gist.github.com/07654c53f508ac098a6e">Packages</a></td></tr>
-  </tbody>
-</table>
-
-<p>*default stack loading when a "stack" option is not declared in .worker file</p>
-<p>The operating system and version information is provided for completeness and transparency. We recommend, however, you avoid binding your workers to specifics of the OS as much as possible.</p>
-
-<div class="alert">
-  <p>
-    <strong>Note:</strong>
-    It may be possible to update the language by
-    <a href="/worker/reference/dotworker/#syntax_reference">adding related <span class="fixed-width">deb</span> packages to your worker</a>
-    although you should go this route only if necessary.
-    Use of earlier versions, especially major versions, may run into difficulties.
-  </p>
-</div>
-
-
-<h2 id="installed_linux_packages">Installed Linux Packages</h2>
-IronWorker contains several popular Linux packages as part of the standard worker environment.
-
-<table class="reference">
-  <thead>
-    <tr><th style="width: 20%;">Package</th><th style="width: 45%;">Full Name</th><th style="width: 35%;">Purpose</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><a href="http://www.imagemagick.org/" title="ImageMagick">ImageMagick</a></td><td>ImageMagick Image Processing</td><td>Image processing</td></tr>
-    <tr><td><a href="http://freeimage.sourceforge.net//" title="FreeImage">FreeImage</a></td><td>The FreeImage Project</td><td>Image processing</td></tr>
-    <tr><td><a href="http://sox.sourceforge.net/" title="SoX">SoX</a></td><td>Sound eXchange Library</td><td>Sound processing</td></tr>
-    <tr><td><a href="http://curl.haxx.se/" title="curl">cURL</a></td><td>Client URL Request Library</td><td>URL file processing</td></tr>
-  </tbody>
-</table>
-
-These are included because they are common binary libraries. Other binary libraries and files can be included as part of your worker code package, though you'll first need to compile them to target Linux x64 architectures.
-
-If you don't see what you need here, please [contact us](http://support.iron.io/customer/portal/emails/new) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
+If you don't see what you need here, please [contact us](mailto:support@iron.io) and tell us what you're looking for. If it's a common/popular package, we can certainly look to include it.
 
 <h2 id="maximum_data_payload">Maximum Data Payload</h2>
 The following is the maximum data payload that can be passed to IronWorker. A data payload that exceeds this size will generate an error response from the API.
