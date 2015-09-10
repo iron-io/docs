@@ -30,21 +30,21 @@ Payloads are strings. But usually we suggest to use JSON format.
 
 When payload is posted to a worker when using the *queue* or *schedule* API endpoints, that payload will be written
 to a file for your worker to use in it's working directory. The location of that file is passed to the worker using 
-the `-payload` command line flag.
+the `PAYLOAD_FILE` environment variable.
 
 To get the contents of your payload, you need to:
 
-1. Read the `-payload` flag/argument using whatever your language uses to read command line flags. 
-2. Open and read the file specified by the `-payload` flag
+1. Read the `PAYLOAD_FILE` environment variable using whatever your language uses to read env variables. 
+2. Open and read the file specified by the `PAYLOAD_FILE` variable
 3. Parse the contents of the file (for example, if your payload is JSON)
 
 Most of our [client libraries](/worker/libraries/) have helper methods to help with this, see your client libs docs for more information.
 
 <h2 id="other_information">Other Information</h2>
 
-Your worker will also be passed `-id` and `-d` command line arguments.
-The value of `-id` will be the ID of the task that is currently being executed,
-and the value of `-d` will be the user-writable directory
+The `TASK_ID` and `TASK_DIR` env variables will be also available for your worker.
+The value of `TASK_ID` will be the ID of the task that is currently being executed,
+and the value of `TASK_DIR` will be the user-writable directory
 that can be used for temporary storage for the duration of the task's execution.
 
 <h2 id="payload_filtering_in_the_hud">Payload Filtering in the HUD</h2>
