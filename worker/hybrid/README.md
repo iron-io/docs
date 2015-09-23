@@ -27,9 +27,17 @@ Replace {CLUSTER_ID} and {CLUSTER_TOKEN} with the id and token you obtained in s
 
 That's it!  Launch as many of these as you want/need. 
 
+## Using your new Cluster
+
+Everything is the same as using IronWorker on the public cloud, except When queuing jobs, simply pass in the CLUSTER_ID in the "cluster" param ([API docs](http://dev.iron.io/worker/reference/api/#queue_a_task)). Example from the cli:
+
+```sh
+iron worker queue --cluster CLUSTER_ID myworker
+```
+
 ## Running on AWS
 
-Nothing special is required to run on AWS, the same steps apply above, but you can use the following cloud-init/User Data script to install Docker and start IronWorker. This has been tested Ubuntu 15.04 AMI. 
+Nothing special is required to run on AWS, the same steps apply above, but you can use the following cloud-init/User Data script to install Docker and start IronWorker. This has been tested on Ubuntu 15.04 AMI. 
 
 ```
 #!/bin/sh
