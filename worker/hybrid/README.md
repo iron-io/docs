@@ -26,3 +26,15 @@ sudo docker run --name ironrunner -it --privileged -d -e \"CLUSTER={CLUSTER_ID}\
 Replace {CLUSTER_ID} and {CLUSTER_TOKEN} with the id and token you obtained in step 1 above. 
 
 That's it!  Launch as many of these as you want/need. 
+
+## Running on AWS
+
+Nothing special is required to run on AWS, the same steps apply above, but you can use the following cloud-init/User Data script to install Docker and start IronWorker. This has been tested Ubuntu 15.04 AMI. 
+
+```
+#!/bin/sh
+curl -sSL https://get.docker.com/ | sh
+sudo service docker start
+echo \"Starting runners\"
+sudo docker run --name ironrunner -it --privileged -d -e \"ENV=staging\" -e \"CLUSTER={CLUSTER_ID}\" -e \"TOKEN=#{CLUSTER_TOKEN}\" --net=host iron/runner
+```
