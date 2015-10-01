@@ -18,7 +18,7 @@ breadcrumbs:
   </ul>
 </section>
 
-[Splunk](http://www.splunk.com) is the leading platform for Operational Intelligence by providing insight into a wide range of machine data.
+[Splunk](http://www.splunk.com) is the leading platform for Operational Intelligence by providing deep insight into a wide range of machine data.
 
 Splunk provides an add-on environment for building integrations that are available through [Splunkbase](https://splunkbase.splunk.com/).
 
