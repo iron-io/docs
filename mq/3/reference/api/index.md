@@ -1,6 +1,6 @@
 ---
 title: IronMQ On-Premise API Reference
-summary: "IronMQ On-Premise has made a vew improvements over our previous API. This reference is a continuing work in progress"
+summary: "IronMQ On-Premise has made a few improvements over our previous API. This reference is a continuing work in progress"
 layout: default
 section: mq-v3
 ---
