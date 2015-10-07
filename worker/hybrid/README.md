@@ -44,5 +44,5 @@ Nothing special is required to run on AWS, the same steps apply above, but you c
 curl -sSL https://get.docker.com/ | sh
 sudo service docker start
 echo \"Starting runners\"
-sudo docker run --name ironrunner -it --privileged -d -e \"ENV=staging\" -e \"CLUSTER={CLUSTER_ID}\" -e \"TOKEN=#{CLUSTER_TOKEN}\" --net=host iron/runner
+sudo docker run --name ironrunner -it --privileged -d -e "CLUSTER={CLUSTER_ID}" -e "TOKEN=#{CLUSTER_TOKEN}" --net=host iron/runner
 ```
