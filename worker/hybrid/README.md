@@ -20,7 +20,7 @@ Fill out the form and submit it. You'll get a CLUSTER_ID and CLUSTER_TOKEN that 
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
 
 ```sh
-sudo docker run --name ironrunner -it --privileged -d -e \"CLUSTER_ID={CLUSTER_ID}\" -e \"CLUSTER_TOKEN={CLUSTER_TOKEN}\" --net=host iron/runner
+sudo docker run --name ironrunner -it --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" --net=host iron/runner
 ```
 
 Replace {CLUSTER_ID} and {CLUSTER_TOKEN} with the id and token you obtained in step 1 above. 
