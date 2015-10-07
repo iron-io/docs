@@ -12,20 +12,20 @@ IronMQ provides a REST/HTTP API to allow you to interact programmatically with y
 <section id="toc">
   <h3>Table of Contents</h3>
   <ul>
-    <li>[Endpoints](#endpoints)</li>
-    <li>[Authentication](#authentication)</li>
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#authentication">Authentication</a></li>
     <li>
-      [Requests](#requests)
+      <a href="#requests">Requests</a>
       <ul>
-        <li>[Base URL](#base_url)</li>
-        <li>[Pagination](#pagination)</li>
+        <li><a href="#base_url">Base URL</a></li>
+        <li><a href="#pagination">Pagination</a></li>
       </ul>
     </li>
     <li>
-      [Responses](#responses)
+      <a href="#responses">Responses</a>
       <ul>
-        <li>[Status Codes](#status_codes)</li>
-        <li>[Exponential Backoff](#exponential_backoff)</li>
+        <li><a href="#status_codes">Status Codes</a></li>
+        <li><a href="#exponential_backoff">Exponential Backoff</a></li>
       </ul>
     </li>
   </ul>
