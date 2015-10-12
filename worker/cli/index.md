@@ -26,7 +26,7 @@ The Iron.io command line tool will help you interact with the IronWorker API to 
 The new [Iron cli](https://github.com/iron-io/ironcli) tool has an easy installer:
 
 ```sh
-curl -sSL http://get.iron.io/cli | sh
+curl -sSL https://cli.iron.io/install | sh
 ```
 
 You can find downloads if you don't want to install it with the above command in the ironcli repo.
