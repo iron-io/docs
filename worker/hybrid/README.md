@@ -29,10 +29,18 @@ That's it!  Launch as many of these as you want/need.
 
 ## Using your new Cluster
 
-Everything is the same as using IronWorker on the public cloud, except When queuing jobs, simply pass in the CLUSTER_ID in the "cluster" param ([API docs](http://dev.iron.io/worker/reference/api/#queue_a_task)). Example from the cli:
+Everything is the same as using IronWorker on the public cloud, except When queuing jobs, simply pass in the CLUSTER_ID in the "cluster" param ([API docs](http://dev.iron.io/worker/reference/api/#queue_a_task)). Here is a quick example you can use.
+
+First upload your worker (or use a Docker image):
 
 ```sh
-iron worker queue --cluster CLUSTER_ID myworker
+iron worker upload --name hello.rb treeder/hello.rb
+```
+
+Example from the cli:
+
+```sh
+iron worker queue --cluster CLUSTER_ID --wait hello.rb
 ```
 
 ## Running on AWS
