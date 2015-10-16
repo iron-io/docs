@@ -5,7 +5,7 @@
 <p>The two most common variables used in configuration are the <strong>project ID</strong> and the <strong>token</strong>. The <strong>project ID</strong> is a unique identifier for your project and can be found <a href="https://hud.iron.io">in the HUD</a>. The <strong>token</strong> is one of your OAuth2 tokens, which can be found <a href="https://hud.iron.io/tokens">on their own page</a> in the HUD.</p>
 
 <section id="toc">
-  <h3>Table of Contents</h3> 
+  <h3>Table of Contents</h3>
   <ul>
     <li><a href="#quick_start">Quick Start</a></li>
     <li>
@@ -79,7 +79,8 @@ IRON_PROJECT_ID=MY_PROJECT_ID
   <li><strong>project_id</strong>: The ID of the project to use for requests.</li>
   <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud.iron.io/tokens">in the HUD</a>.</li>
   <li><strong>host</strong>: The domain name the API can be located at. Defaults to a product-specific value, but always using Amazon's cloud.</li>
-  <li><strong>protocol</strong>: The protocol that will be used to communicate with the API. Defaults to "https", which should be sufficient for 99% of users.</li>
+  <li><strong>protocol</strong>: The protocol that will be used to communicate with the API. Defaults to "https", which should be sufficient for 99% of users.
+  <p><em>Note:</em> for IronMQ v3, protocol is renamed to 'scheme'.</li>
   <li><strong>port</strong>: The port to connect to the API through. Defaults to 443, which should be sufficient for 99% of users.</li>
   <li><strong>api_version</strong>: The version of the API to connect through. Defaults to the version supported by the client. End-users should probably never change this.</li>
 </ul>
