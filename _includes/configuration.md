@@ -160,7 +160,7 @@ It is useful to quickly change your host in cases where your region has gone dow
   "project_id": "PROJECT ID HERE",
   "token": "YOUR TOKEN HERE"
   "port":443,
-  "protocol": "https",
+  "schema": "https",
   "host":"mq-rackspace-ord.iron.io"
 }
 {% endhighlight %}
