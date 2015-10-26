@@ -8,7 +8,8 @@ breadcrumbs:
 ---
 
 <b>Note: this reference guide is <i>deprecated</i></b>. We have replaced these instructions
-with newer, simpler ones. Please see http://dev.iron.io/worker/getting_started/ instead.
+with newer, simpler ones. Please see
+<a href="http://dev.iron.io/worker/getting_started/">the Docker workflow guide</a> instead.
 
 
 We like to encourage our users to think of workers as independent chunks
