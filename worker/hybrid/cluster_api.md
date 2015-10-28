@@ -1,6 +1,8 @@
 Cluster API for IronWorker
 ========
 
+This is a premium feature for customers to have access to more powerful or custom built worker solutions. Dedicated worker clusters exist for users who want to reserve a set number of workers just for their queued tasks.
+
 Endpoints
 =========
 
