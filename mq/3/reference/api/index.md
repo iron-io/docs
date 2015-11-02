@@ -117,7 +117,7 @@ All requests:
 
 Headers:
 
-- Content-type: application/json
+- Content-Type: application/json
 
 Authentication
 
@@ -180,9 +180,9 @@ contain at least one subscriber. Everything else in the push map is optional.
       -->
 
 
-Response: 201 Created
+Response: 200 OK
 
-SAME AS GET QUEUE INFO
+SAME AS GET QUEUE INFO (except that `size` and `total_messages` fields are missing)
 
 
 ### <a name="get-queue"></a> Get Queue Info
