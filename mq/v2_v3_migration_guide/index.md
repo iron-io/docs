@@ -22,7 +22,7 @@ This workflow differs from v2's `post-get-delete`, and here's how:
 
 - v3's introduces a `reserve` call for clients to use. This call replaces v2's `get` call.
 - v3's `get` is only intended to view a message, not for processing it
-- `reserve` returns a `reservation_id`, which must be used in later calls to [delete](http://dev.iron.io/mq/3/reference/api/#delete-messages) or [release](http://dev.iron.io/mq/3/reference/api/#release-message) the message, or [extend its reservation](http://dev.iron.io/mq/3/reference/api/#touch-message)
+- `reserve` returns a `reservation_id`, which must be used in later calls to [delete](/mq/3/reference/api/#delete-messages) or [release](/mq/3/reference/api/#release-message) the message, or [extend its reservation](/mq/3/reference/api/#touch-message)
 
 See [IronMQ v3 Basics](/mq/3/reference/api/#changes) for more details on these new concepts.
 
@@ -33,7 +33,7 @@ your dependency to use the `v3` branch. If you're confused about how to do this,
 [contact our support team](/support/).
 
 If you're using a third party library, you may need to alter it to reflect the new IronMQ v3
-API. See the [IronMQ v3 changelog](http://dev.iron.io/mq/3/reference/api/#changes) for an
+API. See the [IronMQ v3 changelog](/mq/3/reference/api/#changes) for an
 overview of what's changed and how you should alter the client to work with v3.
 
 # Step 3: Audit Your app
@@ -45,9 +45,9 @@ production problems. Here is a list of issues to look for:
 1. __Use `reserve` instead of `get`.__ The v2 `get` API method has been replaced
 by v3's `reserve`
 2. __Create your queues with reasonable default message timeouts.__ All reserved messages
-automatically time out after that default duration unless otherwise specified in the [API call](http://dev.iron.io/mq/3/reference/api/#reserve-messages). You can specify these
-timeouts in the [create queue call](http://dev.iron.io/mq/3/reference/api/#create-queue)
-3. __Keep track of reservation IDs.__ The [delete call](http://dev.iron.io/mq/3/reference/api/#delete-message)
+automatically time out after that default duration unless otherwise specified in the [API call](/mq/3/reference/api/#reserve-messages). You can specify these
+timeouts in the [create queue call](/mq/3/reference/api/#create-queue)
+3. __Keep track of reservation IDs.__ The [delete call](/mq/3/reference/api/#delete-message)
 will fail without it if you try on a reserved message
 4. __Ensure reservations are not timing out frequently.__ If they are, increase the message
 timeouts so that your code has more time to process each message
