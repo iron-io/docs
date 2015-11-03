@@ -38,8 +38,8 @@ overview of what's changed and how you should alter the client to work with v3.
 
 # Step 3: Audit Your app
 
-Now that you're using v3 compatible client code, we recommend that you audit your codebase
-to ensure that it works with the new `post-reserve-delete` paradigm and to avoid potential
+Now that you're using a v3-compatible client, we recommend that you audit your codebase
+to ensure it works with the new `post-reserve-delete` workflow and to avoid potential
 production problems. Here is a list of issues to look for:
 
 1. __Use `reserve` instead of `get`.__ The v2 `get` API method has been replaced
@@ -49,3 +49,5 @@ automatically time out after that default duration unless otherwise specified in
 timeouts in the [create queue call](http://dev.iron.io/mq/3/reference/api/#create-queue)
 3. __Keep track of reservation IDs.__ The [delete call](http://dev.iron.io/mq/3/reference/api/#delete-message)
 will fail without it if you try on a reserved message
+4. __Ensure reservations are not timing out frequently.__ If they are, increase the message
+timeouts so that your code has more time to process each message
