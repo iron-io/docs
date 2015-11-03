@@ -1,6 +1,6 @@
 ---
 title: IronMQ v3 Migration Guide
-summary: "The complete guide to moving your app from IronMQ v2 to IronMQ v3"
+summary: "The guide to moving your app from IronMQ v2 to IronMQ v3"
 layout: default
 section: mq-v3
 ---
@@ -36,7 +36,7 @@ If you're using a third party library, you may need to alter it to reflect the n
 API. See the [IronMQ v3 changelog](/mq/3/reference/api/#changes) for an
 overview of what's changed and how you should alter the client to work with v3.
 
-# Step 3: Audit Your app
+# Step 3: Audit Your App
 
 Now that you're using a v3-compatible client, we recommend that you audit your codebase
 to ensure it works with the new `post-reserve-delete` workflow and to avoid potential
