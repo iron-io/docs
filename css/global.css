@@ -440,6 +440,12 @@ span.fixed-width {
   color: #3D3D3D;
 }
 
+.alert-mqv3 {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 12px;
+}
+
 .alert p {
   margin: 5px 0;
 }
