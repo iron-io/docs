@@ -255,7 +255,7 @@ At Iron we have 3 recommended ways to debug problems you may encounter with your
 
 <h3 id="using_error_queue">Using Error Queues (IronMQ Feature)</h3>
 Error queues are vastly useful to record, document, and react to retries, errors, and bugs that involve your Message queue endpoint.
-See our <a href="http://localhost:4000/mq/reference/push_queues/#error_queues">Error Queue Documentation</a> on how to setup and read error queue messages.
+See our <a href="http://dev.iron.io/mq/reference/push_queues/#error_queues">Error Queue Documentation</a> on how to setup and read error queue messages.
 
 <h3 id="requestbin">Using RequestBin</h3>
 <a href="http://requestb.in/">RequestBin</a> is a very useful and free service provided by Iron.io's friends at <a href="https://www.runscope.com/">Runscope</a> that helps users debug all kinds of request to a unqiuely generated endpoint. A bin will keep the last 20 requests made to it and remain available for 48 hours after it was created.You can create a more permanent bin by signing up  <a href="https://www.runscope.com/signup">here</a>.
