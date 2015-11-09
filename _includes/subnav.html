@@ -1,11 +1,10 @@
 <div class="subnavigation">
   <ul class="menu page-menu">
     <!-- <li {% if page.section == "overview" %}class="active"{% endif %}><a href="/">Overview</a></li> -->
-    <li {% if page.section == "mq" %}class="active"{% endif %}><a href="/mq">IronMQ</a></li>
+    <li {% if page.section == "mq-v3" %}class="active"{% endif%}><a href="/mq/3">IronMQ v3</a></li>
     <li {% if page.section == "worker" %}class="active"{% endif %}><a href="/worker">IronWorker</a></li>
     <li {% if page.section == "cache" %}class="active"{% endif%}><a href="/cache">IronCache</a></li>
     <verticalbreak></verticalbreak>
-    <li {% if page.section == "mq-v3" %}class="active"{% endif%}><a href="/mq/3">IronMQ v3</a></li>
 
     <li>
     {% include search.html %}
@@ -15,4 +14,3 @@
     <li {% if page.section == "FAQ" %}class="active"{% endif %}><a href="/faq">FAQ</a></li> -->
   </ul>
 </div>
-
