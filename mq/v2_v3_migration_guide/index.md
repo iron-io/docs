@@ -5,20 +5,20 @@ layout: default
 section: mq-v3
 ---
 
-[IronMQ v3](/mq/3) is the next generation queue product from Iron.io. We built it
-from the ground up to be faster, more reliable and more predictable, even when
-facing fluctuating workloads. We are recommending that all v2 apps move to v3 as
-soon as possible to take advantages of these stability and performance improvements.
+[IronMQ v3](/mq/3) is the next generation queue from Iron.io. We built it
+from the ground up to be fast, reliable and predictable; even when
+faced with fluctuating workloads. We recommend that all v2 users migrate to v3
+ to take advantages of these stability and performance improvements.
 
-This document explains those differences and walks you through the steps you
-need to take to make your app work with v3.
+These steps will walks you through the process you will
+need to take to migrate your applications to use IronMQ v3.
 
 # Step 1: Understand `post-reserve-delete`
 
 We designed v3 to be as similar as possible to v2, but decided to make one minor
 conceptual difference to the API: the `post-reserve-delete` workflow.
 
-This workflow differs from v2's `post-get-delete`, and here's how:
+This workflow differs from v2's `post-get-delete`, and here is how:
 
 - v3's introduces a `reserve` call for clients to use. This call replaces v2's `get` call.
 - v3's `get` is only intended to view a message, not for processing it
@@ -26,21 +26,31 @@ This workflow differs from v2's `post-get-delete`, and here's how:
 
 See [IronMQ v3 Basics](/mq/3/reference/api/#changes) for more details on these new concepts.
 
-# Step 2: Update Your Library
+# Step 2: Update your Iron.io client library
 
-If you're using an [officially supported client library](/mq/3/libraries/), simply change
-your dependency to use the `v3` branch. If you're confused about how to do this, please
-[contact our support team](/support/).
+**The v2 client libraries will NOT work with IronMQ v3.**
 
-If you're using a third party library, you may need to alter it to reflect the new IronMQ v3
-API. See the [IronMQ v3 changelog](/mq/3/reference/api/#changes) for an
-overview of what's changed and how you should alter the client to work with v3.
+### Official client libraries
+
+Update the [client libraries](/mq/3/libraries/) for your projects. The
+libraries are available through our [Dev Center](/mq/3/libraries/) and github. Each library on
+github has two branches, `master` and `v3`. Make sure you are using the `v3`
+branch for your languages' libary.
+
+If you have any questions, please
+contact the [Iron.io support team](/support/).
+
+### Community support client libraries
+
+If you are using a third party library, you should check with the maintainer
+for updates. If there are no updates, you may need to alter the library
+yourself to reflect the new IronMQ v3 API. See the [IronMQ v3 changelog](/mq/3/reference/api/#changes) for an overview of what is changed,
+and how you should update the client to be compatible with v3.
 
 # Step 3: Audit Your App
 
-Now that you're using a v3-compatible client, we recommend that you audit your codebase
-to ensure it works with the new `post-reserve-delete` workflow and to avoid potential
-production problems. Here is a list of issues to look for:
+Now that you are using a v3-compatible client library, you will need to audit your codebase
+to ensure it uses the new `post-reserve-delete` workflow. Here is a list of issues to look for:
 
 1. __Use `reserve` instead of `get`.__ The v2 `get` API method has been replaced
 by v3's `reserve`
