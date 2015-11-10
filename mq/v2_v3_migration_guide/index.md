@@ -32,7 +32,7 @@ See [IronMQ v3 Basics](/mq/3/reference/api/#changes) for more details on these n
 
 If you're using an [officially supported client library](/mq/3/libraries/), simply change
 your dependency to use the `v3` branch. Whether or not you need to change your code will 
-depend on the functions you are using. Please check the [appropriate library](/mq/3/libraries/)appropriate library for your language to to see if you need to make an update.
+depend on the functions you are using. Please check the [appropriate library](/mq/3/libraries/) for your language to to see if you need to make an update.
 
 If you're confused about how to do this, please
 [contact our support team](/support/).
