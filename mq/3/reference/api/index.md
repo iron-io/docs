@@ -1,6 +1,6 @@
 ---
-title: IronMQ On-Premise API Reference
-summary: "IronMQ On-Premise has made a few improvements over our previous API. This reference is a continuing work in progress"
+title: IronMQ v3
+summary: "IronMQ v3 has made a few improvements over our previous API. This reference is a continuing work in progress"
 layout: default
 section: mq-v3
 ---
@@ -9,6 +9,7 @@ section: mq-v3
 ## Contents
 
 1. [Changes](#changes)
+2. [Basics](#basics)
 2. [Global Stuff](#global-stuff)
 3. [Queues](#queues)
   1. [Create Queue](#create-queue)
