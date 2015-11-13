@@ -10,17 +10,8 @@ from the ground up to be fast, reliable and predictable; even when
 faced with fluctuating workloads. We recommend that all v2 users migrate to v3
  to take advantages of these stability and performance improvements.
 
-There are 2 ways to migrate from v2 to v3, automated migration or manual migration. In this article, we'll cover both
-# Automated Migration
-
-# Step 1: Log into <a href='hud.iron.io'>hud.iron.io</a> and access your message Queues
-
-#Step 2 : Press the Migrate to v3 button<br />
-<img src='https://d1ro8r1rbfn3jf.cloudfront.net/ms_89572/XJRvFhKp2u0IzrkVs6J3xVO99GBXWV/celeryTest%2B%257C%2BQueues%2B%257C%2BHUD%2B--%2BIron.io%2B2015-11-12%2B17-04-14.png?Expires=1447463074&Signature=TZyRSz9lJM-gtRJM4siclGQp72aByxAJpnUh5wmppDFeXiXUnAuhq11k1Kc3f0UjSwYnCslwRpBhwtF-5wzFwy26ab3Gct6~oijfRIa7GRSyh6KE3vJ3pQwT5Kb9I1TunddzJbhlXgZwZQ-QyerYFzzzg9a2isnUjchhX-8rtMBBWD1uubrj1brVVjzZb9x8icvr9LaQp8VPlCekAvwF-2sTdP~DbCqQwyDnqJk~aQ0wc4qCjV-e9p1V4IpHpplERY1dlK4Di~AAZM3soQB14fQK-Js1A7NAzJ6pRGFdO9t3BUGUOVLvjf9OB6Y02tPrVRu8DL-VmAvpRwF13Tag-Q__&Key-Pair-Id=APKAJHEJJBIZWFB73RSA' />
-
-#Step 3 Go to your <a href='hud-e.iron.io'>Hud-E</a> account, makr sure you are in the proper cluster location, and all your queues will be there.
-
-<h1>Manual migration</h1> 
+These steps will walks you through the process you will
+need to take to migrate your applications to use IronMQ v3.
 
 # Step 1: Understand `post-reserve-delete`
 
