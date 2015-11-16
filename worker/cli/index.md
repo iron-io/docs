@@ -14,7 +14,7 @@ The Iron.io command line tool will help you interact with the IronWorker API to 
     <li><a href="#installing">Installing</a></li>
     <li><a href="#configuration">Configuration</a></li>
     <li><a href="#creating__uploading_code_packages">Creating and Uploading Code Packages</a></li>
-    <li><a href="#upload_with_multiple_environments">Upload with Multiple Environments</a></li>
+    <li><a href="#uploading_to_multiple_environments">Uploading to Multiple Environments</a></li>
     <li><a href="#queuing_tasks">Queuing Tasks</a></li>
     <li><a href="#scheduling_tasks">Scheduling Tasks</a></li>
     <li><a href="#retrieving_a_tasks_log">Retrieving a Task's Log</a></li>
@@ -93,20 +93,11 @@ iron worker upload --retries 5 --retries-delay 10 ...
 There are additional options available to the upload command; you can find
 a list of them by running `iron worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
-<h2 id="upload_with_multiple_environments">Upload with Multiple Environments</h2>
+<h2 id="uploading_to_multiple_environments">Uploading to Multiple Environments</h2>
 
-It is common to want to use IronWorker across many different development environments.
+It is a common and good practice to deploy applications to multiple environments, such as staging and production for quality assurance of releases. IronWorker supports workflows like this by using separate Iron.io projects, and the CLI has a convenient feature to assist.
 
-When uploading your worker you can specify an environment via the ** --env **.
-
-```sh
-iron --env test       worker upload --zip helloworker.zip --name helloworker iron/images:ruby-2.1 ruby rubies.rb
-iron --env production worker upload --zip helloworker.zip --name helloworker iron/images:node-0.10 node nodes.js
-```
-
-We reccomend you create seperate projects for each development environment.
-Below is an example of a typical iron.json with multiple environments iron.json into multiple development environments via different project id's and tokens.
-
+You can set up a project for each of your desired environments (say, "MyApp Production"), then include each project in your `iron.json` configuration nested under an environment nickname:
 
 ```js
 {
@@ -127,6 +118,15 @@ Below is an example of a typical iron.json with multiple environments iron.json 
     "project_id": "000000000000000000000004"
   }
 }
+```
+
+These nicknames (`production`, `staging`) can be whatever you like, so they can be shorter than the projects' descriptive names in the web HUD.
+
+Now you can upload your code packages to each environment by specifying the `--env` option to the CLI:
+
+```sh
+iron --env test       worker upload --zip hello-rb.zip --name helloworker-rb iron/images:ruby-2.1 ruby myworker.rb
+iron --env production worker upload --zip hello-js.zip --name helloworker-js iron/images:node-0.10 node myworker.js
 ```
 
 <h2 id="queuing_tasks">Queuing Tasks</h2>
