@@ -1,28 +1,41 @@
-# Installation
+Iron.io Dev Center Documentation
+================================
 
-1. run `bundle install`
+The [Dev Center docs] are a [Jekyll] project. Refer to Jekyll's official docs and [Using Jekyll with GitHub Pages][1] for complete help. We give a quick start guide below.
 
-# Launching
+[Dev Center docs]: http://dev.iron.io/
+[Jekyll]: http://jekyllrb.com/
+[1]: https://help.github.com/articles/using-jekyll-with-pages/
 
-1. Go to project directory
-2. Type `bundle exec jekyll serve` # do not use --auto!  jekyll breaks
-3. Open browser at http://localhost:4000/
+Installation
+------------
 
-# Development
+1. Get [Bundler], the Ruby dependency manager, if you don't have it already.
+2. `$ git clone https://github.com/iron-io/docs.git && cd docs`
+3. `$ bundle install`
 
-1. go to project directory
-2. jekyll serve --watch (this will auto reload any changes)
-3. for more information on jekyll  http://jekyllrb.com/docs/home/
+[Bundler]: http://bundler.io/
 
-More info: https://help.github.com/articles/using-jekyll-with-pages
+Launching
+---------
 
-# Development using Cloud9 (http://c9.io)
+1. In the project directory, run `bundle exec jekyll serve`
+2. Open your browser to <http://localhost:4000/>
 
-1. Fork https://github.com/iron-io/docs to your github account
-2. Login (or signup) at http://c9.io using github
-3. Click on 'docs' under 'PROJECTS ON GITHUB' in the left menu
-4. Click the green 'CLONE TO EDIT' button
-5. In the terminal use the command: jekyll serve --watch --port $PORT
+Development
+-----------
 
-When you are done making your awesome edits, git commit && git push, then go back to github and do a pull request.  
+In the project directory, run `bundle exec jekyll serve --watch`. This will auto-reload as you make changes to files.
+
+Development using Cloud9 (http://c9.io)
+---------------------------------------
+
+1. Fork https://github.com/iron-io/docs to your GitHub account.
+2. Log in (or sign up) at <http://c9.io> using GitHub.
+3. Click on 'docs' under 'PROJECTS ON GITHUB' in the left menu.
+4. Click the green 'CLONE TO EDIT' button.
+5. In the terminal, run `jekyll serve --watch --port $PORT`.
+
+When you are finished making your awesome edits, `git commit && git push`, then go back to GitHub to open a pull request.
+
 Easy as pie and you never even had to leave your browser!
