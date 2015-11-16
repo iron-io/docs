@@ -1,5 +1,5 @@
 ---
-title: IronMQ v3
+title: IronMQ v3 API Reference
 summary: "IronMQ v3 has made a few improvements over our previous API. This reference is a continuing work in progress"
 layout: default
 section: mq-v3
@@ -739,7 +739,7 @@ Response:
 {
   "subscribers": [
     {
-      "name": "first"
+      "name": "first",
       "retries_remaining": 2,
       "tries": 1,
       "status_code": 200,
@@ -747,7 +747,7 @@ Response:
       "last_try_at": "2014-07-30T15:45:03Z"
     },
     {
-      "name": "other"
+      "name": "other",
       "retries_remaining": 2,
       "tries": 6,
       "status_code": 200,
