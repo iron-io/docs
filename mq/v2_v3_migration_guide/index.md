@@ -24,10 +24,10 @@ After you go to your Hud-E account, <b>if you do not see your queue, don't worry
 
 Look at the stack you are currently in.
 ![looking at the location]
-(https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/1.png)
+(https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/1.png =600x)
 if your project is in aws-us-east-1, you will need to select that to access the queues.
 ![change it]
-(https://github.com/iron-io/docs/blob/gh-pages/jpkImages/2.png)
+(https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/2.png =600x)
 <br />
 <h1>Manual migration</h1>
 
