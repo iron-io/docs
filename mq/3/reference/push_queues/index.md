@@ -205,7 +205,7 @@ If you'd like to take more time to process messages, see 202 section below.
 <h3 id="long_running_processes__aka_202s">Long Running Processes - aka 202</h3>
 
 If you'd like to take some time to process a message, more than the 60 second timeout, you must respond with HTTP status code 202.
-Be sure to set `timeout`'s value, when [reserving messages](/mq/3/reference/api/#reserve-messages), to the maximum amount of time you'd like your processing to take.
+Be sure to set `retries_delay`'s value to the maximum amount of time you'd like your processing to take.
 If you do not explicitly delete the message before the timeout has passed, the message will be retried.
 To delete the message, check the `Iron-Subscriber-Message-Url` header and send a DELETE request to that URL.
 
