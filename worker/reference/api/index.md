@@ -345,7 +345,7 @@ The request should be JSON-encoded and contain the following information:
 
 When uploading code, the following are required (not required if just updating code options below):
 
-* **image**: The Docker image for your worker. 
+* **image**: The Docker image for your worker.
 * **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/getting_started/) for more information.
 
 The request also accepts the following optional parameters:
@@ -847,6 +847,41 @@ Sample:
     "payload": "{\"foo\":\"bar\"}",
     "updated_at": "2012-11-10T18:31:08.064Z",
     "created_at": "2012-11-10T18:30:43.089Z"
+}
+```
+
+#### Failure Case
+In the event of a failure, the response may contain additional information.
+
+Sample:
+
+```js
+{
+    "id": "563d40a1fcd4b70007056f20",
+    "created_at": "2015-11-07T00:06:57Z",
+    "updated_at": "2015-11-07T00:07:08Z",
+    "project_id": "5628221fecf6470006000037",
+    "code_id": "5628a5c50211a60009007469",
+    "code_history_id": "5628a5c50211a6000900746a",
+    "status": "error",
+    "msg": "hello.rb:7:in `<main>': error message here (RuntimeError)\n",
+    "code_name": "MyWorker",
+    "code_rev": "1",
+    "start_time": "2015-11-07T00:07:04Z",
+    "end_time": "2015-11-07T00:07:08Z",
+    "duration": 3741,
+    "timeout": 3600,
+    "payload": "{\"foo\":\"bar\"}",
+    "log_size": 43,
+    "message_id": "6214194142555658705",
+    "cluster": "default",
+    "api_version": 2,
+    "error_class": "Process Exit 1",
+    "instance_id": "i-1c627aad",
+    "time_in_queue": 7,
+    "start_time_ms": 1446854824829,
+    "end_time_ms": 1446854828570,
+    "run_times": 1
 }
 ```
 
