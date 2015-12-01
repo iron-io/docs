@@ -105,7 +105,7 @@ the timeouts are intermittent. If you are using batching in your consumers, we
 also recommend raising the timeouts.
 
 Another issue is `401: Unauthorized`. This probably means you are attempting to
-use v2 credentials for v3. To get v3 credentials, go to <hud-e.iron.io/signup>.
+use v2 credentials for v3. To get v3 credentials, go to [hud-e.iron.io/signup](https://hud-e.iron.io/signup).
 
 If you need any more support or are having any other issues, feel free to
 contact <support@iron.io> including any relevant information.
