@@ -63,58 +63,107 @@ sudo docker run --name ironrunner -it --privileged -d -e "CLUSTER_ID={CLUSTER_ID
 
 While it's possible to do end to end encryption of payloads yourself, we do
 offer a convenient way to help accomplish this. Currently, we support a scheme
-using `AES-128-GCM` via [IronCLI] and the hybrid runner, with the encryption and
-decryption keys never reaching the cloud. This means not only can you trust that
+similar to [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) via
+[IronCLI] and the hybrid runner, with the encryption and
+decryption keys never reaching the cloud. Our scheme provides encryption as
+well as authentication, which means not only can you trust that
 payloads were hidden from prying eyes, but you can also verify that they came
 from where you sent them from.
 
-To get started, you'll need to generate a 128 bit, hex encoded AES key.
-The easiest way to do this is with OpenSSL:
+#### Basics
+
+We use RSA, a public key encryption scheme that is hard to break until quantum
+computing robots figure out how to factor prime numbers and take over the world.
+This also means you can conveniently hand out public keys to whoever can run tasks
+without compromising the private key. Since RSA is slow, we only use it to encrypt
+a session key, which is unique for each task. We then use this session key
+to encrypt the payload using AES-GCM and send it, along with the RSA encrypted
+session key, to the IronWorker API. Code can be audited
+[here](https://github.com/iron-io/ironcli).
+
+Below is a good diagram of how it works:
+
+![pgp-diagram](pgp.png)
+
+#### Getting Started
+
+To get started, you'll need to generate an RSA key pair that is not password
+protected (reiterate: no password). The easiest way to do this is with
+[OpenSSL](https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL):
 
 ```sh
-$ openssl enc -aes-128-cbc -k secret -P -md sha1
-salt=98A942645D2E4D2D
-key=E93F1EAA90A651D46A23D543583CA319
-iv =7178FA92B00176441C9ACB19AF7D27AD
+$ openssl genpkey -algorithm RSA -out private_key.pem 4096
+Generating RSA private key, 4096 bit long modulus
+.............................++++++
+................................................................++++++
+e is 65537 (0x10001)
 ```
 
-Copy the `key` field and save it somewhere safe. You won't need the other
-fields. Since we're using AES, the key is symmetric and will be used as both
-the encryption and decryption key.
-
-After this, you'll need to make sure your hybrid cluster runners are started
-with this key before queueing tasks to it. To do this, simply
-add the env var `DECRYPTION_KEY` passed to the `iron/runner` docker container, like so:
+It's recommended to use at least 1024 bits for the modulus; 1024, 2048 and
+4096 will all work swimmingly. After you've generated a private key, you'll
+want to generate a public key from it:
 
 ```sh
-$ docker run --name ironrunner--privileged -d -e "DECRYPTION_KEY={KEY}" \
- -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN=#{CLUSTER_TOKEN}" --net=host iron/runner
+$ openssl rsa -pubout -in private_key.pem -out public_key.pem
+writing RSA key
 ```
 
-This key will be passed to the runner which will decrypt and authenticate all
-payloads it comes across before passing them to the job. We only store this key in memory
-and it won't leave the runner container. This means a few things:
+After these two commands, you'll end up with 2 files, `public_key.pem` and
+`private_key.pem`. Store the private key file somewhere safe and then you
+can hand out the `public_key.pem` to anybody who you'd like to let run tasks
+on your cluster. From here on, we'll periodically refer to `private_key.pem`
+as the "Decryption Key" and `public_key.pem` as the "Encryption Key". Note
+that if you are generating keys via an alternate method, it's important that
+each file is base64 pem encoded as OpenSSL does.
+
+After generating keys, you'll need to make sure your hybrid cluster runners
+are started with the private key before queueing tasks to it. To do this, simply
+add the env var `DECRYPTION_KEY` passed to the `iron/runner` docker container,
+like so:
+
+```sh
+$ docker run --name ironrunner--privileged -d -e "DECRYPTION_KEY=${KEY}" \
+ -e "CLUSTER_ID=${CLUSTER_ID}" -e "CLUSTER_TOKEN=${CLUSTER_TOKEN}" --net=host iron/runner
+```
+
+Note that `${KEY}` needs to be the *contents* of `private_key.pem`, an easy way
+to do this is with a shell command, e.g. `-e "DECRYPTION_KEY=$(cat private_key.pem)"`.
+We encourage you to take extra steps to keep your key private, such as setting
+the variable on the host and passing it to docker that way, and then clearing
+the variable afterwards, to keep the key from being in the process list or the
+environment. For more details, see the docker docs [here](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables-e-env-env-file).
+
+When you start a runner with `DECRYPTION_KEY` set, the runner will use that
+key to decrypt and authenticate _all_ payloads it comes across before
+passing them to the job. This means a few things:
 
 * all tasks queued to this cluster must be queued with the encryption key
 * all runners for a cluster need to be started with the decryption key
 * jobs will transparently receive plaintext payloads, and do not need to be modified
 
-After getting all the runners started up with that decryption key you may begin
-queueing jobs to your cluster. The CLI will take care of the encryption before queueing
-the job and the key will not leave the CLI process. You *MUST* queue tasks with
-`--encryption-key` set to your AES key, even if the task doesn't have a payload.
-This ensures that only someone with your AES key can queue tasks against your cluster.
-You should use the same key as the runner since we're using AES. An example
-command is:
+After getting all the runners started up with the decryption key you may begin
+queueing jobs to your cluster with encrypted payloads. [IronCLI] can take care
+of the encryption before queueing a job, and the key will not leave the CLI process.
+Note that when queueing tasks against a cluster whose runners have been started
+with a decryption key, you **MUST** queue tasks with `--encryption-key` or
+`--encryption-key-file` set to your encryption key, even if the task doesn't
+have a payload. This ensures that only someone with your encryption key can queue
+tasks against your cluster. A template command for queueing with encryption is:
 
 ```sh
-$ iron worker queue --encryption-key {KEY} --cluster {CLUSTER_ID} --wait hello.rb
+# export KEY=$(cat public_key.pem)
+$ iron worker queue --encryption-key ${KEY} --cluster ${CLUSTER_ID} --payload "hello" my_task
+
+# or
+
+# export KEY_FILE=/path/to/public_key.pem
+$ iron worker queue --encryption-key-file ${KEY_FILE} --cluster ${CLUSTER_ID} --payload "hello" my_task
 ```
 
 You won't have to update any of your tasks to start using the encrypted payloads
-feature, and your payloads are now never stored or sent in plaintext within the Iron
+feature, and your payloads are now never stored nor sent in plaintext within the Iron
 platform. If your hybrid cluster is behind a firewall and you queue tasks from
 behind the firewall, this means your payloads never leave your firewall as
-plaintext.
+plaintext. If you have any additional questions, feel free to reach out at <support@iron.io>.
 
 [IronCLI]:https://github.com/iron-io/ironcli
