@@ -166,4 +166,9 @@ platform. If your hybrid cluster is behind a firewall and you queue tasks from
 behind the firewall, this means your payloads never leave your firewall as
 plaintext. If you have any additional questions, feel free to reach out at <support@iron.io>.
 
+Note that using the encrypted payloads feature will increase the size of your
+payloads by around 33%, because we need to base64 the output in order to send
+it to the worker API. If you are running large payloads and need your limit
+increased, reach out and we are happy to bump the max payload size up for you.
+
 [IronCLI]:https://github.com/iron-io/ironcli
