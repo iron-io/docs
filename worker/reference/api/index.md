@@ -356,6 +356,7 @@ The request also accepts the following optional parameters:
 * **retries**: The maximum number of times failed tasks should be retried, in the event that there's an error while running them. If omitted, tasks will not be retried. Tasks cannot be retried more than ten times.
 * **retries_delay**: The number of seconds to wait before retries. If omitted, tasks will be immediately retried.
 * **default_priority**: The default priority of the tasks running this code. Valid values are 0, 1, and 2. The priority of the task can be set when queueing the task. If it's not set when queueing the task, the default priority is used.
+* **env_vars**: Environment variables accessible within your code. It's a JSON object consisting corresponding key/value pairs. Keys and values are intended to be alphanumeric; if you want to pass values composed of wider list of symbols, consider to encode value with base64 encoding and decode it back within your code.
 
 Your request also needs the following headers, in addition to the headers required by all API calls:
 
@@ -381,7 +382,8 @@ Content-Type: text/plain; charset=utf-8
     "file_name": "MyWorker.rb",
     "name": "MyWorker",
     "runtime": "ruby",
-    "max_concurrency": 12
+    "max_concurrency": 12,
+    "env_vars": {"KEY":"VALUE", "MQ_URL":"https://mq-aws-us-east-1.iron.io"}
 }
 ```
 ```
