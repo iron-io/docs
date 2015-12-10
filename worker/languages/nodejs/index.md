@@ -248,8 +248,8 @@ It is important in some cases to declare a explicit exit code to give our system
 In your worker:
 
 ```python
-process.exit(1);
-process.exit(0);
+process.exit(1); //is a unsuccessful
+process.exit(0); //is a success
 ```
 
 ### Local build
