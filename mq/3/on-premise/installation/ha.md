@@ -37,7 +37,9 @@ These commands assume that all 3 nodes are running on the same machine.
 If you're starting the new nodes on different machines, you can omit the
 `-e APICONFIG_HTTPPORT` environment variables and use the default port (8080).
 If you choose to omit, make sure to also change the `-p` parameter and
-`LEVELDB_CONFIG_COHOSTS`.
+`LEVELDB_CONFIG_COHOSTS`. If you already had a single box version up, you'll
+need to restart it with the `LEVELDB_CONFIG_COHOSTS` env var in order for it
+to enter into cluster mode.
 
 # 2. Start HUD-e
 
@@ -45,23 +47,29 @@ HUD-e is the web UI that allows you to introspect and manage your queues.
 Setting up HUD-e is similar to setting up the previous services:
 
 ```
-docker run -d --name hud-e -p 3000:3000 --net=host -e IRON_AUTH_URL=localhost:8090 -e 'SECRET_KEY_BASE=$RANDOM_STRING' iron/hud-e
+docker run -d --name hud-e -p 3000:80 --net=host -e IRON_AUTH_URL=localhost:8090 -e 'SECRET_KEY_BASE=$RANDOM_STRING' iron/hud-e
 ```
 
 `$RANDOM_STRING` is a string that you randomly select on your own. Make sure that
 it is cryptographically strong (e.g. using a cryptographically sound hashing
-algorithm on random string).
+algorithm on random string). If `SECRET_KEY_BASE` isn't at least 30 chars then HUD-e
+will fail to start.
 
-After HUD-e is running, go to [http://localhost:3000](http://localhost:3000) and
-login with the following credentials:
+After HUD-e is running, go to [http://localhost:3000](http://localhost:3000) (or whatever
+address you need, if it's on a server somewhere) and login with the following credentials:
 
 ```
 username: admin@somewhere.com
 password: password
 ```
 
-After you've logged in, we recommend that you create new user accounts, projects,
-etc...
+After you've logged in, you'll have to click the admin dropdown in the top
+right and create a cluster with the url of your MQ in order to get started.
+This should be fairly straight forward, tag it as whatever you'd like to.
+
+After that you can go back to the main page by clicking the big Iron.io logo in the top left,
+and we recommend that you create new user accounts, projects, etc and start
+using the queues.
 
 # 3. Add additional nodes (optional)
 

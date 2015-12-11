@@ -70,11 +70,11 @@ All log lines have, at minimum, these keys:
 * lvl: a verbosity level, which is one of the following values from most verbose to least: "dbug", "info", "warn", "eror", "crit"
 * t: an RFC 3339-formatted timestamp
 
-## HUD
+## HUD-e
 
-HUD is a fairly thin layer in front of IronMQ and your auth service. It's likely that any issues you have with HUD are in communicating with these services.
+HUD-e is a fairly thin layer in front of IronMQ and your auth service. It's likely that any issues you have with HUD-e are in communicating with these services.
 
-The first thing to check is HUD's log. If you don't see anything, you can try increasing the log level in `config/environments/production.rb`. There should be a line that looks like:
+The first thing to check is HUD-e's log. If you don't see anything, you can try increasing the log level in `config/environments/production.rb`. There should be a line that looks like:
 
 ```
 config.log_level = :info
@@ -86,7 +86,7 @@ Change it to:
 config.log_level = :debug
 ```
 
-You must restart HUD for these changes to take effect. If your log messages are unclear or nonexistent, please contact support.
+You must restart HUD-e for these changes to take effect. If your log messages are unclear or nonexistent, please contact support.
 
 ## HTTP Status Codes
 
