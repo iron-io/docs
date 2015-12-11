@@ -16,7 +16,7 @@ These are our official client libraries that use the IronWorker <a href="/worker
 	<li><a href="https://github.com/iron-io/iron_worker_python" target="_blank" data-lang="python">Python</a></li>
 	<li><a href="https://github.com/iron-io/iron_worker_java" target="_blank" data-lang="java">Java</a></li>
 	<li><a href="https://github.com/iron-io/iron_worker_node" target="_blank" data-lang="node">Node.JS</a></li>
-	<li><a href="https://github.com/iron-io/iron_go" target="_blank" data-lang="go">Go</a></li>
+	<li><a href="https://github.com/iron-io/iron_go3" target="_blank" data-lang="go">Go</a></li>
 	<li><a href="https://github.com/iron-io/iron_dotnet" target="_blank" data-lang="dotnet">.NET</a></li>
 </ul>
 </div>
