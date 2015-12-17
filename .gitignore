@@ -8,3 +8,4 @@ _jekyll_s3.yml
 *.sublime*
 _cache/
 _plugins/
+bundle/
