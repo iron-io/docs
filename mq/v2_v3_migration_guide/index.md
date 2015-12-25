@@ -14,24 +14,23 @@ There are 2 ways to migrate from v2 to v3, automated migration or manual migrati
 
 # Automated Migration
 
-### Step 1: Log into <a href='hud.iron.io'>hud.iron.io</a> and access your message Queues
+#### Step 1: Log into <a href='hud.iron.io'>hud.iron.io</a> and access your message Queues
 
-### Step 2: Press the Migrate to v3 button<br />
+#### Step 2: Press the Migrate to v3 button<br />
 
-### Step 3: Go to your <a href='hud-e.iron.io'>Hud-E</a> account, make sure you are in the proper cluster location, and all your queues will be there.
+#### Step 3: Go to your <a href='hud-e.iron.io'>Hud-E</a> account, make sure you are in the proper cluster location, and all your queues will be there.
 
 After you go to your Hud-E account, <b>if you do not see your queue, don't worry</b>! 
 
-Look at the stack you are currently in.
-![looking at the location]
-(https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/1.png)
-if your project is in aws-us-east-1, you will need to select that to access the queues.
-![change it]
-(https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/2.png)
-<br />
-<h1>Manual migration</h1>
+Look at the cluster you are currently in.
+<img src="/images/mq/v2_v3_migration_guide/choose_cluster.png" width="100%">
+<br><br>
+If your project is in aws-us-east-1, you will need to select that to access the queues.
+<img src="/images/mq/v2_v3_migration_guide/queues_list.png" width="100%">
 
-# Step 1: Understand `post-reserve-delete`
+# Manual migration
+
+## Step 1: Understand `post-reserve-delete`
 
 We designed v3 to be as similar as possible to v2, but decided to make one minor
 conceptual difference to the API: the `post-reserve-delete` workflow.
@@ -44,16 +43,14 @@ This workflow differs from v2's `post-get-delete`, and here is how:
 
 See [IronMQ v3 Basics](/mq/3/reference/api/#changes) for more details on these new concepts.
 
-# Step 2: Update your Iron.io client library
+## Step 2: Update your Iron.io client library
 
 **The v2 client libraries will NOT work with IronMQ v3.**
 
 ### Official client libraries
 
 Update the [client libraries](/mq/3/libraries/) for your projects. The
-libraries are available through our [Dev Center](/mq/3/libraries/) and github. Each library on
-github has two branches, `master` and `v3`. Make sure you are using the `v3`
-branch for your languages' libary.
+libraries are available through our [Dev Center](/mq/3/libraries/) and github.
 
 If you have any questions, please
 contact the [Iron.io support team](/support/).
@@ -65,7 +62,7 @@ for updates. If there are no updates, you may need to alter the library
 yourself to reflect the new IronMQ v3 API. See the [IronMQ v3 changelog](/mq/3/reference/api/#changes) for an overview of what is changed,
 and how you should update the client to be compatible with v3.
 
-# Step 3: Audit Your App
+## Step 3: Audit Your App
 
 Now that you are using a v3-compatible client library, you will need to audit your codebase
 to ensure it uses the new `post-reserve-delete` workflow. Here is a list of issues to look for:
