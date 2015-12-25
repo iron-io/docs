@@ -7,23 +7,24 @@ section: mq-v3
 
 ## Objects (json)
 
-Not all fields are required.
+Not all fields are required.<br>
+Token consists of the following properties:
 
 ```js
-<token> {
+"token": {
   "_id"
   "user_id"
   "type"
   "name"
   "token"
-  "admin"                bool
+  "admin"
 }
 ```
 
-
+Project consists of the following properties:
 
 ```js
-<project> {
+"project": {
   "id"
   "user_id"
   "name"
@@ -35,23 +36,23 @@ Not all fields are required.
   "schedules_count"
   "task_count"
   "hourly_task\_count"
-  "hourly_time"          time.Time
-  "flags"                map[string]bool
-  "shared_with"          []id
+  "hourly_time"
+  "flags"
+  "shared_with"
 }
 ```
 
-
+User consists of the following properties:
 
 ```js
-<user> {
+"user": {
   "user_id"
   "email"
   "password"
-  "tokens"                []string
+  "tokens"
   "status"
   "plan_worker"
-  "flags"                 map[string]interface{}
+  "flags"
 }
 ```
 
