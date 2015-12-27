@@ -11,6 +11,7 @@
     <li><a href="#the_overall_hierarchy">The Overall Hierarchy</a></li>
     <li><a href="#the_environment_variables">The Environment Variables</a></li>
     <li><a href="#accepted_values">Accepted Values</a></li>
+    <li><a href="#using_iron_json">Configuration using iron.json (deprecated)</a></li>
   </ul>
 </section>
 
@@ -53,3 +54,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 </ul>
 
 <p>Only the <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> values need to be set. They do not need to be set at <strong>every</strong> level of the configuration, but they must be set at least once by the levels that are used in any given configuration. It is recommended that you specify a default <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> via <span class="fixed-width">IRON_PROJECT_ID</span> and <span class="fixed-width">IRON_TOKEN</span> env variables respectively.
+
+<h2 id="using_iron_json">Configuration using iron.json (deprecated)</h2>
+
+You can follow the <a href="/worker/reference/configuration-iron-json/index.html">old configuration scheme</a> and set project_id, token and other parameters in iron.json file but using only environment variables is more preferred.
