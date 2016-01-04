@@ -1,29 +1,27 @@
 ---
-title: IronMQ On-Premise Official Client Libraries
-summary: "With the release of IronMQ On-Premise comes newly updated client libraries."
+title: IronMQ Official Client Libraries
 layout: default
 section: mq-v3
 ---
 
 ## Official Client Libraries
 
-These are our official client libraries for IronMQ On-Premise  <a href="/mq/reference/api">REST/HTTP API</a>.&nbsp;<br>
+These are our official client libraries for IronMQ  <a href="/mq/3/reference/api">REST/HTTP API</a>.&nbsp;<br>
 <div>
 <ul class="libs" style="min-height: 100px;">
   <li><a href="https://github.com/iron-io/iron_go3" target="_blank" data-lang="go">Go</a></li>
-  <li><a href="https://github.com/iron-io/iron_mq_ruby/tree/v3" target="_blank" data-lang="ruby">Ruby</a></li>
-  <li><a href="https://github.com/iron-io/iron_dotnet/tree/v3" target="_blank" data-lang="dotnet">.Net</a></li>
-  <li><a href="https://github.com/iron-io/iron_mq_java/tree/v3" target="_blank" data-lang="java">Java</a></li>
-  <li><a href="https://github.com/iron-io/iron_mq_php/tree/v3" target="_blank" data-lang="php">PHP</a></li>
-  <li><a href="https://github.com/iron-io/iron_mq_python/tree/v3" target="_blank" data-lang="python">Python</a></li>
-  <li><a href="https://github.com/iron-io/iron_mq_node/tree/v3" target="_blank" data-lang="node">Node</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_ruby" target="_blank" data-lang="ruby">Ruby</a></li>
+  <li><a href="https://github.com/iron-io/iron_dotnet" target="_blank" data-lang="dotnet">.Net</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_java" target="_blank" data-lang="java">Java</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_php" target="_blank" data-lang="php">PHP</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_python" target="_blank" data-lang="python">Python</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_node" target="_blank" data-lang="node">Node</a></li>
 </ul>
 </div>
 
 ## Community Supported Client Libraries
 
-These are some unofficial client libraries, that use the
-<a href="/mq-onpremise/reference/api">IronMQ v3 REST/HTTP API</a>.
+These are some unofficial client libraries.
 
 <div><ul>
 <li>
