@@ -29,8 +29,8 @@ which allows for easy use of separate service discovery services like etcd or
 consul (also can be done in a config line):
 
 ```
-docker run --name=ironmq1 -d -p 8180:8180 -e LEVELDB_CONFIG_COHOSTS='["127.0.0.1:8080","127.0.0.1:8280"]' -e APICONFIG_HTTPPORT=8180 --net=host iron/mq
-docker run --name=ironmq2 -d -p 8280:8280 -e LEVELDB_CONFIG_COHOSTS='["127.0.0.1:8080","127.0.0.1:8180"]' -e APICONFIG_HTTPPORT=8280 --net=host iron/mq
+docker run --name=ironmq1 -d -p 8180:8180 -e LEVELDB_CONFIG_COHOSTS="127.0.0.1:8080","127.0.0.1:8280" -e APICONFIG_HTTPPORT=8180 --net=host iron/mq
+docker run --name=ironmq2 -d -p 8280:8280 -e LEVELDB_CONFIG_COHOSTS="127.0.0.1:8080","127.0.0.1:8180" -e APICONFIG_HTTPPORT=8280 --net=host iron/mq
 ```
 
 These commands assume that all 3 nodes are running on the same machine.
