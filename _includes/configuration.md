@@ -8,9 +8,7 @@
   <h3>Table of Contents</h3>
   <ul>
     <li><a href="#quick_start">Quick Start</a></li>
-    <li><a href="#the_overall_hierarchy">The Overall Hierarchy</a></li>
     <li><a href="#the_environment_variables">The Environment Variables</a></li>
-    <li><a href="#accepted_values">Accepted Values</a></li>
     <li><a href="#using_iron_json">Configuration using iron.json (deprecated)</a></li>
   </ul>
 </section>
@@ -29,31 +27,11 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 <p>The <span class="fixed-width">IRON_PROJECT_ID</span> you use will be the default project to use. You can always override this in your code.</p>
 <p>That's it, now you can get started.</p>
 
-<h2 id="the_overall_hierarchy">The Overall Hierarchy</h2>
-
-<p>The overall hierarchy is simple to understand: local takes precedence over global. The configuration is constructed as follows:</p>
-
-<ul>
-  <li>The product-specific environment variables overwrite everything before them.</li>
-  <li>The arguments passed when instantiating the client library overwrite everything before them.</li>
-</ul>
-
 <h2 id="the_environment_variables">The Client's Environment Variables</h2>
 
 <p>The environment variables the scheme looks for are all of the same formula: the camel-cased product name is switched to an underscore ("IronWorker" becomes "IRON_WORKER") and converted to be all capital letters. For the global environment variables, "IRON" is used by itself. The value being loaded is then joined by an underscore to the name, and again capitalised. For example, to retrieve the OAuth token, the client looks for "IRON_TOKEN".</p>
 
 <p>In the case of product-specific variables (which override global variables), it would be "IRON_WORKER_TOKEN" (for IronWorker).</p>
-
-<h3 id="accepted_values">Accepted Values</h3>
-
-<p>The configuration scheme looks for the following values:</p>
-
-<ul>
-  <li><strong>project_id</strong>: The ID of the project to use for requests.</li>
-  <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud.iron.io/tokens">in the HUD</a>.</li>
-</ul>
-
-<p>Only the <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> values need to be set. They do not need to be set at <strong>every</strong> level of the configuration, but they must be set at least once by the levels that are used in any given configuration. It is recommended that you specify a default <span class="fixed-width">project_id</span> and <span class="fixed-width">token</span> via <span class="fixed-width">IRON_PROJECT_ID</span> and <span class="fixed-width">IRON_TOKEN</span> env variables respectively.
 
 <h2 id="using_iron_json">Configuration using iron.json (deprecated)</h2>
 
