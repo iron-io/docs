@@ -44,7 +44,7 @@ Receivers get one or more messages (up to 100). Once the receiver is done proces
     <tr><th style="width: 16%;">Message Var</th><th style="width: 15%;">Default</th><th style="width: 15%;">Maximum</th><th style="width: 54%;">Notes</th></tr>
   </thead>
   <tbody>
-    <tr><td>Message Size</td><td>dependent on plan</td><td>64KB, 256KB</td><td>Includes the entire request (delay, timeout, expiration). Limit will vary depending on current plan. Please view plan comparision page <a href="http://www.iron.io/pricing">here</a>. </td></tr>
+    <tr><td>Message Size</td><td>dependent on plan</td><td>64KB, 256KB</td><td>Includes the entire request (delay, timeout, expiration). Limit will vary depending on current plan. Please view plan comparision page <a href="http://www.iron.io/pricing">here</a>. If message size limits higher than 256KB are needed, please contact <a href="mailto:support@iron.io">support@iron.io</a>.</td></tr>
     <tr><td>Delay</td><td>0sec</td><td>604,800sec</td><td>Message is made available on queue after the delay expires.</td></tr>
     <tr><td>Timeout</td><td>60sec</td><td>86,400sec</td><td>Message goes back on queue after timeout unless deleted.</td></tr>
     <tr><td>Expiration</td><td>604,800sec</td><td>2,592,000sec</td><td>Equates to 7 days and 30 days, respectively.</td></tr>
