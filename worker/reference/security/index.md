@@ -36,22 +36,12 @@ IronWorker uses process-level runtime monitoring/management to ensure that worke
 
 IronWorker, by design, does not provide SMTP host services. Workers must use third-party services such as [GMail](http://gmail.com), [SendGrid](http://www.sendgrid.com), [Amazon SES](http://aws.amazon.com/ses), or other service providers. Users must also adhere to Iron.io's [Use Policy](http://iron.io/legal).
 
-### <a name="aws_security_groups"></a> AWS Security Groups and IP Ranges
+### <a name="aws_security_groups"></a> IP Ranges
 
-IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges. **Please note that this security group only works in the US East region.**
+IronWorker provides [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these ranges. Please note this IP range is a very large block of EC2 IP's.
 
-<table>
-<thead>
-<tr>
-<th>EC2 Security Group</th><th>Account ID</th><th>Security Group String</th><th>Security Group ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td><td>sg-0d500c64</td>
-</tr>
-</tbody>
-</table>
+We offer custom IP ranges and VPC peering for customers that want greater security levels. Please [contact us](http://www.iron.io/contact/) for more information on these offerings.
+
 
 <h4 id="accessing_rds">Accessing AWS RDS Resource</h4>
 <p>When accessing Amazon RDS resources please use the private ip address of your instances rather than the public DNS url that amazon provides.</p>
