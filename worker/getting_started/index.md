@@ -174,7 +174,7 @@ Then just do everything the same as above.
 
 <h2 id="zip_packaging">Zipping Code and Uploading Directly to Iron.io without Docker</h2>
 
-<h3 id="writetwo">Write and Test your Worker</h3>
+<h3 id="writetwo">1. Write and Test your Worker</h3>
 Stays exactly the same, <a href=#test>Click Here</a> to read.
 
 <h3 id="uploadtwo">2. Package and Upload your Worker</h3>
