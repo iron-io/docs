@@ -27,7 +27,7 @@ section: worker
     </div>
 </div>
 
-## Setup
+<h2 id="setup">Setup</h2>
 
 Before starting, you'll need to setup a couple of things. You only need to do this once.
 
@@ -35,7 +35,7 @@ Before starting, you'll need to setup a couple of things. You only need to do th
 1. [Setup your Iron.io credentials](/worker/reference/configuration/)
 1. [Install Docker](https://docs.docker.com/installation/#installation)
 
-## Hello World Worker
+<h2 id="hello">Hello World Worker</h2>
 
 This is a very simple hello world example worker in Ruby. You don't even need Ruby installed to try this example so give it a go!
 All languages follow the same process so you'll get an idea of how things work regardless.
@@ -49,7 +49,7 @@ puts "Hello World!"
 Now let's run it in one of the Iron stack containers:
 
 {% highlight bash %}
-docker run --rm -v "$(pwd)":/worker -w /worker iron/ruby:2.2 sh -c 'ruby helloworld.rb'
+docker run --rm -v "$(pwd)":/worker -w /worker iron/ruby:2.2 'ruby helloworld.rb'
 {% endhighlight %}
 
 The fact that it runs means it's all good to run on IronWorker, so lets upload it and queue up a task for it so it runs on
@@ -95,14 +95,14 @@ That's it, you've ran a worker on the IronWorker cloud platform!
 
 Now let's get into more detail.
 
-<h2 id="write">1. Write and Test your Worker</h2>
+<h3 id="test">1. Write and Test your Worker</h3>
 
 IronWorker's <a href="/worker/reference/environment">environment</a> is a Linux Docker container that your task is executed in. Anything you write that runs inside of our published <a href="https://hub.docker.com/r/iron" target="_blank">Docker images</a> should run just the same as on IronWorker. The key here is getting it to run with the Docker commands below and sample payloads.
 
 The primary Docker command is:
 
 {% highlight bash %}
-docker run --rm -v "$(pwd)":/worker -w /worker IMAGE[:TAG] sh -c 'MY_EXECUTABLE -payload MY_PAYLOAD.json'
+docker run --rm -v "$(pwd)":/worker -w /worker IMAGE[:TAG] 'MY_EXECUTABLE -payload MY_PAYLOAD.json'
 {% endhighlight %}
 
 * Replace IMAGE with the name of the image you want your code to be executed in. For example, if your worker is a Ruby script, you can replace IMAGE with `iron/ruby`. Also you may need to specify a TAG (version) of the image you want to use: `iron/ruby:2.2`
@@ -114,7 +114,7 @@ to queue up jobs/tasks for your worker after it's uploaded.
 This command may seem simple at first glance, but the main thing is that it will force you to vendor all your dependencies
 along with your worker. You'll find links to an example repository showing how to do this for various languages.
 
-<h2 id="upload">2. Package your Worker</h2>
+<h3 id="upload">2. Package your Worker</h3>
 
 Let's package it up inside a Docker image and upload it to a Docker Registry. Copy the Dockerfile from appropriate directory (depending on used programming language) of this [repository](https://github.com/iron-io/dockerworker) and modify the ENTRYPOINT line to run your script. Build your docker image:
 
@@ -131,7 +131,7 @@ Test your image, just to be sure you created it correctly:
 docker run --rm -it -e "PAYLOAD_FILE=MY_PAYLOAD.json" -e "YOUR_ENV_VAR=ANYTHING" USERNAME/IMAGENAME:0.0.1
 {% endhighlight %}
 
-<h2 id="push">3. Push it to Docker Hub</h2>
+<h3 id="push">3. Push it to Docker Hub</h3>
 
 Push it to Docker Hub:
 
@@ -139,7 +139,7 @@ Push it to Docker Hub:
 docker push USERNAME/IMAGENAME:0.0.1
 {% endhighlight %}
 
-<h2 id="register">4. Register your image with Iron</h2>
+<h3 id="register">4. Register your image with Iron</h3>
 
 Ok, we're ready to run this on Iron now, but first we have to let Iron know about the
 image you just pushed to Docker Hub. Also, you can optionally register environment variables here that will be passed into your container at runtime.
@@ -148,7 +148,7 @@ image you just pushed to Docker Hub. Also, you can optionally register environme
 iron register -e "YOUR_ENV_VAR=ANYTHING" USERNAME/IMAGENAME:0.0.1
 {% endhighlight %}
 
-<h2 id="queue">5. Queue / Schedule jobs for your image</h2>
+<h3 id="queue">5. Queue / Schedule jobs for your image</h3>
 
 Now you can start queuing jobs or schedule recurring jobs for your image.
 
@@ -172,11 +172,12 @@ iron docker login -e YOUR_DOCKER_HUB_EMAIL -u YOUR_DOCKER_HUB_USERNAME -p YOUR_D
 
 Then just do everything the same as above.
 
-<h2 id="zip_packaging">If you don't want to package your code using Docker</h2>
+<h2 id="zip_packaging">Zipping Code and Uploading Directly to Iron.io without Docker</h2>
 
-You can package and send your code to Iron directly with the instructions below. Start with step 1 above, then continue at step 2 here.
+<h3 id="writetwo">Write and Test your Worker</h3>
+Stays exactly the same, <a href=#test>Click Here</a> to read.
 
-<h2 id="upload">2. Package and Upload your Worker</h2>
+<h3 id="uploadtwo">2. Package and Upload your Worker</h3>
 
 Packing is pretty straightforward knowing that you got it working with the `docker run` command above, just zip it up.
 
@@ -190,7 +191,7 @@ Then upload the zip you just created:
 iron worker upload [--zip myworker.zip] --name myworker DOCKER_IMAGE [COMMAND]
 {% endhighlight %}
 
-<h2 id="queue">3. Queue Tasks for your Worker</h2>
+<h3 id="queuetwo">3. Queue Tasks for your Worker</h2>
 
 Now you get to queue up tasks/jobs for your Worker!
 
