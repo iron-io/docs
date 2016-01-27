@@ -1,5 +1,5 @@
 ---
-title: IronWorker Getting Started 3-Step Docker Workflow
+title: Getting Started With IronWorker
 layout: default
 section: worker
 ---
