@@ -38,7 +38,7 @@ After you go to your Hud-E account, <b>if you do not see your queue, don't worry
 <img src="/images/mq/v2_v3_migration_guide/choose_cluster.png" width="100%">
 <br><br>
 If your queues were in aws-us-east-1, you will need to select that mq-aws-us-ease-1-1 to view them.
-<img src="/images/mq/v2_v3_migration_guide/queues_list.png" width="100%">
+
 
 ## Step 2: Update your Iron.io client library
 
