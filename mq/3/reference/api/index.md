@@ -540,8 +540,7 @@ Response: 200
   "message": {
     "id": 123,
     "body": "This is my message 1.",
-    "reserved_count": 1,
-    "reservation_id": "abcdefghijklmnop"
+    "reserved_count": 1    
   }
 }
 ```
