@@ -18,7 +18,6 @@ breadcrumbs:
     <li><a href="#priority_queue_management">Priority Queue Management</a></li>
     <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
     <li><a href="#scheduled_task_frequency">Scheduled Task Frequency</a></li>
-    <li><a href="#security_groups_and_ip_ranges">Security Groups and IP Ranges</a></li>
   </ul>
 </section>
 
@@ -103,19 +102,3 @@ Tasks can be scheduled to run **every N seconds or more** specifying **N** using
   </p>
 </div>
 
-<h2 id="security_groups_and_ip_ranges">Security Groups and IP Ranges</h2>
-
-IronWorker provides an AWS security group and [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these groups/ranges.
-
-<table>
-<thead>
-<tr>
-<th>EC2 Security Group</th><th>Account ID</th><th>Security Group String</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>simple_worker_sg</td><td>7227-1646-5567</td><td>722716465567/simple_worker_sg</td>
-</tr>
-</tbody>
-</table>
