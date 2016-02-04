@@ -36,29 +36,17 @@ IronWorker uses process-level runtime monitoring/management to ensure that worke
 
 IronWorker, by design, does not provide SMTP host services. Workers must use third-party services such as [GMail](http://gmail.com), [SendGrid](http://www.sendgrid.com), [Amazon SES](http://aws.amazon.com/ses), or other service providers. Users must also adhere to Iron.io's [Use Policy](http://iron.io/legal).
 
-### <a name="aws_security_groups"></a> IP Ranges
+### <a name="firewall"></a>Accessing resources behind a firewall
 
-IronWorker provides [IP ranges](https://forums.aws.amazon.com/forum.jspa?forumID=30) in the event users want to isolate AWS EC2, RDS, or other services to these ranges. Please note this IP range is a very large block of EC2 IP's.
+Customers using the public cluster can whitelist the [Amazon AWS IP Range](https://ip-ranges.amazonaws.com/ip-ranges.json) for the region where their services are located. IronWorker users would use the IPs for `us-east-1`. IronMQ users would use the region where their queues are located; which is available in [HUD](https://hud.iron.io).
 
-We offer custom IP ranges and VPC peering for customers that want greater security levels. Please [contact us](http://www.iron.io/contact/) for more information on these offerings.
+Enterprise customers using a dedicated cluster should [contact Iron.io Technical Support](http://www.iron.io/contact/ "Contact Iron.io") to cordinate a configuration for firewall access.
 
+<h4 id="accessing_aws">Accessing resources on AWS</h4>
 
-<h4 id="accessing_rds">Accessing AWS RDS Resource</h4>
-<p>When accessing Amazon RDS resources please use the private ip address of your instances rather than the public DNS url that amazon provides.</p>
-<ol>
-  <li>Retrieve the Private IP of your RDS instance navigate to your [Amazon Web Services Console](https://console.aws.amazon.com) and copy your public endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/6qEZ1C4NlyxUgbicSYDh5Z3qqxtcGW.png" alt=""> </li>
-  <li>Ping the public endpoint in your commandline using the <strong>ping</strong> command to get the private ip address. example: <strong>ping exampledb.XXXX.us-east-2.rds.amazonaws.com</strong>. note to omit the port when running this command.</li>
-  <li>Use this ip address you get that comes back as your connection endpoint. <img width="100%" target="_blank" src="https://monosnap.com/image/OS4hu6dpf40z7CDk1sVcW1MA10kMFV.png" alt=""></li>
-</ol>
+Customers using the public cluster can create inbound security rules using the [Amazon AWS IP Range](https://ip-ranges.amazonaws.com/ip-ranges.json) for the region where their services are located. IronWorker users would use the IPs for `us-east-1`. IronMQ users would use the region where their queues are located; which is available in [HUD](https://hud.iron.io). Or they may create an inbound security rule to allow all traffic using `0.0.0.0/0`.
 
-<h4 id="accessing_ec2">Accessing AWS EC2</h4>
-
-<p>When accessing Amazon EC2 resources again use the private ip address of your instances rather than the public dns url that amazon provides. AWS's EC2 dashboard makes accessing this ip simpler than the previous example.</p>
-
-<ol>
-  <li>Retrieve the private ip of your RDS resource navigate to your [Amazon Web Services Console](https://console.aws.amazon.com) and copy your public endpoint.
-  <li>Use the ip address that is available on this view <img width="100%" target="_blank" src="https://monosnap.com/image/6sv8TJwVu6zs4kYj3Al9YRGHqqBVs8.png" alt=""></li>
-</ol>
+Enterprise customers using a dedicated cluster should [contact Iron.io Technical Support](http://www.iron.io/contact/ "Contact Iron.io") to cordinate a VPC peering connection.
 
 ## Security Guidelines/Best Practices
 
