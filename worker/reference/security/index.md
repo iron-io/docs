@@ -46,7 +46,7 @@ Enterprise customers using a dedicated cluster should [contact Iron.io Technical
 
 Customers using the public cluster can create inbound security rules using the [Amazon AWS IP Range](https://ip-ranges.amazonaws.com/ip-ranges.json) for the region where their services are located. IronWorker users would use the IPs for `us-east-1`. IronMQ users would use the region where their queues are located; which is available in [HUD](https://hud.iron.io). Or they may create an inbound security rule to allow all traffic using `0.0.0.0/0`.
 
-Enterprise customers using a dedicated cluster should [contact Iron.io Technical Support](http://www.iron.io/contact/ "Contact Iron.io") to cordinate a VPC peering connection.
+Enterprise customers using a dedicated cluster should [contact Iron.io Technical Support](http://www.iron.io/contact/ "Contact Iron.io") to cordinate a VPC peering connection, or a restricted list of IPs to whitelist.
 
 ## Security Guidelines/Best Practices
 
