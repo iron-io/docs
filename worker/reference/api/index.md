@@ -53,6 +53,11 @@ IronWorker provides a RESTful HTTP API to allow you to interact programmatically
             <td><a href="#list_code_package_revisions" title="List Code Package Revisions">List Code Package Revisions</a></td>
         </tr>
         <tr>
+            <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/stats</td>
+            <td>GET</td>
+            <td><a href="#get_code_package_stats" title="Get Code Package Stats">Get Code Package Stats</a></td>
+        </tr>
+        <tr>
             <td>/projects/<span class="project_id variable">{Project ID}</span>/codes/<span class="code_id variable">{Code ID}</span>/pause_task_queue</td>
             <td>POST</td>
             <td><a href="#pause_task_queue_for_code_package" title="Pause Task Queue for Code Package">Pause Task Queue for Code Package</a></td>
@@ -534,6 +539,43 @@ Sample:
     ]
 }
 ```
+
+### <a name="get_code_package_stats"></a> Get Code Package Stats
+
+#### Endpoint
+
+<div class="grey-box">
+    GET /projects/<span class="variable project_id">{Project ID}</span>/codes/<span class="variable code_id">{Code ID}</span>/stats
+</div>
+
+#### URL Parameters
+
+* **Project ID**: The ID of the project that the code package belongs to.
+* **Code Package ID**: The ID of the code package whose stats you’re retrieving.
+
+
+#### Optional Query Parameters
+
+* **start_date**: Limit the counts of tasks to those that were last modified after this time specified.  Time should be formatted as the number of seconds since the Unix epoch.
+* **end_date**: Limit the counts of tasks to those that were last modified before this time specified.  Time should be formatted as the number of seconds since the Unix epoch.
+
+
+#### Response
+
+The response will be a JSON object listing the amount of tasks in each of five possible task statuses.
+
+Sample:
+
+```js
+{
+    "queued": 0,
+    "running": 1,
+    "cancelled": 0,
+    "timeout": 0,
+    "complete": 1
+}
+```
+
 
 ### <a name="pause_task_queue_for_code_package"></a> Pause Task Queue for Code Package
 
