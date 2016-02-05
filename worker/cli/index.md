@@ -63,7 +63,17 @@ is simply making a zip out of your worker:
 zip -r hello.zip .
 ```
 
-The command to upload the worker package/zip is:
+To upload the worker package/zip with image from **public repo**:
+
+```sh
+iron worker upload --zip $WORKER.zip --name $WORKER_NAME $IMAGE $COMMAND
+```
+
+To upload the worker package/zip with image from **private repo**:
+
+```sh
+iron docker login -u USERNAME -p PASSWORD -e YOUR@EMAIL.COM
+```
 
 ```sh
 iron worker upload --zip $WORKER.zip --name $WORKER_NAME $IMAGE $COMMAND
@@ -94,6 +104,7 @@ There are additional options available to the upload command; you can find
 a list of them by running `iron worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
 <h2 id="creating__uploading_code_packages"> Uploading Code Packages for Docker like services </h2>
+
 *This method works only for those who have dedicated cluster.*
 Before upload the code you need to verify that you have successfully logged in to the service:
 
