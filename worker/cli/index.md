@@ -93,6 +93,27 @@ iron worker upload --retries 5 --retries-delay 10 ...
 There are additional options available to the upload command; you can find
 a list of them by running `iron worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
+<h2 id="creating__uploading_code_packages"> Uploading Code Packages for Docker like services </h2>
+*This method works only for those who have dedicated cluster.*
+Before upload the code you need to verify that you have successfully logged in to the service:
+
+```sh
+docker login -u USERNAME -p PASSWORD -e YOUR@EMAIL.COM https://COMPANY-docker-dockerv2-local.SERVICE.com/v2/
+```
+
+After that, try login using `ironcli`:
+
+```sh
+iron docker login -u USERNAME -p PASSWORD -e YOUR@EMAIL.COM -url https://COMPANY-docker-dockerv2-local.SERVICE.com/v2/
+```
+*Registry API version at the end of url `/v2/` is required. We support only v2*
+
+Then upload the worker package/zip:
+
+```sh
+iron worker upload --zip $WORKER.zip --name $WORKER_NAME  COMPANY-docker-dockerv2-local.SERVICE.com/REPO-NAME:TAG-NAME $COMMAND
+```
+
 <h2 id="uploading_to_multiple_environments">Uploading to Multiple Environments</h2>
 
 It is a common and good practice to deploy applications to multiple environments, such as staging and production for quality assurance of releases. IronWorker supports workflows like this by using separate Iron.io projects, and the CLI has a convenient feature to assist.
