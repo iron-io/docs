@@ -103,10 +103,10 @@ iron worker upload --retries 5 --retries-delay 10 ...
 There are additional options available to the upload command; you can find
 a list of them by running `iron worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
-<h2 id="creating__uploading_code_packages"> Uploading Code Packages for Docker like services </h2>
+<h2 id="creating__uploading_code_packages"> Uploading Code Packages for Dockerhub-like services </h2>
 
 *This method works only for those who have dedicated cluster.*
-Before upload the code you need to verify that you have successfully logged in to the service:
+Before uploading the code you need to verify that you have successfully logged in to the service:
 
 ```sh
 docker login -u USERNAME -p PASSWORD -e YOUR@EMAIL.COM https://COMPANY-docker-dockerv2-local.SERVICE.com/v2/
