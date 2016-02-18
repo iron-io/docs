@@ -49,7 +49,7 @@ puts "Hello World!"
 Now let's run it in one of the Iron stack containers:
 
 {% highlight bash %}
-docker run --rm -v "$(pwd)":/worker -w /worker iron/ruby:2.2 'ruby helloworld.rb'
+docker run --rm -it -v "$PWD":/worker -w /worker iron/ruby ruby helloworld.rb
 {% endhighlight %}
 
 The fact that it runs means it's all good to run on IronWorker, so lets upload it and queue up a task for it so it runs on
