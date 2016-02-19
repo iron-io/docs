@@ -27,10 +27,10 @@ There are 2 ways to start using IronMQ v3. You can manually re-create your queue
 
 ### Automated Queue Migration
 
-1. Log into <a href='hud.iron.io'>hud.iron.io</a> and view the project you want to migrate.
+1. Log into <a href='//hud.iron.io'>hud.iron.io</a> and view the project you want to migrate.
 2. Press the "Migrate to v3!" button.
 3. Wait while your queues are created in v3, and messages are moved into the new queue.
-3. Log into your <a href='hud-e.iron.io'>Hud-E</a> account, choose the proper cluster location, and all your queues will be there.
+3. Log into your <a href='//hud-e.iron.io'>Hud-E</a> account, choose the proper cluster location, and all your queues will be there.
 
 The automated queue migration will create a project and queues with the same name your existing project and queues; and it will copy over any messages currently in the queues.
 
@@ -82,7 +82,7 @@ See [IronMQ v3 Basics](/mq/3/reference/api) for the full API Reference.
 
 ### Understand `post-reserve-delete`
 
-We designed v3 to be as similar as possible to v2, but decided to make one 
+We designed v3 to be as similar as possible to v2, but decided to make one
 conceptual difference to the API: the `post-reserve-delete` workflow.
 
 This workflow differs from v2's `post-get-delete`, and here is how:
@@ -94,7 +94,7 @@ This workflow differs from v2's `post-get-delete`, and here is how:
 ### Other notable changes
 
 - Can no longer set timeout when posting a message, only when reserving one.
-- The webhook URL has changed. 
+- The webhook URL has changed.
 - Push queues must be explicitly created. There's no changing a queue's type.
 
 See [IronMQ v3 Basics](/mq/3/reference/api/#changes) for a full list of changes.
