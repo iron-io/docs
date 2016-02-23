@@ -172,6 +172,17 @@ iron docker login -e YOUR_DOCKER_HUB_EMAIL -u YOUR_DOCKER_HUB_USERNAME -p YOUR_D
 
 Then just do everything the same as above.
 
+<h2 id="quay">Images Hosted on Quay.io</h2>
+
+If your image is hosted on Quay.io and is private, you will use it just as any other image, only using the Quay naming convention- quay.io/jpksf/ghost
+
+If the mage on Quay is private, you first need to register it. When registering, use yur DOCKERHUB login credentials
+{% highlight bash %}
+iron docker login -e YOUR_DOCKER_HUB_EMAIL -u YOUR_DOCKER_HUB_USERNAME -p YOUR_DOCKER_HUB_PASSWORD
+{% endhighlight %}
+
+
+
 <h2 id="zip_packaging">Zipping Code and Uploading Directly to Iron.io without Docker</h2>
 
 <h3 id="writetwo">1. Write and Test your Worker</h3>
