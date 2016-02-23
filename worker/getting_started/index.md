@@ -174,7 +174,12 @@ Then just do everything the same as above.
 
 <h2 id="quay">Images Hosted on Quay.io</h2>
 
-If your image is hosted on Quay.io and is private, you will use it just as any other image, only using the Quay naming convention- quay.io/jpksf/ghost
+If your image is hosted on Quay.io and is private, you will use it just as any other image, only using the Quay naming convention. 
+
+First, registert the image with Iron.io
+{% highlight bash %}
+iron register -e "YOUR_ENV_VAR=ANYTHING" quay.io/USERNAME/IMAGENAME:0.0.1
+{% endhighlight %}
 
 If the mage on Quay is private, you first need to register it. When registering, use yur DOCKERHUB login credentials
 {% highlight bash %}
