@@ -12,8 +12,7 @@ Whether you're just getting started using Docker or you're an old pro, we've put
 <ul>
 	<li><a href="#Prerequisites">Prerequisites</a></li>
 	<li><a href="#vids">Current Videos</a></li>
-	<li><a href="#helloWorld">Hello World</a></li>
-	<li><a href="#custImg">Basic Custom Image</a></li>
+
 </ul></section>
  
 <h2 id='Prerequisites'>Prerequisites</h2>
@@ -27,6 +26,12 @@ Before moving forward, pleae ensure you've:<br />
 
 
 <h2 id='vids'>Current Video Selections</h2>
-<li><h3 id='helloWorld'><a href='https://iron-1.wistia.com/medias/1n9ra6grpz' target="_blank">Hello World</a></h3></li>
 
-<li><h3 id='custImg'><a href='https://iron-1.wistia.com/medias/em135thx45' target="_blank">Making Your First Custom Image</a></h3></li>
+<center>
+  <tbody>
+  <tr>
+    <td><a id='helloWorld' href='https://iron-1.wistia.com/medias/1n9ra6grpz' target="_blank">Hello World</a></td>
+    <td><a id='custImg' href='https://iron-1.wistia.com/medias/em135thx45' target="_blank">Making Your First Custom Image</a></td>
+  </tr>
+  </tbody>
+</center>
