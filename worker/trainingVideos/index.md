@@ -4,7 +4,7 @@ layout: default
 section: worker
 ---
 
-Weather you're just getting started using Docker or you're an old pro, we've put together some training videos to help take you through the process. The videos range in complexity, so find the one that best fits your needs. If theres something you think would be helpful, send a message to <a href='mailto:support@iron.io'>support@iron.io</a> and we'll start making one. 
+Whether you're just getting started using Docker or you're an old pro, we've put together some training videos to help take you through the process. The videos range in complexity, so find the one that best fits your needs. If theres something you think would be helpful, send a message to <a href='mailto:support@iron.io'>support@iron.io</a> and we'll start making one. 
 
 
 <section id="toc">
