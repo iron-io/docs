@@ -721,7 +721,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
 
 Sample endpoint with several optional parameters set:
 
-POST /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_name=<span class="variable">{Code Name}</span>&complete=1&cancelled=1&error=1
+GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_name=<span class="variable">{Code Name}</span>&complete=1&cancelled=1&error=1
 
 #### Response
 
