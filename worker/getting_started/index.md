@@ -102,7 +102,7 @@ IronWorker's <a href="/worker/reference/environment">environment</a> is a Linux 
 The primary Docker command is:
 
 {% highlight bash %}
-docker run --rm -v "$(pwd)":/worker -w /worker IMAGE[:TAG] 'MY_EXECUTABLE -payload MY_PAYLOAD.json'
+docker run --rm -v "$(pwd)":/worker -w /worker IMAGE[:TAG] 'MY_COMMAND -payload MY_PAYLOAD.json'
 {% endhighlight %}
 
 * Replace IMAGE with the name of the image you want your code to be executed in. For example, if your worker is a Ruby script, you can replace IMAGE with `iron/ruby`. Also you may need to specify a TAG (version) of the image you want to use: `iron/ruby:2.2`
