@@ -198,13 +198,13 @@ The receiving endpoint must respond with a 200 or 202 if they have accepted the 
 
 If an endpoint doesn't respond within timeout, it's marked as failed/error and will be retried.
 
-Default timeout is 60 seconds.
+Default timeout is 10 seconds.
 
 If you'd like to take more time to process messages, see 202 section below.
 
 <h3 id="long_running_processes__aka_202s">Long Running Processes - aka 202</h3>
 
-If you'd like to take some time to process a message, more than the 60 second timeout, you must respond with HTTP status code 202.
+If you'd like to take some time to process a message, more than the 10 second timeout, you must respond with HTTP status code 202.
 Be sure to set `retries_delay`'s value to the maximum amount of time you'd like your processing to take.
 If you do not explicitly delete the message before the timeout has passed, the message will be retried.
 To delete the message, check the `Iron-Subscriber-Message-Url` header and send a DELETE request to that URL.
