@@ -20,13 +20,12 @@ breadcrumbs:
 
 <h2 id="overview">Overview</h2>
 
-Dead Letter Queues are queues that can be used to send messages to that for
-whatever reason could not be successfully processed on the source queue.
-Messages that have been attempted to be processed at least a specified number
-of times on the source queue will be placed onto the specified dead letter
-queue. The messages on the dead letter queue can then be processed again or
-the user can later try to determine why they weren't successfully processed in the
-first place, without having to throw them away.
+A dead letter queue is a queue that other (source) queues can target to send
+messages that for some reason could not be successfully processed. Messages
+that have exceeded the allowed number of time outs on the source queue are
+placed onto the dead letter queue. Messages on the dead letter queue can then
+be processed again or analyzed to try to determine why they weren't
+successfully processed in the first place, without having to throw them away.
 
 <h2 id="creating">Creating a Dead Letter Queue</h2>
 
@@ -43,9 +42,11 @@ PUT /3/projects/:project/queues/:queue
 queue, otherwise the request will error unless the queue already has a dead
 letter queue defined on it. `"max_reservations"` can be specified if desired
 to be a value `1 <= max_reservations <= 1000`, and will default to 10 if
-omitted. A dead letter queue cannot be specified on a push queue. The queue
-specified to be the dead letter queue can already exist or can be a queue that
-doesn't yet exist and we will create it when necessary.
+omitted. A dead letter queue cannot be specified on a push queue, for
+something similar, see [error queues](/reference/push_queues#error_queues).
+If a queue with the given dead letter queue name already exists, it's used as
+is. Otherwise, a new queue is automatically created with the default pull
+queue settings.
 
 <h2 id="deleting">Removing a Dead Letter Queue</h2>
 
@@ -66,28 +67,25 @@ no longer be sent from the source queue to the dead letter queue.
 
 <h2 id="behavior">Behavior</h2>
 
-Upon creation of a dead letter queue, any message, including any existing
-messages on the queue, whose `reserved_count` field exceeds the
-`dead_letter.max_reservations` threshold will be placed onto the queue
-specified as `dead_letter.queue_name` under the same project, and removed from
-the current queue. If this queue already exists, we will put the messages onto
-the queue as is, or if necessary we will create the queue with the default pull
-queue settings. This means that while it isn't possible to specify a dead letter
-queue on a push queue, the dead letter queue itself can be a push queue, if desired.
+Upon addition of a dead letter queue to a queue's configuration, any message,
+including any existing messages on the queue, whose `reserved_count` field
+exceeds the `dead_letter.max_reservations` threshold will be placed onto the
+queue specified as `dead_letter.queue_name` under the same project, and
+removed from the current queue.
 
-The messages will be sent to the dead letter queue as is; that is, the message
+The messages are sent to the dead letter queue as is; that is, the message
 `id` is the same as the original message from the queue of origin. The
-`reserved_count` field will be preserved on the dead letter queue, as well.
-The `body` of the message will also remain unchanged. The `id` remaining the
-same should make it easy to correlate events on each message across the
-original queue and the dead letter queue, if desired. The only field we update
-is the message expiration is adjusted to the message expiration for the dead
-letter queue upon insertion into the dead letter queue; i.e. after adding a
-message to the dead letter queue, the expiration will be extended to 7 days
-(by default) from that point in time, not the original enqueue time.
-Since `reserved_count` is maintained, users should be careful if they have a dead letter queue for
-their dead letter queue (yo dawg...). Example dlq message for a queue with
-`dead_letter.max_reservations = 10`:
+`reserved_count` field is preserved on the dead letter queue, as well.  The
+`body` of the message also remains unchanged. The `id` remaining the same
+should make it easy to correlate events on each message across the original
+queue and the dead letter queue, if desired. The only field we update is the
+message expiration is adjusted to the message expiration for the dead letter
+queue upon insertion into the dead letter queue; i.e. after adding a message
+to the dead letter queue, the expiration will be extended to 7 days (by
+default) from that point in time, not the original enqueue time. Since
+`reserved_count` is maintained, users should be careful if they have a dead
+letter queue for their dead letter queue (yo dawg...). Example dlq message for
+a queue with `dead_letter.max_reservations = 10`:
 
 ```
 queue                       dlq
@@ -101,33 +99,32 @@ queue                       dlq
 
 There is only one operation that can spur a message being moved to the dead
 letter queue, that operation is `reserve`. Viewing messages in the dashboard
-or using `peek` or `get`  will not count against the current `reserved_count`. Also,
-simply adding a `dead_letter` section to a queue will not in itself make
+or using `peek` or `get`  will not count against the current `reserved_count`.
+Also, simply adding a `dead_letter` section to a queue will not in itself make
 messages move to the dead letter queue, only from `reserving` once we come
 across any messages that meet the criterion.
 
 `reserved_count` is a field on each message that will be incremented each time
 a message is returned from `reserve` with the current reservation count,
-including the reservation which took place to return it from `reserve`;
-i.e., the first reservation of a message will have `msg.reserved_count = 1`.
+including the reservation which took place to return it from `reserve`; i.e.,
+the first reservation of a message will have `msg.reserved_count = 1`.
 `touch` is the only other operation that modifies `msg.reserved_count`,
 however, `touch` causing `reserved_count` to exceed the
 `dead_letter.max_reservations` threshold will not cause the message to be
 moved to the dead letter queue immediately, only after we come across the
 message in `reserve`.
 
-Since queues may exist across nodes, we cannot guarantee delivery of
-messages to the dead letter queue and both progress on the current queue. This
-means that during certain failure scenarios (such as the dead letter queue
-having no replicas online) we prefer to make progress on the main queue and can
-drop messages that were intended to go to the dead letter queue. The
-expectation is that this is rare, and only during failure scenarios, but here
-is a disclaimer that it can happen. This also means that there is a slight
-latency penalty on `reserve` once we do come across any messages that meet the
-dead letter queue criterion; in nominal usage having a dead letter queue
-specified doesn't affect performance. If this policy is unacceptable, users
-can do a similar check of `msg.reserved_count` and do whatever they please
-with each message.
+Since queues may exist across nodes, we cannot guarantee delivery of messages
+to the dead letter queue and both progress on the current queue. This means
+that during certain failure scenarios (such as the dead letter queue having no
+replicas online) we prefer to make progress on the main queue and can drop
+messages that were intended to go to the dead letter queue. The expectation is
+that this is rare, and only during failure scenarios, but here is a disclaimer
+that it can happen. This also means that there is a slight latency penalty on
+`reserve` once we do come across any messages that meet the dead letter queue
+criterion; in nominal usage having a dead letter queue specified doesn't
+affect performance. If this policy is unacceptable, users can do a similar
+check of `msg.reserved_count` and do whatever they please with each message.
 
 <h2 id="use-case">One Time Delivery Use Case</h2>
 
@@ -136,10 +133,10 @@ imitated using a dead letter queue, if desired, by setting
 `dead_letter.max_reservations = 1`.
 
 Doing so will mean that the message can only be reserved one time on the
-original queue, and any successive attempts to reserve the message will
-result in the message being moved to the dead letter queue. The message then
-exists on the dead letter queue and the second, third, etc deliveries can be
-handled differently by consumers / by different consumers.
+original queue, and any successive attempts to reserve the message will result
+in the message being moved to the dead letter queue. The message then exists
+on the dead letter queue and the second, third, etc deliveries can be handled
+differently by consumers / by different consumers.
 
 This can also be done simply by checking the `reserved_count` on each message
 even without the dead letter queue specified, but the dead letter queue makes
