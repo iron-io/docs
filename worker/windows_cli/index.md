@@ -48,7 +48,7 @@ Finally, click OK on all of the open windows, and you’re all set. To confirm, 
 ```sh
 ironcli.exe --version
 ```
-<img style= "display: block; width: 645px; margin: 0 auto;"  src="/images/new.png" style=""/>
+<img style= "display: block; width: 645px; margin: 0 auto;"  src="/images/works.PNG" style=""/>
 
 
 Now you can follow along with all of the examples in the docs. 
