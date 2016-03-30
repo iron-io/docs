@@ -37,7 +37,7 @@ Go into your advanced settings and select environmental variables:
 
 
 Locate the PATH variable in the System Variables section, and click edit. 
-<img style= "display: block; width: 645px; margin: 0 auto;"  src="/images/ffindPath.png" style=""/>
+<img style= "display: block; width: 645px; margin: 0 auto;"  src="/images/findPath.png" style=""/>
 
 
 From here, click new to add and add the path to the folder tha's holding ironcli.exe
@@ -48,7 +48,7 @@ Finally, click OK on all of the open windows, and you’re all set. To confirm, 
 ```sh
 ironcli.exe --version
 ```
-<img style= "display: block; width: 645px; margin: 0 auto;"  src="/images/new.PNG" style=""/>
+<img style= "display: block; width: 645px; margin: 0 auto;"  src="/images/new.png" style=""/>
 
 
 Now you can follow along with all of the examples in the docs. 
