@@ -18,7 +18,7 @@ The Iron.io command line tool will help you interact with the IronWorker API to 
 
 <h2 id="installing">Install</h2>
 
-Head over to [https://github.com/iron-io/ironcli/releases](https://github.com/iron-io/ironcli/releases) and download the newest version of the cli. Execute the file and you will see a terminal flash in front of you momentarily and then disappear.
+Head over to [https://github.com/iron-io/ironcli/releases](https://github.com/iron-io/ironcli/releases) and download the newest version of the cli. 
 
 
 <h2 id="configuration">Configure</h2>
@@ -28,13 +28,13 @@ Open a new Command Line and CD into the directory you’ve downloaded the execut
 ironcli.exe --version
 ```
 
-Now that it’s working, let's move everything to C:\ directly
+Now that it’s working, let's move everything to C:\ directly (Replacing $username with your username)
 
 ```sh
-copy c:\Users\jpk\Downloads/ironcli.exe c:\IronCli\iron.exe
+copy c:\Users\$username\Downloads\ironcli.exe c:\IronCli\iron.exe
 ```
 
-Once that has been completed, add the C:\IronCli to the PATH Environment Variable. 
+Once that has been completed, add the C:\IronCli to the PATH Environment Variable. If you need help with this step, please see [this article](http://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) as a guide.
 
 <h2 id="confirm">Confirm</h2>
 Finally, to confirm everything has been setup properly, open a new Command Line and run
