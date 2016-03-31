@@ -1,4 +1,4 @@
----
+]---
 title: Windows version of the IronWorker CLI
 layout: default
 section: worker
@@ -23,11 +23,13 @@ Head over to [https://github.com/iron-io/ironcli/releases](https://github.com/ir
 
 <h2 id="configuration">Configure</h2>
 Open a new Command Line and CD into the directory you’ve downloaded the executable to. From that directory, confirm the installation was successful by checking the version
+
 ```sh
 ironcli.exe --version
 ```
 
 Now that it’s working, let's move everything to C:\ directly
+
 ```sh
 copy c:\Users\jpk\Downloads/ironcli.exe c:\IronCli\iron.exe
 ```
@@ -36,6 +38,7 @@ Once that has been completed, add the C:\IronCli to the PATH Environment Variabl
 
 <h2 id="confirm">Confirm</h2>
 Finally, to confirm everything has been setup properly, open a new Command Line and run
+
 ```sh
 iron --version
 ```
