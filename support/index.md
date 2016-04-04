@@ -4,7 +4,6 @@ section: support
 breadcrumbs: hidden
 ---
 
-Iron.io has three support channels:
 
 ## 1. Public Forums
 
