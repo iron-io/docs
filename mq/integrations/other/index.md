@@ -34,7 +34,7 @@ IronMQ is The Message Queue for the Cloud, and have helpful libraries to help wi
 <div class = "frameworks">
   <ul>
     <li>Magento: coming soon</li>
-    <li>Apache Camel: <a href="https://github.com/pax95/camel-ironmq">Apache Camel</a></li>
+    <li>Apache Camel: <a href="http://camel.apache.org/ironmq.html">Apache Camel</a></li>
   </ul>
 </div>
 
