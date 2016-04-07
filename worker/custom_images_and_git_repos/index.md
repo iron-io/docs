@@ -6,7 +6,7 @@ breadcrumbs:
   - ['docker', 'custom docker image']
 ---
 
-If you’re using IronWorker, you are familiar with using Docker. One of the best things about using Docker is how easy it is to make your own images with whatever you need on it. Sometimes, we want to add a repo hosted on GitHub. This article will explain how.
+If you’re using IronWorker, you are most likely familiar with using Docker. One of the best things about using Docker is how easy it is to make your own images with whatever you need on it. Sometimes, we want to add a repo hosted on GitHub. This article will explain how.
 
 <section id="toc">
   <h3>Table of Contents</h3>
@@ -19,7 +19,10 @@ If you’re using IronWorker, you are familiar with using Docker. One of the bes
 
 <h2 id="public">Using a Public Repository</h2>
 
-To add a public repo to your image, you just need to add git to the image and clone the repo:
+GitHub is the world's most largest source code host in the world. With Docker and Git combined, you can easily add the source code code into a container you're building and run everything inside of a self contained ecosystem that has everything you want and nothing else. 
+
+To clone the repo, we first need to install Git on the image itself. Git has a great pacjage for Alpine linux (the OS Iron.io uses as a base) that is only 11.4MB. After that has been installed, you can run a standard git clone command to bring in the repo:
+
 
 ```sh
 FROM iron/go
@@ -30,7 +33,7 @@ RUN git clone https://github.com/iron-io/dockerworker.git
 
 RUN rm -rf /var/cache/apk/*
 ```
-Once you save that you'll have a custom image with all of the iron.io Docker examples.  
+Once you run `docker build...`  you'll have a custom image with all of the iron.io Docker examples.  
 
 
 <h2 id="private">Using a Private Repository</h2>
@@ -58,4 +61,4 @@ RUN rm -rf /var/cache/apk/*
 
 <h2 id="security">Security Warning</h2>
 
-If you are cloning a private in this way, you will need to make your Docker Image private. Otherwise anyone who uses that image will have access to the private repo.
+If you are cloning a private in this way, you will need to make your Docker Image private. Otherwise anyone who uses that image will have access to the private repo. If you are unsure how to make an image private, please see <a href='https://docs.docker.com/docker-hub/repos/#private-repositories' target='_blank'>this guide</a>.
