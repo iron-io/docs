@@ -19,7 +19,7 @@ If you’re using IronWorker, you are familiar with using Docker. One of the bes
 
 <h2 id="public">Using a Public Repository</h2>
 
-To add a public repo to your image, you just need to add git to the iage and clone the repo:
+To add a public repo to your image, you just need to add git to the image and clone the repo:
 
 ```sh
 FROM iron/go
@@ -40,7 +40,7 @@ That worked without any problems at all. What if we simply replace the git clone
 Cloning into 'platinum'...
 fatal: could not read Username for 'https://github.com': No such device or address
 ```
-This presents a pretty clear issue. We need to get our credentials into our container. There are a few different ways of accomplishing this, but the easiest way is to simply use an OAuth token.  If you’re unsure how to do that in GitHub, please see <a href='https://help.github.com/articles/creating-an-access-token-for-command-line-use/' 'target=_blank'>https://help.github.com/articles/creating-an-access-token-for-command-line-use/</a>
+This presents a pretty clear issue. We need to get our credentials into our container. There are a few different ways of accomplishing this, but the easiest way is to simply use an OAuth token.  If you’re unsure how to do that in GitHub, please see  <a href='https://help.github.com/articles/creating-an-access-token-for-command-line-use/' 'target=_blank'>https://help.github.com/articles/creating-an-access-token-for-command-line-use/</a>
 
 Once we have the token we can give our image the access it needs. Change the clone command to:
 ```sh
