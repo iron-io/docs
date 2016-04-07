@@ -44,12 +44,12 @@ That worked without any problems at all. What if we simply replace the git clone
 Cloning into 'platinum'...
 fatal: could not read Username for 'https://github.com': No such device or address
 ```
-This presents a pretty clear issue. We need to get our credentials into our container. There are a few different ways of accomplishing this, but the easiest way is to simply use an OAuth token.  If you’re unsure how to do that in GitHub, please see  <a href='https://help.github.com/articles/creating-an-access-token-for-command-line-use/' 'target=_blank'>https://help.github.com/articles/creating-an-access-token-for-command-line-use/</a>
+This presents a pretty clear issue. We need to get our credentials into our container. There are a few different ways of accomplishing this, but the easiest way is to simply use an OAuth token.  If you’re unsure how to do that in GitHub, please see <a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">this article</a>
 
 Once we have the token we can give our image the access it needs. Change the clone command to:
 
 ```sh
-FROM iron/go:```sh
+FROM iron/go:
 RUN apk update && apk upgrade
 
 RUN apk add git
@@ -63,4 +63,4 @@ RUN rm -rf /var/cache/apk/*
 
 <h2 id="security">Security Warning</h2>
 
-If you are cloning a private in this way, you will need to make your Docker Image private. Otherwise anyone who uses that image will have access to the private repo. If you are unsure how to make an image private, please see <a href='https://docs.docker.com/docker-hub/repos/#private-repositories' target='_blank'>this guide</a>.
+If you are cloning a private in this way, you will need to make your Docker Image private. Otherwise anyone who uses that image will have access to the private repo. If you are unsure how to make an image private, please see <a href='https://docs.docker.com/docker-hub/repos/#private-repositories'>this guide</a>.
