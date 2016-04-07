@@ -21,7 +21,7 @@ If you’re using IronWorker, you are most likely familiar with using Docker. On
 
 GitHub is the world's most largest source code host in the world. With Docker and Git combined, you can easily add the source code code into a container you're building and run everything inside of a self contained ecosystem that has everything you want and nothing else. 
 
-To clone the repo, we first need to install Git on the image itself. Git has a great pacjage for Alpine linux (the OS Iron.io uses as a base) that is only 11.4MB. After that has been installed, you can run a standard git clone command to bring in the repo:
+To clone the repo, we first need to install Git on the image itself. Git has a great package for Alpine linux (the OS Iron.io uses as a base) that is only 11.4MB. After that has been installed, you can run a standard git clone command to bring in the repo:
 
 
 ```sh
@@ -49,7 +49,7 @@ This presents a pretty clear issue. We need to get our credentials into our cont
 Once we have the token we can give our image the access it needs. Change the clone command to:
 
 ```sh
-FROM iron/go:
+FROM iron/go:1.6.0
 RUN apk update && apk upgrade
 
 RUN apk add git
