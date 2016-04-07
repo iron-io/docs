@@ -164,7 +164,7 @@ Of course, in practice you'll be [queuing up jobs via the API](/worker/reference
 
 <h2 id="private">Private images</h2>
 
-If you want to keep your code private and use a [private Docker repository](https://docs.docker.com/docker-hub/repos/#private-repositories), you just need to let Iron know how to access your private images:
+If you want to keep your code private and use a [private Docker repository](https://docs.docker.com/docker-hub/repos/#private-repositories), you just need to let Iron know how to access your private images. From the same directory as your iron.json file, run:
 
 {% highlight bash %}
 iron docker login -e YOUR_DOCKER_HUB_EMAIL -u YOUR_DOCKER_HUB_USERNAME -p YOUR_DOCKER_HUB_PASSWORD
