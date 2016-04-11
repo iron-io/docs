@@ -145,6 +145,10 @@ where `multicast` and `unicast` define push queues. default is `pull`
 If `push` field is defined, this queue will be created as a push queue and must
 contain at least one subscriber. Everything else in the push map is optional.
 
+If `dead_letter` field is defined, `queue_name` must not be an empty string.
+`max_reservations` will default to 10 if unspecified. `1 <= max_reservations <= 1000`.
+`dead_letter` can not be specified on a push queue, use `error_queue` instead.
+
 <!--A `push` queue cannot have alerts.-->
 
 ```json
@@ -164,6 +168,10 @@ contain at least one subscriber. Everything else in the push map is optional.
       "retries": 3,
       "retries_delay": 60,
       "error_queue": "error_queue_name"
+    },
+    "dead_letter": {
+      "queue_name": "dlq",
+      "max_reservations": 10
     }
   }
 }
@@ -183,8 +191,7 @@ contain at least one subscriber. Everything else in the push map is optional.
 
 Response: 200 OK
 
-SAME AS GET QUEUE INFO (except that `size` and `total_messages` fields are missing)
-
+same as [Get Queue](#get-queue) except that `size` and `total_messages` fields are missing
 
 ### <a name="get-queue"></a> Get Queue Info
 
