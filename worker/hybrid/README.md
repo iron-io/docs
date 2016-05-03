@@ -20,7 +20,7 @@ Fill out the form and submit it. You'll get a `CLUSTER_ID` and `CLUSTER_TOKEN` t
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
 
 ```sh
-docker run --name ironrunner -it --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" --net=host iron/runner
+docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" iron/runner
 ```
 
 Replace `{CLUSTER_ID}` and `{CLUSTER_TOKEN}` with the id and token you obtained in step 1 above.
@@ -33,16 +33,16 @@ Everything is the same as using IronWorker on the public cloud, except When queu
 simply pass in the `CLUSTER_ID` in the "cluster" param ([API docs](http://dev.iron.io/worker/reference/api/#queue_a_task)).
 Here is a quick example you can use with [IronCLI]
 
-First upload your worker (or use a Docker image):
+First register your worker Docker image. You can use the example worker image as is with the commands below:
 
 ```sh
-iron worker upload --name hello.rb treeder/hello.rb
+iron register iron/hello
 ```
 
 Example from the cli:
 
 ```sh
-iron worker queue --cluster CLUSTER_ID --wait hello.rb
+iron worker queue --cluster CLUSTER_ID --wait iron/hello
 ```
 
 ## Running on AWS
@@ -56,7 +56,7 @@ This has been tested on Ubuntu 15.04 and 14.04 AMI.
 curl -sSL https://get.docker.com/ | sh
 sudo service docker start
 echo \"Starting runners\"
-sudo docker run --name ironrunner -it --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN=#{CLUSTER_TOKEN}" --net=host iron/runner
+sudo docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN=#{CLUSTER_TOKEN}" iron/runner
 ```
 
 ## End-to-End encryption of task payloads
@@ -122,7 +122,7 @@ add the env var `DECRYPTION_KEY` passed to the `iron/runner` docker container,
 like so:
 
 ```sh
-$ docker run --name ironrunner--privileged -d -e "DECRYPTION_KEY=${KEY}" \
+$ docker run --privileged -d -e "DECRYPTION_KEY=${KEY}" \
  -e "CLUSTER_ID=${CLUSTER_ID}" -e "CLUSTER_TOKEN=${CLUSTER_TOKEN}" --net=host iron/runner
 ```
 
