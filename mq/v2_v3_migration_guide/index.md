@@ -37,7 +37,7 @@ The automated queue migration will create a project and queues with the same nam
 After you go to your Hud-E account, <b>if you do not see your queue, don't worry</b>! In the new HUD-e dashboard you can switch between cluster views to show queues specific to the selected cluster.
 <img src="/images/mq/v2_v3_migration_guide/choose_cluster.png" width="100%">
 <br><br>
-If your queues were in aws-us-east-1, you will need to select that mq-aws-us-ease-1-1 to view them.
+If your queues were in aws-us-east-1, you will need to select that mq-aws-us-east-1-1 to view them.
 
 
 ## Step 2: Update your Iron.io client library
