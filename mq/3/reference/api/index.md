@@ -41,7 +41,7 @@ Changes from v2.0.1:
 to perform any action (ie deleting, touching, releasing). The reservation is valid for
 the length of the message timeout (inherited from the queues timeout) unless a timeout
 was specified on the dequeue call.
-- Expiration and timeout can no longer be set on message enqueue.
+- Expiration and timeout can no longer be set when queueing a message.
 - Timed out and released messages go to the front of the queue. (This
 is not an API change, but it is a behavior change that will likely
 cause some tests to fail.)
