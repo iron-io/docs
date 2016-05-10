@@ -46,7 +46,7 @@ the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/ap
 <h2 id="subscribers">Subscribers</h2>
 
 Subscribers are simply URL's that IronMQ will post to whenever a message is posted to your queue. There are currently
-three types subscribers supported, all differentiated by the URL scheme (first part of the URL):
+three types of subscribers supported, all differentiated by the URL scheme (first part of the URL):
 
 1. **HTTP endpoints:** urls with the  **http** or **https** prefix for instance, http://myapp.com/some/endpoint or https://myapp.com/some/endpoint. **WARNING:** Do not use the following RFC 3986 Reserved Characters  within your in the naming of your subscriber endpoints.
 2. **IronMQ endpoints:** IronMQ endpoints point to another queue on IronMQ. Use these to do fan-out to multiple queues. More info on the IronMQ URL format below.
