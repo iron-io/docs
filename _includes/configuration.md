@@ -9,7 +9,7 @@
   <ul>
     <li><a href="#quick_start">Quick Start</a></li>
     <li><a href="#the_environment_variables">The Environment Variables</a></li>
-    <li><a href="#using_iron_json">Configuration using iron.json (deprecated)</a></li>
+    <li><a href="#using_iron_json">Configuration using iron.json</a></li>
   </ul>
 </section>
 
@@ -33,6 +33,6 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <p>In the case of product-specific variables (which override global variables), it would be "IRON_WORKER_TOKEN" (for IronWorker).</p>
 
-<h2 id="using_iron_json">Configuration using iron.json (deprecated)</h2>
+<h2 id="using_iron_json">Configuration using iron.json</h2>
 
-You can follow the <a href="/worker/reference/configuration-iron-json/index.html">old configuration scheme</a> and set project_id, token and other parameters in iron.json file but using only environment variables is more preferred.
+You can follow the <a href="/worker/reference/configuration-iron-json/index.html">configuration scheme</a> and set project_id, token and other parameters in iron.json file but using only environment variables is more preferred.
