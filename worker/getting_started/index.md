@@ -142,10 +142,10 @@ docker push USERNAME/IMAGENAME:0.0.1
 <h3 id="register">4. Register your image with Iron</h3>
 
 Ok, we're ready to run this on Iron now, but first we have to let Iron know about the
-image you just pushed to Docker Hub. Also, you can optionally register environment variables here that will be passed into your container at runtime.
+image you just pushed to Docker Hub. 
 
 {% highlight bash %}
-iron register -e "YOUR_ENV_VAR=ANYTHING" USERNAME/IMAGENAME:0.0.1
+iron register USERNAME/IMAGENAME:0.0.1
 {% endhighlight %}
 
 <h3 id="queue">5. Queue / Schedule jobs for your image</h3>
