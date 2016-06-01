@@ -5,7 +5,7 @@ section: mq-v3
 breadcrumbs:
   - ['index', 'Definitions']
 ---
-#mq/3/Glossary
+
 <section id="toc">
   <h3>Table of Contents</h3>
 <table>
