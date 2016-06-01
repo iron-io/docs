@@ -1,5 +1,5 @@
 ---
-title: IronMQ Glossary
+title: IronMQ v3 Glossary
 layout: default
 section: mq-v3
 breadcrumbs:
@@ -56,7 +56,7 @@ breadcrumbs:
 </table>
 </section>
 
-<h3>Definitions</h3>
+
 
 <p id="body"><b>Body</b> - The data of the message being pushed or pulled</p>
 
