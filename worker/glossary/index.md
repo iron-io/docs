@@ -98,7 +98,7 @@ breadcrumbs:
 
 <p id="contentlength"><b>Content-Length</b> - When uploading or updating a code package, the request needs this added to the header. It is used for the number of bytes in your JSON-encoded request body
 
-<p id="contenttype"><b>Content-Type - When uploading or updating a code package, the request needs this added to the header. It should be set to "multipart/form-data ; boundary={Insert Value Here}" with boundary set to an appropriate value
+<p id="contenttype"><b>Content-Type</b> - When uploading or updating a code package, the request needs this added to the header. It should be set to "multipart/form-data ; boundary={Insert Value Here}" with boundary set to an appropriate value
 
 <p id="Default_priority"><b>Default_priority</b> - The default priority of the tasks running this code. Valid values are 0, 1, and 2. The priority of the task can be set when queueing the task. If it's not set when queueing the task, the default priority is used
 
@@ -122,7 +122,7 @@ breadcrumbs:
 
 <p id="image"><b>Image</b> - This is the docker image you will be running your workers in
 
-<p id="killed"><b>Killed</.b> - This is the task status when a task is killed by the system
+<p id="killed"><b>Killed</b> - This is the task status when a task is killed by the system
 
 <p id="max_concurrency"><b>Max_concurrency</b> - The maximum number of workers that should be run in parallel
 
