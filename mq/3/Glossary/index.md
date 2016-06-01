@@ -64,7 +64,7 @@ breadcrumbs:
 
 <p id="dead_letter"><b>dead_letter</b> - A queue that other (source) queues can target to send messages that for some reason could not be successfully processed. A primary benefit of using a dead letter queue is the ability to sideline and isolate the unsuccessfully processed messages
 
-<p id="delay">Delay</b> - The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days)
+<p id="delay"><b>Delay</b> - The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days)
 
 <p id="delete"><b>Delete</b> - Removal of message and it’s reservation ID
 
