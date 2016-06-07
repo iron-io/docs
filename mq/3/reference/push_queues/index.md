@@ -69,7 +69,7 @@ Here are some examples:
 
 <h2 id="push_queue_settings">Push Queue Settings</h2>
 
-To turn a queue into a push queue (or create one), POST to your queue endpoint with the following parameters:
+To create a push queue, POST to your queue endpoint with the following parameters:
 
 - `subscribers` - required - an array of hashes containing subscribers. eg: `{"name": "my-subscriber", "url": "http://myserver.com/endpoint"}`.
 **WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints (URLs)
