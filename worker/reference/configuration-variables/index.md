@@ -51,19 +51,18 @@ iron worker upload --config-file config.json --name myworker --zip myworker.zip 
 <p>and you should see in the upload logs that your configuration variables were uploaded with your worker</p>
 <img src="/images/worker/reference/iron-worker-config-vars.png" alt="config-uploaded">
 
-When your task is run, a file containing this configuration will be available to your worker and the location of this file will be provided via the program args right after `-config`. For example, to load your config with Ruby:
+When your task is run, a file containing this configuration will be available to your worker and the location of this file will be provided via `CONFIG_FILE` environment variable. 
 
-```ruby
-require 'json'
-config = {}
-ARGV.each_with_index do |arg, i|
-  if arg == "-config"
-    config = JSON.parse(IO.read(ARGV[i+1]))
-  end
-end
-```
+To get the contents of your config, you need to:
 
-All of our client libraries provide helper methods to make it easy to access.
+1. Read the `CONFIG_FILE` environment variable using whatever your language uses to read env variables. 
+2. Open and read the file specified by the `CONFIG_FILE` variable
+3. Parse the contents of the file as JSON
+
+Most of our [client libraries](/worker/libraries/) have helper methods to help with this, see your client libs docs for more information.
+
+*Note: Instead of JSON you are free to use any other format like [YAML](http://yaml.org/), 
+ though it may not be supported by the client libs and you will have to parse the content by yourself*
 
 <h2 id="#config-via-hud">Set config variables in the Iron.io HUD aka dashboard</h2>
 <p>it is often times useful to change configuration variables without having to reupload your code. We allow you to do so visually with our HUD (dashboard) by following two simple steps.</p>
