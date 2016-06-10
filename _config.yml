@@ -1,7 +1,7 @@
 permalink: /:title
 domain: "dev.iron.io"
 google_cse_id: 012672112220120861281:u1mwwky5lri
-highlighter: pygments
+highlighter: rouge
 markdown: kramdown
 
 exclude: ['partner_docs', 'bundle']
