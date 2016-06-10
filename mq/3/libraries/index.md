@@ -25,6 +25,9 @@ These are some unofficial client libraries.
 
 <div><ul>
 <li>
+  <a href="http://camel.apache.org/ironmq.html" target="_blank">Apache Camel Component</a>
+</li>
+<li>
   <a href="https://github.com/efficiosro/clj-ironmq" target="_blank">Clojure - clj-ironmq</a>
   by <a href="https://github.com/featalion" target="_blank">Yury Yantsevich</a>
 </li>
