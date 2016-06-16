@@ -889,6 +889,7 @@ Sample:
     "schedule_id": "52f02c01c872fd67b5020c06",
     "log_size": 1000,
     "message_id": "6000008730003365393",
+    "label": "optionalLabel"
     "payload": "{\"foo\":\"bar\"}",
     "updated_at": "2012-11-10T18:31:08.064Z",
     "created_at": "2012-11-10T18:30:43.089Z"
