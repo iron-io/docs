@@ -21,8 +21,9 @@ breadcrumbs:
 <h2 id="overview">Overview</h2>
 
 A dead letter queue is a queue that other (source) queues can target to send
-messages that for some reason could not be successfully processed. Messages
-that have exceeded the allowed number of time outs on the source queue are
+messages that for some reason could not be successfully processed. Dead letter
+queues can only be used as a target from a pull queue. Messages that have
+exceeded the allowed number of time outs on the source queue are
 placed onto the dead letter queue. Messages on the dead letter queue can then
 be processed again or analyzed to try to determine why they weren't
 successfully processed in the first place, without having to throw them away.
