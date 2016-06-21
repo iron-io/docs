@@ -10,63 +10,63 @@ breadcrumbs:
   <h3>Table of Contents</h3>
 <table>
 <tbody>
-	<tr>
-		<td>
+      <tr>
+            <td>
       <ul>
-        <li><a href="#body">Body</a></li>
-        <li><a href="#clear">Clear Messages</a></li>
-        <li><a href="#dead_letter">Dead_letter</a></li>
-        <li><a href="#delay">Delay</a></li>
-        <li><a href="#delete">Delete</a></li>
-        <li><a href="#error_queue">Error_queue</a></li>
+        <li><a href="#body">body</a></li>
+        <li><a href="#clear">clear messages</a></li>
+        <li><a href="#dead_letter">dead_letter</a></li>
+        <li><a href="#delay">delay</a></li>
+        <li><a href="#delete">delete</a></li>
+        <li><a href="#error_queue">error_queue</a></li>
         <li><a href="#header">Header</a></li>
-        <li><a href="#max_reservations">Max_reservations</a></li>
-        <li><a href="#message_expiration">Message_expiration</a></li>
-        <li><a href="#message_timeout">Message_timeout</a></li>
-        <li><a href="#multicast">Multicast</a></li>
+        <li><a href="#max_reservations">max_reservations</a></li>
+        <li><a href="#message_expiration">message_expiration</a></li>
+        <li><a href="#message_timeout">message_timeout</a></li>
+        <li><a href="#multicast">multicast</a></li>
         <li><a href="#n">n</a></li>
-        <li><a href="#per_page">Per_page</a></li>
-        <li><a href="#prefix">Prefix</a></li>
+        <li><a href="#per_page">per_page</a></li>
+        <li><a href="#prefix">prefix</a></li>
         <li><a href="#previous">Previous</a></li>
         <li><a href="#pull">Pull Queue</a></li>
       </ul>
     </td>
-		<td>
+            <td>
     <ul>
-      <li><a href="#push_headers">Push_headers</a></li>
-      <li><a href="#queue_name">Queue_name</a></li>
+      <li><a href="#push_headers">push_headers</a></li>
+      <li><a href="#queue_name">queue_name</a></li>
       <li><a href="#queue">Queue</a></li>
       <li><a href="#release">Release Message</a></li>
-      <li><a href="#reservation_id">Reservation_id</a></li>
-      <li><a href="#reserved_count">Reserved_count</a></li>
-      <li><a href="#retries_delay">Retries_delay</a></li>
-      <li><a href="#retries">Retries</a></li>
-      <li><a href="#subscriber_name">Subscriber_name</a></li>
+      <li><a href="#reservation_id">reservation_id</a></li>
+      <li><a href="#reserved_count">reserved_count</a></li>
+      <li><a href="#retries_delay">retries_delay</a></li>
+      <li><a href="#retries">retries</a></li>
+      <li><a href="#subscriber_name">subscriber_name</a></li>
       <li><a href="#subscriber">Subscriber</a></li>
       <li><a href="#timeout">Timeout</a></li>
-      <li><a href="#total_messages">Total_messages</a></li>
+      <li><a href="#total_messages">total_messages</a></li>
       <li><a href="#touch">Touch Message</a></li>
       <li><a href="#type">Type</a></li>
       <li><a href="#unicast">Unicast</a></li>
-      <li><a href="#wait">Wait</a></li>
+      <li><a href="#wait">wait</a></li>
     </ul>
     </td>
-	</tr>
+      </tr>
 </tbody>
 </table>
 </section>
 
 
 
-<p id="body"><b>Body</b> - The data of the message being pushed or pulled</p>
+<p id="body"><b>body</b> - The data of the message being pushed or pulled</p>
 
 <p id="clear"><b>Clear Messages</b> - This endpoint will remove all messages from a queue
 
 <p id="dead_letter"><b>dead_letter</b> - A queue that other (source) queues can target to send messages that for some reason could not be successfully processed. A primary benefit of using a dead letter queue is the ability to sideline and isolate the unsuccessfully processed messages
 
-<p id="delay"><b>Delay</b> - The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days)
+<p id="delay"><b>delay</b> - The item will not be available on the queue until this many seconds have passed. Default is 0 seconds. Maximum is 604,800 seconds (7 days)
 
-<p id="delete"><b>Delete</b> - Removal of message and it’s reservation ID
+<p id="delete"><b>delete</b> - Removal of message and it’s reservation ID
 
 <p id="error_queue"><b>error_queue</b> - The name of another queue where information about messages that can't be delivered after retrying retries number of times will be placed. Please note, error queue will not appear in the hud.iron.io until first error occurs
 
@@ -78,13 +78,13 @@ breadcrumbs:
 
 <p id="message_timeout"><b>message_timeout</b> - How many seconds new reservation will be valid
 
-<p id="multicast"><b>Multicast</b> - An option for Push queues. This is a routing pattern that will push the messages to all the subscribers
+<p id="multicast"><b>multicast</b> - An option for Push queues. This is a routing pattern that will push the messages to all the subscribers
 
 <p id="n"><b>n</b> - The maximum number of messages to get. Default is 1. Maximum is 100. Note: You may not receive all n messages on every request, the more sparse the queue, the less likely you are to receive all n messages
 
 <p id="per_page"><b>per_page</b> - Number of elements in response, default is 30
 
-<p id="prefix"><b>Prefix</b> - An optional queue prefix to search on. e.g., prefix=ca could return queues ["cars", "cats", etc.]
+<p id="prefix"><b>prefix</b> - An optional queue prefix to search on. e.g., prefix=ca could return queues ["cars", "cats", etc.]
 
 <p id="previous"><b>Previous</b> - When listing the queues, this is the last queue on the previous page
 
@@ -104,7 +104,7 @@ breadcrumbs:
 
 <p id="retries_delay"><b>retries_delay</b> - Time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds
 
-<p id="retries"><b>Retries</b> - Number of times to retry. Default is 3. Maximum is 10
+<p id="retries"><b>retries</b> - Number of times to retry. Default is 3. Maximum is 10
 
 <p id="subscriber_name"><b>subscriber_name</b> - This field could be used in case of push message processing acknowledge. When request from IronMQ Pusher is received, and subscriber endpoint returns HTTP 202 Accepted, message must be acknowledged, otherwise it will be pushed again
 
@@ -120,4 +120,4 @@ breadcrumbs:
 
 <p id="unicast"><b>Unicast</b> - A queue that will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered. If it fails, a different endpoint is tried immediately and this continues until a successful response is returned or all endpoints have been tried. If there is no successful response from all endpoints, then the message will be retried after retries_delay
 
-<p id="wait"><b>Wait</b> - Time to long poll for messages, in seconds. Max is 30 seconds. Default 0
+<p id="wait"><b>wait</b> - Time to long poll for messages, in seconds. Max is 30 seconds. Default 0
