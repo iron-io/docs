@@ -13,7 +13,7 @@ breadcrumbs:
             <tr>
 	     <td>
       <ul>
-      <li><a href="#version"</a>API Version</li>
+      <li><a href="#version">API Version</a></li>
       <li><a href="#cancelled">Cancelled</a></li>
       <li><a href="#cli">cli</a></li>
       <li><a href="#cluster">Cluster</a></li>
@@ -29,13 +29,13 @@ breadcrumbs:
       <li><a href="#end_at">End_at</a></li>
       <li><a href="#end_date">End_date</a></li>
       <li><a href="#endpoint">Endpoint</a></li>
-      <li><a href="#env_vars"</a>Env_vars</a></li>
-      <li><a href="#error"</a>Error</a></li>
-      <li><a href="#exponentialbackoff"</a>Exponential Backoff</a></li>
-      <li><a href="#from_time"</a>From_time</a></li>
-      <li><a href="#host"</a>Host</a></li>
-      <li><a href="#image"</a>Image</a></li>
-      <li><a href="#killed"</a>Killed</a></li>
+      <li><a href="#env_vars">Env_vars</a></li>
+      <li><a href="#error">Error</a></li>
+      <li><a href="#exponentialbackoff">Exponential Backoff</a></li>
+      <li><a href="#from_time">From_time</a></li>
+      <li><a href="#host">Host</a></li>
+      <li><a href="#image">Image</a></li>
+      <li><a href="#killed">Killed</a></li>
       </ul>
       </td>
       <td>
@@ -56,13 +56,13 @@ breadcrumbs:
       <li><a href="#run_every">Run_every</a></li>
       <li><a href="#running">Running</a></li>
       <li><a href="#runtime">Runtime</a></li>
-      <li><a href="#stack"</a>Stack</a></li>
-      <li><a href="#start_at"</a>Start_at</a></li>
-      <li><a href="#start_date"</a>Start_date</a></li>
-      <li><a href="#task"</a>Task</a></li>
-      <li><a href="#timeout"</a>Timeout</a></li>
-      <li><a href="#to_time"</a>To_time</a></li>
-      <li><a href="#urlparameters"</a>URL Parameters</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#start_at">Start_at</a></li>
+      <li><a href="#start_date">Start_date</a></li>
+      <li><a href="#task">Task</a></li>
+      <li><a href="#timeout">Timeout</a></li>
+      <li><a href="#to_time">To_time</a></li>
+      <li><a href="#urlparameters">URL Parameters</a></li>
       </ul>
       </td>
     </ul>
