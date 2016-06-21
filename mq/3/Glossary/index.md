@@ -120,4 +120,4 @@ breadcrumbs:
 
 <p id="unicast"><b>Unicast</b> - A queue that will try one endpoint in the set of subscribers. If it succeeds, that message is considered delivered. If it fails, a different endpoint is tried immediately and this continues until a successful response is returned or all endpoints have been tried. If there is no successful response from all endpoints, then the message will be retried after retries_delay
 
-<p id="wait"><b>wait</b> - Time to long poll for messages, in seconds. Max is 30 seconds. Default 0
+<p id="wait"><b>wait</b> - Time to long poll for messages, in seconds. Max is 30 seconds. The default is 0
