@@ -10,8 +10,8 @@ breadcrumbs:
   <h3>Table of Contents</h3>
 <table>
 <tbody>
-	<tr>
-		<td>
+            <tr>
+	     <td>
       <ul>
       <li><a href="#version"</a>API Version</li>
       <li><a href="#cancelled">Cancelled</a></li>
@@ -29,13 +29,13 @@ breadcrumbs:
       <li><a href="#end_at">End_at</a></li>
       <li><a href="#end_date">End_date</a></li>
       <li><a href="#endpoint">Endpoint</a></li>
-      <li><a href="#env_vars"</a>Env_vars</li>
-      <li><a href="#error"</a>Error</li>
-      <li><a href="#exponentialbackoff"</a>Exponential Backoff</li>
-      <li><a href="#from_time"</a>From_time</li>
-      <li><a href="#host"</a>Host</li>
-      <li><a href="#image"</a>Image</li>
-      <li><a href="#killed"</a>Killed</li>
+      <li><a href="#env_vars"</a>Env_vars</a></li>
+      <li><a href="#error"</a>Error</a></li>
+      <li><a href="#exponentialbackoff"</a>Exponential Backoff</a></li>
+      <li><a href="#from_time"</a>From_time</a></li>
+      <li><a href="#host"</a>Host</a></li>
+      <li><a href="#image"</a>Image</a></li>
+      <li><a href="#killed"</a>Killed</a></li>
       </ul>
       </td>
       <td>
@@ -56,17 +56,17 @@ breadcrumbs:
       <li><a href="#run_every">Run_every</a></li>
       <li><a href="#running">Running</a></li>
       <li><a href="#runtime">Runtime</a></li>
-      <li><a href="#stack"</a>Stack</li>
-      <li><a href="#start_at"</a>Start_at</li>
-      <li><a href="#start_date"</a>Start_date</li>
-      <li><a href="#task"</a>Task</li>
-      <li><a href="#timeout"</a>Timeout</li>
-      <li><a href="#to_time"</a>To_time</li>
-      <li><a href="#urlparameters"</a>URL Parameters</li>
+      <li><a href="#stack"</a>Stack</a></li>
+      <li><a href="#start_at"</a>Start_at</a></li>
+      <li><a href="#start_date"</a>Start_date</a></li>
+      <li><a href="#task"</a>Task</a></li>
+      <li><a href="#timeout"</a>Timeout</a></li>
+      <li><a href="#to_time"</a>To_time</a></li>
+      <li><a href="#urlparameters"</a>URL Parameters</a></li>
       </ul>
       </td>
     </ul>
-    </td>
+    
 	</tr>
 </tbody>
 </table>
