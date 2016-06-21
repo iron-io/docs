@@ -195,7 +195,7 @@ Then upload the zip you just created:
 iron worker upload [--zip myworker.zip] --name myworker DOCKER_IMAGE [COMMAND]
 {% endhighlight %}
 
-<h3 id="queuetwo">3. Queue Tasks for your Worker</h2>
+<h3 id="queuetwo">3. Queue Tasks for your Worker</h3>
 
 Now you get to queue up tasks/jobs for your Worker!
 
