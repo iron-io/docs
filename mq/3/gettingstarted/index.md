@@ -32,10 +32,12 @@ section: mq
 Before starting, you'll need to setup a couple of things. You only need to do this once.
 
 1. First we need to create a project to put this example into.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newProject.png'>
+<center>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newProject.png' style='width: 400px;'></center>
 
 Next, click the Hud and click the MQ 3 button next to the title to go to the project's dashboard.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dashButton.png'>
+<center>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dashButton.png' style='width: 400px;></center>
 
 Now lets create a directory on our loca computer to hold this project. I'm calling mine mqExample, but yours can be anything you'd like. After it's made, CD into it:
 {% highlight bash %}
@@ -44,7 +46,8 @@ $ cd mqExample
 {% endhighlight %}
 
 Great, the last thing we need to do to get ready is download the iron.json file and move it into that directory.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png'>
+<center>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png' style='width: 400px;></center
 {% highlight bash %}
 $ mv ~/Downloads/iron.json .
 {% endhighlight %}
@@ -77,10 +80,12 @@ $ ruby example.rb
 {% endhighlight %}
 
 Now, if you refresh your Dashboard, you should see that queue there waiting for you:
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newQueue.png'>
+<center>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newQueue.png' style='width: 400px;></center>
 
 You can click on the queue ame to see more information about that queue:
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/queueInfo.png'>
+<center>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/queueInfo.png' style='width: 400px;></center>
 
 <h2>Process/Consume the Messages</h2>
 From here, you can work with the queue via the Hud UI, or programatically, whichever you prefer. Because this is a demo I don't have anything consuming the messages, so let's use the Iron CLI to reserve and delete the message.
@@ -93,5 +98,6 @@ $ iron mq pop My_Very_First_Queue
 {% endhighlight %}
 
 If you watch the dashboard as you send that command, you'll see the mesage being removed in the realtime graph.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/postPop.png'>
+<center>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/postPop.png' style='width: 400px;></center>
 
