@@ -1,4 +1,4 @@
-]---
+---
 title: Getting Started with IronMQ v3
 layout: default
 section: mq
