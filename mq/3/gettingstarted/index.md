@@ -1,4 +1,4 @@
----
+]---
 title: Getting Started with IronMQ v3
 layout: default
 section: mq
@@ -47,7 +47,7 @@ $ cd mqExample
 
 Great, the last thing we need to do to get ready is download the iron.json file and move it into that directory.
 <center>
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png' style='width: 400px;'></center
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png' style='width: 400px;'></center>
 {% highlight bash %}
 $ mv ~/Downloads/iron.json .
 {% endhighlight %}
