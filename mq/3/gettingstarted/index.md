@@ -3,41 +3,21 @@ title: Getting Started with IronMQ v3
 layout: default
 section: mq
 ---
-
-
-
 <p>Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages. This example is in Ruby, but can be done in your language of choice. You can find all of our client libraries <a href='http://dev.iron.io/mq/3/libraries'>here</a>/</p>
 
 This is a VERY high level overview of a complex tool.
 
-<div class="flow-steps">
-    <div class="step">
-        <a class="number">1</a>
-        <a class="title">Create a Project and Setup Credentials</a>
-    </div>
-        <i class="icon-long-arrow-right icon-2x"></i>
 
-    <div class="step">
-        <a class="number">2</a>
-        <a class="title">Create a Queue and Add a Message</a>
-    </div>
-        <i class="icon-long-arrow-right icon-2x"></i>
-
-    <div class="step last">
-        <a class="number">3</a>
-        <a class="title">Process/Consume the Messages</a>
-    </div>
-</div>
 
 <h2>Create a Project and Setup Credentials</h2>
 
 Before starting, you'll need to setup a couple of things. You only need to do this once.
 
-First, create a project to put this example into.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newProject.png' style='width: 400px;'>
+First, create a project to put this example into.<br>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newProject.png' style='width: 400px; margin-left: -250px;'>
 
 Click the MQ 3 button next to the title to go to the project's dashboard.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dashButton.png' style='width: 400px;'>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dashButton.png' style='width: 400px; margin-left: 66px;'>
 
 Now lets create a directory on our local computer to hold this project. I'm calling mine mqExample, but yours can be anything you'd like. After it's made, CD into it:
 {% highlight bash %}
@@ -46,8 +26,8 @@ $ cd mqExample
 {% endhighlight %}
 
 
-Great, the last thing we need to is download the iron.json file and move it into that directory. For alternative ways, [please see the configuration page](/worker/reference/configuration/)
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png' style='width: 400px;'></center>
+Great, the last thing we need to is download the iron.json file and move it into that directory. For alternative ways, [please see the configuration page](/worker/reference/configuration/)<br>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png' style='width: 400px; margin-left: -142px;'>
 {% highlight bash %}
 $ mv ~/Downloads/iron.json .
 {% endhighlight %}
@@ -83,10 +63,10 @@ $ ruby example.rb
 
 
 Now, if you refresh your dashboard, you should see that queue waiting for you:
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newQueue.png' style='width: 400px;'>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newQueue.png' style='width: 400px; margin-left: 63px;'>
 
 You can click on the queue name to see more information about that queue:
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/queueInfo.png' style='width: 400px;'>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/queueInfo.png' style='width: 400px; margin-left: 75px;'>
 
 <h2>Process/Consume the Messages</h2>
 From here, you can work with the queue via the Hud UI, programatically, or the Iron CLI, whichever you prefer. Because I don't need this message for anything, I'll get rid of it.
