@@ -69,11 +69,11 @@ You can click on the queue name to see more information about that queue:
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/queueInfo.png' style='width: 400px; margin-left: 75px;'>
 
 <h2>Process/Consume the Messages</h2>
-From here, you can work with the queue via the Hud UI, programatically, or the Iron CLI, whichever you prefer. Because I don't need this message for anything, I'll get rid of it.
+From here, you can work with the queue via the Hud UI, programatically, or the Iron CLI, whichever you prefer. Because I don't need this message for anything, I'll get rid of it with the CLI.
 
 If you don't already have the CLI installed, [please click here](/worker/cli/) for installation instructions
 
-We'll be using the pop tool. For information on this speific tool as well as all of the other features in the CLI, please refer to their man pages(--help). 
+We'll be using the pop function. For information on this speific tool as well as all of the other features in the CLI, please refer to their man pages(--help). 
 {% highlight bash %}
 $ iron mq pop My_Very_First_Queue
 {% endhighlight %}
