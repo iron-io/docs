@@ -3,15 +3,14 @@ title: Getting Started with IronMQ v3
 layout: default
 section: mq
 ---
-<p>Connect your applications and processes with an elastic message queue. Decouple your processes and create a highly scalable system by passing messages. This example is in Ruby, but can be done in your language of choice. You can find all of our client libraries <a href='http://dev.iron.io/mq/3/libraries'>here</a>/</p>
+ronMQ is a enterprise grade message queue; it is highly available, persistent by design, with best-effort one-time delivery. IronMQ ties distributed systems together by providing reliable communication between your services and components.
 
-This is a VERY high level overview of a complex tool.
-
+This example is in Ruby, but can be done in your language of choice using one of our <a href='http://dev.iron.io/mq/3/libraries'>client libraries</a>.
 
 
 <h2>Create a Project and Setup Credentials</h2>
 
-Before starting, you'll need to setup a couple of things. You only need to do this once.
+Before starting, you will need to setup a couple of things. You only need to do this once.
 
 First, create a project to put this example into.<br>
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newProject.png' style='width: 400px; margin-left: 75;'>
@@ -19,7 +18,7 @@ First, create a project to put this example into.<br>
 Click the MQ 3 button next to the title to go to the project's dashboard.
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dashButton.png' style='width: 400px; margin-left: 19px;'>
 
-Now lets create a directory on our local computer to hold this project. I'm calling mine mqExample, but yours can be anything you'd like. After it's made, CD into it:
+Now lets create a directory on our local computer to hold this project. I am calling mine mqExample, but yours can be anything you would like. After it is made, CD into it:
 {% highlight bash %}
 $ mkdir mqExample
 $ cd mqExample
@@ -33,7 +32,7 @@ $ mv ~/Downloads/iron.json .
 {% endhighlight %}
 
 
-Now, we're all done with the setup process and can get to work.
+Now, we are all done with the setup process and can get to work.
 
 <h2>Create a Queue and Add a Message</h2>
 
@@ -69,16 +68,16 @@ You can click on the queue name to see more information about that queue:
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/queueInfo.png' style='width: 400px; margin-left: 75px;'>
 
 <h2>Process/Consume the Messages</h2>
-From here, you can work with the queue via the Hud UI, programatically, or the Iron CLI, whichever you prefer. Because I don't need this message for anything, I'll get rid of it with the CLI.
+From here, you can work with the queue via the Hud UI, programatically, or the Iron CLI, whichever you prefer. Because I do not need this message for anything, I will get rid of it with the CLI.
 
-If you don't already have the CLI installed, [please click here](/worker/cli/) for installation instructions
+If you do not already have the CLI installed, [please click here](/worker/cli/) for installation instructions
 
-We'll be using the pop function. For information on this speific tool as well as all of the other features in the CLI, please refer to their man pages(--help). 
+We will be using the pop function. For information on this speific tool as well as all of the other features in the CLI, please refer to their man pages(--help). 
 {% highlight bash %}
 $ iron mq pop My_Very_First_Queue
 {% endhighlight %}
 
 
-If you watch the dashboard as you send that command, you'll see the message being removed in the realtime data graph.<br>
+If you watch the dashboard as you send that command, you will see the message being removed in the realtime data graph.<br>
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/postPop.png' style='width: 400px;'>
 

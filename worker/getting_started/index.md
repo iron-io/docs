@@ -8,6 +8,8 @@ IronWorker is a container based distributed work-on-demand platform. We use Dock
 
 This getting started tutorial will walk you through the steps of writing custom code, testing it locally, deploying it to Iron, and queuing message to run tasks. 
 
+<hr style="margin: 3em auto; max-width: 70%">
+
 <p class="subtitle">Offload your tasks to the parallel-processing power of the elastic cloud. Write your code, then queue tasks against it&mdash;no servers to manage, no scaling to worry about.</p>
 
 <div class="flow-steps">
@@ -39,7 +41,7 @@ Before starting, you will need to setup a couple of things. You only need to do 
 
 <h2 id="hello">Hello World Worker</h2>
 
-This is a very simple hello world example worker in Ruby. You don't even need Ruby installed to try this example so give it a go!
+This is a very simple hello world example worker in Ruby. You do not even need Ruby installed to try this example so give it a go!
 All languages follow the same process so you will get an idea of how things work regardless.
 
 <h3 id="write">1. Write your custom Worker code</h3>
@@ -99,7 +101,7 @@ That's it, you have ran a worker on the IronWorker cloud platform!
 
 Now let's get into more detail.
 
-<h3 id="test">2. Write and Test your Worker</h3>
+<h3 id="test">2. Test your Worker</h3>
 
 IronWorker's <a href="/worker/reference/environment">environment</a> is a Linux Docker container that your task is executed in. Anything you write that runs inside of our published <a href="https://hub.docker.com/r/iron" target="_blank">Docker images</a> should run just the same as on IronWorker. The key here is getting it to run with the Docker commands below and sample payloads.
 
@@ -160,7 +162,7 @@ Now you can start queuing jobs or schedule recurring jobs for your image.
 iron worker queue --payload-file MY_PAYLOAD.json --wait USERNAME/IMAGENAME
 {% endhighlight %}
 
-Notice we don't use the image tag when queuing, this is so you can change versions without having to update all your code that's queuing up jobs for the image.
+Notice we do not use the image tag when queuing, this is so you can change versions without having to update all your code that's queuing up jobs for the image.
 
 The --wait parameter waits for the job to finish, then prints the output. You will also see a link to HUD where you can see all the rest of the task details along with the log output.
 
