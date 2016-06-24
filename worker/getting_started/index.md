@@ -4,7 +4,7 @@ layout: default
 section: worker
 ---
 
-<img style= "display: block; width: 250px; margin: 0 auto;"  src="/images/docker_logo.png" style=""/>
+<img style= "display: block; width: 250px; margin: 0 auto;"  src="https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dlogo.png" style=""/>
 
 <p class="subtitle">Offload your tasks to the parallel-processing power of the elastic cloud. Write your code, then queue tasks against it&mdash;no servers to manage, no scaling to worry about.</p>
 
@@ -189,7 +189,7 @@ Packing is pretty straightforward knowing that you got it working with the `dock
 zip -r myworker.zip .
 {% endhighlight %}
 
-Then upload the zip you just created:
+Then upload the zip you just created. You'll notice this command needs you to specify a Docker Image even though you are not using Docker. This is because Iron will still execute your task in a container and needs this information to properly run:
 
 {% highlight bash %}
 iron worker upload [--zip myworker.zip] --name myworker DOCKER_IMAGE [COMMAND]
