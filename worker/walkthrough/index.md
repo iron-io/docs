@@ -1,9 +1,9 @@
 ---
-title: IronWorker Hud Overview
+title: IronWorker Hud Walk-Through
 layout: default
 section: worker
 breadcrumbs:
-  - ['Hud', 'worker']
+  - ['Hud', 'worker','Walk-Through']
 ---
 
 When you first log into <a href="https://hud.iron.io">Hud</a>, you'll be taken to the Dashboard. Here you'll see  list of your projects as well as a usage indicator on the right. Click the "Worker" button to the right of the project name to move forward.
