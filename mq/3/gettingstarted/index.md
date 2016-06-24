@@ -79,6 +79,6 @@ $ iron mq pop My_Very_First_Queue
 {% endhighlight %}
 
 
-If you watch the dashboard as you send that command, you'll see the message being removed in the realtime data graph.
+If you watch the dashboard as you send that command, you'll see the message being removed in the realtime data graph.<br>
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/postPop.png' style='width: 400px;'>
 
