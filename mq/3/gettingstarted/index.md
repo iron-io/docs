@@ -14,7 +14,7 @@ This is a VERY high level overview of a complex tool.
 Before starting, you'll need to setup a couple of things. You only need to do this once.
 
 First, create a project to put this example into.<br>
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newProject.png' style='width: 400px; margin-left: -250px;'>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newProject.png' style='width: 400px; margin-left: 75;'>
 
 Click the MQ 3 button next to the title to go to the project's dashboard.
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dashButton.png' style='width: 400px; margin-left: 66px;'>
@@ -27,7 +27,7 @@ $ cd mqExample
 
 
 Great, the last thing we need to is download the iron.json file and move it into that directory. For alternative ways, [please see the configuration page](/worker/reference/configuration/)<br>
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png' style='width: 400px; margin-left: -142px;'>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/ironDown.png' style='width: 400px; margin-left: 78px;'>
 {% highlight bash %}
 $ mv ~/Downloads/iron.json .
 {% endhighlight %}
@@ -63,7 +63,7 @@ $ ruby example.rb
 
 
 Now, if you refresh your dashboard, you should see that queue waiting for you:
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newQueue.png' style='width: 400px; margin-left: 63px;'>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/newQueue.png' style='width: 400px; margin-left: 80px;'>
 
 You can click on the queue name to see more information about that queue:
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/queueInfo.png' style='width: 400px; margin-left: 75px;'>
@@ -80,5 +80,5 @@ $ iron mq pop My_Very_First_Queue
 
 
 If you watch the dashboard as you send that command, you'll see the message being removed in the realtime data graph.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/postPop.png' style='width: 400px;'>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/postPop.png' style='width: 400px; margin-left: 15px;'>
 
