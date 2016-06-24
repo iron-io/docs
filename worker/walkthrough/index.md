@@ -33,7 +33,7 @@ The tasks tab has a lot of information. When you first click into it, you're sho
 
 You can click the name of any of those workers to get more detailed information about it. From here, you can find all of the tasks for this worker. It includes completed tasks no matter what their status is. 
 <center>
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/hudWalkthrough/taskTab/taskList.png' style="width: 450px;"></cent
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/hudWalkthrough/taskTab/taskList.png' style="width: 450px;"></center>
 You can then click the name of any of those tasks to get the detailed information about them. From the task detail page, you can find a wealth of information about each task such as the cluster, payload and priority to name a few. You can also see the log.
 <center>
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/jpkImages/hudWalkthrough/taskTab/taskDetails.png' style="width: 450px;"></center>
