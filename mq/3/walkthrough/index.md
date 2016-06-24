@@ -1,9 +1,9 @@
 ---
-title: IronMQ v3 Hud Overview
+title: IronMQ v3 Hud Walk-Through
 layout: default
 section: 3
 breadcrumbs:
-  - ['Hud', 'mq']
+  - ['Hud', 'mq', 'Walk-Through']
 ---
 
 When you first log into <a href="https://hud.iron.io">Hud</a>, you'll be taken to the Dashboard. Here you'll see  list of your projects as well as a usage indicator on the right. Click the "MQ 3" button to the right of the project name to move forward.
