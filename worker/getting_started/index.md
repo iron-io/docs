@@ -3,8 +3,8 @@ title: Getting Started With IronWorker
 layout: default
 section: worker
 ---
-
-<img style= "display: block; width: 250px; margin-left: 135px;"  src="https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dlogo.png" style=""/>
+<center>
+<img style= "display: block; width: 250px; margin-left: 135px;"  src="https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/dlogo.png"/></center>
 
 <p class="subtitle">Offload your tasks to the parallel-processing power of the elastic cloud. Write your code, then queue tasks against it&mdash;no servers to manage, no scaling to worry about.</p>
 
