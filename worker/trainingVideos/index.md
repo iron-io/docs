@@ -6,14 +6,6 @@ section: worker
 
 Whether you're just getting started using Docker or you're an old pro, we've put together some training videos to help take you through the process. The videos range in complexity, so find the one that best fits your needs. If theres something you think would be helpful, send a message to <a href='mailto:support@iron.io'>support@iron.io</a> and we'll start making one. 
 
-
-<section id="toc">
-<h2 id='contents'>Sections</h2>
-<ul>
-	<li><a href="#Prerequisites">Prerequisites</a></li>
-	<li><a href="#vids">Current Videos</a></li>
-
-</ul></section>
  
 <h2 id='Prerequisites'>Prerequisites</h2>
 
