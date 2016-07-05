@@ -193,7 +193,6 @@ The following syntax is valid in `.worker` files:
             <code>"php-5.4"</code>
           </li>
           <li>
-          <li>
             <code>"node-0.10"</code>
           </li>
           <li>
@@ -202,9 +201,7 @@ The following syntax is valid in `.worker` files:
           <li>
             <code>"python-3.2"</code>
           </li>
-        </ul>
-      </td>
-    </tr>
+
 
     <tr id="syntax-name">
       <td>name</td>
