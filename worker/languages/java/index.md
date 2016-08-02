@@ -8,7 +8,7 @@ breadcrumbs:
 ---
 
 
-<b>This approach uses our depriciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/java'>https://github.com/iron-io/dockerworker/tree/master/java</a> for the current process</b>
+<b>This approach uses our depreciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/java'>https://github.com/iron-io/dockerworker/tree/master/java</a> for the current process</b>
 
 .Java has become one of the most popular languages in the enterprise. With Java workers, you can use the same tools your enterprise software uses, but with the power of the cloud behind it.
 
