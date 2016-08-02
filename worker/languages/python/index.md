@@ -7,6 +7,8 @@ breadcrumbs:
   - ['Python', '/python']
 ---
 
+<b>This approach uses our depreciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/python'>https://github.com/iron-io/dockerworker/tree/master/[ython</a> for the current process.</b>
+
 Python has become one of the most popular languages for web software and scientific or mathematical computing.
 By offloading tasks to IronWorker, computations and requests can be run in parallel using the power of the cloud.
 This article will get you started writing Python workers, but you should be familiar with the [basics of IronWorker](/worker).
