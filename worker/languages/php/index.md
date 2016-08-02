@@ -7,6 +7,8 @@ breadcrumbs:
   - ['PHP', '/php']
 ---
 
+<b>This approach uses our depreciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/php'>https://github.com/iron-io/dockerworker/tree/master/php</a> for the current process.</b>
+
 PHP has grown to be one of the most popular languages to write web software in.
 You can add some power to your current PHP application using PHP workers on IronWorker.
 This article will help you get started with PHP workers, but you should be familiar with the [basics of IronWorker](/worker).
