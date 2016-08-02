@@ -7,6 +7,8 @@ breadcrumbs:
   - ['Ruby', '/ruby']
 ---
 
+<b>This approach uses our depreciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/ruby'>https://github.com/iron-io/dockerworker/tree/master/ruby</a> for the current process.</b>
+
 Ruby was the first language supported on IronWorker, and a lot of IronWorker's tools are written in Ruby.
 It is probably the easiest language to get your worker running in, as it is the most-supported language on the platform.
 This article will walk you through the specifics of things, but you should be familiar with the [basics of IronWorker](/worker).
