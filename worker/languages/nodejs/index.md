@@ -7,6 +7,8 @@ breadcrumbs:
   - ['Node.js', '/nodejs']
 ---
 
+<b>This approach uses our depreciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/node'>https://github.com/iron-io/dockerworker/tree/master/node</a> for the current process.</b>
+
 <span class="notice-highlight">
 Notice -- For the NPM Certificate Error. Please use the following in your ".worker" file, instead of <code>build "npm install"</code>:
 </span>
