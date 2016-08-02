@@ -7,6 +7,8 @@ breadcrumbs:
   - ['.NET', '/dotnet']
 ---
 
+<b>This approach uses our depreciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/mono'>https://github.com/iron-io/dockerworker/tree/master/mono</a> for the current process</b>
+
 .NET is a framework from Microsoft that is the de-facto standard for writing software that runs on Windows, Windows Server, and Windows Phone. Now you can integrate your existing .NET codebase with IronWorker, without needing to learn a new language. This article will walk you through getting .NET workers running on IronWorker, but you should still take the time to familiarise yourself with the [basics of IronWorker](/worker).
 
 <section id="toc">
