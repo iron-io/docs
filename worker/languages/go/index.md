@@ -7,6 +7,8 @@ breadcrumbs:
   - ['Go', '/go']
 ---
 
+<b>This approach uses our depreciated workflow. Please see <a href='https://github.com/iron-io/dockerworker/tree/master/go'>https://github.com/iron-io/dockerworker/tree/master/go</a> for the current process.</b>
+
 The [Go](http://www.golang.org) programming language is a fast, statically typed, compiled language with an emphasis on concurrency. It's a great language for cloud systems (we use it here at Iron.io!) and is a natural fit for workers.
 
 Go Workers need to be compiled, then uploaded. Once they're uploaded to the
