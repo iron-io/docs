@@ -29,3 +29,4 @@ With a few simple steps, you can set up a PagerDuty trigger to be set off on any
 
 <li>This will show in PagerDuty
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/incident.png'  style="width: 70%;padding-top: 10px;"></li>
+<ol>
