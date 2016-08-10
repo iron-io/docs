@@ -29,6 +29,6 @@ With a few simple steps, you can set up a PagerDuty trigger to be set off on any
 <li style="margin-top:60px;">Now, just turn on the switch and your next failed task will create a PagerDuty Incident
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/active.png'  style="width: 90%;padding-top: 10px;"></li>
 
-<li style="margin-top:60px;">This will show in PagerDuty
+<li style="margin-top:60px;">This will show in PagerDuty<br>
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/incident.png'  style="width: 70%;padding-top: 10px;"></li>
 <ol>
