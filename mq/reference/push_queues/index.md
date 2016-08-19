@@ -249,7 +249,7 @@ See our <a href="http://localhost:4000/mq/reference/push_queues/#error_queues">E
 <ol style="list-style-type: none">
   <li><strong>Step 1:</strong> go to <a href="http://requestb.in/">http://requestb.in/</a> and click on "Create a RequestBin <br><img src="/images/mq/reference/troubleshooting/step-1.png" alt="push queue troubleshooting step 1">  </li>
   <li><strong>Step 2:</strong> copy the unique url<br> <img src="/images/mq/reference/troubleshooting/step-2.png" alt="push queue troubleshooting step 2"></li>
-  <li><strong>Step 3:</strong> paste it as a subscriber endpoint on your queue. This example shows us pasting it via the hud/dashboard interface but you an do the same using th raw api.<br><img src="/images/mq/reference/troubleshooting/step-3.png" alt="push queue troubleshooting step 3" width="100%"></li>
+  <li><strong>Step 3:</strong> paste it as a subscriber endpoint on your queue. This example shows us pasting it via the hud/dashboard interface but you an do the same using the raw API.<br><img src="/images/mq/reference/troubleshooting/step-3.png" alt="push queue troubleshooting step 3" width="100%"></li>
   <li><strong>Step 4:</strong> post a message to your push queue, return to your unique RequestBin's inspect page. Here you will be able to view and inspect your the headers and response body amongst other very useful information about your push queue's request.
     <img src="/images/mq/reference/troubleshooting/step-4.png" width="100%" alt="push queue troubleshooting step 4"></li>
 </ol>
