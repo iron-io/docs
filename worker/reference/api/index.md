@@ -1261,7 +1261,5 @@ The response will be a JSON object.
 Sample:
 
 ```js
-{
-  ["scala-2.9","ruby-2.1","ruby-1.9","python-3.2","python-2.7","php-5.4","node-0.10","java-1.7","mono-3.0","mono-2.10"]
-}
+["scala-2.9","ruby-2.1","ruby-1.9","python-3.2","python-2.7","php-5.4","node-0.10","java-1.7","mono-3.0","mono-2.10"]
 ```
