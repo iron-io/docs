@@ -79,6 +79,19 @@ iron worker upload --retries 5 --retries-delay 10 ...
 There are additional options available to the upload command; you can find
 a list of them by running `iron worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
+<h2 id='creating__uploading_code_packages'>Creating and Uploading Code Packages</h2>
+
+Once your code has been written, you will want to use the CLI to upload your code package into Iron.io. The first thing you'll do is compress the directory you are working in (assumming this directory is only for this worker) by running
+```sh
+zip -r helloworker.zip .
+```
+
+Now that our code ius ready, ut's time to uplod it to Iron.io
+```sh
+iron worker upload [--zip rubies.zip] --name myworker DOCKER_IMAGE [COMMAND]
+
+```
+
 <h2 id="upload_with_multiple_environments">Upload with Multiple Environments</h2>
 
 It is common to want to use IronWorker across many different development environments.
