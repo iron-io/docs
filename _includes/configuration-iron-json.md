@@ -154,12 +154,12 @@ It is useful to quickly change your host in cases where your region has gone dow
 <p>If want to set the Host, Post, and Protocol specifically, simply include those keys in that project's <span class="fixed-width">iron.json</span> file:</p>
 
 <figcaption><span>iron.json </span></figcaption>
-{% highlight js %}
+{% highlight json %}
 {
   "project_id": "PROJECT ID HERE",
   "token": "YOUR TOKEN HERE"
   "port":443,
   "protocol": "https",
-  "host":"mq-rackspace-ord.iron.io"
+  "scheme":"mq-rackspace-ord.iron.io"
 }
 {% endhighlight %}
