@@ -157,7 +157,7 @@ It is useful to quickly change your host in cases where your region has gone dow
 {% highlight json %}
 {
   "project_id": "PROJECT ID HERE",
-  "token": "YOUR TOKEN HERE"
+  "token": "YOUR TOKEN HERE",
   "port":443,
   "protocol": "https",
   "scheme":"mq-rackspace-ord.iron.io"
