@@ -572,6 +572,7 @@ Sample:
     "running": 1,
     "cancelled": 0,
     "timeout": 0,
+    "error": 0,
     "complete": 1
 }
 ```
