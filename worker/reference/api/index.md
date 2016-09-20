@@ -264,7 +264,7 @@ The success failure for request is indicated by an HTTP status code. A 2xx statu
 ### Errors
 In the event of an error, the appropriate status code will be returned with a body containing more information. An error response is structured as follows:
 
-```js
+```json
 {
     "msg": "reason for error"
 }
@@ -307,7 +307,7 @@ The response will be a JSON object. The `codes` property will contain a JSON arr
 
 Sample:
 
-```js
+```json
 {
     "codes": [
         {
@@ -382,7 +382,7 @@ Your request also needs the following headers, in addition to the headers requir
 Content-Disposition: form-data; name="data"
 Content-Type: text/plain; charset=utf-8
 ```
-```js
+```json
 {
     "file_name": "MyWorker.rb",
     "name": "MyWorker",
@@ -407,7 +407,7 @@ The response will be a JSON object containing a `msg` property that contains a d
 
 Sample:
 
-```js
+```json
 {
     "msg": "Upload successful."
 }
@@ -432,7 +432,7 @@ The response will be a JSON object containing the details of the code package.
 
 Sample:
 
-```js
+```json
 {
     "id": "4eb1b241cddb13606500000b",
     "project_id": "4eb1b240cddb13606500000a",
@@ -464,7 +464,7 @@ The response will be a JSON object containing a message property explaining whet
 
 Sample:
 
-```js
+```json
 {
     "msg":"Deleted"
 }
@@ -515,7 +515,7 @@ The response will be a JSON object with a revisions property, containing a list 
 
 Sample:
 
-```js
+```json
 {
     "revisions": [
         {
@@ -566,7 +566,7 @@ The response will be a JSON object listing the amount of tasks in each of five p
 
 Sample:
 
-```js
+```json
 {
     "queued": 0,
     "running": 1,
@@ -597,7 +597,7 @@ The response will be a JSON object containing a message explaining whether the r
 
 Sample:
 
-```js
+```json
 {
     "msg": "Paused"
 }
@@ -627,7 +627,7 @@ The response will be a JSON object containing a message explaining whether the r
 
 Sample:
 
-```js
+```json
 {
     "msg": "Resumed"
 }
@@ -731,7 +731,7 @@ The response will be a JSON object. The `tasks` property will contain a JSON arr
 Sample:
 
 
-```js
+```json
 {
     "tasks": [
         {
@@ -788,7 +788,7 @@ The request also needs to be sent with a "Content-Type: application/json" header
 
 Sample:
 
-```js
+```json
 {
     "tasks": [
         {
@@ -805,7 +805,7 @@ The response will be a JSON object containing a `msg` property that contains a d
 
 Sample:
 
-```js
+```json
 {
     "msg": "Queued up",
     "tasks": [
@@ -848,7 +848,7 @@ The response will be a JSON object containing a `msg` property that contains a d
 
 Sample:
 
-```js
+```json
 {
     "id": "4f3595381cf75447be029da5",
     "msg":"Queued up."
@@ -874,7 +874,7 @@ The response will be a JSON object containing the details of the task.
 
 Sample:
 
-```js
+```json
 {
     "id": "4eb1b471cddb136065000010",
     "project_id": "4eb1b46fcddb13606500000d",
@@ -902,7 +902,7 @@ In the event of a failure, the response may contain additional information.
 
 Sample:
 
-```js
+```json
 {
     "id": "563d40a1fcd4b70007056f20",
     "created_at": "2015-11-07T00:06:57Z",
@@ -974,7 +974,7 @@ The response will be a JSON object containing a message explaining whether the r
 
 Sample:
 
-```js
+```json
 {
     "msg": "Cancelled"
 }
@@ -1005,7 +1005,7 @@ The request also needs to be sent with a `Content-Type: application/json` header
 
 Sample:
 
-```js
+```json
 {
     "percent": 25,
     "msg": "Any message goes here."
@@ -1018,7 +1018,7 @@ The response will be a JSON object containing a message explaining whether the r
 
 Sample:
 
-```js
+```json
 {
     "msg": "Progress set"
 }
@@ -1051,7 +1051,7 @@ The response will be a JSON object containing a message explaining whether the r
 
 Sample:
 
-```js
+```json
 {
     "msg": "Queued up",
     "tasks": [
@@ -1089,7 +1089,7 @@ The response will be a JSON object. The `schedules` property will contain a JSON
 
 Sample:
 
-```js
+```json
 {
     "schedules": [
         {
@@ -1149,7 +1149,7 @@ The request also needs to be sent with a `Content-Type: application/json` header
 Sample:
 
 
-```js
+```json
 {
   schedules: [
     {
@@ -1169,7 +1169,7 @@ The response will be a JSON object containing a `msg` property that contains a d
 Sample:
 
 
-```js
+```json
 {
     "msg": "Scheduled",
     "schedules": [
@@ -1199,7 +1199,7 @@ The response will be a JSON object containing the details of the scheduled task.
 
 Sample:
 
-```js
+```json
 {
     "id": "4eb1b490cddb136065000011",
     "created_at": "2011-11-02T21:22:51Z",
@@ -1237,7 +1237,7 @@ The response will be a JSON object containing a message explaining whether the r
 
 Sample:
 
-```js
+```json
 {
     "msg": "Cancelled"
 }
@@ -1261,7 +1261,7 @@ The response will be a JSON object.
 
 Sample:
 
-```js
+```json
 {
   ["scala-2.9","ruby-2.1","ruby-1.9","python-3.2","python-2.7","php-5.4","node-0.10","java-1.7","mono-3.0","mono-2.10"]
 }
