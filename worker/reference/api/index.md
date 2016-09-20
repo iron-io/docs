@@ -525,7 +525,7 @@ Sample:
             "rev": 1,
             "runtime": "ruby",
             "name": "MyWorker",
-            "file_name": "worker.rb",
+            "file_name": "worker.rb"
         },
         {
             "id": "4f32da021cf75447be020ea8",
@@ -534,7 +534,7 @@ Sample:
             "rev": 2,
             "runtime": "ruby",
             "name": "MyWorker",
-            "file_name": "worker.rb",
+            "file_name": "worker.rb"
         }
     ]
 }
@@ -890,7 +890,7 @@ Sample:
     "schedule_id": "52f02c01c872fd67b5020c06",
     "log_size": 1000,
     "message_id": "6000008730003365393",
-    "label": "optionalLabel"
+    "label": "optionalLabel",
     "payload": "{\"foo\":\"bar\"}",
     "updated_at": "2012-11-10T18:31:08.064Z",
     "created_at": "2012-11-10T18:30:43.089Z"
@@ -1151,12 +1151,12 @@ Sample:
 
 ```json
 {
-  schedules: [
+  "schedules": [
     {
-      payload : "{\"x\": \"abc\", \"y\": \"def\"}",
-      name: "MyScheduledTask",
-      code_name: "MyWorker"
-      run_every: 3600
+      "payload" : "{\"x\": \"abc\", \"y\": \"def\"}",
+      "name": "MyScheduledTask",
+      "code_name": "MyWorker",
+      "run_every": 3600
     }
   ]
 }
@@ -1262,7 +1262,5 @@ The response will be a JSON object.
 Sample:
 
 ```json
-{
   ["scala-2.9","ruby-2.1","ruby-1.9","python-3.2","python-2.7","php-5.4","node-0.10","java-1.7","mono-3.0","mono-2.10"]
-}
 ```
