@@ -1,8 +1,7 @@
-FROM razic/bundler
+FROM ruby
 
-RUN mkdir -p /iron/docs
-ADD Gemfile /iron/docs/Gemfile
-WORKDIR /iron/docs
+RUN mkdir -p /irondocs
+ADD . /irondocs
+WORKDIR /irondocs
+
 RUN bundle install
-
-ENTRYPOINT ["bundle"]
