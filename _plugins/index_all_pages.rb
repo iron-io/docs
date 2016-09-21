@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'json'
+require 'nokogiri'
+
 
 module Jekyll
 
@@ -97,7 +99,6 @@ module Jekyll
     end
   end
 end
-require 'nokogiri'
 
 module Jekyll
 
@@ -116,7 +117,6 @@ module Jekyll
   end
 
 end
-require 'nokogiri'
 
 module Jekyll
 

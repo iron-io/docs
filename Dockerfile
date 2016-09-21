@@ -1,8 +1,11 @@
-FROM razic/bundler
+FROM iron/ruby:dev
 
-RUN mkdir -p /iron/docs
-ADD Gemfile /iron/docs/Gemfile
-WORKDIR /iron/docs
+RUN apk update && apk upgrade 
+RUN apk add nodejs
+    
+WORKDIR /app
+ADD Gemfile* /app/
 RUN bundle install
 
-ENTRYPOINT ["bundle"]
+# ADD . /worker/
+ENTRYPOINT ["jekyll"]

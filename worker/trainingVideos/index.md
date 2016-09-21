@@ -10,19 +10,16 @@ Whether you're just getting started using Docker or you're an old pro, we've put
 <h2 id='Prerequisites'>Prerequisites</h2>
 
 
-Before moving forward, pleae ensure you've:<br />
- [Install the CLI tool](/worker/cli/) <br />
- [Setup your Iron.io credentials](/worker/reference/configuration/)<br />
- [Install Docker](https://docs.docker.com/installation/#installation)<br />
- [Created a Docker Hub Account](https://hub.docker.com/)
+Before moving forward, please ensure you've:
 
+* [Installed the CLI tool](/worker/cli/) <br />
+* [Setup your Iron.io credentials](/worker/reference/configuration/)<br />
+* [Installed Docker](https://docs.docker.com/installation/#installation)<br />
+* [Created a Docker Hub Account](https://hub.docker.com/)
 
 <h2 id='vids'>Current Video Selections</h2>
 
-
 <ul>
-<li id='helloWorld'> <a href='https://iron-1.wistia.com/medias/1n9ra6grpz' target="_blank">Hello World</a></li>
-
-<li id='custImg'><a href='https://iron-1.wistia.com/medias/em135thx45' target="_blank">Making Your First Custom Image</a></li>
-
-
+  <li id='helloWorld'> <a href='https://iron-1.wistia.com/medias/1n9ra6grpz' target="_blank">Hello World</a></li>
+  <li id='custImg'><a href='https://iron-1.wistia.com/medias/em135thx45' target="_blank">Making Your First Custom Image</a></li>
+</ul>

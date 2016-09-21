@@ -35,4 +35,4 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <h2 id="using_iron_json">Configuration using iron.json</h2>
 
-You can follow the <a href="/worker/reference/configuration-iron-json/index.html">configuration scheme</a> and set project_id, token and other parameters in iron.json file but using only environment variables is more preferred.
+You can follow the <a href="/worker/reference/configuration-iron-json/index.html">configuration scheme</a> and set project_id, token and other parameters in iron.json file but using only environment variables is preferred.

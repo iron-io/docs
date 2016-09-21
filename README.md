@@ -27,6 +27,13 @@ Development
 
 In the project directory, run `bundle exec jekyll serve --watch`. This will auto-reload as you make changes to files.
 
+## Using Docker to avoid the pain of installing things like nokogiri
+
+1. `docker build -t jekyll .`
+1. `docker run --rm -it -v "$PWD":/app -p 4000:4000 jekyll serve --watch --host 0.0.0.0`
+
+Note: to do a bundle update, run `docker run --rm -it -v "$PWD":/app -w /app iron/ruby:dev bundle update`
+
 Development using Cloud9 (http://c9.io)
 ---------------------------------------
 
