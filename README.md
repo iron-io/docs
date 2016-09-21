@@ -22,10 +22,16 @@ Launching
 1. In the project directory, run `bundle exec jekyll serve`
 2. Open your browser to <http://localhost:4000/>
 
-Development
+Contributing
 -----------
 
 In the project directory, run `bundle exec jekyll serve --watch`. This will auto-reload as you make changes to files.
+TODO: not sure if --watch is required anymore?
+
+Please submit all changes as Pull Requests. 
+
+Try not to use HTML unless it's required!  Use markdown for everything if possible. 
+
 
 ## Using Docker to avoid the pain of installing things like nokogiri
 
@@ -33,16 +39,3 @@ In the project directory, run `bundle exec jekyll serve --watch`. This will auto
 1. `docker run --rm -it -v "$PWD":/app -p 4000:4000 jekyll serve --watch --host 0.0.0.0`
 
 Note: to do a bundle update, run `docker run --rm -it -v "$PWD":/app -w /app iron/ruby:dev bundle update`
-
-Development using Cloud9 (http://c9.io)
----------------------------------------
-
-1. Fork https://github.com/iron-io/docs to your GitHub account.
-2. Log in (or sign up) at <http://c9.io> using GitHub.
-3. Click on 'docs' under 'PROJECTS ON GITHUB' in the left menu.
-4. Click the green 'CLONE TO EDIT' button.
-5. In the terminal, run `jekyll serve --watch --port $PORT`.
-
-When you are finished making your awesome edits, `git commit && git push`, then go back to GitHub to open a pull request.
-
-Easy as pie and you never even had to leave your browser!
