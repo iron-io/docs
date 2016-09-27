@@ -21,16 +21,22 @@ The Iron.io command line tool will help you interact with the IronWorker API to 
 Hybrid IronWorker enables you to get all the power and benefits of IronWorker platform while running your workloads on your own hardware. You can run them on your own servers on any cloud or even in your own datacenter, behind the firewall.
 
 <section id="installing">
+
 ## Install and Setup
+
 It's very easy to get started using Hybrid IronWorker. Just follow the steps below to get started.
 
 NOTE: You must have Hybrid access enabled on your account. Email <a href='mailto:support@iron.io">support@iron.io</a> to upgrade your account.
 
 <h3 id='createCluster'>Create a Cluster</h3>
 Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click your name in the top right and then click Clusters. You'll see a list of existing clusters if any and a link to Create a new one. Click the Create Cluster link. Fill out the form and submit it. You'll get a `CLUSTER_ID` and `CLUSTER_TOKEN` that you'll need in the next steps.
+</section>
 
-<h3 id='launchImage'>Launch the iron/runner image</h3>
+<section id='launchImage'>
+### Launch the iron/runner image
+
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
+
 ```sh
 docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" iron/runner
 ```
