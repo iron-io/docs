@@ -20,9 +20,8 @@ The Iron.io command line tool will help you interact with the IronWorker API to 
 # Hybrid IronWorker
 Hybrid IronWorker enables you to get all the power and benefits of IronWorker platform while running your workloads on your own hardware. You can run them on your own servers on any cloud or even in your own datacenter, behind the firewall.
 
-<section id="installing">
 
-## Install and Setup
+<h2 id='installing'>Install and Setup</h2>
 
 It's very easy to get started using Hybrid IronWorker. Just follow the steps below to get started.
 
@@ -33,7 +32,7 @@ Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click y
 </section>
 
 <section id='launchImage'>
-### Launch the iron/runner image
+<h3 id='launch'>Launch the iron/runner image</h3>
 
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
 
@@ -47,8 +46,7 @@ That's it!  Launch as many of these as you want/need.
 </section>
 
 
-<section id='usingNewCluster'>
-## Using Your New Cluster
+<h2 id='usingNewCluster>Using Your New Cluster</h2>
 Everything is the same as using IronWorker on the public cloud, except When queuing jobs,
 simply pass in the `CLUSTER_ID` in the "cluster" param ([API docs](http://dev.iron.io/worker/reference/api/#queue_a_task)).
 Here is a quick example you can use with [IronCLI]
@@ -66,8 +64,7 @@ iron worker queue --cluster CLUSTER_ID --wait iron/hello
 ```
 </section>
 
-<section id='aws'>
-## Running on AWS
+<h2 id='aws'>Running on AWS</h2>
 Nothing special is required to run on AWS, the same steps apply above, but you can use the following
 cloud-init/User Data script to install Docker and start IronWorker.
 This has been tested on Ubuntu 15.04 and 14.04 AMI.
@@ -81,11 +78,10 @@ sudo docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN=#
 ```
 </section>
 
-<section id='encryption'>
-## End-to-End encryption of task payloads
+<h2 id='encryption'>End-to-End encryption of task payloads</h2>
 While it's possible to do end to end encryption of payloads yourself, we do offer a convenient way to help  accomplish this. Currently, we support a scheme similar to  [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) via [IronCLI] and the hybrid runner, with the encryption and decryption keys never reaching the cloud. Our scheme provides encryption as well as authentication, which means not only can you trust that payloads were hidden from prying eyes, but you can also verify that they came from where you sent them from.
 
-#### Basics
+<h4 id='basics'>Basics</h4>
 
 We use RSA, a public key encryption scheme that is hard to break until quantum
 computing robots figure out how to factor prime numbers and take over the world.
@@ -100,7 +96,7 @@ Below is a good diagram of how it works:
 
 ![pgp-diagram](pgp.png)
 
-#### Getting Started
+<h4 id='started'>Getting Started</h4>
 
 To get started, you'll need to generate an RSA key pair that is not password
 protected (reiterate: no password). The easiest way to do this is with
