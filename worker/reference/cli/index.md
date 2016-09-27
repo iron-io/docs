@@ -1,185 +1,186 @@
 ---
-title: IronWorker Hybrid Installation and Usage
+title: The IronWorker Command Line Tool
 layout: default
 section: worker
-breadcrumbs: hybrid, hybrid-worker
-
+breadcrumbs:
+  - ['Reference', '/reference']
+  - ['Command Line', 'cli']
 ---
 
 The Iron.io command line tool will help you interact with the IronWorker API to make creating workers easier.
+
 <section id="toc">
   <h3>Table of Contents</h3>
   <ul>
-    <li><a href="#installing">Install and Setup</a></li>
-    <li><a href="#usingNewCluster">Using your new Cluster</a></li>
-    <li><a href="#aws">Running on AWS</a></li>
-    <li><a href="#encryption">End-to-End encryption of task payloads</a></li>
+    <li><a href="#installing">Installing</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#creating__uploading_code_packages">Creating and Uploading Code Packages</a></li>
+    <li><a href="#upload_with_multiple_environments">Upload with Multiple Environments</a></li>
+    <li><a href="#queuing_tasks">Queuing Tasks</a></li>
+    <li><a href="#scheduling_tasks">Scheduling Tasks</a></li>
+    <li><a href="#retrieving_a_tasks_log">Retrieving a Task's Log</a></li>
   </ul>
 </section>
 
-# Hybrid IronWorker
-Hybrid IronWorker enables you to get all the power and benefits of IronWorker platform while running your workloads on your own hardware. You can run them on your own servers on any cloud or even in your own datacenter, behind the firewall.
+<h2 id="installing">Installing</h2>
 
-
-<h2 id='installing'>Install and Setup</h2>
-
-It's very easy to get started using Hybrid IronWorker. Just follow the steps below to get started.
-
-NOTE: You must have Hybrid access enabled on your account. Email <a href="mailto:support@iron.io">support@iron.io</a> to upgrade your account.
-
-<h3 id='createCluster'>Create a Cluster</h3>
-Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click your name in the top right and then click Clusters. You'll see a list of existing clusters if any and a link to Create a new one. Click the Create Cluster link. Fill out the form and submit it. You'll get a `CLUSTER_ID` and `CLUSTER_TOKEN` that you'll need in the next steps.
-</section>
-
-<section id='launchImage'>
-<h3 id='launch'>Launch the iron/runner image</h3>
-
-On any machine that has Docker installed, just run our iron/runner image with the following flags:
+The new [Iron cli](https://github.com/iron-io/ironcli) tool has an easy installer:
 
 ```sh
-docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" iron/runner
+curl -sSL http://get.iron.io/cli | sh
 ```
-Replace `{CLUSTER_ID}` and `{CLUSTER_TOKEN}` with the id and token you obtained in step 1 above.
 
-That's it!  Launch as many of these as you want/need.
-</section>
+You can find downloads if you don't want to install it with the above command in the ironcli repo.
 
+You'll also need [Docker](http://docker.com) installed on your machine to test your workers.
 
-<h2 id='usingNewCluster'>Using Your New Cluster</h2>
-Everything is the same as using IronWorker on the public cloud, except When queuing jobs,
-simply pass in the `CLUSTER_ID` in the "cluster" param ([API docs](http://dev.iron.io/worker/reference/api/#queue_a_task)).
-Here is a quick example you can use with [IronCLI]
-
-First register your worker Docker image. You can use the example worker image as is with the commands below:
+You should be all set up now. To check your installation, run the following:
 
 ```sh
-iron register iron/hello
+iron --version
 ```
 
-Example from the cli:
+<h2 id="configuration">Configuration</h2>
+
+The command line tool follows the global
+[configuration scheme](/worker/reference/configuration) that all official libraries
+use. You can configure the tool by creating an `iron.json` file in the
+directory of your worker, an `.iron.json` file in your home directory,
+or the environment variables. For example, to override the project ID for a
+single command, you could run the following:
 
 ```sh
-iron worker queue --cluster CLUSTER_ID --wait iron/hello
+IRON_PROJECT_ID=new_project_id_here iron worker upload --zip myworker.zip --name myworker iron/images:ruby-2.1 ruby myworker.rb
 ```
 
+The same applies to the `IRON_TOKEN` environment variable.
 
-<h2 id='aws'>Running on AWS</h2>
-Nothing special is required to run on AWS, the same steps apply above, but you can use the following
-cloud-init/User Data script to install Docker and start IronWorker.
-This has been tested on Ubuntu 15.04 and 14.04 AMI.
+Where `$WORKER` is replaced by the name of your packaged worker zip and `$COMMAND` is the command you want executed, the same
+one you used with `docker run`.
 
-```
-#!/bin/sh
-curl -sSL https://get.docker.com/ | sh
-sudo service docker start
-echo \"Starting runners\"
-sudo docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN=#{CLUSTER_TOKEN}" iron/runner
-```
-
-
-<h2 id='encryption'>End-to-End encryption of task payloads</h2>
-While it's possible to do end to end encryption of payloads yourself, we do offer a convenient way to help  accomplish this. Currently, we support a scheme similar to  [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) via [IronCLI] and the hybrid runner, with the encryption and decryption keys never reaching the cloud. Our scheme provides encryption as well as authentication, which means not only can you trust that payloads were hidden from prying eyes, but you can also verify that they came from where you sent them from.
-
-<h4 id='basics'>Basics</h4>
-
-We use RSA, a public key encryption scheme that is hard to break until quantum
-computing robots figure out how to factor prime numbers and take over the world.
-This also means you can conveniently hand out public keys to whoever can run tasks
-without compromising the private key. Since RSA is slow, we only use it to encrypt
-a session key, which is unique for each task. We then use this session key
-to encrypt the payload using AES-GCM and send it, along with the RSA encrypted
-session key, to the IronWorker API. Code can be audited
-[here](https://github.com/iron-io/ironcli).
-
-Below is a good diagram of how it works:
-
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/pgp.png' style='width: 80%;'/>
-
-<h4 id='started'>Getting Started</h4>
-
-To get started, you'll need to generate an RSA key pair that is not password
-protected (reiterate: no password). The easiest way to do this is with
-[OpenSSL](https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL):
+Sometimes, you want to limit the number of parallel workers for any given task, to prevent external resources like databases or APIs from crashing under the weight of your workers' requests. We have a [max_concurrency](http://blog.iron.io/2012/08/ironworkers-most-requested-feature-is.html) feature that lets you do just this. To use it, simply use the `--max-concurrency` option when uploading a worker, with the maximum number of workers that can be run in parallel:
 
 ```sh
-$ openssl genpkey -algorithm RSA -out private_key.pem 4096
-Generating RSA private key, 4096 bit long modulus
-.............................++++++
-................................................................++++++
-e is 65537 (0x10001)
+iron worker upload --max-concurrency 10 ...
 ```
 
-It's recommended to use at least 1024 bits for the modulus; 1024, 2048 and
-4096 will all work swimmingly. After you've generated a private key, you'll
-want to generate a public key from it:
+If you're worried about errors, your worker is idempotent (meaning that it can be run multiple times without affecting the result), and you'd like to automatically retry your worker if it errors out, you can use the `retries` and `retries-delay` options. `retries` allows you to specify the maximum number of times failed tasks will be re-run:
 
 ```sh
-$ openssl rsa -pubout -in private_key.pem -out public_key.pem
-writing RSA key
+iron worker upload --retries 5 ...
 ```
 
-After these two commands, you'll end up with 2 files, `public_key.pem` and
-`private_key.pem`. Store the private key file somewhere safe and then you
-can hand out the `public_key.pem` to anybody who you'd like to let run tasks
-on your cluster. From here on, we'll periodically refer to `private_key.pem`
-as the "Decryption Key" and `public_key.pem` as the "Encryption Key". Note
-that if you are generating keys via an alternate method, it's important that
-each file is base64 pem encoded as OpenSSL does.
-
-After generating keys, you'll need to make sure your hybrid cluster runners
-are started with the private key before queueing tasks to it. To do this, simply
-add the env var `DECRYPTION_KEY` passed to the `iron/runner` docker container,
-like so:
+You can also optionally specify the delay between retries by using `retries-delay`:
 
 ```sh
-$ docker run --privileged -d -e "DECRYPTION_KEY=${KEY}" \
- -e "CLUSTER_ID=${CLUSTER_ID}" -e "CLUSTER_TOKEN=${CLUSTER_TOKEN}" --net=host iron/runner
+iron worker upload --retries 5 --retries-delay 10 ...
 ```
 
-Note that `${KEY}` needs to be the *contents* of `private_key.pem`, an easy way
-to do this is with a shell command, e.g. `-e "DECRYPTION_KEY=$(cat private_key.pem)"`.
-We encourage you to take extra steps to keep your key private, such as setting
-the variable on the host and passing it to docker that way, and then clearing
-the variable afterwards, to keep the key from being in the process list or the
-environment. For more details, see the docker docs [here](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables-e-env-env-file).
+There are additional options available to the upload command; you can find
+a list of them by running `iron worker upload --help`. All of these options can be mixed and matched at will to easily create very complex, specific behaviors.
 
-When you start a runner with `DECRYPTION_KEY` set, the runner will use that
-key to decrypt and authenticate _all_ payloads it comes across before
-passing them to the job. This means a few things:
+<h2 id='creating__uploading_code_packages'>Creating and Uploading Code Packages</h2>
 
-* all tasks queued to this cluster must be queued with the encryption key
-* all runners for a cluster need to be started with the decryption key
-* jobs will transparently receive plaintext payloads, and do not need to be modified
+Once your code has been written, you will want to use the CLI to upload your code package into Iron.io. The first thing you'll do is compress the directory you are working in (assumming this directory is only for this worker) by running
+```sh
+zip -r helloworker.zip .
+```
 
-After getting all the runners started up with the decryption key you may begin
-queueing jobs to your cluster with encrypted payloads. [IronCLI] can take care
-of the encryption before queueing a job, and the key will not leave the CLI process.
-Note that when queueing tasks against a cluster whose runners have been started
-with a decryption key, you **MUST** queue tasks with `--encryption-key` or
-`--encryption-key-file` set to your encryption key, even if the task doesn't
-have a payload. This ensures that only someone with your encryption key can queue
-tasks against your cluster. A template command for queueing with encryption is:
+Now that our code ius ready, ut's time to uplod it to Iron.io
+```sh
+iron worker upload [--zip rubies.zip] --name myworker DOCKER_IMAGE [COMMAND]
+
+```
+
+<h2 id="upload_with_multiple_environments">Upload with Multiple Environments</h2>
+
+It is common to want to use IronWorker across many different development environments.
+
+When uploading your worker you can specify an environment via the ``--env`.
 
 ```sh
-# export KEY=$(cat public_key.pem)
-$ iron worker queue --encryption-key ${KEY} --cluster ${CLUSTER_ID} --payload "hello" my_task
-
-# or
-
-# export KEY_FILE=/path/to/public_key.pem
-$ iron worker queue --encryption-key-file ${KEY_FILE} --cluster ${CLUSTER_ID} --payload "hello" my_task
+iron --env test       worker upload --zip helloworker.zip --name helloworker iron/images:ruby-2.1 ruby rubies.rb
+iron --env production worker upload --zip helloworker.zip --name helloworker iron/images:node-0.10 node nodes.js
 ```
 
-You won't have to update any of your tasks to start using the encrypted payloads
-feature, and your payloads are now never stored nor sent in plaintext within the Iron
-platform. If your hybrid cluster is behind a firewall and you queue tasks from
-behind the firewall, this means your payloads never leave your firewall as
-plaintext. If you have any additional questions, feel free to reach out at <support@iron.io>.
+We recommend you create separate projects for each development environment.
+Below is an example of a typical iron.json with multiple environments iron.json into multiple development environments via different project id's and tokens.
 
-Note that using the encrypted payloads feature will increase the size of your
-payloads by around 33%, because we need to base64 the output in order to send
-it to the worker API. If you are running large payloads and need your limit
-increased, reach out and we are happy to bump the max payload size up for you.
-We are in the process of adding support for encrypting payloads to our
-client libraries, as well; if you need one in a hurry, just let us know.
-</section>
+
+```js
+{
+  "production": {
+    "token": "AAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "project_id": "000000000000000000000001"
+  },
+  "staging": {
+    "token": "BBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "project_id": "000000000000000000000002"
+  },
+  "development": {
+    "token": "CCCCCCCCCCCCCCCCCCCCCCCCCC",
+    "project_id": "000000000000000000000003"
+  },
+  "test": {
+    "token": "DDDDDDDDDDDDDDDDDDDDDDDDDD",
+    "project_id": "000000000000000000000004"
+  }
+}
+```
+
+<h2 id="queuing_tasks">Queuing Tasks</h2>
+
+Testing workers no longer takes a script that creates a task to test with.
+Instead, you can queue tasks directly from the command line:
+
+```sh
+iron worker queue [--priority 0|1|2] [--payload '{"somekey": "some_value", "array": ["item1", "item2"]}'] $WORKER
+```
+
+Alternatively, you can specify a payload file, instead of providing the payload inline:
+
+```sh
+iron worker queue --payload-file /path/to/payload/file.json $WORKER
+```
+
+Sometimes, you want a task to be queued after a delay. You can easily do this with the `--delay` option:
+
+```sh
+iron worker queue --delay 60 $WORKER
+```
+
+The task will then be queued after the number of seconds passed to delay (one minute in the above example).
+
+If you want to limit a task to a certain run time below our one hour max, you can do that with the `--timeout` option:
+
+```sh
+iron worker queue --timeout 1800 $WORKER
+```
+
+The task will automatically be killed after the number of seconds passed to timeout (half an hour in the above example).
+
+There are a lot of options when you queuing tasks that can be combined to get exactly the execution you need. You can find a list of these options by running `iron_worker queue --help`.
+
+<h2 id="scheduling_tasks">Scheduling Tasks</h2>
+
+The command line tool also allows you to schedule tasks to be run repeatedly
+or at a later time, just as the gem would allow you to in a script.
+
+You can schedule a task using the following command:
+
+```sh
+iron worker schedule [--start-at "2013-01-01T00:00:00-04:00"] [--run-times 4] [--priority 0|1|2] [--payload '{"somekey": "some_value"}'] $WORKER
+```
+
+You can find a list of options for the command by running `iron worker schedule --help`.
+
+<h2 id="retrieving_a_tasks_log">Retrieving a Task's Log</h2>
+
+You no longer have to write a script to check the log of your tasks. You can
+install call the following command:
+
+```sh
+iron worker log [OPTIONS]
+```
+
+You can find a list of options for the command by running `iron worker log --help`.
