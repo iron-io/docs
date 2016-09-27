@@ -29,22 +29,20 @@ NOTE: You must have Hybrid access enabled on your account. Email <a href="mailto
 
 <h3 id='createCluster'>Create a Cluster</h3>
 Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click your name in the top right and then click Clusters. You'll see a list of existing clusters if any and a link to Create a new one. Click the Create Cluster link. Fill out the form and submit it. You'll get a `CLUSTER_ID` and `CLUSTER_TOKEN` that you'll need in the next steps.
-</section>
 
-<section id='launchImage'>
+
 <h3 id='launch'>Launch the iron/runner image</h3>
 
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
 
-<section is='code'
 ```sh
 docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" iron/runner
 ```
 
 Replace `{CLUSTER_ID}` and `{CLUSTER_TOKEN}` with the id and token you obtained in step 1 above.
-</section
+
 That's it!  Launch as many of these as you want/need.
-</section>
+
 
 
 <h2 id='usingNewCluster'>Using Your New Cluster</h2>
@@ -184,4 +182,4 @@ it to the worker API. If you are running large payloads and need your limit
 increased, reach out and we are happy to bump the max payload size up for you.
 We are in the process of adding support for encrypting payloads to our
 client libraries, as well; if you need one in a hurry, just let us know.
-</section>
+
