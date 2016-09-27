@@ -35,6 +35,7 @@ Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click y
 <h3 id='launch'>Launch the iron/runner image</h3>
 
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
+
 ```sh
 docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" iron/runner
 ```
@@ -92,7 +93,7 @@ session key, to the IronWorker API. Code can be audited
 
 Below is a good diagram of how it works:
 
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/pgp.png' />
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/pgp.png' style='width: 80%;'/>
 
 <h4 id='started'>Getting Started</h4>
 
