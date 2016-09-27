@@ -37,7 +37,7 @@ Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click y
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
 
 ```sh
-docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" iron/runner
+iron worker queue --cluster CLUSTER_ID --wait iron/hello
 ```
 
 Replace `{CLUSTER_ID}` and `{CLUSTER_TOKEN}` with the id and token you obtained in step 1 above.
