@@ -92,7 +92,7 @@ session key, to the IronWorker API. Code can be audited
 
 Below is a good diagram of how it works:
 
-[pgp-diagram](pgp.png)
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/pgp.png' />
 
 <h4 id='started'>Getting Started</h4>
 
