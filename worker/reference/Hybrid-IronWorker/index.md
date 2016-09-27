@@ -60,7 +60,7 @@ Example from the cli:
 ```sh
 iron worker queue --cluster CLUSTER_ID --wait iron/hello
 ```
-</section>
+
 
 <h2 id='aws'>Running on AWS</h2>
 Nothing special is required to run on AWS, the same steps apply above, but you can use the following
@@ -74,7 +74,7 @@ sudo service docker start
 echo \"Starting runners\"
 sudo docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN=#{CLUSTER_TOKEN}" iron/runner
 ```
-</section>
+
 
 <h2 id='encryption'>End-to-End encryption of task payloads</h2>
 While it's possible to do end to end encryption of payloads yourself, we do offer a convenient way to help  accomplish this. Currently, we support a scheme similar to  [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) via [IronCLI] and the hybrid runner, with the encryption and decryption keys never reaching the cloud. Our scheme provides encryption as well as authentication, which means not only can you trust that payloads were hidden from prying eyes, but you can also verify that they came from where you sent them from.
@@ -92,7 +92,7 @@ session key, to the IronWorker API. Code can be audited
 
 Below is a good diagram of how it works:
 
-![pgp-diagram](pgp.png)
+[pgp-diagram](pgp.png)
 
 <h4 id='started'>Getting Started</h4>
 
