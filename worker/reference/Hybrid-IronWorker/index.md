@@ -29,7 +29,7 @@ NOTE: You must have Hybrid access enabled on your account. Email <a href='mailto
 <h3 id='createCluster'>Create a Cluster</h3>
 Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click your name in the top right and then click Clusters. You'll see a list of existing clusters if any and a link to Create a new one. Click the Create Cluster link. Fill out the form and submit it. You'll get a `CLUSTER_ID` and `CLUSTER_TOKEN` that you'll need in the next steps.
 
-<h3 id='launchImage'>Launch the iron/runner image</a>
+<h3 id='launchImage'>Launch the iron/runner image</h3>
 On any machine that has Docker installed, just run our iron/runner image with the following flags:
 ```sh
 docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUSTER_TOKEN}" iron/runner
