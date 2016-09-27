@@ -1,4 +1,4 @@
-]---
+---
 title: IronWorker Hybrid Installation and Usage
 layout: default
 section: worker
@@ -183,4 +183,3 @@ increased, reach out and we are happy to bump the max payload size up for you.
 We are in the process of adding support for encrypting payloads to our
 client libraries, as well; if you need one in a hurry, just let us know.
 </section>
-
