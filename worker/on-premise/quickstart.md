@@ -181,4 +181,32 @@ Surf to http://$IP_OF_ELK_HOST:5601/ , then change the text field that shows up 
 
 ## Metrics
 
-TODO:
+Instructions will be added soon.
+
+## Restarting hosts or services
+
+The installer sets up all services to use _systemd_ and sets them to launch at
+boot. systemd will also attempt to restart them on failure. Some services have
+dependencies on each other. The IronWorker installer is not an orchestration
+tool and cannot manage this ordering if hosts have to be restarted. Here is the
+dependency tree of host ordering. Items in the same list are independent of
+each other and can be started together.
+
+1. If an ELK setup is present, start this first. Proceed after ELK is
+   completely operational.
+2. statsd/Graphite setup if any.
+3.
+    * MongoDB
+    * PostgreSQL
+    * Minio
+4. Any optional Docker registries.
+5. IronAuth.
+6. Load balancer for IronAuth if any.
+7. IronMQ.
+8. Load balancer for IronMQ if any.
+9. IronWorker (swapi).
+10. Load balancer for IronWorker if any.
+11.
+    * Scheduler
+    * Operational tools
+    * All runners
