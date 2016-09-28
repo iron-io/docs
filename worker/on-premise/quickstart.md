@@ -12,11 +12,7 @@ This guide will help set up an initial on-premise IronWorker installation.
 
 The IronWorker platform delivers asynchronous task execution at scale. To provide this scale, we operate several systems on multiple hosts.
 
-TODO: Add diagram
-
-TODO: Move this diagram to introduction page.
-
-The [IronWorker Platform](introduction) can all be run on one shared machine, or multiple machines. A recommended set up is to have each of the products on a separate machine. That is what we will assume for the rest of this installer.
+The [IronWorker Platform](/worker) can all be run on one shared machine, or multiple machines. A recommended set up is to have each of the products on a separate machine. That is what we will assume for the rest of this installer.
 
 In addition a local machine is required from which the installer can be run. This machine _MUST_ be able to access all the machines above, but is not required for regular operation.
 
@@ -77,6 +73,12 @@ Create a file called `config/inventory.ini` that contains IP addresses for the h
 
 [elk]
 192.168.0.108
+
+[load-balancer]
+192.168.0.109
+
+[graphite]
+192.168.0.110
 ```
 
 And another file called `config/ssh_key` that contains the SSH private key.
@@ -88,6 +90,8 @@ MIIEogIBAAKCAQEA11y2JNyxzu+tjodYaeV6f/XaTYs4Fpp+lc1eSF1UYdwkGpzf
 Faug31F++ZNTER2Tsj4y0qza7bXpJlqsYC1LFhIUC6BgRlFMYjc=
 -----END RSA PRIVATE KEY-----
 ```
+
+Run `chmod 600 config/ssh_key` to set the right permissions. 
 
 You will have to ask an Iron.io employee (TODO: Replace employee with some other term) for credentials required to access all our software. They will provide 2 credentials, a _login_ and a _password_.
 
@@ -101,7 +105,7 @@ docker run --rm -it -v $PWD/config:/installer/config -e DOCKER_LOGIN -e DOCKER_P
 
 You should see output similar to:
 
-```
+```sh
 PLAY ***************************************************************************                                                                                           [120/3981]
 
 TASK [python : install python] *************************************************
@@ -153,9 +157,9 @@ You can either install the [Iron.io CLI Tool](doc:ironio-cli-tool) or use the CL
 To make things easier, let's add our required environment variables to a file called `.env`, and copy the following into it:
 
 ```sh
-IRON_TOKEN=$TOKEN_FROM_ABOVE 
-IRON_PROJECT_ID=$PROJECT_ID_FROM_ABOVE \
-IRON_HOST=$IP_OF_SWAPI_HOST \
+IRON_TOKEN=$TOKEN_FROM_ABOVE
+IRON_PROJECT_ID=$PROJECT_ID_FROM_ABOVE
+IRON_HOST=$IP_OF_LOAD_BALANCER_HOST
 IRON_SCHEME=http
 IRON_PORT=9090
 ```
@@ -173,7 +177,7 @@ And queue up a job for it:
 ```sh
 docker run --rm -it --env-file .env iron/cli worker queue --wait iron/hello
 ```
-    
+
 Once that runs, look at the project your created in the IronWorker Dashboard to see the task status. It will probably have finished running already. You can see the task log, which should say `Hello World!`. Success!
 
 ## Logging
@@ -184,4 +188,6 @@ Surf to http://$IP_OF_ELK_HOST:5601/ , then change the text field that shows up 
 
 ## Metrics
 
-TODO:
+Metrics are provided by Graphite along with a Grafana dashboard. 
+
+Surf to http://$IP_OF_GRAPHITE_HOST:7081/ . From there, you will find a prebuilt IronWorker dashboard. 
