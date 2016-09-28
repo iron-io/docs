@@ -66,8 +66,11 @@ Create a file called `config/inventory.ini` that contains IP addresses for the h
 [swapi]
 192.168.0.105
 
+# More than one runner can be added by adding multiple hosts.
 [runners]
 192.168.0.106
+192.168.0.206
+192.168.0.306
 
 [hude]
 192.168.0.107
