@@ -190,4 +190,7 @@ Surf to http://$IP_OF_ELK_HOST:5601/ , then change the text field that shows up 
 
 Metrics are provided by Graphite along with a Grafana dashboard. 
 
-Surf to http://$IP_OF_GRAPHITE_HOST:7081/ . From there, you will find a prebuilt IronWorker dashboard. 
+Surf to http://$IP_OF_GRAPHITE_HOST:7081/ . Use `admin`/`admin` to login.
+
+From there, click Home in the top left, then choose IronWorker for a prebuilt IronWorker dashboard.
+
