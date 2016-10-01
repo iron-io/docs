@@ -29,7 +29,7 @@ NOTE: You must have Hybrid access enabled on your account. Email <a href="mailto
 
 <h3 id='createCluster'>Create a Cluster</h3>
 Login to <a href='https://hud-e.iron.io'>HUD</a>, click IronWorker, then click your name in the top right and then click Clusters. You'll see a list of existing clusters if any and a link to Create a new one. Click the Create Cluster link. 
-<center><img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/image00.png' /></center><br />
+<center><img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/image00.png' style='width:90%'> /></center><br />
 Fill out the form and submit it. You'll get a `CLUSTER_ID` and `CLUSTER_TOKEN` that you'll need in the next steps.<br />
 
 
@@ -44,7 +44,7 @@ docker run --privileged -d -e "CLUSTER_ID={CLUSTER_ID}" -e "CLUSTER_TOKEN={CLUST
 Replace `{CLUSTER_ID}` and `{CLUSTER_TOKEN}` with the id and token you obtained in step 1 above.
 
 That's it!  Launch as many of these as you want/need.
-<center><img src='https://github.com/iron-io/docs/blob/gh-pages/images/image01.png' /></center><br />
+<center><img src='https://github.com/iron-io/docs/blob/gh-pages/images/image01.png'></center><br />
 
 <h2 id='usingNewCluster'>Using Your New Cluster</h2>
 Everything is the same as using IronWorker on the public cloud, except When queuing jobs,
@@ -63,7 +63,7 @@ Example from the cli:
 iron worker queue --cluster CLUSTER_ID --wait iron/hello
 ```
 Once that's been run, you can return to Hud to see it in action:
-<center><img src=https://github.com/iron-io/docs/blob/gh-pages/images/image04.png' /></center>
+<center><img src='https://github.com/iron-io/docs/blob/gh-pages/images/image04.png' /></center>
 
 <h2 id='aws'>Running on AWS</h2>
 Nothing special is required to run on AWS, the same steps apply above, but you can use the following
