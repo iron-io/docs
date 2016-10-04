@@ -37,6 +37,7 @@ title: Iron.io Frequently Asked Questions
 <li><a href="#Workerfaq-2">What client libraries are available for IronWorker?</a></li>
 <li><a href="#Workerfaq-3">What are the advantages of IronWorker vs Heroku Workers, Celery, or Resque?</a> </li>
 <li><a href="#Workerfaq-4">I'm getting this error "zip/zip (LoadError)"</a></li>
+<li><a href="#Workerfaq-5">How do I access my worker's logs and what is printed in them?</a></li>
 </ul>
 
 <h2 id="IronCache-faq" >IronCache</h2>
@@ -86,11 +87,12 @@ IronMQ is based on HTTP, takes JSON packages, and uses OAuth for authentication 
 
 AMQP also uses a less common default socket as part of the transport layer. Whereas certain cloud application hosts don’t allow most socket connections from within their sandbox, they do allow HTTP requests. HTTP and HTTPS are always open on most enterprise firewalls, but special ports may not always be. Everyone can easily speak HTTP, but it takes special effort to speak AMQP. This greatly limits the environments into which AMQP can be deployed.
 
-For more information on the differences between IronMQ and RabbitMQ, please see the <a href="http://www.iron.io/mq/comparison/" target="_blank">comparison matrix</a> on the website.</p></div>
+For more information on the differences between IronMQ and RabbitMQ, please see the 
+<a href="http://www.iron.io/mq/comparison/">comparison matrix</a> on the website.</p></div>
 
 <div id="MQfaq-7">
 <h3>What are the benefits of IronMQ vs SQS?</h3>
-<p>For more information on the differences between IronMQ and SQS, please see the <a href="http://www.iron.io/mq#comparison" target="_blank">comparison matrix</a> on the website.</p>
+<p>For more information on the differences between IronMQ and SQS, please see the <a href="http://www.iron.io/mq#comparison">comparison matrix</a> on the website.</p>
 </div>
 
 <div id="MQfaq-8">
@@ -191,6 +193,16 @@ If you’re a heavy user and have specific needs, please let us know and we’d 
 	<li>Go: <a href               ="https://github.com/iron-io/iron_go">http://github.com/iron-io/iron_go</a></li>
 	<li>.NET(unofficial): <a href ="https://github.com/odeits/IronTools">http://github.com/odeits/IronTools"</a></li>
 	</ul>
+
+	<div id="Workerfaq-5">
+	<h3>How do I access my worker's logs and what is printed in them?</h3>
+	<p>IronWorker tasks print everything that would go to stdout (Standard Output) so the logs will very greatly depending on the worker's code and payload. 
+
+	<p>To access your IronWorker logs, log into your account and click the IronWorker icon on the top right. From there, select the task you need the logs from. From this page, you can click the log icon
+	<br /><img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/log.png' />
+
+	<p>Or, click the task's label and access it from the task details.
+	
 </div>
 
 
