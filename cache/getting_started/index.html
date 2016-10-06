@@ -80,7 +80,7 @@ p item.value # output the value
 p @cache.get("number_item").value  # retrieve the item and print its value again
 {% endhighlight %}
 
-<p>Although IronCache was originally designed for short-term storage, it has since evolved into a permanent data storage solution. By default, your cache items will not be deleted until you <a href="#delete">manually delete</a> them. Sometimes, however, it's still helpful to set an expiration date on data you want to be short-lived. To do this, just use the <span class="fixed-width">expires_in</span> parameter to set the number of seconds the data should be available for.</p>
+<p>IronCache is  designed for short-term storage. Sometimes however, it's helpful to set an expiration date on data so it will only exist for a set amount of time. To do this, just use the <span class="fixed-width">expires_in</span> parameter to set the number of seconds the data should be available for.</p>
 
 <figcaption><span>iron_cache.rb </span></figcaption>
 {% highlight ruby %}
