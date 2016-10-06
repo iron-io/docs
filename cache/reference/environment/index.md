@@ -41,6 +41,6 @@ flexible and straight-forward. Items can be variable in size and can contain alm
     <tr><td>Item Size</td><td>--</td><td>1MB</td><td>Includes the entire body of the request (expiration, etc.)</td></tr>
     <tr><td>Key</td><td>--</td><td>--</td><td>Because it is part of the URL in the <a href="/cache/reference/api">API request</a>, the key must be URL encoded.</td></tr>
     <tr><td>Key Size</td><td></td><td>250 characters</td><td></td></tr>
-    <tr><td>Expiration</td><td>604,800sec</td><td>2,592,000sec</td><td>Equates to 7 days and 30 days, respectively. <strong>This field is optional.</strong> By default, cache items will persist <strong>forever</strong>.</td></tr>
+    <tr><td>Expiration</td><td>604,800sec</td><td>2,592,000sec</td><td>Equates to 7 days and 30 days, respectively. <strong>This field is optional.</strong> </td></tr>
   </tbody>
 </table>
