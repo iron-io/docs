@@ -1,9 +1,9 @@
 ---
-title: Choosing the Cluster Your Queues Run On
-section: mq v3
+title: Setting The Host
+section: mq
 breadcrumbs:
   - ['Reference', '/reference']
-  - ['Choosing the Cloud Your Queues Run On', '/clouds']
+
 layout: default
 ---
 
