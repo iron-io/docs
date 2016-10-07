@@ -70,7 +70,7 @@ puts response.read_body
 </xmp>
 
 <h3 id='go'>Go</h3>
-<xmp><xmp style='background-color: #ddd;'>package main
+<xmp style='background-color: #ddd;'>package main
 
 import (
   "fmt"
@@ -120,7 +120,7 @@ Response response = client.newCall(request).execute();
 </xmp>
 
 <h3 id='python'>Python</h3>
-<xmp><xmp>url = "https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages"
+<xmp style='background-color: #ddd;'>url = "https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages"
 
 payload = "{\n  \"messages\": [\n    {\n      \"body\": \"This is my message 1.\",\n      \"delay\": 0\n    }\n  ]\n}"
 headers = {
@@ -136,8 +136,7 @@ print(response.text)
 </xmp>
 
 <h3 id='php'>PHP</h3>
-<xmp>
-<?php
+<xmp style='background-color: #ddd;'><?php
 
 $request = new HttpRequest();
 $request->setUrl('https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages');
@@ -169,7 +168,7 @@ try {
 </xmp>
 
 <h3 id='node'>Node</h3>
-<<xmp>var request = require("request");
+<xmp style='background-color: #ddd;'>var request = require("request");
 
 var options = { method: 'POST',
   url: 'https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages',
@@ -189,7 +188,7 @@ request(options, function (error, response, body) {
 </xmp>
 
 <h3 id='net'>.Net</h3>
-<xmp>var client = new RestClient("https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages");
+<xmp style='background-color: #ddd;'>var client = new RestClient("https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "application/json");
