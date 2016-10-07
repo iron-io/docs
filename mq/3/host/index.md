@@ -27,7 +27,7 @@ mq-aws-us-east-1-2.iron.io
     <li><a href="#ruby">Ruby</a></li>
     <li><a href="#go">Go</a></li>
     <li><a href="#java">Java</a></li></div>
-    <div style="clear: both; margin-left: 300px;margin-top: -317px;"">
+    <div style="clear: both; margin-left: 300px;margin-top: -317px;">
     <li><a href="#python">Python</a></li>
     <li><a href="#php">PHP</a></li>
     <li><a href="#node">Node</a></li>
