@@ -36,7 +36,7 @@ mq-aws-us-east-1-2.iron.io
   </ul>  
 </section>
 
-<p>The basic format is very similar for most major languages. These examples are using the ```mq-aws-eu-west-1-1.iron.io``` cluster, but that should be changed for your needs:
+<p style='clear:both;'>The basic format is very similar for most major languages. These examples are using the ```mq-aws-eu-west-1-1.iron.io``` cluster, but that should be changed for your needs:
 
 <h3 id='curl'>cURL</h3>
 ```bash
