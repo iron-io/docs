@@ -11,12 +11,12 @@ layout: default
 
 <p>Our public cluster options are:
 
-```
-mq-aws-eu-west-1-1.iron.io
-mq-aws-us-east-1-1.iron.io
-mq-aws-us-east-1-2.iron.io
+    ```
+    mq-aws-eu-west-1-1.iron.io
+    mq-aws-us-east-1-1.iron.io
+    mq-aws-us-east-1-2.iron.io
 
-```
+    ```
 
 <p>This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.
 <section id="toc">
@@ -25,12 +25,11 @@ mq-aws-us-east-1-2.iron.io
     <li><a href="#curl">cURL</a></li>
     <li><a href="#ruby">Ruby</a></li>
     <li><a href="#go">Go</a></li>
-    <li><a href="#java">Java</a></li></div>
+    <li><a href="#java">Java</a></li>
     <li><a href="#python">Python</a></li>
     <li><a href="#php">PHP</a></li>
     <li><a href="#node">Node</a></li>
     <li><a href="#net">.Net</a></li>
-    
   </ul>  
 </section>
 
