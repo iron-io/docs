@@ -32,11 +32,11 @@ layout: default
   </ul>  
 </section>
 
-<p>The basic format is very similar for most major languages. These examples are using the ```mq-aws-eu-west-1-1.iron.io``` cluster, but that should be changed for your needs:
+<p>The basic format is very similar for most major languages. These examples are using the mq-aws-eu-west-1-1.iron.io cluster, but that should be changed for your needs:
 
 <h3 id='curl'>cURL</h3>
 
-```bash
+<xmp>
 
 curl -X POST -H "Authorization: OAuth <$token>" -H "Content-Type: application/json" -H "Cache-Control: no-cache"  -d '{
   "messages": [
@@ -46,10 +46,10 @@ curl -X POST -H "Authorization: OAuth <$token>" -H "Content-Type: application/js
     }
   ]
 }' "https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages"
-```
+</xmp>
 
 <h3 id='ruby'>Ruby</h3>
-```ruby
+<xmp>
 require 'uri'
 require 'net/http'
 
@@ -67,10 +67,10 @@ request.body = "{\n  \"messages\": [\n    {\n      \"body\": \"This is my messag
 
 response = http.request(request)
 puts response.read_body
-```
+</xmp>
 
 <h3 id='go'>Go</h3>
-```go
+<xmp>
 package main
 
 import (
@@ -101,10 +101,10 @@ func main() {
   fmt.Println(string(body))
 
 }
-```
+</xmp>
 
 <h3 id='java'>Java</h3>
-```java
+<xmp>
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
@@ -118,10 +118,10 @@ Request request = new Request.Builder()
   .build();
 
 Response response = client.newCall(request).execute();
-```
+</xmp>
 
 <h3 id='python'>Python</h3>
-```python
+<xmp>
 
 url = "https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages"
 
@@ -135,10 +135,10 @@ headers = {
 response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
-```
+</xmp>
 
 <h3 id='php'>PHP</h3>
-```php
+<xmp>
 <?php
 
 $request = new HttpRequest();
@@ -167,10 +167,10 @@ try {
 } catch (HttpException $ex) {
   echo $ex;
 }
-```
+</xmp>
 
 <h3 id='node'>Node</h3>
-```js
+<xmp>
 var request = require("request");
 
 var options = { method: 'POST',
@@ -187,10 +187,10 @@ request(options, function (error, response, body) {
 
   console.log(body);
 });
-```
+</xmp>
 
 <h3 id='net'>.Net</h3>
-```net
+<xmp>
 var client = new RestClient("https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
@@ -198,7 +198,7 @@ request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "OAuth <$token>");
 request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"body\": \"This is my message 1.\",\n      \"delay\": 0\n    }\n  ]\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
-```
+</xmp>
 
 
 
