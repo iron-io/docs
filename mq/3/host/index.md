@@ -7,17 +7,17 @@ breadcrumbs:
 layout: default
 ---
 
-<p>IronMQ v3 public clusters are available in 2 locations. To use Iron.io on another cloud (private or public) please reach out to <a href='mailto:sales@iron.io'>Iron.io</a> and we can assist.
+IronMQ v3 public clusters are available in 2 locations. To use Iron.io on another cloud (private or public) please reach out to [sales@iron.io](sales@iron.io) and we can assist.
 
-<p>Our public cluster options are:</p>
+Our public cluster options are:
 
-    ```bash
-    mq-aws-eu-west-1-1.iron.io
-    mq-aws-us-east-1-1.iron.io
-    mq-aws-us-east-1-2.iron.io
-    ```
+```bash
+mq-aws-eu-west-1-1.iron.io
+mq-aws-us-east-1-1.iron.io
+mq-aws-us-east-1-2.iron.io
+```
 
-<p>This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.
+This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.
 <section id="toc">
 <h3>Table of Contents</h3>
   <ul>
@@ -32,11 +32,12 @@ layout: default
   </ul>  
 </section>
 
-<p>The basic format is very similar for most major languages. These examples are using the mq-aws-eu-west-1-1.iron.io cluster, but that should be changed for your needs:
+he basic format is very similar for most major languages. These examples are using the mq-aws-eu-west-1-1.iron.io cluster, but that should be changed for your needs:
 
-<h3 id='curl'>cURL</h3>
+### cURL
 
-<xmp style='background-color: #ddd;'>curl -X POST -H "Authorization: OAuth <$token>" -H "Content-Type: application/json" -H "Cache-Control: no-cache"  -d '{
+``` bash
+curl -X POST -H "Authorization: OAuth <$token>" -H "Content-Type: application/json" -H "Cache-Control: no-cache"  -d '{
   "messages": [
     {
       "body": "This is my message 1.",
@@ -45,11 +46,12 @@ layout: default
   ]
 }' "https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages"
 
-</xmp>
+```
 
-<h3 id='ruby'>Ruby</h3>
+### Ruby
 
-<xmp style='background-color: #ddd;'>require 'uri'
+```ruby
+require 'uri'
 require 'net/http'
 
 url = URI("https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages")
@@ -66,8 +68,7 @@ request.body = "{\n  \"messages\": [\n    {\n      \"body\": \"This is my messag
 
 response = http.request(request)
 puts response.read_body
-
-</xmp>
+```
 
 <h3 id='go'>Go</h3>
 <xmp style='background-color: #ddd;'>package main
