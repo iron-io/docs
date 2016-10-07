@@ -20,23 +20,21 @@ mq-aws-us-east-1-2.iron.io
 
 <p>This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.
 
-  <h3>Table of Contents</h3>
+ <center> <h3>Table of Contents</h3>
   <ul>
-  <div id='left'>
     <li><a href="#curl">cURL</a></li>
     <li><a href="#ruby">Ruby</a></li>
     <li><a href="#go">Go</a></li>
     <li><a href="#java">Java</a></li></div>
-    <div style="clear: both; margin-left: 300px;margin-top: -317px;">
     <li><a href="#python">Python</a></li>
     <li><a href="#php">PHP</a></li>
     <li><a href="#node">Node</a></li>
     <li><a href="#net">.Net</a></li>
-    </div>
+    </center>
   </ul>  
 </section>
 
-<p style='clear:both;'>The basic format is very similar for most major languages. These examples are using the ```mq-aws-eu-west-1-1.iron.io``` cluster, but that should be changed for your needs:
+<p>The basic format is very similar for most major languages. These examples are using the ```mq-aws-eu-west-1-1.iron.io``` cluster, but that should be changed for your needs:
 
 <h3 id='curl'>cURL</h3>
 ```bash
