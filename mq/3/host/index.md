@@ -20,7 +20,7 @@ mq-aws-us-east-1-2.iron.io
 
 <p>This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.
 
- <center> <h3>Table of Contents</h3>
+<h3>Table of Contents</h3>
   <ul>
     <li><a href="#curl">cURL</a></li>
     <li><a href="#ruby">Ruby</a></li>
@@ -30,14 +30,16 @@ mq-aws-us-east-1-2.iron.io
     <li><a href="#php">PHP</a></li>
     <li><a href="#node">Node</a></li>
     <li><a href="#net">.Net</a></li>
-    </center>
+    
   </ul>  
 </section>
 
 <p>The basic format is very similar for most major languages. These examples are using the ```mq-aws-eu-west-1-1.iron.io``` cluster, but that should be changed for your needs:
 
 <h3 id='curl'>cURL</h3>
+
 ```bash
+
 curl -X POST -H "Authorization: OAuth <$token>" -H "Content-Type: application/json" -H "Cache-Control: no-cache"  -d '{
   "messages": [
     {
