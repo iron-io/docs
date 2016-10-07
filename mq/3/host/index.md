@@ -136,7 +136,7 @@ print(response.text)
 </xmp>
 
 <h3 id='php'>PHP</h3>
-<xmp style='background-color: #ddd;'> &lt;?php
+<xmp style='background-color: #ddd;'> <?php
 
 $request = new HttpRequest();
 $request->setUrl('https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages');
