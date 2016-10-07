@@ -11,7 +11,7 @@ layout: default
 
 <p>Our public cluster options are:
 
-```bash
+```
 mq-aws-eu-west-1-1.iron.io
 mq-aws-us-east-1-1.iron.io
 mq-aws-us-east-1-2.iron.io
