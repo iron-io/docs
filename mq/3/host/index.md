@@ -11,12 +11,11 @@ layout: default
 
 <p>Our public cluster options are:
 
-    ```
+    <xmp>
     mq-aws-eu-west-1-1.iron.io
     mq-aws-us-east-1-1.iron.io
     mq-aws-us-east-1-2.iron.io
-
-    ```
+    </xmp>
 
 <p>This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.
 <section id="toc">
