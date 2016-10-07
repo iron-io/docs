@@ -9,13 +9,13 @@ layout: default
 
 <p>IronMQ v3 public clusters are available in 2 locations. To use Iron.io on another cloud (private or public) please reach out to <a href='mailto:sales@iron.io'>Iron.io</a> and we can assist.
 
-<p>Our public cluster options are:
+<p>Our public cluster options are:</p>
 
-    <xmp style='background-color: #ddd;'>
+    ```bash
     mq-aws-eu-west-1-1.iron.io
     mq-aws-us-east-1-1.iron.io
     mq-aws-us-east-1-2.iron.io
-    </xmp>
+    ```
 
 <p>This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.
 <section id="toc">
@@ -136,7 +136,7 @@ print(response.text)
 </xmp>
 
 <h3 id='php'>PHP</h3>
-<xmp style='background-color: #ddd;'> <?php
+<xmp style='background-color: #ddd;'> &lt;?php
 
 $request = new HttpRequest();
 $request->setUrl('https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages');
