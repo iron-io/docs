@@ -37,7 +37,7 @@ he basic format is very similar for most major languages. These examples are usi
 ### cURL
 
 ``` bash
-curl -X POST -H "Authorization: OAuth <$token>" -H "Content-Type: application/json" -H "Cache-Control: no-cache"  -d '{
+curl -X POST -H "Authorization: OAuth <$token>" -H "Content-Type: application/json" -H   -d '{
   "messages": [
     {
       "body": "This is my message 1.",
@@ -63,7 +63,6 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Post.new(url)
 request["authorization"] = 'OAuth <$token>'
 request["content-type"] = 'application/json'
-request["cache-control"] = 'no-cache'
 request.body = "{\n  \"messages\": [\n    {\n      \"body\": \"This is my message 1.\",\n      \"delay\": 0\n    }\n  ]\n}"
 
 response = http.request(request)
@@ -92,7 +91,6 @@ func main() {
 
   req.Header.Add("authorization", "OAuth <$token>")
   req.Header.Add("content-type", "application/json")
-  req.Header.Add("cache-control", "no-cache")
 
   res, _ := http.DefaultClient.Do(req)
 
@@ -117,7 +115,6 @@ Request request = new Request.Builder()
   .post(body)
   .addHeader("authorization", "OAuth <$token>")
   .addHeader("content-type", "application/json")
-  .addHeader("cache-control", "no-cache")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -132,7 +129,6 @@ payload = "{\n  \"messages\": [\n    {\n      \"body\": \"This is my message 1.\
 headers = {
     'authorization': "OAuth <$token>",
     'content-type': "application/json",
-    'cache-control': "no-cache",
     }
 
 response = requests.request("POST", url, data=payload, headers=headers)
@@ -150,7 +146,6 @@ $request->setUrl('https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc00
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
-  'cache-control' => 'no-cache',
   'content-type' => 'application/json',
   'authorization' => 'OAuth <$token>'
 ));
@@ -181,7 +176,6 @@ var request = require("request");
 var options = { method: 'POST',
   url: 'https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages',
   headers: 
-     'cache-control': 'no-cache',
      'content-type': 'application/json',
      authorization: 'OAuth <$token>' },
   body: { messages: [ { body: 'This is my message 1.', delay: 0 } ] },
@@ -199,7 +193,6 @@ request(options, function (error, response, body) {
 ```c#
 var client = new RestClient("https://mq-aws-eu-west-1-1.iron.io/3/projects/57f7cf0ece60dc0007dd3659/queues/queueNamesGoesInHere/messages");
 var request = new RestRequest(Method.POST);
-request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "OAuth <$token>");
 request.AddParameter("application/json", "{\n  \"messages\": [\n    {\n      \"body\": \"This is my message 1.\",\n      \"delay\": 0\n    }\n  ]\n}", ParameterType.RequestBody);
