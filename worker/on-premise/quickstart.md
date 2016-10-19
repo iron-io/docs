@@ -180,6 +180,21 @@ docker run --rm -it --env-file .env iron/cli worker queue --wait iron/hello
 
 Once that runs, look at the project your created in the IronWorker Dashboard to see the task status. It will probably have finished running already. You can see the task log, which should say `Hello World!`. Success!
 
+## Runner rotation
+
+Runners interact with the IronWorker API and run Docker containers.  The
+interface between Docker and Linux kernel is not without quirks. For stability,
+every once in a while we must restart the runner hosts to make sure kernel
+resources are refreshed and workloads are processed correctly. The installer
+automatically sets up the runner hosts to reboot every third hour (with some
+randomness, to prevent all tasks from stopping at the same time). This is
+not a cause for concern, and is normal system operation. The rebooted host will
+start the runner after boot and continue processing tasks.
+
+For this reason, it is _highly recommended_ to have runners on separate hosts
+than the rest of the service infrastructure. This is a Docker concern and we
+hope to move off of this requirement as containerization software matures.
+
 ## Logging
 
 Logging is provided by the ELK stack. 
