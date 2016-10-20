@@ -62,7 +62,7 @@ Create a file called `config/inventory.ini` that contains IP addresses for the h
 [swapi]
 192.168.0.105
 
-# You can increase processing power by adding multiple hosts. Each host will run as many runners as configured in {CONCURRENCY_PER_HOST}
+# You can increase runners by adding hosts. Each host will run as many runners as configured in {CONCURRENCY_PER_HOST}
 [runners]
 192.168.0.106
 192.168.0.206
