@@ -29,7 +29,7 @@ There are 2 ways to start using IronMQ v3. You can manually re-create your queue
 
 1. Log into <a href='//hud.iron.io'>hud.iron.io</a> and view the project you want to migrate.
 2. Press the "Migrate to v3!" button.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/migrateButton.png' style='height:40%; width:50%''>
+<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/migrateButton.png' style='height:40%; width:50%'>
 3. Wait while your queues are created in v3, and messages are moved into the new queue.
 4. Log into your <a href='//hud-e.iron.io'>Hud-E</a> account, choose the proper cluster location, and all your queues will be there.
 
