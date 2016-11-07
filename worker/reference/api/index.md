@@ -303,7 +303,10 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 #### Response
 
-The response will be a JSON object. The `codes` property will contain a JSON array of objects, each representing a code package.
+The response will be a JSON object. The `codes` property will contain a JSON
+array of objects, each representing a code package. For information about code
+objects, see the [Get Info About A Code Package
+endpoint](#get_info_about_a_code_package).
 
 Sample:
 
@@ -312,13 +315,14 @@ Sample:
     "codes": [
         {
             "id": "4ea9c05dcddb131f1a000002",
+            "created_at": "2016-06-08T17:52:09.689Z",
             "project_id": "4ea9c05dcddb131f1a000001",
             "name": "MyWorker",
-            "runtime": "ruby",
+            "image": "iron/hello",
             "latest_checksum": "b4781a30fc3bd54e16b55d283588055a",
             "rev": 1,
             "latest_history_id": "4f32ecb4f840063758022153",
-            "latest_change": 1328737460598000000
+            "latest_change": "2016-06-08T17:52:09.689Z"
         }
     ]
 }
@@ -344,28 +348,33 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 #### Request
 
-The request should be JSON-encoded and contain the following information:
+This endpoint accepts a `multipart/form-data` request, instead of
+`application/json`. The form MUST have a field called `data` that has a JSON
+literal describing the code. An optional field of type file called `file` may
+contain the zip file containing the worker code.
+
+`data` MUST contain the following information:
 
 * **name**: A unique name for your worker. This will be used to assign tasks to the worker as well as to update the code. If a worker with this name already exists, the code you are uploading will be added as a new revision.
 
-When uploading code, the following are required (not required if just updating code options below):
+When uploading code new, the following are required (not required if just updating code options below):
 
 * **image**: The Docker image for your worker.
-* **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/getting_started/) for more information.
 
 The request also accepts the following optional parameters:
 
-* **config**: An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. The config file location will be passed in via the -config argument to your worker. The config cannot be larger than 64KB in size.
-* **stack**: A string that, if provided, will set the specific language environment. If blank the language version will be set to default language version defined in runtime. [See More Information on Stack settings](http://dev.iron.io/worker/reference/environment/#default_language_versions).
+* **command**: String. The command to execute when running your worker code. See [Docker Workflow](/worker/getting_started/) for more information.
+* **config**: String. An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. The config file location will be passed in via the -config argument to your worker. The config cannot be larger than 64KB in size.
+* **stack**: **Deprecated**. This is not supported for custom Docker images. A string that, if provided, will set the specific language environment. If blank the language version will be set to default language version defined in runtime. [See More Information on Stack settings](http://dev.iron.io/worker/reference/environment/#default_language_versions).
 * **max_concurrency**: The maximum number of workers that should be run in parallel. This is useful for keeping your workers from hitting API quotas or overloading databases that are not prepared to handle the highly-concurrent worker environment. If omitted, there will be no limit on the number of concurrent workers.
 * **retries**: The maximum number of times failed tasks should be retried, in the event that there's an error while running them. If omitted, tasks will not be retried. Tasks cannot be retried more than ten times.
 * **retries_delay**: The number of seconds to wait before retries. If omitted, tasks will be immediately retried.
-* **default_priority**: The default priority of the tasks running this code. Valid values are 0, 1, and 2. The priority of the task can be set when queueing the task. If it's not set when queueing the task, the default priority is used.
-* **env_vars**: Environment variables accessible within your code. It's a JSON object consisting corresponding key/value pairs. Keys and values are intended to be alphanumeric; if you want to pass values composed of wider list of symbols, consider to encode value with base64 encoding and decode it back within your code.
+* **default_priority**: The default priority of the tasks running this code. Valid values are 0, 1, and 2. The priority of the task can also be set when queueing the task.
+* **env_vars**: Environment variables accessible within your code. It's a JSON object consisting of corresponding key/value pairs. Keys and values are intended to be alphanumeric; if you want to pass values composed of wider list of symbols, consider to encode value with base64 encoding and decode it back within your code.
 
 Your request also needs the following headers, in addition to the headers required by all API calls:
 
-* **Content-Length**: The number of bytes in your JSON-encoded request body
+* **Content-Length**: The number of bytes in the form-data request.
 * **Content-Type**: Should be set to "multipart/form-data ; boundary={Insert Value Here}" with boundary set to [an appropriate value](http://en.wikipedia.org/wiki/MIME#Multipart_messages).
 
 **Note**: This request is not limited to 64 KB, unlike other requests.
@@ -430,6 +439,38 @@ Sample:
 
 The response will be a JSON object containing the details of the code package.
 
+The following fields are always present in all code objects:
+
+* `id` - String - unique, opaque, code identifier.
+* `project_id` - String.
+* `name` - String. As specified during upload.
+* `created_at` - Date. This is the date and time the code was first
+  created.
+* `rev` - Number. Monotonically increasing integer that counts changes to the
+  code.
+* `latest_history_id` - String. Uniquely identifies the latest version of this
+  code.
+* `latest_change` - Date. The latest time any changes were made to the code via
+  the [Upload or Update a code package
+  endpoint](#upload_or_update_a_code_package).
+
+The following fields may be present.
+* `latest_checksum` - String. MD5 checksum of the latest code package. Only set
+  for old style zip packages.
+* `image` - String. The Docker image powering this task.
+* `runtime` and `stack` - **Deprecated** Strings. Disjoint with `image`. Only
+  set for old style zip packages.
+* `command` - String. Command to run in the Docker container or `runtime` to
+  begin task execution.
+* `max_concurrency` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries_delay` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `priority` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `status` - String. Set to `archived` if the code has been archived.
+* `archived_at` - Date. Timestamp when code was archived.
+* `config` - String. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `env_vars` - Object of string values. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+
 Sample:
 
 ```json
@@ -437,11 +478,19 @@ Sample:
     "id": "4eb1b241cddb13606500000b",
     "project_id": "4eb1b240cddb13606500000a",
     "name": "MyWorker",
-    "runtime": "ruby",
     "latest_checksum": "a0702e9e9a84b758850d19ddd997cf4a",
     "rev": 1,
     "latest_history_id": "4eb1b241cddb13606500000c",
-    "latest_change": 1328737460598000000
+    "latest_change": "2016-06-08T17:52:09.689Z",
+    "created_at": "2016-03-17T13:12:09.589Z",
+    "command": "./hello",
+    "image": "example/hello",
+    "max_concurrency": 5,
+    "retries": 2,
+    "config": "user=Alice",
+    "env_vars": {
+        "GREETING": "Good Morning"
+    }
 }
 ```
 
@@ -513,6 +562,36 @@ The response will be a zip file containing your code package. The response heade
 
 The response will be a JSON object with a revisions property, containing a list of JSON objects, each representing a revision to the code package.
 
+The following fields are always present in all code revision objects:
+
+* `id` - String - unique, opaque identifier for the revision.
+* `project_id` - String.
+* `code_id` - String.
+* `name` - String. As specified during upload. Same as the code name.
+* `created_at` - Date. This is the date and time this version of code was first
+  created.
+* `rev` - Number. Monotonically increasing integer identifying this revision in
+  relation to the code.
+
+The following fields may be present.
+* `checksum` - String. MD5 checksum of the code package for the revision. Only set
+  for old style zip packages.
+* `code_size` - Number. Size in bytes of the code package for the revision.
+  Only set for old style zip packages.
+* `image` - String. The Docker image powering this task.
+* `runtime` and `stack` - **Deprecated** Strings. Disjoint with `image`. Only
+  set for old style zip packages.
+* `command` - String. Command to run in the Docker container or `runtime` to
+  begin task execution.
+* `max_concurrency` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries_delay` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `priority` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `status` - String. Set to `archived` if the code has been archived.
+* `archived_at` - Date. Timestamp when code was archived.
+* `config` - String. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `env_vars` - Object of string values. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+
 Sample:
 
 ```json
@@ -522,8 +601,10 @@ Sample:
             "id": "4f32d9c81cf75447be020ea6",
             "code_id": "4f32d9c81cf75447be020ea5",
             "project_id": "4f32d521519cb67829000390",
+            "created_at": "2016-03-17T13:12:09.589Z",
+            "updated_at": "2016-03-17T13:12:09.589Z",
             "rev": 1,
-            "runtime": "ruby",
+            "image": "iron/hello",
             "name": "MyWorker",
             "file_name": "worker.rb"
         },
@@ -531,9 +612,12 @@ Sample:
             "id": "4f32da021cf75447be020ea8",
             "code_id": "4f32d9c81cf75447be020ea5",
             "project_id": "4f32d521519cb67829000390",
+            "created_at": "2016-04-11T13:12:09.589Z",
+            "updated_at": "2016-04-11T13:12:09.589Z",
             "rev": 2,
-            "runtime": "ruby",
+            "image": "iron/hello",
             "name": "MyWorker",
+            "config": "user=Alice",
             "file_name": "worker.rb"
         }
     ]
@@ -559,6 +643,7 @@ Sample:
 * **start_date**: Limit the counts of tasks to those that were last modified after this time specified.  Time should be formatted as the number of seconds since the Unix epoch.
 * **end_date**: Limit the counts of tasks to those that were last modified before this time specified.  Time should be formatted as the number of seconds since the Unix epoch.
 
+If neither are specified, tasks run in the last 24 hours are considered.
 
 #### Response
 
