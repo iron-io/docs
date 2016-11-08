@@ -1303,9 +1303,7 @@ Sample:
 
 ## Stacks
 
-List of available stacks
-
-### <a name="list_stacks"></a> List of stacks
+### <a name="list_stacks"></a> List of stacks (Deprecated)
 
 #### Endpoint
 
@@ -1315,7 +1313,8 @@ List of available stacks
 
 #### Response
 
-The response will be a JSON object.
+The response will be a JSON object describing the stacks supported by
+IronWorker. This is only relevant to old style code packages.
 
 Sample:
 
