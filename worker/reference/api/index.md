@@ -743,7 +743,7 @@ Tasks will be in different states during the course of operation. Here are the s
     </tbody>
 </table>
 
-#### Priority
+#### <a name="task-priority"></a> Priority
 
 Task priority determines how much time a task may sit in queue. Higher values means tasks spend less time in the queue once they come off the schedule. Access to priorities depends on your selected IronWorker plan [see plans](http://www.iron.io/products/worker/pricing). You must have access to higher priority levels in your chosen plan or your priority will automatically default back to 0.  The standard/default priority is 0.
 
@@ -758,9 +758,9 @@ Task priority determines how much time a task may sit in queue. Higher values me
     </tbody>
 </table>
 
-#### Timeout
+#### <a name="task-timeout"></a> Timeout
 
-Tasks have timeouts associated with them that specify the amount of time (in seconds) the process may run. The maximum timeout is 3600 seconds (60 minutes). It’s also the default timeout but it can be set on a task-by-task basis to be anytime less than 3600 seconds.
+Tasks have timeouts associated with them that specify the amount of time (in seconds) the process may run. The maximum timeout is 3600 seconds (60 minutes). It’s also the default timeout but it can be set on a task-by-task basis to be any time less than 3600 seconds.
 
 <table class="reference">
     <thead>
@@ -768,19 +768,6 @@ Tasks have timeouts associated with them that specify the amount of time (in sec
     </thead>
     <tbody>
         <tr><td>3600</td><td>Maximum time a task can run (also default)</td></tr>
-    </tbody>
-</table>
-
-#### Runtime
-
-<table class="reference" style="margin-top: 10px;">
-    <thead>
-        <tr><th>Languages</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>ruby</td></tr>
-        <tr><td>python</td></tr>
-        <tr><td>php</td></tr>
     </tbody>
 </table>
 
@@ -807,11 +794,13 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
 
 Sample endpoint with several optional parameters set:
 
+```
 GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_name=<span class="variable">{Code Name}</span>&complete=1&cancelled=1&error=1
+```
 
 #### Response
 
-The response will be a JSON object. The `tasks` property will contain a JSON array of objects, each representing a task.
+The response will be a JSON object. The `tasks` property will contain a JSON array of objects, each representing a task. For more information about the output, see [Get Info About A Task](#get_info_about_a_task).
 
 Sample:
 
@@ -860,7 +849,7 @@ Sample:
 The request should be JSON-encoded and consist of an object with a single property, `tasks`, which contains an array of objects. Each object in the array should consist of:
 
 * **code_name**: The name of the code package to execute for this task.
-* **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what worker it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. File location will be passed in via the -payload argument. The payload cannot be larger than 64KB in size.
+* **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what work it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. The payload cannot be larger than 64KB in size.
 
 Optionally, each object in the array can also contain the following:
 
@@ -914,14 +903,16 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webho
 
 Optionally, following URL parameters can be sent:
 
-* **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. Task priority determines how much time a task may sit in queue. Higher values means tasks spend less time in the queue once they come off the schedule. Access to priorities depends on your selected IronWorker plan [see plans](http://www.iron.io/products/worker/pricing). You must have access to higher priority levels in your chosen plan or your priority will automatically default back to 0.  The standard/default priority is 0.
-* **cluster**: cluster name ex: "high-mem" or "dedicated".  This is a premium feature for customers to have access to more powerful or custom built worker solutions. Dedicated worker clusters exist for users who want to reserve a set number of workers just for their queued tasks. If not set default is set to  "default" which is the public IronWorker cluster.
-* **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration.
-* **delay**: The number of seconds to delay before actually queuing the task. Default is 0. Maximum is 604,800 seconds (7 days).
+* **priority**: See [Queue A Task](#queue_a_task).
+* **cluster**: See [Queue A Task](#queue_a_task).
+* **timeout**: See [Queue A Task](#queue_a_task).
+* **delay**: See [Queue A Task](#queue_a_task).
 
 Sample endpoint with all optional parameters set:
 
+```
 POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webhook?code_name=<span class="variable">{Code Name}</span>&priority=<span class="variable">{priority}</span>&delay=<span class="variable">{delay}</span>&cluster=<span class="variable">{cluster}</span>&timeout=<span class="variable">{timeout}</span>
+```
 
 #### Request
 
@@ -957,6 +948,40 @@ Sample:
 
 The response will be a JSON object containing the details of the task.
 
+All task objects have the following fields:
+
+* `id` - String. Identifies the task.
+* `created_at` - Date. Time when task was created by [queuing
+  a task](#queue_a_task).
+* `updated_at` - Date. Various task operations update this as the task proceeds
+  through various states to completion.
+* `project_id` - String.
+* `code_id` - String.
+* `code_name` - String.
+* `code_rev` - String.
+* `code_history_id` - String. The specific revision of code that this task
+  executed.
+* `status` - String. One of `queued`, `running`, `complete`, `error`,
+  `cancelled`, `killed`, `timeout`. Clients should not assume this set is
+  complete. New values may be added over time.
+
+In addition, the following fields are optional:
+
+* `msg` - String. Some human-readable text describing the task state.
+* `retry_count` - String. If the task was queued with retries, count of how
+  many attempts were made to execute it.
+* `start_time` - Date. Time when task starts executing.
+* `end_time` - Date. Time when task finishes executing. Set regardless of
+  success or error.
+* `priority` - Number. See [Priority](#task-priority).
+* `timeout` - Number. See [Timeout](#task-timeout).
+* `delay` - Number. See [Queue a Task](#queue_a_task).
+* `payload` - String. See [Queue a Task](#queue_a_task).
+* `cluster` - String. See [Queue a Task](#queue_a_task).
+* `log_size` - Number. Length in bytes of the log generated by the task.
+* `schedule_id` - String. If the task is queued by the scheduler, the ID of the
+  schedule that led to this task being queued.
+
 Sample:
 
 ```json
@@ -968,52 +993,15 @@ Sample:
     "status": "complete",
     "code_name": "MyWorker",
     "code_rev": "1",
-    "start_time": 1320268924000000000,
-    "end_time": 1320268924000000000,
-    "duration": 43,
+    "start_time": "2016-06-08T17:52:09.689Z",
+    "end_time": "2016-06-08T17:52:09.689Z",
     "timeout": 3600,
     "schedule_id": "52f02c01c872fd67b5020c06",
     "log_size": 1000,
-    "message_id": "6000008730003365393",
     "label": "optionalLabel",
     "payload": "{\"foo\":\"bar\"}",
     "updated_at": "2012-11-10T18:31:08.064Z",
     "created_at": "2012-11-10T18:30:43.089Z"
-}
-```
-
-#### Failure Case
-In the event of a failure, the response may contain additional information.
-
-Sample:
-
-```json
-{
-    "id": "563d40a1fcd4b70007056f20",
-    "created_at": "2015-11-07T00:06:57Z",
-    "updated_at": "2015-11-07T00:07:08Z",
-    "project_id": "5628221fecf6470006000037",
-    "code_id": "5628a5c50211a60009007469",
-    "code_history_id": "5628a5c50211a6000900746a",
-    "status": "error",
-    "msg": "hello.rb:7:in `<main>': error message here (RuntimeError)\n",
-    "code_name": "MyWorker",
-    "code_rev": "1",
-    "start_time": "2015-11-07T00:07:04Z",
-    "end_time": "2015-11-07T00:07:08Z",
-    "duration": 3741,
-    "timeout": 3600,
-    "payload": "{\"foo\":\"bar\"}",
-    "log_size": 43,
-    "message_id": "6214194142555658705",
-    "cluster": "default",
-    "api_version": 2,
-    "error_class": "Process Exit 1",
-    "instance_id": "i-1c627aad",
-    "time_in_queue": 7,
-    "start_time_ms": 1446854824829,
-    "end_time_ms": 1446854828570,
-    "run_times": 1
 }
 ```
 
@@ -1065,50 +1053,6 @@ Sample:
 }
 ```
 
-### <a name="set_a_tasks_progress"></a> Set a Task’s Progress
-
-#### Endpoint
-
-<div class="grey-box">
-    POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/progress
-</div>
-
-#### URL Parameters
-
-* **Project ID**: The ID of the project that contains the task.
-* **Task ID**: The ID of the task whose progress you are updating.
-
-#### Request
-
-The request should be JSON-encoded and can contain the following information:
-
-* **percent**: An integer, between 0 and 100 inclusive, that describes the completion of the task.
-* **msg**: Any message or data describing the completion of the task. Must be a string value, and the 64KB request limit applies.
-
-
-The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
-
-Sample:
-
-```json
-{
-    "percent": 25,
-    "msg": "Any message goes here."
-}
-```
-
-#### Response
-
-The response will be a JSON object containing a message explaining whether the request was successful or not.
-
-Sample:
-
-```json
-{
-    "msg": "Progress set"
-}
-```
-
 ### <a name="retry_a_task"></a> Retry a Task
 
 #### Endpoint
@@ -1132,7 +1076,7 @@ The request also needs to be sent with a `Content-Type: application/json` header
 
 #### Response
 
-The response will be a JSON object containing a message explaining whether the request was successful or not.
+The response will be a JSON object containing a message explaining whether the request was successful or not. It will also have a `tasks` field, which is an array of task objects similar to the response of [Queue a Task](#queue_a_task).
 
 Sample:
 
@@ -1170,7 +1114,7 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 
 #### Response
 
-The response will be a JSON object. The `schedules` property will contain a JSON array of objects, each representing a schedule.
+The response will be a JSON object. The `schedules` property will contain a JSON array of objects, each representing a schedule. See [Get Info About a Scheduled Task](#get_info_about_a_scheduled_task) for full output description.
 
 Sample:
 
