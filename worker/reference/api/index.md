@@ -353,12 +353,10 @@ This endpoint accepts a `multipart/form-data` request, instead of
 literal describing the code. An optional field of type file called `file` may
 contain the zip file containing the worker code.
 
-`data` MUST contain the following information:
+`data` MUST contain the following information for both uploading a new package
+and for updating an existing package:
 
 * **name**: A unique name for your worker. This will be used to assign tasks to the worker as well as to update the code. If a worker with this name already exists, the code you are uploading will be added as a new revision.
-
-When uploading new code, the following are required (not required if just updating code options below):
-
 * **image**: The Docker image for your worker.
 
 The request also accepts the following optional parameters:
