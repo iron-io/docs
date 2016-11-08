@@ -849,7 +849,7 @@ Sample:
 The request should be JSON-encoded and consist of an object with a single property, `tasks`, which contains an array of objects. Each object in the array should consist of:
 
 * **code_name**: The name of the code package to execute for this task.
-* **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what work it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. The payload cannot be larger than 64KB in size.
+* **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what work it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. The file name is available in the environment variable called `PAYLOAD_FILE`. In old style code packages, the `-payload` argument passed to the command also has the payload. The payload cannot be larger than 64KB in size.
 
 Optionally, each object in the array can also contain the following:
 
