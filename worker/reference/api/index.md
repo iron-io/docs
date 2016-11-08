@@ -1224,7 +1224,36 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing the details of the scheduled task.
+The response will be a JSON object containing the details of the scheduled task. The following fields are always present:
+
+* `id` - String.
+* `created_at` - Date.
+* `updated_at` - Date.
+* `project_id` - String.
+* `code_name` - String. Identifies the code this schedule will use to create
+  tasks.
+* `payload` - String.
+
+The following fields are optional:
+
+* `msg` - String. A human-readable string with more information about the
+  schedule.
+* `status` - String. Possible states are `complete` if no more tasks will be
+  scheduled.
+* `error_count` - Number.
+* `priority` - Number. See [Schedule a Task](#schedule_a_task).
+* `start_at` - Date. See [Schedule a Task](#schedule_a_task).
+* `run_every` - Number. See [Schedule a Task](#schedule_a_task).
+* `run_times` - Number. See [Schedule a Task](#schedule_a_task).
+* `timeout` - Number. See [Schedule a Task](#schedule_a_task).
+* `task_delay` - Number. If set, tasks created by the schedule will have a delay
+  of `task_delay` seconds before becoming available to run.
+* `run_count` - Number. Number of times the scheduled task was queued.
+* `last_run_time` - Date. The last time this scheduled task was executed, if
+  any.
+* `end_at` - Date. See [Schedule a Task](#schedule_a_task).
+* `next_start` - Date. The next time this task is scheduled to be executed, if
+  any.
 
 Sample:
 
