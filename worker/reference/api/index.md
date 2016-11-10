@@ -303,7 +303,10 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 #### Response
 
-The response will be a JSON object. The `codes` property will contain a JSON array of objects, each representing a code package.
+The response will be a JSON object. The `codes` property will contain a JSON
+array of objects, each representing a code package. For information about code
+objects, see the [Get Info About A Code Package
+endpoint](#get_info_about_a_code_package).
 
 Sample:
 
@@ -312,13 +315,14 @@ Sample:
     "codes": [
         {
             "id": "4ea9c05dcddb131f1a000002",
+            "created_at": "2016-06-08T17:52:09.689Z",
             "project_id": "4ea9c05dcddb131f1a000001",
             "name": "MyWorker",
-            "runtime": "ruby",
+            "image": "iron/hello",
             "latest_checksum": "b4781a30fc3bd54e16b55d283588055a",
             "rev": 1,
             "latest_history_id": "4f32ecb4f840063758022153",
-            "latest_change": 1328737460598000000
+            "latest_change": "2016-06-08T17:52:09.689Z"
         }
     ]
 }
@@ -344,28 +348,31 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/codes
 
 #### Request
 
-The request should be JSON-encoded and contain the following information:
+This endpoint accepts a `multipart/form-data` request, instead of
+`application/json`. The form MUST have a field called `data` that has a JSON
+literal describing the code. An optional field of type file called `file` may
+contain the zip file containing the worker code.
+
+`data` MUST contain the following information for both uploading a new package
+and for updating an existing package:
 
 * **name**: A unique name for your worker. This will be used to assign tasks to the worker as well as to update the code. If a worker with this name already exists, the code you are uploading will be added as a new revision.
-
-When uploading code, the following are required (not required if just updating code options below):
-
 * **image**: The Docker image for your worker.
-* **command**: The command to execute when running your worker code. See [Docker Workflow](/worker/getting_started/) for more information.
 
 The request also accepts the following optional parameters:
 
-* **config**: An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. The config file location will be passed in via the -config argument to your worker. The config cannot be larger than 64KB in size.
-* **stack**: A string that, if provided, will set the specific language environment. If blank the language version will be set to default language version defined in runtime. [See More Information on Stack settings](http://dev.iron.io/worker/reference/environment/#default_language_versions).
+* **command**: String. The command to execute when running your worker code. See [Docker Workflow](/worker/getting_started/) for more information.
+* **config**: String. An arbitrary string (usually YAML or JSON) that, if provided, will be available in a file that your worker can access. The config file location will be passed in via the -config argument to your worker. The config cannot be larger than 64KB in size.
+* **stack**: **Deprecated**. This is not supported for custom Docker images. A string that, if provided, will set the specific language environment. If blank the language version will be set to default language version defined in runtime. [See More Information on Stack settings](http://dev.iron.io/worker/reference/environment/#default_language_versions).
 * **max_concurrency**: The maximum number of workers that should be run in parallel. This is useful for keeping your workers from hitting API quotas or overloading databases that are not prepared to handle the highly-concurrent worker environment. If omitted, there will be no limit on the number of concurrent workers.
 * **retries**: The maximum number of times failed tasks should be retried, in the event that there's an error while running them. If omitted, tasks will not be retried. Tasks cannot be retried more than ten times.
 * **retries_delay**: The number of seconds to wait before retries. If omitted, tasks will be immediately retried.
-* **default_priority**: The default priority of the tasks running this code. Valid values are 0, 1, and 2. The priority of the task can be set when queueing the task. If it's not set when queueing the task, the default priority is used.
-* **env_vars**: Environment variables accessible within your code. It's a JSON object consisting corresponding key/value pairs. Keys and values are intended to be alphanumeric; if you want to pass values composed of wider list of symbols, consider to encode value with base64 encoding and decode it back within your code.
+* **default_priority**: The default priority of the tasks running this code. Valid values are 0, 1, and 2. The priority of the task can also be set when queueing the task.
+* **env_vars**: Environment variables accessible within your code. It's a JSON object consisting of corresponding key/value pairs. Keys and values are intended to be alphanumeric; if you want to pass values composed of wider list of symbols, consider to encode value with base64 encoding and decode it back within your code.
 
 Your request also needs the following headers, in addition to the headers required by all API calls:
 
-* **Content-Length**: The number of bytes in your JSON-encoded request body
+* **Content-Length**: The number of bytes in the form-data request.
 * **Content-Type**: Should be set to "multipart/form-data ; boundary={Insert Value Here}" with boundary set to [an appropriate value](http://en.wikipedia.org/wiki/MIME#Multipart_messages).
 
 **Note**: This request is not limited to 64 KB, unlike other requests.
@@ -430,6 +437,38 @@ Sample:
 
 The response will be a JSON object containing the details of the code package.
 
+The following fields are always present in all code objects:
+
+* `id` - String - unique, opaque, code identifier.
+* `project_id` - String.
+* `name` - String. As specified during upload.
+* `created_at` - Date. This is the date and time the code was first
+  created.
+* `rev` - Number. Monotonically increasing integer that counts changes to the
+  code.
+* `latest_history_id` - String. Uniquely identifies the latest version of this
+  code.
+* `latest_change` - Date. The latest time any changes were made to the code via
+  the [Upload or Update a code package
+  endpoint](#upload_or_update_a_code_package).
+
+The following fields may be present.
+* `latest_checksum` - String. MD5 checksum of the latest code package. Only set
+  for old style zip packages.
+* `image` - String. The Docker image powering this task.
+* `runtime` and `stack` - **Deprecated** Strings. Disjoint with `image`. Only
+  set for old style zip packages.
+* `command` - String. Command to run in the Docker container or `runtime` to
+  begin task execution.
+* `max_concurrency` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries_delay` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `priority` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `status` - String. Set to `archived` if the code has been archived.
+* `archived_at` - Date. Timestamp when code was archived.
+* `config` - String. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `env_vars` - Object of string values. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+
 Sample:
 
 ```json
@@ -437,11 +476,19 @@ Sample:
     "id": "4eb1b241cddb13606500000b",
     "project_id": "4eb1b240cddb13606500000a",
     "name": "MyWorker",
-    "runtime": "ruby",
     "latest_checksum": "a0702e9e9a84b758850d19ddd997cf4a",
     "rev": 1,
     "latest_history_id": "4eb1b241cddb13606500000c",
-    "latest_change": 1328737460598000000
+    "latest_change": "2016-06-08T17:52:09.689Z",
+    "created_at": "2016-03-17T13:12:09.589Z",
+    "command": "./hello",
+    "image": "example/hello",
+    "max_concurrency": 5,
+    "retries": 2,
+    "config": "user=Alice",
+    "env_vars": {
+        "GREETING": "Good Morning"
+    }
 }
 ```
 
@@ -513,6 +560,36 @@ The response will be a zip file containing your code package. The response heade
 
 The response will be a JSON object with a revisions property, containing a list of JSON objects, each representing a revision to the code package.
 
+The following fields are always present in all code revision objects:
+
+* `id` - String - unique, opaque identifier for the revision.
+* `project_id` - String.
+* `code_id` - String.
+* `name` - String. As specified during upload. Same as the code name.
+* `created_at` - Date. This is the date and time this version of code was first
+  created.
+* `rev` - Number. Monotonically increasing integer identifying this revision in
+  relation to the code.
+
+The following fields may be present.
+* `checksum` - String. MD5 checksum of the code package for the revision. Only set
+  for old style zip packages.
+* `code_size` - Number. Size in bytes of the code package for the revision.
+  Only set for old style zip packages.
+* `image` - String. The Docker image powering this task.
+* `runtime` and `stack` - **Deprecated** Strings. Disjoint with `image`. Only
+  set for old style zip packages.
+* `command` - String. Command to run in the Docker container or `runtime` to
+  begin task execution.
+* `max_concurrency` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `retries_delay` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `priority` - Number. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `status` - String. Set to `archived` if the code has been archived.
+* `archived_at` - Date. Timestamp when code was archived.
+* `config` - String. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+* `env_vars` - Object of string values. See [Upload or Update a code package endpoint](#upload_or_update_a_code_package).
+
 Sample:
 
 ```json
@@ -522,8 +599,10 @@ Sample:
             "id": "4f32d9c81cf75447be020ea6",
             "code_id": "4f32d9c81cf75447be020ea5",
             "project_id": "4f32d521519cb67829000390",
+            "created_at": "2016-03-17T13:12:09.589Z",
+            "updated_at": "2016-03-17T13:12:09.589Z",
             "rev": 1,
-            "runtime": "ruby",
+            "image": "iron/hello",
             "name": "MyWorker",
             "file_name": "worker.rb"
         },
@@ -531,9 +610,12 @@ Sample:
             "id": "4f32da021cf75447be020ea8",
             "code_id": "4f32d9c81cf75447be020ea5",
             "project_id": "4f32d521519cb67829000390",
+            "created_at": "2016-04-11T13:12:09.589Z",
+            "updated_at": "2016-04-11T13:12:09.589Z",
             "rev": 2,
-            "runtime": "ruby",
+            "image": "iron/hello",
             "name": "MyWorker",
+            "config": "user=Alice",
             "file_name": "worker.rb"
         }
     ]
@@ -559,6 +641,7 @@ Sample:
 * **start_date**: Limit the counts of tasks to those that were last modified after this time specified.  Time should be formatted as the number of seconds since the Unix epoch.
 * **end_date**: Limit the counts of tasks to those that were last modified before this time specified.  Time should be formatted as the number of seconds since the Unix epoch.
 
+If neither are specified, tasks run in the last 24 hours are considered.
 
 #### Response
 
@@ -658,7 +741,7 @@ Tasks will be in different states during the course of operation. Here are the s
     </tbody>
 </table>
 
-#### Priority
+#### <a name="task-priority"></a> Priority
 
 Task priority determines how much time a task may sit in queue. Higher values means tasks spend less time in the queue once they come off the schedule. Access to priorities depends on your selected IronWorker plan [see plans](http://www.iron.io/products/worker/pricing). You must have access to higher priority levels in your chosen plan or your priority will automatically default back to 0.  The standard/default priority is 0.
 
@@ -673,9 +756,9 @@ Task priority determines how much time a task may sit in queue. Higher values me
     </tbody>
 </table>
 
-#### Timeout
+#### <a name="task-timeout"></a> Timeout
 
-Tasks have timeouts associated with them that specify the amount of time (in seconds) the process may run. The maximum timeout is 3600 seconds (60 minutes). It’s also the default timeout but it can be set on a task-by-task basis to be anytime less than 3600 seconds.
+Tasks have timeouts associated with them that specify the amount of time (in seconds) the process may run. The maximum timeout is 3600 seconds (60 minutes). It’s also the default timeout but it can be set on a task-by-task basis to be any time less than 3600 seconds.
 
 <table class="reference">
     <thead>
@@ -683,19 +766,6 @@ Tasks have timeouts associated with them that specify the amount of time (in sec
     </thead>
     <tbody>
         <tr><td>3600</td><td>Maximum time a task can run (also default)</td></tr>
-    </tbody>
-</table>
-
-#### Runtime
-
-<table class="reference" style="margin-top: 10px;">
-    <thead>
-        <tr><th>Languages</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>ruby</td></tr>
-        <tr><td>python</td></tr>
-        <tr><td>php</td></tr>
     </tbody>
 </table>
 
@@ -722,11 +792,13 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
 
 Sample endpoint with several optional parameters set:
 
+```
 GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_name=<span class="variable">{Code Name}</span>&complete=1&cancelled=1&error=1
+```
 
 #### Response
 
-The response will be a JSON object. The `tasks` property will contain a JSON array of objects, each representing a task.
+The response will be a JSON object. The `tasks` property will contain a JSON array of objects, each representing a task. For more information about the output, see [Get Info About A Task](#get_info_about_a_task).
 
 Sample:
 
@@ -775,7 +847,7 @@ Sample:
 The request should be JSON-encoded and consist of an object with a single property, `tasks`, which contains an array of objects. Each object in the array should consist of:
 
 * **code_name**: The name of the code package to execute for this task.
-* **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what worker it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. File location will be passed in via the -payload argument. The payload cannot be larger than 64KB in size.
+* **payload**: A string of data to be passed to the worker (usually JSON) so the worker knows exactly what work it should perform. This is the equivalent to a message in a typical message queue. The payload will be available in a file that your worker can access. The file name is available in the environment variable called `PAYLOAD_FILE`. In old style code packages, the `-payload` argument passed to the command also has the payload. The payload cannot be larger than 64KB in size.
 
 Optionally, each object in the array can also contain the following:
 
@@ -829,14 +901,16 @@ POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webho
 
 Optionally, following URL parameters can be sent:
 
-* **priority**: The priority queue to run the task in. Valid values are 0, 1, and 2. Task priority determines how much time a task may sit in queue. Higher values means tasks spend less time in the queue once they come off the schedule. Access to priorities depends on your selected IronWorker plan [see plans](http://www.iron.io/products/worker/pricing). You must have access to higher priority levels in your chosen plan or your priority will automatically default back to 0.  The standard/default priority is 0.
-* **cluster**: cluster name ex: "high-mem" or "dedicated".  This is a premium feature for customers to have access to more powerful or custom built worker solutions. Dedicated worker clusters exist for users who want to reserve a set number of workers just for their queued tasks. If not set default is set to  "default" which is the public IronWorker cluster.
-* **timeout**: The maximum runtime of your task in seconds. No task can exceed 3600 seconds (60 minutes). The default is 3600 but can be set to a shorter duration.
-* **delay**: The number of seconds to delay before actually queuing the task. Default is 0. Maximum is 604,800 seconds (7 days).
+* **priority**: See [Queue A Task](#queue_a_task).
+* **cluster**: See [Queue A Task](#queue_a_task).
+* **timeout**: See [Queue A Task](#queue_a_task).
+* **delay**: See [Queue A Task](#queue_a_task).
 
 Sample endpoint with all optional parameters set:
 
+```
 POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/webhook?code_name=<span class="variable">{Code Name}</span>&priority=<span class="variable">{priority}</span>&delay=<span class="variable">{delay}</span>&cluster=<span class="variable">{cluster}</span>&timeout=<span class="variable">{timeout}</span>
+```
 
 #### Request
 
@@ -872,6 +946,40 @@ Sample:
 
 The response will be a JSON object containing the details of the task.
 
+All task objects have the following fields:
+
+* `id` - String. Identifies the task.
+* `created_at` - Date. Time when task was created by [queuing
+  a task](#queue_a_task).
+* `updated_at` - Date. Various task operations update this as the task proceeds
+  through various states to completion.
+* `project_id` - String.
+* `code_id` - String.
+* `code_name` - String.
+* `code_rev` - String.
+* `code_history_id` - String. The specific revision of code that this task
+  executed.
+* `status` - String. One of `queued`, `running`, `complete`, `error`,
+  `cancelled`, `killed`, `timeout`. Clients should not assume this set is
+  complete. New values may be added over time.
+
+In addition, the following fields are optional:
+
+* `msg` - String. Some human-readable text describing the task state.
+* `retry_count` - String. If the task was queued with retries, count of how
+  many attempts were made to execute it.
+* `start_time` - Date. Time when task starts executing.
+* `end_time` - Date. Time when task finishes executing. Set regardless of
+  success or error.
+* `priority` - Number. See [Priority](#task-priority).
+* `timeout` - Number. See [Timeout](#task-timeout).
+* `delay` - Number. See [Queue a Task](#queue_a_task).
+* `payload` - String. See [Queue a Task](#queue_a_task).
+* `cluster` - String. See [Queue a Task](#queue_a_task).
+* `log_size` - Number. Length in bytes of the log generated by the task.
+* `schedule_id` - String. If the task is queued by the scheduler, the ID of the
+  schedule that led to this task being queued.
+
 Sample:
 
 ```json
@@ -883,52 +991,15 @@ Sample:
     "status": "complete",
     "code_name": "MyWorker",
     "code_rev": "1",
-    "start_time": 1320268924000000000,
-    "end_time": 1320268924000000000,
-    "duration": 43,
+    "start_time": "2016-06-08T17:52:09.689Z",
+    "end_time": "2016-06-08T17:52:09.689Z",
     "timeout": 3600,
     "schedule_id": "52f02c01c872fd67b5020c06",
     "log_size": 1000,
-    "message_id": "6000008730003365393",
     "label": "optionalLabel",
     "payload": "{\"foo\":\"bar\"}",
     "updated_at": "2012-11-10T18:31:08.064Z",
     "created_at": "2012-11-10T18:30:43.089Z"
-}
-```
-
-#### Failure Case
-In the event of a failure, the response may contain additional information.
-
-Sample:
-
-```json
-{
-    "id": "563d40a1fcd4b70007056f20",
-    "created_at": "2015-11-07T00:06:57Z",
-    "updated_at": "2015-11-07T00:07:08Z",
-    "project_id": "5628221fecf6470006000037",
-    "code_id": "5628a5c50211a60009007469",
-    "code_history_id": "5628a5c50211a6000900746a",
-    "status": "error",
-    "msg": "hello.rb:7:in `<main>': error message here (RuntimeError)\n",
-    "code_name": "MyWorker",
-    "code_rev": "1",
-    "start_time": "2015-11-07T00:07:04Z",
-    "end_time": "2015-11-07T00:07:08Z",
-    "duration": 3741,
-    "timeout": 3600,
-    "payload": "{\"foo\":\"bar\"}",
-    "log_size": 43,
-    "message_id": "6214194142555658705",
-    "cluster": "default",
-    "api_version": 2,
-    "error_class": "Process Exit 1",
-    "instance_id": "i-1c627aad",
-    "time_in_queue": 7,
-    "start_time_ms": 1446854824829,
-    "end_time_ms": 1446854828570,
-    "run_times": 1
 }
 ```
 
@@ -980,50 +1051,6 @@ Sample:
 }
 ```
 
-### <a name="set_a_tasks_progress"></a> Set a Task’s Progress
-
-#### Endpoint
-
-<div class="grey-box">
-    POST /projects/<span class="variable project_id">{Project ID}</span>/tasks/<span class="variable task_id">{Task ID}</span>/progress
-</div>
-
-#### URL Parameters
-
-* **Project ID**: The ID of the project that contains the task.
-* **Task ID**: The ID of the task whose progress you are updating.
-
-#### Request
-
-The request should be JSON-encoded and can contain the following information:
-
-* **percent**: An integer, between 0 and 100 inclusive, that describes the completion of the task.
-* **msg**: Any message or data describing the completion of the task. Must be a string value, and the 64KB request limit applies.
-
-
-The request also needs to be sent with a `Content-Type: application/json` header, or it will respond with a 406 status code and a `msg` property explaining the missing header.
-
-Sample:
-
-```json
-{
-    "percent": 25,
-    "msg": "Any message goes here."
-}
-```
-
-#### Response
-
-The response will be a JSON object containing a message explaining whether the request was successful or not.
-
-Sample:
-
-```json
-{
-    "msg": "Progress set"
-}
-```
-
 ### <a name="retry_a_task"></a> Retry a Task
 
 #### Endpoint
@@ -1047,7 +1074,7 @@ The request also needs to be sent with a `Content-Type: application/json` header
 
 #### Response
 
-The response will be a JSON object containing a message explaining whether the request was successful or not.
+The response will be a JSON object containing a message explaining whether the request was successful or not. It will also have a `tasks` field, which is an array of task objects similar to the response of [Queue a Task](#queue_a_task).
 
 Sample:
 
@@ -1085,7 +1112,7 @@ Scheduled tasks are just tasks that run on a schedule. While the concept is simp
 
 #### Response
 
-The response will be a JSON object. The `schedules` property will contain a JSON array of objects, each representing a schedule.
+The response will be a JSON object. The `schedules` property will contain a JSON array of objects, each representing a schedule. See [Get Info About a Scheduled Task](#get_info_about_a_scheduled_task) for full output description.
 
 Sample:
 
@@ -1195,7 +1222,36 @@ Sample:
 
 #### Response
 
-The response will be a JSON object containing the details of the scheduled task.
+The response will be a JSON object containing the details of the scheduled task. The following fields are always present:
+
+* `id` - String.
+* `created_at` - Date.
+* `updated_at` - Date.
+* `project_id` - String.
+* `code_name` - String. Identifies the code this schedule will use to create
+  tasks.
+* `payload` - String.
+
+The following fields are optional:
+
+* `msg` - String. A human-readable string with more information about the
+  schedule.
+* `status` - String. Possible states are `complete` if no more tasks will be
+  scheduled.
+* `error_count` - Number.
+* `priority` - Number. See [Schedule a Task](#schedule_a_task).
+* `start_at` - Date. See [Schedule a Task](#schedule_a_task).
+* `run_every` - Number. See [Schedule a Task](#schedule_a_task).
+* `run_times` - Number. See [Schedule a Task](#schedule_a_task).
+* `timeout` - Number. See [Schedule a Task](#schedule_a_task).
+* `task_delay` - Number. If set, tasks created by the schedule will have a delay
+  of `task_delay` seconds before becoming available to run.
+* `run_count` - Number. Number of times the scheduled task was queued.
+* `last_run_time` - Date. The last time this scheduled task was executed, if
+  any.
+* `end_at` - Date. See [Schedule a Task](#schedule_a_task).
+* `next_start` - Date. The next time this task is scheduled to be executed, if
+  any.
 
 Sample:
 
@@ -1245,9 +1301,7 @@ Sample:
 
 ## Stacks
 
-List of available stacks
-
-### <a name="list_stacks"></a> List of stacks
+### <a name="list_stacks"></a> List of stacks (Deprecated)
 
 #### Endpoint
 
@@ -1257,7 +1311,8 @@ List of available stacks
 
 #### Response
 
-The response will be a JSON object.
+The response will be a JSON object describing the stacks supported by
+IronWorker. This is only relevant to old style code packages.
 
 Sample:
 
