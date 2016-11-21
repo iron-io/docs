@@ -5,7 +5,7 @@ section: worker
 breadcrumbs:
   - ['CLI Tool', 'cli']
 ---
-Iron.io’s Org support allows you to set up one or more members of your team as the admins of your Iron.io account. As the admins, they will have the ability to create users, as well as control which projects each account has access to. This guide will walk you through the different options in Org Support and how to start using it.
+Iron.io’s Org support allows you to set up one or more members of your team as the admins of your Iron.io account. As the admins, they will have the ability to create users, as well as control which projects each account has access to. This guide will walk you through the different options in Org Support and how to start using it. If you do not see this option, but would like to use this free feature, please contact <a href='mailto:support@iron.io'>support@iron.io</a>.
 
 
 <section id="toc">
@@ -31,7 +31,7 @@ To create a new user, click the blue Add User Button. Enter in the information f
 <li><b>Developer</b>- This is the standard Iron.io account. Users created as developers will only have access to the projects that the admin has given them.</li></ul>
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/madeRoles.png' style="width: 90%;">
 
-Once the other users have been added, it’s time to assign their access. To the right of each name is a gear icon, cliikc that to see all of the options:<br />
+Once the other users have been added, it’s time to assign their access. To the right of each name is a gear icon, click that to see all of the options:<br />
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/gearWithDripDowns.png' style="width: 90%;">
 
 <ul><li><b>Manage User Projects</b>- Allows you to give or remove access from the projects in your organization.
