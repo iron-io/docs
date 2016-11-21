@@ -362,6 +362,10 @@ ul#breadcrumbs li {
   color: red;
 }
 
+.variable.cluster_id {
+  color: orange;
+}
+
 .variable.code_id, .variable.schedule_id, .variable.task_id, .variable.queue_name, .variable.cache_name {
   color: blue;
 }
