@@ -29,6 +29,7 @@ To create a new user, click the blue Add User Button. Enter in the information f
 <li><b>Admin RO</b>- This account has access to the Organization menu, but can not add or edit anything. It was designed to be used for finance teams or other people that need to see anything, but not make changes.</li>
 
 <li><b>Developer</b>- This is the standard Iron.io account. Users created as developers will only have access to the projects that the admin has given them.</li></ul>
+
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/madeRoles.png' style="width: 90%;">
 
 Once the other users have been added, it’s time to assign their access. To the right of each name is a gear icon, click that to see all of the options:<br />
