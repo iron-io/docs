@@ -35,7 +35,8 @@ To create a new user, click the blue Add User Button. Enter in the information f
 Once the other users have been added, it’s time to assign their access. To the right of each name is a gear icon, click that to see all of the options:<br />
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/gearWithDripDowns.png' style="width: 90%;">
 
-<ul><li><b>Manage User Projects</b>- Allows you to give or remove access from the projects in your organization.
+<ul>
+<li><b>Manage User Projects</b>- Allows you to give or remove access from the projects in your organization.</li>
 
 <li><b>Manage User Clusters</b>- Customers using Iron Hybrid worker (https://www.iron.io/hybrid-iron-io-on-premise-job-processing-with-the-help-of-the-cloud/) can control which clusters people will have access to.</li>
 
