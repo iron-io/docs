@@ -22,7 +22,7 @@ Iron.io’s Org support allows you to set up one or more members of your team as
 When you first go to this page, you will see a list of all current users and what access they have. If this is a new account, you may only see one entry for the admin.<br />
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/users.png'>
 
-To create a new user, click the blue Add User Button. Enter in the information for the first 3 fields. In the Role section, you will see a dropdown with 3 options: Admin, Admin RO and Developer:<b r />
+To create a new user, click the blue Add User Button. Enter in the information for the first 3 fields. In the Role section, you will see a dropdown with 3 options: Admin, Admin RO and Developer:<br />
 <img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/createUser.png'>
 <ul>
 <li><b>Admin</b>- This is the account type that can create projects and users and assign access.  We suggest using an address not tied to one specific person (for example, team@domain.com). This will avoid any access issues if that person is out of town.</li>
