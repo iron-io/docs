@@ -30,18 +30,17 @@ nature of workers, making it a natural fit for IronWorker. This article will wal
       <a href="#quick_start">Quick Start</a>
       <ul>
         <li><a href="#get_the_cli">Get the CLI</a></li>
+        <li><a href="#get_docker">Get Docker</a></li>
         <li><a href="#create_your_configuration_file">Create Your Configuration File</a></li>
         <li><a href="#write_your_nodejs_worker">Write Your Node.js Worker</a></li>
-        <li><a href="#params_and_config_inside_worker">Accessing the Params and Config Variables.</a></li>
-        <li><a href="#create_a_worker_file">Create a .worker File</a></li>
-        <li><a href="#upload_your_worker">Upload Your Worker</a></li>
-        <li><a href="#queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</a></li>
+        <li><a href="#local_test">Test Your Worker Locally</a></li>
+        <li><a href="#Zip_and_Upload">Zip and Upload</a></li>
+        <li><a href="#queue_job">Queue a Worker</a></li>
       </ul>
     </li>
     <li>
       <a href="#deep_dive">Deep Dive</a>
       <ul>
-        <li><a href="#payload_example">Payload Example</a></li>
         <li><a href="#exit_example">Exit Worker expicitly with an exit code</a></li>
         <li><a href="#packaging_dependencies">Packaging Dependencies</a></li>
       </ul>
@@ -53,20 +52,24 @@ nature of workers, making it a natural fit for IronWorker. This article will wal
 
 <h3 id="get_the_cli">Get the CLI</h3>
 
-We've created a [command line interface](/worker/reference/cli) to the IronWorker service
+We've created a [command line interface](/worker/cli) to the IronWorker service
 that makes working with the service a lot easier and more convenient.
-It does, however, require you to have Ruby 1.9+ installed and to install the `iron_worker_ng` gem.
-Once Ruby 1.9+ is installed, you can just run the following command to get the gem:
+Simply open the terminal, and run this command:
 
 <figcaption><span>Command Line </span></figcaption>
 
 
 ```sh
-$ gem install iron_worker_ng
+$ curl -sSL https://cli.iron.io/install | sh
 ```
+<h3 id="get_docker">Get Docker</h3>
+Docker is the tool to create and manage images for your workers. It also allows you to test locally in the exact same environment as production to allow for easy intergenerations.
+
+To download Docker, click this link- <a href="https://docs.docker.com/mac/started/">https://docs.docker.com/mac/started/</a>
+
 <h3 id="create_your_configuration_file">Create Your Configuration File</h3>
 
-The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same folder as your `.worker` file:
+The CLI needs a configuration file or environment variables set that tell it what your credentials are. We have some [pretty good documentation](/worker/reference/configuration) about how this works, but for simplicity's sake, just save the following as `iron.json` in the same directory as your worker file:
 
 <figcaption><span>iron.json </span></figcaption>
 
@@ -86,148 +89,60 @@ You should insert your [project ID](https://hud.iron.io) and [token](https://hud
 ```js
 console.log("Hello World from Node.js.");
 ```
-
-<h3 id="params_and_config_inside_worker">Accessing the Params and Config Variables.</h3>
-To access the contents of the configuration and payload variables from within your worker use the following helpers we've included in your environment. see source for these helpers <a href="https://github.com/iron-io/iron_worker_ruby_ng/blob/master/lib/iron_worker_ng/code/runtime/node.rb">here</a>.
-<figcaption><span>hello_worker.js </span></figcaption>
-
-```js
-var worker = require('node_helper');
-console.log("params:", worker.params);
-console.log("config:", worker.config);
-console.log("task_id:", worker.task_id);
-```
-
-<h3 id="create_a_worker_file">Create a .worker File</h3>
-
-Worker files are a simple way to define your worker and its dependencies (package.json, node modules, files, directories, etc.). Save the following in a file called `hello.worker`:
-
-<figcaption><span>hello.worker </span></figcaption>
-
-```ruby
-# set the runtime language; this should be "node" for Node.js workers
-runtime "node"
-# exec is the file that will be executed when you queue a task
-exec "hello_worker.js" # replace with your file
-```
-
-_To change your worker's version, you may place `stack "node-0.10"` (e.x.) in your .worker file, for more see [.worker syntax](/worker/reference/dotworker/#syntax_reference)._
-
-<h3 id="upload_your_worker">Upload Your Worker</h3>
+<h3 id="local_test">Test your Worker Locally</h3>
+In the directory that holds your worker and the iron.json file run:
 
 <figcaption><span>Command Line </span></figcaption>
 
 
 ```sh
-$ iron_worker upload hello
+$ docker run --rm -v "$PWD":/worker -w /worker iron/node node hello_worker.js
 ```
 
-That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
+That command will take your code and run it in the iron/node image we have. If this is your first time using this image, Docker will need to go download a copy from Docker Hub. That may take a few moments, but only needs to be done once.
 
-Let’s quickly test it by running:
+<h3 id="Zip_and_Upload">Zip and Upload your Worker</h3>
 
-    iron_worker queue hello
+Now that the code has been successfully tested, it's time to move it into IronWorker. First, zip the contents of your current directory 
 
-Now look at the task list in HUD and you should see your task show up and go from "queued" to "running" to "completed".
+<figcaption><span>Command Line</span></figcaption>
 
-Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
+```sh
+$ zip -r hello_worker.zip .
+```
 
-<h3 id="queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</h3>
+This will put all of the files in your directory in a compressed file called hello_worker.zip. Now, let's upload that file into Iron.
 
-Once your code has been uploaded, it's easy to queue a task to it. It's a single,
-authenticated [POST request](/worker/reference/api/#queue_a_task) with a JSON
-object. The example below queues up a task for your NodeWorker. Just insert your
-project ID and token at the bottom (that third argument is the name of your worker).
 
-<figcaption><span>enqueue.js </span></figcaption>
+```sh
+$ $ iron worker upload --zip hello_worker.zip --name hello_worker iron/node node hello_worker.js
+```
+That will take the file we created and upload it into Iron with the name of hello_worker. iron/node is the image we are runnoingthis on and node hello_worker.js is the command we are running.
 
+<h3 id="queue_job">Queue a Job</h3>
+Now you can queue up as many tasks as you want, whenever you want:
+
+```sh
+$ iron worker queue --wait hello_worker
+```
+
+If you prefer, you can do this in your worker:
+<figcaption><span>hello_worker.js</span></figcaption>
 ```js
-var https = require("https");
-
-function queue_task(project, token, code_name) {
-  // Build the payload
-  var payload = {
-    "arg1": "Test",
-    "another_arg": ["apples", "oranges"]
-  };
-
-  var req_json = {
-    "tasks": [{
-      "code_name": code_name,
-      "payload": JSON.stringify(payload)
-    }]
-  }
-
-  // Convert the JSON data
-  var req_data = JSON.stringify(req_json);
-
-  // Create the request headers
-  var headers = {
-    'Authorization': 'OAuth ' + token,
-    'Content-Type': "application/json"
-  };
-
-  // Build config object for https.request
-  var endpoint = {
-    "host": "worker-aws-us-east-1.iron.io",
-    "port": 443,
-    "path": "/2/projects/" + project + "/tasks",
-    "method": "POST",
-    "headers": headers
-  };
-
-  var post_req = https.request(endpoint, function(res) {
-    console.log("statusCode: ", res.statusCode);
-
-    res.on('data', function(d) {
-      process.stdout.write(d);
-    });
-  });
-
-  post_req.write(req_data)
-  post_req.end();
-
-  post_req.on('error', function(e) {
-    console.error(e);
-  });
-}
-
-queue_task("INSERT PROJECT ID", "INSERT TOKEN", "NodeWorker");
+var ironWorker = require('iron_worker');
+ 
+var client = new ironWorker.Client();
+ 
+client.tasksCreate('hello', {foo: 'bar'}, {}, function(error, body) {
+  console.log(body);
+});
 ```
 
-Save this as "enqueue.js" and use `node enqueue.js` to queue up the task to your
-worker. You should get a response similar to this:
-
-
-```js
-statusCode:  200
-{"msg":"Queued up","status_code":200,"tasks":[{"id":"4f9ecdd01bab47589b02a097"}]}
-```
-
-
-**Note**: Please make sure to check out our official [node client library](/worker/libraries)
 
 
 <h2 id="deep_dive">Deep Dive</h2>
 
-<h3 id="payload_example">Payload Example</h3>
 
-Retrieving the payload in Node.js is the same as it is on any other language.
-Retrieve the `-payload` argument passed to the script, load that file, and
-parse it as JSON.
-
-We've included a useful helper module in node to assist in retrieving the payload and configuration variables in node. Simply require the helper module  and call config, params, task_id.
-
-<figcaption><span>payload.js </span></figcaption>
-
-```js
-var worker = require('node_helper');
-console.log("params:", worker.params);
-
-// you can also access the following
-console.log("config:", worker.config);
-console.log("task_id:", worker.task_id);
-```
 
 <h3 id="packaging_dependencies"> Packaging Worker Dependencies using Node </h3>
 
