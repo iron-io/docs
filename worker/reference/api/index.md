@@ -1554,6 +1554,7 @@ The request should be JSON encoded and look like the following.
                 }
             ]
             "user_data":"SEE BELOW",
+            "eips":[""]
         },
         "disable":false,
         "runners_min": 0,
@@ -1651,6 +1652,9 @@ The request should be JSON encoded and look like the following.
 - `iam_instance_profile`:
     - `default`: none
     - `details`:The value should be a struct containing either an arn or name string value. Please refer to AWS documentation for details about IAM Instance Profiles. You may need to add an Action: `iam:PassRole` with your instanceProfile as the Resource to the IAM Policy for the account that creates instances.
+- `eips`:
+    - `default`: none
+    - `details`: The is the IP set in which all instances must live on. An empty set or absent property means the use of dynamic public IPs, or subnet's default public IP configuration. The IPs fed here must have been created first in AWS Elastic IP console. Be sure that the created IPs are actually compatible with the cluster network configuration, i.e. do not try to use a VPC-only EIP in a EC2-Classic cluster. The number of instances is locked to the amount of IPs, thus if there are more expected instances than the available IPs, it will fail creating/updating the cluster. The exhaustion of available IPs will block the creation of new instances.
 - `block_device_mappings`:
     - `default`: none
     - `details`: It is used to attach additional EBS volumes or instance stores on launch. Refer to the AWS Block Device Mapping
