@@ -33,7 +33,7 @@ you don't need any updates in your existing workers to use them. A typical workf
 
 * [Create and upload a worker](/worker)
 * Obtain webhook link:
-  * From the [HUD](https://hud.iron.io)
+  * From the [Dashboard](https://dash.iron.io)
   * Or by the [CLI](/worker/reference/cli)
 
 
