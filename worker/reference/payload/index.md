@@ -22,7 +22,7 @@ Payloads are strings. But usually we suggest to use JSON format.
   <ul>
     <li><a href="#get_payload_in_a_worker">Get Payload in a Worker</a></li>
     <li><a href="#other_information">Other Information</a></li>
-    <li><a href="#payload_filtering_in_the_hud">Payload Filtering in the HUD</a></li>
+    <li><a href="#payload_filtering_in_the_dash">Payload Filtering in the Dashboard</a></li>
   </ul>
 </section>
 
@@ -47,13 +47,13 @@ The value of `TASK_ID` will be the ID of the task that is currently being execut
 and the value of `TASK_DIR` will be the user-writable directory
 that can be used for temporary storage for the duration of the task's execution.
 
-<h2 id="payload_filtering_in_the_hud">Payload Filtering in the HUD</h2>
+<h2 id="payload_filtering_in_the_dash">Payload Filtering in the Dashboard</h2>
 
-You can see your tasks payload in the [HUD](https://hud.iron.io).
+You can see your tasks payload in the [Dashboard](https://dash.iron.io).
 Go to Worker project's section, click on "Tasks" tab and then on one of your workers where you use payload.
 Click on "Details" link on task.
 
-HUD filters payload by the next rule.
+The Dashboard filters payload by the next rule.
 It looks for all keys on any level of nesting which contains substrings:
 
 * `token`
@@ -86,7 +86,7 @@ and change their values to `[FILTERED]`.
 }
 ```
 
-### Example: payload visible through the HUD
+### Example: payload visible through the Dashboard
 
 
 ```js
