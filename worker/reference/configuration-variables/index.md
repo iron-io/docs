@@ -9,14 +9,14 @@ layout: post
 
 <p></p>
 
-<p>There are three primary methods of setting important configuration information for your IronWorker, <strong>setting the config variable</strong>, sending your worker the variables via the payload/params, and finally through our hud interface</p>
+<p>There are three primary methods of setting important configuration information for your IronWorker, <strong>setting the config variable</strong>, sending your worker the variables via the payload/params, and finally through our Dashboard interface</p>
 
 <section id="toc">
   <h3>Table of Contents</h3>
   <ul>
     <li><a href="#via_task_payload">Setting Config Variables via Task Payload</a></li>
     <li><a href="#config-via-file">Setting Config Variables via File (yaml & json)</a></li>
-    <li><a href="#config-via-hud">Setting Config Variables via Iron.io HUD</a></li>
+    <li><a href="#config-via-dash">Setting Config Variables via Iron.io the ashboard</a></li>
   </ul>
 </section>
 
@@ -64,11 +64,11 @@ Most of our [client libraries](/worker/libraries/) have helper methods to help w
 *Note: Instead of JSON you are free to use any other format like [YAML](http://yaml.org/), 
  though it may not be supported by the client libs and you will have to parse the content by yourself*
 
-<h2 id="#config-via-hud">Set config variables in the Iron.io HUD aka dashboard</h2>
-<p>it is often times useful to change configuration variables without having to reupload your code. We allow you to do so visually with our HUD (dashboard) by following two simple steps.</p>
+<h2 id="#config-via-dash">Set config variables in the Iron.io Dashboard</h2>
+<p>it is often times useful to change configuration variables without having to reupload your code. We allow you to do so visually with our Dashboard by following two simple steps.</p>
 
-<p>Navigate to the hud <a href="http://hud.iron.io">http://hud.iron.io</a>. next navigate to your uploaded code's information by clicking on the code tab and your worker's name. NOTE: for those who remotely build their workers, please make sure you select your worker and not the remote build process</p>
-<img src="/images/worker/reference/hud-view-code.png" alt="hud-view-code">
+<p>Navigate to the Dashboard <a href="http://dash.iron.io">http://dash.iron.io</a>. next navigate to your uploaded code's information by clicking on the code tab and your worker's name. NOTE: for those who remotely build their workers, please make sure you select your worker and not the remote build process</p>
+<img src="/images/worker/reference/dash-view-code.png" alt="hud-view-code">
 <p>Through your Worker Code's dashboard you have a useful box where you can change your configuration information in yml format! i.e Key seperated by a colon and the value without quotations and no commas delimiting the values.</p>
 <img src="/images/worker/reference/hud-config-setup.png" alt="hud-config-setup">
 <p>click <strong>edit</strong> and...voila! your worker now has updated configuration variables without having to reupload your worker or enter the commandline!</p>
