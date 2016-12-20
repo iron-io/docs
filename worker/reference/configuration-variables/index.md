@@ -35,8 +35,10 @@ layout: post
 
 <figcaption><span>config.json </span></figcaption>
 
-``` javascript
+```sh
 {
+  "project_id":"1234567890abcderghijklmn",
+  "token":"0987654321uhgtehrrgfgdhrhfg"
   "MY_CONFIG_VARIABLE": 12345678901234567890,
   "MY_CONFIG_VARIABLE2": "ASDGFHJTHFVCBDXFGHSF"
 }
@@ -68,7 +70,6 @@ Most of our [client libraries](/worker/libraries/) have helper methods to help w
 <p>it is often times useful to change configuration variables without having to reupload your code. We allow you to do so visually with our Dashboard by following two simple steps.</p>
 
 <p>Navigate to the Dashboard <a href="http://dash.iron.io">http://dash.iron.io</a>. next navigate to your uploaded code's information by clicking on the code tab and your worker's name. NOTE: for those who remotely build their workers, please make sure you select your worker and not the remote build process</p>
-<img src="/images/worker/reference/dash-view-code.png" alt="hud-view-code">
 <p>Through your Worker Code's dashboard you have a useful box where you can change your configuration information in yml format! i.e Key seperated by a colon and the value without quotations and no commas delimiting the values.</p>
 <img src="/images/worker/reference/hud-config-setup.png" alt="hud-config-setup">
 <p>click <strong>edit</strong> and...voila! your worker now has updated configuration variables without having to reupload your worker or enter the commandline!</p>
