@@ -1,14 +1,4 @@
-
-
-
-
-
 $(document).ready(function() {
-
-  $("#header").headroom({
-    "tolerance": 40,
-    "offset": 205,
-  });
 
   function pin_sidebar() {
 
@@ -61,16 +51,6 @@ if($(".docs").height() - sidebar_height < 100) {
  $(".sidebar-content").css("top", "");
  return;
 }
-
-
-    // if (window_height - sidebar_height < 0) {
-    //  $('.sidebar-content').css("max-height", whatever_scrollbar);
-    //  $('.sidebar-content').css("overflow-y", "scroll");
-    //  $(".sidebar-content").css("top", "");
-    // } else {
-    //  $(".sidebar-content").css("max-height", "");
-    //  $(".sidebar-content").css("overflow-y", "");
-    // }
 
     if(bottom_of_sidebar < sticking_point) {
       if (offset > 219 && document.width / window.innerWidth == 1) {
