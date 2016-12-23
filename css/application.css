@@ -726,14 +726,13 @@ small {
   min-height: 100%;
   width: 100%;
   overflow: hidden;
-  background: url(http://www.iron.io/assets/transparent.gif) no-repeat
+  background-color: transparent;
 }
 
 .wrapper-holder {
   padding: 0;
   width: 970px;
   margin: 0 auto;
-  /*background: url(http://www.iron.io/assets/transparent.gif) no-repeat*/
 }
 .sub-nav-wrapper-holder{
   padding: 0;
@@ -840,7 +839,6 @@ small {
   text-decoration: none;
   color: #e6e7e6;
   padding: 7px 14px 6px;
-  /*background: url(http://www.iron.io/assets/transparent.gif) no-repeat;*/
   overflow: hidden;
   position: relative;
   /*border-radius: 4px*/
@@ -2458,7 +2456,7 @@ body.worker .page-menu .active a {
   vertical-align: top;
   position: relative;
   width: 278px;
-  background: url(http://www.iron.io/assets/transparent.gif) no-repeat;
+  background-color: transparent;
   float: left
 }
 
