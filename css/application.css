@@ -2895,7 +2895,8 @@ h2#overview {
 
 #footer .footer-box .box-holder {
   width: 700px;
-  margin: 0 auto;
+  margin: 0 30px;
+  float: right;
 }
 
 #footer .footer-box .box {
@@ -2953,69 +2954,6 @@ h2#overview {
   width: 960px;
   padding: 0
 }
-
-#footer .gear-small {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 10px;
-  left: 12px
-}
-
-#footer .gear-small.shadow {
-  top: 11px
-}
-
-#footer .gear-big {
-  width: 87px;
-  height: 87px;
-  position: absolute;
-  top: 35px;
-  left: 45px
-}
-
-#footer .gear-big.shadow {
-  top: 43px
-}
-
-#footer #gears {
-  overflow: hidden;
-  width: 140px;
-  height: 140px;
-  position: relative;
-  float: left;
-  margin-bottom: -15px;
-  margin-left: 20px
-}
-
-#footer #gears:hover .gear-small {
-  -webkit-animation: smallGearRotate 2s infinite linear;
-  -moz-animation: smallGearRotate 2s infinite linear both;
-  -ms-animation: smallGearRotate 2s infinite linear both;
-  animation: smallGearRotate 2s infinite linear both
-}
-
-#footer #gears:hover .gear-big {
-  -webkit-animation: bigGearRotate 2.5s infinite linear both;
-  -moz-animation: bigGearRotate 2.5s infinite linear both;
-  -ms-animation-name: bigGearRotate 2.5s infinite linear both;
-  animation-name: bigGearRotate 2.5s infinite linear both
-}
-
-.no-svg .footer-box .content {
-  background: url(http://www.iron.io/assets/gears.png) no-repeat 25px 40px
-}
-
-.no-svg .footer-box #gears {
-  display: none
-}
-
-@-webkit-keyframes smallGearRotate{from{-webkit-transform:rotate(0deg)}to{-webkit-transform:rotate(-360deg)}} @-webkit-keyframes bigGearRotate{from{-webkit-transform:rotate(0deg)}to{-webkit-transform:rotate(360deg)}} @-moz-keyframes smallGearRotate{from{-moz-transform:rotate(0deg)}to{-moz-transform:rotate(-360deg)}} @-moz-keyframes bigGearRotate{from{-moz-transform:rotate(0deg)}to{-moz-transform:rotate(360deg)}} @-ms-keyframes smallGearRotate{from{-ms-transform:rotate(0deg)}to{-ms-transform:rotate(-360deg)}} @-ms-keyframes bigGearRotate{from{-ms-transform:rotate(0deg)}to{-ms-transform:rotate(360deg)}} @-keyframes smallGearRotate{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}} @-keyframes bigGearRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}} .plans {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              padding: 40px 0 30px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              margin: 0 -10px 40px -15px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              border-bottom: 1px solid #bbb;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              overflow: hidden
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
 
 .plans .plans-text {
   width: 260px;
