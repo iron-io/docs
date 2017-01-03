@@ -83,7 +83,7 @@ The default queue type for an error queue will be a pull queue. See
 <a href="#error_queues">Error Queues</a> section below.
 
 <div>
-<script src="https://gist.github.com/featalion/0d18d579f62361e70ed7.js"></script>
+<script src="https://gist.github.com/UkiahSmith/f3b1cad4f2e89000ee45cea4c545f520.js"></script>
 </div>
 
 <h2 id="queueing_messages">Queueing Messages</h2>
