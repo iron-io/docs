@@ -1,6 +1,6 @@
 ---
 title: IronMQ v3 Migration Guide
-summary: "The guide to moving your app from IronMQ v2 to IronMQ v3"
+summary: "IronMQ v2 is Officially Deprecated and Will Only Return Errors"
 layout: default
 section: mq-v3
 ---
@@ -10,30 +10,21 @@ from the ground up to be fast, reliable and predictable; even when
 faced with fluctuating workloads. We recommend that all v2 users migrate to v3
  to take advantages of these stability and performance improvements.
 
-The basic process is to create new queues, or auto migrate them, update any client libraries you are using, and audit any code to use the new libraries.
+The basic process is to create new queues, update any client libraries you are using, and audit any code to use the new libraries.
 
 Review the [changes between IronMQ v2 and v3](#changes) before you begin the migration process.
 
 ## Step 1: Create IronMQ v3 Queues
 
-There are 2 ways to start using IronMQ v3. You can manually re-create your queues, *or* you can use the automated queue migration tool.
 
-### Manual Queue Migration
+### Queue Migration
 
 1. Log into the new <a href='https://hud-e.iron.io'>Hud-e</a> dashboard.
 2. Create a new project using the "+ New Project" button.
 3. In the new project, choose a cluster region from the cluster dropdown menu.
 4. Create a new queue using the "Create Queue" button.
 
-### Automated Queue Migration
 
-1. Log into <a href='//hud.iron.io'>hud.iron.io</a> and view the project you want to migrate.
-2. Press the "Migrate to v3!" button.
-<img src='https://raw.githubusercontent.com/iron-io/docs/gh-pages/images/migrateButton.png' style='height:40%; width:76%'>
-3. Wait while your queues are created in v3, and messages are moved into the new queue.
-4. Log into your <a href='//hud-e.iron.io'>Hud-E</a> account, choose the proper cluster location, and all your queues will be there.
-
-The automated queue migration will create a project and queues with the same name your existing project and queues; and it will copy over any messages currently in the queues.
 
 After you go to your Hud-E account, <b>if you do not see your queue, don't worry</b>! In the new HUD-e dashboard you can switch between cluster views to show queues specific to the selected cluster.
 <img src="/images/mq/v2_v3_migration_guide/choose_cluster.png" width="100%">
