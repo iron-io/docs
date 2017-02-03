@@ -17,6 +17,7 @@ breadcrumbs:
     <li><a href="#maximum_run_time_per_worker">Maximum Run Time per Worker</a></li>
     <li><a href="#priority_queue_management">Priority Queue Management</a></li>
     <li><a href="#maximum_scheduled_tasks_per_project">Maximum Scheduled Tasks per Project</a></li>
+    <li><a href="#image_size_limitation">Image Size Limitation</a></li>
     <li><a href="#scheduled_task_frequency">Scheduled Task Frequency</a></li>
   </ul>
 </section>
@@ -91,6 +92,15 @@ The following is the default number of scheduled tasks. It should be sufficient 
 </div>
 
 Tip: A common mistake is to create scheduled jobs on a per user or per item basis. Instead, use scheduled jobs as master tasks that orchestrate activities around sets of users or items. When scheduled tasks run, they can access databases to get a list of actions to perform and then queue up one or more workers to handle the set. View the [page on scheduling](/worker/scheduling) for more information on scheduling patterns and best practices.
+
+<h2 id="image_size_limitation">Image Size Limitation</h2>
+There is a limit for the image size. Image that exceeds this limitation will cause an error. Please contact us if you have specific needs.
+
+<div class="grey-box">
+<b>Image Size Limit:</b> 256MB
+</div>
+
+Tip: Review your code and remove all the dependencies that will not be used. Also using Alpine Linux as a base docker image, could help to decrease image size compared to traditional Linux distros.
 
 <h2 id="scheduled_task_frequency">Scheduled Task Frequency</h2>
 
