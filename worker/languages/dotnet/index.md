@@ -133,7 +133,7 @@ public class QueueTask
 {
     private static string queue_task(string projectId, string token, string worker)
     {
-        string uri = "https://worker-aws-us-east-1.iron.io:443/2/projects/" + projectId + "/tasks";
+        string uri = "https://worker-us-east.iron.io:443/2/projects/" + projectId + "/tasks";
         HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
         request.ContentType = "application/json";
         request.Headers.Add("Authorization", "OAuth " + token);

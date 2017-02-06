@@ -166,7 +166,7 @@ func main() {
         const project = "INSERT PROJECT ID HERE"
 
         // Insert our project ID and token into the API endpoint
-        target := fmt.Sprintf("http://worker-aws-us-east-1.iron.io/2/projects/%s/tasks?oauth=%s", project, token)
+        target := fmt.Sprintf("http://worker-us-east.iron.io/2/projects/%s/tasks?oauth=%s", project, token)
 
         // Build the payload
         // The payload is a string to pass information into your worker as part of a task
