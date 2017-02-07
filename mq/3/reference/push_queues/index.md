@@ -65,7 +65,7 @@ Here are some examples:
 - ironmq:///receiver-queue - refers to the queue named "receiver-queue" in the same project.
 - ironmq://ProjectId:Token@/QueueName - refers to the queue named "QueueName" in a different project on same region/cloud.
 - ironmq://ProjectId:Token@mq-rackspace-dfw.iron.io/MyQueue - refers to the queue named "MyQueue" on a different region/cloud.
-- ironworker://ProjectId:Token@worker-aws-us-east-1.iron.io/myWorker - refers to a worker on IronWorker called "MyWorker".
+- ironworker://ProjectId:Token@worker-us-east.iron.io/myWorker - refers to a worker on IronWorker called "MyWorker".
 
 <h2 id="push_queue_settings">Push Queue Settings</h2>
 
