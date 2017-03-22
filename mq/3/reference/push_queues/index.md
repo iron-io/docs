@@ -74,7 +74,7 @@ To create a push queue, POST to your queue endpoint with the following parameter
 - `subscribers` - required - an array of hashes containing subscribers. eg: `{"name": "my-subscriber", "url": "http://myserver.com/endpoint"}`.
 **WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints (URLs)
 <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
-- `push_type` - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
+- `type` - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - `retries` - number of times to retry. Default is 3. Maximum is 100.
 - `retries_delay` - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
 - `error_queue` - the name of another queue where information about messages that can't be delivered after retrying `retries` number
