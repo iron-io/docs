@@ -1499,12 +1499,8 @@ This is used to create new clusters.
 #### Endpoint
 
 <div class="grey-box">
-    POST /clusters/<span class="variable cluster_id">{Cluster ID}</span>
+    POST /clusters
 </div>
-
-#### URL Parameters
-
-* **Cluster ID**: The ID of the cluster.
 
 #### Request
 
@@ -1531,7 +1527,7 @@ The request should be JSON encoded and look like the following.
             "key_name": "",
             "subnet_ids": [""],
             "availability_zones":[""],
-            "security_groups": [""],
+            "security_groups": [],
             "security_group_ids": [""],
             "iam_instance_profile":
             {
