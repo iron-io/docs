@@ -65,6 +65,11 @@ Let's package it up inside a Docker image. You should have account on <a href="h
 Copy the <a href="https://github.com/iron-io/dockerworker/blob/master/ruby/Dockerfile" target="_blank">Dockerfile</a> from our repository and modify the ENTRYPOINT line to run your script. Build your docker image:
 
 {% highlight bash %}
+FROM iron/ruby
+
+WORKDIR /app
+ADD . /app
+
 ENTRYPOINT ["ruby", "helloworld.rb"]
 {% endhighlight %}
 

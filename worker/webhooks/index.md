@@ -56,7 +56,7 @@ $ WORKER_API_URL/projects/$PROJECT_ID/tasks/webhook?code_name=$CODE_NAME&oauth=$
 
 Where:
 
-* `$WORKER_API_URL` is `https://worker-aws-us-east-1.iron.io/2`
+* `$WORKER_API_URL` is `https://worker-us-east.iron.io/2`
 * `$PROJECT_ID` and `$TOKEN` are credentials to access to your project
 * `$CODE_NAME` is name of your worker
 
@@ -86,7 +86,7 @@ your Github project, click Admin, Service Hooks, then Post-Receive URLs.
 In the text field, add the webhook url for
 your worker, it should look something like this:
 
-    https://worker-aws-us-east-1.iron.io/2/projects/{Project ID}/tasks/webhook?code_name={Code Name}&oauth={Token}
+    https://worker-us-east.iron.io/2/projects/{Project ID}/tasks/webhook?code_name={Code Name}&oauth={Token}
 
 The upload script above will print the exact URL to your console so you can just copy and paste it.
 

@@ -1,7 +1,7 @@
 ---
 title: PagerDuty Integration
 layout: default
-section: docs/worker/integrations/ pagerduty
+section: worker
 breadcrumbs:
   - ['PagerDuty']
 ---

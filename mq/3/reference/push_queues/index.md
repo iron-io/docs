@@ -65,7 +65,7 @@ Here are some examples:
 - ironmq:///receiver-queue - refers to the queue named "receiver-queue" in the same project.
 - ironmq://ProjectId:Token@/QueueName - refers to the queue named "QueueName" in a different project on same region/cloud.
 - ironmq://ProjectId:Token@mq-rackspace-dfw.iron.io/MyQueue - refers to the queue named "MyQueue" on a different region/cloud.
-- ironworker://ProjectId:Token@worker-aws-us-east-1.iron.io/myWorker - refers to a worker on IronWorker called "MyWorker".
+- ironworker://ProjectId:Token@worker-us-east.iron.io/myWorker - refers to a worker on IronWorker called "MyWorker".
 
 <h2 id="push_queue_settings">Push Queue Settings</h2>
 
@@ -74,7 +74,7 @@ To create a push queue, POST to your queue endpoint with the following parameter
 - `subscribers` - required - an array of hashes containing subscribers. eg: `{"name": "my-subscriber", "url": "http://myserver.com/endpoint"}`.
 **WARNING:** Do not use the following RFC 3986 Reserved Characters in the naming of your subscriber endpoints (URLs)
 <p>! * ' ( ) ; : @ & = + $ , / ? # [ ]</p>
-- `push_type` - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
+- `type` - multicast or unicast. Default is multicast. Set this to 'pull' to revert back to a pull queue.
 - `retries` - number of times to retry. Default is 3. Maximum is 100.
 - `retries_delay` - time in seconds between retries. Default is 60. Minimum is 3 and maximum is 86400 seconds.
 - `error_queue` - the name of another queue where information about messages that can't be delivered after retrying `retries` number

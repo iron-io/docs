@@ -10,12 +10,12 @@ All endpoints require your OAuth token be passed in with the ```Authorization```
 
 Example:
 ```
-curl -H 'Authorization: OAuth <token redacted>' worker-aws-us-east-1.iron.io/2/clusters
+curl -H 'Authorization: OAuth <token redacted>' worker-us-east.iron.io/2/clusters
 ```
 
 #### Cluster credentials
 ```
-GET worker-aws-us-east-1.iron.io/2/{cluster_id}/credentials
+GET worker-us-east.iron.io/2/{cluster_id}/credentials
 
 response: {
   cluster: {
@@ -27,17 +27,17 @@ response: {
 
 #### List clusters
 ```
-GET worker-aws-us-east-1.iron.io/2/clusters
+GET worker-us-east.iron.io/2/clusters
 ```
 
 ```
-GET worker-aws-us-east-1.iron.io/2/clusters/shared
+GET worker-us-east.iron.io/2/clusters/shared
 ```
 
 #### Cluster sharing
 
 ```
-POST worker-aws-us-east-1.iron.io/2/clusters/{cluster_id}/share
+POST worker-us-east.iron.io/2/clusters/{cluster_id}/share
 
 request: {
      email: <email>
@@ -49,7 +49,7 @@ response: {
 ```
 
 ```
-POST worker-aws-us-east-1.iron.io/2/clusters/{cluster_id}/unshare/{user_id}
+POST worker-us-east.iron.io/2/clusters/{cluster_id}/unshare/{user_id}
 
 response: {
      msg: success/fail
@@ -61,7 +61,7 @@ response: {
 #### Create cluster
 
 ```
-POST worker-aws-us-east-1.iron.io/2/clusters/
+POST worker-us-east.iron.io/2/clusters/
 
 request: {
   cluster: <cluster_name>
@@ -76,7 +76,7 @@ response: {
 #### Delete cluster
 
 ```
-DELETE worker-aws-us-east-1.iron.io/2/clusters/{cluster_id}
+DELETE worker-us-east.iron.io/2/clusters/{cluster_id}
 
 response: {
   msg: success/fail

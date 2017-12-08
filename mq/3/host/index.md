@@ -1,6 +1,6 @@
 ---
 title: Setting The Host
-section: mq
+section: mq-v3
 breadcrumbs:
   - ['Reference', '/reference']
 
