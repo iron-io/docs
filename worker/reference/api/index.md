@@ -834,7 +834,7 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
 * **page**: The page of tasks you want to retrieve, starting from 0. Default is 0, maximum is 100.
 * **per_page**: The number of tasks to return per page. Note this is a maximum value, so there may be less tasks returned if there aren’t enough results. Default is 30, maximum is 100.
 * **code_name**: The name of your worker (code package).
-* Filter by Status: the parameters **queued**, **preparing**, **running**, **complete**, **error**, **cancelled**, and **timeout** will all filter by their respective status when given a value of `1`. These parameters can be mixed and matched to return tasks that fall into *any* of the status filters. If no filters are provided, tasks will be displayed across all statuses.
+* Filter by **status**: the parameters **queued**, **preparing**, **running**, **complete**, **error**, **cancelled**, and **timeout** will all filter by their respective status when given a value of `1`. These parameters can be mixed and matched to return tasks that fall into *any* of the status filters. If no filters are provided, tasks will be displayed across all statuses.
 * Filter by **cluster**: filters the tasks by cluster name. If this parameter is not provided, tasks will be displayed across all clusters.
 * **from_time**: Limit the retrieved tasks to only those that were created after the time specified in the value. Time should be formatted as the number of seconds since the Unix epoch.
 * **to_time**: Limit the retrieved tasks to only those that were created before the time specified in the value. Time should be formatted as the number of seconds since the Unix epoch.
