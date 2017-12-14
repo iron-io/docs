@@ -47,7 +47,7 @@ notification headers, preparing and sending the notification, and signaling
 exceptions and recording the status.
 
 For a detailed example using SendGrid, IronWorker, and ActionMailer, check
-out our [blog post](http://blog.iron.io/2012/06/powerful-email-infrastructure-with.html).
+out our [blog post](https://blog.iron.io/powerful-email-infrastructure-with).
 
 ### Preparing the Headers
 
@@ -86,7 +86,7 @@ are often not impressed with 9 hour delays between an event and receiving a
 notification of it. As your usage and user base grow, a single task that
 processes notifications one at a time will quickly become inadequate.
 
-As with the [transformation of a 9-hour job to a 9-minute job](http://blog.iron.io/2012/03/how-to-reduce-9-hour-job-into-10-minute.html),
+As with the [transformation of a 9-hour job to a 9-minute job](https://blog.iron.io/how-to-reduce-9-hour-job-into-10-minute),
 the solution to this lies in massive parallelisation. By queuing tens, hundreds,
 or thousands of tasks to manage your queue, you can process a staggering
 amount of notifications and emails in a brief time period. Many hands makes

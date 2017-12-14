@@ -8,12 +8,12 @@ breadcrumbs:
 
 This page lists past IronCasts series. The screencasts are intended to be short and focused on some of the most commonly asked questions.
 
-## [IronCast Series 1 - Introduction to IronWorker](http://blog.iron.io/search/label/Introduction%20to%20IronWorker)
+## [IronCast Series 1 - Introduction to IronWorker](https://blog.iron.io/ironcast-1-introduction-to-ironworker)
 
 In a series of four IronCasts, we will provide a high-level introduction to using IronWorker. IronWorker is an easy-to-use scalable task queue that gives cloud developers a simple way to offload front-end tasks, run scheduled jobs, and process tasks in the background and at scale.
 
 These videocasts will cover core concepts including:
-- [Deploying a worker](http://blog.iron.io/2013/09/ironcast-1-introduction-to-ironworker.html)
+- Deploying a worker
 - Writing worker files to declare dependencies
 - Test and prototype workers rapidly locally
 - Connecting to a cloud development database

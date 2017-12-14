@@ -40,7 +40,7 @@ breadcrumbs:
 
 <h2 id="overview">Overview</h2>
 
-[Blog Post for Overview](http://blog.iron.io/2013/01/ironmq-push-queues-reliable-message.html). You should also review
+[Blog Post for Overview](https://blog.iron.io/ironmq-push-queues-reliable-message). You should also review
 the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/api/).
 
 <h2 id="subscribers">Subscribers</h2>
