@@ -2,7 +2,7 @@
 
 <p>This scheme allows you to spend less time on configuration issues and more on writing code. It also supports the <a href="http://www.12factor.net/config" title="The Twelve Factor App" target="_blank">design pattern</a> that calls for strict separation of configuration information from application code.</p>
 
-<p>The two most common variables used in configuration are the <strong>project ID</strong> and the <strong>token</strong>. The <strong>project ID</strong> is a unique identifier for your project and can be found <a href="https://hud.iron.io">in the HUD</a>. The <strong>token</strong> is one of your OAuth2 tokens, which can be found <a href="https://hud.iron.io/tokens">on their own page</a> in the HUD.</p>
+<p>The two most common variables used in configuration are the <strong>project ID</strong> and the <strong>token</strong>. The <strong>project ID</strong> is a unique identifier for your project and can be found <a href="https://hud-e.iron.io">in the HUD</a>. The <strong>token</strong> is one of your tokens, which can be found <a href="https://hud-e.iron.io/tokens">on their own page</a> in the HUD.</p>
 
 <section id="toc">
   <h3>Table of Contents</h3> 
