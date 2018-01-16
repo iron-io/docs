@@ -36,8 +36,8 @@ See <a href="/worker/reference/api/#schedule_a_task">Scheduling API reference</a
 		<p>Many Tasks To Run in Future - If you have lots of the same individual tasks to run in the future (sending emails to users, for example), we suggest <strong>not</strong> creating individual scheduled tasks (or queuing lots of tasks with delays). It's better to create a scheduled task that repeats on a regular basis. This scheduled task should then query a data base or datastore for the users to email (or actions to take). It can then spin up one or more sub-tasks to execute the work (creating one task per action or better yet, allocating a certain number of data slices to each task to better amortize the setup cost of a task).</p>
 		<p>Here are a few posts on the topic:</p>
 		<ul>
-			<li><a href="http://blog.iron.io/2011/06/worker-patterns-creating-task-level.html">Pattern: Creating Task-Level Workers at Runtime</a></li>
-			<li><a href="http://blog.iron.io/2011/07/anti-pattern-lots-of-scheduled-jobs.html">Anti-Pattern: Lots of Scheduled Jobs</a></li>
+			<li><a href="https://blog.iron.io/worker-patterns-creating-task-level">Pattern: Creating Task-Level Workers at Runtime</a></li>
+			<li><a href="https://blog.iron.io/anti-pattern-lots-of-scheduled-jobs">Anti-Pattern: Lots of Scheduled Jobs</a></li>
 		</ul>
 	</li>
 
