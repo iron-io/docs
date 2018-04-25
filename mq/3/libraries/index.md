@@ -16,6 +16,7 @@ These are our official client libraries for IronMQ  <a href="/mq/3/reference/api
   <li><a href="https://github.com/iron-io/iron_mq_php" target="_blank" data-lang="php">PHP</a></li>
   <li><a href="https://github.com/iron-io/iron_mq_python" target="_blank" data-lang="python">Python</a></li>
   <li><a href="https://github.com/iron-io/iron_mq_node" target="_blank" data-lang="node">Node</a></li>
+  <li><a href="https://github.com/iron-io/iron_mq_rust" target="_blank" data-lang="rust">Rust</a></li>
 </ul>
 </div>
 
