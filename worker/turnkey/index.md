@@ -15,7 +15,7 @@ The basic usage for all of these is:
 1. iron_worker upload http://github.com/PATH_TO_WORKER_FILE
 2. Queue up tasks for the worker or schedule it.
 
-That's it!  Super easy, super powerful. [See this blog post on shareable workers for more background.](http://blog.iron.io/2012/11/sharable-open-source-workers-for.html)
+That's it!  Super easy, super powerful. [See this blog post on shareable workers for more background.](https://blog.iron.io/sharable-open-source-workers-for)
 
 ## Turnkey Worker List
 

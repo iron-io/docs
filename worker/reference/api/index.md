@@ -692,13 +692,14 @@ If neither are specified, tasks run in the last 24 hours are considered.
 
 #### Response
 
-The response will be a JSON object listing the amount of tasks in each of five possible task statuses.
+The response will be a JSON object listing the amount of tasks in each of seven possible task statuses.
 
 Sample:
 
 ```json
 {
     "queued": 0,
+    "preparing": 0,
     "running": 1,
     "cancelled": 0,
     "timeout": 0,
@@ -779,11 +780,11 @@ Tasks will be in different states during the course of operation. Here are the s
     </thead>
     <tbody>
         <tr><td>queued</td><td>in the queue, waiting to run</td></tr>
+        <tr><td>preparing</td><td>downloading docker image</td></tr>
         <tr><td>running</td><td>running</td></tr>
         <tr><td>complete</td><td>finished running</td></tr>
         <tr><td>error</td><td>error during processing</td></tr>
-        <tr><td>cancelled</td><td>cancelled by user</td></tr>
-        <tr><td>killed</td><td>killed by system</td></tr>
+        <tr><td>cancelled</td><td>cancelled by user or killed by system</td></tr>
         <tr><td>timeout</td><td>exceeded processing time threshold</td></tr>
     </tbody>
 </table>
@@ -833,15 +834,16 @@ GET /projects/<span class="variable project_id">{Project ID}</span>/tasks
 * **page**: The page of tasks you want to retrieve, starting from 0. Default is 0, maximum is 100.
 * **per_page**: The number of tasks to return per page. Note this is a maximum value, so there may be less tasks returned if there aren’t enough results. Default is 30, maximum is 100.
 * **code_name**: The name of your worker (code package).
-* Filter by Status: the parameters **queued**, **running**, **complete**, **error**, **cancelled**, **killed**, and **timeout** will all filter by their respective status when given a value of `1`. These parameters can be mixed and matched to return tasks that fall into *any* of the status filters. If no filters are provided, tasks will be displayed across all statuses.
+* Filter by **status**: the parameters **queued**, **preparing**, **running**, **complete**, **error**, **cancelled**, and **timeout** will all filter by their respective status when given a value of `1`. These parameters can be mixed and matched to return tasks that fall into *any* of the status filters. If no filters are provided, tasks will be displayed across all statuses.
+* Filter by **cluster**: filters the tasks by cluster name. If this parameter is not provided, tasks will be displayed across all clusters.
 * **from_time**: Limit the retrieved tasks to only those that were created after the time specified in the value. Time should be formatted as the number of seconds since the Unix epoch.
 * **to_time**: Limit the retrieved tasks to only those that were created before the time specified in the value. Time should be formatted as the number of seconds since the Unix epoch.
 
 Sample endpoint with several optional parameters set:
 
-```
-GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_name=<span class="variable">{Code Name}</span>&complete=1&cancelled=1&error=1
-```
+<div class="grey-box">
+GET /projects/<span class="variable project_id">{Project ID}</span>/tasks?code_name=<span class="variable">{Code Name}</span>&complete=1&cancelled=1&cluster=mem1
+</div>
 
 #### Response
 
@@ -1006,8 +1008,7 @@ All task objects have the following fields:
 * `code_rev` - String.
 * `code_history_id` - String. The specific revision of code that this task
   executed.
-* `status` - String. One of `queued`, `running`, `complete`, `error`,
-  `cancelled`, `killed`, `timeout`. Clients should not assume this set is
+* `status` - String. One of `queued`, `preparing`, `running`, `complete`, `error`, `cancelled`, `timeout`. Clients should not assume this set is
   complete. New values may be added over time.
 
 In addition, the following fields are optional:
@@ -1498,12 +1499,8 @@ This is used to create new clusters.
 #### Endpoint
 
 <div class="grey-box">
-    POST /clusters/<span class="variable cluster_id">{Cluster ID}</span>
+    POST /clusters
 </div>
-
-#### URL Parameters
-
-* **Cluster ID**: The ID of the cluster.
 
 #### Request
 
@@ -1530,7 +1527,7 @@ The request should be JSON encoded and look like the following.
             "key_name": "",
             "subnet_ids": [""],
             "availability_zones":[""],
-            "security_groups": [""],
+            "security_groups": [],
             "security_group_ids": [""],
             "iam_instance_profile":
             {

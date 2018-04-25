@@ -82,7 +82,7 @@ iron worker upload --zip $WORKER.zip --name $WORKER_NAME $IMAGE $COMMAND
 Where `$WORKER` is replaced by the name of your packaged worker zip and `$COMMAND` is the command you want executed, the same
 one you used with `docker run`.
 
-Sometimes, you want to limit the number of parallel workers for any given task, to prevent external resources like databases or APIs from crashing under the weight of your workers' requests. We have a [max_concurrency](http://blog.iron.io/2012/08/ironworkers-most-requested-feature-is.html) feature that lets you do just this. To use it, simply use the `--max-concurrency` option when uploading a worker, with the maximum number of workers that can be run in parallel:
+Sometimes, you want to limit the number of parallel workers for any given task, to prevent external resources like databases or APIs from crashing under the weight of your workers' requests. We have a [max_concurrency](https://blog.iron.io/ironworkers-most-requested-feature-is) feature that lets you do just this. To use it, simply use the `--max-concurrency` option when uploading a worker, with the maximum number of workers that can be run in parallel:
 
 ```sh
 iron worker upload --max-concurrency 10 ...

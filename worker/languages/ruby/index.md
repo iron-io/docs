@@ -252,5 +252,5 @@ Your workers should be independent, discrete parts of an application, a mini-app
 framework usage in workers, in general, is frowned upon.
 
 
-Check out [this blog post](http://blog.iron.io/2012/06/powerful-email-infrastructure-with.html)
+Check out [this blog post](https://blog.iron.io/powerful-email-infrastructure-with)
 for step-by-step instructions on including and using the Rails stack including some models, ActionMailers, etc.

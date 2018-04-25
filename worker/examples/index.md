@@ -19,7 +19,7 @@ git clone https://github.com/iron-io/dockerworker.git
 ```
 
 <div class="alert">
-<p>Check out our Post on Top 10 Use Cases for IronWorker <a href="http://blog.iron.io/2014/02/top-10-uses-of-ironworker.html">Here!</a></p>
+<p>Check out our Post on Top 10 Use Cases for IronWorker <a href="https://blog.iron.io/top-10-uses-of-ironworker">Here!</a></p>
 </div>
 
 
