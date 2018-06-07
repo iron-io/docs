@@ -35,7 +35,7 @@ Project consists of the following properties:
   "max_schedules"
   "schedules_count"
   "task_count"
-  "hourly_task\_count"
+  "hourly_task_count"
   "hourly_time"
   "flags"
   "shared_with"
