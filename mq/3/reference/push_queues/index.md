@@ -31,7 +31,7 @@ breadcrumbs:
     <li><a href="#troubleshooting_push_queues">Troubleshooting Your Push Queues</a>
       <ul>
         <li><a href="#using_error_queue">Using Error Queues feature</a></li>
-        <li><a href="#requestbin">Using Requestb.in</a></li>
+        <li><a href="#requestbin">Using Requestbin.com</a></li>
         <li><a href="#using_ngrok">Testing on localhost with Ngrok</a></li>
       </ul>
     </li>
@@ -258,9 +258,9 @@ Error queues are vastly useful to record, document, and react to retries, errors
 See our <a href="http://dev.iron.io/mq/reference/push_queues/#error_queues">Error Queue Documentation</a> on how to setup and read error queue messages.
 
 <h3 id="requestbin">Using RequestBin</h3>
-<a href="http://requestb.in/">RequestBin</a> is a very useful and free service provided by Iron.io's friends at <a href="https://www.runscope.com/">Runscope</a> that helps users debug all kinds of request to a unqiuely generated endpoint. A bin will keep the last 20 requests made to it and remain available for 48 hours after it was created.You can create a more permanent bin by signing up  <a href="https://www.runscope.com/signup">here</a>.
+<a href="https://requestbin.com">RequestBin</a> is a very useful and free service provided that helps users debug all kinds of request to a unqiuely generated endpoint.
 <ol style="list-style-type: none">
-  <li><strong>Step 1:</strong> go to <a href="http://requestb.in/">http://requestb.in/</a> and click on "Create a RequestBin <br><img src="/images/mq/reference/troubleshooting/step-1.png" alt="push queue troubleshooting step 1">  </li>
+  <li><strong>Step 1:</strong> go to <a href="https://requestbin.com">https://requestbin.com</a> and click on "Create a RequestBin <br><img src="/images/mq/reference/troubleshooting/step-1.png" alt="push queue troubleshooting step 1">  </li>
   <li><strong>Step 2:</strong> copy the unique url<br> <img src="/images/mq/reference/troubleshooting/step-2.png" alt="push queue troubleshooting step 2"></li>
   <li><strong>Step 3:</strong> paste it as a subscriber endpoint on your queue. This example shows us pasting it via the hud/dashboard interface but you an do the same using th raw api.<br><img src="/images/mq/reference/troubleshooting/step-3.png" alt="push queue troubleshooting step 3" width="100%"></li>
   <li><strong>Step 4:</strong> post a message to your push queue, return to your unique RequestBin's inspect page. Here you will be able to view and inspect your the headers and response body amongst other very useful information about your push queue's request.
