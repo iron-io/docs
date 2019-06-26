@@ -64,7 +64,7 @@ If you are moving from v2 to v3, this is slightly different from the previous `p
 First, Make sure to update your [client library](http://dev.iron.io/mq/3/libraries/)
 from v2 to v3. For now, each library has a `v3` branch that you should use for this api.
 The v2 libraries will not work for the v3 api. You will also need new
-credentials, which you can obtain through <https://hud-e.iron.io/signup>.
+credentials, which you can obtain through <https://www.iron.io/signup>.
 Your v2 credentials (`iron.json`, et al) will not work with v3.
 
 It is _very_ important not to conflate `Get` and `Reserve`. In typical usage, `Get` is
@@ -105,7 +105,7 @@ the timeouts are intermittent. If you are using batching in your consumers, we
 also recommend raising the timeouts.
 
 Another issue is `401: Unauthorized`. This probably means you are attempting to
-use v2 credentials for v3. To get v3 credentials, go to [hud-e.iron.io/signup](https://hud-e.iron.io/signup).
+use v2 credentials for v3. To get v3 credentials, go to [www.iron.io/signup](https://www.iron.io/signup).
 
 If you need any more support or are having any other issues, feel free to
 contact <support@iron.io> including any relevant information.
