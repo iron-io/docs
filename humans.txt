@@ -1,5 +1,5 @@
 The Iron.io Dev Center was created by the staff and customers of Iron.
-You can become an Iron customer by visiting http://hud.iron.io/users/new
+You can become an Iron customer by visiting https://www.iron.io/signup
 and by joining our community at http://dev.iron.io/community. You can also
 help us update this Dev Center by visiting the Github repo at
 https://github.com/iron-io/docs and submitting issues where we need to
