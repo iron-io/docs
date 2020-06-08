@@ -63,7 +63,7 @@ The CLI needs a configuration file or environment variables set that tell it wha
 }
 ```
 
-You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
+You should insert your [project ID](https://hud-e.iron.io) and [token](https://hud-e.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 <h3 id="write_your_net_worker">Write Your .NET Worker</h3>
 
@@ -106,7 +106,7 @@ exec "hello.exe" # replace with your file
 iron_worker upload hello
 ```
 
-That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list, which will be empty, but not for long.
+That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud-e.iron.io](https://hud-e.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list, which will be empty, but not for long.
 
 Let’s quickly test it by running:
 
@@ -114,7 +114,7 @@ Let’s quickly test it by running:
 iron_worker queue hello
 ```
 
-Now look at the task list in [HUD](https://hud.iron.io) and you should see your task show up and go from "queued" to "running" to "completed".
+Now look at the task list in [HUD](https://hud-e.iron.io) and you should see your task show up and go from "queued" to "running" to "completed".
 
 Now that we know it works, let’s queue up a bunch of tasks from code. **Note**: Once you upload a code package, you can queue as many tasks as you'd like against it. You only need to re-upload the code package when your code changes.
 

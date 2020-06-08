@@ -77,7 +77,7 @@ IRON_PROJECT_ID=MY_PROJECT_ID
 
 <ul>
   <li><strong>project_id</strong>: The ID of the project to use for requests.</li>
-  <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud.iron.io/tokens">in the HUD</a>.</li>
+  <li><strong>token</strong>: The OAuth token that should be used to authenticate requests. Can be found <a href="https://hud-e.iron.io/tokens">in the HUD</a>.</li>
   <li><strong>host</strong>: The domain name the API can be located at. Defaults to a product-specific value, but always using Amazon's cloud.</li>
   <li><strong>protocol</strong>: The protocol that will be used to communicate with the API. Defaults to "https", which should be sufficient for 99% of users.</li>
   <li><strong>port</strong>: The port to connect to the API through. Defaults to 443, which should be sufficient for 99% of users.</li>

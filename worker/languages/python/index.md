@@ -77,7 +77,7 @@ but for simplicity's sake, just save the following as `iron.json` in the root of
 }
 ```
 
-You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file.
+You should insert your [project ID](https://hud-e.iron.io) and [token](https://hud-e.iron.io/tokens) into that `iron.json` file.
 Then, assuming you're running the commands from within the folder, the library will pick up your credentials and use them automatically.
 
 <h3 id="write_your_python_worker">Write Your Python Worker</h3>
@@ -137,7 +137,7 @@ $ iron_worker upload hello
 ```
 
 That command will read your .worker file, create your worker code package and upload it to IronWorker.
-Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab.
+Head over to [hud-e.iron.io](https://hud-e.iron.io), click the Worker link on your projects list, then click the Tasks tab.
 You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
 
 <h3 id="queue_up_tasks_for_your_worker">Queue Up Tasks for Your Worker</h3>

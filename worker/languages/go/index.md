@@ -72,7 +72,7 @@ The CLI needs a configuration file or environment variables set that tell it wha
 }
 ```
 
-You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
+You should insert your [project ID](https://hud-e.iron.io) and [token](https://hud-e.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 <h3 id="write_your_go_worker">Write Your Go Worker</h3>
 
@@ -122,7 +122,7 @@ exec "hello_worker" # replace with your Go executable
 $ iron_worker upload hello
 ```
 
-That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
+That command will read your .worker file, create your worker code package and upload it to IronWorker.  Head over to [hud-e.iron.io](https://hud-e.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
 
 Let’s quickly test it by running:
 
@@ -226,7 +226,7 @@ your worker. You should get a response similar to this:
 {"msg":"Queued up","status_code":200,"tasks":[{"id":"4f9b51631bab47589b017391"}]}
 ```
 
-If you check in the [HUD](https://hud.iron.io), you should see the task.
+If you check in the [HUD](https://hud-e.iron.io), you should see the task.
 
 <h2 id="deep_dive">Deep Dive</h2>
 

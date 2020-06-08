@@ -82,7 +82,7 @@ You'll need a configuration file or environment variables set that tell it what 
 }
 ```
 
-You should insert your [project ID](https://hud.iron.io) and [token](https://hud.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
+You should insert your [project ID](https://hud-e.iron.io) and [token](https://hud-e.iron.io/tokens) into that `iron.json` file. Then, assuming you're running the commands from within the folder, the CLI will pick up your credentials and use them automatically.
 
 <h3 id="write_your_nodejs_worker">Write Your Node.js Worker</h3>
 
@@ -130,7 +130,7 @@ $ iron worker upload --zip hello_worker.zip --name hello_worker iron/images:node
 The first command zips up everything in the current directory named hello_worker.zip.
 
 The next command uploads the package to the Iron.io platform. 
-That command will read your .worker file, create your worker code package and upload it to IronWorker. Head over to [hud.iron.io](https://hud.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
+That command will read your .worker file, create your worker code package and upload it to IronWorker. Head over to [hud-e.iron.io](https://hud-e.iron.io), click the Worker link on your projects list, then click the Tasks tab. You should see your new worker listed there with zero runs. Click on it to show the task list which will be empty, but not for long.
 
 Let’s quickly test it by running:
 
