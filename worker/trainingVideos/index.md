@@ -20,6 +20,6 @@ Before moving forward, please ensure you've:
 <h2 id='vids'>Current Video Selections</h2>
 
 <ul>
-  <li id='helloWorld'> <a href='https://iron-1.wistia.com/medias/1n9ra6grpz' target="_blank">Hello World</a></li>
-  <li id='custImg'><a href='https://iron-1.wistia.com/medias/em135thx45' target="_blank">Making Your First Custom Image</a></li>
+  <li id='helloWorld'> <a href='https://www.youtube.com/watch?v=To6QUACxktU' target="_blank">Hello World</a></li>
+  <li id='custImg'><a href='https://youtu.be/e__HXXCqgtU' target="_blank">Making Your First Custom Image</a></li>
 </ul>
