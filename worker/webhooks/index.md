@@ -41,7 +41,7 @@ you don't need any updates in your existing workers to use them. A typical workf
 $ iron_worker webhook $WORKER_NAME
 ```
 
-* Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/reference/push_queues)
+* Pass webhook link to 3rdparty service like GitHub, or as subscriber URL for [IronMQ Push Queue](/mq/3/reference/push_queues)
 * Do something to trigger the webhook, say, commit to GitHub or post a message to a Push Queue.
 
 When the IronWorker service receives the HTTP POST request to your webhook endpoint,

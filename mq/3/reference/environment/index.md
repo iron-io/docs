@@ -55,7 +55,7 @@ Receivers get one or more messages (up to 100). Once the receive is done process
 <h2 id="queue_attributes">Queue Attributes</h2>
 
 Queues have their own set of attributes.
-To get the information about a queue, use the [Info API call](/mq/reference/api/#get_info_about_a_message_queue).
+To get the information about a queue, use the [Info API call](/mq/3/reference/api/#get_info_about_a_message_queue).
  The following is a list of all the queue attributes:
 
 #### Common Attributes

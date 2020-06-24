@@ -12,7 +12,7 @@ This will add the developer level addon for IronMQ, which will let you test the 
 
 ## Language Support
 
-IronMQ has clients for [a lot of languages](http://dev.iron.io/mq/libraries/), and you can always use [the REST API](http://dev.iron.io/mq/reference/api/) (or write your own!). This means your existing Heroku stack should work without any changes.
+IronMQ has clients for [a lot of languages](http://dev.iron.io/mq/libraries/), and you can always use [the REST API](http://dev.iron.io/mq/3/reference/api/) (or write your own!). This means your existing Heroku stack should work without any changes.
 
 ## Ruby
 
@@ -154,7 +154,7 @@ Once that's done, you can require it to get a simple wrapper for the API:
 ## Next Steps
 
 To get into more advanced uses of IronMQ, you may want to check out the
-[API docs](http://dev.iron.io/mq/reference/api/) or check out an example Sinatra application that ties in [IronWorker](http://addons.heroku.com/iron_worker)
+[API docs](http://dev.iron.io/mq/3/reference/api/) or check out an example Sinatra application that ties in [IronWorker](http://addons.heroku.com/iron_worker)
 at [https://github.com/iron-io/heroku_sinatra_example](https://github.com/iron-io/heroku_sinatra_example).
 
 ## Support

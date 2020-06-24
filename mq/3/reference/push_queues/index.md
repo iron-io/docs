@@ -41,7 +41,7 @@ breadcrumbs:
 <h2 id="overview">Overview</h2>
 
 [Blog Post for Overview](https://blog.iron.io/ironmq-push-queues-reliable-message). You should also review
-the [MQ API for push queue related endpoints](http://dev.iron.io/mq/reference/api/).
+the [MQ API for push queue related endpoints](http://dev.iron.io/mq/3/reference/api/).
 
 <h2 id="subscribers">Subscribers</h2>
 
@@ -153,7 +153,7 @@ The error queue message will contain the following information:
 }
 ```
 
-You can look up the original message if needed via the [GET message endpoint](/mq/reference/api/#get_message_by_id) using
+You can look up the original message if needed via the [GET message endpoint](/mq/3/reference/api/#get_message_by_id) using
 the `source_msg_id` value.
 
 ### To turn off/disable an error queue
@@ -255,7 +255,7 @@ At Iron we have 3 recommended ways to debug problems you may encounter with your
 
 <h3 id="using_error_queue">Using Error Queues (IronMQ Feature)</h3>
 Error queues are vastly useful to record, document, and react to retries, errors, and bugs that involve your Message queue endpoint.
-See our <a href="http://dev.iron.io/mq/reference/push_queues/#error_queues">Error Queue Documentation</a> on how to setup and read error queue messages.
+See our <a href="http://dev.iron.io/mq/3/reference/push_queues/#error_queues">Error Queue Documentation</a> on how to setup and read error queue messages.
 
 <h3 id="requestbin">Using RequestBin</h3>
 <a href="https://requestbin.com">RequestBin</a> is a very useful and free service provided that helps users debug all kinds of request to a unqiuely generated endpoint.
