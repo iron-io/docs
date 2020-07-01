@@ -29,7 +29,7 @@ be processed again or analyzed to try to determine why they weren't
 successfully processed in the first place, without having to throw them away.
 
 A dead letter queue <b>cannot be specified on a push queue</b>, for
-something similar, see [error queues](/reference/push_queues#error_queues).
+something similar, see [error queues](/mq/3/reference/push_queues#error_queues).
 
 <h2 id="creating">Creating a Dead Letter Queue</h2>
 

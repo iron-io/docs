@@ -15,7 +15,7 @@ Iron.io takes further measures to isolate and protect **processes** at the IronW
 
 ### OAuth2 Authorization
 
-Iron's [API](/worker/refrence/api) uses [OAuth 2](http://www.oauth.net/2/), an industry-standard authentication scheme, to securely authenticate API requests. This scheme relies on SSL for security, instead of requiring your application to do cryptographic signing directly. This makes the API easy to use without compromising security.
+Iron's [API](/worker/reference/api) uses [OAuth 2](http://www.oauth.net/2/), an industry-standard authentication scheme, to securely authenticate API requests. This scheme relies on SSL for security, instead of requiring your application to do cryptographic signing directly. This makes the API easy to use without compromising security.
 
 ### HTTPS Encryption
 

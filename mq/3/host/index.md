@@ -7,14 +7,13 @@ breadcrumbs:
 layout: default
 ---
 
-IronMQ v3 public clusters are available in 2 locations. To use Iron.io on another cloud (private or public) please reach out to [sales@iron.io](sales@iron.io) and we can assist.
+IronMQ v3 public clusters are available in 2 locations. To use Iron.io on another cloud (private or public) please reach out to sales@iron.io and we can assist.
 
 Our public cluster options are:
 
 ```bash
 mq-aws-eu-west-1-1.iron.io
 mq-aws-us-east-1-1.iron.io
-mq-aws-us-east-1-2.iron.io
 ```
 
 This will get set in a number of different ways, but here is a selection of examples for posting a single message to a pull queue.

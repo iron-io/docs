@@ -107,8 +107,8 @@ You are now ready to use client libraries or APIs to enqueue and dequeue message
 
 TODO: these links are broken
 
-* [Client Libraries](http://dev.iron.io/mq-onpremise/reference/client_libraries/)
-* [REST API](/mq/3/on-premise/reference/api/)
+* [Client Libraries](http://dev.iron.io/mq/3/libraries/)
+* [REST API](/mq/3/reference/api/)
 * [Auth CLI](https://github.com/iron-io/enterprise/wiki/2.-Auth-CLI-Tool)
 
 # 5. Next steps
