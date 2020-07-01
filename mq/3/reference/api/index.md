@@ -1,5 +1,6 @@
 ---
 title: IronMQ v3 API Reference
+redirect_from: /mq/reference/api/
 summary: "IronMQ v3 has made a few improvements over our previous API. This reference is a continuing work in progress"
 layout: default
 section: mq-v3

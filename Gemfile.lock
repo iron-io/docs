@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     colorator (0.1)
-    ffi (1.9.10)
+    ffi (1.13.1)
     jekyll (3.1.6)
       colorator (~> 0.1)
       jekyll-sass-converter (~> 1.0)
@@ -12,6 +12,8 @@ GEM
       mercenary (~> 0.3.3)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
+    jekyll-redirect-from (0.11.0)
+      jekyll (>= 2.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
     jekyll-watch (1.4.0)
@@ -43,9 +45,10 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
+  jekyll-redirect-from
   json (= 1.8.3)
   nokogiri (~> 1.8.2)
   therubyracer
 
 BUNDLED WITH
-   1.14.6
+   2.0.1
