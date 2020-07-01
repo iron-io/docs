@@ -1,5 +1,6 @@
 ---
 title: IronMQ Push Queues Reference
+redirect_from: /mq/reference/push_queues/
 layout: default
 section: mq-v3
 breadcrumbs:
