@@ -18,7 +18,7 @@ GEM
       sass (~> 3.4)
     jekyll-watch (1.4.0)
       listen (~> 3.0, < 3.1)
-    json (1.8.3)
+    json (2.3.0)
     kramdown (1.11.1)
     libv8 (3.16.14.15)
     liquid (3.0.6)
@@ -46,7 +46,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll
   jekyll-redirect-from
-  json (= 1.8.3)
+  json (= 2.3.0)
   nokogiri (~> 1.8.2)
   therubyracer
 
