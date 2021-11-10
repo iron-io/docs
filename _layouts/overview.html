@@ -5,6 +5,8 @@
 </head>
 <body class="team">
 
+  {% include gtm_body_tag.html %}
+
   <div id="wrapper">
 
     <header id="header">
@@ -82,39 +84,39 @@
   {% assign default_lang = "ruby" %}
   var languages = { {% for lang in page.languages %}{% if lang.default %}{% assign default_lang = lang.slug %}{% endif %}
   '{{ lang.slug }}': '{{ lang.name }}'{% unless forloop.last %},{% endunless %}{% endfor %}
-};
-</script>
-<script>
-$(document).ready(function() {
-  if ($.url().param('lang')!=null) {
-    desiredLanguage = $.url().param('lang');
-  } else {
-    if (Cookies.get('desired_language')!=null || localStorage.getItem("desired_language")!=null) {
-      if (Cookies.get('desired_language')!=null) {
-        desiredLanguage = Cookies.get('desired_language');
-      } else {
-        desiredLanguage = localStorage.getItem('desired_language');
-      }
+  };
+  </script>
+  <script>
+  $(document).ready(function() {
+    if ($.url().param('lang')!=null) {
+      desiredLanguage = $.url().param('lang');
     } else {
-      desiredLanguage = "{{ default_lang }}";
+      if (Cookies.get('desired_language')!=null || localStorage.getItem("desired_language")!=null) {
+        if (Cookies.get('desired_language')!=null) {
+          desiredLanguage = Cookies.get('desired_language');
+        } else {
+          desiredLanguage = localStorage.getItem('desired_language');
+        }
+      } else {
+        desiredLanguage = "{{ default_lang }}";
+      }
+    };
+    if(!validLanguage(desiredLanguage)) {
+      switchLanguage("{{ default_lang }}", false);
+    } else {
+      switchLanguage(desiredLanguage);
     }
-  };
-  if(!validLanguage(desiredLanguage)) {
-    switchLanguage("{{ default_lang }}", false);
-  } else {
-    switchLanguage(desiredLanguage);
-  }
-});
-</script>
-{% endif %}
-<script>
-  window.intercomSettings = {
-    app_id: "u9ytpaii"
-  };
-</script>
-<script>
-// We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/u9ytpaii'
-(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/u9ytpaii';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
-</script>
+  });
+  </script>
+  {% endif %}
+  <script>
+    window.intercomSettings = {
+      app_id: "u9ytpaii"
+    };
+  </script>
+  <script>
+  // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/u9ytpaii'
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/u9ytpaii';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  </script>
 </body>
 </html>
