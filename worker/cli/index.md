@@ -29,11 +29,10 @@ The new [Iron cli](https://github.com/iron-io/ironcli) tool has an easy installe
 curl -sSL https://cli.iron.io/install | sh
 ```
 
-You can find downloads if you don't want to install it with the above command in the ironcli repo:
+If you're having issues with the above installation command, then you can use the iron/cli docker image. All the commands are the same, but instead of starting the command with `iron`, change it to:
 
 ```sh
-wget -O iron github.com/iron-io/ironcli/releases/download/0.1.6/ironcli_linux
-chmod +x iron
+docker run --rm -it -v "$PWD":/app -w /app iron/cli ...
 ```
 
 You'll also need [Docker](http://docker.com) installed on your machine to test your workers.
