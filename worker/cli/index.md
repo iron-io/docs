@@ -29,7 +29,7 @@ The new [Iron cli](https://github.com/iron-io/ironcli) tool has an easy installe
 curl -sSL https://cli.iron.io/install | sh
 ```
 
-If you're having issues with the above installation command, then you can use the iron/cli docker image. All the commands are the same, but instead of starting the command with `iron`, change it to:
+If you're having issues with the above installation command, then you can use the `iron/cli` docker image. All the commands are the same, but instead of starting the command with `iron`, change it to:
 
 ```sh
 docker run --rm -it -v "$PWD":/app -w /app iron/cli ...
