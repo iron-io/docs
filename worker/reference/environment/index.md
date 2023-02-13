@@ -40,7 +40,7 @@ Tip: We recommend that you avoid sending large payloads with your workers. Inste
 The standard worker sandbox environment contains a certain amount of accessible memory. This amount should be sufficient for almost all workloads. We are working on a super worker environment that would allow greater memory allocations. Please contact us if you have specific needs here.
 
 <div class="grey-box">
-<b>Memory per Worker:</b>  ~ 320MB
+<b>Memory per Worker:</b>  ~ 512MB
 </div>
 
 Tip: We recommend distributing workloads over multiple workers&mdash;not only for better resource management, but also to take advantage of the massive concurrency enabled by a cloud worker system.
