@@ -20,8 +20,8 @@
 <p>Set the following environment variables:</p>
 
 {% highlight bash %}
-IRON_TOKEN=MY_TOKEN
-IRON_PROJECT_ID=MY_PROJECT_ID
+export IRON_TOKEN=YOUR_TOKEN
+export IRON_PROJECT_ID=YOUR_PROJECT_ID
 {% endhighlight %}
 
 <p>The <span class="fixed-width">IRON_PROJECT_ID</span> you use will be the default project to use. You can always override this in your code.</p>
