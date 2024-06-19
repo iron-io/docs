@@ -8,6 +8,8 @@ This guide will show you how to add nodes to a single IronMQ to create a
 3 node high availability (HA) cluster, and installing HUD-e to manage
 and introspect your queues with a web UI.
 
+Please note: You need to contact support@iron.io to enable access to IronMQ docker images
+
 ## Prerequisites
 
 These instructions assume that you've already set up a single IronMQ node.

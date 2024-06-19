@@ -7,6 +7,8 @@ section: mq-on-premise
 This guide will show you how to install and configure a single, full featured
 IronMQ node. This is the first step to install your IronMA HA cluster.
 
+Please note: You need to contact support@iron.io to enable access to IronMQ docker images
+
 # 1. Pull Docker images
 
 IronMQ HA requires 2 major components running at all times. We provide docker images

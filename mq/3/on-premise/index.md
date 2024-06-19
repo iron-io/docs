@@ -9,6 +9,8 @@ offered IronMQ in two hosting configurations (multi-tenant or dedicated).
 Our new on-premise product is the first to allow you to run our software in your
 own dedicated cloud.
 
+Please note: You need to contact support@iron.io to enable access to IronMQ docker images
+
 # Overview
 
 IronMQ On Premise features a new, robust distributed database to power queues

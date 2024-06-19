@@ -9,6 +9,8 @@ performance gains over older alternatives. This page details the minimum
 system requirements that your cloud will need to ensure that IronMQ runs
 efficiently.
 
+Please note: You need to contact support@iron.io to enable access to IronMQ docker images
+
 # Software requirements
 
 We distribute IronMQ in [Docker](https://docker.com) containers, so your operating

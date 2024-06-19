@@ -9,6 +9,8 @@ configuration. Installation will require some knowledge of deployment and system
 administration. If you don't have these skills, please schedule a consultation with our
 team.
 
+Please note: You need to contact support@iron.io to enable access to IronMQ docker images
+
 This guide is split into two parts:
 
 1. [Setting up a full-featured single node](/mq/3/on-premise/installation/single.html) - good for small staging environments
