@@ -38,4 +38,4 @@ Try not to use HTML unless it's required!  Use markdown for everything if possib
 1. `docker build -t jekyll .`
 1. `docker run --rm -it -v "$PWD":/app -p 4000:4000 jekyll serve --watch --host 0.0.0.0`
 
-Note: to do a bundle update, run `docker run --rm -it -v "$PWD":/app -w /app iron/ruby:dev bundle update` 
+Note: to do a bundle update, run `docker run --rm -it -v "$PWD":/app -w /app iron/ruby:dev bundle update`
